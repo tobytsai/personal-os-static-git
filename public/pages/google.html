@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#b95bbd">
+<title>Google 服務｜Personal OS</title>
+<style>
+:root{--purple:#b95bbd;--yellow:#ffbf00;--navy:#123b70;--paper:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--purple);color:var(--navy);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}
+main{width:min(760px,100%);margin:auto;padding:16px 22px 48px}
+.back{display:inline-block;margin:0 0 12px;color:white;text-decoration:none;font-weight:700}
+h1{margin:0 0 20px;background:var(--yellow);color:white;text-align:center;font-size:clamp(32px,8vw,54px);letter-spacing:.05em;padding:10px 14px}
+form{display:flex;align-items:center;gap:10px;background:white;border-radius:999px;padding:9px 12px;margin-bottom:22px}
+form span{font-weight:700;background:#171717;color:#fff;border-radius:999px;padding:8px 13px;white-space:nowrap}
+input{min-width:0;flex:1;border:0;outline:0;background:transparent;padding:8px;font:inherit;color:#333}
+button[type=submit]{border:0;background:#f2f3f5;border-radius:999px;color:var(--navy);padding:9px 14px;font:inherit;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.service{display:grid;place-items:center;min-height:72px;padding:12px 8px;background:var(--paper);border-radius:15px;text-decoration:none;color:var(--navy);font-size:clamp(18px,4.5vw,30px);font-weight:600;text-align:center;box-shadow:0 4px 0 #7c367f22;transition:transform .15s,box-shadow .15s}
+.service:hover{transform:translateY(-2px);box-shadow:0 7px 0 #7c367f22}
+footer{text-align:center;color:#fff;margin-top:24px;font-size:13px}
+@media(min-width:700px){main{padding-top:24px}.grid{gap:16px}.service{min-height:84px}}
+@media(max-width:360px){main{padding:12px 14px 32px}.grid{gap:10px}.service{min-height:64px}}
+</style>
+</head>
+<body><main>
+<a class="back" href="../">← 返回首頁</a>
+<h1>GOOGLE</h1>
+<form action="https://www.google.com/search" method="get" role="search">
+<span>Google</span><input type="search" name="q" placeholder="搜尋 Google 服務" aria-label="搜尋 Google"><button type="submit">搜尋</button>
+</form>
+<nav class="grid" aria-label="Google 服務">
+<a class="service" href="https://translate.google.com/" target="_blank" rel="noopener">翻譯</a>
+<a class="service" href="https://mail.google.com/" target="_blank" rel="noopener">Gmail</a>
+<a class="service" href="https://maps.google.com/" target="_blank" rel="noopener">地圖</a>
+<a class="service" href="https://news.google.com/?hl=zh-TW&gl=TW&ceid=TW:zh-Hant" target="_blank" rel="noopener">Google 新聞</a>
+<a class="service" href="https://photos.google.com/" target="_blank" rel="noopener">相片</a>
+<a class="service" href="https://calendar.google.com/" target="_blank" rel="noopener">日曆</a>
+<a class="service" href="https://contacts.google.com/" target="_blank" rel="noopener">聯絡人</a>
+<a class="service" href="https://meet.google.com/" target="_blank" rel="noopener">Meet</a>
+<a class="service" href="https://ads.google.com/" target="_blank" rel="noopener">Google Ads</a>
+<a class="service" href="https://docs.google.com/document/" target="_blank" rel="noopener">文件</a>
+<a class="service" href="https://keep.google.com/" target="_blank" rel="noopener">Keep</a>
+<a class="service" href="https://artsandculture.google.com/" target="_blank" rel="noopener">藝術與文化</a>
+<a class="service" href="https://drive.google.com/" target="_blank" rel="noopener">雲端硬碟</a>
+<a class="service" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+<a class="service" href="https://www.google.com/finance/" target="_blank" rel="noopener">財經</a>
+<a class="service" href="https://docs.google.com/spreadsheets/" target="_blank" rel="noopener">試算表</a>
+<a class="service" href="https://docs.google.com/presentation/" target="_blank" rel="noopener">簡報</a>
+<a class="service" href="https://vids.google.com/" target="_blank" rel="noopener">Vids</a>
+<a class="service" href="https://one.google.com/" target="_blank" rel="noopener">Google One</a>
+<a class="service" href="https://www.google.com/travel/" target="_blank" rel="noopener">旅遊</a>
+<a class="service" href="https://docs.google.com/forms/" target="_blank" rel="noopener">表單</a>
+<a class="service" href="https://play.google.com/store" target="_blank" rel="noopener">應用商店</a>
+<a class="service" href="https://passwords.google.com/" target="_blank" rel="noopener">密碼管理工具</a>
+<a class="service" href="https://www.google.com/business/" target="_blank" rel="noopener">商家服務</a>
+<a class="service" href="https://search.google.com/search-console/" target="_blank" rel="noopener">Search Console</a>
+</nav>
+<footer>Google 服務快速入口</footer>
+</main></body>
+</html>
