@@ -21,10 +21,40 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 .empty{display:none;padding:22px;background:white;border-radius:16px;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:13px;padding-top:30px}
 @media(max-width:620px){.wrap{padding:14px 12px 38px}.hero{padding:26px 21px;border-radius:22px}.feature{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}}
 </style>
-</head>
+<style>
+body{background:#66b956;color:#083d83}
+.wrap{max-width:840px;padding:16px}
+.back{background:#fff;color:#083d83}
+.hero{display:grid;grid-template-columns:3fr 1fr;gap:10px;background:transparent;color:#083d83;border-radius:0;padding:0;box-shadow:none;overflow:visible}
+.hero:after{display:none}
+.banner{background:#ffc107;color:#fff;text-align:center;padding:12px 9px;display:flex;flex-direction:column;justify-content:center;min-height:160px}
+.banner h1{font-size:clamp(32px,8vw,62px);margin:7px 0}
+.banner p{font-size:clamp(14px,3vw,19px);margin:0;color:#fff}
+.eyebrow{font-size:12px;letter-spacing:.12em}
+.hero-note{background:white;border-radius:17px;display:grid;place-items:center;text-align:center;font-size:clamp(20px,4vw,32px);font-weight:800}
+.toolbar{margin-top:16px}
+.search{border-radius:17px}
+.filters{gap:8px}
+.filters button{background:#fff;border-color:#fff;color:#083d83;border-radius:12px}
+.filters button.active{background:#083d83;color:#fff;border-color:#083d83}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:#fff;border:0;border-radius:17px;min-height:150px;color:#083d83}
+.card:hover{box-shadow:0 8px 20px #083d8320}
+.card h3{font-size:clamp(19px,4vw,28px)}
+.card p{color:#315b8a}
+.tag{background:#e4f3dc;color:#27613d}
+.arrow,.card .link{color:#083d83}
+.feature-intro{background:#ffc107;color:#fff}
+.feature-intro h2,.feature-intro p{color:#fff}
+.quick a{border:0;border-radius:17px;color:#083d83}
+.quick small{color:#526c75}
+.empty{color:#083d83}
+footer{color:#134c34}
+@media(max-width:620px){.wrap{padding:14px 12px 38px}.hero{grid-template-columns:3fr 1fr}.banner{min-height:135px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:13px;min-height:144px}.quick{grid-template-columns:1fr 1fr}}
+</style></head>
 <body><main class="wrap">
 <a class="back" href="../">← 返回首頁</a>
-<header class="hero"><div class="eyebrow">PERSONAL OS · TRAVEL</div><h1>旅遊資訊</h1><p>把想去的地方、景點靈感和行程規劃集中在這裡。選一個目的地，開啟對應的小旅行看板。</p></header>
+<header class="hero"><div class="banner"><div class="eyebrow">PERSONAL OS · TRAVEL</div><h1>旅遊資訊</h1><p>目的地、景點靈感與小旅行規劃</p></div><div class="hero-note">小旅行<br>看板</div></header>
 <div class="toolbar"><input class="search" id="search" type="search" placeholder="搜尋目的地，例如：台北、廈門、海島" aria-label="搜尋目的地"></div>
 <nav class="filters" aria-label="目的地篩選"><button class="active" data-filter="all">全部</button><button data-filter="taiwan">台灣</button><button data-filter="china">中國大陸</button><button data-filter="asia">亞洲・其他</button></nav>
 <p class="sub" style="margin:0 0 8px">主題分類（可與地區及搜尋同時使用）</p><nav class="filters" aria-label="旅行主題篩選"><button class="active" data-theme-filter="all">全部主題</button><button data-theme-filter="city">城市散步</button><button data-theme-filter="nature">自然山海</button><button data-theme-filter="food">美食文化</button><button data-theme-filter="island">離島</button><button data-theme-filter="rail">鐵道旅行</button></nav>
