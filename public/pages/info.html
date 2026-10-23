@@ -71,7 +71,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 </main>
 <script>
 const cards=[...document.querySelectorAll("#destinations .card")],search=document.querySelector("#search"),regionButtons=[...document.querySelectorAll("[data-filter]")],themeButtons=[...document.querySelectorAll("[data-theme-filter]")];let region="all",theme="all";
-function update(){const q=search.value.trim().toLocaleLowerCase();let shown=0;for(const c of cards){const okRegion=region==="all"||c.dataset.region===region;const okTheme=theme==="all"||(c.dataset.themes||"").split(/\\s+/).includes(theme);const okText=c.innerText.toLocaleLowerCase().includes(q);c.hidden=!(okRegion&&okTheme&&okText);if(!c.hidden)shown++}document.querySelector("#empty").style.display=shown?"none":"block"}
+function update(){const q=search.value.trim().toLocaleLowerCase();let shown=0;for(const c of cards){const okRegion=region==="all"||c.dataset.region===region;const okTheme=theme==="all"||(c.dataset.themes||"").split(/\s+/).includes(theme);const okText=c.innerText.toLocaleLowerCase().includes(q);c.hidden=!(okRegion&&okTheme&&okText);if(!c.hidden)shown++}document.querySelector("#empty").style.display=shown?"none":"block"}
 search.addEventListener("input",update);regionButtons.forEach(b=>b.addEventListener("click",()=>{region=b.dataset.filter;regionButtons.forEach(x=>x.classList.toggle("active",x===b));update()}));themeButtons.forEach(b=>b.addEventListener("click",()=>{theme=b.dataset.themeFilter;themeButtons.forEach(x=>x.classList.toggle("active",x===b));update()}));
 </script>
 </body></html>
