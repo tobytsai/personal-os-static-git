@@ -3,34 +3,67 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#f1ed00">
+<meta name="theme-color" content="#ffd333">
 <title>金融啟動器｜Personal OS</title>
 <style>
 *{box-sizing:border-box}
-:root{--bg:#efec00;--orange:#ffb900;--ink:#123f78}
-body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif}
-main{width:min(100%,760px);min-height:100vh;margin:0 auto;padding:18px 20px 54px}
-.back{display:inline-flex;align-items:center;padding:8px 14px;margin-bottom:14px;border-radius:999px;background:rgba(255,255,255,.9);color:var(--ink);font-size:14px;font-weight:700;text-decoration:none}
-h1{margin:0 0 20px;background:var(--orange);color:#fff;padding:11px 8px;text-align:center;font-size:clamp(30px,7vw,48px);line-height:1.25}
+:root{--ink:#183d59;--muted:#667a86;--yellow:#ffd333;--orange:#ff9b25;--green:#29ae7c;--paper:#fff}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;background:linear-gradient(145deg,#fff9d9 0%,#fff2b2 48%,#e6f6dd 100%);overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%}
+body:before{width:340px;height:340px;right:-120px;top:100px;background:radial-gradient(circle,rgba(255,177,61,.35),transparent 70%)}
+body:after{width:400px;height:400px;left:-180px;bottom:-150px;background:radial-gradient(circle,rgba(71,194,143,.24),transparent 70%)}
+main{width:min(100%,820px);margin:auto;padding:18px 20px 56px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.back{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;background:rgba(255,255,255,.8);color:var(--ink);text-decoration:none;font-size:14px;font-weight:750;box-shadow:0 5px 16px rgba(79,99,47,.08);transition:transform .18s}
+.back:hover{transform:translateX(-3px)}
+.count{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.65);color:var(--muted);font-size:13px;font-weight:750}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:27px clamp(22px,5vw,42px);border-radius:30px;background:linear-gradient(120deg,#f5c928 0%,#ffab2e 62%,#ff9148 100%);color:#fff;box-shadow:0 16px 34px rgba(217,149,32,.22)}
+.hero:after{content:"$";position:absolute;right:30px;bottom:-57px;z-index:-1;color:rgba(255,255,255,.2);font-size:210px;line-height:1;font-weight:900;transform:rotate(-10deg)}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;margin-bottom:12px;border:1px solid rgba(255,255,255,.4);border-radius:999px;background:rgba(255,255,255,.2);font-size:12px;font-weight:800;letter-spacing:.06em}
+h1{margin:0;font-size:clamp(36px,8vw,60px);line-height:1.08;letter-spacing:.02em}
+.hero p{margin:11px 0 0;color:rgba(255,255,255,.95);font-size:clamp(14px,2.4vw,17px);line-height:1.6}
+.section{margin-top:25px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:12px}
+.section-head h2{margin:0;font-size:20px}
+.section-head p{margin:0;color:var(--muted);font-size:12px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.card{min-height:78px;display:grid;place-items:center;padding:12px 8px;border-radius:16px;background:#fff;color:var(--ink);font-size:clamp(22px,5vw,34px);text-align:center;text-decoration:none;box-shadow:0 3px 7px rgba(41,45,24,.08);transition:transform .16s ease,box-shadow .16s ease}
-.card:hover{transform:translateY(-3px);box-shadow:0 9px 18px rgba(41,45,24,.16)}
-.card:focus-visible,.back:focus-visible{outline:3px solid #123f78;outline-offset:3px}
-@media(min-width:620px){main{padding-top:28px}.card{min-height:92px}}
-@media(max-width:360px){main{padding-inline:13px}.grid{gap:9px}.card{font-size:20px;min-height:68px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.card{--accent:#28ad7a;position:relative;min-height:104px;display:grid;grid-template-columns:58px 1fr 28px;align-items:center;gap:13px;overflow:hidden;padding:15px 17px;border:1px solid rgba(255,255,255,.9);border-radius:22px;background:rgba(255,255,255,.91);color:var(--ink);text-decoration:none;box-shadow:0 9px 22px rgba(66,93,61,.09);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:var(--accent);transform:scaleY(.35);transform-origin:center;border-radius:0 5px 5px 0;transition:transform .2s}
+.card:after{content:"";position:absolute;width:90px;height:90px;right:-36px;bottom:-54px;border-radius:50%;background:color-mix(in srgb,var(--accent) 10%,transparent);transition:transform .24s}
+.card:hover{transform:translateY(-4px) rotate(-.3deg);box-shadow:0 15px 28px rgba(66,93,61,.15);border-color:color-mix(in srgb,var(--accent) 35%,white)}
+.card:hover:before{transform:scaleY(.8)}
+.card:hover:after{transform:scale(1.25)}
+.card:focus-visible,.back:focus-visible{outline:3px solid #183d59;outline-offset:3px}
+.badge{width:54px;height:54px;display:grid;place-items:center;border-radius:18px;background:color-mix(in srgb,var(--accent) 13%,white);color:var(--accent);font-size:25px;font-weight:900;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 12%,white)}
+.name{position:relative;z-index:1;font-size:clamp(18px,3.5vw,23px);font-weight:850}
+.arrow{position:relative;z-index:1;color:var(--accent);font-size:22px;font-weight:800;transition:transform .18s}
+.card:hover .arrow{transform:translate(3px,-2px)}
+.taishin{--accent:#c94045}.fubon{--accent:#17679c}.shin{--accent:#ec8e36}.esun{--accent:#16865b}.cathay{--accent:#149c81}.land{--accent:#5b8747}.post{--accent:#ca3f4d}
+footer{margin-top:25px;text-align:center;color:#718178;font-size:12px}
+@media(max-width:520px){main{padding:14px 13px 42px}.hero{border-radius:24px;padding:24px 20px}.hero:after{right:7px;font-size:150px}.grid{gap:10px}.card{min-height:90px;grid-template-columns:46px 1fr 20px;gap:9px;padding:12px 11px;border-radius:18px}.badge{width:44px;height:44px;border-radius:15px;font-size:21px}.name{font-size:18px}.section-head h2{font-size:18px}}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.card{min-height:78px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body><main>
-<a class="back" href="../">← 返回首頁</a>
+<div class="topbar"><a class="back" href="../"><span aria-hidden="true">←</span> 返回首頁</a><span class="count">7 個銀行入口</span></div>
+<header class="hero">
+<div class="eyebrow"><span aria-hidden="true">✦</span> PERSONAL OS · FINANCE</div>
 <h1>金融啟動器</h1>
+<p>常用銀行入口整理在一起，輕鬆找到需要的服務。</p>
+</header>
+<section class="section" aria-labelledby="banks-title">
+<div class="section-head"><h2 id="banks-title">銀行與郵局</h2><p>點選卡片前往官方網站</p></div>
 <div class="grid">
-<a class="card" href="https://www.taishinbank.com.tw/" target="_blank" rel="noopener">台新</a>
-<a class="card" href="https://www.fubon.com/banking/" target="_blank" rel="noopener">富邦</a>
-<a class="card" href="https://nbank.skbank.com.tw/" target="_blank" rel="noopener">新光</a>
-<a class="card" href="https://www.esunbank.com/" target="_blank" rel="noopener">玉山</a>
-<a class="card" href="https://www.cathaybk.com.tw/cathaybk/personal/" target="_blank" rel="noopener">國泰</a>
-<a class="card" href="https://mybank.landbank.com.tw/" target="_blank" rel="noopener">土地</a>
-<a class="card" href="https://ipost.post.gov.tw/pst/home.html" target="_blank" rel="noopener">郵局</a>
+<a class="card taishin" href="https://www.taishinbank.com.tw/" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">台</span><span class="name">台新</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="card fubon" href="https://www.fubon.com/banking/" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">富</span><span class="name">富邦</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="card shin" href="https://nbank.skbank.com.tw/" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">新</span><span class="name">新光</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="card esun" href="https://www.esunbank.com/" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">玉</span><span class="name">玉山</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="card cathay" href="https://www.cathaybk.com.tw/cathaybk/personal/" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">國</span><span class="name">國泰</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="card land" href="https://mybank.landbank.com.tw/" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">土</span><span class="name">土地</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="card post" href="https://ipost.post.gov.tw/pst/home.html" target="_blank" rel="noopener"><span class="badge" aria-hidden="true">郵</span><span class="name">郵局</span><span class="arrow" aria-hidden="true">↗</span></a>
 </div>
+</section>
+<footer>Personal OS · 金融服務入口</footer>
 </main></body></html>
