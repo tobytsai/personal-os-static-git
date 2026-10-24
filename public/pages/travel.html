@@ -67,7 +67,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 <a class="card" data-region="asia" data-themes="nature culture city" href="https://trello.com/b/NnljnbLT/%E6%97%A5%E6%9C%AC%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">亞洲・日本</span><span class="arrow">↗</span></div><h3>日本小旅行</h3><p>日本旅遊目的地與行程靈感收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
 <a class="card" data-region="asia" data-themes="food culture nature" href="https://trello.com/b/phcmEwZ4/%E8%B6%8A%E5%8D%97%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">亞洲・越南</span><span class="arrow">↗</span></div><h3>越南小旅行</h3><p>越南城市、景點與旅行筆記。</p><span class="link">開啟 Trello 看板 →</span></a>
 <a class="card" data-region="asia" data-themes="nature culture" href="https://trello.com/b/PH8HK26a/%E5%B0%BC%E6%B3%8A%E7%88%BE%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">亞洲・南亞</span><span class="arrow">↗</span></div><h3>尼泊爾小旅行</h3><p>山岳、文化與尼泊爾行程資料。</p><span class="link">開啟 Trello 看板 →</span></a>
-<a class="card" data-region="research" data-themes="flight" href="https://trello.com/b/ufawe22Q/%E9%A3%9B%E6%A9%9F%E7%A5%A8%E7%A0%94%E7%A9%B6"><div class="meta"><span class="tag">行前研究</span><span class="arrow">↗</span></div><h3>飛機票研究</h3><p>集中整理機票搜尋、票價比較與購票資訊。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="research" data-themes="flight" data-theme-exclusive href="https://trello.com/b/ufawe22Q/%E9%A3%9B%E6%A9%9F%E7%A5%A8%E7%A0%94%E7%A9%B6"><div class="meta"><span class="tag">行前研究</span><span class="arrow">↗</span></div><h3>飛機票研究</h3><p>集中整理機票搜尋、票價比較與購票資訊。</p><span class="link">開啟 Trello 看板 →</span></a>
 <a class="card" data-region="taiwan" data-area="north" data-city="newtaipei" data-themes="nature forest" href="https://trello.com/c/cd1mI6t1/27-%E5%85%A7%E6%B4%9E%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・新北市</span><span class="arrow">↗</span></div><h3>內洞國家森林遊樂區</h3><p>蕨類生態、森林步道與瀑布景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
 <a class="card" data-region="taiwan" data-area="north" data-city="newtaipei" data-themes="nature forest" href="https://trello.com/c/IsR3qK18/28-%E6%BB%BF%E6%9C%88%E5%9C%93%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・新北市</span><span class="arrow">↗</span></div><h3>滿月圓國家森林遊樂區</h3><p>柳杉林、溪谷步道與瀑布景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
 <a class="card" data-region="taiwan" data-area="north" data-city="taoyuan" data-themes="nature forest" href="https://trello.com/c/6auvOM9u/29-%E6%9D%B1%E7%9C%BC%E5%B1%B1%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・桃園市</span><span class="arrow">↗</span></div><h3>東眼山國家森林遊樂區</h3><p>柳杉林、林業遺跡與山頂步道。</p><span class="link">查看 Trello 景點資料 →</span></a>
@@ -983,7 +983,7 @@ function update(){
 search.addEventListener("input",update);
 regionButtons.forEach(b=>b.addEventListener("click",()=>{
   region=b.dataset.filter;
-  if(region==="all"||(region!=="taiwan"&&(taiwanAreas.has(quick)||quick==="rail"||quick==="taiwantrip"))) quick="all";
+  if(region==="all"||(region!=="research"&&quick==="flight")||(region!=="taiwan"&&(taiwanAreas.has(quick)||quick==="rail"||quick==="taiwantrip"))) quick="all";
   city="all";
   syncFilters();
   update();
@@ -991,7 +991,7 @@ regionButtons.forEach(b=>b.addEventListener("click",()=>{
 quickButtons.forEach(b=>b.addEventListener("click",()=>{
   const selected=b.dataset.quickFilter;
   quick=quick===selected?"all":selected;
-  if(taiwanAreas.has(quick)||quick==="rail"||quick==="taiwantrip")region="taiwan";
+  if(quick==="flight")region="research";else if(taiwanAreas.has(quick)||quick==="rail"||quick==="taiwantrip")region="taiwan";
   if(quick!=="north")city="all";
   syncFilters();
   update();
