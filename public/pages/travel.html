@@ -20,7 +20,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 .feature{display:grid;grid-template-columns:1.1fr 1.9fr;gap:14px;margin-top:14px}.feature-intro{border-radius:20px;background:#e0f2ed;padding:22px}.feature-intro h2{margin:0 0 8px}.feature-intro p{color:var(--muted);line-height:1.65;margin:0}.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick a{background:white;border:1px solid var(--line);border-radius:15px;text-decoration:none;color:var(--ink);padding:15px;font-weight:700;line-height:1.4}.quick small{display:block;color:var(--muted);font-weight:400;margin-top:5px}
 .empty{display:none;padding:22px;background:white;border-radius:16px;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:13px;padding-top:30px}
 @media(max-width:620px){.wrap{padding:14px 12px 38px}.hero{padding:26px 21px;border-radius:22px}.feature{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}}
-.card[hidden]{display:none!important}
+.card[hidden],.feature[hidden]{display:none!important}
 </style>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 </head>
@@ -77,7 +77,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 <a class="card" data-region="taiwan" data-area="north" data-themes="nature forest" href="https://trello.com/c/jqURmtME/38-%E6%98%8E%E6%B1%A0%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・宜蘭縣</span><span class="arrow">↗</span></div><h3>明池國家森林遊樂區</h3><p>森林湖泊景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
 <a class="card" data-region="taiwan" data-area="east" data-themes="nature forest" href="https://trello.com/c/UzMhLpcY/39-%E7%9F%A5%E6%9C%AC%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・台東縣</span><span class="arrow">↗</span></div><h3>知本國家森林遊樂區</h3><p>溫泉與森林浴步道。</p><span class="link">查看 Trello 景點資料 →</span></a>
 <a class="card" data-region="research" data-themes="taipei-sheet" href="https://chatgpt.com/library/share/libfile_757c2d3ef1788191b7bcaa492c586391?account_id=personal" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>台北旅遊行程試算表</h3><p>台北市主題遊程資料與已更新的官方旅遊網站網址。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taiwantrip north" href="https://docs.google.com/spreadsheets/d/1i56OVxNhE2TDd7ATv0ozoLxK1aXo5-CXdj21FTNFf2o/edit?usp=drivesdk" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>台灣好行｜北北基路線遊玩表</h3><p>整理台灣好行北北基路線、沿線站點與遊玩資訊。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taipei events" href="https://docs.google.com/spreadsheets/d/1TM258SgnXnCEK3RN30xRlzSTs2KzERFd/edit?usp=drivesdk&amp;ouid=109811689831592519931&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>臺北活動年曆2026</h3><p>整理臺北市 2026 年活動資訊與活動日期。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taipei attractions" href="https://docs.google.com/spreadsheets/d/1DuVCBT4jFHfi6sBz5Fb1uhkYN7vELgFf/edit?usp=drivesdk&amp;ouid=109811689831592519931&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>臺北景點470筆</h3><p>臺北市 470 筆景點資料整理表。</p><span class="link">開啟試算表 →</span></a></div><p class="empty" id="empty">找不到符合條件的目的地，試試其他關鍵字。</p></section>
-<section class="feature"><div class="feature-intro"><h2>台北旅遊資源</h2><p>整理自台北小旅行看板中的官方旅遊網站連結，適合快速找景點與主題路線。</p></div><div class="quick">
+<section class="feature" data-region="taiwan" data-area="north"><div class="feature-intro"><h2>台北旅遊資源</h2><p>整理自台北小旅行看板中的官方旅遊網站連結，適合快速找景點與主題路線。</p></div><div class="quick">
 <a href="https://www.travel.taipei/zh-tw/tour/hellotaipei" target="_blank" rel="noopener">你好臺北<small>臺北旅遊網</small></a>
 <a href="https://www.travel.taipei/zh-tw/must-visit/miniculturaltrips" target="_blank" rel="noopener">臺北文化小旅行<small>文化主題路線</small></a>
 <a href="https://www.travel.taipei/zh-tw/must-visit/riverside-bikeway" target="_blank" rel="noopener">臺北河濱單車輕旅行<small>河濱自行車路線</small></a>
@@ -86,7 +86,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 <footer>看板與收藏來源：Trello「小旅行」｜內容更新請直接編輯對應 Trello 看板</footer>
 </main>
 <script>
-const cards=[...document.querySelectorAll("#destinations .card")];
+const cards=[...document.querySelectorAll("#destinations .card, .feature[data-region]")];
 const search=document.querySelector("#search");
 const regionButtons=[...document.querySelectorAll("[data-filter]")];
 const quickButtons=[...document.querySelectorAll("[data-quick-filter]")];
