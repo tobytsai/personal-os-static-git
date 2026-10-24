@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#bd5c85">
+<title>娛樂啟動器｜Personal OS</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#bd5c85;--blue:#123f78;--yellow:#ffbd08}
+body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;color:var(--blue)}
+main{max-width:720px;min-height:100vh;margin:0 auto;padding:18px 18px 50px}
+.back{display:inline-block;margin:0 0 12px;background:rgba(255,255,255,.88);padding:8px 15px;border-radius:999px;color:var(--blue);text-decoration:none;font-size:14px;font-weight:700}
+h1{margin:0 0 22px;padding:10px 8px;background:var(--yellow);color:#fff;text-align:center;font-size:clamp(30px,7vw,48px);line-height:1.25}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{min-height:76px;border-radius:16px;background:#fff;display:grid;place-items:center;padding:12px 8px;text-align:center;color:var(--blue);font-size:clamp(20px,5vw,32px);text-decoration:none;box-shadow:0 2px 5px rgba(55,28,47,.06)}
+a.card{transition:transform .15s,box-shadow .15s}
+a.card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(55,28,47,.15)}
+.card.pending{cursor:default}
+@media(min-width:650px){main{padding-top:28px}.card{min-height:92px;font-size:28px}}
+</style>
+</head>
+<body><main>
+<a class="back" href="../">← 返回首頁</a>
+<h1>娛樂</h1>
+<div class="grid">
+<a class="card" href="https://www.youtube.com/" target="_blank" rel="noopener">YOUTUBE</a>
+<a class="card" href="https://open.spotify.com/" target="_blank" rel="noopener">spotify</a>
+<div class="card pending">劇迷</div>
+<div class="card pending">小鴨</div>
+<div class="card pending">楓林</div>
+<div class="card pending">中國人劇迷</div>
+<a class="card" href="https://www.tiktok.com/" target="_blank" rel="noopener">抖音</a>
+</div>
+</main></body></html>
