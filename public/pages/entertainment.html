@@ -3,35 +3,81 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#bd5c85">
+<meta name="theme-color" content="#f65b87">
 <title>娛樂啟動器｜Personal OS</title>
 <style>
 *{box-sizing:border-box}
-:root{--bg:#bd5c85;--blue:#123f78;--yellow:#ffbd08}
-body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;color:var(--blue)}
-main{max-width:720px;min-height:100vh;margin:0 auto;padding:18px 18px 50px}
-.back{display:inline-block;margin:0 0 12px;background:rgba(255,255,255,.88);padding:8px 15px;border-radius:999px;color:var(--blue);text-decoration:none;font-size:14px;font-weight:700}
-h1{margin:0 0 22px;padding:10px 8px;background:var(--yellow);color:#fff;text-align:center;font-size:clamp(30px,7vw,48px);line-height:1.25}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{min-height:76px;border-radius:16px;background:#fff;display:grid;place-items:center;padding:12px 8px;text-align:center;color:var(--blue);font-size:clamp(20px,5vw,32px);text-decoration:none;box-shadow:0 2px 5px rgba(55,28,47,.06)}
-a.card{transition:transform .15s,box-shadow .15s}
-a.card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(55,28,47,.15)}
-.card.pending{cursor:default}
-
-.brand{gap:8px}.logo{display:block;flex:none}.yt{width:46px;height:34px;color:#ff0033}.sp{width:40px;height:40px;color:#1db954}.myv{width:68px;height:42px;border-radius:12px;background:linear-gradient(135deg,#f6a800,#ff7200);display:flex;align-items:center;justify-content:center;gap:2px;color:white;font-style:normal;font-size:18px;letter-spacing:-1px}.myv i{font-size:14px;font-style:normal}
-@media(min-width:650px){main{padding-top:28px}.card{min-height:92px;font-size:28px}}
+:root{--ink:#29213e;--muted:#726a84;--paper:#fff;--pink:#f65b87;--orange:#ff9b50;--purple:#7658e8;--blue:#4d7ff2;--mint:#44c7b1;--yellow:#ffcf51}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;background:linear-gradient(145deg,#fff4ec 0%,#f9e9f3 48%,#eaeaff 100%);overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(2px);pointer-events:none}
+body:before{width:360px;height:360px;right:-130px;top:110px;background:radial-gradient(circle,#ffb7c8 0,rgba(255,183,200,0) 70%)}
+body:after{width:380px;height:380px;left:-180px;bottom:-150px;background:radial-gradient(circle,#b8c8ff 0,rgba(184,200,255,0) 70%)}
+main{width:min(100%,920px);margin:auto;padding:20px 22px 56px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.back{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid rgba(54,42,79,.08);border-radius:999px;background:rgba(255,255,255,.78);color:var(--ink);text-decoration:none;font-size:14px;font-weight:750;box-shadow:0 5px 16px rgba(73,48,105,.07);transition:transform .2s}
+.back:hover{transform:translateX(-3px)}
+.count{font-size:13px;font-weight:700;color:var(--muted);background:rgba(255,255,255,.58);padding:8px 12px;border-radius:999px}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:30px clamp(22px,5vw,46px);border-radius:30px;background:linear-gradient(120deg,#f65b87 0%,#ed5fae 44%,#825ee8 100%);color:#fff;box-shadow:0 18px 40px rgba(147,69,151,.22)}
+.hero:after{content:"♫";position:absolute;right:30px;bottom:-43px;font-size:180px;line-height:1;font-weight:900;color:rgba(255,255,255,.13);transform:rotate(-12deg);z-index:-1}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;margin-bottom:14px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.16);font-size:12px;font-weight:750;letter-spacing:.05em}
+h1{margin:0;font-size:clamp(38px,8vw,66px);line-height:1.06;letter-spacing:.01em}
+.hero p{max-width:520px;margin:13px 0 0;color:rgba(255,255,255,.9);font-size:clamp(14px,2.3vw,17px);line-height:1.7}
+.section{margin-top:28px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:13px}
+.section-head h2{margin:0;font-size:21px;letter-spacing:.02em}
+.section-head p{margin:0;color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.card{--accent:var(--pink);position:relative;min-height:142px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;padding:17px;border:1px solid rgba(255,255,255,.85);border-radius:22px;background:rgba(255,255,255,.86);color:var(--ink);text-decoration:none;box-shadow:0 10px 24px rgba(72,54,109,.08);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:after{content:"";position:absolute;width:120px;height:120px;right:-44px;bottom:-60px;border-radius:50%;background:color-mix(in srgb,var(--accent) 13%,transparent);transition:transform .25s}
+.card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--accent) 36%,white);box-shadow:0 16px 30px rgba(72,54,109,.14)}
+.card:hover:after{transform:scale(1.25)}
+.card:focus-visible,.back:focus-visible{outline:3px solid #302653;outline-offset:3px}
+.brand-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:15px;background:color-mix(in srgb,var(--accent) 12%,white);color:var(--accent)}
+.brand-icon svg{display:block}
+.logo-youtube{width:29px;height:22px}
+.logo-spotify{width:31px;height:31px}
+.logo-myvideo{width:37px;height:37px}
+.wordmark{font-size:11px;letter-spacing:.12em;font-weight:850;color:var(--muted)}
+.card-name{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:6px;font-weight:800;font-size:18px}
+.card-name .arrow{font-size:19px;color:var(--accent);transition:transform .2s}
+.card:hover .arrow{transform:translate(3px,-2px)}
+.youtube{--accent:#f33}
+.spotify{--accent:#16a765}
+.myvideo{--accent:#f18424}
+.gimy{--accent:#e74f88}
+.maple{--accent:#38a58b}
+.chinaq{--accent:#6972db}
+.tiktok{--accent:#17151c}
+.footer{margin-top:28px;text-align:center;color:#817992;font-size:12px}
+@media(max-width:700px){main{padding:14px 14px 42px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.hero{border-radius:25px;padding:27px 22px}.hero:after{right:12px;font-size:140px}.card{min-height:126px;padding:14px;border-radius:19px}.section-head h2{font-size:18px}}
+@media(max-width:380px){.grid{grid-template-columns:1fr}.card{min-height:96px;flex-direction:row;align-items:center}.card-name{flex:1}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
 <body><main>
-<a class="back" href="../">← 返回首頁</a>
-<h1>娛樂</h1>
+<div class="topbar"><a class="back" href="../"><span aria-hidden="true">←</span> 返回首頁</a><span class="count">7 個入口</span></div>
+<header class="hero">
+<div class="eyebrow"><span aria-hidden="true">✦</span> PERSONAL OS · MEDIA</div>
+<h1>娛樂啟動器</h1>
+<p>音樂、影片與戲劇，一鍵開啟今天想看的內容。</p>
+</header>
+<section class="section" aria-labelledby="watch-title">
+<div class="section-head"><h2 id="watch-title">影音與戲劇</h2><p>找到想看的，現在就播放</p></div>
 <div class="grid">
-<a class="card brand youtube" href="https://www.youtube.com/" target="_blank" rel="noopener"><svg class="logo yt" viewBox="0 0 48 34" role="img" aria-label="YouTube"><path fill="currentColor" d="M46.9 5.3a6 6 0 0 0-4.2-4.2C39 0 24 0 24 0S9 0 5.3 1.1a6 6 0 0 0-4.2 4.2C0 9 0 17 0 17s0 8 1.1 11.7a6 6 0 0 0 4.2 4.2C9 34 24 34 24 34s15 0 18.7-1.1a6 6 0 0 0 4.2-4.2C48 25 48 17 48 17s0-8-1.1-11.7Z"/><path fill="#fff" d="m19 24.5 13-7.5-13-7.5z"/></svg><span>YOUTUBE</span></a>
-<a class="card brand spotify" href="https://open.spotify.com/" target="_blank" rel="noopener"><svg class="logo sp" viewBox="0 0 40 40" role="img" aria-label="Spotify"><circle cx="20" cy="20" r="20" fill="currentColor"/><path d="M9 15c7-2 16-1 22 3M10 20c6-2 14-1 19 2M11 25c5-1 11 0 15 2" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg><span>spotify</span></a>
-<a class="card" href="https://gimytv.biz/" target="_blank" rel="noopener">劇迷</a>
-<a class="card" href="https://8maple.st/" target="_blank" rel="noopener">楓林</a>
-<a class="card" href="https://chinaq.fun/" target="_blank" rel="noopener">中國人劇迷</a>
-<a class="card" href="https://www.tiktok.com/" target="_blank" rel="noopener">抖音</a>
-<a class="card brand myvideo" href="https://www.myvideo.net.tw/" target="_blank" rel="noopener"><span class="logo myv" role="img" aria-label="MyVideo 標誌"><b>my</b><i>▶</i></span><span>myVideo</span></a>
+<a class="card youtube" href="https://www.youtube.com/" target="_blank" rel="noopener"><span class="brand-icon"><svg class="logo-youtube" viewBox="0 0 48 34" role="img" aria-label="YouTube"><path fill="currentColor" d="M46.9 5.3a6 6 0 0 0-4.2-4.2C39 0 24 0 24 0S9 0 5.3 1.1a6 6 0 0 0-4.2 4.2C0 9 0 17 0 17s0 8 1.1 11.7a6 6 0 0 0 4.2 4.2C9 34 24 34 24 34s15 0 18.7-1.1a6 6 0 0 0 4.2-4.2C48 25 48 17 48 17s0-8-1.1-11.7Z"/><path fill="#fff" d="m19 24.5 13-7.5-13-7.5z"/></svg></span><span class="wordmark">VIDEO</span><span class="card-name">YOUTUBE <span class="arrow">↗</span></span></a>
+<a class="card myvideo" href="https://www.myvideo.net.tw/" target="_blank" rel="noopener"><span class="brand-icon"><svg class="logo-myvideo" viewBox="0 0 40 40" role="img" aria-label="MyVideo"><rect x="2" y="2" width="36" height="36" rx="12" fill="currentColor"/><path d="M13 27V14l7 7 7-7v13" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="31" cy="10" r="3" fill="#ffce4d"/></svg></span><span class="wordmark">MOVIES · SERIES</span><span class="card-name">myVideo <span class="arrow">↗</span></span></a>
+<a class="card gimy" href="https://gimytv.biz/" target="_blank" rel="noopener"><span class="brand-icon" aria-hidden="true">🎬</span><span class="wordmark">DRAMA</span><span class="card-name">劇迷 <span class="arrow">↗</span></span></a>
+<a class="card maple" href="https://8maple.st/" target="_blank" rel="noopener"><span class="brand-icon" aria-hidden="true">🍁</span><span class="wordmark">DRAMA</span><span class="card-name">楓林 <span class="arrow">↗</span></span></a>
+<a class="card chinaq" href="https://chinaq.fun/" target="_blank" rel="noopener"><span class="brand-icon" aria-hidden="true">影</span><span class="wordmark">DRAMA</span><span class="card-name">中國人劇迷 <span class="arrow">↗</span></span></a>
 </div>
+</section>
+<section class="section" aria-labelledby="music-title">
+<div class="section-head"><h2 id="music-title">音樂與短影音</h2><p>聽歌、滑片刻</p></div>
+<div class="grid">
+<a class="card spotify" href="https://open.spotify.com/" target="_blank" rel="noopener"><span class="brand-icon"><svg class="logo-spotify" viewBox="0 0 40 40" role="img" aria-label="Spotify"><circle cx="20" cy="20" r="20" fill="currentColor"/><path d="M9 15c7-2 16-1 22 3M10 20c6-2 14-1 19 2M11 25c5-1 11 0 15 2" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg></span><span class="wordmark">MUSIC</span><span class="card-name">spotify <span class="arrow">↗</span></span></a>
+<a class="card tiktok" href="https://www.tiktok.com/" target="_blank" rel="noopener"><span class="brand-icon" aria-hidden="true">♪</span><span class="wordmark">SHORT VIDEO</span><span class="card-name">抖音 <span class="arrow">↗</span></span></a>
+</div>
+</section>
+<footer class="footer">Personal OS · 娛樂入口</footer>
 </main></body></html>
