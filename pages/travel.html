@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#087f8c">
+<title>旅遊資訊｜Personal OS</title>
+<style>
+:root{--ink:#18343a;--muted:#61777b;--sea:#087f8c;--sea2:#24a7a6;--sand:#f7f1e6;--paper:#fffdf8;--line:#dce7e2;--coral:#f07f5b}
+*{box-sizing:border-box}body{margin:0;background:var(--sand);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}
+.wrap{width:min(1040px,100%);margin:auto;padding:22px 18px 56px}
+.back{display:inline-flex;text-decoration:none;color:var(--sea);background:white;padding:9px 16px;border-radius:999px;font-weight:700;margin-bottom:18px}
+.hero{background:linear-gradient(120deg,#087f8c,#24a7a6);color:white;border-radius:28px;padding:32px 28px;position:relative;overflow:hidden;box-shadow:0 16px 35px #087f8c25}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-65px;bottom:-170px;background:#ffffff20}
+.eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;opacity:.85;font-weight:700}.hero h1{font-size:clamp(34px,8vw,62px);line-height:1.1;margin:10px 0}.hero p{font-size:17px;max-width:650px;margin:0;line-height:1.7;color:#e2ffff}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 10px}.search{flex:1 1 240px;border:1px solid var(--line);background:white;padding:13px 15px;border-radius:14px;font:inherit;color:var(--ink);outline-color:var(--sea)}
+.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 12px}.filters button{white-space:nowrap;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 14px;border-radius:999px;font:inherit;cursor:pointer}.filters button.active{background:var(--sea);border-color:var(--sea);color:white}
+h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{display:flex;flex-direction:column;min-height:145px;background:var(--paper);border:1px solid var(--line);border-radius:19px;padding:17px;text-decoration:none;color:inherit;transition:transform .16s,box-shadow .16s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px #18343a12}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.tag{font-size:12px;background:#e7f4f1;color:var(--sea);border-radius:999px;padding:5px 9px;font-weight:700}.arrow{font-size:20px;color:var(--sea)}.card h3{font-size:20px;margin:13px 0 5px}.card p{color:var(--muted);margin:0;font-size:14px;line-height:1.55}.card .link{margin-top:auto;padding-top:13px;color:var(--sea);font-size:13px;font-weight:700}
+.feature{margin-top:24px}.feature-intro{border-radius:22px;background:#e0f2ed;padding:22px 24px;margin-bottom:16px}.feature-intro h2{margin:0 0 8px}.feature-intro p{color:var(--muted);line-height:1.65;margin:0}.resource-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.resource-group{background:#fffdf8cc;border:1px solid var(--line);border-radius:20px;padding:17px}.resource-group h3{font-size:17px;margin:0 0 11px}.resource-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px}.resource-card{display:flex;flex-direction:column;min-height:90px;background:white;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--ink);padding:13px;font-weight:700;line-height:1.4;transition:transform .16s,box-shadow .16s}.resource-card:hover{transform:translateY(-2px);box-shadow:0 8px 18px #18343a12}.resource-card small{display:block;color:var(--muted);font-weight:400;margin-top:5px}
+.empty{display:none;padding:22px;background:white;border-radius:16px;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:13px;padding-top:30px}
+@media(max-width:620px){.wrap{padding:14px 12px 38px}.hero{padding:26px 21px;border-radius:22px}.resource-groups{grid-template-columns:1fr}}
+.card[hidden],.feature[hidden]{display:none!important}
+</style>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body><main class="wrap">
+<a class="back" href="../">← 返回首頁</a>
+<header class="hero"><div class="eyebrow">PERSONAL OS · TRAVEL</div><h1>旅遊資訊</h1><p>把想去的地方、景點靈感和行程規劃集中在這裡。選一個目的地，開啟對應的小旅行看板。</p></header>
+<div class="toolbar"><input class="search" id="search" type="search" placeholder="搜尋目的地，例如：台北、廈門、海島" aria-label="搜尋目的地"></div>
+<nav class="filters" aria-label="目的地篩選"><button class="active" data-filter="all">全部</button><button data-filter="taiwan">台灣</button><button data-filter="china">中國大陸</button><button data-filter="asia">亞洲・其他</button><button data-filter="research">旅遊規劃</button></nav>
+<div id="taiwanQuickFilters" hidden><p class="sub" style="margin:0 0 8px">台灣分區（選取台灣後顯示）</p><nav class="filters" aria-label="台灣分區篩選"><button data-quick-filter="north" aria-pressed="false">台灣・北部</button><button data-quick-filter="central" aria-pressed="false">台灣・中部</button><button data-quick-filter="south" aria-pressed="false">台灣・南部</button><button data-quick-filter="east" aria-pressed="false">台灣・東部</button><button data-quick-filter="island" aria-pressed="false">台灣・離島</button></nav></div>
+<div id="researchSubFilters" hidden><p class="sub" style="margin:0 0 8px">旅遊規劃分類</p><nav class="filters" aria-label="旅遊規劃分類篩選"><button data-quick-filter="rail" aria-pressed="false">鐵道旅行</button><button data-quick-filter="taiwantrip" aria-pressed="false">台灣好行</button><button data-quick-filter="flight" aria-pressed="false">機票研究</button><button data-quick-filter="forest" aria-pressed="false">森林遊樂區</button></nav></div>
+<div id="northCityFilters" data-city-group="north" hidden><p class="sub" style="margin:2px 0 8px">台灣北部城市分類</p><nav class="filters" aria-label="台灣北部城市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部北部</button><button data-city-filter="taipei" aria-pressed="false">台北市</button><button data-city-filter="newtaipei" aria-pressed="false">新北市</button><button data-city-filter="keelung" aria-pressed="false">基隆市</button><button data-city-filter="taoyuan" aria-pressed="false">桃園市</button><button data-city-filter="hsinchu-city" aria-pressed="false">新竹市</button><button data-city-filter="hsinchu-county" aria-pressed="false">新竹縣</button><button data-city-filter="miaoli" aria-pressed="false">苗栗縣</button><button data-city-filter="yilan" aria-pressed="false">宜蘭縣</button></nav></div>
+<div id="centralCityFilters" data-city-group="central" hidden><p class="sub" style="margin:2px 0 8px">台灣中部縣市分類</p><nav class="filters" aria-label="台灣中部縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部中部</button><button data-city-filter="taichung" aria-pressed="false">臺中市</button><button data-city-filter="changhua" aria-pressed="false">彰化縣</button><button data-city-filter="nantou" aria-pressed="false">南投縣</button><button data-city-filter="yunlin" aria-pressed="false">雲林縣</button></nav></div>
+<div id="southCityFilters" data-city-group="south" hidden><p class="sub" style="margin:2px 0 8px">台灣南部縣市分類</p><nav class="filters" aria-label="台灣南部縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部南部</button><button data-city-filter="chiayi-city" aria-pressed="false">嘉義市</button><button data-city-filter="chiayi-county" aria-pressed="false">嘉義縣</button><button data-city-filter="tainan" aria-pressed="false">台南市</button><button data-city-filter="kaohsiung" aria-pressed="false">高雄市</button><button data-city-filter="pingtung" aria-pressed="false">屏東縣</button></nav></div>
+<div id="eastCityFilters" data-city-group="east" hidden><p class="sub" style="margin:2px 0 8px">台灣東部縣市分類</p><nav class="filters" aria-label="台灣東部縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部東部</button><button data-city-filter="hualien" aria-pressed="false">花蓮縣</button><button data-city-filter="taitung" aria-pressed="false">台東縣</button></nav></div>
+<div id="islandCityFilters" data-city-group="island" hidden><p class="sub" style="margin:2px 0 8px">台灣離島分類</p><nav class="filters" aria-label="台灣離島縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部離島</button><button data-city-filter="kinmen" aria-pressed="false">金門縣</button><button data-city-filter="penghu" aria-pressed="false">澎湖縣</button><button data-city-filter="matsu" aria-pressed="false">連江縣・馬祖</button></nav></div>
+<section><h2>旅遊看板與規劃工具</h2><p class="sub">看板內容持續整理中，點選卡片可直接查看 Trello 行程與收藏。</p>
+<div class="grid" id="destinations">
+<a class="card" data-region="taiwan" data-area="north" data-city="taipei" data-themes="city culture food" href="https://trello.com/b/anskjLi9/%E5%8F%B0%E5%8C%97%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・北部</span><span class="arrow">↗</span></div><h3>台北小旅行</h3><p>城市散步、文化景點、河濱單車與特色空間。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-themes="rail nature culture" href="https://trello.com/b/XwYHpCaW/%E7%81%AB%E8%BB%8A%E7%92%B0%E5%B3%B6%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・環島</span><span class="arrow">↗</span></div><h3>火車環島小旅行</h3><p>以鐵道串起台灣各地的旅程規劃。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="south" data-city="kaohsiung" data-themes="city culture food" href="https://trello.com/b/Z6QZtyPo/%E9%AB%98%E9%9B%84%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・南部</span><span class="arrow">↗</span></div><h3>高雄小旅行</h3><p>南部港都的景點、飲食與散步靈感。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="south" data-city="tainan" data-themes="city culture food" href="https://trello.com/b/8rRQUkY3/%E5%8F%B0%E5%8D%97%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・南部</span><span class="arrow">↗</span></div><h3>台南小旅行</h3><p>古蹟巷弄、在地小吃與府城散策。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="central" data-city="taichung" data-themes="city culture food" href="https://trello.com/b/N9CpSSfA/%E5%8F%B0%E4%B8%AD%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・中部</span><span class="arrow">↗</span></div><h3>台中小旅行</h3><p>城市景點、藝文空間和中部旅遊筆記。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="taoyuan" data-themes="city nature" href="https://trello.com/b/E5BCsWgU/%E6%A1%83%E5%9C%92%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・北部</span><span class="arrow">↗</span></div><h3>桃園小旅行</h3><p>桃園在地景點與短程旅遊收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="keelung" data-themes="nature food" href="https://trello.com/b/59ynUe6r/%E5%9F%BA%E9%9A%86%E5%B8%82%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・北部</span><span class="arrow">↗</span></div><h3>基隆市小旅行</h3><p>港灣、海岸與基隆城市散步。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="newtaipei" data-themes="nature city" href="https://trello.com/b/vPFf70ij/%E6%96%B0%E5%8C%97%E5%B8%82%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・北部</span><span class="arrow">↗</span></div><h3>新北市小旅行</h3><p>山海景點與新北各地旅行筆記。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="central" data-city="yunlin" data-themes="culture nature" href="https://trello.com/b/psxGotNo/%E9%9B%B2%E6%9E%97%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・中部</span><span class="arrow">↗</span></div><h3>雲林小旅行</h3><p>雲林地方景點與旅遊收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="east" data-city="hualien" data-themes="nature" href="https://trello.com/b/T3TpGnZv/%E8%8A%B1%E8%93%AE%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・東部</span><span class="arrow">↗</span></div><h3>花蓮縣小旅行</h3><p>東台灣自然景色與旅行規劃。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="east" data-city="taitung" data-themes="nature" href="https://trello.com/b/hdUr9qyJ/%E5%8F%B0%E6%9D%B1%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・東部</span><span class="arrow">↗</span></div><h3>台東縣小旅行</h3><p>台東慢旅行與戶外景點靈感。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="asia" data-themes="city culture food" href="https://trello.com/b/Zu2OhIOw/%E6%BE%B3%E9%96%80%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">離島・近程</span><span class="arrow">↗</span></div><h3>澳門小旅行</h3><p>澳門街區、美食與旅遊資訊收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="island" data-city="kinmen" data-themes="island culture" href="https://trello.com/b/u6FKAYkQ/%E9%87%91%E9%96%80%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・離島</span><span class="arrow">↗</span></div><h3>金門縣小旅行</h3><p>戰地文化、聚落與離島旅行筆記。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="yilan" data-themes="nature food" href="https://trello.com/b/L1uhRdDo/%E5%AE%9C%E8%98%AD%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・東北部</span><span class="arrow">↗</span></div><h3>宜蘭縣小旅行</h3><p>宜蘭景點、溫泉與自然體驗。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="south" data-city="chiayi-city chiayi-county" data-themes="culture nature food" href="https://trello.com/b/1qsCIaEh/%E5%98%89%E7%BE%A9%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・南部</span><span class="arrow">↗</span></div><h3>嘉義小旅行</h3><p>嘉義城市與周邊旅遊靈感。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="central" data-city="changhua" data-themes="culture" href="https://trello.com/b/iapqBN4S/%E5%BD%B0%E5%8C%96%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・中部</span><span class="arrow">↗</span></div><h3>彰化縣小旅行</h3><p>彰化老街、文化與地方景點。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="miaoli" data-themes="nature culture" href="https://trello.com/b/OlvL02ra/%E8%8B%97%E栗%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・北部</span><span class="arrow">↗</span></div><h3>苗栗縣小旅行</h3><p>山城、客庄與苗栗旅行收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="hsinchu-city hsinchu-county" data-themes="city culture" href="https://trello.com/b/L0kZVQDd/%E6%96%B0%E7%AB%B9%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・北部</span><span class="arrow">↗</span></div><h3>新竹小旅行</h3><p>新竹市與周邊旅遊清單。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="central" data-city="nantou" data-themes="nature" href="https://trello.com/b/czpmJCZj/%E5%8D%97%E6%8A%95%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・中部</span><span class="arrow">↗</span></div><h3>南投縣小旅行</h3><p>山林湖景與南投景點規劃。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="south" data-city="pingtung" data-themes="nature island food" href="https://trello.com/b/N5vllpg7/%E5%B1%8F%E6%9D%B1%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・南部</span><span class="arrow">↗</span></div><h3>屏東縣小旅行</h3><p>南國景點、海岸與屏東旅行筆記。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="island" data-city="penghu" data-themes="island nature" href="https://trello.com/b/lhxxLvua/%E6%BE%8E%E6%B9%96%E7%B8%A3%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・離島</span><span class="arrow">↗</span></div><h3>澎湖縣小旅行</h3><p>離島海景、跳島與澎湖旅遊收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="island" data-city="matsu" data-themes="island nature" href="https://trello.com/b/olTpmQwR/%E9%A6%AC%E7%A5%96%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・離島</span><span class="arrow">↗</span></div><h3>馬祖小旅行</h3><p>島嶼聚落、海岸與馬祖行程靈感。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="china" data-themes="city culture food" href="https://trello.com/b/iJNUKHbV/%E5%BB%88%E9%96%80%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">中國大陸</span><span class="arrow">↗</span></div><h3>廈門小旅行</h3><p>海岸風光、街區漫遊與閩南旅行收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="china" data-themes="city culture food" href="https://trello.com/b/qJVOO2L4/%E5%B9%BF%E5%B7%9E%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">中國大陸</span><span class="arrow">↗</span></div><h3>廣州小旅行</h3><p>城市文化、飲茶與廣州景點規劃。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="china" data-themes="food culture" href="https://trello.com/b/a40rL8q5/%E6%B1%95%E9%A0%AD%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">中國大陸</span><span class="arrow">↗</span></div><h3>汕頭小旅行</h3><p>潮汕美食、老城區與周邊行程。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="china" data-themes="city food culture" href="https://trello.com/b/jttNkATr/%E9%87%8D%E6%85%B6%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">中國大陸</span><span class="arrow">↗</span></div><h3>重慶小旅行</h3><p>山城街景、火鍋與四川周邊路線收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="asia" data-themes="city food culture" href="https://trello.com/b/ZkolGmLb/%E6%9D%B1%E4%BA%AC%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">亞洲・日本</span><span class="arrow">↗</span></div><h3>東京小旅行</h3><p>東京城市旅遊與景點清單。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="asia" data-themes="nature culture city" href="https://trello.com/b/NnljnbLT/%E6%97%A5%E6%9C%AC%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">亞洲・日本</span><span class="arrow">↗</span></div><h3>日本小旅行</h3><p>日本旅遊目的地與行程靈感收藏。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="asia" data-themes="food culture nature" href="https://trello.com/b/phcmEwZ4/%E8%B6%8A%E5%8D%97%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">亞洲・越南</span><span class="arrow">↗</span></div><h3>越南小旅行</h3><p>越南城市、景點與旅行筆記。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="asia" data-themes="nature culture" href="https://trello.com/b/PH8HK26a/%E5%B0%BC%E6%B3%8A%E7%88%BE%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">亞洲・南亞</span><span class="arrow">↗</span></div><h3>尼泊爾小旅行</h3><p>山岳、文化與尼泊爾行程資料。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="research" data-themes="flight" data-theme-exclusive href="https://trello.com/b/ufawe22Q/%E9%A3%9B%E6%A9%9F%E7%A5%A8%E7%A0%94%E7%A9%B6"><div class="meta"><span class="tag">行前研究</span><span class="arrow">↗</span></div><h3>飛機票研究</h3><p>集中整理機票搜尋、票價比較與購票資訊。</p><span class="link">開啟 Trello 看板 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="newtaipei" data-themes="nature forest" href="https://trello.com/c/cd1mI6t1/27-%E5%85%A7%E6%B4%9E%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・新北市</span><span class="arrow">↗</span></div><h3>內洞國家森林遊樂區</h3><p>蕨類生態、森林步道與瀑布景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="newtaipei" data-themes="nature forest" href="https://trello.com/c/IsR3qK18/28-%E6%BB%BF%E6%9C%88%E5%9C%93%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・新北市</span><span class="arrow">↗</span></div><h3>滿月圓國家森林遊樂區</h3><p>柳杉林、溪谷步道與瀑布景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="taoyuan" data-themes="nature forest" href="https://trello.com/c/6auvOM9u/29-%E6%9D%B1%E7%9C%BC%E5%B1%B1%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・桃園市</span><span class="arrow">↗</span></div><h3>東眼山國家森林遊樂區</h3><p>柳杉林、林業遺跡與山頂步道。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="taoyuan" data-themes="nature forest" href="https://trello.com/c/Dz3rYxoQ/30-%E6%8B%89%E6%8B%89%E5%B1%B1%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・桃園市</span><span class="arrow">↗</span></div><h3>拉拉山國家森林遊樂區</h3><p>紅檜巨木與巨木群步道。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="hsinchu-county" data-themes="nature forest" href="https://trello.com/c/re10C5Bh/31-%E8%A7%80%E9%9C%A7%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・新竹縣</span><span class="arrow">↗</span></div><h3>觀霧國家森林遊樂區</h3><p>雲海日出、紅檜巨木與高山森林。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="central" data-city="taichung" data-themes="nature forest" href="https://trello.com/c/lyBVlHfs/32-%E6%AD%A6%E9%99%B5%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・台中市</span><span class="arrow">↗</span></div><h3>武陵國家森林遊樂區</h3><p>高山森林、桃山瀑布與武陵吊橋。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="central" data-city="nantou" data-themes="nature forest" href="https://trello.com/c/atSwAG8g/33-%E5%90%88%E6%AD%A1%E5%B1%B1%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・南投縣</span><span class="arrow">↗</span></div><h3>合歡山國家森林遊樂區</h3><p>高山草原與雪景。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="south" data-city="chiayi-county" data-themes="nature forest" href="https://trello.com/c/mr94zXqE/34-%E9%98%BF%E9%87%8C%E5%B1%B1%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・嘉義縣</span><span class="arrow">↗</span></div><h3>阿里山國家森林遊樂區</h3><p>神木、櫻花季、日出與雲海。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="south" data-city="pingtung" data-themes="nature forest" href="https://trello.com/c/CjDEVZvp/35-%E5%A2%BE%E4%B8%81%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・屏東縣</span><span class="arrow">↗</span></div><h3>墾丁國家森林遊樂區</h3><p>熱帶植物與珊瑚礁地形景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="south" data-city="pingtung" data-themes="nature forest" href="https://trello.com/c/svXY6sC6/36-%E9%9B%99%E6%B5%81%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・屏東縣</span><span class="arrow">↗</span></div><h3>雙流國家森林遊樂區</h3><p>森林步道與瀑布景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="yilan" data-themes="nature forest" href="https://trello.com/c/UZGYgkNw/37-%E5%A4%AA%E5%B9%B3%E5%B1%B1%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・宜蘭縣</span><span class="arrow">↗</span></div><h3>太平山國家森林遊樂區</h3><p>森林步道與溫泉體驗。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="north" data-city="yilan" data-themes="nature forest" href="https://trello.com/c/jqURmtME/38-%E6%98%8E%E6%B1%A0%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・宜蘭縣</span><span class="arrow">↗</span></div><h3>明池國家森林遊樂區</h3><p>森林湖泊景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="taiwan" data-area="east" data-city="taitung" data-themes="nature forest" href="https://trello.com/c/UzMhLpcY/39-%E7%9F%A5%E6%9C%AC%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・台東縣</span><span class="arrow">↗</span></div><h3>知本國家森林遊樂區</h3><p>溫泉與森林浴步道。</p><span class="link">查看 Trello 景點資料 →</span></a>
+<a class="card" data-region="research" data-themes="taipei-sheet" href="https://chatgpt.com/library/share/libfile_757c2d3ef1788191b7bcaa492c586391?account_id=personal" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>台北旅遊行程試算表</h3><p>台北市主題遊程資料與已更新的官方旅遊網站網址。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taiwantrip north" href="https://docs.google.com/spreadsheets/d/1i56OVxNhE2TDd7ATv0ozoLxK1aXo5-CXdj21FTNFf2o/edit?usp=drivesdk" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>台灣好行｜北北基路線遊玩表</h3><p>整理台灣好行北北基路線、沿線站點與遊玩資訊。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taipei events" href="https://docs.google.com/spreadsheets/d/1TM258SgnXnCEK3RN30xRlzSTs2KzERFd/edit?usp=drivesdk&amp;ouid=109811689831592519931&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>臺北活動年曆2026</h3><p>整理臺北市 2026 年活動資訊與活動日期。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taipei attractions" href="https://docs.google.com/spreadsheets/d/1DuVCBT4jFHfi6sBz5Fb1uhkYN7vELgFf/edit?usp=drivesdk&amp;ouid=109811689831592519931&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>臺北景點470筆</h3><p>臺北市 470 筆景點資料整理表。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taipei events" href="https://docs.google.com/spreadsheets/d/1Q4Q4TPuvYBjrSY5xoOjoP9KsH3SF3l8lmZlULcIH3h0/edit" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>臺北市活動展演</h3><p>臺北市觀光傳播局 Open API 活動展演資料，整理 21 筆活動日期、主辦資訊與官方連結。</p><span class="link">開啟試算表 →</span></a></div><p class="empty" id="empty">找不到符合條件的目的地，試試其他關鍵字。</p></section>
+<section class="feature" data-region="taiwan" data-area="north" data-city="taipei" data-city-exclusive>
+<div class="feature-intro"><h2>台北旅遊資源</h2><p>依照臺北旅遊網的內容架構，快速進入活動消息、城市探索、景點、美食、行前指南與刊物。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動新訊</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/news?page=1" target="_blank" rel="noopener">最新消息<small>臺北旅遊公告與旅遊動態</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/event-calendar/2026" target="_blank" rel="noopener">活動年曆 2026<small>按日期查找臺北活動</small></a>
+</div></div>
+<div class="resource-group"><h3>探索城市</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/tour/hellotaipei" target="_blank" rel="noopener">你好臺北<small>臺北旅遊入門與城市介紹</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/fun/tour" target="_blank" rel="noopener">主題旅遊<small>依主題尋找臺北遊程</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/miniculturaltrips" target="_blank" rel="noopener">臺北文化小旅行<small>文化主題路線</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/walkingTaipei" target="_blank" rel="noopener">漫步臺北城市<small>走讀臺北街區風景</small></a>
+</div></div>
+<div class="resource-group"><h3>遊憩景點</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/attractions" target="_blank" rel="noopener">熱門景點<small>臺北必訪景點推薦</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/attraction?page=1" target="_blank" rel="noopener">景點快搜<small>搜尋臺北景點與主題分類</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/riverside-bikeway" target="_blank" rel="noopener">河濱單車輕旅行<small>河濱自行車路線</small></a>
+</div></div>
+<div class="resource-group"><h3>食宿玩樂</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/tasterguide" target="_blank" rel="noopener">臺北飲食攻略<small>從街頭小吃到特色餐飲</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/accommodation/noticelist" target="_blank" rel="noopener">住宿須知<small>旅宿資訊與住宿提醒</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/souvenir" target="_blank" rel="noopener">城市紀念品<small>臺北特色伴手禮</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/information/tourist-map" target="_blank" rel="noopener">地圖與指南<small>下載旅遊地圖與指南</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/information/trafficlist" target="_blank" rel="noopener">交通資訊<small>查詢往返臺北與市區交通</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/information/mrt" target="_blank" rel="noopener">臺北捷運<small>搭乘捷運旅遊臺北</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/information/servicecenter" target="_blank" rel="noopener">旅遊服務中心<small>查找旅客服務據點</small></a>
+</div></div>
+<div class="resource-group"><h3>影音刊物</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/pictorial" target="_blank" rel="noopener">台北畫刊<small>閱讀臺北城市故事與旅遊靈感</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/media/publication" target="_blank" rel="noopener">出版品<small>瀏覽臺北旅遊出版資訊</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="north" data-city="newtaipei" data-city-exclusive>
+<div class="feature-intro"><h2>新北市旅遊資源</h2><p>依照新北市觀光旅遊網的網站架構，整理主題網、新北事、目的地、玩樂新北與規劃旅行入口。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>主題網</h3><div class="resource-cards">
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/new-taipei-theme/index" target="_blank" rel="noopener">主題網總覽<small>瀏覽新北市各主題旅遊專區</small></a>
+<a class="resource-card" href="https://newtaipei.travel/route2taiwan/zh-tw" target="_blank" rel="noopener">青春山海線<small>沿新北海岸探索山海與城鎮</small></a>
+<a class="resource-card" href="https://newtaipei.travel/immersive/zh-tw/" target="_blank" rel="noopener">新北市線上玩<small>沉浸式線上探索新北</small></a>
+</div></div>
+<div class="resource-group"><h3>新北事</h3><div class="resource-cards">
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/news/list" target="_blank" rel="noopener">最新消息<small>新北旅遊公告與城市觀光快報</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/calendar/list" target="_blank" rel="noopener">活動行事曆<small>查找新北近期活動與展演</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/interesting-things" target="_blank" rel="noopener">上週夯什麼<small>掌握熱門話題與近期活動</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/promotion/list" target="_blank" rel="noopener">優惠情報<small>瀏覽旅宿、餐飲與旅遊優惠</small></a>
+</div></div>
+<div class="resource-group"><h3>目的地</h3><div class="resource-cards">
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/regional/list" target="_blank" rel="noopener">旅遊目的<small>依新北各地區探索玩法</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/attractions/popular" target="_blank" rel="noopener">人氣景點<small>查看官方推薦與熱門景點</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/attractions/list" target="_blank" rel="noopener">景點快搜<small>搜尋新北景點</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/attractions/map" target="_blank" rel="noopener">旅遊地圖<small>在地圖上規劃目的地</small></a>
+<a class="resource-card" href="https://newtaipei.travel/live.php" target="_blank" rel="noopener">LIVE 即時影像<small>先看看新北各地即時景色</small></a>
+</div></div>
+<div class="resource-group"><h3>玩樂新北</h3><div class="resource-cards">
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/shop/cuisines" target="_blank" rel="noopener">新北特色美食<small>認識新北地方風味與特色料理</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/shop/souvenir" target="_blank" rel="noopener">嚴選伴手禮<small>尋找新北特色商品</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/shop/business-district" target="_blank" rel="noopener">探索老街商圈<small>漫遊新北老街與特色商圈</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/shop?type=gourmet" target="_blank" rel="noopener">美食全搜<small>搜尋新北餐飲店家</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/accommodation/recommend" target="_blank" rel="noopener">玩新北住哪裡<small>依旅遊風格尋找住宿靈感</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/accommodation" target="_blank" rel="noopener">住宿搜尋<small>查找新北旅館與民宿</small></a>
+</div></div>
+<div class="resource-group"><h3>規劃旅行</h3><div class="resource-cards">
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/travel/specialized-travel" target="_blank" rel="noopener">小客帶你玩新北<small>從旅遊需求尋找玩法靈感</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/tour/theme" target="_blank" rel="noopener">主題遊程<small>依主題挑選新北路線</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/tour/list" target="_blank" rel="noopener">精選遊程<small>查看新北推薦行程</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/trip" target="_blank" rel="noopener">自訂行程<small>收藏景點並編排旅程</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/plan/travel-guide" target="_blank" rel="noopener">新北旅遊懶人包<small>交通、票券與行前資訊</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/traffic/get-to-new-taipei" target="_blank" rel="noopener">如何前往新北<small>規劃抵達新北的交通方式</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/traffic/local-transport" target="_blank" rel="noopener">市內交通<small>查詢新北市內交通方式</small></a>
+<a class="resource-card" href="https://newtaipei.travel/zh-tw/publication" target="_blank" rel="noopener">地圖與指南<small>下載新北旅遊地圖與指南</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="north" data-city="keelung" data-city-exclusive>
+<div class="feature-intro"><h2>基隆市旅遊資源</h2><p>依照基隆旅遊網的網站架構，整理年度活動、雞籠文化、山海景點、美食住宿、旅遊規劃與旅客服務入口。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>年度好節</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/News_Photo.aspx?n=7827&amp;sms=12533" target="_blank" rel="noopener">年度好節<small>掌握基隆年度節慶與特色活動</small></a>
+</div></div>
+<div class="resource-group"><h3>雞籠文化</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=7830&amp;sms=12546" target="_blank" rel="noopener">歷史古蹟<small>探索港都歷史建築與文化園區</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=7831&amp;sms=12546" target="_blank" rel="noopener">砲臺雄風<small>走訪基隆海防砲臺與軍事遺跡</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=7832&amp;sms=12546" target="_blank" rel="noopener">廟宇祈福<small>認識港都信仰與廟宇文化</small></a>
+</div></div>
+<div class="resource-group"><h3>風光雞籠</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8103&amp;sms=12546" target="_blank" rel="noopener">風光雞籠<small>瀏覽基隆山海景點總覽</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=7837&amp;sms=12546" target="_blank" rel="noopener">自然奇景<small>探索海岸地景與自然風貌</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=7839&amp;sms=12553" target="_blank" rel="noopener">登山步道<small>查找基隆步道與健行路線</small></a>
+</div></div>
+<div class="resource-group"><h3>美食快搜</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/cl.aspx?n=7841" target="_blank" rel="noopener">商圈美食<small>搜尋基隆商圈與在地美食</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8059&amp;sms=12550" target="_blank" rel="noopener">廟口小吃<small>從基隆廟口夜市開始尋味</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8060&amp;sms=12550" target="_blank" rel="noopener">推薦餐廳<small>瀏覽基隆推薦餐飲店家</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8061&amp;sms=12550" target="_blank" rel="noopener">地方特產<small>尋找基隆特色伴手禮與特產</small></a>
+</div></div>
+<div class="resource-group"><h3>旅館住宿</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8065&amp;sms=12551" target="_blank" rel="noopener">度假飯店<small>查看基隆度假住宿選擇</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8067&amp;sms=12551" target="_blank" rel="noopener">特色民宿<small>尋找有在地風格的住宿</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8068&amp;sms=12551" target="_blank" rel="noopener">商務飯店<small>瀏覽市區商務住宿</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8069&amp;sms=12551" target="_blank" rel="noopener">平價旅館<small>查看平價住宿資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊規劃</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/News_Photo.aspx?n=8071&amp;sms=12590" target="_blank" rel="noopener">行程摺頁<small>下載基隆旅遊地圖與行程摺頁</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/cl.aspx?n=8072" target="_blank" rel="noopener">交通指南<small>查詢火車、公車、客運、停車與郵輪資訊</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/News_Photo.aspx?n=8080&amp;sms=12592" target="_blank" rel="noopener">觀光專車<small>查看台灣好行濱海奇基線資訊</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/cp.aspx?n=8842" target="_blank" rel="noopener">這裡，很基隆<small>串連港都景點與城市日常</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/cp.aspx?n=8863" target="_blank" rel="noopener">兩日山海篇<small>規劃基隆山海兩日行程</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/cp.aspx?n=8857" target="_blank" rel="noopener">港都的記憶與日常<small>從港區故事認識基隆</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/cp.aspx?n=8858" target="_blank" rel="noopener">西部海岸一日漫旅<small>沿基隆西岸安排一日旅程</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/cp.aspx?n=8861" target="_blank" rel="noopener">東部海岸奇幻漫遊<small>探索八斗子與東岸山海風景</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8848&amp;sms=12546" target="_blank" rel="noopener">暖暖森活藍調線<small>串聯暖暖溪谷、步道與地方生活</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8850&amp;sms=12546" target="_blank" rel="noopener">瑪陵溪畔懷舊線<small>走訪溪畔聚落與懷舊景點</small></a>
+</div></div>
+<div class="resource-group"><h3>活動快訊</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/News_Photo.aspx?n=8087&amp;sms=12595" target="_blank" rel="noopener">最新公告與消息<small>查看景點異動與旅遊公告</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8175&amp;sms=12552" target="_blank" rel="noopener">旅遊服務中心<small>查詢基隆旅服中心與服務資訊</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/News_Toggle.aspx?n=8094&amp;sms=12598" target="_blank" rel="noopener">常見問題<small>查看交通、導覽與旅遊服務答覆</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/TourList.aspx?n=8529&amp;sms=12552" target="_blank" rel="noopener">借問站<small>查找在地旅遊諮詢據點</small></a>
+</div></div>
+<div class="resource-group"><h3>相關影片與開放資料</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.klcg.gov.tw/News_Video.aspx?n=8995&amp;sms=12665" target="_blank" rel="noopener">相關影片<small>觀賞基隆旅遊與活動影片</small></a>
+<a class="resource-card" href="https://travel.klcg.gov.tw/cl.aspx?n=7846" target="_blank" rel="noopener">觀光開放資料<small>瀏覽景點、餐飲、住宿、步道與活動資料</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="north" data-city="taoyuan" data-city-exclusive>
+<div class="feature-intro"><h2>桃園市旅遊資源</h2><p>依照桃園市觀光旅遊局網站的導覽架構，整理精彩活動、想做的事、想去的地方與計畫旅行入口。選擇桃園市時顯示，切換至其他縣市或全部北部時自動隱藏。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>精彩活動</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/event/calendar/2026" target="_blank" rel="noopener">節慶與活動<small>查看桃園節慶、展演與近期活動</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/event" target="_blank" rel="noopener">最新消息<small>掌握桃園旅遊公告與新消息</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/reports" target="_blank" rel="noopener">桃園夯話題<small>閱讀桃園景點、活動與旅遊主題報導</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/event/couponlist" target="_blank" rel="noopener">優惠情報<small>搜尋旅遊與消費優惠</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/multimedia/live-camera" target="_blank" rel="noopener">即時影像<small>查看桃園景點即時畫面</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/interesting-things" target="_blank" rel="noopener">上週最熱門<small>看看近期熱門旅遊內容</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/event/scenicalbumlist" target="_blank" rel="noopener">桃園花訊<small>追蹤花季與賞花景況</small></a>
+</div></div>
+<div class="resource-group"><h3>想做的事</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/new-traveler" target="_blank" rel="noopener">初次造訪桃園<small>快速認識桃園旅遊與必訪亮點</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/travel-guide" target="_blank" rel="noopener">旅遊懶人包<small>依主題整理桃園旅遊靈感</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/season" target="_blank" rel="noopener">四季遊桃園<small>依季節探索桃園玩法</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/flower-viewing" target="_blank" rel="noopener">四季賞花情報<small>規劃桃園花季與賞花行程</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/factory-tours" target="_blank" rel="noopener">觀光工廠<small>安排親子與產業文化體驗</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/itinerary" target="_blank" rel="noopener">旅遊達人方程式<small>參考主題旅遊行程提案</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/event/taoyuan-walkers" target="_blank" rel="noopener">桃園輕旅行<small>尋找適合慢遊桃園的行程</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/tourlist?category=869" target="_blank" rel="noopener">行程快搜<small>依主題瀏覽桃園推薦遊程</small></a>
+</div></div>
+<div class="resource-group"><h3>想去的地方</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/popular-attractions" target="_blank" rel="noopener">TOP熱門景點<small>從熱門景點開始探索桃園</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/districts" target="_blank" rel="noopener">分區介紹<small>依桃園各區查找景點</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel" target="_blank" rel="noopener">景點搜尋<small>搜尋桃園景點資訊</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/mapnavigate" target="_blank" rel="noopener">旅遊地圖<small>在地圖上查看旅遊目的地</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/consume/delicious" target="_blank" rel="noopener">必吃美食攻略<small>尋找桃園在地美食與特色料理</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/consume" target="_blank" rel="noopener">美食快搜<small>搜尋桃園餐飲店家</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/irresistible-souvenirs" target="_blank" rel="noopener">伴手禮推薦<small>挑選桃園特色伴手禮</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/accommodation/recommend" target="_blank" rel="noopener">住宿推薦<small>依旅遊風格尋找住宿靈感</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/accommodation" target="_blank" rel="noopener">旅館與民宿<small>搜尋桃園旅宿資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>計畫旅行</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/play-taoyuan" target="_blank" rel="noopener">全方位玩轉桃園<small>整合景點與旅行規劃入口</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/servicecenter/visitor-center" target="_blank" rel="noopener">旅遊服務中心<small>查找旅遊諮詢與服務據點</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/traffic/gettinghere" target="_blank" rel="noopener">如何到桃園<small>規劃抵達桃園的交通方式</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/transportation" target="_blank" rel="noopener">桃園交通旅遊寶典<small>整理桃園交通與旅遊接駁資訊</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/traffic/xiaowulai" target="_blank" rel="noopener">小烏來線<small>搭乘路線遊訪小烏來與周邊景點</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/traffic/daxi" target="_blank" rel="noopener">大溪快線<small>規劃大溪老街與周邊旅程</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/traffic/shihmen" target="_blank" rel="noopener">大龍門線<small>串聯大溪、龍潭與石門水庫遊程</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/traffic/dongyanshan" target="_blank" rel="noopener">東眼山線<small>查詢前往東眼山的旅遊路線</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/travel/app" target="_blank" rel="noopener">遊桃園APP<small>使用桃園旅遊行動服務</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/immersive" target="_blank" rel="noopener">線上遊桃園<small>透過線上內容預覽桃園景點</small></a>
+<a class="resource-card" href="https://travel.tycg.gov.tw/zh-tw/multimedia/publication" target="_blank" rel="noopener">旅遊地圖與指南<small>取得桃園旅遊出版品與地圖</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="north" data-city="hsinchu-city" data-city-exclusive>
+<div class="feature-intro"><h2>新竹市旅遊資源</h2><p>依照新竹市觀光旅遊網的導覽架構，整理活動消息、景點地標、食宿玩樂、主題遊程、觀光巴士與旅遊指南。選擇新竹市時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動與最新消息</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.hccg.gov.tw/events" target="_blank" rel="noopener">活動行事曆<small>瀏覽新竹市近期節慶、展演與活動</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/" target="_blank" rel="noopener">最新消息<small>查看觀光旅遊網首頁的最新旅遊情報</small></a>
+<a class="resource-card" href="https://hsinchuemap.tw/tourism/videos" target="_blank" rel="noopener">影音專區<small>透過影片認識新竹風景與在地生活</small></a>
+</div></div>
+<div class="resource-group"><h3>景點地標</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.hccg.gov.tw/chtravel/app/travel/list?id=3" target="_blank" rel="noopener">景點清單<small>搜尋新竹市戶外景點與旅遊地標</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/chtravel/travel.jsp?id=25" target="_blank" rel="noopener">戶外踏青<small>探索步道、公園與山湖海自然景觀</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/chtravel/travel.jsp?id=27" target="_blank" rel="noopener">文化館舍<small>走訪新竹市的藝文與文化場館</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/chtravel/travel.jsp?id=28" target="_blank" rel="noopener">特色公園<small>尋找親子共遊與戶外休憩空間</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/about-city" target="_blank" rel="noopener">城市介紹<small>認識竹塹古城、十八尖山與十七公里海岸</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/chtravel/photo_list.jsp?id=22" target="_blank" rel="noopener">旅遊地圖與文宣<small>查找新竹旅遊地圖與自行車道摺頁</small></a>
+</div></div>
+<div class="resource-group"><h3>食宿玩樂</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.hccg.gov.tw/guide/food-souvenirs" target="_blank" rel="noopener">特色美食／伴手禮<small>尋找新竹在地美食與特色好物</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/chtravel/travel.jsp?id=30" target="_blank" rel="noopener">特色美食清單<small>瀏覽觀光旅遊網收錄的餐飲店家</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/guide/accommodation" target="_blank" rel="noopener">旅宿專區<small>查看新竹住宿推薦與旅宿資訊</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/guide/services" target="_blank" rel="noopener">旅遊服務<small>查詢旅遊諮詢、服務中心與借問站</small></a>
+</div></div>
+<div class="resource-group"><h3>主題遊程與交通</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.hccg.gov.tw/chtravel/app/mapSuggestion/list?id=35" target="_blank" rel="noopener">主題遊程<small>參考舊城旅人、老屋串聯與文化路線</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/bus" target="_blank" rel="noopener">觀光巴士<small>了解舊城巡禮線與香山巡迴線</small></a>
+<a class="resource-card" href="https://www.hsinchusightseeingbus.com.tw/" target="_blank" rel="noopener">路線圖與時刻表<small>查詢觀光巴士營運日期、班次與停靠站</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/guide/services" target="_blank" rel="noopener">交通與旅客服務<small>取得旅遊諮詢及交通轉乘協助</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.hccg.gov.tw/guide/ebooks" target="_blank" rel="noopener">電子書與旅遊專刊<small>閱讀新竹旅遊刊物與行前指南</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/" target="_blank" rel="noopener">觀光導覽地圖<small>由觀光旅遊網首頁進入地圖導覽服務</small></a>
+<a class="resource-card" href="https://tourism.hccg.gov.tw/" target="_blank" rel="noopener">旅遊指南總覽<small>前往官方網站查看完整旅遊資訊分類</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="north" data-city="hsinchu-county" data-city-exclusive>
+<div class="feature-intro"><h2>新竹縣旅遊資源</h2><p>依照新竹縣旅遊網的網站架構，整理最新消息、竹縣特色、鄉鎮景點、在地美食住宿、旅遊規劃與影音刊物。選擇新竹縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>最新消息與節慶</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/News" target="_blank" rel="noopener">旅遊情報<small>掌握新竹縣最新旅遊消息與公告</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Festival" target="_blank" rel="noopener">觀光節慶<small>按季節探索新竹縣節慶活動</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Event/hsinchutravel" target="_blank" rel="noopener">新竹走走<small>跟著主題遊程體驗竹縣地方風土</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Event/2026starrynightfestival" target="_blank" rel="noopener">秋遊星夜季<small>查看年度活動、表演、市集與交通資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>認識竹縣</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/About" target="_blank" rel="noopener">竹縣印象<small>認識新竹縣地理、文化與地方特色</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Festival" target="_blank" rel="noopener">四季節慶<small>依春夏秋冬尋找地方活動與旅行靈感</small></a>
+</div></div>
+<div class="resource-group"><h3>特色旅遊</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Township" target="_blank" rel="noopener">13鄉鎮市<small>從竹北、北埔到尖石與五峰選擇目的地</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Attraction" target="_blank" rel="noopener">景點快搜<small>搜尋新竹縣山林、湖泊、溪谷與客庄景點</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/ThemeTour/List" target="_blank" rel="noopener">主題旅遊<small>依旅遊興趣挑選竹縣主題路線</small></a>
+</div></div>
+<div class="resource-group"><h3>食在新竹與住宿特搜</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Food" target="_blank" rel="noopener">美食特搜<small>依料理類型與鄉鎮搜尋店家</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Product" target="_blank" rel="noopener">新竹良品<small>探索竹縣好茶、特產與在地好物</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Hotel" target="_blank" rel="noopener">住宿特搜<small>查找新竹縣旅館與民宿</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊規劃</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Planning" target="_blank" rel="noopener">遊程規劃<small>參考竹縣旅遊行程與景點組合</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Traffic" target="_blank" rel="noopener">交通資訊<small>查詢公車、自行車與台灣好行等交通方式</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Traffic/Content/aGo5lQbvQkYd" target="_blank" rel="noopener">台灣好行獅山線<small>規劃前往北埔、峨眉與獅山遊客中心</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Traffic/Content/bRpVL32P5qjD" target="_blank" rel="noopener">新竹縣智慧公車<small>查詢縣內快捷、公路與觀光公車資訊</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Service" target="_blank" rel="noopener">旅服中心<small>尋找旅遊服務中心與旅客諮詢服務</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Information" target="_blank" rel="noopener">借問站<small>在地店家與服務據點提供旅遊諮詢</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/OtherLink" target="_blank" rel="noopener">旅遊相關連結<small>查看新竹縣旅遊及相關服務網站</small></a>
+</div></div>
+<div class="resource-group"><h3>影音刊物</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Hakka" target="_blank" rel="noopener">好客竹縣<small>閱讀客庄文化與地方故事專刊</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Propaganda" target="_blank" rel="noopener">觀光文宣<small>查找自行車、旅遊摺頁與行程地圖</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Ebook" target="_blank" rel="noopener">電子書<small>線上閱讀新竹縣旅遊刊物</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/Video" target="_blank" rel="noopener">影音頻道<small>透過影片看見新竹縣景點與旅行故事</small></a>
+<a class="resource-card" href="https://travel.hsinchu.gov.tw/SiteMap" target="_blank" rel="noopener">網站導覽<small>查看新竹縣旅遊網完整服務分類</small></a>
+</div></div>
+</div></section>
+
+<section class="feature" data-region="taiwan" data-area="north" data-city="miaoli" data-city-exclusive>
+<div class="feature-intro"><h2>苗栗縣旅遊資源</h2><p>依苗栗旅遊網的內容分類整理景點、主題遊程、節慶、美食住宿與行前資訊。選擇苗栗縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>苗栗訊息</h3><div class="resource-cards">
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03004294" target="_blank" rel="noopener">最新消息<small>查看苗栗旅遊網公告與旅遊新訊</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03007337" target="_blank" rel="noopener">特別企劃<small>瀏覽苗栗主題旅遊與精選內容</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊觀光</h3><div class="resource-cards">
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=02000008" target="_blank" rel="noopener">在地景點<small>探索苗栗各地景點與旅遊地標</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=02002468" target="_blank" rel="noopener">主題推薦<small>依旅行主題尋找苗栗玩法</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=02000009" target="_blank" rel="noopener">節慶活動<small>掌握苗栗節慶與地方活動</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03008073" target="_blank" rel="noopener">景點快搜<small>快速查找苗栗旅遊景點</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03004340" target="_blank" rel="noopener">苗栗印象<small>認識苗栗地方文化與風土特色</small></a>
+</div></div>
+<div class="resource-group"><h3>美食購物</h3><div class="resource-cards">
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=02000010" target="_blank" rel="noopener">客家佳餚<small>尋找苗栗客庄料理與在地美食</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03004347" target="_blank" rel="noopener">美食熱搜<small>瀏覽苗栗熱門美食資訊</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03004345" target="_blank" rel="noopener">客家好等路<small>挑選客家特色好物與伴手禮</small></a>
+</div></div>
+<div class="resource-group"><h3>住宿指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=02000011" target="_blank" rel="noopener">住宿指南<small>查找苗栗旅宿與住宿資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>行前規劃</h3><div class="resource-cards">
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=04007750" target="_blank" rel="noopener">台灣好行南庄線<small>查詢南庄線搭乘資訊與路線安排</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03004665" target="_blank" rel="noopener">旅遊服務中心<small>查找旅遊諮詢與服務據點</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03007248" target="_blank" rel="noopener">借問站<small>尋找可提供在地旅遊諮詢的服務據點</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03005164" target="_blank" rel="noopener">採果指南<small>依季節規劃苗栗採果體驗</small></a>
+</div></div>
+<div class="resource-group"><h3>影音出版</h3><div class="resource-cards">
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03003626" target="_blank" rel="noopener">苗栗玩透透<small>從官方旅遊內容認識苗栗玩法</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03003627" target="_blank" rel="noopener">旅遊出版品<small>查找苗栗旅遊刊物與行前資料</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03000104" target="_blank" rel="noopener">照片集錦<small>瀏覽苗栗景點與活動影像</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03004375" target="_blank" rel="noopener">苗栗影音<small>透過影片認識苗栗風景與旅遊體驗</small></a>
+<a class="resource-card" href="https://miaolitravel.net/Article.aspx?sNo=03008368" target="_blank" rel="noopener">即時影像<small>查看苗栗各地即時畫面</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="north" data-city="yilan" data-city-exclusive>
+<div class="feature-intro"><h2>宜蘭縣旅遊資源</h2><p>依宜蘭旅遊網的目的地與旅遊服務內容整理景點、活動情報、住宿、美食和交通租車。選擇宜蘭縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>熱門景點與目的地</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.ilantravel.tw/" target="_blank" rel="noopener">景點與旅遊入口<small>從宜蘭旅遊網首頁瀏覽目的地與推薦景點</small></a>
+<a class="resource-card" href="https://lym.ilantravel.com.tw/" target="_blank" rel="noopener">蘭陽博物館<small>認識宜蘭自然環境與地方歷史</small></a>
+<a class="resource-card" href="https://jimmy.ilantravel.com.tw/" target="_blank" rel="noopener">幾米公園<small>安排宜蘭市區的幾米主題散步</small></a>
+<a class="resource-card" href="https://jshs.ilantravel.com.tw/" target="_blank" rel="noopener">礁溪溫泉<small>探索礁溪溫泉景點與泡湯旅程</small></a>
+<a class="resource-card" href="https://nta.ilantravel.com.tw/" target="_blank" rel="noopener">國立傳統藝術中心<small>規劃五結的傳統藝術與文化體驗</small></a>
+<a class="resource-card" href="https://dsr.ilantravel.com.tw/" target="_blank" rel="noopener">冬山河親水公園<small>尋找親水活動與河岸休閒景點</small></a>
+<a class="resource-card" href="https://pfl.ilantravel.com.tw/" target="_blank" rel="noopener">梅花湖<small>規劃環湖散步與冬山周邊行程</small></a>
+<a class="resource-card" href="https://tps.ilantravel.com.tw/" target="_blank" rel="noopener">太平山森林遊樂區<small>探索山林步道與高山自然景觀</small></a>
+<a class="resource-card" href="https://lnm.ilantravel.com.tw/" target="_blank" rel="noopener">羅東夜市<small>安排夜市小吃與羅東市區散步</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊情報與活動</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.ilantravel.tw/" target="_blank" rel="noopener">最新旅遊情報<small>查看宜蘭旅遊網首頁的當季推薦與消息</small></a>
+<a class="resource-card" href="https://travel.ilantravel.tw/news.php?id=3595" target="_blank" rel="noopener">宜蘭室內景點推薦<small>整理雨天與室內旅遊景點靈感</small></a>
+<a class="resource-card" href="https://travel.ilantravel.tw/news.php?id=3587" target="_blank" rel="noopener">宜蘭必去景點推薦<small>參考宜蘭旅遊景點與行程提案</small></a>
+<a class="resource-card" href="https://travel.ilantravel.tw/news.php?id=863" target="_blank" rel="noopener">宜蘭交通消息<small>查看公車與在地交通旅遊資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>住宿與訂房</h3><div class="resource-cards">
+<a class="resource-card" href="https://house.ilantravel.com.tw/" target="_blank" rel="noopener">民宿與住宿推薦<small>瀏覽宜蘭旅宿與各地住宿資訊</small></a>
+<a class="resource-card" href="https://check.ilantravel.com.tw/" target="_blank" rel="noopener">住宿查詢<small>使用宜蘭旅遊網提供的訂房查詢入口</small></a>
+</div></div>
+<div class="resource-group"><h3>美食與伴手禮</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.399.com.tw/" target="_blank" rel="noopener">宜蘭美食伴手禮<small>搜尋宜蘭在地美食與特色好物</small></a>
+<a class="resource-card" href="https://lnm.ilantravel.com.tw/" target="_blank" rel="noopener">羅東夜市美食<small>從羅東夜市探索在地小吃</small></a>
+<a class="resource-card" href="https://travel.ilantravel.tw/news.php?id=3577" target="_blank" rel="noopener">宜蘭美食與景點推薦<small>參考宜蘭旅遊網整理的地方推薦</small></a>
+</div></div>
+<div class="resource-group"><h3>交通與租車</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.ilantravel.tw/" target="_blank" rel="noopener">交通租車推薦<small>從旅遊網首頁查看交通、租車與旅遊服務資訊</small></a>
+<a class="resource-card" href="https://itravel.ilantravel.com.tw/" target="_blank" rel="noopener">宜蘭旅遊資訊<small>瀏覽宜蘭景點、交通與旅行服務內容</small></a>
+</div></div>
+</div></section>
+
+<section class="feature" data-region="taiwan" data-area="central" data-city="taichung" data-city-exclusive>
+<div class="feature-intro"><h2>臺中市旅遊資源</h2><p>依臺中觀光旅遊網的分類，整理活動消息、景點探索、主題玩法、食購旅宿、交通情報與旅遊指南。選擇臺中市時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>最新消息與活動</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/event/news" target="_blank" rel="noopener">最新消息<small>查看臺中旅遊公告與觀光情報</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/event/touristcalendar?year=2026" target="_blank" rel="noopener">活動年曆<small>依月份查找臺中節慶與活動</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/live-camera" target="_blank" rel="noopener">即時影像<small>查看臺中景點即時畫面</small></a>
+</div></div>
+<div class="resource-group"><h3>景點探索</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/attractions/list" target="_blank" rel="noopener">景點快搜<small>依區域與類型搜尋臺中景點</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/attractions/topten" target="_blank" rel="noopener">熱門 TOP 10<small>從熱門景點開始安排臺中行程</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/attractions/maptour" target="_blank" rel="noopener">旅遊地圖<small>使用地圖探索臺中各區旅遊地點</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/multimedia/panoramic" target="_blank" rel="noopener">全景看臺中<small>以環景影像預覽景點環境</small></a>
+</div></div>
+<div class="resource-group"><h3>主題玩法與遊程</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/experience/discovertaichung" target="_blank" rel="noopener">更多主題旅遊<small>從城市文化、產業與自然主題找玩法</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/experience/family-fun" target="_blank" rel="noopener">親子同樂<small>規劃適合親子共遊的景點與體驗</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/experience/hikingtrail" target="_blank" rel="noopener">登山步道<small>尋找臺中山區步道與戶外路線</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/experience/cyclingtrip" target="_blank" rel="noopener">鐵馬之旅<small>探索臺中自行車道與騎行玩法</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/experience/night-tour" target="_blank" rel="noopener">臺中夜遊<small>安排夜間景點與城市夜遊</small></a>
+</div></div>
+<div class="resource-group"><h3>食購旅宿</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/experience/gourmet-guide" target="_blank" rel="noopener">美食導覽<small>瀏覽臺中各地美食與特色料理</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/shop/consumelist" target="_blank" rel="noopener">美食購物快搜<small>搜尋餐飲與消費店家</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/experience/souvenirs" target="_blank" rel="noopener">臺中特產<small>尋找在地特產與伴手禮</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/shop/business" target="_blank" rel="noopener">購物商圈<small>探索臺中商圈與購物地點</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/shop/accommodationrecommend" target="_blank" rel="noopener">住宿推薦<small>查找臺中旅宿與住宿靈感</small></a>
+</div></div>
+<div class="resource-group"><h3>交通與旅遊指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/traffic/gettinghere" target="_blank" rel="noopener">出發前往臺中<small>整理抵達臺中的交通方式</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/traffic/citybus" target="_blank" rel="noopener">市區公車<small>查詢臺中市區公車旅遊資訊</small></a>
+<a class="resource-card" href="https://taichung.travel/taichung-tour-bus/" target="_blank" rel="noopener">觀光公車／台灣好行<small>查找臺中觀光公車與景點接駁路線</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/traffic/taxi" target="_blank" rel="noopener">駕車旅遊與計程車<small>查看自駕及計程車旅遊資訊</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/multimedia/publicationlist" target="_blank" rel="noopener">地圖與指南<small>取得臺中旅遊地圖與文宣資料</small></a>
+<a class="resource-card" href="https://travel.taichung.gov.tw/zh-tw/tourist/app" target="_blank" rel="noopener">大玩臺中 APP<small>查看景點、美食、住宿與行程規劃功能</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="central" data-city="changhua" data-city-exclusive>
+<div class="feature-intro"><h2>彰化縣旅遊資源</h2><p>依彰化旅遊資訊網的導覽，整理活動、遊憩景點、美食購物、玩樂彰化、旅宿、交通諮詢與影音刊物。選擇彰化縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動資訊與小旅行</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.chcg.gov.tw/News.aspx" target="_blank" rel="noopener">活動快訊<small>掌握彰化近期活動與旅遊消息</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Calendarl.aspx" target="_blank" rel="noopener">活動年曆<small>依日期查找彰化節慶與活動</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Travelevents.aspx" target="_blank" rel="noopener">旅遊情報<small>瀏覽彰化旅遊推薦與地方情報</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/LocalTravel.aspx?l=TW" target="_blank" rel="noopener">小旅行<small>參考一日、二日與主題遊程</small></a>
+</div></div>
+<div class="resource-group"><h3>遊憩景點與線上體驗</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Attractions.aspx" target="_blank" rel="noopener">觀光景點<small>探索彰化自然景觀、古蹟與遊憩地點</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/onlineTour.aspx" target="_blank" rel="noopener">線上玩彰化<small>透過線上內容預覽彰化景點</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/live.aspx" target="_blank" rel="noopener">即時影像<small>查看彰化特色景區即時畫面</small></a>
+</div></div>
+<div class="resource-group"><h3>美食購物</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.chcg.gov.tw/category-foods.aspx" target="_blank" rel="noopener">彰化美食攻略<small>從在地美食與特色料理開始探索</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Food.aspx?topic=1" target="_blank" rel="noopener">餐廳資訊<small>搜尋彰化餐廳與用餐地點</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Food.aspx?topic=3" target="_blank" rel="noopener">地方特產<small>認識彰化各地農產與地方好物</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Food.aspx?topic=4" target="_blank" rel="noopener">伴手禮<small>尋找彰化特色伴手禮</small></a>
+</div></div>
+<div class="resource-group"><h3>旅館民宿與旅遊諮詢</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Acmd.aspx?topic=2" target="_blank" rel="noopener">一般旅館<small>查找彰化旅館資訊</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Acmd.aspx?topic=3" target="_blank" rel="noopener">民宿<small>瀏覽彰化民宿資訊</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Highiron.aspx" target="_blank" rel="noopener">交通資訊<small>規劃前往彰化與縣內交通</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/" target="_blank" rel="noopener">旅客服務<small>從彰化旅遊網查找服務據點與旅遊諮詢</small></a>
+</div></div>
+<div class="resource-group"><h3>影音刊物</h3><div class="resource-cards">
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Publication.aspx" target="_blank" rel="noopener">文宣出版品<small>查找彰化旅遊出版品與行前資料</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/Video.aspx" target="_blank" rel="noopener">影音欣賞<small>透過影片認識彰化景點與活動</small></a>
+<a class="resource-card" href="https://tourism.chcg.gov.tw/PhotoWeb/" target="_blank" rel="noopener">相簿與環景<small>瀏覽彰化旅遊照片及環景內容</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="central" data-city="nantou" data-city-exclusive>
+<div class="feature-intro"><h2>南投縣旅遊資源</h2><p>依南投旅遊網的導覽分類，整理熱門活動、主題旅遊、在地特色、景點、美食、住宿、交通與影音指南。選擇南投縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>熱門活動與旅遊情報</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.nantou.gov.tw/category/news-press/" target="_blank" rel="noopener">最新消息<small>查看活動快訊、旅宿情報與景區動態</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/nantou-season/" target="_blank" rel="noopener">年度盛事<small>追蹤南投年度節慶與大型活動</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/" target="_blank" rel="noopener">熱門活動總覽<small>從南投旅遊網首頁瀏覽當季活動</small></a>
+</div></div>
+<div class="resource-group"><h3>主題旅遊</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.nantou.gov.tw/7tour/" target="_blank" rel="noopener">七大軸線<small>依南投主題軸線規劃跨區旅程</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/sustainable-tourism/" target="_blank" rel="noopener">永續旅遊<small>認識永續行動、店家與低碳遊程</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/nantou-hiking/" target="_blank" rel="noopener">山野旅遊<small>探索登山步道與山林旅行資訊</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/nantou-biking/" target="_blank" rel="noopener">騎行之旅<small>規劃南投自行車與單車小旅行</small></a>
+</div></div>
+<div class="resource-group"><h3>玩景點與在地特色</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.nantou.gov.tw/attractions/" target="_blank" rel="noopener">景點搜尋<small>搜尋南投遊憩景區、自然景觀與風土史蹟</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/food/" target="_blank" rel="noopener">美食探訪<small>尋找南投在地料理與特色美食</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/" target="_blank" rel="noopener">農遊與宗教探索<small>從首頁進入農遊體驗、宗教探索與賞花主題</small></a>
+</div></div>
+<div class="resource-group"><h3>住宿與交通</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.nantou.gov.tw/accommodation/" target="_blank" rel="noopener">住宿查詢<small>查找南投旅宿與住宿資訊</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/transportationnews/" target="_blank" rel="noopener">交通便利站<small>查看南投旅遊交通與乘車資訊</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/" target="_blank" rel="noopener">台灣好行與交通服務<small>從南投旅遊網查找各路線行前資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>達人帶玩與指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.nantou.gov.tw/" target="_blank" rel="noopener">攻略懶人包<small>瀏覽南投各地行程與旅遊建議</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/videoarea/" target="_blank" rel="noopener">影音帶你玩<small>透過影片認識南投景點與活動</small></a>
+<a class="resource-card" href="https://travel.nantou.gov.tw/" target="_blank" rel="noopener">電子書下載<small>從網站導覽進入旅遊刊物與行前資料</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="central" data-city="yunlin" data-city-exclusive>
+<div class="feature-intro"><h2>雲林縣旅遊資源</h2><p>依「慢遊雲林」網站的導覽，整理賞活動、好食宿、玩行程、查交通、影音刊物與旅遊服務。你提供的舊版首頁網址目前導向錯誤頁，卡片改連目前可用的慢遊雲林網站與分類頁。選擇雲林縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動與最新消息</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/BlogList.php?cn=ZC10352656&amp;sn=yunlin" target="_blank" rel="noopener">最新消息<small>查看慢遊雲林旅遊公告與活動消息</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/index.php?pg=ZC10358052&amp;sn=yunlin" target="_blank" rel="noopener">活動行事曆<small>查看藝文與旅遊活動資訊</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/BlogList.php?cn=ZC10366913&amp;sn=yunlin" target="_blank" rel="noopener">節慶活動<small>追蹤雲林地方節慶與年度活動</small></a>
+</div></div>
+<div class="resource-group"><h3>好食宿</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/BlogList.php?cn=ZC10350908&amp;sn=yunlin" target="_blank" rel="noopener">必吃特色美食<small>探索雲林在地料理與必吃美食</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/BlogList.php?cn=ZC10350853&amp;sn=yunlin" target="_blank" rel="noopener">特色伴手禮<small>尋找雲林農特產品與在地好物</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/BlogList.php?cn=ZC10355734&amp;sn=yunlin" target="_blank" rel="noopener">住宿查詢<small>瀏覽雲林旅宿資訊</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/index.php?pg=ZC10350374&amp;sn=yunlin" target="_blank" rel="noopener">好食宿總覽<small>進入雲林美食與住宿服務入口</small></a>
+</div></div>
+<div class="resource-group"><h3>玩行程與景點</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/index.php?pg=ZC10350437&amp;sn=yunlin" target="_blank" rel="noopener">玩行程<small>依主題與旅遊推薦安排雲林旅程</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/BlogList.php?cn=ZC10350642&amp;sn=yunlin" target="_blank" rel="noopener">主題遊程<small>瀏覽不同主題的雲林推薦路線</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/BlogList.php?cn=ZC10350691&amp;sn=yunlin" target="_blank" rel="noopener">旅遊推薦<small>查看旅遊景點與行程提案</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/index.php?pg=ZC10358673&amp;sn=yunlin" target="_blank" rel="noopener">景點查詢<small>搜尋雲林各鄉鎮旅遊景點</small></a>
+</div></div>
+<div class="resource-group"><h3>交通與旅遊服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/index.php?pg=ZC10448991&amp;sn=yunlin" target="_blank" rel="noopener">交通資訊<small>查詢雲林旅遊與公共交通資訊</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/index.php?cn=ZC10355996&amp;sn=yunlin" target="_blank" rel="noopener">旅遊服務中心<small>查找旅遊服務中心與旅客諮詢資訊</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/index.php?pg=ZC10357712&amp;sn=yunlin" target="_blank" rel="noopener">常見問題<small>查看網站與旅遊服務常見問題</small></a>
+</div></div>
+<div class="resource-group"><h3>影音刊物</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.yunlin.gov.tw/mainssl/modules/MySpace/BlogList.php?cn=ZC10350727&amp;sn=yunlin" target="_blank" rel="noopener">藝文刊物下載<small>閱讀與下載雲林藝文及旅遊刊物</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/" target="_blank" rel="noopener">影音專區<small>從慢遊雲林網站瀏覽影音內容</small></a>
+<a class="resource-card" href="https://tour.yunlin.gov.tw/" target="_blank" rel="noopener">旅遊導覽資訊<small>查看官方旅遊網站完整導覽與相關連結</small></a>
+</div></div>
+</div></section>
+
+<section class="feature" data-region="taiwan" data-area="south" data-city="chiayi-city" data-city-exclusive>
+<div class="feature-intro"><h2>嘉義市旅遊資源</h2><p>依嘉義市觀光旅遊網的分類，整理活動、景點、美食、建議遊程、住宿、交通與多媒體資訊。選擇嘉義市時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動與旅遊消息</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.chiayi.gov.tw/ActivityInfo/C000001" target="_blank" rel="noopener">活動消息<small>查看嘉義市近期活動與藝文情報</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/ActivityInfo/C000001" target="_blank" rel="noopener">公告訊息<small>從活動專區瀏覽嘉義市旅遊公告</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/" target="_blank" rel="noopener">旅遊公告與年曆入口<small>前往觀光旅遊網查看最新活動與公告分類</small></a>
+</div></div>
+<div class="resource-group"><h3>景點與主題探索</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.chiayi.gov.tw/TravelInformation/C000005/1" target="_blank" rel="noopener">精選景點<small>從嘉義市觀光旅遊網尋找推薦景點</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/TravelInformation/C000005/1" target="_blank" rel="noopener">景點總覽<small>瀏覽嘉義市景點清單與介紹</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/TravelInformation/C000005/MAP?TravelTypeList=1" target="_blank" rel="noopener">景點地圖<small>以地圖查看嘉義市旅遊地點</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/Publication/C000002" target="_blank" rel="noopener">主題摺頁<small>查找嘉義市主題旅遊與行前資料</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/ChiayiBike/Folder/ChiayiBikeTour" target="_blank" rel="noopener">來嘉 BIKE 訪<small>探索環市自行車景點與騎行遊程</small></a>
+</div></div>
+<div class="resource-group"><h3>美食與住宿</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.chiayi.gov.tw/TravelInformation/C000005/2" target="_blank" rel="noopener">美食總覽<small>搜尋嘉義市美食與特色店家</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/" target="_blank" rel="noopener">嘉義雞肉飯<small>從官方旅遊網進入嘉義雞肉飯與美食專區</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/TravelInformation/C000005/3" target="_blank" rel="noopener">住宿資訊<small>查找嘉義市旅館與民宿資訊</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/" target="_blank" rel="noopener">民宿抵嘉<small>瀏覽嘉義市住宿與「來嘉住一晚」專題</small></a>
+</div></div>
+<div class="resource-group"><h3>遊程、交通與旅客服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.chiayi.gov.tw/StaticPage/SuggestedTours" target="_blank" rel="noopener">建議遊程<small>參考嘉義市綠色遊程與主題行程</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/StaticPage/BuyTours" target="_blank" rel="noopener">套裝遊程<small>查看嘉義市套裝旅行選擇</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/" target="_blank" rel="noopener">公車遊程與交通<small>從網站交通分類查詢公車、BRT與公共自行車</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/" target="_blank" rel="noopener">旅遊服務中心<small>查找嘉義火車站與 KANO 遊客中心資訊</small></a>
+<a class="resource-card" href="https://travel.chiayi.gov.tw/" target="_blank" rel="noopener">多媒體專區<small>瀏覽嘉義市影像、語音導覽與旅遊內容</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="south" data-city="chiayi-county" data-city-exclusive>
+<div class="feature-intro"><h2>嘉義縣旅遊資源</h2><p>依嘉義縣文化觀光局的網站架構，整理十八鄉鎮、慢遊行程、景點與步道、美食住宿、交通及旅遊服務。選擇嘉義縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>最新消息與活動</h3><div class="resource-cards">
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/News.aspx?n=100107&amp;sms=110370" target="_blank" rel="noopener">最新消息<small>查看嘉義縣旅遊公告與活動資訊</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/News2.aspx?_CSN=525&amp;n=100109&amp;sms=110372" target="_blank" rel="noopener">活動訊息<small>掌握嘉義縣節慶及觀光活動</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/SiteMap.aspx" target="_blank" rel="noopener">網站導覽<small>查看文化觀光局完整旅遊分類</small></a>
+</div></div>
+<div class="resource-group"><h3>探索十八鄉鎮與慢遊行程</h3><div class="resource-cards">
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/cp.aspx?n=100327" target="_blank" rel="noopener">探索十八鄉鎮市<small>依鄉鎮認識嘉義縣山線、平原與濱海地區</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/Travel_Default.aspx?n=100027&amp;sms=110315" target="_blank" rel="noopener">遊程推薦<small>瀏覽嘉義縣精選遊程與景點組合</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/cp.aspx?n=101167" target="_blank" rel="noopener">一日慢旅<small>參考嘉義縣一日慢遊路線</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/cp.aspx?n=101168" target="_blank" rel="noopener">二日慢旅<small>安排嘉義縣多日小旅行</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/Travel_Customize.aspx?n=100028&amp;sms=0" target="_blank" rel="noopener">自訂行程<small>依停留時間與喜好客製化旅程</small></a>
+</div></div>
+<div class="resource-group"><h3>美食與伴手禮</h3><div class="resource-cards">
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/Sight_Default.aspx?n=100314&amp;sms=110495" target="_blank" rel="noopener">十八鄉鎮市美食<small>依地區探索嘉義縣在地美味</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/Sight_Default.aspx?n=100787&amp;sms=110495" target="_blank" rel="noopener">美食小吃<small>尋找各鄉鎮特色小吃</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/Sight_Default.aspx?n=100788&amp;sms=110495" target="_blank" rel="noopener">主題餐館<small>瀏覽嘉義縣主題餐飲與特色店家</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/" target="_blank" rel="noopener">伴手禮與地方好物<small>從「品嚐嘉義」分類進入特產與伴手禮資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>住宿與交通服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/Sight_Default.aspx?n=100615&amp;sms=110688" target="_blank" rel="noopener">全縣住宿<small>查找嘉義縣各鄉鎮旅宿資訊</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/News2.aspx?n=100744&amp;sms=110768" target="_blank" rel="noopener">十八鄉鎮市住宿<small>依旅館、民宿與鄉鎮分類找住宿</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/cp.aspx?n=100278" target="_blank" rel="noopener">交通資訊<small>規劃前往嘉義縣與縣內交通</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/News2.aspx?n=100026&amp;sms=110314" target="_blank" rel="noopener">旅遊服務中心<small>查看旅客服務據點與諮詢資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>步道與特色體驗</h3><div class="resource-cards">
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/" target="_blank" rel="noopener">嘉遊好步道<small>從官方網站探索嘉義縣步道與自然風景</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/" target="_blank" rel="noopener">自行車道與休閒農場<small>尋找戶外騎行、農遊與親子體驗</small></a>
+<a class="resource-card" href="https://tbocc.cyhg.gov.tw/News_Photo.aspx?n=100117&amp;sms=110380" target="_blank" rel="noopener">旅遊文宣下載<small>取得嘉義縣旅遊摺頁與行前資料</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="south" data-city="tainan" data-city-exclusive>
+<div class="feature-intro"><h2>臺南市旅遊資源</h2><p>依台南旅遊網的網站分類，整理活動、遊程、景點、玩樂推薦、影音文宣與旅遊服務。選擇臺南市時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動與旅遊情報</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/event/news/" target="_blank" rel="noopener">最新消息<small>查看臺南旅遊新訊與活動消息</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/event/touristcalendar/2026/" target="_blank" rel="noopener">活動行事曆<small>依日期查找臺南節慶與活動</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/event/coupon/" target="_blank" rel="noopener">優惠情報<small>瀏覽臺南旅遊優惠與好康資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>遊程與城市體驗</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/statics/tainan-walking-tour/" target="_blank" rel="noopener">台南散步導覽<small>預約導覽，穿梭府城街區與歷史場域</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/tours/tourslist/" target="_blank" rel="noopener">遊程搜尋<small>依興趣搜尋臺南推薦行程</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/package-tour/" target="_blank" rel="noopener">預約套裝行程<small>瀏覽可預約的旅遊套裝與體驗</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/statics/abouttainan/" target="_blank" rel="noopener">認識台南<small>從文化史蹟、自然生態與地方生活認識臺南</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/immersive/" target="_blank" rel="noopener">VR旅行新體驗<small>線上預覽臺南景點與旅遊情境</small></a>
+</div></div>
+<div class="resource-group"><h3>景點與地圖</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/districts/" target="_blank" rel="noopener">區域旅遊<small>依臺南各區規劃目的地探索</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/attractions/" target="_blank" rel="noopener">景點搜尋<small>查找臺南古蹟、自然景點與文化場館</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/attractions/map/" target="_blank" rel="noopener">旅遊地圖<small>透過地圖查找景點與周邊資訊</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/accommodation/camping-area/" target="_blank" rel="noopener">人氣露營區<small>尋找臺南露營與戶外住宿地點</small></a>
+</div></div>
+<div class="resource-group"><h3>美食、住宿與特色探索</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/shop/cuisines/" target="_blank" rel="noopener">必吃美食小吃<small>搜尋臺南在地小吃與特色料理</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/shop/consumelist/" target="_blank" rel="noopener">店家搜尋<small>查找餐飲與旅遊店家</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/shop/accommodationlist/" target="_blank" rel="noopener">住宿搜尋<small>依地區與需求搜尋臺南住宿</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/accommodation/recommend/" target="_blank" rel="noopener">住宿推薦<small>取得臺南住宿區域與旅宿建議</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/" target="_blank" rel="noopener">主題探索<small>從首頁進入觀光工廠、特色農產與登山健行</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊服務與指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/statics/goto/" target="_blank" rel="noopener">台南交通<small>整理抵達臺南與市區交通資訊</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/shop/trafficlist/" target="_blank" rel="noopener">交通租賃<small>查找交通與租賃服務</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/statics/visitor-information-center/" target="_blank" rel="noopener">旅服中心<small>尋找臺南旅遊服務與諮詢據點</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/service/askme-list/" target="_blank" rel="noopener">問路店查詢<small>查找可提供在地旅遊諮詢的店家</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/media/publicationlist/" target="_blank" rel="noopener">文宣摺頁<small>下載臺南旅遊地圖與行前資料</small></a>
+<a class="resource-card" href="https://www.twtainan.net/zh-tw/statics/app/" target="_blank" rel="noopener">旅行台南 APP<small>使用行程收藏、旅遊資訊與路線規劃功能</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="south" data-city="kaohsiung" data-city-exclusive>
+<div class="feature-intro"><h2>高雄市旅遊資源</h2><p>依高雄旅遊網的網站導覽，整理最新話題、探索景點、主題觀光、玩樂情報、好客住宿與交通服務。選擇高雄市時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>最新話題與活動展演</h3><div class="resource-cards">
+<a class="resource-card" href="https://khh.travel/zh-tw/event/newslist/" target="_blank" rel="noopener">最新消息<small>查看高雄旅遊與城市活動新訊</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/event/calendar/2026/" target="_blank" rel="noopener">活動行事曆<small>依月份瀏覽高雄活動與節慶</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/exhibition/" target="_blank" rel="noopener">展演資訊<small>查找高雄藝文展覽與表演活動</small></a>
+</div></div>
+<div class="resource-group"><h3>探索高雄</h3><div class="resource-cards">
+<a class="resource-card" href="https://khh.travel/zh-tw/travel/regional-sightseeing/" target="_blank" rel="noopener">區域觀光玩高雄<small>依區域探索高雄山、海、河、港與城區</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/attractions/list/" target="_blank" rel="noopener">景點快搜<small>搜尋高雄觀光景點與遊憩地點</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/live-camera/" target="_blank" rel="noopener">4K 即時影像<small>以即時影像查看熱門景點風景</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/attractions/immersive-experience/" target="_blank" rel="noopener">發現新視界<small>透過數位體驗探索高雄景點</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/travel/theme-tour/" target="_blank" rel="noopener">特色觀光<small>依夜間、鐵馬、部落與軍事等主題安排旅行</small></a>
+</div></div>
+<div class="resource-group"><h3>美食、商圈與住宿</h3><div class="resource-cards">
+<a class="resource-card" href="https://khh.travel/zh-tw/board-and-lodging/cuisines/" target="_blank" rel="noopener">特色美食<small>探索高雄在地料理與特色食材</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/board-and-lodging/michelin-guide/" target="_blank" rel="noopener">米其林指南<small>查找高雄米其林餐飲推薦</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/shop/gourmet-list/" target="_blank" rel="noopener">美食快搜<small>依地區搜尋高雄美食店家</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/board-and-lodging/business-district/" target="_blank" rel="noopener">購物商圈<small>探索高雄商圈與特色店家</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/board-and-lodging/night-market/" target="_blank" rel="noopener">夜市走透透<small>安排高雄夜市美食與夜間行程</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/board-and-lodging/souvenir/" target="_blank" rel="noopener">特色伴手禮<small>挑選高雄在地好物與伴手禮</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/board-and-lodging/recommend-accommodation/" target="_blank" rel="noopener">好客住宿<small>查看高雄住宿推薦與旅宿資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>交通與旅遊服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://khh.travel/zh-tw/traffic/get-to-kaohsiung/" target="_blank" rel="noopener">如何到高雄<small>規劃搭乘鐵道、航空與大眾運輸抵達高雄</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/traffic/circular-light-rail/" target="_blank" rel="noopener">軌道運輸<small>了解捷運與輕軌旅遊交通</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/traffic/bus/" target="_blank" rel="noopener">市區公車<small>查詢市區公車與旅遊接駁資訊</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/traffic/waterborne-traffic/" target="_blank" rel="noopener">水上遊憩交通<small>安排旗津渡輪與水岸旅程</small></a>
+<a class="resource-card" href="https://khh.travel/zh-tw/guide/travel-advisory/" target="_blank" rel="noopener">旅遊諮詢服務<small>查找借問站、地圖與旅遊諮詢資訊</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="south" data-city="pingtung" data-city-exclusive>
+<div class="feature-intro"><h2>屏東縣旅遊資源</h2><p>依屏東旅遊網的導覽架構，整理旅遊訊息、交通資訊、屏東景點、好吃好買好住、推薦遊程與旅客服務。選擇屏東縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>旅遊訊息與節慶活動</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.i-pingtung.com/news" target="_blank" rel="noopener">最新消息<small>掌握屏東旅遊、活動與交通公告</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/ptfestival" target="_blank" rel="noopener">節慶與活動<small>按季節探索屏東年度盛事</small></a>
+<a class="resource-card" href="https://www.windpeninsula.tw/" target="_blank" rel="noopener">風域半島<small>探索恆春半島特色活動與旅行路線</small></a>
+</div></div>
+<div class="resource-group"><h3>屏東景點與鄉鎮</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.i-pingtung.com/meetpingtung" target="_blank" rel="noopener">認識屏東<small>從山、海、平原與半島地形認識屏東</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/townshipintroduction" target="_blank" rel="noopener">鄉鎮介紹<small>探索屏東 33 個鄉鎮市與地方特色</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/beautytrail" target="_blank" rel="noopener">拾美步道<small>尋找屏東健行步道與山林景色</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/babysplayground" target="_blank" rel="noopener">共融遊戲場<small>規劃親子與共融遊戲空間體驗</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/stargazing" target="_blank" rel="noopener">星空旅遊<small>安排屏東觀星與夜間旅行</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/biketour" target="_blank" rel="noopener">彩虹自行車道<small>探索自行車路線與沿線景點</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/surf" target="_blank" rel="noopener">衝浪行程<small>查找屏東海岸衝浪體驗與行程</small></a>
+</div></div>
+<div class="resource-group"><h3>好吃、好買、好住</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.i-pingtung.com/pingtungfood" target="_blank" rel="noopener">美食推薦<small>依鄉鎮尋找屏東在地美食</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/goodthings" target="_blank" rel="noopener">屏東 GO 購<small>選購屏東農產與地方好物</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/pingtunggoodstays" target="_blank" rel="noopener">屏東好旅宿<small>瀏覽屏東民宿與旅宿資訊</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/recommendedaccommodation" target="_blank" rel="noopener">金鑰獎優質旅宿<small>查找屏東優質旅宿推薦</small></a>
+</div></div>
+<div class="resource-group"><h3>推薦遊程與交通</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.windpeninsula.tw/Tour" target="_blank" rel="noopener">風域半島遊程<small>查找半島旅程與可預約體驗</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/gotopingtung" target="_blank" rel="noopener">前往屏東<small>規劃從外縣市抵達屏東的交通方式</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/pingtungtransportation" target="_blank" rel="noopener">屏東交通與觀光巴士<small>查看縣內交通及觀光巴士資訊</small></a>
+<a class="resource-card" href="https://www.pthg.gov.tw/" target="_blank" rel="noopener">小黃公車與幸福巴士<small>從縣府交通服務查詢偏鄉公共運輸</small></a>
+</div></div>
+<div class="resource-group"><h3>旅客服務與旅遊指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.i-pingtung.com/travelinformation" target="_blank" rel="noopener">實用資訊<small>查找旅遊行前資訊與服務說明</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/travelservices" target="_blank" rel="noopener">服務系統<small>使用屏東旅遊服務與資訊系統</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/touristinformation" target="_blank" rel="noopener">旅遊資訊與刊物<small>閱讀屏東旅遊年刊、文化與活動指南</small></a>
+<a class="resource-card" href="https://www.i-pingtung.com/guidedtour" target="_blank" rel="noopener">導覽預約<small>預約屏東在地導覽服務</small></a>
+</div></div>
+</div></section>
+
+<section class="feature" data-region="taiwan" data-area="east" data-city="hualien" data-city-exclusive>
+<div class="feature-intro"><h2>花蓮縣旅遊資源</h2><p>依花蓮旅遊網的導覽架構，整理精彩活動、目的地、行程體驗、交通服務、旅遊指南與影音資訊。選擇花蓮縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>精彩活動</h3><div class="resource-cards">
+<a class="resource-card" href="https://hualien.travel/zh-tw/events/2026/" target="_blank" rel="noopener">活動年曆<small>依月份查找花蓮節慶與觀光活動</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/news/" target="_blank" rel="noopener">最新消息<small>掌握花蓮旅遊公告與最新情報</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/social-medias/" target="_blank" rel="noopener">打卡話題<small>瀏覽旅客分享與花蓮社群靈感</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/live-cameras/" target="_blank" rel="noopener">即時影像<small>查看花蓮景點即時畫面</small></a>
+</div></div>
+<div class="resource-group"><h3>目的地與特色景點</h3><div class="resource-cards">
+<a class="resource-card" href="https://hualien.travel/zh-tw/hotplace/" target="_blank" rel="noopener">TOP 熱門景點<small>從熱門景點開始規劃花蓮旅程</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/district-fun/" target="_blank" rel="noopener">區域玩花蓮<small>依花蓮各區探索山海與縱谷目的地</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/attractions/" target="_blank" rel="noopener">景點搜尋<small>搜尋花蓮自然景觀、文化場域與遊憩景點</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/map/" target="_blank" rel="noopener">旅遊地圖<small>以地圖查看景點、服務與旅遊地點</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/cuisines/" target="_blank" rel="noopener">特色美食伴手禮<small>尋找花蓮在地美食與特色好物</small></a>
+</div></div>
+<div class="resource-group"><h3>行程體驗與主題遊程</h3><div class="resource-cards">
+<a class="resource-card" href="https://hualien.travel/zh-tw/columns/" target="_blank" rel="noopener">旅遊專欄<small>閱讀花蓮旅遊故事與行前靈感</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/tours/" target="_blank" rel="noopener">主題遊程<small>依山海、縱谷、文化、體驗與戶外主題找路線</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/tours/?category=8" target="_blank" rel="noopener">山海美景<small>沿海岸與山線安排景觀旅程</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/tours/?category=156" target="_blank" rel="noopener">縱谷田園<small>探索縱谷鄉鎮、稻田與慢旅行程</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/cycling/" target="_blank" rel="noopener">單車追風<small>規劃花蓮自行車路線與騎行體驗</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/ota/" target="_blank" rel="noopener">行程、票券預購<small>查看花蓮行程體驗與票券預訂資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>計畫旅行與旅客服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://hualien.travel/zh-tw/publications/" target="_blank" rel="noopener">地圖與摺頁<small>取得花蓮旅遊地圖及行前指南</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/go-to-hualien/" target="_blank" rel="noopener">如何來花蓮<small>規劃抵達花蓮的交通方式</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/local-traffic/" target="_blank" rel="noopener">區內交通<small>查詢花蓮縣內交通與移動方式</small></a>
+<a class="resource-card" href="https://www.taiwanstay.net.tw/TSA/web_page/TSA020100.jsp?hoci_city1=%E8%8A%B1%E8%93%AE%E7%B8%A3" target="_blank" rel="noopener">住宿快搜<small>查詢花蓮縣合法旅宿</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/ask-me/" target="_blank" rel="noopener">旅服與借問站<small>尋找旅遊諮詢與在地服務據點</small></a>
+<a class="resource-card" href="https://hualien.travel/zh-tw/albums/" target="_blank" rel="noopener">觀光相簿與宣傳影片<small>透過影像認識花蓮風景與旅行體驗</small></a>
+</div></div>
+</div></section>
+<section class="feature" data-region="taiwan" data-area="east" data-city="taitung" data-city-exclusive>
+<div class="feature-intro"><h2>台東縣旅遊資源</h2><p>依台東觀光旅遊網的內容架構，整理活動情報、景點探索、精選遊程、食宿體驗、交通資訊與旅遊服務。選擇台東縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動情報</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/event-calendar/2026" target="_blank" rel="noopener">2026 觀光行事曆<small>依月份掌握臺東年度節慶與活動</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/news" target="_blank" rel="noopener">最新消息<small>瀏覽臺東旅遊與觀光公告</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/diary" target="_blank" rel="noopener">社群文章<small>閱讀在地旅遊分享與活動情報</small></a>
+</div></div>
+<div class="resource-group"><h3>景點與地方主題</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/attraction" target="_blank" rel="noopener">景點快搜<small>搜尋臺東自然景觀、文化場域與遊憩地點</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/attraction/regions" target="_blank" rel="noopener">依鄉鎮分類<small>依臺東各鄉鎮探索景點</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/attraction/themes" target="_blank" rel="noopener">依主題查詢<small>從自然生態、星空夜遊、海濱、藝文與部落主題找景點</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/attraction/map" target="_blank" rel="noopener">地圖導覽<small>以地圖規劃景點與周邊旅行</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/discover/taitung-has-fun/" target="_blank" rel="noopener">來臺東玩吧<small>認識臺東山海、人文與地方體驗</small></a>
+</div></div>
+<div class="resource-group"><h3>精選遊程與行程規劃</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/tour" target="_blank" rel="noopener">精選遊程<small>依山線、縱谷、東海岸、南迴與離島尋找玩法</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/trip" target="_blank" rel="noopener">自訂行程<small>收藏景點與住宿，編輯個人臺東旅程</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/tour/accessible-tour" target="_blank" rel="noopener">無障礙旅遊<small>參考臺東無障礙旅遊路線與服務</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/tour/theme/east-coast" target="_blank" rel="noopener">精選遊程：東海岸<small>規劃東海岸與花東縱谷主題旅程</small></a>
+</div></div>
+<div class="resource-group"><h3>美食、住宿與體驗</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/shop/delicious" target="_blank" rel="noopener">必吃美食小吃<small>尋找臺東在地料理與特色小吃</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/shop/ttstyle-food" target="_blank" rel="noopener">部落食尚<small>體驗部落料理與在地飲食文化</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/experience/slow-food" target="_blank" rel="noopener">慢食小旅行<small>從產地、料理與地方生活體驗臺東慢食</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/accommodation" target="_blank" rel="noopener">住宿搜尋<small>查找臺東各地住宿資訊</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/news/details/5775" target="_blank" rel="noopener">臺東 100 碗<small>跟著美食指南探索臺東風味</small></a>
+</div></div>
+<div class="resource-group"><h3>交通與旅遊服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/traffic/taitung" target="_blank" rel="noopener">如何到臺東<small>規劃鐵路、航空與抵達交通</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/traffic/traffic" target="_blank" rel="noopener">區內交通與台灣好行<small>查詢縣內移動、山線與海線接駁</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/traffic/island" target="_blank" rel="noopener">離島交通<small>查詢前往綠島、蘭嶼的交通方式</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/zh-tw/information/visitor-information-center" target="_blank" rel="noopener">旅遊服務中心<small>查找臺東旅服中心與旅遊諮詢服務</small></a>
+<a class="resource-card" href="https://tour.taitung.gov.tw/go/MQr6vrBZ" target="_blank" rel="noopener">旅行台東 APP<small>查看臺東景點、行程、交通與即時車位資訊</small></a>
+</div></div>
+</div></section>
+
+<section class="feature" data-region="taiwan" data-area="island" data-city="kinmen" data-city-exclusive>
+<div class="feature-intro"><h2>金門縣旅遊資源</h2><p>依金門觀光旅遊網的「活動、景點、消費、交通、指南」架構，整理年度活動、戰地與聚落景點、地方體驗、食宿和行前資訊。選擇金門縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>年度活動與旅遊消息</h3><div class="resource-cards">
+<a class="resource-card" href="https://kinmen.travel/zh-tw/event-calendar/2026" target="_blank" rel="noopener">年度活動<small>依月份瀏覽金門節慶、市集與觀光活動</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/news" target="_blank" rel="noopener">最新消息<small>查看活動公告、旅遊情報與景點資訊</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/diary" target="_blank" rel="noopener">社群熱門話題<small>從金門官方社群找近期旅行靈感</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/discover/welcome2kinmen" target="_blank" rel="noopener">探索金門<small>認識金門的海島風景、聚落文化與旅行體驗</small></a>
+</div></div>
+<div class="resource-group"><h3>景點探索與主題行程</h3><div class="resource-cards">
+<a class="resource-card" href="https://kinmen.travel/zh-tw/travel/top-ten" target="_blank" rel="noopener">必遊景點<small>從金門經典景點與歷史場域開始規劃</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/travel" target="_blank" rel="noopener">景點快搜<small>依軍事史蹟、人文歷史、聚落、生態等主題查找</small></a>
+<a class="resource-card" href="https://kinmen.travel/travel-map/zh-tw" target="_blank" rel="noopener">智慧旅遊地圖<small>在地圖上查找景點並安排移動順序</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/discover/travel-guide" target="_blank" rel="noopener">旅遊懶人包<small>閱讀金門玩法、風土與行前規劃建議</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/discover/family-travel" target="_blank" rel="noopener">親子同樂趣<small>尋找適合親子同行的體驗與景點</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/discover/tour-list" target="_blank" rel="noopener">精選行程<small>依旅遊天數、季節與主題挑選路線</small></a>
+</div></div>
+<div class="resource-group"><h3>美食、住宿與在地體驗</h3><div class="resource-cards">
+<a class="resource-card" href="https://kinmen.travel/zh-tw/shop/index/all/restaurants" target="_blank" rel="noopener">美食查詢<small>搜尋金門各地餐飲與在地風味</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/shop/cuisines" target="_blank" rel="noopener">金門必吃美食<small>收藏廣東粥、麵線與地方特色料理</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/shop/index/all/souvenir" target="_blank" rel="noopener">伴手禮查詢<small>尋找金門高粱、貢糖與地方好物</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/shop/index/all/experience" target="_blank" rel="noopener">體驗店家<small>查找手作、戶外與文化體驗活動</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/accommodation" target="_blank" rel="noopener">旅宿查詢<small>依鄉鎮與旅宿類型搜尋住宿</small></a>
+<a class="resource-card" href="https://pwa.kinmen.travel" target="_blank" rel="noopener">金門行動旅服<small>整合景點、活動、交通、美食、住宿與自訂行程</small></a>
+</div></div>
+<div class="resource-group"><h3>交通與行前指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://kinmen.travel/zh-tw/information/kinmen" target="_blank" rel="noopener">如何到金門<small>查看航空與小三通入境方式及注意事項</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/guide/travel-tips" target="_blank" rel="noopener">金門行前指引<small>整理交通、天候、預約與旅遊準備資訊</small></a>
+<a class="resource-card" href="https://www.taiwantrip.com.tw/line/49?x=5&y=2" target="_blank" rel="noopener">台灣好行金門線<small>查看金門公車遊程與站點資訊</small></a>
+<a class="resource-card" href="https://kinmen.travel/zh-tw/media/publication" target="_blank" rel="noopener">旅遊文宣出版<small>取得金門地圖、摺頁與旅遊刊物</small></a>
+</div></div>
+</div></section>
+
+<section class="feature" data-region="taiwan" data-area="island" data-city="penghu" data-city-exclusive>
+<div class="feature-intro"><h2>澎湖縣旅遊資源</h2><p>依澎湖Travel的「看見澎湖、主題旅遊、食宿玩樂、交通路線」導覽，整理活動節慶、自然與人文景點、跳島遊程、食宿、島際交通和旅遊須知。選擇澎湖縣時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>最新消息與主題活動</h3><div class="resource-cards">
+<a class="resource-card" href="https://penghutravel.com/News" target="_blank" rel="noopener">最新消息<small>掌握澎湖觀光公告、優惠與旅遊專案</small></a>
+<a class="resource-card" href="https://penghutravel.com/News/activity" target="_blank" rel="noopener">近期活動<small>瀏覽近期節慶、展演與地方活動</small></a>
+<a class="resource-card" href="https://penghutravel.com/index.aspx" target="_blank" rel="noopener">澎湖國際海上花火節<small>從官方網站查看花火節及歷年活動專頁</small></a>
+<a class="resource-card" href="https://penghutravel.com/index.aspx" target="_blank" rel="noopener">年度觀光活動計畫<small>由首頁最新消息查看當年度活動公告</small></a>
+</div></div>
+<div class="resource-group"><h3>看見澎湖與島嶼景點</h3><div class="resource-cards">
+<a class="resource-card" href="https://penghutravel.com/index.aspx" target="_blank" rel="noopener">景點快搜<small>在首頁「看見澎湖」查找景點與影音資料</small></a>
+<a class="resource-card" href="https://penghutravel.com/index.aspx" target="_blank" rel="noopener">人文巡禮與文化資產<small>認識歷史軌跡、廟宇文化與地方聚落</small></a>
+<a class="resource-card" href="https://penghutravel.com/index.aspx" target="_blank" rel="noopener">自然生態與玄武岩<small>探索玄武岩地質、濕地、海鳥與南方四島</small></a>
+<a class="resource-card" href="https://penghutravel.com/Travel/Island.htm" target="_blank" rel="noopener">跳島旅遊專頁<small>規劃南海、東北海與其他島嶼行程</small></a>
+</div></div>
+<div class="resource-group"><h3>主題遊程與島嶼體驗</h3><div class="resource-cards">
+<a class="resource-card" href="https://penghutravel.com/Travel/Island.htm" target="_blank" rel="noopener">跳島漫遊<small>安排跨島船班、景點與海上體驗</small></a>
+<a class="resource-card" href="https://penghutravel.com/Travel/Travel02.htm" target="_blank" rel="noopener">澎湖好行<small>參考觀光巴士路線串接熱門景點</small></a>
+<a class="resource-card" href="https://www.penghufuneasy.com.tw/" target="_blank" rel="noopener">台灣好行澎湖線<small>查詢公車路線與沿線旅遊資訊</small></a>
+<a class="resource-card" href="https://penghutravel.com/Travel/Island.htm" target="_blank" rel="noopener">鐵馬悠遊與單車路線<small>從各鄉市主題路線規劃自行車旅行</small></a>
+<a class="resource-card" href="https://penghutravel.com/Travel/Island.htm" target="_blank" rel="noopener">無障礙與綠色旅遊<small>參考友善遊程與低碳旅行資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>美食特產與住宿</h3><div class="resource-cards">
+<a class="resource-card" href="https://penghutravel.com/Food/goodfood" target="_blank" rel="noopener">美食特產<small>搜尋道地美食、特產與伴手禮</small></a>
+<a class="resource-card" href="https://penghutravel.com/Food/Stay/taiwanstay.htm" target="_blank" rel="noopener">澎湖合法旅宿<small>查詢各地合法民宿與旅館</small></a>
+<a class="resource-card" href="https://penghutravel.com/index.aspx" target="_blank" rel="noopener">海上平台與水上體驗<small>探索海上平台、浮潛與海洋活動</small></a>
+<a class="resource-card" href="https://penghutravel.com/index.aspx" target="_blank" rel="noopener">文創商品與伴手禮<small>瀏覽澎湖在地文創與特色好物</small></a>
+</div></div>
+<div class="resource-group"><h3>交通資訊與旅遊服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://penghutravel.com/Traffic/ComeToPenghu" target="_blank" rel="noopener">如何到澎湖<small>查詢空運、海運及抵達方式</small></a>
+<a class="resource-card" href="https://penghutravel.com/Traffic/IslandHopping.htm" target="_blank" rel="noopener">島際交通<small>掌握本島與離島間船班資訊</small></a>
+<a class="resource-card" href="https://penghutravel.com/Traffic/Bus" target="_blank" rel="noopener">島上交通與公車<small>查找公車、租車、機車與單車租借資訊</small></a>
+<a class="resource-card" href="https://penghutravel.com/Services/servicetip.htm" target="_blank" rel="noopener">旅遊須知<small>閱讀天候、潮汐及旅行安全提醒</small></a>
+<a class="resource-card" href="https://penghutravel.com/PublicationListC008230.aspx?appname=PublicationListC008230" target="_blank" rel="noopener">旅遊電子書<small>閱讀澎湖旅遊地圖、刊物與行前資料</small></a>
+</div></div>
+</div></section>
+
+<section class="feature" data-region="taiwan" data-area="island" data-city="matsu" data-city-exclusive>
+<div class="feature-intro"><h2>馬祖旅遊資源</h2><p>依馬祖旅遊網的活動報報、遊問必答、旅遊攻略與相關連結，並串接觀光導覽地圖、交通、航班和旅宿服務，整理多島旅行常用入口。選擇馬祖時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動消息與旅遊交流</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.matsu.idv.tw/travel/" target="_blank" rel="noopener">馬祖旅遊網<small>瀏覽活動報報、旅遊提問與攻略分享</small></a>
+<a class="resource-card" href="https://www.matsu.idv.tw/travel/" target="_blank" rel="noopener">活動報報<small>在馬祖旅遊網查看近期活動與旅行情報</small></a>
+<a class="resource-card" href="https://www.matsu.idv.tw/travel/" target="_blank" rel="noopener">遊問必答<small>參考旅客常見的交通、住宿與行程問題</small></a>
+<a class="resource-card" href="https://www.matsu.idv.tw/travel/" target="_blank" rel="noopener">旅遊攻略<small>搜尋南竿、北竿、莒光、東引與小三通攻略</small></a>
+</div></div>
+<div class="resource-group"><h3>島嶼地圖與景點探索</h3><div class="resource-cards">
+<a class="resource-card" href="https://travel.matsu.gov.tw/map/" target="_blank" rel="noopener">馬祖觀光導覽地圖<small>由連江縣政府地圖探索各島景點與服務</small></a>
+<a class="resource-card" href="https://www.matsu-nsa.gov.tw/" target="_blank" rel="noopener">馬祖國家風景區管理處<small>查找國家風景區景點、遊憩與旅遊資訊</small></a>
+<a class="resource-card" href="https://etravel.matsu.gov.tw/" target="_blank" rel="noopener">馬祖 e 點通<small>開啟馬祖觀光導覽與行程資訊入口</small></a>
+<a class="resource-card" href="https://www.matsu.idv.tw/travel/" target="_blank" rel="noopener">藍眼淚與季節玩法<small>從旅遊攻略搜尋藍眼淚、海岸與島嶼體驗</small></a>
+</div></div>
+<div class="resource-group"><h3>行程體驗、住宿與島內交通</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.matsu-trip.tw/home/Schedule" target="_blank" rel="noopener">台灣好行＠馬祖<small>查看南竿等島嶼的導覽巴士行程</small></a>
+<a class="resource-card" href="https://hotels.matsu.idv.tw/" target="_blank" rel="noopener">馬祖住宿通<small>搜尋馬祖旅宿、租車與旅遊服務</small></a>
+<a class="resource-card" href="https://www.matsuebus.tw/" target="_blank" rel="noopener">馬祖公車資訊<small>查詢島內公車路線與乘車服務</small></a>
+<a class="resource-card" href="https://ematsu.com/" target="_blank" rel="noopener">公車即時資訊<small>掌握馬祖公車動態與到站資訊</small></a>
+</div></div>
+<div class="resource-group"><h3>航班、船班與行前資訊</h3><div class="resource-cards">
+<a class="resource-card" href="https://hotels.matsu.idv.tw/" target="_blank" rel="noopener">離島航班<small>查看馬祖各島航班與交通連結</small></a>
+<a class="resource-card" href="https://client.matsu.idv.tw/" target="_blank" rel="noopener">新臺馬輪與海運資訊<small>查詢基隆往返馬祖的船班服務</small></a>
+<a class="resource-card" href="https://www.cwa.gov.tw/V8/C/" target="_blank" rel="noopener">天氣與海象<small>出發前確認馬祖天氣、海象與航班影響</small></a>
+<a class="resource-card" href="https://www.matsu.idv.tw/travel/" target="_blank" rel="noopener">馬祖旅遊常見問題<small>參考交通、跨島移動及季節旅行提醒</small></a>
+</div></div>
+</div></section>
+
+
+<section class="feature" data-region="taiwan" data-themes="rail" data-theme-exclusive>
+<div class="feature-intro"><h2>鐵道觀光資源</h2><p>依交通部觀光署「鐵道觀光」架構，整理臺灣特色支線、沿線景點與玩法、鐵路票券及乘車規劃入口。選擇「鐵道旅行」時顯示此區塊；選擇縣市分類時隱藏。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>臺灣特色鐵道路線</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027025" target="_blank" rel="noopener">集集線<small>串連二水、集集、水里與車埕，沿線可安排鐵道文化與單車旅行</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027026" target="_blank" rel="noopener">平溪線<small>沿線串連山城聚落、老街與瀑布景觀</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027027" target="_blank" rel="noopener">內灣線<small>從新竹市區前往內灣山城，體驗客庄與溪谷風景</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027028" target="_blank" rel="noopener">深澳線<small>搭乘支線前往海岸、漁港與海洋地景</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027029" target="_blank" rel="noopener">沙崙線<small>以臺南市區與高鐵臺南站為旅程轉乘節點</small></a>
+<a class="resource-card" href="https://afrch.forest.gov.tw/" target="_blank" rel="noopener">阿里山森林鐵道<small>探索森林鐵道、山林景觀與沿線車站</small></a>
+</div></div>
+<div class="resource-group"><h3>鐵道票券與特色列車</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.railway.gov.tw/tra-tip-web/tip/tip00D/tipD11/view11" target="_blank" rel="noopener">TR-PASS<small>查看臺鐵周遊票資訊，安排多站點旅行</small></a>
+<a class="resource-card" href="https://www.railway.gov.tw/tra-tip-web/tip/tip003/tip311/view10" target="_blank" rel="noopener">周遊券／悠遊券<small>查詢適合不同天數與旅程的鐵路票券</small></a>
+<a class="resource-card" href="https://www.railway.gov.tw/tra-tip-web/tip/tip003/tip313/view10" target="_blank" rel="noopener">兩鐵列車<small>了解攜帶自行車搭乘列車的資訊</small></a>
+<a class="resource-card" href="https://www.railway.gov.tw/tra-tip-web/tip/tip00H/tipH11/query" target="_blank" rel="noopener">郵輪式列車訂票<small>預訂臺鐵特色觀光列車與主題行程</small></a>
+<a class="resource-card" href="https://tholiday.thsrc.com.tw/" target="_blank" rel="noopener">高鐵假期<small>搭配高鐵與住宿、租車或在地行程安排旅行</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0011550" target="_blank" rel="noopener">鐵道觀光總覽<small>回到交通部觀光署鐵道觀光專頁</small></a>
+</div></div>
+<div class="resource-group"><h3>沿線景點與地方玩法</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027025" target="_blank" rel="noopener">集集線車站與周邊景點<small>參考二水、集集、水里、車埕沿線景點與美食</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027026" target="_blank" rel="noopener">平溪線山城散步<small>沿車站安排老街、山城風景與在地體驗</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027027" target="_blank" rel="noopener">內灣線客庄旅行<small>串連內灣老街、客家文化與沿線自然景觀</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027028" target="_blank" rel="noopener">深澳線海岸遊程<small>結合鐵道、海岸步道與漁港景點</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0027029" target="_blank" rel="noopener">沙崙線臺南轉乘<small>從臺南市區與高鐵站接續文化景點行程</small></a>
+</div></div>
+<div class="resource-group"><h3>交通與行程規劃</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.railway.gov.tw/" target="_blank" rel="noopener">國營臺灣鐵路<small>查詢臺鐵乘車、車站與旅客服務資訊</small></a>
+<a class="resource-card" href="https://www.thsrc.com.tw/" target="_blank" rel="noopener">台灣高鐵<small>規劃高鐵路線與轉乘安排</small></a>
+<a class="resource-card" href="https://www.taiwantrip.com.tw/" target="_blank" rel="noopener">台灣好行<small>查找鐵道車站周邊的景點接駁路線</small></a>
+<a class="resource-card" href="https://www.taiwan.net.tw/m1.aspx?sNo=0011550" target="_blank" rel="noopener">觀光署鐵道旅遊資訊<small>瀏覽特色支線、沿線介紹與鐵道旅遊推薦</small></a>
+</div></div>
+</div></section>
+
+
+<section class="feature" data-region="taiwan" data-themes="taiwantrip" data-theme-exclusive>
+<div class="feature-intro"><h2>台灣好行旅遊資源</h2><p>依新版台灣好行網站的「好行路線、公車時刻、購票資訊、旅遊指南、精采好行」架構，整理全台路線查詢、即時公車、票券預約、推薦遊程、沿線景點與旅遊摺頁。選擇「台灣好行」時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>全台好行路線與交通查詢</h3><div class="resource-cards">
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Route/Selection" target="_blank" rel="noopener">好行路線總覽<small>依縣市瀏覽全台台灣好行路線與停靠地區</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Bustime/Bus" target="_blank" rel="noopener">公車動態<small>選擇縣市與路線，查詢公車行駛資訊</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/" target="_blank" rel="noopener">時刻表與票價查詢<small>從新版首頁選擇路線，查看發車時刻與票價</small></a>
+</div></div>
+<div class="resource-group"><h3>購票、預約與乘車服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation/Step1" target="_blank" rel="noopener">座位預約<small>查詢可預約路線、日期、站點與班次</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation/CancelReservation" target="_blank" rel="noopener">取消預約<small>使用預約代號與電子信箱管理既有訂位</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation" target="_blank" rel="noopener">超值套票<small>依縣市和路線瀏覽一日券及旅遊套票</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation/Accessible" target="_blank" rel="noopener">無障礙預約<small>查看無障礙座位預約與搭乘服務</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊規劃與推薦遊程</h3><div class="resource-cards">
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/TravelPlan" target="_blank" rel="noopener">旅遊規劃<small>依旅遊主題、出發地點或目的地尋找路線靈感</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation/SpecialTrip" target="_blank" rel="noopener">推薦遊程<small>瀏覽各縣市台灣好行一日遊與主題路線</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Attractions" target="_blank" rel="noopener">好行景點<small>依縣市、路線與景點類型搜尋沿線景點</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/" target="_blank" rel="noopener">好行路線與沿線玩法<small>由首頁路線卡片進入路線介紹、站點與特色體驗</small></a>
+</div></div>
+<div class="resource-group"><h3>最新消息與旅行指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/News" target="_blank" rel="noopener">最新消息<small>查看路線異動、交通公告、活動與優惠情報</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Public/files/%E5%8F%B0%E7%81%A3%E5%A5%BD%E8%A1%8C%E6%91%BA%E9%A0%81%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%29_2025.12%E7%89%88.pdf" target="_blank" rel="noopener">台灣好行摺頁<small>下載官方中文版路線摺頁</small></a>
+<a class="resource-card" href="https://online.fliphtml5.com/cfnfz/ozuq/" target="_blank" rel="noopener">台灣好行電子書<small>線上閱讀新版台灣好行路線電子書</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/" target="_blank" rel="noopener">台灣好行新版網站<small>開啟新版首頁，使用時刻票價搜尋與回饋服務</small></a>
+</div></div>
+</div></section>
+
+<footer>看板與收藏來源：Trello「小旅行」｜內容更新請直接編輯對應 Trello 看板</footer>
+</main>
+<script>
+const cards=[...document.querySelectorAll("#destinations .card, .feature[data-region]")];
+const search=document.querySelector("#search");
+const regionButtons=[...document.querySelectorAll("[data-filter]")];
+const quickButtons=[...document.querySelectorAll("[data-quick-filter]")];
+const cityButtons=[...document.querySelectorAll("[data-city-filter]")];
+const cityGroups=[...document.querySelectorAll("[data-city-group]")];
+const taiwanQuickFilters=document.querySelector("#taiwanQuickFilters");
+const researchSubFilters=document.querySelector("#researchSubFilters");
+const researchTopics=new Set(["rail","taiwantrip","flight","forest"]);
+const taiwanAreas=new Set(["north","central","south","east","island"]);
+let region="all",quick="all",city="all";
+
+function syncFilters(){
+  regionButtons.forEach(b=>{
+    const selected=b.dataset.filter===region;
+    b.classList.toggle("active",selected);
+    b.setAttribute("aria-pressed",String(selected));
+  });
+  quickButtons.forEach(b=>{
+    const selected=b.dataset.quickFilter===quick;
+    b.classList.toggle("active",selected);
+    b.setAttribute("aria-pressed",String(selected));
+  });
+  cityButtons.forEach(b=>{
+    const selected=b.dataset.cityFilter===city;
+    b.classList.toggle("active",selected);
+    b.setAttribute("aria-pressed",String(selected));
+  });
+  cityGroups.forEach(g=>{g.hidden=!(region==="taiwan"&&g.dataset.cityGroup===quick);});
+  taiwanQuickFilters.hidden=region!=="taiwan";
+  researchSubFilters.hidden=region!=="research";
+}
+function update(){
+  const q=search.value.trim().toLocaleLowerCase();
+  let shown=0;
+  for(const c of cards){
+    const themeValues=(c.dataset.themes||"").split(/\s+/);
+    const okRegion=region==="all"||c.dataset.region===region||(region==="research"&&quick!=="all"&&themeValues.includes(quick));
+    const okQuick=c.hasAttribute("data-theme-exclusive")?quick===c.dataset.themes:(quick==="all"||(taiwanAreas.has(quick)
+      ? c.dataset.area===quick
+      : (c.dataset.themes||"").split(/\s+/).includes(quick)));
+    const cities=(c.dataset.city||"").split(/\s+/);
+    const okCity=c.hasAttribute("data-city-exclusive")?city===c.dataset.city:(city==="all"||cities.includes(city));
+    const okText=c.innerText.toLocaleLowerCase().includes(q);
+    c.hidden=!(okRegion&&okQuick&&okCity&&okText);
+    if(!c.hidden)shown++;
+  }
+  document.querySelector("#empty").style.display=shown?"none":"block";
+}
+search.addEventListener("input",update);
+regionButtons.forEach(b=>b.addEventListener("click",()=>{
+  region=b.dataset.filter;
+  if(region==="all"){
+    quick="all";
+    city="all";
+  }else if(region==="research"){
+    if(taiwanAreas.has(quick))quick="all";
+    city="all";
+  }else{
+    quick="all";
+    city="all";
+  }
+  syncFilters();
+  update();
+}));
+quickButtons.forEach(b=>b.addEventListener("click",()=>{
+  const selected=b.dataset.quickFilter;
+  quick=quick===selected?"all":selected;
+  if(researchTopics.has(quick))region="research";
+  else if(taiwanAreas.has(quick))region="taiwan";
+  if(quick!=="north")city="all";
+  syncFilters();
+  update();
+}));
+cityButtons.forEach(b=>b.addEventListener("click",()=>{
+  const selected=b.dataset.cityFilter;
+  city=city===selected?"all":selected;
+  const group=b.closest("[data-city-group]");
+  region="taiwan";
+  quick=group.dataset.cityGroup;
+  syncFilters();
+  update();
+}));
+syncFilters();
+update();
+</script>
+</body></html>

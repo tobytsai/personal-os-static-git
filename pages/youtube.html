@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#df5206">
+<title>YouTube 啟動器｜Toby Personal OS</title>
+<style>
+:root{--ink:#38220f;--muted:#85684f;--orange:#d94f08;--orange2:#f27518;--gold:#d2a82f;--cream:#fff9ed;--line:#f0e2d1;--shadow:0 16px 40px rgba(119,53,10,.15)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;background:linear-gradient(145deg,#fff2dc,#fff9ee 42%,#ffe8d6);min-height:100vh}
+a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1120px;margin:auto;padding:24px 22px 62px}
+.hero{position:relative;overflow:hidden;padding:24px 26px;border-radius:30px;background:linear-gradient(125deg,#d94f08,#eb6610 58%,#f39027);color:white;box-shadow:var(--shadow)}
+.hero:before,.hero:after{content:"";position:absolute;border:2px solid #ffffff38;border-radius:50%;pointer-events:none}.hero:before{width:280px;height:280px;right:-80px;top:-140px}.hero:after{width:185px;height:185px;right:130px;bottom:-148px}
+.hero-top{position:relative;z-index:1;display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:14px}.brand-icon{width:58px;height:58px;flex:none;border-radius:19px;background:#d5af3a;color:#6f4b0d;display:grid;place-items:center;font-size:29px;box-shadow:0 7px 18px #74320d45}.eyebrow{font-size:12px;letter-spacing:.11em;opacity:.88}.hero h1{font-size:clamp(29px,5vw,44px);margin:2px 0 5px;line-height:1.1;letter-spacing:.02em}.hero p{margin:0;color:#fff1e6;font-size:14px}.hero-actions{position:relative;z-index:2;display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}.pill-link{padding:10px 14px;border:1px solid #ffffff55;background:#ffffff25;color:#fff;border-radius:14px;font-size:13px;font-weight:800;white-space:nowrap}.pill-link.primary{background:#fff;color:#bd4106;border-color:#fff;box-shadow:0 6px 18px #75310e35}
+.stats{position:relative;z-index:1;display:flex;gap:8px;flex-wrap:wrap;margin-top:19px}.stat{background:#ffffff28;border:1px solid #ffffff45;border-radius:999px;padding:7px 12px;font-size:12px}
+.toolbar{display:grid;grid-template-columns:minmax(200px,1fr) auto;gap:12px;align-items:center;margin:19px 0 14px}.search{position:relative}.search input{width:100%;padding:14px 16px 14px 45px;border:1px solid #ecdcc9;background:#fff;border-radius:16px;outline:none;box-shadow:0 5px 18px #84451e10}.search:before{content:"⌕";position:absolute;left:15px;top:7px;font-size:27px;color:#a7886b}.help-top{border:0;background:#fff;border-radius:14px;padding:12px 15px;color:#bb490e;font-weight:800;cursor:pointer;box-shadow:0 5px 16px #84451e10}
+.shelves{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:14px 0}.shelf{min-width:0;background:#ffffffd9;border:1px solid #f0e0cd;border-radius:19px;padding:15px}.shelf-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}.shelf h2{font-size:16px;margin:0}.shelf small{color:var(--muted)}.mini-grid{display:flex;gap:8px;overflow:auto;padding-bottom:2px;min-height:28px}.mini{flex:0 0 auto;max-width:240px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 11px;font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.empty{color:var(--muted);font-size:12px;padding:5px 0}
+.featured{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}.feature{display:flex;align-items:center;gap:13px;padding:15px 17px;border:1px solid #f1dfc8;border-radius:18px;background:linear-gradient(120deg,#fff,#fff3e5);box-shadow:0 8px 20px #8b4b1b10}.feature-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#fce4d5;color:#c84110;font-size:23px}.feature strong{display:block;font-size:15px}.feature small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.feature .arrow{margin-left:auto;color:#b94b14;font-weight:900}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:23px 0 11px}.section-head h2{font-size:21px;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:4px 0 0}.count{font-size:12px;color:var(--muted);white-space:nowrap}
+.filters{display:flex;gap:8px;overflow:auto;padding:2px 1px 12px}.filter{border:1px solid #ecdcc9;background:#fff;color:#92501f;border-radius:999px;padding:9px 13px;font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer}.filter.active{background:#b7430b;color:#fff;border-color:#b7430b}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}.card{position:relative;min-height:162px;padding:15px;border:1px solid #efdfcd;border-radius:19px;background:#fff;box-shadow:0 8px 23px #7143190e;transition:transform .18s,box-shadow .18s;overflow:hidden}.card:hover{transform:translateY(-3px);box-shadow:0 14px 27px #7143191a}.card:after{content:"";position:absolute;right:-25px;bottom:-47px;width:108px;height:108px;border-radius:50%;background:var(--tint);pointer-events:none}.card-top{display:flex;justify-content:space-between;align-items:center;gap:8px;position:relative;z-index:1}.tag{font-size:10px;font-weight:800;color:#98501b;background:#fff2e3;border-radius:999px;padding:6px 9px}.star{width:35px;height:35px;border:1px solid #eee5dc;background:#fff;border-radius:50%;font-size:20px;color:#c9c1b8;cursor:pointer}.star.on{color:#e6a300;background:#fff6d7;border-color:#ffe08a}.card h3{font-size:16px;margin:10px 0 5px;line-height:1.35;position:relative;z-index:1}.card p{font-size:12px;color:#826c59;line-height:1.55;min-height:36px;margin:0 0 10px;position:relative;z-index:1}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:1}.card-bottom small{font-size:10px;color:#9a8876}.open{display:inline-flex;background:#c54a0a;color:#fff;border-radius:10px;padding:8px 10px;font-size:11px;font-weight:800}.nothing{grid-column:1/-1;text-align:center;padding:34px 18px;background:#fff;border-radius:18px;color:var(--muted)}
+.foot{text-align:center;color:#907e6c;font-size:11px;margin-top:26px}.modal{position:fixed;inset:0;background:#34231888;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.show{display:flex}.dialog{max-width:530px;width:100%;background:#fff;border-radius:23px;padding:22px;box-shadow:0 24px 80px #14233c55}.dialog-head{display:flex;justify-content:space-between;gap:12px;align-items:start}.dialog h2{font-size:20px;margin:0 0 8px}.dialog p{color:#695743;line-height:1.75;font-size:14px;white-space:pre-wrap}.close{border:0;border-radius:50%;width:36px;height:36px;background:#f7eee4;color:#624631;font-size:19px;cursor:pointer}
+@media(max-width:680px){.wrap{padding:14px 12px 40px}.hero{padding:19px;border-radius:23px}.hero-top{display:block}.hero-actions{justify-content:flex-start;margin-top:15px}.brand{align-items:flex-start}.brand-icon{width:49px;height:49px;border-radius:16px}.pill-link{font-size:11px;padding:9px 11px}.toolbar{grid-template-columns:1fr}.help-top{justify-self:start}.shelves{grid-template-columns:1fr}.featured{gap:8px}.feature{padding:12px}.feature-icon{width:38px;height:38px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{min-height:178px;padding:12px}.card h3{font-size:15px}.open{padding:8px 7px}}
+@media(max-width:390px){.cards{grid-template-columns:1fr}.featured{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero"><div class="hero-top"><div class="brand"><div class="brand-icon">▶</div><div><div class="eyebrow">WATCH • LISTEN • EXPLORE</div><h1>YouTube 啟動器</h1><p>新聞、知識、戲劇、音樂與興趣內容，整理成一眼就能找到的影音入口。</p></div></div><div class="hero-actions"><a class="pill-link" href="../index.html">← 回到 Toby 首頁</a><a class="pill-link primary" href="https://www.youtube.com/" target="_blank" rel="noopener">開啟 YouTube ↗</a></div></div><div class="stats"><span class="stat">▶ 24 個影音捷徑</span><span class="stat">✦ 星號收藏</span><span class="stat">↻ 最近開啟</span></div></header>
+<div class="toolbar"><label class="search"><input id="search" type="search" placeholder="搜尋公視、新聞、TED、音樂或主題…" aria-label="搜尋 YouTube 影音捷徑"></label><button class="help-top" id="helpAll">？ 功能說明</button></div>
+<div class="featured">
+<a class="feature" href="https://www.youtube.com/premium" target="_blank" rel="noopener" data-entry="premium"><span class="feature-icon">▶</span><span><strong>YouTube Premium</strong><small>無廣告觀賞與背景播放</small></span><span class="arrow">↗</span></a>
+<a class="feature" href="https://music.youtube.com/" target="_blank" rel="noopener" data-entry="music"><span class="feature-icon">♫</span><span><strong>YouTube Music</strong><small>打開音樂與播放清單</small></span><span class="arrow">↗</span></a>
+</div>
+<div class="shelves"><section class="shelf"><div class="shelf-head"><h2>✦ 我的收藏</h2><small>按捷徑右上角星號加入</small></div><div class="mini-grid" id="favorites"></div></section><section class="shelf"><div class="shelf-head"><h2>↻ 最近開啟</h2><small>開啟捷徑後自動記錄</small></div><div class="mini-grid" id="recent"></div></section></div>
+<section><div class="section-head"><div><h2>YouTube 影音分類</h2><p>從上傳圖片整理的頻道、平台與主題捷徑。</p></div><span id="count" class="count"></span></div><div class="filters" id="filters"></div><div class="cards" id="cards"></div></section>
+<footer class="foot">收藏與最近開啟記錄保存在目前瀏覽器。頻道捷徑使用 YouTube 搜尋，可再從結果頁選擇想看的頻道或影片。</footer>
+</main>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><article class="dialog"><div class="dialog-head"><h2 id="dialogTitle">怎麼使用 YouTube 啟動器？</h2><button class="close" id="close" aria-label="關閉">×</button></div><p id="dialogText"></p></article></div>
+<script>
+const searchUrl=q=>"https://www.youtube.com/results?search_query="+encodeURIComponent(q);
+const youkuUrl=q=>"https://so.youku.com/search_video/q/"+encodeURIComponent(q);
+const ITEMS=[
+{id:"pts-news",name:"公視新聞",category:"公視與公共內容",icon:"🟦",description:"公共電視新聞與公共議題報導。",query:"公視新聞 PTS News"},
+{id:"pts-drama",name:"公視戲劇",category:"公視與公共內容",icon:"🟪",description:"公視戲劇、影集與影視作品。",query:"公視戲劇"},
+{id:"pts-channel",name:"公視影音",category:"公視與公共內容",icon:"⚪",description:"公視節目、影音與公共內容。",query:"公視 公共電視"},
+{id:"pts-night",name:"公視主題之夜 SHOW",category:"公視與公共內容",icon:"🌙",description:"公視主題之夜節目與深度對談。",query:"公視主題之夜 SHOW"},
+{id:"pts-live",name:"公視主題直播",category:"公視與公共內容",icon:"📡",description:"尋找公視主題直播與特別節目。",query:"公視 主題 直播"},
+{id:"ted",name:"TED",category:"知識與紀錄",icon:"🔴",description:"TED 演講與跨領域觀點。",url:"https://www.youtube.com/@TED",search:"TED talks 演講"},
+{id:"ufo",name:"UFO 未解之謎",category:"知識與紀錄",icon:"🛸",description:"未解之謎、UFO 與神秘現象內容。",query:"UFO 未解之謎"},
+{id:"cw",name:"天下雜誌",category:"知識與紀錄",icon:"🌏",description:"國際趨勢、科技、財經與社會議題。",url:"https://www.youtube.com/@cwvideo",search:"天下雜誌 video"},
+{id:"variety",name:"奇趣綜藝局",category:"知識與紀錄",icon:"🎭",description:"綜藝、趣味與多元娛樂內容。",query:"奇趣綜藝局"},
+{id:"ettv57",name:"57 東森財經新聞",category:"新聞與財經",icon:"📈",description:"財經、產業與市場新聞。",query:"57 東森財經新聞"},
+{id:"mirror",name:"鏡新聞",category:"新聞與財經",icon:"📰",description:"新聞現場、時事與深度報導。",query:"鏡新聞 官方頻道"},
+{id:"setnews",name:"三立 iNEWS",category:"新聞與財經",icon:"🔵",description:"三立財經新聞與即時資訊。",query:"三立 iNEWS 官方"},
+{id:"businessweekly",name:"商業周刊",category:"新聞與財經",icon:"🟠",description:"商業、管理與產業觀察。",query:"商業周刊"},
+{id:"keymoment",name:"關鍵時刻",category:"新聞與財經",icon:"🎙️",description:"時事討論與專題節目。",query:"關鍵時刻"},
+{id:"cts",name:"華視新聞 CH52",category:"新聞與財經",icon:"🔷",description:"華視新聞與 CH52 相關影音。",query:"華視新聞 CH52"},
+{id:"premium",name:"YouTube Premium",category:"影音平台",icon:"▶",description:"管理 YouTube Premium 與會員功能。",url:"https://www.youtube.com/premium",search:"Premium"},
+{id:"music",name:"YouTube Music",category:"影音平台",icon:"♫",description:"音樂播放、歌曲與播放清單。",url:"https://music.youtube.com/",search:"Music"},
+{id:"youku",name:"優酷",category:"優酷影音",icon:"🔹",description:"開啟優酷影音平台。",url:"https://www.youku.com/",search:"優酷"},
+{id:"youku-doc",name:"優酷紀實",category:"優酷影音",icon:"🎥",description:"紀錄片與真實故事。",url:youkuUrl("紀實 紀錄片"),search:"紀實 紀錄片"},
+{id:"youku-movie",name:"優酷電影",category:"優酷影音",icon:"🎬",description:"電影作品與片單搜尋。",url:youkuUrl("電影"),search:"電影"},
+{id:"youku-variety",name:"優酷綜藝",category:"優酷影音",icon:"✨",description:"綜藝節目與娛樂內容。",url:youkuUrl("綜藝"),search:"綜藝"},
+{id:"community",name:"#社區營造",category:"社區與興趣",icon:"🏘️",description:"社造、地方行動與社區故事。",query:"社區營造 台灣"},
+{id:"mainland",name:"#大陸人",category:"社區與興趣",icon:"🧭",description:"華人生活、文化與跨地域故事。",query:"大陸人 台灣 生活"},
+{id:"music-listen",name:"音樂欣賞",category:"社區與興趣",icon:"🎧",description:"搜尋音樂欣賞、現場演出與歌單。",query:"音樂欣賞 歌單"},
+];
+const categories=["全部",...new Set(ITEMS.map(x=>x.category))];
+let selected="全部",term="";
+const favKey="tobyYouTubeFavorites",recentKey="tobyYouTubeRecent";
+const getList=k=>{try{return JSON.parse(localStorage.getItem(k)||"[]")}catch{return[]}};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function persist(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function toggleFavorite(id){const f=getList(favKey);persist(favKey,f.includes(id)?f.filter(x=>x!==id):[...f,id]);render()}
+function markRecent(id){const r=getList(recentKey).filter(x=>x!==id);persist(recentKey,[id,...r].slice(0,8));renderShelves()}
+function urlFor(item){return item.url||searchUrl(item.query||item.name)}
+function renderShelves(){const fill=(id,listKey,empty)=>{const host=document.getElementById(id),items=getList(listKey);host.innerHTML=items.length?items.map(itemId=>{const item=ITEMS.find(x=>x.id===itemId);return item?'<a class="mini" href="'+esc(urlFor(item))+'" target="_blank" rel="noopener" data-entry="'+esc(item.id)+'">'+esc(item.icon+" "+item.name)+' ↗</a>':""}).join(""):'<span class="empty">'+empty+'</span>'};fill("favorites",favKey,"收藏的影音捷徑會列在這裡。");fill("recent",recentKey,"開啟捷徑後，最近使用項目會列在這裡。")}
+function tint(cat){return cat==="公視與公共內容"?"#dcecff":cat==="新聞與財經"?"#ffe0d0":cat==="知識與紀錄"?"#e9e1ff":cat==="優酷影音"?"#dff3ff":cat==="影音平台"?"#fff0c5":"#e6f3da"}
+function render(){const f=document.getElementById("filters");f.innerHTML=categories.map(c=>'<button type="button" class="filter '+(selected===c?"active":"")+'" data-category="'+esc(c)+'" aria-pressed="'+(selected===c)+'">'+esc(c)+(c==="全部"?" · "+ITEMS.length:" · "+ITEMS.filter(x=>x.category===c).length)+'</button>').join("");const visible=ITEMS.filter(x=>(selected==="全部"||x.category===selected)&&(!term||(x.name+" "+x.category+" "+x.description+" "+(x.search||"")).toLowerCase().includes(term.toLowerCase())));document.getElementById("count").textContent="顯示 "+visible.length+" / "+ITEMS.length+" 項";const favs=getList(favKey);document.getElementById("cards").innerHTML=visible.length?visible.map(item=>'<article class="card" style="--tint:'+tint(item.category)+'"><div class="card-top"><span class="tag">'+esc(item.category)+'</span><button type="button" class="star '+(favs.includes(item.id)?"on":"")+'" data-favorite="'+esc(item.id)+'" aria-label="收藏 '+esc(item.name)+'" aria-pressed="'+favs.includes(item.id)+'">'+(favs.includes(item.id)?"★":"☆")+'</button></div><h3>'+esc(item.icon+" "+item.name)+'</h3><p>'+esc(item.description)+'</p><div class="card-bottom"><small>YouTube / 影音捷徑</small><a class="open" href="'+esc(urlFor(item))+'" target="_blank" rel="noopener" data-entry="'+esc(item.id)+'">開啟 ↗</a></div></article>').join(""):'<div class="nothing">找不到符合條件的影音捷徑，試試其他關鍵字或分類。</div>';renderShelves()}
+document.getElementById("filters").addEventListener("click",e=>{const button=e.target.closest("button[data-category]");if(button){selected=button.dataset.category;render()}});
+document.getElementById("cards").addEventListener("click",e=>{const star=e.target.closest("button[data-favorite]");if(star){e.preventDefault();toggleFavorite(star.dataset.favorite);return}const link=e.target.closest("a[data-entry]");if(link)markRecent(link.dataset.entry)});
+document.querySelector(".featured").addEventListener("click",e=>{const link=e.target.closest("a[data-entry]");if(link)markRecent(link.dataset.entry)});
+document.getElementById("favorites").addEventListener("click",e=>{const link=e.target.closest("a[data-entry]");if(link)markRecent(link.dataset.entry)});
+document.getElementById("recent").addEventListener("click",e=>{const link=e.target.closest("a[data-entry]");if(link)markRecent(link.dataset.entry)});
+document.getElementById("search").addEventListener("input",e=>{term=e.target.value;render()});
+document.getElementById("helpAll").onclick=()=>{document.getElementById("dialogTitle").textContent="怎麼使用 YouTube 啟動器？";document.getElementById("dialogText").textContent="分類：依影音平台、公視與公共內容、新聞與財經、知識與紀錄、優酷影音、社區與興趣瀏覽。\n搜尋：搜尋頻道、平台或主題。未指定固定頻道網址的捷徑會先開啟 YouTube 搜尋結果，方便你挑選想看的頻道或影片。\n星號收藏：按 ☆ 把常用入口加入「我的收藏」，再按一次可取消。\n最近開啟：開啟捷徑後會記錄在「最近開啟」。\nYouTube Premium 和 Music：從頁面上方的快速入口直接開啟。\n收藏與最近開啟記錄保存在目前瀏覽器，不會同步到其他裝置。";document.getElementById("modal").classList.add("show")};
+document.getElementById("close").onclick=()=>document.getElementById("modal").classList.remove("show");
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")e.currentTarget.classList.remove("show")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("show")});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#b31b5c"><title>資料庫啟動器｜Personal OS</title>
+<style>
+:root{--berry:#b31b5c;--yellow:#ffbf00;--ink:#173c70;--paper:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--berry);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;color:var(--ink)}
+main{width:min(760px,100%);margin:auto;padding:16px 22px 48px}.back{display:inline-block;color:white;text-decoration:none;font-weight:700;margin-bottom:12px}
+h1{margin:0 0 18px;background:var(--yellow);color:#fff;text-align:center;font-size:clamp(28px,7vw,48px);line-height:1.25;padding:10px}
+.services{display:grid;gap:8px;margin-bottom:20px}.service{display:flex;align-items:center;gap:16px;background:#fff;border-radius:15px;padding:12px 18px;text-decoration:none;color:var(--ink);font-size:clamp(18px,4vw,24px);font-weight:650;min-height:66px}
+.logo{width:44px;height:42px;display:grid;place-items:center;font-size:25px;font-weight:900;border-radius:10px;color:#fff;background:#2eb9d3}
+.service:nth-child(1) .logo{background:linear-gradient(135deg,#1998d1 0 25%,#f05042 25% 50%,#f4bd15 50% 75%,#36a852 75%)}
+.service:nth-child(2) .logo{background:linear-gradient(135deg,#f4c82d 0 33%,#e34b43 33% 66%,#36afd0 66%)}
+.service:nth-child(3) .logo{background:#29b5df}.service:nth-child(4) .logo{background:#1264a3}
+.service:hover,.table:hover{filter:brightness(.96);transform:translateY(-1px)}
+h2{text-align:center;color:#fff;font-size:24px;margin:12px 0 10px}.hint{text-align:center;color:#ffe5ef;font-size:13px;margin:0 0 13px}
+.tools{display:flex;justify-content:center;gap:8px;margin:0 0 16px}.tools input{width:100%;border:1px solid #ffffff88;border-radius:999px;background:#fff;padding:12px 15px;font:inherit;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.table{min-height:76px;border-radius:14px;background:#fff;color:var(--ink);text-decoration:none;padding:10px 6px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:clamp(14px,3.3vw,20px);line-height:1.25;transition:transform .15s}
+.table small{display:block;font-size:10px;color:#758296;margin-top:5px}
+.table[hidden]{display:none!important}
+@media(max-width:480px){main{padding:12px 14px 32px}.grid{gap:7px}.table{min-height:69px;padding:8px 4px}.table small{font-size:9px}.service{min-height:60px}}
+</style><link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body><main><a class="back" href="../">← 返回首頁</a><h1>資料庫啟動器</h1>
+<nav class="services" aria-label="資料庫服務">
+<a class="service" href="https://stackby.com/" target="_blank" rel="noopener"><span class="logo">▰</span><span>Stackby 資料庫</span></a>
+<a class="service" href="https://airtable.com/" target="_blank" rel="noopener"><span class="logo">◆</span><span>Airtable 資料庫</span></a>
+<a class="service" href="https://retable.io/" target="_blank" rel="noopener"><span class="logo">▥</span><span>Retable.io</span></a>
+<a class="service" href="https://trello.com/" target="_blank" rel="noopener"><span class="logo">▣</span><span>Trello</span></a></nav>
+<section aria-labelledby="dali"><h2 id="dali">達利</h2><p class="hint">搜尋資料表名稱，點選後前往 Airtable 工作區，再搜尋同名資料表。</p>
+<div class="tools"><input id="filter" type="search" placeholder="搜尋達利資料表…" aria-label="搜尋達利資料表"></div>
+<div class="grid" id="tables"><a class="table" href="https://airtable.com/appPXSnxWroL0MXbl/tbllsOVy7fJhca55Z/viwod3MP3KyPNiXcB" target="_blank" rel="noopener"><span>店內設備</span><small>開啟 Airtable Grid view</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>facebook</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>訂做空框</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>小雅</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>戊辰畫廊</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>御品畫廊</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>松風閣</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>美麗新鏡界</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>藝術畫廊</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>畫家</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>藝術品</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>產品／服務</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>店類別</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>服務大項</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>服務中項</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>服務細項</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>Imported table</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>相框結構</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>框品細項</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>裱法分類</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>尺寸細項</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>框架法</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>裱畫配件</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>畫類細項</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>裱畫材料</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>裱畫材料－細目表</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>框廠</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>額縁の高橋</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>畫框技術事項</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>阿竹</span><small>在 Airtable 工作區搜尋</small></a>
+<a class="table" href="https://airtable.com/" target="_blank" rel="noopener"><span>裱框作品</span><small>在 Airtable 工作區搜尋</small></a></div>
+</section></main>
+<script>const q=document.querySelector("#filter"),tables=[...document.querySelectorAll(".table")];q.addEventListener("input",()=>{const term=q.value.trim().toLocaleLowerCase();tables.forEach(t=>t.hidden=!t.innerText.toLocaleLowerCase().includes(term))});</script>
+</body></html>

@@ -35,4 +35,4 @@ $("cards").addEventListener("click",e=>{const b=e.target.closest("[data-star]");
 document.addEventListener("click",e=>{const a=e.target.closest("[data-open]");if(!a)return;const id=a.dataset.open;recent=[id].concat(recent.filter(x=>x!==id)).slice(0,12);save(REC,recent);drawShelf("recent",recent,"開啟閱讀連結或 Trello 原卡後，最近項目會列在這裡。")});
 $("helpButton").addEventListener("click",()=>$("help").showModal());$("closeHelp").addEventListener("click",()=>$("help").close());$("help").addEventListener("click",e=>{if(e.target===$("help"))$("help").close()});
 loadData();
-</script></body></html>
+</script><script src="../shared-nav.js" defer></script></body></html>
