@@ -56,4 +56,4 @@ $("sets").innerHTML=SETS.map(s=>'<button class="set" data-set="'+s+'">套裝-'+s
 $("sets").addEventListener("click",function(e){const b=e.target.closest("[data-set]");if(!b)return;const x=ITEMS.find(i=>i.id==="sets-guide");recent=["sets-guide"].concat(recent.filter(i=>i!=="sets-guide")).slice(0,8);save(REC_KEY,recent);shelf("recent",recent,"開啟捷徑後，最近使用項目會列在這裡。");window.open(x.url,"_blank","noopener")});
 $("helpBtn").addEventListener("click",()=>$("help").showModal());$("closeHelp").addEventListener("click",()=>$("help").close());$("help").addEventListener("click",function(e){if(e.target===$("help"))$("help").close()});
 render();
-</script><script src="../shared-nav.js" defer></script></body></html>
+</script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
