@@ -29,7 +29,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 <header class="hero"><div class="eyebrow">PERSONAL OS · TRAVEL</div><h1>旅遊資訊</h1><p>把想去的地方、景點靈感和行程規劃集中在這裡。選一個目的地，開啟對應的小旅行看板。</p></header>
 <div class="toolbar"><input class="search" id="search" type="search" placeholder="搜尋目的地，例如：台北、廈門、海島" aria-label="搜尋目的地"></div>
 <nav class="filters" aria-label="目的地篩選"><button class="active" data-filter="all">全部</button><button data-filter="taiwan">台灣</button><button data-filter="china">中國大陸</button><button data-filter="asia">亞洲・其他</button><button data-filter="research">旅遊規劃</button></nav>
-<p class="sub" style="margin:0 0 8px">台灣分區與旅行專題（點選分類篩選，再點一次可取消）</p><nav class="filters" aria-label="台灣分區與旅行專題篩選"><button data-quick-filter="north" aria-pressed="false">台灣・北部</button><button data-quick-filter="central" aria-pressed="false">台灣・中部</button><button data-quick-filter="south" aria-pressed="false">台灣・南部</button><button data-quick-filter="east" aria-pressed="false">台灣・東部</button><button data-quick-filter="island" aria-pressed="false">台灣・離島</button><button data-quick-filter="rail" aria-pressed="false">鐵道旅行</button><button data-quick-filter="flight" aria-pressed="false">機票研究</button><button data-quick-filter="forest" aria-pressed="false">森林遊樂區</button></nav>
+<p class="sub" style="margin:0 0 8px">台灣分區與旅行專題（點選分類篩選，再點一次可取消）</p><nav class="filters" aria-label="台灣分區與旅行專題篩選"><button data-quick-filter="north" aria-pressed="false">台灣・北部</button><button data-quick-filter="central" aria-pressed="false">台灣・中部</button><button data-quick-filter="south" aria-pressed="false">台灣・南部</button><button data-quick-filter="east" aria-pressed="false">台灣・東部</button><button data-quick-filter="island" aria-pressed="false">台灣・離島</button><button data-quick-filter="rail" aria-pressed="false">鐵道旅行</button><button data-quick-filter="taiwantrip" aria-pressed="false">台灣好行</button><button data-quick-filter="flight" aria-pressed="false">機票研究</button><button data-quick-filter="forest" aria-pressed="false">森林遊樂區</button></nav>
 <div id="northCityFilters" data-city-group="north" hidden><p class="sub" style="margin:2px 0 8px">台灣北部城市分類</p><nav class="filters" aria-label="台灣北部城市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部北部</button><button data-city-filter="taipei" aria-pressed="false">台北市</button><button data-city-filter="newtaipei" aria-pressed="false">新北市</button><button data-city-filter="keelung" aria-pressed="false">基隆市</button><button data-city-filter="taoyuan" aria-pressed="false">桃園市</button><button data-city-filter="hsinchu-city" aria-pressed="false">新竹市</button><button data-city-filter="hsinchu-county" aria-pressed="false">新竹縣</button><button data-city-filter="miaoli" aria-pressed="false">苗栗縣</button><button data-city-filter="yilan" aria-pressed="false">宜蘭縣</button></nav></div>
 <div id="centralCityFilters" data-city-group="central" hidden><p class="sub" style="margin:2px 0 8px">台灣中部縣市分類</p><nav class="filters" aria-label="台灣中部縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部中部</button><button data-city-filter="taichung" aria-pressed="false">臺中市</button><button data-city-filter="changhua" aria-pressed="false">彰化縣</button><button data-city-filter="nantou" aria-pressed="false">南投縣</button><button data-city-filter="yunlin" aria-pressed="false">雲林縣</button></nav></div>
 <div id="southCityFilters" data-city-group="south" hidden><p class="sub" style="margin:2px 0 8px">台灣南部縣市分類</p><nav class="filters" aria-label="台灣南部縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部南部</button><button data-city-filter="chiayi-city" aria-pressed="false">嘉義市</button><button data-city-filter="chiayi-county" aria-pressed="false">嘉義縣</button><button data-city-filter="tainan" aria-pressed="false">台南市</button><button data-city-filter="kaohsiung" aria-pressed="false">高雄市</button><button data-city-filter="pingtung" aria-pressed="false">屏東縣</button></nav></div>
@@ -905,6 +905,35 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 </div></div>
 </div></section>
 
+
+<section class="feature" data-region="taiwan" data-themes="taiwantrip" data-theme-exclusive>
+<div class="feature-intro"><h2>台灣好行旅遊資源</h2><p>依新版台灣好行網站的「好行路線、公車時刻、購票資訊、旅遊指南、精采好行」架構，整理全台路線查詢、即時公車、票券預約、推薦遊程、沿線景點與旅遊摺頁。選擇「台灣好行」時顯示此區塊。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>全台好行路線與交通查詢</h3><div class="resource-cards">
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Route/Selection" target="_blank" rel="noopener">好行路線總覽<small>依縣市瀏覽全台台灣好行路線與停靠地區</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Bustime/Bus" target="_blank" rel="noopener">公車動態<small>選擇縣市與路線，查詢公車行駛資訊</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/" target="_blank" rel="noopener">時刻表與票價查詢<small>從新版首頁選擇路線，查看發車時刻與票價</small></a>
+</div></div>
+<div class="resource-group"><h3>購票、預約與乘車服務</h3><div class="resource-cards">
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation/Step1" target="_blank" rel="noopener">座位預約<small>查詢可預約路線、日期、站點與班次</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation/CancelReservation" target="_blank" rel="noopener">取消預約<small>使用預約代號與電子信箱管理既有訂位</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation" target="_blank" rel="noopener">超值套票<small>依縣市和路線瀏覽一日券及旅遊套票</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation/Accessible" target="_blank" rel="noopener">無障礙預約<small>查看無障礙座位預約與搭乘服務</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊規劃與推薦遊程</h3><div class="resource-cards">
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/TravelPlan" target="_blank" rel="noopener">旅遊規劃<small>依旅遊主題、出發地點或目的地尋找路線靈感</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Reservation/SpecialTrip" target="_blank" rel="noopener">推薦遊程<small>瀏覽各縣市台灣好行一日遊與主題路線</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Attractions" target="_blank" rel="noopener">好行景點<small>依縣市、路線與景點類型搜尋沿線景點</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/" target="_blank" rel="noopener">好行路線與沿線玩法<small>由首頁路線卡片進入路線介紹、站點與特色體驗</small></a>
+</div></div>
+<div class="resource-group"><h3>最新消息與旅行指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/News" target="_blank" rel="noopener">最新消息<small>查看路線異動、交通公告、活動與優惠情報</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/Public/files/%E5%8F%B0%E7%81%A3%E5%A5%BD%E8%A1%8C%E6%91%BA%E9%A0%81%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88%29_2025.12%E7%89%88.pdf" target="_blank" rel="noopener">台灣好行摺頁<small>下載官方中文版路線摺頁</small></a>
+<a class="resource-card" href="https://online.fliphtml5.com/cfnfz/ozuq/" target="_blank" rel="noopener">台灣好行電子書<small>線上閱讀新版台灣好行路線電子書</small></a>
+<a class="resource-card" href="https://beta.taiwantrip.tad.gov.tw/" target="_blank" rel="noopener">台灣好行新版網站<small>開啟新版首頁，使用時刻票價搜尋與回饋服務</small></a>
+</div></div>
+</div></section>
+
 <footer>看板與收藏來源：Trello「小旅行」｜內容更新請直接編輯對應 Trello 看板</footer>
 </main>
 <script>
@@ -954,7 +983,7 @@ function update(){
 search.addEventListener("input",update);
 regionButtons.forEach(b=>b.addEventListener("click",()=>{
   region=b.dataset.filter;
-  if(region==="all"||(region!=="taiwan"&&(taiwanAreas.has(quick)||quick==="rail"))) quick="all";
+  if(region==="all"||(region!=="taiwan"&&(taiwanAreas.has(quick)||quick==="rail"||quick==="taiwantrip"))) quick="all";
   city="all";
   syncFilters();
   update();
@@ -962,7 +991,7 @@ regionButtons.forEach(b=>b.addEventListener("click",()=>{
 quickButtons.forEach(b=>b.addEventListener("click",()=>{
   const selected=b.dataset.quickFilter;
   quick=quick===selected?"all":selected;
-  if(taiwanAreas.has(quick)||quick==="rail")region="taiwan";
+  if(taiwanAreas.has(quick)||quick==="rail"||quick==="taiwantrip")region="taiwan";
   if(quick!=="north")city="all";
   syncFilters();
   update();
