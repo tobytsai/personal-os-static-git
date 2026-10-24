@@ -51,7 +51,7 @@
     return a;
   }
   if(!homePage){
-    document.querySelectorAll("a").forEach(a=>{if(/(返回首頁|回到.*首頁)/.test((a.textContent||"").replace(/\\s+/g," ").trim()))a.classList.add("os-page-home-link")});
+    document.querySelectorAll("a").forEach(a=>{if(/(返回首頁|回到.*首頁)/.test((a.textContent||"").replace(/\s+/g," ").trim()))a.classList.add("os-page-home-link")});
     document.body.classList.add("os-subpage");
     items.forEach(item=>links.appendChild(makeLink(item)));
     document.body.prepend(nav);
