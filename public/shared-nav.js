@@ -2,7 +2,7 @@
   const homePage = !!document.querySelector(".rail");
   const base = homePage ? "./" : "../";
   const items = [
-    ["⌂","首頁",base+"index.html"],
+    ["←","返回首頁",base+"index.html"],
     ["▦","工具",base+"index.html#tools"],
     ["★","收藏",base+"index.html#favorites"],
     ["📅","行事曆啟動器",base+"pages/calendar.html"],
@@ -18,6 +18,7 @@
     #os-global-nav .os-link{flex:0 0 auto;display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:15px;background:#f5f6f8;color:#454b55;text-decoration:none;font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC",sans-serif;white-space:nowrap}
     #os-global-nav .os-link:hover{background:#e9eaf4;color:#20242a}
     #os-global-nav .os-icon{font-size:19px;line-height:1}
+    .os-page-home-link{display:none!important}
     #os-global-menu{position:fixed;z-index:10002;top:78px;left:14px;width:min(330px,calc(100vw - 28px));padding:12px;background:#fff;border:1px solid #e6e9ee;border-radius:20px;box-shadow:0 18px 48px rgba(25,31,40,.2);display:none}
     #os-global-menu.is-open{display:block}
     #os-global-menu .os-menu-title{padding:8px 10px 12px;color:#747c87;font:700 12px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC",sans-serif;letter-spacing:.08em}
@@ -50,6 +51,7 @@
     return a;
   }
   if(!homePage){
+    document.querySelectorAll("a").forEach(a=>{if(/(返回首頁|回到.*首頁)/.test((a.textContent||"").replace(/\\s+/g," ").trim()))a.classList.add("os-page-home-link")});
     document.body.classList.add("os-subpage");
     items.forEach(item=>links.appendChild(makeLink(item)));
     document.body.prepend(nav);
