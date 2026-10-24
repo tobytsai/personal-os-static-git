@@ -974,7 +974,7 @@ function update(){
   const q=search.value.trim().toLocaleLowerCase();
   let shown=0;
   for(const c of cards){
-    const themeValues=(c.dataset.themes||"").split(/\\s+/);
+    const themeValues=(c.dataset.themes||"").split(/\s+/);
     const okRegion=region==="all"||c.dataset.region===region||(region==="research"&&quick!=="all"&&themeValues.includes(quick));
     const okQuick=c.hasAttribute("data-theme-exclusive")?quick===c.dataset.themes:(quick==="all"||(taiwanAreas.has(quick)
       ? c.dataset.area===quick
