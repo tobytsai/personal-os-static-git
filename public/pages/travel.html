@@ -17,9 +17,9 @@
 h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .card{display:flex;flex-direction:column;min-height:145px;background:var(--paper);border:1px solid var(--line);border-radius:19px;padding:17px;text-decoration:none;color:inherit;transition:transform .16s,box-shadow .16s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px #18343a12}
 .meta{display:flex;align-items:center;justify-content:space-between;gap:8px}.tag{font-size:12px;background:#e7f4f1;color:var(--sea);border-radius:999px;padding:5px 9px;font-weight:700}.arrow{font-size:20px;color:var(--sea)}.card h3{font-size:20px;margin:13px 0 5px}.card p{color:var(--muted);margin:0;font-size:14px;line-height:1.55}.card .link{margin-top:auto;padding-top:13px;color:var(--sea);font-size:13px;font-weight:700}
-.feature{display:grid;grid-template-columns:1.1fr 1.9fr;gap:14px;margin-top:14px}.feature-intro{border-radius:20px;background:#e0f2ed;padding:22px}.feature-intro h2{margin:0 0 8px}.feature-intro p{color:var(--muted);line-height:1.65;margin:0}.quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick a{background:white;border:1px solid var(--line);border-radius:15px;text-decoration:none;color:var(--ink);padding:15px;font-weight:700;line-height:1.4}.quick small{display:block;color:var(--muted);font-weight:400;margin-top:5px}
+.feature{margin-top:24px}.feature-intro{border-radius:22px;background:#e0f2ed;padding:22px 24px;margin-bottom:16px}.feature-intro h2{margin:0 0 8px}.feature-intro p{color:var(--muted);line-height:1.65;margin:0}.resource-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.resource-group{background:#fffdf8cc;border:1px solid var(--line);border-radius:20px;padding:17px}.resource-group h3{font-size:17px;margin:0 0 11px}.resource-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:9px}.resource-card{display:flex;flex-direction:column;min-height:90px;background:white;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--ink);padding:13px;font-weight:700;line-height:1.4;transition:transform .16s,box-shadow .16s}.resource-card:hover{transform:translateY(-2px);box-shadow:0 8px 18px #18343a12}.resource-card small{display:block;color:var(--muted);font-weight:400;margin-top:5px}
 .empty{display:none;padding:22px;background:white;border-radius:16px;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:13px;padding-top:30px}
-@media(max-width:620px){.wrap{padding:14px 12px 38px}.hero{padding:26px 21px;border-radius:22px}.feature{grid-template-columns:1fr}.quick{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.wrap{padding:14px 12px 38px}.hero{padding:26px 21px;border-radius:22px}.resource-groups{grid-template-columns:1fr}}
 .card[hidden],.feature[hidden]{display:none!important}
 </style>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -82,14 +82,39 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 <a class="card" data-region="taiwan" data-area="north" data-city="yilan" data-themes="nature forest" href="https://trello.com/c/jqURmtME/38-%E6%98%8E%E6%B1%A0%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・宜蘭縣</span><span class="arrow">↗</span></div><h3>明池國家森林遊樂區</h3><p>森林湖泊景觀。</p><span class="link">查看 Trello 景點資料 →</span></a>
 <a class="card" data-region="taiwan" data-area="east" data-city="taitung" data-themes="nature forest" href="https://trello.com/c/UzMhLpcY/39-%E7%9F%A5%E6%9C%AC%E5%9C%8B%E5%AE%B6%E6%A3%AE%E6%9E%97%E9%81%8A%E6%A8%82%E5%8D%80" target="_blank" rel="noopener"><div class="meta"><span class="tag">台灣・台東縣</span><span class="arrow">↗</span></div><h3>知本國家森林遊樂區</h3><p>溫泉與森林浴步道。</p><span class="link">查看 Trello 景點資料 →</span></a>
 <a class="card" data-region="research" data-themes="taipei-sheet" href="https://chatgpt.com/library/share/libfile_757c2d3ef1788191b7bcaa492c586391?account_id=personal" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>台北旅遊行程試算表</h3><p>台北市主題遊程資料與已更新的官方旅遊網站網址。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taiwantrip north" href="https://docs.google.com/spreadsheets/d/1i56OVxNhE2TDd7ATv0ozoLxK1aXo5-CXdj21FTNFf2o/edit?usp=drivesdk" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>台灣好行｜北北基路線遊玩表</h3><p>整理台灣好行北北基路線、沿線站點與遊玩資訊。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taipei events" href="https://docs.google.com/spreadsheets/d/1TM258SgnXnCEK3RN30xRlzSTs2KzERFd/edit?usp=drivesdk&amp;ouid=109811689831592519931&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>臺北活動年曆2026</h3><p>整理臺北市 2026 年活動資訊與活動日期。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taipei attractions" href="https://docs.google.com/spreadsheets/d/1DuVCBT4jFHfi6sBz5Fb1uhkYN7vELgFf/edit?usp=drivesdk&amp;ouid=109811689831592519931&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>臺北景點470筆</h3><p>臺北市 470 筆景點資料整理表。</p><span class="link">開啟試算表 →</span></a><a class="card" data-region="research" data-themes="taipei events" href="https://docs.google.com/spreadsheets/d/1Q4Q4TPuvYBjrSY5xoOjoP9KsH3SF3l8lmZlULcIH3h0/edit" target="_blank" rel="noopener"><div class="meta"><span class="tag">旅遊規劃</span><span class="arrow">↗</span></div><h3>臺北市活動展演</h3><p>臺北市觀光傳播局 Open API 活動展演資料，整理 21 筆活動日期、主辦資訊與官方連結。</p><span class="link">開啟試算表 →</span></a></div><p class="empty" id="empty">找不到符合條件的目的地，試試其他關鍵字。</p></section>
-<section class="feature" data-region="taiwan" data-area="north" data-city="taipei" data-city-exclusive><div class="feature-intro"><h2>台北旅遊資源</h2><p>整理自台北小旅行看板中的官方旅遊網站連結，適合快速找景點與主題路線。</p></div><div class="quick">
-<a href="https://www.travel.taipei/zh-tw/tour/hellotaipei" target="_blank" rel="noopener">你好臺北<small>臺北旅遊網</small></a>
-<a href="https://www.travel.taipei/zh-tw/must-visit/miniculturaltrips" target="_blank" rel="noopener">臺北文化小旅行<small>文化主題路線</small></a>
-<a href="https://www.travel.taipei/zh-tw/must-visit/riverside-bikeway" target="_blank" rel="noopener">臺北河濱單車輕旅行<small>河濱自行車路線</small></a>
-<a href="https://www.travel.taipei/zh-tw/must-visit/attractions" target="_blank" rel="noopener">精選景點<small>臺北旅遊網景點導覽</small></a>
-<a href="https://www.travel.taipei/zh-tw/event-calendar/2026" target="_blank" rel="noopener">臺北活動行事曆<small>2026 年活動與展演</small></a>
-<a href="https://www.travel.taipei/zh-tw/news?page=1" target="_blank" rel="noopener">最新消息<small>臺北旅遊網最新公告</small></a>
-<a href="https://www.travel.taipei/zh-tw/must-visit/walkingTaipei" target="_blank" rel="noopener">漫步臺北城市<small>臺北城市散步路線</small></a>
+<section class="feature" data-region="taiwan" data-area="north" data-city="taipei" data-city-exclusive>
+<div class="feature-intro"><h2>台北旅遊資源</h2><p>依照臺北旅遊網的內容架構，快速進入活動消息、城市探索、景點、美食、行前指南與刊物。</p></div>
+<div class="resource-groups">
+<div class="resource-group"><h3>活動新訊</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/news?page=1" target="_blank" rel="noopener">最新消息<small>臺北旅遊公告與旅遊動態</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/event-calendar/2026" target="_blank" rel="noopener">活動年曆 2026<small>按日期查找臺北活動</small></a>
+</div></div>
+<div class="resource-group"><h3>探索城市</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/tour/hellotaipei" target="_blank" rel="noopener">你好臺北<small>臺北旅遊入門與城市介紹</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/fun/tour" target="_blank" rel="noopener">主題旅遊<small>依主題尋找臺北遊程</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/miniculturaltrips" target="_blank" rel="noopener">臺北文化小旅行<small>文化主題路線</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/walkingTaipei" target="_blank" rel="noopener">漫步臺北城市<small>走讀臺北街區風景</small></a>
+</div></div>
+<div class="resource-group"><h3>遊憩景點</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/attractions" target="_blank" rel="noopener">熱門景點<small>臺北必訪景點推薦</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/attraction?page=1" target="_blank" rel="noopener">景點快搜<small>搜尋臺北景點與主題分類</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/riverside-bikeway" target="_blank" rel="noopener">河濱單車輕旅行<small>河濱自行車路線</small></a>
+</div></div>
+<div class="resource-group"><h3>食宿玩樂</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/must-visit/tasterguide" target="_blank" rel="noopener">臺北飲食攻略<small>從街頭小吃到特色餐飲</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/accommodation/noticelist" target="_blank" rel="noopener">住宿須知<small>旅宿資訊與住宿提醒</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/souvenir" target="_blank" rel="noopener">城市紀念品<small>臺北特色伴手禮</small></a>
+</div></div>
+<div class="resource-group"><h3>旅遊指南</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/information/tourist-map" target="_blank" rel="noopener">地圖與指南<small>下載旅遊地圖與指南</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/information/trafficlist" target="_blank" rel="noopener">交通資訊<small>查詢往返臺北與市區交通</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/information/mrt" target="_blank" rel="noopener">臺北捷運<small>搭乘捷運旅遊臺北</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/information/servicecenter" target="_blank" rel="noopener">旅遊服務中心<small>查找旅客服務據點</small></a>
+</div></div>
+<div class="resource-group"><h3>影音刊物</h3><div class="resource-cards">
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/pictorial" target="_blank" rel="noopener">台北畫刊<small>閱讀臺北城市故事與旅遊靈感</small></a>
+<a class="resource-card" href="https://www.travel.taipei/zh-tw/media/publication" target="_blank" rel="noopener">出版品<small>瀏覽臺北旅遊出版資訊</small></a>
+</div></div>
 </div></section>
 <footer>看板與收藏來源：Trello「小旅行」｜內容更新請直接編輯對應 Trello 看板</footer>
 </main>
