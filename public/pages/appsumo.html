@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f2b84b">
+<title>AppSumo 啟動器｜Toby</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--ink:#28252b;--muted:#756f67;--bg:#f8f4e9;--line:#ece5d5;--shadow:0 12px 30px rgba(67,52,21,.12)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;background:radial-gradient(ellipse at 8% 3%,#fff3c6 0,transparent 26rem),radial-gradient(ellipse at 98% 18%,#ffe0c2 0,transparent 28rem),var(--bg)}
+a{color:inherit}main{width:min(1080px,100%);margin:auto;padding:20px 22px 48px}
+.back{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:10px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);text-decoration:none;font-size:14px;font-weight:750;box-shadow:0 5px 14px #473a1f0d;transition:.18s}.back:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:29px 31px;border-radius:28px;color:#fff;background:linear-gradient(115deg,#f5ad18 0%,#f17838 53%,#e95772 100%);box-shadow:0 18px 38px #c77d3540}.hero:before,.hero:after{content:"";position:absolute;z-index:-1;border-radius:50%;background:#ffffff22}.hero:before{width:230px;height:230px;right:-45px;top:-128px}.hero:after{width:160px;height:160px;right:24%;bottom:-130px}
+.brand{display:flex;align-items:center;gap:16px}.brand-mark{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:20px;background:#fff;color:#ef6027;font:bold 36px Arial,sans-serif;box-shadow:0 8px 20px #8c351b32}h1{margin:0;font-size:clamp(27px,5.5vw,44px);line-height:1.15}.hero p{margin:8px 0 0;color:#fff8ee;font-size:15px}.count{flex:0 0 auto;padding:11px 15px;border:1px solid #ffffff48;border-radius:16px;background:#ffffff22;text-align:center;font-size:13px}.count strong{display:block;font-size:24px;line-height:1.2}
+.search{display:flex;align-items:center;gap:10px;margin:20px 0 15px;padding:8px 10px 8px 15px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 8px 22px #5c48210b}.search-icon{font-size:20px;color:#8e887d}input{min-width:0;flex:1;border:0;outline:0;background:transparent;padding:9px 4px;color:var(--ink);font:inherit;font-size:15px}
+.heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:21px 2px 11px}.heading h2{margin:0;font-size:19px}.heading span{color:var(--muted);font-size:13px}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 1px 13px;scrollbar-width:thin}.filter{flex:0 0 auto;border:1px solid #e9e0cf;border-radius:999px;background:#fff;padding:9px 13px;color:#625c53;font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.16s}.filter:hover{transform:translateY(-1px);border-color:#f2b84b}.filter.active{background:#29252b;color:#fff;border-color:#29252b}.filter small{opacity:.7;margin-left:4px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.product{--accent:#f07b36;position:relative;isolation:isolate;display:flex;align-items:center;gap:12px;min-height:106px;padding:14px;border:1px solid var(--line);border-radius:20px;background:#fff;color:var(--ink);text-decoration:none;box-shadow:0 5px 16px #42341c0a;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}.product:before{content:"";position:absolute;z-index:-1;width:92px;height:92px;right:-48px;bottom:-60px;border-radius:50%;background:color-mix(in srgb,var(--accent) 12%,white);transition:transform .25s}.product:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 38%,white)}.product:hover:before{transform:scale(1.5)}
+.product-mark{display:grid;place-items:center;flex:0 0 47px;width:47px;height:47px;border-radius:15px;background:color-mix(in srgb,var(--accent) 13%,white);color:var(--accent);font-size:21px;font-weight:850}.product-copy{min-width:0;flex:1}.product-name{display:block;font-size:15px;font-weight:800;line-height:1.25;overflow-wrap:anywhere}.product-desc{display:block;margin-top:5px;color:#7b7c82;font-size:11px;line-height:1.4}.product-arrow{align-self:flex-start;color:#a4a09a;font-size:17px}
+.empty{grid-column:1/-1;padding:36px;text-align:center;background:#fff;border:1px dashed #d8ceb8;border-radius:18px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);margin-top:24px;font-size:12px}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){main{padding:15px 12px 38px}.hero{padding:22px 18px;border-radius:23px}.brand{gap:11px}.brand-mark{width:46px;height:46px;flex-basis:46px;border-radius:15px;font-size:30px}.hero p{font-size:12px}.count{padding:9px 10px;font-size:11px}.count strong{font-size:20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.product{min-height:98px;gap:9px;padding:10px;border-radius:17px}.product-mark{width:38px;height:38px;flex-basis:38px;border-radius:12px;font-size:18px}.product-name{font-size:13px}.product-desc{font-size:10px}}
+@media(max-width:360px){.grid{grid-template-columns:1fr}.product{min-height:78px}.product-desc{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body><main>
+<a class="back" href="../"><span aria-hidden="true">←</span> 返回首頁</a>
+<header class="hero"><div><div class="brand"><span class="brand-mark" aria-hidden="true">S</span><div><h1>AppSumo 啟動器</h1><p>把常用的創作、行銷與營運工具收進一頁。</p></div></div></div><div class="count"><strong id="total">0</strong>個快速入口</div></header>
+<label class="search"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜尋工具名稱或用途…" aria-label="搜尋 AppSumo 工具"></label>
+<div class="heading"><h2>🌮 工具餐桌</h2><span id="shown"></span></div>
+<nav class="filters" id="filters" aria-label="工具分類"></nav>
+<section class="grid" id="grid" aria-label="AppSumo 工具"></section>
+<footer>依照你提供的 AppSumo 啟動器圖片整理 · 點卡片即可開啟服務</footer>
+</main>
+<script>
+const products=[["AppSumo","優惠與發現","S","https://appsumo.com/","#f05b22","探索軟體優惠與數位工具，快速前往 AppSumo。"],["PXL","行銷與曝光","↗","https://www.pxl.to/","#7257e8","建立短連結、QR Code 與微型網站，並追蹤點擊成效。"],["Transcript.LOL","AI 與內容","▤","https://transcript.lol/","#16a6a1","將影片、播客或音訊轉成逐字稿與摘要。"],["Stacks","網站與營運","▥","https://betterstacks.com/","#29a6a1","收集與整理網頁連結、筆記和知識內容。"],["ODIO.AI","AI 與內容","♫","https://odio.ai/","#e5a936","將文字轉成自然語音，製作旁白與音訊內容。"],["Booltool","AI 與內容","✦","https://appsumo.com/products/booltool/","#7558ea","使用 AI 工具編輯圖片與影片內容。"],["Lindo AI","網站與營運","◈","https://lindo.ai/","#4384e8","用 AI 建立及編輯網站，適合品牌與代理商。"],["ProductScope","AI 與內容","▣","https://app.productscope.ai/","#2563a6","為電商商品製作 AI 圖像、商品文案與行銷素材。"],["Pagemaker","網站與營運","▤","https://pagemaker.io/","#e7a72a","製作手機優先的銷售頁與登陸頁。"],["Fliki","影音與設計","▶","https://fliki.ai/","#e84583","把文字或腳本轉成配音影片與短影音。"],["Katteb","AI 與內容","✍","https://katteb.com/","#3975bf","用 AI 協助研究、撰寫與整理商業內容。"],["FormNX","網站與營運","▧","https://formnx.com/","#6b63cf","建立線上表單、問卷並收集回覆。"],["Kua.ai","AI 與內容","K","https://kua.ai/","#7555d9","為電商商品生成多平台文案與行銷內容。"],["Wideo","影音與設計","▶","https://wideo.co/","#e94c86","製作動畫影片、簡報與行銷影片。"],["Wave.video","影音與設計","〰","https://wave.video/","#4c7fe8","剪輯、直播、多平台串流與託管影片。"],["Yay Images","影音與設計","▧","https://yayimages.com/","#3384c8","搜尋和下載圖片、向量圖與影片素材。"],["Pixelied","影音與設計","P","https://pixelied.com/","#2672c9","線上編輯圖片並製作社群與行銷設計。"],["SleekBio","行銷與曝光","↗","https://sleekbio.com/","#8462d8","建立整合社群連結的個人簡介頁。"],["ShortySMS","行銷與曝光","SMS","https://shortysms.com/","#39a799","建立簡訊行銷活動並追蹤成效。"],["SendFox","行銷與曝光","✉","https://sendfox.com/","#e77c35","寄送電子報、管理名單並設定自動化郵件。"],["KingSumo","行銷與曝光","🎁","https://kingsumo.com/","#64ad47","建立抽獎活動，鼓勵分享並拓展名單。"],["MySoundwise","影音與設計","♫","https://mysoundwise.com/","#df9141","銷售與傳遞有聲書、課程及音訊內容。"],["Trafft","網站與營運","◷","https://trafft.com/","#4d8de1","管理預約、服務時段、提醒與線上收款。"],["Dukaan","網站與營運","▣","https://mydukaan.io/us/","#38a77a","建立線上商店並管理商品與訂單。"]];
+const categories=["全部",...new Set(products.map(p=>p[1]))];
+let active="全部",query="";
+const filters=document.getElementById("filters"),grid=document.getElementById("grid");
+document.getElementById("total").textContent=products.length;
+function drawFilters(){filters.innerHTML=categories.map(cat=>'<button class="filter '+(active===cat?'active':'')+'" type="button" data-cat="'+cat+'">'+(cat==="全部"?"🌈 ":"")+cat+' <small>'+ (cat==="全部"?products.length:products.filter(p=>p[1]===cat).length)+'</small></button>').join("");filters.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.cat;drawFilters();drawCards()}))}
+function drawCards(){const found=products.filter(p=>(active==="全部"||p[1]===active)&&(p[0]+" "+p[1]+" "+p[5]).toLowerCase().includes(query));document.getElementById("shown").textContent="顯示 "+found.length+" / "+products.length+" 個工具";grid.innerHTML=found.length?found.map(p=>'<a class="product" style="--accent:'+p[4]+'" href="'+p[3]+'" target="_blank" rel="noopener"><span class="product-mark" aria-hidden="true">'+p[2]+'</span><span class="product-copy"><span class="product-name">'+p[0]+'</span><span class="product-desc">'+p[5]+'</span></span><span class="product-arrow" aria-hidden="true">↗</span></a>').join(""):'<div class="empty">沒有找到符合的工具，換個名稱或分類試試看。</div>'}
+document.getElementById("search").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();drawCards()});
+drawFilters();drawCards();
+</script>
+</body>
+</html>
