@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f1ed00">
+<title>金融啟動器｜Personal OS</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#efec00;--orange:#ffb900;--ink:#123f78}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif}
+main{width:min(100%,760px);min-height:100vh;margin:0 auto;padding:18px 20px 54px}
+.back{display:inline-flex;align-items:center;padding:8px 14px;margin-bottom:14px;border-radius:999px;background:rgba(255,255,255,.9);color:var(--ink);font-size:14px;font-weight:700;text-decoration:none}
+h1{margin:0 0 20px;background:var(--orange);color:#fff;padding:11px 8px;text-align:center;font-size:clamp(30px,7vw,48px);line-height:1.25}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.card{min-height:78px;display:grid;place-items:center;padding:12px 8px;border-radius:16px;background:#fff;color:var(--ink);font-size:clamp(22px,5vw,34px);text-align:center;text-decoration:none;box-shadow:0 3px 7px rgba(41,45,24,.08);transition:transform .16s ease,box-shadow .16s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 9px 18px rgba(41,45,24,.16)}
+.card:focus-visible,.back:focus-visible{outline:3px solid #123f78;outline-offset:3px}
+@media(min-width:620px){main{padding-top:28px}.card{min-height:92px}}
+@media(max-width:360px){main{padding-inline:13px}.grid{gap:9px}.card{font-size:20px;min-height:68px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body><main>
+<a class="back" href="../">← 返回首頁</a>
+<h1>金融啟動器</h1>
+<div class="grid">
+<a class="card" href="https://www.taishinbank.com.tw/" target="_blank" rel="noopener">台新</a>
+<a class="card" href="https://www.fubon.com/banking/" target="_blank" rel="noopener">富邦</a>
+<a class="card" href="https://nbank.skbank.com.tw/" target="_blank" rel="noopener">新光</a>
+<a class="card" href="https://www.esunbank.com/" target="_blank" rel="noopener">玉山</a>
+<a class="card" href="https://www.cathaybk.com.tw/cathaybk/personal/" target="_blank" rel="noopener">國泰</a>
+<a class="card" href="https://mybank.landbank.com.tw/" target="_blank" rel="noopener">土地</a>
+<a class="card" href="https://ipost.post.gov.tw/pst/home.html" target="_blank" rel="noopener">郵局</a>
+</div>
+</main></body></html>
