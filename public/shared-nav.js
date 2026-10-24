@@ -5,7 +5,7 @@
     ["←","返回首頁",base+"index.html"],
     ["▦","工具",base+"index.html#tools"],
     ["★","收藏",base+"index.html#favorites"],
-    ["📅","行事曆啟動器",base+"pages/calendar.html"],
+    ["📅","行事曆",base+"pages/calendar.html"],
     ["T","Trello","https://trello.com/"],
     ["✉","Gmail","https://mail.google.com/"],
     ["▣","Drive","https://drive.google.com/"]
