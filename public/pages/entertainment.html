@@ -17,6 +17,8 @@ h1{margin:0 0 22px;padding:10px 8px;background:var(--yellow);color:#fff;text-ali
 a.card{transition:transform .15s,box-shadow .15s}
 a.card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(55,28,47,.15)}
 .card.pending{cursor:default}
+
+.brand{gap:8px}.logo{display:block;flex:none}.yt{width:46px;height:34px;color:#ff0033}.sp{width:40px;height:40px;color:#1db954}.myv{width:68px;height:42px;border-radius:12px;background:linear-gradient(135deg,#f6a800,#ff7200);display:flex;align-items:center;justify-content:center;gap:2px;color:white;font-style:normal;font-size:18px;letter-spacing:-1px}.myv i{font-size:14px;font-style:normal}
 @media(min-width:650px){main{padding-top:28px}.card{min-height:92px;font-size:28px}}
 </style>
 </head>
@@ -24,11 +26,12 @@ a.card:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(55,28,47,.15)
 <a class="back" href="../">← 返回首頁</a>
 <h1>娛樂</h1>
 <div class="grid">
-<a class="card" href="https://www.youtube.com/" target="_blank" rel="noopener">YOUTUBE</a>
-<a class="card" href="https://open.spotify.com/" target="_blank" rel="noopener">spotify</a>
+<a class="card brand youtube" href="https://www.youtube.com/" target="_blank" rel="noopener"><svg class="logo yt" viewBox="0 0 48 34" role="img" aria-label="YouTube"><path fill="currentColor" d="M46.9 5.3a6 6 0 0 0-4.2-4.2C39 0 24 0 24 0S9 0 5.3 1.1a6 6 0 0 0-4.2 4.2C0 9 0 17 0 17s0 8 1.1 11.7a6 6 0 0 0 4.2 4.2C9 34 24 34 24 34s15 0 18.7-1.1a6 6 0 0 0 4.2-4.2C48 25 48 17 48 17s0-8-1.1-11.7Z"/><path fill="#fff" d="m19 24.5 13-7.5-13-7.5z"/></svg><span>YOUTUBE</span></a>
+<a class="card brand spotify" href="https://open.spotify.com/" target="_blank" rel="noopener"><svg class="logo sp" viewBox="0 0 40 40" role="img" aria-label="Spotify"><circle cx="20" cy="20" r="20" fill="currentColor"/><path d="M9 15c7-2 16-1 22 3M10 20c6-2 14-1 19 2M11 25c5-1 11 0 15 2" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg><span>spotify</span></a>
 <a class="card" href="https://gimytv.biz/" target="_blank" rel="noopener">劇迷</a>
 <a class="card" href="https://8maple.st/" target="_blank" rel="noopener">楓林</a>
 <a class="card" href="https://chinaq.fun/" target="_blank" rel="noopener">中國人劇迷</a>
 <a class="card" href="https://www.tiktok.com/" target="_blank" rel="noopener">抖音</a>
+<a class="card brand myvideo" href="https://www.myvideo.net.tw/" target="_blank" rel="noopener"><span class="logo myv" role="img" aria-label="MyVideo 標誌"><b>my</b><i>▶</i></span><span>myVideo</span></a>
 </div>
 </main></body></html>
