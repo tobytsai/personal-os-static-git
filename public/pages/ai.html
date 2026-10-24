@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#57034f">
+<title>AI 啟動器｜Personal OS</title>
+<style>
+*{box-sizing:border-box}
+:root{--plum:#57034f;--gold:#ffbd08;--ink:#113b79;--paper:#fff}
+body{margin:0;background:var(--plum);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;color:#fff}
+.wrap{width:min(980px,100%);margin:auto;padding:24px 18px 44px}
+.back{display:inline-block;color:#fff;text-decoration:none;font-size:14px;margin:0 0 14px;padding:8px 13px;border:1px solid #ffffff55;border-radius:999px}
+header{background:var(--gold);color:#fff;text-align:center;font-size:clamp(32px,7vw,58px);font-weight:850;letter-spacing:.04em;padding:12px 8px;margin-bottom:22px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{min-height:92px;display:flex;align-items:center;gap:14px;padding:10px 18px;background:var(--paper);color:var(--ink);text-decoration:none;border-radius:28px;box-shadow:0 3px 8px #1b002022;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 18px #1b002044}
+.mark{flex:0 0 86px;height:58px;display:grid;place-items:center;border-radius:22px;background:#f4f5f7;color:var(--accent,#2455a4);font-size:25px;font-weight:850;letter-spacing:-.04em}
+.name{font-size:clamp(20px,4vw,34px);line-height:1.1;overflow-wrap:anywhere}
+footer{text-align:center;color:#f5dff3;font-size:13px;padding-top:28px}
+@media(max-width:600px){.wrap{padding:14px 12px 34px}.grid{gap:10px}.card{min-height:75px;gap:8px;padding:8px 10px;border-radius:24px}.mark{flex-basis:60px;height:48px;font-size:18px;border-radius:18px}.name{font-size:clamp(16px,4.3vw,23px)}}
+</style>
+</head>
+<body><main class="wrap">
+<a class="back" href="../">← 返回首頁</a>
+<header>AI 啟動器</header>
+<nav class="grid" aria-label="AI 工具">
+<a class="card" href="https://claude.ai/" target="_blank" rel="noopener"><span class="mark" style="--accent:#b85b38">✳ Claude</span><span class="name">claude.ai</span></a>
+<a class="card" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="mark">◉ ChatGPT</span><span class="name">chatGPT</span></a>
+<a class="card" href="https://poe.com/" target="_blank" rel="noopener"><span class="mark" style="--accent:#7c4dcc">▣ Poe</span><span class="name">poe</span></a>
+<a class="card" href="https://gemini.google.com/" target="_blank" rel="noopener"><span class="mark" style="--accent:#4f63c8">✦ Gemini</span><span class="name">gemini</span></a>
+<a class="card" href="https://copilot.microsoft.com/" target="_blank" rel="noopener"><span class="mark" style="--accent:#4766cf">◈ Copilot</span><span class="name">Copilot</span></a>
+<a class="card" href="https://app.productscope.ai/" target="_blank" rel="noopener"><span class="mark" style="--accent:#244c9b">▰ ProductScope</span><span class="name">ProductScope</span></a>
+<a class="card" href="https://www.mymarky.ai/" target="_blank" rel="noopener"><span class="mark" style="--accent:#ca709b">⌁ Marky</span><span class="name">Marky</span></a>
+<a class="card" href="https://kua.ai/" target="_blank" rel="noopener"><span class="mark" style="--accent:#7547c7">Kua.ai</span><span class="name">kua</span></a>
+<a class="card" href="https://katteb.com/" target="_blank" rel="noopener"><span class="mark" style="--accent:#2455a4">K ✎</span><span class="name">Katteb</span></a>
+<a class="card" href="https://www.kimi.com/" target="_blank" rel="noopener"><span class="mark" style="--accent:#dd7b42">☼ Kimi</span><span class="name">kimi</span></a>
+<a class="card" href="https://www.perplexity.ai/" target="_blank" rel="noopener"><span class="mark" style="--accent:#168da2">◌ Perplexity</span><span class="name">Perplexity</span></a>
+<a class="card" href="https://booltool.boolv.tech/" target="_blank" rel="noopener"><span class="mark" style="--accent:#8151dc">▱ Booltool</span><span class="name">booltool</span></a>
+<a class="card" href="https://aistudio.google.com/" target="_blank" rel="noopener"><span class="mark" style="--accent:#4f63c8">✦ Google</span><span class="name">aistudio</span></a>
+</nav>
+<footer>AI 工具入口 · 點選卡片即可開啟服務</footer>
+</main></body></html>
