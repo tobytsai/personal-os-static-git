@@ -1,2 +1,149 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>資訊啟動器｜Personal OS</title><style>*{box-sizing:border-box}body{margin:0;background:#66b956;color:#083d83;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif}.wrap{max-width:840px;margin:auto;padding:16px}.top{display:grid;grid-template-columns:3fr 1fr;gap:10px}.banner,.section{background:#ffc107;color:white;font-weight:800;text-align:center;padding:12px 5px;font-size:clamp(32px,8vw,62px)}.note{background:white;border-radius:17px;display:grid;place-items:center;text-align:center;font-size:clamp(20px,4vw,32px)}.section{font-size:clamp(32px,7vw,54px);margin:14px 0}.round{border-radius:70px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}.grid a,.grid button{border:0;background:white;border-radius:17px;min-height:78px;display:grid;place-items:center;padding:12px 5px;color:#083d83;text-decoration:none;font:inherit;font-size:clamp(22px,5vw,38px);text-align:center;cursor:pointer}.back{display:inline-block;background:white;border-radius:40px;padding:8px 16px;margin-bottom:12px;text-decoration:none;color:#083d83;font-weight:bold}.hint{font-size:13px;text-align:center;color:#134c34;margin-top:22px}</style><link rel="icon" type="image/svg+xml" href="../favicon.svg">
-</head><body><main class="wrap"><a class="back" href="../">← 返回首頁</a><div class="top"><div class="banner">資訊啟動器</div><div class="note">資訊<br>筆記</div></div><div class="grid"><a href="https://www.instapaper.com/">instapaper</a><a href="https://news.google.com/?hl=zh-TW&amp;gl=TW&amp;ceid=TW:zh-Hant">google新聞</a><a href="https://www.pinterest.com/">pinterest</a><a href="https://www.accupass.com/">ACCUPASS</a><a href="https://www.zhihu.com/">知乎</a><button onclick="todo('數位時代')">數位時代</button><button onclick="todo('非池中')">非池中</button></div><div class="section">圖書館</div><div class="grid"><a href="https://tpml.gov.taipei/" target="_blank" rel="noopener">台北圖書館</a><a href="https://isearch.tpml.edu.tw/" target="_blank" rel="noopener">台北數位圖書館</a><a href="https://tpml.ebook.hyread.com.tw/" target="_blank" rel="noopener">台北hyread</a><a href="https://tpml.gov.taipei/Content_List.aspx?n=E99E2237C0F82EB0" target="_blank" rel="noopener">台北每月一書</a><a href="https://www.library.ntpc.gov.tw/" target="_blank" rel="noopener">新北圖書館</a><a href="https://www.typl.gov.tw/zh-tw" target="_blank" rel="noopener">桃園圖書館</a><a href="https://hyint.typl.gov.tw/" target="_blank" rel="noopener">桃園數位</a><a href="https://reading.udn.com/udnlib/tyccc/" target="_blank" rel="noopener">桃園udn</a><a href="https://www.tnpl.tn.edu.tw/" target="_blank" rel="noopener">台南</a><a href="https://www.tnpl.tn.edu.tw/u5280367971532455071/s1KID" target="_blank" rel="noopener">台南兒童數位</a></div><div class="section">書店</div><div class="grid"><a href="https://www.books.com.tw/" target="_blank" rel="noopener">博客來</a><a href="https://www.cite.com.tw/" target="_blank" rel="noopener">城邦</a><a href="https://www.kingstone.com.tw/" target="_blank" rel="noopener">金石堂</a><a href="https://www.sanmin.com.tw/" target="_blank" rel="noopener">三民書店</a><a href="https://www.eslite.com/" target="_blank" rel="noopener">誠品</a><a href="https://www.taaze.tw/" target="_blank" rel="noopener">TAAZE讀冊</a></div><div class="section round">讀書</div><div class="grid"><button onclick="todo('微信讀書')">微信讀書</button><button onclick="todo('當當')">當當</button><a href="https://www.kobo.com/tw/zh">樂天kobo</a><a href="https://zh.z-library.la/" target="_blank" rel="noopener">Z-Lib</a><a href="https://z-lib.sk/" target="_blank" rel="noopener">Z-Lib sk</a><a href="https://x.com/Z_Lib_official" target="_blank" rel="noopener">Z-Lib X</a></div><div class="section">論壇</div><div class="grid"><a href="https://www.mobile01.com/">mobile01</a><a href="https://www.techbang.com/">T客邦</a></div><div class="section">百科</div><div class="grid"><a href="https://baike.baidu.com/">百度百科</a><a href="https://zh.wikipedia.org/">維基百科</a><a href="https://www.baike.com/">抖音百科</a><button onclick="todo('今日頭條')">今日頭條</button></div><p class="hint">未確認原始連結的按鈕暫時不跳轉，可在 HTML 中自行補入網址。</p></main><script>function todo(n){alert('「'+n+'」的原始連結尚未確認，請稍後補上。')}</script><script src="../shared-nav.js" defer></script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#7258ec">
+<meta name="description" content="把閱讀、圖書館、書店、論壇與百科入口整理在一起。">
+<title>資訊啟動器｜Personal OS</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--ink:#282943;--muted:#70758a;--line:#e8e9f1;--purple:#7357eb;--pink:#ef5d9d;--paper:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:radial-gradient(circle at 7% 14%,#ffe9a8 0 105px,transparent 107px),radial-gradient(circle at 96% 37%,#fbd8eb 0 135px,transparent 137px),linear-gradient(145deg,#f7f4ff,#f2f8ff 55%,#fff6ec);overflow-x:hidden}
+main{width:min(1120px,100%);margin:auto;padding:22px 22px 54px}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr);gap:24px;align-items:center;padding:clamp(27px,5vw,52px);border-radius:32px;color:#fff;background:linear-gradient(120deg,#684be3 0%,#9855dd 55%,#ec629f 100%);box-shadow:0 20px 46px #7758d632}
+.hero:before,.hero:after{position:absolute;z-index:-1;content:"";border:2px solid #ffffff42;border-radius:50%}
+.hero:before{width:330px;height:330px;right:-95px;top:-205px}
+.hero:after{width:200px;height:200px;right:18%;bottom:-155px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff20;font-size:12px;font-weight:850;letter-spacing:.08em}
+h1{margin:14px 0 10px;font-size:clamp(38px,7vw,62px);line-height:1.08;letter-spacing:.02em}
+.hero p{max-width:640px;margin:0;color:#f6efff;font-size:clamp(15px,2vw,18px);line-height:1.7}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:19px}
+.hero-tags span{padding:7px 11px;border-radius:999px;background:#ffffff22;font-size:12px;font-weight:750}
+.hero-art{position:relative;min-height:205px;display:grid;place-items:center}
+.orbit{width:190px;height:190px;border:1px solid #ffffff66;border-radius:50%;display:grid;place-items:center;transform:rotate(-12deg)}
+.orbit:before,.orbit:after{content:"";position:absolute;width:225px;height:78px;border:1px solid #ffffff66;border-radius:50%;transform:rotate(47deg)}
+.orbit:after{transform:rotate(-47deg)}
+.book-stack{position:relative;z-index:1;display:grid;gap:8px;transform:rotate(7deg)}
+.book{width:132px;height:42px;border-radius:10px 15px 15px 10px;display:flex;align-items:center;padding-left:15px;color:#473c73;font-size:13px;font-weight:900;box-shadow:0 8px 16px #2f236333}
+.book:nth-child(1){background:#ffe58c;transform:translateX(-16px)}
+.book:nth-child(2){background:#b7f0dd}
+.book:nth-child(3){background:#ffd0e2;transform:translateX(15px)}
+.spark{position:absolute;font-size:27px;color:#fff3a9}
+.spark.one{top:15px;left:17%}.spark.two{right:9%;top:35%;font-size:19px}.spark.three{bottom:4px;left:25%;font-size:20px}
+.stats{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0 18px}
+.stat{padding:8px 12px;border:1px solid #fff;border-radius:999px;background:#ffffffc9;color:#575c73;font-size:12px;font-weight:800;box-shadow:0 5px 16px #31375d0b}
+.controls{padding:15px;border:1px solid #fff;border-radius:20px;background:#ffffffd9;box-shadow:0 9px 25px #34365a0c}
+.search-wrap{position:relative}
+.search-wrap:before{content:"⌕";position:absolute;left:14px;top:4px;color:#9296a5;font-size:25px}
+.search{width:100%;height:48px;padding:0 15px 0 44px;border:1px solid var(--line);border-radius:15px;background:#fff;color:var(--ink);font:inherit;outline:none}
+.search:focus{border-color:#927af5;box-shadow:0 0 0 4px #927af51e}
+.filters{display:flex;gap:8px;overflow:auto;padding:12px 1px 1px;scrollbar-width:thin}
+.filter{flex:0 0 auto;padding:8px 13px;border:1px solid #e6e5ef;border-radius:999px;background:#fff;color:#555b70;font:inherit;font-size:12px;font-weight:800;cursor:pointer;transition:.18s}
+.filter:hover{transform:translateY(-1px);border-color:#b9aafa}
+.filter.active{background:#342b59;border-color:#342b59;color:#fff}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:24px 2px 12px}
+.section-head h2{margin:0;font-size:22px}
+.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.result-count{color:var(--muted);font-size:12px;font-weight:750;white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.launch-card{--accent:#7457e8;position:relative;min-width:0;min-height:142px;display:flex;flex-direction:column;justify-content:space-between;gap:15px;padding:16px;border:1px solid #fff;border-radius:21px;background:linear-gradient(145deg,#fff,#fff 58%,color-mix(in srgb,var(--accent) 9%,white));color:var(--ink);text-decoration:none;box-shadow:0 8px 22px #3237580c;transition:transform .2s,box-shadow .2s,border-color .2s}
+.launch-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 25%,white);box-shadow:0 15px 28px color-mix(in srgb,var(--accent) 16%,transparent)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:color-mix(in srgb,var(--accent) 14%,white);font-size:22px}
+.category{padding:5px 9px;border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,white);color:var(--accent);font-size:10px;font-weight:850;white-space:nowrap}
+.card-name{margin:0;font-size:17px;font-weight:850}
+.card-desc{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.card-arrow{position:absolute;right:15px;bottom:15px;color:var(--accent);font-size:19px;font-weight:900}
+.launch-card.pending{border-style:dashed;cursor:pointer;text-align:left;font:inherit}
+.empty{grid-column:1/-1;padding:30px;border:1px dashed #cfd1df;border-radius:18px;background:#ffffffa8;color:var(--muted);text-align:center}
+footer{margin-top:27px;color:#878b9b;text-align:center;font-size:11px}
+@media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr .55fr;gap:8px}.hero-art{min-height:170px}.orbit{transform:scale(.82) rotate(-12deg)}}
+@media(max-width:600px){main{padding:14px 13px 42px}.hero{grid-template-columns:1fr;padding:26px 22px;border-radius:25px}.hero-art{position:absolute;right:-7px;bottom:0;width:145px;min-height:145px;opacity:.68;transform:scale(.76);transform-origin:bottom right}.hero p{max-width:92%}.hero-tags{max-width:75%}.stats{margin:12px 0 14px}.controls{padding:11px;border-radius:17px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.launch-card{min-height:134px;padding:12px;border-radius:17px}.card-icon{width:36px;height:36px;border-radius:12px;font-size:19px}.card-name{font-size:15px}.card-desc{font-size:11px}.category{font-size:9px;padding:5px 7px}.section-head h2{font-size:19px}}
+@media(max-width:390px){.cards{grid-template-columns:1fr}.launch-card{min-height:115px}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+  <div>
+    <span class="eyebrow">✦ PERSONAL OS · DISCOVER</span>
+    <h1>資訊啟動器</h1>
+    <p>閱讀新知、尋找好書、探索知識與靈感。把常用的資訊入口收在這裡，想查資料或找下一本書時，快速出發。</p>
+    <div class="hero-tags"><span>📚 閱讀</span><span>🔎 探索</span><span>💡 靈感</span></div>
+  </div>
+  <div class="hero-art" aria-hidden="true"><span class="spark one">✦</span><span class="spark two">✧</span><span class="spark three">✦</span><div class="orbit"><div class="book-stack"><div class="book">讀一點新知</div><div class="book">找一本好書</div><div class="book">開啟新靈感</div></div></div></div>
+</header>
+<div class="stats"><span class="stat" id="entryStat">📚 35 個入口</span><span class="stat">🗂 6 個主題</span><span class="stat">✨ 搜尋與分類</span></div>
+<section class="controls" aria-label="搜尋資訊入口">
+  <div class="search-wrap"><input class="search" id="search" type="search" placeholder="搜尋：新聞、圖書館、書店、百科……" aria-label="搜尋資訊入口"></div>
+  <nav class="filters" id="filters" aria-label="資訊分類"></nav>
+</section>
+<section>
+  <div class="section-head"><div><h2>今天想探索什麼？</h2><p>選一張卡片，即可前往網站。</p></div><span class="result-count" id="resultCount"></span></div>
+  <div class="cards" id="cards"></div>
+</section>
+<footer>把好奇心放進口袋，隨時打開一條新的知識路徑。</footer>
+</main>
+<script>
+const entries=[
+{name:"Instapaper",group:"資訊探索",icon:"📌",desc:"收藏文章，留待有空時閱讀。",url:"https://www.instapaper.com/",color:"#f39a37"},
+{name:"Google 新聞",group:"資訊探索",icon:"🗞️",desc:"瀏覽各地新聞與最新消息。",url:"https://news.google.com/?hl=zh-TW&gl=TW&ceid=TW:zh-Hant",color:"#4285f4"},
+{name:"Pinterest",group:"資訊探索",icon:"🎨",desc:"蒐集圖片、設計與創作靈感。",url:"https://www.pinterest.com/",color:"#e94c66"},
+{name:"ACCUPASS",group:"資訊探索",icon:"🎟️",desc:"尋找講座、展覽與體驗活動。",url:"https://www.accupass.com/",color:"#e56b43"},
+{name:"知乎",group:"資訊探索",icon:"💬",desc:"閱讀問答與不同領域的討論。",url:"https://www.zhihu.com/",color:"#1689d5"},
+{name:"數位時代",group:"資訊探索",icon:"🧭",desc:"數位科技與產業趨勢入口。",pending:true,color:"#27a9a0"},
+{name:"非池中",group:"資訊探索",icon:"🖼️",desc:"藝術展覽、藝術家與作品資訊。",pending:true,color:"#ad62d5"},
+{name:"臺北市立圖書館",group:"圖書館",icon:"🏛️",desc:"查詢館藏、服務與閱讀活動。",url:"https://tpml.gov.taipei/",color:"#2da987"},
+{name:"臺北市立圖書館館藏",group:"圖書館",icon:"🔎",desc:"搜尋臺北市立圖書館的館藏資料。",url:"https://isearch.tpml.edu.tw/",color:"#2da987"},
+{name:"臺北市立圖書館 HyRead",group:"圖書館",icon:"📱",desc:"使用臺北市立圖書館電子書服務。",url:"https://tpml.ebook.hyread.com.tw/",color:"#2da987"},
+{name:"臺北每月一書",group:"圖書館",icon:"📖",desc:"看看臺北市立圖書館的每月選書。",url:"https://tpml.gov.taipei/Content_List.aspx?n=E99E2237C0F82EB0",color:"#2da987"},
+{name:"新北市立圖書館",group:"圖書館",icon:"🏢",desc:"前往新北市立圖書館網站。",url:"https://www.library.ntpc.gov.tw/",color:"#2da987"},
+{name:"桃園市立圖書館",group:"圖書館",icon:"🏛️",desc:"查詢桃園市立圖書館館藏與活動。",url:"https://www.typl.gov.tw/zh-tw",color:"#2da987"},
+{name:"桃園市立圖書館 HyRead",group:"圖書館",icon:"📱",desc:"開啟桃園市立圖書館電子書服務。",url:"https://hyint.typl.gov.tw/",color:"#2da987"},
+{name:"桃園市立圖書館 UDN",group:"圖書館",icon:"📰",desc:"瀏覽桃園市立圖書館 UDN 電子書。",url:"https://reading.udn.com/udnlib/tyccc/",color:"#2da987"},
+{name:"臺南市立圖書館",group:"圖書館",icon:"🏛️",desc:"前往臺南市立圖書館網站。",url:"https://www.tnpl.tn.edu.tw/",color:"#2da987"},
+{name:"臺南兒童數位圖書館",group:"圖書館",icon:"🧒",desc:"探索臺南兒童數位閱讀資源。",url:"https://www.tnpl.tn.edu.tw/u5280367971532455071/s1KID",color:"#2da987"},
+{name:"博客來",group:"書店",icon:"🛒",desc:"瀏覽新書、電子書與各類選書。",url:"https://www.books.com.tw/",color:"#f18a42"},
+{name:"城邦讀書花園",group:"書店",icon:"📚",desc:"尋找城邦出版品與主題選書。",url:"https://www.cite.com.tw/",color:"#f18a42"},
+{name:"金石堂",group:"書店",icon:"🏷️",desc:"查找紙本書與電子書。",url:"https://www.kingstone.com.tw/",color:"#f18a42"},
+{name:"三民書店",group:"書店",icon:"📕",desc:"瀏覽出版品與學習用書。",url:"https://www.sanmin.com.tw/",color:"#f18a42"},
+{name:"誠品",group:"書店",icon:"🌿",desc:"探索書籍、生活風格與藝文內容。",url:"https://www.eslite.com/",color:"#f18a42"},
+{name:"TAAZE 讀冊生活",group:"書店",icon:"♻️",desc:"尋找新書、二手書與電子書。",url:"https://www.taaze.tw/",color:"#f18a42"},
+{name:"微信讀書",group:"讀書",icon:"📖",desc:"前往微信讀書閱讀平台。",pending:true,color:"#4ca879"},
+{name:"當當",group:"讀書",icon:"🛍️",desc:"前往當當圖書與閱讀平台。",pending:true,color:"#4ca879"},
+{name:"樂天 Kobo",group:"讀書",icon:"📲",desc:"閱讀電子書與管理個人書庫。",url:"https://www.kobo.com/tw/zh",color:"#4ca879"},
+{name:"Z-Lib",group:"讀書",icon:"📚",desc:"開啟目前整理的電子書入口。",url:"https://zh.z-library.la/",color:"#4ca879"},
+{name:"Z-Lib sk",group:"讀書",icon:"🔗",desc:"開啟備用入口。",url:"https://z-lib.sk/",color:"#4ca879"},
+{name:"Z-Lib X",group:"讀書",icon:"𝕏",desc:"查看 Z-Lib 的社群資訊。",url:"https://x.com/Z_Lib_official",color:"#4ca879"},
+{name:"Mobile01",group:"論壇",icon:"🗣️",desc:"瀏覽生活、科技與興趣討論。",url:"https://www.mobile01.com/",color:"#e26c7a"},
+{name:"T客邦",group:"論壇",icon:"⚙️",desc:"閱讀科技新聞與產品資訊。",url:"https://www.techbang.com/",color:"#e26c7a"},
+{name:"百度百科",group:"百科",icon:"🧠",desc:"查找中文百科條目。",url:"https://baike.baidu.com/",color:"#5682db"},
+{name:"維基百科",group:"百科",icon:"🌐",desc:"查詢開放編輯的百科資料。",url:"https://zh.wikipedia.org/",color:"#5682db"},
+{name:"抖音百科",group:"百科",icon:"🎬",desc:"瀏覽抖音百科內容。",url:"https://www.baike.com/",color:"#5682db"},
+{name:"今日頭條",group:"百科",icon:"📣",desc:"前往今日頭條資訊平台。",pending:true,color:"#5682db"}
+];
+const categories=["全部","資訊探索","圖書館","書店","讀書","論壇","百科"];
+let activeCategory="全部",query="";
+const cards=document.getElementById("cards"),filters=document.getElementById("filters");
+function esc(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){
+  filters.innerHTML=categories.map(c=>'<button class="filter '+(c===activeCategory?"active":"")+'" type="button" data-category="'+esc(c)+'">'+(c==="全部"?"✦ 全部":esc(c))+'</button>').join("");
+  const found=entries.filter(x=>(activeCategory==="全部"||x.group===activeCategory)&&(!query||(x.name+" "+x.group+" "+x.desc).toLowerCase().includes(query)));
+  document.getElementById("resultCount").textContent=found.length+" 個入口";
+  document.getElementById("entryStat").textContent="📚 "+found.length+" 個入口";
+  cards.innerHTML=found.length?found.map(x=>{
+    const core='<span class="card-top"><span class="card-icon">'+esc(x.icon)+'</span><span class="category">'+esc(x.group)+'</span></span><span><strong class="card-name">'+esc(x.name)+'</strong><span class="card-desc">'+esc(x.desc)+'</span></span><span class="card-arrow" aria-hidden="true">↗</span>';
+    return x.url?'<a class="launch-card" style="--accent:'+esc(x.color)+'" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+core+'</a>':'<button class="launch-card pending" style="--accent:'+esc(x.color)+'" type="button" data-pending="'+esc(x.name)+'">'+core+'</button>';
+  }).join(""):'<div class="empty">沒有找到符合條件的入口，試試其他關鍵字或分類。</div>';
+}
+filters.addEventListener("click",e=>{const button=e.target.closest("[data-category]");if(button){activeCategory=button.dataset.category;render()}});
+document.getElementById("search").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();render()});
+cards.addEventListener("click",e=>{const button=e.target.closest("[data-pending]");if(button)alert("「"+button.dataset.pending+"」的原始連結尚未確認，請稍後補上。")});
+render();
+</script>
+<script src="../shared-nav.js" defer></script>
+</body>
+</html>
