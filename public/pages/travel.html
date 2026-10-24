@@ -871,7 +871,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 </div></section>
 
 
-<section class="feature" data-region="taiwan" data-themes="rail">
+<section class="feature" data-region="taiwan" data-themes="rail" data-theme-exclusive>
 <div class="feature-intro"><h2>鐵道觀光資源</h2><p>依交通部觀光署「鐵道觀光」架構，整理臺灣特色支線、沿線景點與玩法、鐵路票券及乘車規劃入口。選擇「鐵道旅行」時顯示此區塊；選擇縣市分類時隱藏。</p></div>
 <div class="resource-groups">
 <div class="resource-group"><h3>臺灣特色鐵道路線</h3><div class="resource-cards">
@@ -940,9 +940,9 @@ function update(){
   let shown=0;
   for(const c of cards){
     const okRegion=region==="all"||c.dataset.region===region;
-    const okQuick=quick==="all"||(taiwanAreas.has(quick)
+    const okQuick=c.hasAttribute("data-theme-exclusive")?quick===c.dataset.themes:(quick==="all"||(taiwanAreas.has(quick)
       ? c.dataset.area===quick
-      : (c.dataset.themes||"").split(/\s+/).includes(quick));
+      : (c.dataset.themes||"").split(/\s+/).includes(quick)));
     const cities=(c.dataset.city||"").split(/\s+/);
     const okCity=c.hasAttribute("data-city-exclusive")?city===c.dataset.city:(city==="all"||cities.includes(city));
     const okText=c.innerText.toLocaleLowerCase().includes(q);
