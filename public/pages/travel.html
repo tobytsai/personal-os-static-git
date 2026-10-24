@@ -122,7 +122,7 @@ function update(){
     const okQuick=quick==="all"||(taiwanAreas.has(quick)
       ? c.dataset.area===quick
       : (c.dataset.themes||"").split(/\s+/).includes(quick));
-    const cities=(c.dataset.city||"").split(/\\s+/);
+    const cities=(c.dataset.city||"").split(/\s+/);
     const okCity=city==="all"||cities.includes(city);
     const okText=c.innerText.toLocaleLowerCase().includes(q);
     c.hidden=!(okRegion&&okQuick&&okCity&&okText);
