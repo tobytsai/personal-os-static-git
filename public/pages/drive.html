@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1d6419">
+<meta name="description" content="把常用雲端硬碟入口整理在一起，快速開啟與管理檔案。">
+<title>硬碟啟動器｜Personal OS</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+*{box-sizing:border-box}
+:root{--ink:#21331d;--muted:#73806f;--green:#206b20;--lime:#a9d95d;--gold:#ffbf08;--paper:#fff;--line:#e8eee2}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:radial-gradient(circle at 12% 10%,#def1b8 0,transparent 25%),linear-gradient(145deg,#f4f8e9,#e7f1d2 52%,#d8e9c3);overflow-x:hidden}
+.page{width:min(1040px,100%);margin:auto;padding:22px 22px 50px}
+.back{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;padding:9px 14px;border:1px solid #ffffffb8;border-radius:999px;background:#ffffffbd;color:#285c27;text-decoration:none;font-weight:750;box-shadow:0 5px 16px #234d1612}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(26px,5vw,50px);border-radius:30px;background:linear-gradient(125deg,#1d6419,#2f8d2c 62%,#69b94c);color:#fff;box-shadow:0 18px 42px #276a2438}
+.hero:before,.hero:after{position:absolute;z-index:-1;content:"";border-radius:50%;background:#ffffff14}
+.hero:before{width:250px;height:250px;right:-50px;top:-120px}
+.hero:after{width:175px;height:175px;right:20%;bottom:-125px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid #ffffff57;border-radius:999px;background:#ffffff20;font-size:12px;font-weight:800;letter-spacing:.06em}
+h1{display:inline-block;margin:15px 0 9px;padding:8px 22px;border-radius:10px;background:var(--gold);color:#fff;font-size:clamp(34px,7vw,58px);line-height:1.15;box-shadow:0 8px 20px #123b1630}
+.hero p{max-width:650px;margin:4px 0 0;color:#efffe9;font-size:clamp(14px,2.3vw,18px);line-height:1.65}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.meta span{padding:7px 10px;border:1px solid #ffffff35;border-radius:999px;background:#ffffff18;font-size:12px;font-weight:700}
+.search-box{position:relative;margin:20px 0 15px}
+.search-box:before{content:"⌕";position:absolute;left:15px;top:8px;color:#798675;font-size:25px}
+.search{width:100%;height:48px;padding:0 16px 0 45px;border:1px solid #e4ebdc;border-radius:15px;background:#fff;outline:none;color:var(--ink);box-shadow:0 7px 20px #315b2010}
+.search:focus{border-color:#6cb554;box-shadow:0 0 0 4px #63ab4e22}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:22px 2px 13px}
+.section-head h2{margin:0;font-size:21px}
+.count{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{--tone:#279441;position:relative;display:flex;flex-direction:column;min-height:235px;padding:19px;overflow:hidden;border:1px solid #fff;border-radius:24px;background:#fff;color:var(--ink);text-decoration:none;box-shadow:0 10px 24px #28441b14;transition:transform .18s,box-shadow .18s}
+.card:before{position:absolute;left:0;right:0;top:0;height:7px;background:var(--tone);content:""}
+.card:after{position:absolute;right:-34px;bottom:-62px;width:130px;height:130px;border-radius:50%;background:var(--tint,#eaf7dc);content:"";transition:transform .2s}
+.card:hover{transform:translateY(-5px);box-shadow:0 17px 32px #28441b24}
+.card:hover:after{transform:scale(1.2)}
+.card:focus-visible,.back:focus-visible{outline:3px solid #254f1f;outline-offset:3px}
+.card-top,.name,.description,.open{position:relative;z-index:1}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{display:grid;width:58px;height:58px;place-items:center;border-radius:19px;background:var(--tint,#eaf7dc);color:var(--tone);font-size:27px;font-weight:900;letter-spacing:-.06em}
+.tag{padding:6px 9px;border-radius:999px;background:var(--tint,#eaf7dc);color:var(--tone);font-size:11px;font-weight:800}
+.name{margin:21px 0 7px;font-size:22px;line-height:1.2}
+.description{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+.open{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;color:var(--tone);font-size:12px;font-weight:850}
+.open b{font-size:18px;transition:transform .15s}
+.card:hover .open b{transform:translate(3px,-2px)}
+.multcloud{--tone:#ef9f17;--tint:#fff4d7}.drive{--tone:#348b45;--tint:#e8f5e9}.weiyun{--tone:#3988e8;--tint:#e9f2ff}
+.tip{margin:15px 3px 0;color:#71806c;font-size:12px;line-height:1.6}
+footer{text-align:center;padding-top:25px;color:#71806c;font-size:12px}
+@media(max-width:720px){.page{padding:15px 14px 38px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.hero{padding:27px 21px;border-radius:25px}.card{min-height:215px;padding:16px;border-radius:20px}.name{font-size:19px}}
+@media(max-width:430px){.grid{grid-template-columns:1fr}.card{min-height:172px;display:grid;grid-template-columns:62px 1fr;grid-template-rows:auto 1fr;align-items:center;gap:0 13px;padding:17px}.card-top{grid-row:1/3;align-self:start}.card-top .tag{display:none}.name{margin:0 0 5px;align-self:end}.description{align-self:start}.open{grid-column:2;align-self:end;padding-top:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body><main class="page">
+<a class="back" href="../">← 返回首頁</a>
+<header class="hero">
+<span class="eyebrow">☁️ PERSONAL OS · CLOUD STORAGE</span>
+<h1>硬碟啟動器</h1>
+<p>雲端空間入口一次收好，快速前往檔案、備份照片，或管理不同雲端服務。</p>
+<div class="meta"><span>📂 雲端硬碟</span><span>🔄 多雲管理</span><span>✨ 一點就開</span></div>
+</header>
+<div class="search-box"><input class="search" id="search" type="search" placeholder="搜尋雲端服務…" aria-label="搜尋雲端服務"></div>
+<div class="section-head"><h2>選擇儲存空間</h2><span class="count" id="count" aria-live="polite">3 個入口</span></div>
+<section class="grid" id="grid" aria-label="雲端硬碟入口">
+<a class="card multcloud" href="https://www.multcloud.com/tw/home.html" target="_blank" rel="noopener noreferrer" data-search="multcloud 多雲管理 雲端硬碟">
+<div class="card-top"><span class="logo" aria-hidden="true">M</span><span class="tag">多雲管理</span></div><h3 class="name">MultCloud</h3><p class="description">在同一處管理多個雲端空間與檔案。</p><span class="open">開啟 MultCloud <b>↗</b></span></a>
+<a class="card drive" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer" data-search="google drive 雲端檔案 文件">
+<div class="card-top"><span class="logo" aria-hidden="true">▣</span><span class="tag">Google</span></div><h3 class="name">Google Drive</h3><p class="description">開啟 Google 雲端硬碟，整理文件與檔案。</p><span class="open">開啟 Google Drive <b>↗</b></span></a>
+<a class="card weiyun" href="https://www.weiyun.com/" target="_blank" rel="noopener noreferrer" data-search="騰訊微雲 weiyun 雲端檔案 相片備份">
+<div class="card-top"><span class="logo" aria-hidden="true">☁</span><span class="tag">騰訊</span></div><h3 class="name">騰訊微雲</h3><p class="description">前往微雲管理雲端檔案、同步內容與備份照片。</p><span class="open">開啟騰訊微雲 <b>↗</b></span></a>
+</section>
+<p class="tip">這是服務入口頁，登入與檔案管理由各服務網站處理。</p>
+<footer>Personal OS · 硬碟啟動器</footer>
+</main>
+<script>
+const cards=[...document.querySelectorAll(".card")],search=document.getElementById("search");
+search.addEventListener("input",()=>{const q=search.value.trim().toLocaleLowerCase();let n=0;cards.forEach(card=>{const show=card.dataset.search.includes(q);card.hidden=!show;if(show)n++});document.getElementById("count").textContent=n+" 個入口";if(!document.getElementById("empty")){const e=document.createElement("div");e.id="empty";e.className="empty";e.textContent="沒有找到符合的雲端服務。";e.style.cssText="grid-column:1/-1;padding:28px;text-align:center;color:#73806f;background:#fff;border:1px dashed #cbd9c2;border-radius:18px";document.getElementById("grid").append(e)}document.getElementById("empty").hidden=n>0});
+</script>
+</body></html>
