@@ -58,6 +58,28 @@ h1{margin:14px 0 10px;font-size:clamp(38px,7vw,62px);line-height:1.08;letter-spa
 .card-desc{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
 .card-arrow{position:absolute;right:15px;bottom:15px;color:var(--accent);font-size:19px;font-weight:900}
 .launch-card.pending{border-style:dashed;cursor:pointer;text-align:left;font:inherit}
+.launch-card{padding:15px 44px 15px 16px}
+.card-main{display:flex;width:100%;height:100%;min-height:110px;flex-direction:column;justify-content:space-between;gap:14px;color:inherit;text-align:left;text-decoration:none}
+button.card-main{border:0;padding:0;background:transparent;font:inherit}
+.card-main.pending-main{cursor:pointer}
+.star{position:absolute;top:10px;right:11px;width:34px;height:34px;border:1px solid #e9e6f2;border-radius:11px;background:#fff;color:#8a7bcb;font-size:19px;cursor:pointer}
+.star.active{background:#fff3c4;border-color:#ffdc70;color:#d79714}
+.activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:0 0 18px}
+.activity-panel{min-width:0;padding:15px;border:1px solid #fff;border-radius:20px;background:#ffffffd9;box-shadow:0 9px 25px #34365a0c}
+.activity-title{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-bottom:10px}
+.activity-title h2{margin:0;font-size:17px}
+.activity-title span{color:var(--muted);font-size:11px;font-weight:800}
+.activity-items{display:grid;gap:7px;max-height:220px;overflow:auto}
+.activity-empty{padding:12px;border:1px dashed #d9d8e5;border-radius:13px;color:var(--muted);font-size:12px;text-align:center}
+.activity-item{display:flex;align-items:center;gap:9px;min-width:0;padding:8px;border-radius:13px;background:linear-gradient(100deg,#f8f6ff,#fff)}
+.activity-icon{flex:0 0 34px;width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:#fff;font-size:18px}
+.activity-name{flex:1;min-width:0}
+.activity-name strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.activity-name small{display:block;margin-top:2px;color:var(--muted);font-size:10px}
+.activity-open{flex:none;padding:6px 8px;border:0;border-radius:9px;background:#eeeaff;color:#5b45c3;text-decoration:none;font:700 10px system-ui,sans-serif;cursor:pointer}
+.activity-star{flex:none;width:30px;height:30px;border:0;border-radius:9px;background:transparent;color:#d49b1c;font-size:17px;cursor:pointer}
+@media(max-width:700px){.activity-grid{grid-template-columns:1fr}.activity-items{max-height:180px}}
+
 .empty{grid-column:1/-1;padding:30px;border:1px dashed #cfd1df;border-radius:18px;background:#ffffffa8;color:var(--muted);text-align:center}
 footer{margin-top:27px;color:#878b9b;text-align:center;font-size:11px}
 @media(max-width:850px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:1fr .55fr;gap:8px}.hero-art{min-height:170px}.orbit{transform:scale(.82) rotate(-12deg)}}
@@ -77,6 +99,10 @@ footer{margin-top:27px;color:#878b9b;text-align:center;font-size:11px}
   <div class="hero-art" aria-hidden="true"><span class="spark one">✦</span><span class="spark two">✧</span><span class="spark three">✦</span><div class="orbit"><div class="book-stack"><div class="book">讀一點新知</div><div class="book">找一本好書</div><div class="book">開啟新靈感</div></div></div></div>
 </header>
 <div class="stats"><span class="stat" id="entryStat">📚 35 個入口</span><span class="stat">🗂 6 個主題</span><span class="stat">✨ 搜尋與分類</span></div>
+<section class="activity-grid" aria-label="個人入口紀錄">
+  <div class="activity-panel"><div class="activity-title"><h2>⭐ 我的收藏</h2><span id="favoriteCount">0 個</span></div><div class="activity-items" id="favoriteItems"></div></div>
+  <div class="activity-panel"><div class="activity-title"><h2>🕘 近期打開</h2><span id="recentCount">0 個</span></div><div class="activity-items" id="recentItems"></div></div>
+</section>
 <section class="controls" aria-label="搜尋資訊入口">
   <div class="search-wrap"><input class="search" id="search" type="search" placeholder="搜尋：新聞、圖書館、書店、百科……" aria-label="搜尋資訊入口"></div>
   <nav class="filters" id="filters" aria-label="資訊分類"></nav>
@@ -128,7 +154,15 @@ const entries=[
 const categories=["全部","資訊探索","圖書館","書店","讀書","論壇","百科"];
 let activeCategory="全部",query="";
 const cards=document.getElementById("cards"),filters=document.getElementById("filters");
+const favoriteKey="infoLauncherFavorites",recentKey="infoLauncherRecent";
+function readNames(key){try{const value=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(value)?value:[]}catch{return []}}
+let favoriteNames=readNames(favoriteKey),recentNames=readNames(recentKey);
 function esc(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function saveNames(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch{}}
+function toggleFavorite(name){favoriteNames=favoriteNames.includes(name)?favoriteNames.filter(x=>x!==name):[name,...favoriteNames];saveNames(favoriteKey,favoriteNames);renderActivity();render()}
+function recordRecent(name){recentNames=[name,...recentNames.filter(x=>x!==name)].slice(0,8);saveNames(recentKey,recentNames);renderActivity()}
+function miniCard(entry){const action=entry.url?'<a class="activity-open" href="'+esc(entry.url)+'" target="_blank" rel="noopener" data-open-entry="'+esc(entry.name)+'">開啟 ↗</a>':'<button class="activity-open" type="button" data-pending="'+esc(entry.name)+'">待補網址</button>';return '<div class="activity-item"><span class="activity-icon">'+esc(entry.icon)+'</span><span class="activity-name"><strong>'+esc(entry.name)+'</strong><small>'+esc(entry.group)+'</small></span>'+action+'<button class="activity-star '+(favoriteNames.includes(entry.name)?'active':'')+'" type="button" data-favorite="'+esc(entry.name)+'" aria-label="'+(favoriteNames.includes(entry.name)?'取消收藏 ':'加入收藏 ')+esc(entry.name)+'">'+(favoriteNames.includes(entry.name)?'★':'☆')+'</button></div>'}
+function renderActivity(){const favorites=favoriteNames.map(name=>entries.find(x=>x.name===name)).filter(Boolean);const recent=recentNames.map(name=>entries.find(x=>x.name===name)).filter(Boolean);document.getElementById("favoriteCount").textContent=favorites.length+" 個";document.getElementById("recentCount").textContent=recent.length+" 個";document.getElementById("favoriteItems").innerHTML=favorites.length?favorites.map(miniCard).join(""):'<div class="activity-empty">按下入口卡片的 ☆，就能加入收藏。</div>';document.getElementById("recentItems").innerHTML=recent.length?recent.map(miniCard).join(""):'<div class="activity-empty">開啟入口後，最近使用項目會顯示在這裡。</div>'}
 function render(){
   filters.innerHTML=categories.map(c=>'<button class="filter '+(c===activeCategory?"active":"")+'" type="button" data-category="'+esc(c)+'">'+(c==="全部"?"✦ 全部":esc(c))+'</button>').join("");
   const found=entries.filter(x=>(activeCategory==="全部"||x.group===activeCategory)&&(!query||(x.name+" "+x.group+" "+x.desc).toLowerCase().includes(query)));
@@ -136,12 +170,15 @@ function render(){
   document.getElementById("entryStat").textContent="📚 "+found.length+" 個入口";
   cards.innerHTML=found.length?found.map(x=>{
     const core='<span class="card-top"><span class="card-icon">'+esc(x.icon)+'</span><span class="category">'+esc(x.group)+'</span></span><span><strong class="card-name">'+esc(x.name)+'</strong><span class="card-desc">'+esc(x.desc)+'</span></span><span class="card-arrow" aria-hidden="true">↗</span>';
-    return x.url?'<a class="launch-card" style="--accent:'+esc(x.color)+'" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+core+'</a>':'<button class="launch-card pending" style="--accent:'+esc(x.color)+'" type="button" data-pending="'+esc(x.name)+'">'+core+'</button>';
+    const main=x.url?'<a class="card-main" href="'+esc(x.url)+'" target="_blank" rel="noopener" data-open-entry="'+esc(x.name)+'">'+core+'</a>':'<button class="card-main pending-main" type="button" data-pending="'+esc(x.name)+'">'+core+'</button>';
+    const saved=favoriteNames.includes(x.name);
+    return '<article class="launch-card '+(x.pending?'pending':'')+'" style="--accent:'+esc(x.color)+'">'+main+'<button class="star '+(saved?'active':'')+'" type="button" data-favorite="'+esc(x.name)+'" aria-pressed="'+saved+'" aria-label="'+(saved?'取消收藏 ':'加入收藏 ')+esc(x.name)+'">'+(saved?'★':'☆')+'</button></article>';
   }).join(""):'<div class="empty">沒有找到符合條件的入口，試試其他關鍵字或分類。</div>';
 }
 filters.addEventListener("click",e=>{const button=e.target.closest("[data-category]");if(button){activeCategory=button.dataset.category;render()}});
 document.getElementById("search").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();render()});
-cards.addEventListener("click",e=>{const button=e.target.closest("[data-pending]");if(button)alert("「"+button.dataset.pending+"」的原始連結尚未確認，請稍後補上。")});
+document.addEventListener("click",e=>{const star=e.target.closest("[data-favorite]");if(star){e.preventDefault();e.stopPropagation();toggleFavorite(star.dataset.favorite);return}const pending=e.target.closest("[data-pending]");if(pending){alert("「"+pending.dataset.pending+"」的原始連結尚未確認，請稍後補上。");return}const opener=e.target.closest("[data-open-entry]");if(opener)recordRecent(opener.dataset.openEntry)});
+renderActivity();
 render();
 </script>
 <script src="../shared-nav.js" defer></script>
