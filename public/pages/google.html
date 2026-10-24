@@ -10,89 +10,40 @@
 :root{--ink:#202634;--muted:#687386;--bg:#f3f6fc;--line:#e7ebf3;--shadow:0 12px 28px rgba(41,57,91,.09)}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;background:radial-gradient(ellipse at 5% 5%,#dce8ff 0,transparent 27rem),radial-gradient(ellipse at 96% 22%,#fff0c5 0,transparent 27rem),var(--bg)}
-a{color:inherit}
-main{width:min(1080px,100%);margin:auto;padding:22px 22px 50px}
-.back{display:inline-flex;align-items:center;gap:8px;margin-bottom:17px;padding:10px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);text-decoration:none;font-size:14px;font-weight:750;box-shadow:0 5px 14px #2537540b;transition:.18s}
-.back:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:30px 32px;border-radius:28px;color:#fff;background:linear-gradient(115deg,#4285f4 0%,#7057e8 48%,#a852d2 100%);box-shadow:0 18px 38px #5b64cc37}
-.hero:before,.hero:after{content:"";position:absolute;z-index:-1;border-radius:50%;background:#ffffff18}
-.hero:before{width:230px;height:230px;right:-42px;top:-125px}
-.hero:after{width:150px;height:150px;right:23%;bottom:-120px}
-.headline{display:flex;align-items:center;gap:17px}
-.google-mark{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:20px;background:#fff;color:#4285f4;font:bold 40px Arial,sans-serif;box-shadow:0 8px 20px #243c9b32}
-h1{margin:0;font-size:clamp(28px,5.5vw,46px);line-height:1.14;letter-spacing:.01em}
-.hero p{margin:9px 0 0;color:#eef3ff;font-size:15px}
-.count{flex:0 0 auto;padding:11px 15px;border:1px solid #ffffff45;border-radius:16px;background:#ffffff20;text-align:center;color:#fff;font-size:13px}
-.count strong{display:block;font-size:24px;line-height:1.2}
-.search-wrap{margin:20px 0 18px}
-form{display:flex;align-items:center;gap:10px;padding:8px 10px 8px 15px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 8px 22px #26364f0b}
-.search-icon{font-size:20px;color:#7c8493}
-input{min-width:0;flex:1;border:0;outline:0;background:transparent;padding:9px 4px;color:var(--ink);font:inherit;font-size:15px}
-button[type=submit]{border:0;border-radius:13px;padding:10px 16px;background:#202634;color:#fff;font:inherit;font-weight:750;cursor:pointer;transition:.18s}
-button[type=submit]:hover{background:#4285f4;transform:translateY(-1px)}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:22px 2px 12px}
-.section-head h2{margin:0;font-size:19px}
-.section-head span{color:var(--muted);font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
-.service{--accent:#4285f4;--tint:#edf3ff;position:relative;isolation:isolate;display:flex;align-items:center;gap:13px;min-height:82px;padding:14px 14px;border:1px solid var(--line);border-radius:19px;background:#fff;color:var(--ink);text-decoration:none;box-shadow:0 5px 16px #2937520a;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
-.service:before{content:"";position:absolute;z-index:-1;width:88px;height:88px;right:-45px;bottom:-56px;border-radius:50%;background:var(--tint);transition:transform .25s}
-.service:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 36%,white)}
-.service:hover:before{transform:scale(1.6)}
-.service-icon{display:grid;place-items:center;flex:0 0 46px;width:46px;height:46px;border-radius:15px;background:var(--tint);color:var(--accent);font-size:23px;font-weight:850}
-.service-name{flex:1;font-size:16px;font-weight:760;line-height:1.35}
-.arrow{color:#9aa2af;font-size:17px;transition:transform .2s}
-.service:hover .arrow{color:var(--accent);transform:translate(2px,-2px)}
-footer{text-align:center;color:var(--muted);margin-top:24px;font-size:13px}
-@media(min-width:1000px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:700px){main{padding:15px 14px 38px}.hero{padding:24px 20px;border-radius:23px}.headline{gap:13px}.google-mark{width:48px;height:48px;flex-basis:48px;border-radius:16px;font-size:34px}.hero p{font-size:13px}.count{padding:9px 11px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.service{min-height:75px;gap:10px;padding:11px;border-radius:17px}.service-icon{width:40px;height:40px;flex-basis:40px;border-radius:13px;font-size:20px}.service-name{font-size:14px}}
-@media(max-width:390px){.hero{align-items:flex-start}.count{font-size:11px}.count strong{font-size:20px}.grid{gap:8px}.service{min-height:72px;padding:9px}.service-name{font-size:13px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+a{color:inherit}main{width:min(1080px,100%);margin:auto;padding:22px 22px 50px}
+.back{display:inline-flex;align-items:center;gap:8px;margin-bottom:17px;padding:10px 14px;border-radius:14px;background:#fff;border:1px solid var(--line);text-decoration:none;font-size:14px;font-weight:750;box-shadow:0 5px 14px #2537540b;transition:.18s}.back:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:30px 32px;border-radius:28px;color:#fff;background:linear-gradient(115deg,#4285f4 0%,#7057e8 48%,#a852d2 100%);box-shadow:0 18px 38px #5b64cc37}.hero:before,.hero:after{content:"";position:absolute;z-index:-1;border-radius:50%;background:#ffffff18}.hero:before{width:230px;height:230px;right:-42px;top:-125px}.hero:after{width:150px;height:150px;right:23%;bottom:-120px}
+.headline{display:flex;align-items:center;gap:17px}.google-mark{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border-radius:20px;background:#fff;color:#4285f4;font:bold 40px Arial,sans-serif;box-shadow:0 8px 20px #243c9b32}h1{margin:0;font-size:clamp(28px,5.5vw,46px);line-height:1.14;letter-spacing:.01em}.hero p{margin:9px 0 0;color:#eef3ff;font-size:15px}.count{flex:0 0 auto;padding:11px 15px;border:1px solid #ffffff45;border-radius:16px;background:#ffffff20;text-align:center;color:#fff;font-size:13px}.count strong{display:block;font-size:24px;line-height:1.2}
+.search-wrap{margin:20px 0 16px}form{display:flex;align-items:center;gap:10px;padding:8px 10px 8px 15px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 8px 22px #26364f0b}.search-icon{font-size:20px;color:#7c8493}input{min-width:0;flex:1;border:0;outline:0;background:transparent;padding:9px 4px;color:var(--ink);font:inherit;font-size:15px}button[type=submit]{border:0;border-radius:13px;padding:10px 16px;background:#202634;color:#fff;font:inherit;font-weight:750;cursor:pointer;transition:.18s}button[type=submit]:hover{background:#4285f4;transform:translateY(-1px)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:22px 2px 12px}.section-head h2{margin:0;font-size:19px}.section-head span{color:var(--muted);font-size:13px}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:2px 1px 13px;scrollbar-width:thin}.filter{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;background:#fff;padding:9px 13px;color:#566174;font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.16s}.filter:hover{transform:translateY(-1px);border-color:#9cbcff}.filter.active{background:#202634;color:#fff;border-color:#202634}.filter small{opacity:.75;margin-left:4px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.service{--accent:#4285f4;--tint:#edf3ff;position:relative;isolation:isolate;display:flex;align-items:center;gap:13px;min-height:82px;padding:14px;border:1px solid var(--line);border-radius:19px;background:#fff;color:var(--ink);text-decoration:none;box-shadow:0 5px 16px #2937520a;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}.service:before{content:"";position:absolute;z-index:-1;width:88px;height:88px;right:-45px;bottom:-56px;border-radius:50%;background:var(--tint);transition:transform .25s}.service:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--accent) 36%,white)}.service:hover:before{transform:scale(1.6)}.service-icon{display:grid;place-items:center;flex:0 0 46px;width:46px;height:46px;border-radius:15px;background:var(--tint);color:var(--accent);font-size:22px;font-weight:850}.service-name{flex:1;font-size:15px;font-weight:760;line-height:1.35}.arrow{color:#9aa2af;font-size:17px;transition:transform .2s}.service:hover .arrow{color:var(--accent);transform:translate(2px,-2px)}.empty{grid-column:1/-1;padding:36px;text-align:center;background:#fff;border:1px dashed #cbd3e2;border-radius:18px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);margin-top:24px;font-size:12px;line-height:1.8}footer a{color:#4b6fd1}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:700px){main{padding:15px 14px 38px}.hero{padding:24px 20px;border-radius:23px}.headline{gap:13px}.google-mark{width:48px;height:48px;flex-basis:48px;border-radius:16px;font-size:34px}.hero p{font-size:13px}.count{padding:9px 11px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.service{min-height:75px;gap:10px;padding:11px;border-radius:17px}.service-icon{width:40px;height:40px;flex-basis:40px;border-radius:13px;font-size:19px}.service-name{font-size:13px}}
+@media(max-width:390px){.hero{align-items:flex-start}.count{font-size:11px}.count strong{font-size:20px}.grid{gap:8px}.service{min-height:72px;padding:9px}.service-name{font-size:12px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important}}
 </style>
 </head>
 <body><main>
 <a class="back" href="../"><span aria-hidden="true">←</span> 返回首頁</a>
-<header class="hero">
-<div>
-<div class="headline"><span class="google-mark" aria-hidden="true">G</span><div><h1>Google 服務啟動器</h1><p>常用工具一點就開，工作與生活都更順手。</p></div></div>
-</div>
-<div class="count"><strong>25</strong>個快速入口</div>
-</header>
-<div class="search-wrap">
-<form action="https://www.google.com/search" method="get" role="search">
-<span class="search-icon" aria-hidden="true">⌕</span>
-<input type="search" name="q" placeholder="搜尋 Google…" aria-label="搜尋 Google">
-<button type="submit">Google 搜尋</button>
-</form>
-</div>
-<div class="section-head"><h2>✨ 探索 Google 工具</h2><span>點選卡片前往服務 ↗</span></div>
-<nav class="grid" aria-label="Google 服務">
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://translate.google.com/" target="_blank" rel="noopener"><span class="service-icon">🌐</span><span class="service-name">翻譯</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#ea4335;--tint:#fff0ee" href="https://mail.google.com/" target="_blank" rel="noopener"><span class="service-icon">✉</span><span class="service-name">Gmail</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#34a853;--tint:#eaf8ef" href="https://maps.google.com/" target="_blank" rel="noopener"><span class="service-icon">📍</span><span class="service-name">地圖</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://news.google.com/?hl=zh-TW&amp;gl=TW&amp;ceid=TW:zh-Hant" target="_blank" rel="noopener"><span class="service-icon">📰</span><span class="service-name">Google 新聞</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#fbbc04;--tint:#fff8df" href="https://photos.google.com/" target="_blank" rel="noopener"><span class="service-icon">🖼️</span><span class="service-name">相片</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://calendar.google.com/" target="_blank" rel="noopener"><span class="service-icon">📅</span><span class="service-name">日曆</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#34a853;--tint:#eaf8ef" href="https://contacts.google.com/" target="_blank" rel="noopener"><span class="service-icon">👥</span><span class="service-name">聯絡人</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#34a853;--tint:#eaf8ef" href="https://meet.google.com/" target="_blank" rel="noopener"><span class="service-icon">🎥</span><span class="service-name">Meet</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#fbbc04;--tint:#fff8df" href="https://ads.google.com/" target="_blank" rel="noopener"><span class="service-icon">📈</span><span class="service-name">Google Ads</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://docs.google.com/document/" target="_blank" rel="noopener"><span class="service-icon">📄</span><span class="service-name">文件</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#fbbc04;--tint:#fff8df" href="https://keep.google.com/" target="_blank" rel="noopener"><span class="service-icon">💡</span><span class="service-name">Keep</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#ea4335;--tint:#fff0ee" href="https://artsandculture.google.com/" target="_blank" rel="noopener"><span class="service-icon">🎨</span><span class="service-name">藝術與文化</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#34a853;--tint:#eaf8ef" href="https://drive.google.com/" target="_blank" rel="noopener"><span class="service-icon">☁️</span><span class="service-name">雲端硬碟</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#ea4335;--tint:#fff0ee" href="https://www.youtube.com/" target="_blank" rel="noopener"><span class="service-icon">▶</span><span class="service-name">YouTube</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#34a853;--tint:#eaf8ef" href="https://www.google.com/finance/" target="_blank" rel="noopener"><span class="service-icon">💹</span><span class="service-name">財經</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#34a853;--tint:#eaf8ef" href="https://docs.google.com/spreadsheets/" target="_blank" rel="noopener"><span class="service-icon">▦</span><span class="service-name">試算表</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#fbbc04;--tint:#fff8df" href="https://docs.google.com/presentation/" target="_blank" rel="noopener"><span class="service-icon">▤</span><span class="service-name">簡報</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://vids.google.com/" target="_blank" rel="noopener"><span class="service-icon">🎬</span><span class="service-name">Vids</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://one.google.com/" target="_blank" rel="noopener"><span class="service-icon">ⓖ</span><span class="service-name">Google One</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://www.google.com/travel/" target="_blank" rel="noopener"><span class="service-icon">✈️</span><span class="service-name">旅遊</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://docs.google.com/forms/" target="_blank" rel="noopener"><span class="service-icon">📝</span><span class="service-name">表單</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#34a853;--tint:#eaf8ef" href="https://play.google.com/store" target="_blank" rel="noopener"><span class="service-icon">▶</span><span class="service-name">應用商店</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://passwords.google.com/" target="_blank" rel="noopener"><span class="service-icon">🔐</span><span class="service-name">密碼管理工具</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#34a853;--tint:#eaf8ef" href="https://www.google.com/business/" target="_blank" rel="noopener"><span class="service-icon">🏪</span><span class="service-name">商家服務</span><span class="arrow">↗</span></a>
-<a class="service" style="--accent:#4285f4;--tint:#eaf1ff" href="https://search.google.com/search-console/" target="_blank" rel="noopener"><span class="service-icon">🔎</span><span class="service-name">Search Console</span><span class="arrow">↗</span></a>
-</nav>
-<footer>Google 服務快速入口 · 一點即開</footer>
+<header class="hero"><div><div class="headline"><span class="google-mark" aria-hidden="true">G</span><div><h1>Google 服務啟動器</h1><p>依用途分類，快速找到適合的 Google 工具。</p></div></div></div><div class="count"><strong id="total">0</strong>個服務入口</div></header>
+<div class="search-wrap"><form id="searchForm" role="search"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜尋服務名稱…" aria-label="搜尋 Google 服務"><button type="submit">搜尋服務</button></form></div>
+<div class="section-head"><h2>✨ 探索 Google 工具</h2><span id="shown"></span></div>
+<nav class="filters" id="filters" aria-label="服務分類"></nav>
+<section class="grid" id="grid" aria-label="Google 服務"></section>
+<footer>服務資訊參考 <a href="https://about.google/intl/zh-TW_tw/products/" target="_blank" rel="noopener">Google 官方產品清單</a>。部分服務可能依地區提供狀況而異。</footer>
 </main>
+<script>
+const services=[["Google 搜尋","搜尋與 AI","G","https://www.google.com/"],["Google 翻譯","搜尋與 AI","🌐","https://translate.google.com/"],["Google Lens","搜尋與 AI","⌕","https://lens.google.com/"],["Gemini","搜尋與 AI","✦","https://gemini.google.com/"],["NotebookLM","搜尋與 AI","📚","https://notebooklm.google.com/"],["Google 學術搜尋","搜尋與 AI","🎓","https://scholar.google.com/"],["Google 搜尋趨勢","搜尋與 AI","↗","https://trends.google.com/"],["Gmail","工作與學習","✉","https://mail.google.com/"],["Google 日曆","工作與學習","日","https://calendar.google.com/"],["Google 聯絡人","工作與學習","👥","https://contacts.google.com/"],["Google Meet","工作與學習","🎥","https://meet.google.com/"],["Google Chat","工作與學習","💬","https://chat.google.com/"],["Google 文件","工作與學習","▤","https://docs.google.com/document/"],["Google 試算表","工作與學習","▦","https://docs.google.com/spreadsheets/"],["Google 簡報","工作與學習","▧","https://docs.google.com/presentation/"],["Google 表單","工作與學習","📝","https://docs.google.com/forms/"],["Google Keep","工作與學習","💡","https://keep.google.com/"],["Google Tasks","工作與學習","✓","https://tasks.google.com/"],["Google Classroom","工作與學習","🏫","https://classroom.google.com/"],["Google 協作平台","工作與學習","▣","https://sites.google.com/"],["Blogger","工作與學習","✍","https://www.blogger.com/"],["Google 雲端硬碟","工作與學習","☁","https://drive.google.com/"],["Google Vids","工作與學習","🎬","https://vids.google.com/"],["Google 地圖","生活與探索","📍","https://maps.google.com/"],["Google 相簿","生活與探索","🖼","https://photos.google.com/"],["Google 新聞","生活與探索","📰","https://news.google.com/?hl=zh-TW&gl=TW&ceid=TW:zh-Hant"],["Google 財經","生活與探索","💹","https://www.google.com/finance/"],["Google One","生活與探索","ⓖ","https://one.google.com/"],["Google 旅遊","生活與探索","✈","https://www.google.com/travel/"],["Google 地球","生活與探索","🌎","https://earth.google.com/web/"],["Google Family Link","生活與探索","👨‍👩‍👧","https://families.google/familylink/"],["Google Fit","生活與探索","♥","https://fit.google.com/"],["Google Home","生活與探索","⌂","https://home.google.com/"],["尋找我的裝置","生活與探索","⌖","https://www.google.com/android/find/"],["Google 訊息","生活與探索","▰","https://messages.google.com/web/"],["Waze","生活與探索","🚙","https://www.waze.com/"],["Google 錢包","生活與探索","▣","https://wallet.google.com/"],["YouTube","影音與閱讀","▶","https://www.youtube.com/"],["YouTube Music","影音與閱讀","♫","https://music.youtube.com/"],["YouTube Kids","影音與閱讀","▶","https://www.youtubekids.com/"],["Google Play","影音與閱讀","▷","https://play.google.com/store"],["Google Play 圖書","影音與閱讀","📖","https://play.google.com/books"],["Google 藝術與文化","影音與閱讀","🎨","https://artsandculture.google.com/"],["Google Ads","開發與商務","📈","https://ads.google.com/"],["Google 商家檔案","開發與商務","🏪","https://www.google.com/business/"],["Google AdSense","開發與商務","$","https://adsense.google.com/"],["Google Analytics","開發與商務","◔","https://analytics.google.com/"],["Google AdMob","開發與商務","📱","https://admob.google.com/"],["Google Tag Manager","開發與商務","🏷","https://tagmanager.google.com/"],["Google Search Console","開發與商務","⌕","https://search.google.com/search-console/"],["Google Fonts","開發與商務","Aa","https://fonts.google.com/"],["Google Cloud","開發與商務","☁","https://cloud.google.com/"],["Firebase","開發與商務","🔥","https://firebase.google.com/"],["Google for Developers","開發與商務","\u003c/>","https://developers.google.com/"],["Google Ads Manager","開發與商務","▣","https://admanager.google.com/"],["Google Maps Platform","開發與商務","🗺","https://mapsplatform.google.com/"],["Google Play 開發人員","開發與商務","▷","https://play.google.com/console/"]];
+const cats=["全部",...new Set(services.map(s=>s[1]))];
+const palette={"搜尋與 AI":["#7259e8","#f0edff"],"工作與學習":["#4285f4","#eaf1ff"],"生活與探索":["#22a06b","#e7f7ef"],"影音與閱讀":["#e34b65","#fff0f2"],"開發與商務":["#ed9d23","#fff5df"]};
+let active="全部",query="";
+const filters=document.getElementById("filters"),grid=document.getElementById("grid");
+document.getElementById("total").textContent=services.length;
+function drawFilters(){filters.innerHTML=cats.map(cat=>'<button class="filter '+(active===cat?'active':'')+'" type="button" data-cat="'+cat+'">'+(cat==="全部"?"🌈 ":"")+cat+' <small>'+ (cat==="全部"?services.length:services.filter(s=>s[1]===cat).length)+'</small></button>').join("");filters.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.cat;drawFilters();drawCards()}))}
+function drawCards(){const found=services.filter(s=>(active==="全部"||s[1]===active)&&(s[0]+" "+s[1]).toLowerCase().includes(query));document.getElementById("shown").textContent="顯示 "+found.length+" / "+services.length+" 個入口";grid.innerHTML=found.length?found.map(s=>{const p=palette[s[1]]||["#4285f4","#eaf1ff"];return '<a class="service" style="--accent:'+p[0]+';--tint:'+p[1]+'" href="'+s[3]+'" target="_blank" rel="noopener"><span class="service-icon" aria-hidden="true">'+s[2]+'</span><span class="service-name">'+s[0]+'</span><span class="arrow" aria-hidden="true">↗</span></a>'}).join(""):'<div class="empty">沒有找到符合的服務，試試其他名稱或分類吧。</div>'}
+document.getElementById("search").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();drawCards()});
+document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();drawCards()});
+drawFilters();drawCards();
+</script>
 </body>
 </html>
