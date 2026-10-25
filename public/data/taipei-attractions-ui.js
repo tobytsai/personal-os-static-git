@@ -14,14 +14,45 @@
   const safeTrello=value=>/^https:\/\/trello\.com\/c\/[A-Za-z0-9]+$/.test(value||"")?value:"";
   const safeOfficial=value=>/^https:\/\/(?:www\.travel\.taipei\/zh-tw\/attraction\/details\/\d+|newtaipei\.travel\/zh-tw\/Attractions\/Detail\/\d+|travel\.tycg\.gov\.tw\/zh-tw\/Travel\/Attraction\/\d+)$/i.test(value||"")?value:"";
   const mapUrl=r=>r.map||("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(r.name+" "+(r.address||regionNames[r.city]+" "+r.district)));
-  const importedMode=()=>cityIds.includes(city)&&(venue==="all"||venue==="venues");
+  const taoyuanCategoryFilters={"taoyuan-nature":"自然生態","taoyuan-history":"歷史人文","taoyuan-factory":"觀光工廠","taoyuan-walk":"休閒健走","taoyuan-north-cross":"北橫原鄉","taoyuan-play":"遊樂購物","taoyuan-water":"水岸埤塘","taoyuan-farm":"草花農場"};
+  const taoyuanCategoryRules={
+    "自然生態":{title:/自然|生態|森林|瀑布|神木|海岸|濕地|動物園|風景區|保護區|植物園|公園|生態園/,terms:["自然生態","生態","森林","瀑布","鳥類","賞鳥","昆蟲","濕地","保育","野生動物","山林","神木","自然環境","植物","生態池","生物多樣性"],minimum:3},
+    "歷史人文":{title:/歷史|文化|古蹟|古道|古厝|老街|故事館|紀念|祠|廟|官舍|宿舍|眷村|文物|博物館|鐵路|車站|聚落|文化館|人文|古宅|故居|寺|橋|隧道|圖書館|美術館|藝術館|電影館|劇場|文創園區/,terms:["歷史","文化","古蹟","古道","古厝","老街","文物","信仰","客家","泰雅","部落","眷村","日式","日治","清代","紀念","文史","建築","傳統","遺址"],minimum:4},
+    "觀光工廠":{title:/觀光工廠|工廠|製造所|體驗館|文創館|文教館|酒廠|工藝館|巧克力共和國|探索館|體驗園區/,terms:["觀光工廠","工廠","產線","生產線","製造所"],minimum:1},
+    "休閒健走":{title:/步道|古道|登山|自行車|單車|鐵馬|健行|健走|綠廊|河濱|公園|廣場|球場|體育|自行車道/,terms:["步道","登山","健行","健走","自行車道","單車","鐵馬","散步","漫步","綠廊","環湖","騎乘","野餐"],minimum:2},
+    "遊樂購物":{title:/商圈|夜市|購物|百貨|商場|Outlet|遊樂園|主題樂園|樂園|遊憩區|影城|Xpark|水族館|商業廣場|購物中心|名品城|文創園區/,terms:["購物中心","百貨","商圈","夜市","購物","遊樂園","主題樂園","遊樂設施","水族館"],minimum:2},
+    "水岸埤塘":{title:/埤塘|水岸|河濱|溪|海岸|湖|潭|池|濕地|水庫|漁港|海堤|水圳|碼頭|石滬|紅橋/,terms:["埤塘","水岸","河岸","河濱","溪流","河流","湖泊","池塘","水庫","海岸","濕地","港口","碼頭","水圳","灌溉","漁港","石滬"],minimum:2},
+    "草花農場":{title:/農場|農莊|農園|休閒農業|農業區|花海|花園|花卉|苗圃|果園|茶園|香草|草花|牧場|育苗/,terms:["農場","農莊","農業體驗","休閒農業","果園","花海","花園","花卉","草花","香草","園藝","苗圃","採果","茶園","農村","農事體驗","蔬菜育苗"],minimum:2}
+  };
+  const taoyuanCategoryOverrides={
+    "霄裡玉元宮":["歷史人文"],"桃園防災教育館":["歷史人文"],"黑水號咖啡廳":["遊樂購物"],"佳安里(石門十一份)":["水岸埤塘","歷史人文"],
+    "Global Mall 桃園A19":["遊樂購物"],"新屋農博環境教育園區":["自然生態","草花農場"],"桃園會展中心":["遊樂購物"],"中台環境資源教育中心":["自然生態"],
+    "桃園國際機場":["遊樂購物"],"淘動漫":["遊樂購物"],"桃園北區客家會館":["歷史人文"],"龍岡國旗屋":["歷史人文"],
+    "南崁兒童藝術村":["歷史人文","休閒健走"],"憲光二村":["歷史人文"],"棒球名人堂":["歷史人文","遊樂購物"],
+    "葡萄王健康活力能量館":["觀光工廠"],"桃知道GELEVEN PLAZA":["遊樂購物"],"台灣高鐵桃園站":["遊樂購物"],
+    "龍情‧魔幻豆子主題館":["觀光工廠"],"乳姑山":["自然生態","休閒健走"],"桃園軌道願景館":["歷史人文"],
+    "楊梅故事園區":["歷史人文","休閒健走"],"觀音區多功能場館":["休閒健走"]
+  };
+  function attractionCategories(r){
+    const supplied=Array.isArray(r.category)?r.category.filter(Boolean):[];
+    if(r.city!=="taoyuan")return supplied;
+    const name=r.name||"",text=name+" "+(r.topic||""),labels=new Set(supplied);
+    if(r.district==="復興區"||/北橫|泰雅|原鄉|部落|拉拉山|巴陵|角板山|小烏來/.test(text))labels.add("北橫原鄉");
+    for(const [label,rule] of Object.entries(taoyuanCategoryRules)){
+      const hits=rule.terms.filter(word=>text.includes(word)).length;
+      if(rule.title.test(name)||hits>=rule.minimum)labels.add(label);
+    }
+    (taoyuanCategoryOverrides[name]||[]).forEach(label=>labels.add(label));
+    return [...labels];
+  }
+  const importedMode=()=>cityIds.includes(city)&&(venue==="all"||venue==="venues"||(city==="taoyuan"&&Boolean(taoyuanCategoryFilters[venue])));
   const baseRenderVenueCards=renderVenueCards;
   const baseRenderAdminAreaButtons=renderAdminAreaButtons;
   const baseUpdate=update;
   function placeCard(r){
     const id=esc(r.id),name=esc(r.name),loc=esc(regionNames[r.city]+"・"+r.district),address=esc(r.address||"地址請以原始資料為準");
     const saved=favoriteVenueIds.includes(r.id);
-    const category=(Array.isArray(r.category)?r.category:[]).filter(Boolean);
+    const category=attractionCategories(r);
     const tags=category.length?category.map(t=>'<span class="place-tag">'+esc(t)+'</span>').join(""):'<span class="place-tag">尚未提供分類標籤</span>';
     const popularity=r.rank?'<span class="place-tag">熱門第 '+esc(r.rank)+' 名 · '+Number(r.views||0).toLocaleString("zh-TW")+' 次瀏覽</span>':"";
     const sourceName=r.city==="newtaipei"?"新北市小旅行 → 新北市景點":r.city==="taoyuan"?"桃園小旅行 → 桃園市景點":"台北小旅行 → 台北景點";
@@ -36,7 +67,7 @@
        '<div class="place-tags">'+popularity+tags+'</div>'+
        '<p class="place-address">📍 '+address+'</p>'+
        '<p class="venue-summary">'+summary+'</p>'+
-       '<details class="venue-explainer"><summary>？景點分類與使用說明</summary><p>來源：Trello「'+esc(sourceName)+'」。'+(category.length?'官方分類／標籤：'+esc(category.join("、"))+'。':'來源卡片未提供分類／標籤。')+'出發前請確認最新開放資訊；點選 Google 地圖可查看路線。</p></details>'+
+       '<details class="venue-explainer"><summary>？景點分類與使用說明</summary><p>來源：Trello「'+esc(sourceName)+'」。'+(category.length?'整理標籤：'+esc(category.join("、"))+'。':'來源卡片未提供分類／標籤。')+'出發前請確認最新開放資訊；點選 Google 地圖可查看路線。</p></details>'+
        '<div class="place-actions">'+actions+'</div></article>';
   }
   renderVenueCards=function(){
@@ -59,8 +90,8 @@
     }
     const area=adminArea==="all"?"":adminAreas[city]?.units[Number(adminArea)]||"";
     const keywords=search.value.trim().toLocaleLowerCase();
-    const match=attractions.filter(r=>r.city===city&&(!area||r.district===area)).filter(r=>!keywords||[r.name,r.address,r.district,r.topic,...(r.category||[])].join(" ").toLocaleLowerCase().includes(keywords));
-    cityVenueTitle.textContent=cityName+(area?"・"+area:"")+"景點（"+match.length+"）";
+    const activeCategory=taoyuanCategoryFilters[venue]||"";const match=attractions.filter(r=>r.city===city&&(!area||r.district===area)).filter(r=>!activeCategory||attractionCategories(r).includes(activeCategory)).filter(r=>!keywords||[r.name,r.address,r.district,r.topic,...attractionCategories(r)].join(" ").toLocaleLowerCase().includes(keywords));
+    cityVenueTitle.textContent=cityName+(area?"・"+area:"")+(activeCategory?"・"+activeCategory:"")+"景點（"+match.length+"）";
     cityVenueCards.innerHTML=match.length?match.slice(0,pageSize).map(placeCard).join(""):'<p class="place-status">這個行政區沒有符合條件的景點卡片；可以清除搜尋文字或切換行政區。</p>';
     pagination.hidden=false;
     const sourceName=city==="newtaipei"?"新北市小旅行／新北市景點":city==="taoyuan"?"桃園小旅行／桃園市景點":"台北小旅行／台北景點";
