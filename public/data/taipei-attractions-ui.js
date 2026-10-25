@@ -16,7 +16,8 @@
   const mapUrl=r=>r.map||("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(r.name+" "+(r.address||regionNames[r.city]+" "+r.district)));
   const taoyuanCategoryFilters={"taoyuan-nature":"自然生態","taoyuan-history":"歷史人文","taoyuan-factory":"觀光工廠","taoyuan-walk":"休閒健走","taoyuan-north-cross":"北橫原鄉","taoyuan-play":"遊樂購物","taoyuan-water":"水岸埤塘","taoyuan-farm":"草花農場"};
   const taipeiCategoryFilters={"taipei-family":"親子共遊","taipei-commercial":"主題商街","taipei-outdoor":"戶外踏青","taipei-arts":"藝文館所","taipei-history":"歷史建築","taipei-cycling":"單車遊蹤","taipei-hot-spring":"養生溫泉","taipei-accessibility":"無障礙旅遊推薦景點","taipei-night-market":"觀光夜市","taipei-religion":"宗教信仰","taipei-water":"藍色水路","taipei-public-art":"公共藝術","taipei-101":"101亮點","taipei-service":"借問站","taipei-other":"其他"};
-  const categoryFiltersByCity={taoyuan:taoyuanCategoryFilters,taipei:taipeiCategoryFilters};
+  const newtaipeiCategoryFilters={"newtaipei-old-street":"懷舊老街","newtaipei-night-pick":"夜貓精選","newtaipei-sunset":"夕陽美景","newtaipei-cool":"消暑勝地","newtaipei-danlan":"淡蘭古道","newtaipei-filming":"影視朝聖","newtaipei-temple":"廟宇祈福","newtaipei-cycling":"騎車行","newtaipei-riverside":"河濱遊程","newtaipei-hidden":"秘境遊程","newtaipei-youth-coast":"青春山海線","newtaipei-sea":"海景系列","newtaipei-muslim":"穆斯林友善","newtaipei-accessible":"無障礙旅遊","newtaipei-green":"綠色旅遊・低碳永續","newtaipei-light-rail":"輕軌漫遊","newtaipei-rail":"鐵道小鎮","newtaipei-hiking":"登山健行","newtaipei-literary":"文青漫旅","newtaipei-shopping":"逛街購物","newtaipei-arts":"藝文饗宴","newtaipei-family":"親子遊","newtaipei-seafood":"大啖海鮮","newtaipei-crab":"萬里蟹季","newtaipei-diy":"手作DIY","newtaipei-smile-mountain":"微笑山線","newtaipei-indigenous":"原民文化","newtaipei-flower":"繽紛花季","newtaipei-tea":"品茗美學","newtaipei-defense":"全民國防教育","newtaipei-hot-spring":"冬日泡湯"};
+  const categoryFiltersByCity={taoyuan:taoyuanCategoryFilters,taipei:taipeiCategoryFilters,newtaipei:newtaipeiCategoryFilters};
   const taoyuanCategoryRules={
     "自然生態":{title:/自然|生態|森林|瀑布|神木|海岸|濕地|動物園|風景區|保護區|植物園|公園|生態園/,terms:["自然生態","生態","森林","瀑布","鳥類","賞鳥","昆蟲","濕地","保育","野生動物","山林","神木","自然環境","植物","生態池","生物多樣性"],minimum:3},
     "歷史人文":{title:/歷史|文化|古蹟|古道|古厝|老街|故事館|紀念|祠|廟|官舍|宿舍|眷村|文物|博物館|鐵路|車站|聚落|文化館|人文|古宅|故居|寺|橋|隧道|圖書館|美術館|藝術館|電影館|劇場|文創園區/,terms:["歷史","文化","古蹟","古道","古厝","老街","文物","信仰","客家","泰雅","部落","眷村","日式","日治","清代","紀念","文史","建築","傳統","遺址"],minimum:4},
@@ -56,7 +57,7 @@
     const saved=favoriteVenueIds.includes(r.id);
     const category=attractionCategories(r);
     const tags=category.length?category.map(t=>'<span class="place-tag">'+esc(t)+'</span>').join(""):'<span class="place-tag">尚未提供分類標籤</span>';
-    const popularity=r.rank?'<span class="place-tag">熱門第 '+esc(r.rank)+' 名 · '+Number(r.views||0).toLocaleString("zh-TW")+' 次瀏覽</span>':"";
+    const popularity=r.city!=="newtaipei"&&r.rank?'<span class="place-tag">熱門第 '+esc(r.rank)+' 名 · '+Number(r.views||0).toLocaleString("zh-TW")+' 次瀏覽</span>':"";
     const sourceName=r.city==="newtaipei"?"新北市小旅行 → 新北市景點":r.city==="taoyuan"?"桃園小旅行 → 桃園市景點":"台北小旅行 → 台北景點";
     const officialLabel=r.city==="newtaipei"?"新北市觀光旅遊網":r.city==="taoyuan"?"桃園市觀光旅遊網":"臺北旅遊網";
     const summary=esc(r.topic||"來源卡片未提供摘要，可前往官方網站查看完整資訊。");
