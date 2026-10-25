@@ -76,8 +76,19 @@ function renderDistrictContent(name){
   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>秀才登山步道</h4><p>步道</p><a class="map-link" href="'+trailMap+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article>';
  });
  document.getElementById("attractionCategory").addEventListener("click",()=>{
-  const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("三連陂 桃園市楊梅區");
-  document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>三連陂</h4><p>景點</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article>';
+  const attractions=[
+   ["三連陂","埤塘景觀與散步景點"],
+   ["富岡老街","老街街屋與巴洛克洋樓"],
+   ["楊梅故事園區","日式宿舍群與地方教育歷史"],
+   ["雅聞魅力博覽館","玫瑰花園、庭園造景與觀光體驗"],
+   ["郭元益糕餅博物館","糕餅文化、婚嫁禮俗與手作體驗"],
+   ["埔心故事館","茶產業與埔心地方文化"],
+   ["埔心牧場","牧場休閒與親子活動"]
+  ];
+  document.getElementById("storeResults").innerHTML=attractions.map(([name,description])=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(name+" 桃園市楊梅區");
+   return '<article class="store-card"><h4>'+name+'</h4><p>'+description+'</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article>';
+  }).join("");
  });
  document.getElementById("teaCategory").addEventListener("click",()=>{
   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("雙霖茶莊 桃園市楊梅區");
