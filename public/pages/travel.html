@@ -21,6 +21,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 .venue-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.venue-card{display:flex;flex-direction:column;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px}.venue-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.venue-card h3{font-size:18px;margin:9px 0 0}.venue-summary{color:var(--muted);font-size:14px;line-height:1.6;margin:0}.venue-explainer{background:#eaf5f2;border-radius:12px;padding:10px 12px;color:var(--ink);font-size:13px}.venue-explainer summary{cursor:pointer;color:var(--sea);font-weight:700}.venue-explainer p{line-height:1.6;margin:8px 0 0;color:var(--muted)}.venue-map{margin-top:auto;color:var(--sea);font-size:13px;font-weight:700;text-decoration:none}.venue-star{border:1px solid var(--line);background:white;border-radius:50%;width:40px;height:40px;font:inherit;font-size:23px;line-height:1;color:#8a9696;cursor:pointer;flex:none}.venue-star.saved{color:#db9826;background:#fff7df;border-color:#efd593}.venue-activity{margin:12px 0 20px}.activity-list{display:grid;gap:8px}.activity-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:white;border:1px solid var(--line);border-radius:12px}.activity-item a{color:var(--ink);font-weight:700;text-decoration:none;flex:1}.activity-item small{display:block;color:var(--muted);font-weight:400;margin-top:3px}.activity-empty{color:var(--muted);font-size:13px;margin:4px 0 0}.venue-activity[hidden],.activity-empty[hidden]{display:none!important}.empty{display:none;padding:22px;background:white;border-radius:16px;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:13px;padding-top:30px}
 @media(max-width:620px){.wrap{padding:14px 12px 38px}.hero{padding:26px 21px;border-radius:22px}.resource-groups{grid-template-columns:1fr}}
 .card[hidden],.feature[hidden]{display:none!important}
+.place-card{min-width:0}.place-card h3{overflow-wrap:anywhere}.place-card .venue-summary{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}.place-address{margin:0;color:var(--muted);font-size:13px;overflow-wrap:anywhere}.place-tags{display:flex;gap:5px;flex-wrap:wrap}.place-tag{font-size:11px;line-height:1.4;border-radius:999px;padding:4px 8px;background:#f1eafc;color:#5e4682}.place-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}.place-actions a{font-size:13px;font-weight:750;color:var(--sea);text-decoration:underline;text-underline-offset:3px}.place-pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 1px 6px}.place-pagination[hidden]{display:none}.place-pagination span{color:var(--muted);font-size:13px}.place-pagination button{border:1px solid var(--sea);background:#eef9f6;color:var(--sea);padding:10px 14px;border-radius:999px;font:750 13px system-ui;cursor:pointer}.place-pagination button[hidden]{display:none}.place-status{color:var(--muted);padding:17px;background:#fff;border:1px dashed var(--line);border-radius:14px;line-height:1.7}
 </style>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 </head>
@@ -875,7 +876,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 </div></div>
 </div></section>
 
-<section class="feature" id="cityVenueFeature" data-region="taiwan" data-area="north" data-city="taipei" data-city-exclusive data-venue-exclusive hidden><div class="feature-intro"><h2 id="cityVenueTitle">城市場館</h2><p>收藏場館、商圈、步道、美食或飯店卡片，查看 Google 地圖與住宿資訊，或展開解說提示。</p></div><div class="venue-list" id="cityVenueCards"></div></section>
+<section class="feature" id="cityVenueFeature" data-region="taiwan" data-area="north" data-city="taipei" data-city-exclusive data-venue-exclusive hidden><div class="feature-intro"><h2 id="cityVenueTitle">城市場館</h2><p>收藏場館、商圈、步道、美食或飯店卡片，查看 Google 地圖與住宿資訊，或展開解說提示。</p></div><div class="venue-list" id="cityVenueCards"></div><div class="place-pagination" id="placePagination" hidden><span id="placeCounter" aria-live="polite"></span><button id="placeLoadMore" type="button" hidden>顯示更多景點 ↓</button></div></section>
 
 
 
@@ -1083,4 +1084,5 @@ venueButtons.forEach(b=>b.addEventListener("click",()=>{
 syncFilters();
 update();
 </script>
+<script src="../data/taipei-attractions-ui.js?v=20261025-470" defer></script>
 <script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
