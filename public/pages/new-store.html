@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f2e8">
+<meta name="description" content="新店計畫相關研究資料與 Trello 工作看板入口。">
+<title>新店計畫啟動器｜Personal OS</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--ink:#26343a;--muted:#6f7c80;--line:#e1e7e4;--paper:#fff;--bg:#f7f3e9;--teal:#087f8c;--shadow:0 12px 32px rgba(28,52,57,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}main{max-width:1080px;margin:auto;padding:24px 20px 48px}.back{display:inline-flex;text-decoration:none;color:var(--teal);font-weight:700;margin:4px 0 18px}.hero{padding:34px clamp(22px,5vw,52px);border-radius:28px;background:linear-gradient(125deg,#087f8c,#48b8ae);color:#fff;box-shadow:var(--shadow)}.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:.12em;opacity:.86}.hero h1{font-size:clamp(2rem,5vw,3.2rem);margin:10px 0}.hero p{font-size:1.05rem;line-height:1.75;max-width:720px;margin:0}.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.stats span{padding:8px 12px;border-radius:999px;background:#ffffff24;font-size:.9rem}
+section{margin-top:26px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:14px}.section-head h2{margin:0;font-size:1.35rem}.section-head p{margin:0;color:var(--muted);font-size:.9rem}
+.controls{display:flex;gap:10px;margin:14px 0 18px}.search{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:16px;background:#fff;font:inherit;outline-color:var(--teal)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}.card{position:relative;display:flex;flex-direction:column;min-height:230px;padding:22px;border:1px solid var(--line);border-radius:22px;background:var(--paper);box-shadow:var(--shadow)}.card-top{display:flex;justify-content:space-between;align-items:center}.tag{font-size:.8rem;font-weight:800;color:var(--teal);background:#e7f5f2;border-radius:999px;padding:6px 10px}.star{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:#fff;color:#68777b;font-size:1.35rem;cursor:pointer}.star.saved{color:#e59b16}.card h3{font-size:1.25rem;margin:13px 0 8px}.card p{color:var(--muted);line-height:1.7;margin:0 0 16px}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:auto}.actions a{display:inline-flex;align-items:center;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:750;color:#fff;background:var(--teal)}.actions a.secondary{background:#edf4f2;color:#17636b}.empty{padding:18px;border:1px dashed #bdcbc7;border-radius:16px;color:var(--muted);background:#ffffff99}.recent{display:flex;flex-wrap:wrap;gap:10px}.recent a{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);text-decoration:none}
+footer{margin-top:34px;color:var(--muted);font-size:.84rem;text-align:center}
+@media(max-width:600px){main{padding:16px 14px 34px}.hero{padding:27px 22px;border-radius:22px}.section-head{align-items:start;flex-direction:column}.card{min-height:0}}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../index.html">← 回到 Toby 首頁</a>
+<header class="hero">
+<span class="eyebrow">PERSONAL OS · PROJECT HUB</span>
+<h1>新店計畫啟動器</h1>
+<p>把新店計畫會用到的區域所得資料與 Trello 工作看板集中在這裡，方便研究在地生活條件、整理計畫進度。</p>
+<div class="stats"><span>🗺️ 區域所得地圖</span><span>📋 Trello 計畫看板</span><span>⭐ 收藏與最近開啟會保存在此瀏覽器</span></div>
+</header>
+<section aria-labelledby="resourcesTitle">
+<div class="section-head"><h2 id="resourcesTitle">計畫入口</h2><p>選擇一個入口開始查看</p></div>
+<div class="controls"><input id="search" class="search" type="search" placeholder="搜尋入口名稱或說明" aria-label="搜尋入口"></div>
+<div class="cards" id="cards"></div>
+</section>
+<section aria-labelledby="recentTitle"><div class="section-head"><h2 id="recentTitle">⭐ 收藏與最近開啟</h2></div><div class="recent" id="recent"></div></section>
+<footer>新店計畫啟動器 · 收藏與最近開啟紀錄僅儲存在目前瀏覽器</footer>
+</main>
+<script>
+const items=[
+{id:"income-map",title:"全台所得地圖",category:"區域研究",icon:"🗺️",description:"以村里地圖查看綜合所得稅申報統計，協助觀察區域收入差異。資料為 113 年度申報所得，不含政府移轉、免稅及分離課稅所得。",url:"https://imgcdn.cna.com.tw/embed/2026-richest-village/richest-village-heatmap-v5.html",label:"開啟所得地圖"},
+{id:"trello-new-store",title:"新店計畫 Trello 看板",category:"計畫管理",icon:"📋",description:"開啟 Trello「新店計劃」看板，查看計畫資料、任務與工作進度。",url:"https://trello.com/b/hiRPvaMf/%E6%96%B0%E5%BA%97%E8%A8%88%E5%8A%83",label:"開啟 Trello 看板"}
+];
+const favKey="newStoreLauncherFavs",recentKey="newStoreLauncherRecent";
+const read=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key)||"null")||fallback}catch{return fallback}};
+let favorites=read(favKey,[]),recentItems=read(recentKey,[]);
+const esc=s=>String(s??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+const cards=document.getElementById("cards"),search=document.getElementById("search"),recent=document.getElementById("recent");
+function render(){
+ const q=search.value.trim().toLocaleLowerCase();
+ const matches=items.filter(x=>(x.title+" "+x.category+" "+x.description).toLocaleLowerCase().includes(q));
+ cards.innerHTML=matches.length?matches.map(x=>'<article class="card"><div class="card-top"><span class="tag">'+esc(x.icon+" "+x.category)+'</span><button class="star '+(favorites.includes(x.id)?"saved":"")+'" type="button" data-star="'+esc(x.id)+'" aria-label="'+(favorites.includes(x.id)?"取消收藏 ":"收藏 ")+esc(x.title)+'" aria-pressed="'+favorites.includes(x.id)+'">'+(favorites.includes(x.id)?"★":"☆")+'</button></div><h3>'+esc(x.title)+'</h3><p>'+esc(x.description)+'</p><div class="actions"><a class="open-link" data-open="'+esc(x.id)+'" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(x.label)+' ↗</a></div></article>').join(""):'<div class="empty">找不到符合的入口，試試其他關鍵字。</div>';
+ const seen=new Set();const rows=[...items.filter(x=>favorites.includes(x.id)).map(x=>({...x,kind:"★"})),...recentItems.map(r=>{const x=items.find(i=>i.id===r.id);return x?{...x,kind:"最近"}:null}).filter(Boolean)];
+ const unique=rows.filter(x=>{if(seen.has(x.id))return false;seen.add(x.id);return true});
+ recent.innerHTML=unique.length?unique.map(x=>'<a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(x.id)+'">'+esc(x.kind+" "+x.title)+'</a>').join(""):'<span class="empty">尚無收藏或開啟紀錄。</span>';
+}
+cards.addEventListener("click",e=>{const b=e.target.closest("[data-star]");if(!b)return;const id=b.dataset.star;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];localStorage.setItem(favKey,JSON.stringify(favorites));render()});
+document.addEventListener("click",e=>{const a=e.target.closest("[data-open]");if(!a)return;const id=a.dataset.open;recentItems=[{id,time:Date.now()},...recentItems.filter(x=>x.id!==id)].slice(0,8);localStorage.setItem(recentKey,JSON.stringify(recentItems));setTimeout(render,0)});
+search.addEventListener("input",render);render();
+</script>
+<script src="../shared-nav.js?v=20261026-1" defer></script>
+</body>
+</html>
