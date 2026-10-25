@@ -80,8 +80,18 @@ function renderDistrictContent(name){
  document.getElementById("historyCategory").addEventListener("click",()=>{
   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("楊梅江夏堂 桃園市楊梅區");
   const fourChaptersMap="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("四章堂 桃園市楊梅區");
-  document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>楊梅江夏堂</h4><p>歷史文化</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article><article class="store-card"><h4>四章堂</h4><p>歷史文化</p><a class="map-link" href="'+fourChaptersMap+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article>';
- });
+  const libraries=[
+   {name:"桃園市立圖書館埔心分館",address:"桃園市楊梅區中興路145號",phone:"03-482-4329",note:"公共圖書館 · 幼兒閱讀與地方藝文；耐震補強中，館內尚未開放，臨時櫃檯提供部分服務。",official:"https://www.typl.gov.tw/zh-tw/About/Introduce/016"},
+   {name:"桃園市立圖書館紅梅分館",address:"桃園市楊梅區校前路41號（2、3樓）",phone:"03-286-6168",note:"公共圖書館 · 青少年圖書、客家書籍與藝文展示空間。",official:"https://www.typl.gov.tw/zh-tw/About/Introduce/018"},
+   {name:"桃園市立圖書館楊梅分館",address:"桃園市楊梅區光華街26號",phone:"03-478-2341",note:"公共圖書館 · 武俠主題館藏與地方閱讀文化。",official:"https://www.typl.gov.tw/zh-tw/About/Introduce/017"}
+  ];
+  const landmarkCards='<article class="store-card"><h4>楊梅江夏堂</h4><p>歷史文化</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article><article class="store-card"><h4>四章堂</h4><p>歷史文化</p><a class="map-link" href="'+fourChaptersMap+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article>';
+  const libraryCards=libraries.map(item=>{
+   const locationUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(item.name+" "+item.address);
+   return '<article class="store-card"><h4>'+item.name+'</h4><p>'+item.note+'</p><p>📍 '+item.address+'</p><p>☎️ '+item.phone+'</p><a class="map-link" href="'+locationUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="'+item.official+'" target="_blank" rel="noopener noreferrer">分館官方資訊 ↗</a></article>';
+  }).join("");
+  document.getElementById("storeResults").innerHTML=landmarkCards+libraryCards;
+ });;
  document.getElementById("hakkaCuisineCategory").addEventListener("click",()=>{
   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("八方園百年三合院景觀客家餐廳 桃園市楊梅區");
   const alanSisterMap="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("阿蘭姐三代老店 桃園市楊梅區");
