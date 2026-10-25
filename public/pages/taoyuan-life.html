@@ -52,7 +52,10 @@ function renderDistrictContent(name){
   selectedContent.innerHTML='<div class="empty-note">這個行政區的生活入口尚未加入。可逐步整理區公所、交通、醫療、採買、餐飲與休閒資訊。</div>';
   return;
  }
- selectedContent.innerHTML='<h4 class="subcategory-title">🍲 楊梅分類</h4><div class="subcategory-list"><button class="subcategory-button" id="hotpotCategory" type="button">🍲 火鍋</button></div><div id="storeResults"></div>';
+ selectedContent.innerHTML='<h4 class="subcategory-title">楊梅次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="hotpotCategory" type="button">🍲 火鍋</button><button class="subcategory-button" id="yangmeiLifeCategory" type="button">📍 楊梅生活</button></div><div id="storeResults"></div>';
+ document.getElementById("yangmeiLifeCategory").addEventListener("click",()=>{
+  document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>楊梅生活</h4><p>開啟 Google 地圖查看楊梅生活地圖。</p><a class="map-link" href="https://maps.app.goo.gl/YkZUsUtQmjrmPxBf9" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article>';
+ });
  document.getElementById("hotpotCategory").addEventListener("click",()=>{
   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("一口口麻辣鴛鴦鍋-楊梅店 桃園市楊梅區金德路87號");
   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>一口口麻辣鴛鴦鍋－楊梅店</h4><p>📍 桃園市楊梅區金德路87號</p><p>☎️ 03-475-0080</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article>';
