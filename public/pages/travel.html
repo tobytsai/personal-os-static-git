@@ -40,6 +40,8 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 <div id="islandCityFilters" data-city-group="island" hidden><p class="sub" style="margin:2px 0 8px">台灣離島分類</p><nav class="filters" aria-label="台灣離島縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部離島</button><button data-city-filter="kinmen" aria-pressed="false">金門縣</button><button data-city-filter="penghu" aria-pressed="false">澎湖縣</button><button data-city-filter="matsu" aria-pressed="false">連江縣・馬祖</button></nav></div>
 <div id="adminAreaFilters" hidden><p class="sub" style="margin:2px 0 8px">鄉鎮市區／行政區分類</p><nav class="filters" id="adminAreaButtons" aria-label="縣市下一級行政區篩選"></nav></div>
 <section class="venue-activity" id="venueActivity" hidden><div class="feature-intro"><h2>地點收藏與近期開啟</h2><p>場館、商圈、步道、美食、飯店與行政區探索卡片的收藏及近期開啟記錄會保存在這個瀏覽器中。</p></div><div class="resource-groups"><div class="resource-group"><h3>★ 我的收藏</h3><div class="activity-list" id="venueFavorites"></div><p class="activity-empty" id="venueFavoritesEmpty">點場館、商圈、步道、美食或飯店卡片上的星號即可收藏。</p></div><div class="resource-group"><h3>◷ 近期開啟</h3><div class="activity-list" id="venueRecent"></div><p class="activity-empty" id="venueRecentEmpty">開啟 Google 地圖後會留下近期記錄。</p></div></div></section>
+<section class="feature" id="cityVenueFeature" data-region="taiwan" data-area="north" data-city="taipei" data-city-exclusive data-venue-exclusive hidden><div class="feature-intro"><h2 id="cityVenueTitle">城市場館</h2><p>收藏場館、商圈、步道、美食或飯店卡片，查看 Google 地圖與住宿資訊，或展開解說提示。</p></div><div class="venue-list" id="cityVenueCards"></div><div class="place-pagination" id="placePagination" hidden><span id="placeCounter" aria-live="polite"></span><button id="placeLoadMore" type="button" hidden>顯示更多景點 ↓</button></div></section>
+
 <section><h2>旅遊看板與規劃工具</h2><p class="sub">看板內容持續整理中，點選卡片可直接查看 Trello 行程與收藏。</p>
 <div class="grid" id="destinations">
 <a class="card" data-region="taiwan" data-area="north" data-city="taipei" data-themes="city culture food" href="https://trello.com/b/anskjLi9/%E5%8F%B0%E5%8C%97%E5%B0%8F%E6%97%85%E8%A1%8C"><div class="meta"><span class="tag">台灣・北部</span><span class="arrow">↗</span></div><h3>台北小旅行</h3><p>城市散步、文化景點、河濱單車與特色空間。</p><span class="link">開啟 Trello 看板 →</span></a>
@@ -876,7 +878,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 </div></div>
 </div></section>
 
-<section class="feature" id="cityVenueFeature" data-region="taiwan" data-area="north" data-city="taipei" data-city-exclusive data-venue-exclusive hidden><div class="feature-intro"><h2 id="cityVenueTitle">城市場館</h2><p>收藏場館、商圈、步道、美食或飯店卡片，查看 Google 地圖與住宿資訊，或展開解說提示。</p></div><div class="venue-list" id="cityVenueCards"></div><div class="place-pagination" id="placePagination" hidden><span id="placeCounter" aria-live="polite"></span><button id="placeLoadMore" type="button" hidden>顯示更多景點 ↓</button></div></section>
+
 
 
 
