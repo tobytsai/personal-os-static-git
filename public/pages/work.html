@@ -47,7 +47,7 @@ const resources=[
 {id:"wangzi",name:"王子額緣",category:"供應商與合作",icon:"王",url:"https://www.google.com/search?q=%E7%8E%8B%E5%AD%90%E9%A1%8D%E7%B7%A3",description:"搜尋王子額緣相關資料與聯絡方式。",tone:"#6c83aa"},
 {id:"mim-mirror",name:"mim 美麗新鏡界",category:"供應商與合作",icon:"鏡",url:"https://www.mim.com.tw/",description:"開啟 mim 美麗新鏡界官方網站，瀏覽藝術畫框鏡、造型鏡與鏡面商品。",tone:"#5c8cba"}
 ];
-const categories=["全部",...new Set(resources.map(x=>x.category))];let active="全部",query="";const favKey="tobyWorkFavoritesV1",recentKey="tobyWorkRecentV1";let favorites=readList(favKey),recent=readList(recentKey);
+const categories=["全部",...new Set([...resources.map(x=>x.category),"同行觀察"])];let active="全部",query="";const favKey="tobyWorkFavoritesV1",recentKey="tobyWorkRecentV1";let favorites=readList(favKey),recent=readList(recentKey);
 function readList(key){try{return JSON.parse(localStorage.getItem(key)||"[]")}catch{return []}}
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 function remember(id){recent=[id,...recent.filter(x=>x!==id)].slice(0,8);localStorage.setItem(recentKey,JSON.stringify(recent));renderRecent()}
