@@ -32,6 +32,7 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 <div id="taiwanQuickFilters" hidden><p class="sub" style="margin:0 0 8px">台灣分區（選取台灣後顯示）</p><nav class="filters" aria-label="台灣分區篩選"><button data-quick-filter="north" aria-pressed="false">台灣・北部</button><button data-quick-filter="central" aria-pressed="false">台灣・中部</button><button data-quick-filter="south" aria-pressed="false">台灣・南部</button><button data-quick-filter="east" aria-pressed="false">台灣・東部</button><button data-quick-filter="island" aria-pressed="false">台灣・離島</button></nav></div>
 <div id="researchSubFilters" hidden><p class="sub" style="margin:0 0 8px">旅遊規劃分類</p><nav class="filters" aria-label="旅遊規劃分類篩選"><button data-quick-filter="rail" aria-pressed="false">鐵道旅行</button><button data-quick-filter="taiwantrip" aria-pressed="false">台灣好行</button><button data-quick-filter="flight" aria-pressed="false">機票研究</button><button data-quick-filter="forest" aria-pressed="false">森林遊樂區</button></nav></div>
 <div id="northCityFilters" data-city-group="north" hidden><p class="sub" style="margin:2px 0 8px">台灣北部城市分類</p><nav class="filters" aria-label="台灣北部城市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部北部</button><button data-city-filter="taipei" aria-pressed="false">台北市</button><button data-city-filter="newtaipei" aria-pressed="false">新北市</button><button data-city-filter="keelung" aria-pressed="false">基隆市</button><button data-city-filter="taoyuan" aria-pressed="false">桃園市</button><button data-city-filter="hsinchu-city" aria-pressed="false">新竹市</button><button data-city-filter="hsinchu-county" aria-pressed="false">新竹縣</button><button data-city-filter="miaoli" aria-pressed="false">苗栗縣</button><button data-city-filter="yilan" aria-pressed="false">宜蘭縣</button></nav></div>
+<div id="taipeiVenueFilters" hidden><p class="sub" style="margin:2px 0 8px">台北市場館分類</p><nav class="filters" aria-label="台北市場館分類"><button data-venue-filter="venues" aria-pressed="false">場館</button></nav></div>
 <div id="centralCityFilters" data-city-group="central" hidden><p class="sub" style="margin:2px 0 8px">台灣中部縣市分類</p><nav class="filters" aria-label="台灣中部縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部中部</button><button data-city-filter="taichung" aria-pressed="false">臺中市</button><button data-city-filter="changhua" aria-pressed="false">彰化縣</button><button data-city-filter="nantou" aria-pressed="false">南投縣</button><button data-city-filter="yunlin" aria-pressed="false">雲林縣</button></nav></div>
 <div id="southCityFilters" data-city-group="south" hidden><p class="sub" style="margin:2px 0 8px">台灣南部縣市分類</p><nav class="filters" aria-label="台灣南部縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部南部</button><button data-city-filter="chiayi-city" aria-pressed="false">嘉義市</button><button data-city-filter="chiayi-county" aria-pressed="false">嘉義縣</button><button data-city-filter="tainan" aria-pressed="false">台南市</button><button data-city-filter="kaohsiung" aria-pressed="false">高雄市</button><button data-city-filter="pingtung" aria-pressed="false">屏東縣</button></nav></div>
 <div id="eastCityFilters" data-city-group="east" hidden><p class="sub" style="margin:2px 0 8px">台灣東部縣市分類</p><nav class="filters" aria-label="台灣東部縣市篩選"><button class="active" data-city-filter="all" aria-pressed="true">全部東部</button><button data-city-filter="hualien" aria-pressed="false">花蓮縣</button><button data-city-filter="taitung" aria-pressed="false">台東縣</button></nav></div>
@@ -945,11 +946,13 @@ const regionButtons=[...document.querySelectorAll("[data-filter]")];
 const quickButtons=[...document.querySelectorAll("[data-quick-filter]")];
 const cityButtons=[...document.querySelectorAll("[data-city-filter]")];
 const cityGroups=[...document.querySelectorAll("[data-city-group]")];
+const taipeiVenueFilters=document.querySelector("#taipeiVenueFilters");
+const venueButtons=[...document.querySelectorAll("[data-venue-filter]")];
 const taiwanQuickFilters=document.querySelector("#taiwanQuickFilters");
 const researchSubFilters=document.querySelector("#researchSubFilters");
 const researchTopics=new Set(["rail","taiwantrip","flight","forest"]);
 const taiwanAreas=new Set(["north","central","south","east","island"]);
-let region="all",quick="all",city="all";
+let region="all",quick="all",city="all",venue="all";
 
 function syncFilters(){
   regionButtons.forEach(b=>{
@@ -968,6 +971,12 @@ function syncFilters(){
     b.setAttribute("aria-pressed",String(selected));
   });
   cityGroups.forEach(g=>{g.hidden=!(region==="taiwan"&&g.dataset.cityGroup===quick);});
+  venueButtons.forEach(b=>{
+    const selected=b.dataset.venueFilter===venue;
+    b.classList.toggle("active",selected);
+    b.setAttribute("aria-pressed",String(selected));
+  });
+  taipeiVenueFilters.hidden=!(region==="taiwan"&&quick==="north"&&city==="taipei");
   taiwanQuickFilters.hidden=region!=="taiwan";
   researchSubFilters.hidden=region!=="research";
 }
@@ -982,8 +991,9 @@ function update(){
       : (c.dataset.themes||"").split(/\s+/).includes(quick)));
     const cities=(c.dataset.city||"").split(/\s+/);
     const okCity=c.hasAttribute("data-city-exclusive")?city===c.dataset.city:(city==="all"||cities.includes(city));
+    const okVenue=venue==="all"?!c.hasAttribute("data-venue-exclusive"):c.hasAttribute("data-venue-exclusive");
     const okText=c.innerText.toLocaleLowerCase().includes(q);
-    c.hidden=!(okRegion&&okQuick&&okCity&&okText);
+    c.hidden=!(okRegion&&okQuick&&okCity&&okVenue&&okText);
     if(!c.hidden)shown++;
   }
   document.querySelector("#empty").style.display=shown?"none":"block";
@@ -991,6 +1001,7 @@ function update(){
 search.addEventListener("input",update);
 regionButtons.forEach(b=>b.addEventListener("click",()=>{
   region=b.dataset.filter;
+  venue="all";
   if(region==="all"){
     quick="all";
     city="all";
@@ -1006,6 +1017,7 @@ regionButtons.forEach(b=>b.addEventListener("click",()=>{
 }));
 quickButtons.forEach(b=>b.addEventListener("click",()=>{
   const selected=b.dataset.quickFilter;
+  venue="all";
   quick=quick===selected?"all":selected;
   if(researchTopics.has(quick))region="research";
   else if(taiwanAreas.has(quick))region="taiwan";
@@ -1015,10 +1027,16 @@ quickButtons.forEach(b=>b.addEventListener("click",()=>{
 }));
 cityButtons.forEach(b=>b.addEventListener("click",()=>{
   const selected=b.dataset.cityFilter;
+  venue="all";
   city=city===selected?"all":selected;
   const group=b.closest("[data-city-group]");
   region="taiwan";
   quick=group.dataset.cityGroup;
+  syncFilters();
+  update();
+}));
+venueButtons.forEach(b=>b.addEventListener("click",()=>{
+  venue=venue===b.dataset.venueFilter?"all":b.dataset.venueFilter;
   syncFilters();
   update();
 }));
