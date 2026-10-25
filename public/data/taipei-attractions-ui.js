@@ -15,6 +15,8 @@
   const safeOfficial=value=>/^https:\/\/(?:www\.travel\.taipei\/zh-tw\/attraction\/details\/\d+|newtaipei\.travel\/zh-tw\/Attractions\/Detail\/\d+|travel\.tycg\.gov\.tw\/zh-tw\/Travel\/Attraction\/\d+)$/i.test(value||"")?value:"";
   const mapUrl=r=>r.map||("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(r.name+" "+(r.address||regionNames[r.city]+" "+r.district)));
   const taoyuanCategoryFilters={"taoyuan-nature":"自然生態","taoyuan-history":"歷史人文","taoyuan-factory":"觀光工廠","taoyuan-walk":"休閒健走","taoyuan-north-cross":"北橫原鄉","taoyuan-play":"遊樂購物","taoyuan-water":"水岸埤塘","taoyuan-farm":"草花農場"};
+  const taipeiCategoryFilters={"taipei-family":"親子共遊","taipei-commercial":"主題商街","taipei-outdoor":"戶外踏青","taipei-arts":"藝文館所","taipei-history":"歷史建築","taipei-cycling":"單車遊蹤","taipei-hot-spring":"養生溫泉","taipei-accessibility":"無障礙旅遊推薦景點","taipei-night-market":"觀光夜市","taipei-religion":"宗教信仰","taipei-water":"藍色水路","taipei-public-art":"公共藝術","taipei-101":"101亮點","taipei-service":"借問站","taipei-other":"其他"};
+  const categoryFiltersByCity={taoyuan:taoyuanCategoryFilters,taipei:taipeiCategoryFilters};
   const taoyuanCategoryRules={
     "自然生態":{title:/自然|生態|森林|瀑布|神木|海岸|濕地|動物園|風景區|保護區|植物園|公園|生態園/,terms:["自然生態","生態","森林","瀑布","鳥類","賞鳥","昆蟲","濕地","保育","野生動物","山林","神木","自然環境","植物","生態池","生物多樣性"],minimum:3},
     "歷史人文":{title:/歷史|文化|古蹟|古道|古厝|老街|故事館|紀念|祠|廟|官舍|宿舍|眷村|文物|博物館|鐵路|車站|聚落|文化館|人文|古宅|故居|寺|橋|隧道|圖書館|美術館|藝術館|電影館|劇場|文創園區/,terms:["歷史","文化","古蹟","古道","古厝","老街","文物","信仰","客家","泰雅","部落","眷村","日式","日治","清代","紀念","文史","建築","傳統","遺址"],minimum:4},
@@ -45,7 +47,7 @@
     (taoyuanCategoryOverrides[name]||[]).forEach(label=>labels.add(label));
     return [...labels];
   }
-  const importedMode=()=>cityIds.includes(city)&&(venue==="all"||venue==="venues"||(city==="taoyuan"&&Boolean(taoyuanCategoryFilters[venue])));
+  const importedMode=()=>cityIds.includes(city)&&(venue==="all"||venue==="venues"||Boolean(categoryFiltersByCity[city]?.[venue]));
   const baseRenderVenueCards=renderVenueCards;
   const baseRenderAdminAreaButtons=renderAdminAreaButtons;
   const baseUpdate=update;
@@ -90,7 +92,7 @@
     }
     const area=adminArea==="all"?"":adminAreas[city]?.units[Number(adminArea)]||"";
     const keywords=search.value.trim().toLocaleLowerCase();
-    const activeCategory=taoyuanCategoryFilters[venue]||"";const match=attractions.filter(r=>r.city===city&&(!area||r.district===area)).filter(r=>!activeCategory||attractionCategories(r).includes(activeCategory)).filter(r=>!keywords||[r.name,r.address,r.district,r.topic,...attractionCategories(r)].join(" ").toLocaleLowerCase().includes(keywords));
+    const activeCategory=categoryFiltersByCity[city]?.[venue]||"";const match=attractions.filter(r=>r.city===city&&(!area||r.district===area)).filter(r=>!activeCategory||attractionCategories(r).includes(activeCategory)).filter(r=>!keywords||[r.name,r.address,r.district,r.topic,...attractionCategories(r)].join(" ").toLocaleLowerCase().includes(keywords));
     cityVenueTitle.textContent=cityName+(area?"・"+area:"")+(activeCategory?"・"+activeCategory:"")+"景點（"+match.length+"）";
     cityVenueCards.innerHTML=match.length?match.slice(0,pageSize).map(placeCard).join(""):'<p class="place-status">這個行政區沒有符合條件的景點卡片；可以清除搜尋文字或切換行政區。</p>';
     pagination.hidden=false;
