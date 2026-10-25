@@ -44,6 +44,7 @@ const resources=[
 {id:"boluo",name:"波蘿選所",category:"同行觀察",icon:"選",url:"https://boluo.tw/tw/?gad_source=1&gad_campaignid=12690952031&gbraid=0AAAAABc2UuPSrGE0pj5-RsdslwWsxzmty&gclid=Cj0KCQjwrvHWBhDKARIsABmp7h0EcgPQpXv9NBDSg6Fn5OsCimVylFvRKOfUHEa0tpq1Zx2jEvFK2zcaAouSEALw_wcB",description:"開啟波蘿選所官方網站，瀏覽商品與品牌資訊。",tone:"#e4a635"},
 {id:"ecommerce",name:"額緣之高橋",category:"同行觀察",icon:"額",url:"https://www.gakubuti.net/?srsltid=AYCX9vLgkh3vjif7a0PtoiLJkfcjdBCL_p8BJgsNXLgUuWehqORLfY19",description:"開啟額緣之高橋網站，瀏覽畫框與裱框商品及服務資訊。",tone:"#92764d"},
 {id:"wangzi",name:"王子額緣",category:"同行觀察",icon:"王",url:"https://www.facebook.com/share/1F7XeKSbLp/",description:"開啟王子額緣 Facebook 專頁，查看最新作品與店家資訊。",tone:"#6c83aa"},
+{id:"frame-shop-specialty",name:"額緣專門店",category:"同行觀察",icon:"額",url:"https://www.frame-shop.jp/",description:"開啟額緣專門店網站，瀏覽畫框商品與裱框服務資訊。",tone:"#6c83aa"},
 {id:"mim-mirror",name:"mim 美麗新鏡界",category:"同行觀察",icon:"鏡",url:"https://www.mim.com.tw/",description:"開啟 mim 美麗新鏡界官方網站，瀏覽藝術畫框鏡、造型鏡與鏡面商品。",tone:"#5c8cba"}
 ];
 const categories=["全部",...new Set([...resources.map(x=>x.category),"同行觀察"])];let active="全部",query="";const favKey="tobyWorkFavoritesV1",recentKey="tobyWorkRecentV1";let favorites=readList(favKey),recent=readList(recentKey);
