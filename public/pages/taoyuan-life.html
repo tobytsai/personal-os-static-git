@@ -91,7 +91,7 @@ function renderDistrictContent(name){
    return '<article class="store-card"><h4>'+item.name+'</h4><p>'+item.note+'</p><p>📍 '+item.address+'</p><p>☎️ '+item.phone+'</p><a class="map-link" href="'+locationUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="'+item.official+'" target="_blank" rel="noopener noreferrer">分館官方資訊 ↗</a></article>';
   }).join("");
   document.getElementById("storeResults").innerHTML=landmarkCards+libraryCards;
- });;
+ });
  document.getElementById("hakkaCuisineCategory").addEventListener("click",()=>{
   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("八方園百年三合院景觀客家餐廳 桃園市楊梅區");
   const alanSisterMap="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("阿蘭姐三代老店 桃園市楊梅區");
