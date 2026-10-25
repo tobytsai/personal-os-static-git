@@ -65,10 +65,39 @@ function renderDistrictContent(name){
   return;
  }
  if(name==="龍潭區"){
-  selectedContent.innerHTML='<h4 class="subcategory-title">龍潭次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="longtanHistoryCategory" type="button">🏛️ 歷史文化</button></div><div id="storeResults"></div>';
+  selectedContent.innerHTML='<h4 class="subcategory-title">龍潭次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="longtanHistoryCategory" type="button">🏛️ 歷史文化</button><button class="subcategory-button" id="longtanTrailCategory" type="button">🥾 步道</button></div><div id="storeResults"></div>';
   document.getElementById("longtanHistoryCategory").addEventListener("click",()=>{
    const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("桃園市客家文化館 桃園市龍潭區中正路三林段500號");
    document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>桃園市客家文化館</h4><p>歷史文化 · 客家文學、音樂、文化展覽與親子探索</p><p>📍 桃園市龍潭區中正路三林段500號</p><p>☎️ 03-409-6682</p><p>⚠️ 2026/6/29～11/20 整修期間內部展區暫停開放，演藝廳與視聽簡報室照常開放；出發前請查最新公告。</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://trello.com/c/QkvhFKZD" target="_blank" rel="noopener noreferrer">Trello 介紹卡片 ↗</a> <a class="map-link" href="https://www.hakka.tycg.gov.tw/cp.aspx?n=15426" target="_blank" rel="noopener noreferrer">官方館舍公告 ↗</a></article>';
+  });
+  document.getElementById("longtanTrailCategory").addEventListener("click",()=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("石門山北端登山口 桃園市龍潭區民治路300號");
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>石門山步道</h4><p>步道 · 石門水庫周邊小百岳，適合登高眺望水庫與山景</p><p>📍 桃園市龍潭區民治路（北端登山口）</p><p>🧭 石門山有多個登山口；本地圖定位民治路的北端登山口</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://trello.com/c/FKq8tyNX" target="_blank" rel="noopener noreferrer">Trello 介紹卡片 ↗</a> <a class="map-link" href="https://travel.tycg.gov.tw/zh-tw/Travel/Attraction/1183" target="_blank" rel="noopener noreferrer">桃園觀光介紹 ↗</a></article>';
+  });
+  return;
+ }
+
+ if(name==="中壢區"){
+  selectedContent.innerHTML='<h4 class="subcategory-title">中壢次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="zhongliArtCategory" type="button">🎨 藝文館所</button></div><div id="storeResults"></div>';
+  document.getElementById("zhongliArtCategory").addEventListener("click",()=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("桃園市兒童美術館 桃園市中壢區高鐵南路二段90號");
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>桃園市兒童美術館</h4><p>藝文館所 · 兒童藝術展覽、互動體驗與藝術圖書空間</p><p>📍 桃園市中壢區高鐵南路二段90號</p><p>☎️ 03-286-8668</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://trello.com/c/IPgWczqS" target="_blank" rel="noopener noreferrer">Trello 介紹卡片 ↗</a> <a class="map-link" href="https://tmofa.tycg.gov.tw/ch/visit/information/chunglu?fid=9898" target="_blank" rel="noopener noreferrer">官方參觀資訊 ↗</a></article>';
+  });
+  return;
+ }
+ if(name==="大園區"){
+  selectedContent.innerHTML='<h4 class="subcategory-title">大園次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="dayuanArtCategory" type="button">🎨 藝文館所</button></div><div id="storeResults"></div>';
+  document.getElementById("dayuanArtCategory").addEventListener("click",()=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("橫山書法藝術館 桃園市大園區大仁路100號");
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>橫山書法藝術館</h4><p>藝文館所 · 書法藝術、當代書藝與建築地景</p><p>📍 桃園市大園區大仁路100號</p><p>☎️ 03-287-6176</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://trello.com/c/sBsbmEFk" target="_blank" rel="noopener noreferrer">Trello 介紹卡片 ↗</a> <a class="map-link" href="https://tmofa.tycg.gov.tw/ch/visit/information/hengshan?fid=9898" target="_blank" rel="noopener noreferrer">官方參觀資訊 ↗</a></article>';
+  });
+  return;
+ }
+ if(name==="大溪區"){
+  selectedContent.innerHTML='<h4 class="subcategory-title">大溪次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="daxiHistoryCategory" type="button">🏛️ 歷史文化</button></div><div id="storeResults"></div>';
+  document.getElementById("daxiHistoryCategory").addEventListener("click",()=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("桃園市原住民族文化會館 桃園市大溪區員林路一段29巷101號");
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>桃園市原住民族文化會館</h4><p>歷史文化 · 原住民族文化展示、藝文活動與教育體驗</p><p>📍 桃園市大溪區員林路一段29巷101號</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://trello.com/c/KQHMY8HJ" target="_blank" rel="noopener noreferrer">Trello 介紹卡片 ↗</a> <a class="map-link" href="https://neecs.moenv.gov.tw/Home/PlaceQryView?id=d8d1af38-e56d-464c-b87d-de33dc17d8c8" target="_blank" rel="noopener noreferrer">環境教育場域資訊 ↗</a></article>';
   });
   return;
  }
