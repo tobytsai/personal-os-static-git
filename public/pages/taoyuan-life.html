@@ -64,6 +64,14 @@ function renderDistrictContent(name){
   });
   return;
  }
+ if(name==="龍潭區"){
+  selectedContent.innerHTML='<h4 class="subcategory-title">龍潭次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="longtanHistoryCategory" type="button">🏛️ 歷史文化</button></div><div id="storeResults"></div>';
+  document.getElementById("longtanHistoryCategory").addEventListener("click",()=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("桃園市客家文化館 桃園市龍潭區中正路三林段500號");
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>桃園市客家文化館</h4><p>歷史文化 · 客家文學、音樂、文化展覽與親子探索</p><p>📍 桃園市龍潭區中正路三林段500號</p><p>☎️ 03-409-6682</p><p>⚠️ 2026/6/29～11/20 整修期間內部展區暫停開放，演藝廳與視聽簡報室照常開放；出發前請查最新公告。</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://trello.com/c/QkvhFKZD" target="_blank" rel="noopener noreferrer">Trello 介紹卡片 ↗</a> <a class="map-link" href="https://www.hakka.tycg.gov.tw/cp.aspx?n=15426" target="_blank" rel="noopener noreferrer">官方館舍公告 ↗</a></article>';
+  });
+  return;
+ }
  if(name!=="楊梅區"){
   selectedContent.innerHTML='<div class="empty-note">這個行政區的生活入口尚未加入。可逐步整理區公所、交通、醫療、採買、餐飲與休閒資訊。</div>';
   return;
