@@ -1,7 +1,7 @@
 // Trello「台北小旅行 → 台北景點」靜態匯入卡片；資料檔在同資料夾。
 (function(){
   "use strict";
-  const regionNames={taipei:"臺北市",newtaipei:"新北市",keelung:"基隆市"};
+  const regionNames={taipei:"臺北市",newtaipei:"新北市",keelung:"基隆市",taoyuan:"桃園市"};
   const cityIds=Object.keys(regionNames);
   const pagination=document.getElementById("placePagination");
   const loadMore=document.getElementById("placeLoadMore");
@@ -12,7 +12,7 @@
   let lastFilterKey="";
   const esc=value=>String(value??"").replace(/[&<>"']/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch];});
   const safeTrello=value=>/^https:\/\/trello\.com\/c\/[A-Za-z0-9]+$/.test(value||"")?value:"";
-  const safeOfficial=value=>/^https:\/\/(?:www\.travel\.taipei\/zh-tw\/attraction\/details\/\d+|newtaipei\.travel\/zh-tw\/Attractions\/Detail\/\d+)$/i.test(value||"")?value:"";
+  const safeOfficial=value=>/^https:\/\/(?:www\.travel\.taipei\/zh-tw\/attraction\/details\/\d+|newtaipei\.travel\/zh-tw\/Attractions\/Detail\/\d+|travel\.tycg\.gov\.tw\/zh-tw\/Travel\/Attraction\/\d+)$/i.test(value||"")?value:"";
   const mapUrl=r=>r.map||("https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(r.name+" "+(r.address||regionNames[r.city]+" "+r.district)));
   const importedMode=()=>cityIds.includes(city)&&(venue==="all"||venue==="venues");
   const baseRenderVenueCards=renderVenueCards;
@@ -24,8 +24,8 @@
     const category=(Array.isArray(r.category)?r.category:[]).filter(Boolean);
     const tags=category.length?category.map(t=>'<span class="place-tag">'+esc(t)+'</span>').join(""):'<span class="place-tag">尚未提供分類標籤</span>';
     const popularity=r.rank?'<span class="place-tag">熱門第 '+esc(r.rank)+' 名 · '+Number(r.views||0).toLocaleString("zh-TW")+' 次瀏覽</span>':"";
-    const sourceName=r.city==="newtaipei"?"新北市小旅行 → 新北市景點":"台北小旅行 → 台北景點";
-    const officialLabel=r.city==="newtaipei"?"新北市觀光旅遊網":"臺北旅遊網";
+    const sourceName=r.city==="newtaipei"?"新北市小旅行 → 新北市景點":r.city==="taoyuan"?"桃園小旅行 → 桃園市景點":"台北小旅行 → 台北景點";
+    const officialLabel=r.city==="newtaipei"?"新北市觀光旅遊網":r.city==="taoyuan"?"桃園市觀光旅遊網":"臺北旅遊網";
     const summary=esc(r.topic||"來源卡片未提供摘要，可前往官方網站查看完整資訊。");
     const trello=safeTrello(r.trello),official=safeOfficial(r.official);
     const actions='<a class="venue-map" href="'+esc(mapUrl(r))+'" target="_blank" rel="noopener noreferrer" data-map-id="'+id+'">📍 Google 地圖 ↗</a>'+
@@ -54,7 +54,7 @@
     }
     if(importState==="error"){
       cityVenueTitle.textContent=cityName+"景點";
-      cityVenueCards.innerHTML='<p class="place-status">景點資料載入失敗，請重新整理頁面；也可先由下方「台北小旅行」Trello 看板查看原始清單。</p>';
+      cityVenueCards.innerHTML='<p class="place-status">景點資料載入失敗，請重新整理頁面；也可先由下方對應城市的 Trello 看板查看原始清單。</p>';
       pagination.hidden=true;return;
     }
     const area=adminArea==="all"?"":adminAreas[city]?.units[Number(adminArea)]||"";
@@ -63,7 +63,7 @@
     cityVenueTitle.textContent=cityName+(area?"・"+area:"")+"景點（"+match.length+"）";
     cityVenueCards.innerHTML=match.length?match.slice(0,pageSize).map(placeCard).join(""):'<p class="place-status">這個行政區沒有符合條件的景點卡片；可以清除搜尋文字或切換行政區。</p>';
     pagination.hidden=false;
-    const sourceName=city==="newtaipei"?"新北市小旅行／新北市景點":"台北小旅行／台北景點";
+    const sourceName=city==="newtaipei"?"新北市小旅行／新北市景點":city==="taoyuan"?"桃園小旅行／桃園市景點":"台北小旅行／台北景點";
     counter.textContent="已顯示 "+Math.min(match.length,pageSize)+"／"+match.length+" 筆 · 來源："+sourceName+" · 依地址分區";
     loadMore.hidden=pageSize>=match.length;
   };
@@ -89,12 +89,13 @@
   const decodeGzipBase64=async text=>{const binary=atob(text.replace(/\s/g,""));const bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));return JSON.parse(await new Response(stream).text());};
   Promise.all([
     fetch("../data/taipei-trello-attractions.json?v=20261025-470",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("Failed to fetch existing attractions: "+r.status);return r.json();}),
-    fetch("../data/newtaipei-trello-attractions.json.gz.b64?v=20261025-742",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("Failed to fetch New Taipei attractions: "+r.status);return r.text();}).then(decodeGzipBase64)
-  ]).then(([data,newtaipeiRecords])=>{
-     if(!Array.isArray(data.records)||!data.records.length||!Array.isArray(newtaipeiRecords)||newtaipeiRecords.length!==742)throw Error("Invalid attractions data");
+    fetch("../data/newtaipei-trello-attractions.json.gz.b64?v=20261025-742",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("Failed to fetch New Taipei attractions: "+r.status);return r.text();}).then(decodeGzipBase64),
+    fetch("../data/taoyuan-trello-attractions.json?v=20261026-340",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("Failed to fetch Taoyuan attractions: "+r.status);return r.json();})
+  ]).then(([data,newtaipeiRecords,taoyuanData])=>{
+     if(!Array.isArray(data.records)||!data.records.length||!Array.isArray(newtaipeiRecords)||newtaipeiRecords.length!==742||!Array.isArray(taoyuanData.records)||taoyuanData.records.length!==340)throw Error("Invalid attractions data");
      const oldIds=new Map(data.records.filter(r=>r.city==="newtaipei").map(r=>[r.name+"|"+r.district,r.id]));
      const completeNewTaipei=newtaipeiRecords.map(r=>({...r,id:oldIds.get(r.name+"|"+r.district)||r.id}));
-     attractions=[...data.records.filter(r=>r.city!=="newtaipei"),...completeNewTaipei].filter(r=>cityIds.includes(r.city)&&r.district&&r.district!=="待確認"&&r.name&&r.id);
+     attractions=[...data.records.filter(r=>r.city!=="newtaipei"),...completeNewTaipei,...taoyuanData.records].filter(r=>cityIds.includes(r.city)&&r.district&&r.district!=="待確認"&&r.name&&r.id);
      for(const r of attractions){venueById.set(r.id,{id:r.id,name:r.name,city:regionNames[r.city]+"・"+r.district,topic:r.topic,map:mapUrl(r)});}
      importState="ready";syncFilters();update();renderVenueActivity();
    })
