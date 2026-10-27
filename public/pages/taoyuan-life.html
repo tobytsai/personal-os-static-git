@@ -112,10 +112,15 @@ function renderDistrictContent(name){
   return;
  }
  if(name==="大溪區"){
-  selectedContent.innerHTML='<h4 class="subcategory-title">大溪次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="daxiHistoryCategory" type="button">🏛️ 歷史文化</button></div><div id="storeResults"></div>';
+  selectedContent.innerHTML='<h4 class="subcategory-title">大溪次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="daxiHistoryCategory" type="button">🏛️ 歷史文化</button><button class="subcategory-button" id="daxiEventsCategory" type="button">🎉 活動市集</button></div><div id="storeResults"></div>';
   document.getElementById("daxiHistoryCategory").addEventListener("click",()=>{
    const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("桃園市原住民族文化會館 桃園市大溪區員林路一段29巷101號");
    document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>桃園市原住民族文化會館</h4><p>歷史文化 · 原住民族文化展示、藝文活動與教育體驗</p><p>📍 桃園市大溪區員林路一段29巷101號</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://trello.com/c/KQHMY8HJ" target="_blank" rel="noopener noreferrer">Trello 介紹卡片 ↗</a> <a class="map-link" href="https://neecs.moenv.gov.tw/Home/PlaceQryView?id=d8d1af38-e56d-464c-b87d-de33dc17d8c8" target="_blank" rel="noopener noreferrer">環境教育場域資訊 ↗</a></article>';
+  });
+  document.getElementById("daxiEventsCategory").addEventListener("click",()=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("大溪木藝生態博物館 桃園市大溪區普濟路33之3號");
+   const articleUrl="https://www.taiwanhot.net/news/focus/1152106/%E6%89%93%E9%96%8B%E5%B7%A5%E5%A0%B4%E5%A4%A7%E9%96%80%E8%AE%93%E5%9C%A8%E5%9C%B0%E5%B7%A5%E8%97%9D%E8%B5%B0%E5%90%91%E5%9C%8B%E9%9A%9B+2026%E5%A4%A7%E6%BA%AA%E5%B7%A5%E8%97%9D%E9%80%B1%E7%99%BB%E5%A0%B4/70/%E7%94%9F%E6%B4%BB";
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>2026 大溪工藝週</h4><p>活動市集 · 從地方出發，與世界相遇</p><p>📅 2026年10月31日（六）至11月8日（日）</p><p>📍 桃園市大溪區各活動場地，包含大溪木藝生態博物館及在地工場；各場次地點與時間請查活動資訊。</p><p>職人工場開放、工藝體驗、市集與國際交流等系列活動，部分場次需預約。</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">木博館地圖 ↗</a> <a class="map-link" href="'+articleUrl+'" target="_blank" rel="noopener noreferrer">查看新聞報導 ↗</a> <a class="map-link" href="https://wem.tycg.gov.tw/News_Content.aspx?n=15031&amp;s=1895952" target="_blank" rel="noopener noreferrer">木博館活動資訊 ↗</a> <a class="map-link" href="https://www.accupass.com/event/2609161000251480404030" target="_blank" rel="noopener noreferrer">工藝短講報名 ↗</a></article>';
   });
   return;
  }
@@ -210,6 +215,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"2026 大溪工藝週",
 "「志願行動．幸福轉動」桃園市115年志願服務嘉年華暨 NPO 成果市集",
 "玉國泰式料理","陽柳塘薑母鴨","桃園市兒童美術館","橫山書法藝術館","桃園市原住民族文化會館","石門山步道","桃園市客家文化館","桃園市立圖書館富岡分館","桃園市立圖書館埔心分館"
 ];
