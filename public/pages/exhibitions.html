@@ -23,7 +23,7 @@ main{width:min(1200px,100%);margin:auto;padding:18px 20px 50px}.back{display:inl
 <header class="hero">
 <span class="eyebrow">ARTEMPEROR · GALLERY & EXHIBITIONS</span>
 <h1>展覽啟動器</h1>
-<p>瀏覽達利資料庫的畫廊與藝術家資料。可從畫廊查看代理藝術家，也可從藝術家查看代理畫廊，並以地區或關鍵字搜尋。</p>
+<p>瀏覽達利資料庫的畫廊、藝術家與藝術品。可從畫廊查看代理藝術家與作品，從藝術家查看代理畫廊與作品，也能從藝術品跳轉至畫家及畫廊。</p>
 <div class="hero-actions"><a href="https://artemperor.tw/" target="_blank" rel="noopener noreferrer">↗ 前往 artEmperor</a><a href="../index.html">⌂ 啟動器首頁</a></div>
 </header>
 <div class="stats"><span class="stat">🖼️ 畫廊 <b id="galleryTotal">載入中…</b> 家</span><span class="stat">🎨 藝術家 <b id="artistTotal">載入中…</b> 筆</span><span class="stat">🖼️ 藝術品 <b id="artworkTotal">載入中…</b> 件</span><span class="stat">🔗 代理連結畫廊 <b id="agencyGalleryTotal">—</b> 家</span><span class="stat">✦ 收藏會保存在此瀏覽器</span></div>
@@ -37,7 +37,7 @@ main{width:min(1200px,100%);margin:auto;padding:18px 20px 50px}.back{display:inl
 <div class="section-head"><h2 id="sectionTitle">畫廊與代理藝術家</h2><span class="hint" id="resultCount">讀取資料中…</span></div>
 <div class="grid" id="grid" aria-live="polite"><div class="empty">正在讀取畫廊資料…</div></div>
 </section>
-<footer>資料來源：Airtable「達利」資料庫「藝術畫廊」及「畫家」表（畫家 Grid view）。代理關係依「代理畫廊」連結整理；未連結者不會顯示代理資訊。</footer>
+<footer>資料來源：Airtable「達利」資料庫「藝術畫廊」、「畫家」及「藝術品」表（Grid view）。藝術家與畫廊的關聯依資料表中的連結欄位整理。</footer>
 </main>
 <script src="../shared-nav.js?v=20261025-2" defer></script>
 <script>
@@ -117,7 +117,7 @@ function setMode(next){
 galleryMode.addEventListener("click",()=>setMode("gallery"));artistMode.addEventListener("click",()=>setMode("artist"));artworkMode.addEventListener("click",()=>setMode("artwork"));
 query.addEventListener("input",()=>{focusGalleryId=focusArtistId=focusArtworkId="";render()});filterSelect.addEventListener("change",()=>{focusGalleryId=focusArtistId=focusArtworkId="";render()});
 favoritesOnly.addEventListener("click",()=>{onlyFavs=!onlyFavs;favoritesOnly.setAttribute("aria-pressed",String(onlyFavs));favoritesOnly.textContent=onlyFavs?"★ 顯示全部":"☆ 只看收藏";render()});
-Promise.all([fetch("../data/artemperor-gallery-table.json"),fetch("../data/artemperor-artists.json"),fetch("../data/artemperor-artworks.json")]).then(rs=>{if(rs.some(r=>!r.ok))throw new Error("data");return Promise.all(rs.map(r=>r.json()))}).then(data=>{
+Promise.all([fetch("../data/artemperor-gallery-table.json?v=20261027-3way"),fetch("../data/artemperor-artists.json?v=20261027-3way"),fetch("../data/artemperor-artworks.json?v=20261027-3way")]).then(rs=>{if(rs.some(r=>!r.ok))throw new Error("data");return Promise.all(rs.map(r=>r.json()))}).then(data=>{
  galleries=data[0];artists=data[1];artworks=data[2];
  document.getElementById("galleryTotal").textContent=galleries.length;document.getElementById("artistTotal").textContent=artists.length;document.getElementById("artworkTotal").textContent=artworks.length;
  document.getElementById("agencyGalleryTotal").textContent=galleries.filter(g=>(g.artists||[]).length).length;updateFilterOptions();render();
