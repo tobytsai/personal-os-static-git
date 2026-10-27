@@ -47,25 +47,34 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&
 const cleanUrl=s=>{if(!s)return"";let u=String(s).trim();if(!/^https?:\/\//i.test(u))u="https://"+u;try{const x=new URL(u);return x.protocol==="https:"||x.protocol==="http:"?x.href:""}catch{return""}};
 const getFavs=()=>{try{return JSON.parse(localStorage.getItem("exhibitionLauncherFavs")||"[]")}catch{return[]}};
 let galleries=[],artists=[],artworks=[],exhibitions=[],mode="gallery",onlyFavs=false,focusGalleryId="",focusArtistId="",focusArtworkId="",focusExhibitionId="";
-const taiwanPlaces=new Set(["台北","新北","桃園","基隆","新竹","新竹市","新竹縣","苗栗","台中","彰化","南投","雲林","嘉義","台南","高雄","屏東","宜蘭","花蓮","台東","澎湖","金門","連江"]);
+const taiwanPlaces=new Set(["台北","新北","桃園","基隆","新竹","苗栗","台中","彰化","南投","雲林","嘉義","台南","高雄","屏東","宜蘭","花蓮","台東","澎湖","金門","連江"]);
 const countryNames=new Set(["台灣","台灣省","中國","日本","韓國","南韓","北韓","香港","澳門","新加坡","馬來西亞","菲律賓","法國","美國","英國","德國","義大利","西班牙","荷蘭","瑞士","澳洲","泰國","越南","印尼","加拿大"]);
-function cleanPlace(value){let s=String(value||"").normalize("NFKC").replace(/臺/g,"台").trim();s=s.replace(/市$/,"").replace(/縣$/,"");if(s==="神戸")s="神戶";return s}
+function cleanPlace(value){
+ let s=String(value||"").normalize("NFKC").replace(/臺/g,"台").trim();
+ s=s.replace(/(市|縣)$/,"");
+ if(s==="神戸")s="神戶";
+ return s;
+}
 function galleryLocations(item){
  const raw=[item.city,item.artTaipei2026Region].filter(Boolean).join(" / ").normalize("NFKC").replace(/臺/g,"台");
  const domestic=new Set(),international=new Set();
  for(const chunk of raw.split(/[、,，;；]/)){
-  const tokens=chunk.split(/[\\/／]/).map(token=>token.trim());
-  for(let i=0;i<tokens.length;i++){
-   let token=tokens[i].replace(/^台灣(?:省)?\\s*/,"").trim();
-   if(!token||token==="台灣")continue;
-   if(countryNames.has(token)){if(tokens.length===1)international.add(cleanPlace(token));continue}
-   const place=cleanPlace(token);
+  const tokens=chunk.split(/[\/／]/).map(token=>token.trim());
+  for(const token of tokens){
+   const placeText=token.replace(/^台灣(?:省)?\s*/,"").trim();
+   if(!placeText||placeText==="台灣")continue;
+   if(countryNames.has(placeText)){
+    if(tokens.length===1)international.add(cleanPlace(placeText));
+    continue;
+   }
+   const place=cleanPlace(placeText);
    if(!place)continue;
    if(taiwanPlaces.has(place))domestic.add(place);else international.add(place);
   }
  }
  return {domestic:[...domestic],international:[...international]};
-}\nfunction regionName(value){return String(value||"地區未標示").trim()||"地區未標示"}
+}
+function regionName(value){return String(value||"地區未標示").trim()||"地區未標示"}
 function itemType(){return mode==="gallery"?"gallery":mode==="artist"?"artist":mode==="artwork"?"artwork":"exhibition"}
 function favKey(item){return itemType()+":"+item.id}
 function isFav(item){return getFavs().includes(favKey(item))}
