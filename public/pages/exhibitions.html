@@ -23,7 +23,7 @@ main{width:min(1200px,100%);margin:auto;padding:18px 20px 50px}.back{display:inl
 <header class="hero">
 <span class="eyebrow">ARTEMPEROR · GALLERY & EXHIBITIONS</span>
 <h1>展覽啟動器</h1>
-<p>瀏覽達利資料庫的畫廊、藝術家與藝術品，並整合 Trello「藝術展覽」中的藝術家清單與非池中藝術網展覽專題。從專題卡片可進入場地、參展藝術家及相關作品。</p>
+<p>瀏覽達利資料庫的畫廊、藝術家與藝術品，整合 Trello「藝術展覽」藝術家清單、非池中藝術網展覽專題，以及 ART TAIPEI 2026 參展畫廊與展位資訊。</p>
 <div class="hero-actions"><a href="https://artemperor.tw/" target="_blank" rel="noopener noreferrer">↗ 前往 artEmperor</a><a href="../index.html">⌂ 啟動器首頁</a></div>
 </header>
 <div class="stats"><span class="stat">🖼️ 畫廊 <b id="galleryTotal">載入中…</b> 家</span><span class="stat">🎨 藝術家 <b id="artistTotal">載入中…</b> 筆</span><span class="stat">🔗 Trello 藝術家清單 <b id="trelloArtistTotal">載入中…</b> 張卡片</span><span class="stat">🖼️ 藝術品 <b id="artworkTotal">載入中…</b> 件</span><span class="stat">🗞️ 展覽專題 <b id="exhibitionTotal">載入中…</b> 筆</span><span class="stat">🔗 代理連結畫廊 <b id="agencyGalleryTotal">—</b> 家</span><span class="stat">✦ 收藏會保存在此瀏覽器</span></div>
@@ -37,7 +37,7 @@ main{width:min(1200px,100%);margin:auto;padding:18px 20px 50px}.back{display:inl
 <div class="section-head"><h2 id="sectionTitle">畫廊與代理藝術家</h2><span class="hint" id="resultCount">讀取資料中…</span></div>
 <div class="grid" id="grid" aria-live="polite"><div class="empty">正在讀取畫廊資料…</div></div>
 </section>
-<footer>資料來源：Airtable「達利」資料庫「藝術畫廊」、「畫家」及「藝術品」表（Grid view），以及 Trello「藝術展覽」看板「藝術家」清單、非池中藝術網「她的辮子長成一座花園」專題。展覽專題卡片可連至畫廊、藝術家、作品與原文。</footer>
+<footer>資料來源：Airtable「達利」資料庫「藝術畫廊」、「畫家」及「藝術品」表（Grid view），以及 Trello「藝術展覽」看板「藝術家」清單、非池中藝術網展覽專題、ART TAIPEI 2026 參展畫廊資料。展覽專題卡片可連至畫廊、藝術家、作品與原文。</footer>
 </main>
 <script src="../shared-nav.js?v=20261025-2" defer></script>
 <script>
@@ -58,9 +58,9 @@ function cover(img,name,emoji){const u=cleanUrl(img);return '<div class="cover">
 function star(item){const fav=isFav(item);return '<button class="star '+(fav?"active":"")+'" type="button" aria-label="'+(fav?"取消收藏":"加入收藏")+'" data-fav-key="'+esc(favKey(item))+'">'+(fav?"★":"☆")+'</button>'}
 function makeGalleryCard(item){
  const phone=String(item.phone||"").trim(),tel=phone.replace(/[^+\d]/g,""),address=String(item.address||"").trim(),hours=String(item.hours||"").trim(),intro=String(item.intro||"").replace(/\s+/g," ").trim();
- const meta=[];if(address)meta.push("📍 "+esc(address));if(hours)meta.push("◷ "+esc(hours));if(phone)meta.push('☎️ <a href="tel:'+esc(tel)+'">'+esc(phone)+'</a>');
+ const meta=[];if(item.artTaipei2026Booth)meta.push("🎟️ ART TAIPEI 2026｜展位 "+esc(item.artTaipei2026Booth)+"｜"+esc(item.artTaipei2026Region||""));if(address)meta.push("📍 "+esc(address));if(hours)meta.push("◷ "+esc(hours));if(phone)meta.push('☎️ <a href="tel:'+esc(tel)+'">'+esc(phone)+'</a>');
  const roster='<details class="roster"><summary>代理藝術家（'+(item.artists||[]).length+'）</summary><div class="roster-list">'+relationChips(item.artists||[],"artist")+'</div></details><details class="roster"><summary>關聯藝術品（'+(item.artworks||[]).length+'）</summary><div class="roster-list">'+artworkChips(item.artworks||[])+'</div></details>';
- const links=actionLink(item.exhibitions,"✦ 展覽資訊",false)+actionLink(item.profile,"線上展廳",true)+actionLink(item.website,"官網",true)+actionLink(item.map,"Google 地圖",true)+actionLink(item.facebook,"Facebook",true);
+ const links=actionLink(item.artTaipei2026Url,"ART TAIPEI 2026 參展頁",false)+actionLink(item.exhibitions,"✦ 展覽資訊",false)+actionLink(item.profile,"線上展廳",true)+actionLink(item.website,"官網",true)+actionLink(item.map,"Google 地圖",true)+actionLink(item.facebook,"Facebook",true);
  return '<article class="card">'+cover(item.image,item.name,"✦")+'<div class="body"><div class="top"><div><div class="name">'+esc(item.name)+'</div><span class="region">'+esc(regionName(item.city))+'</span></div>'+star(item)+'</div><p class="detail">'+(intro?esc(intro):"查看畫廊的線上展廳、代理藝術家與藝術品。")+'</p>'+(meta.length?'<div class="meta">'+meta.join("<br>")+'</div>':"")+roster+'<div class="actions">'+links+'</div></div></article>';
 }
 function makeArtistCard(item){
@@ -106,7 +106,7 @@ function render(){
  const items=mode==="gallery"?galleries:mode==="artist"?artists:mode==="artwork"?artworks:exhibitions;
  const filtered=items.filter(item=>{
   const rel=mode==="gallery"?[...(item.artists||[]),...(item.artworks||[])].map(x=>x.name||x.title).join(" "):mode==="artist"?[...(item.galleries||[]),...(item.artworks||[])].map(x=>x.name||x.title).join(" "):mode==="artwork"?[...(item.artists||[]),...(item.galleries||[])].map(x=>x.name).join(" "):[item.venue,...item.artistIds.map(id=>artists.find(a=>a.id===id)?.name||""),...item.artworkIds.map(id=>artworks.find(a=>a.id===id)?.title||"")].join(" ");
-  const hay=mode==="gallery"?[item.name,item.city,item.address,item.intro,item.hours,rel].join(" "):mode==="artist"?[item.name,item.bio,rel].join(" "):mode==="artwork"?[item.title,item.englishName,item.details,item.year,item.price,rel].join(" "):[item.title,item.summary,item.venue,item.address,item.startDate,item.endDate,item.event,rel].join(" ");
+  const hay=mode==="gallery"?[item.name,item.city,item.address,item.intro,item.hours,item.artTaipei2026Booth,item.artTaipei2026Region,rel].join(" "):mode==="artist"?[item.name,item.bio,rel].join(" "):mode==="artwork"?[item.title,item.englishName,item.details,item.year,item.price,rel].join(" "):[item.title,item.summary,item.venue,item.address,item.startDate,item.endDate,item.event,rel].join(" ");
   const relationMatch=!selected||(mode==="gallery"?regionName(item.city)===selected:mode==="artist"?(item.galleries||[]).some(g=>g.name===selected):mode==="artwork"?(item.artists||[]).some(a=>a.name===selected):item.artistIds.some(id=>artists.some(a=>a.id===id&&a.name===selected)));
   const focused=mode==="gallery"?(!focusGalleryId||item.id===focusGalleryId):mode==="artist"?(!focusArtistId||item.id===focusArtistId):mode==="artwork"?(!focusArtworkId||item.id===focusArtworkId):(!focusExhibitionId||item.id===focusExhibitionId);
   return (!term||hay.toLocaleLowerCase().includes(term))&&relationMatch&&(!onlyFavs||isFav(item))&&focused;
