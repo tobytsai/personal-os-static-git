@@ -26,6 +26,25 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+      - name: Exclude launcher pages from search indexes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          pages = list(Path("public").rglob("*.html"))
+          if not pages:
+              raise SystemExit("No HTML pages found")
+          for page in pages:
+              html = page.read_text(encoding="utf-8")
+              # Remove prior robots directives to avoid conflicting instructions.
+              html = re.sub(r'<meta\b(?=[^>]*\bname\s*=\s*["\x27]robots["\x27])[^>]*>', '', html, flags=re.I)
+              html, count = re.subn(r'(<head\b[^>]*>)', r'\1\n<meta name="robots" content="noindex, follow">', html, count=1, flags=re.I)
+              if count != 1:
+                  raise SystemExit(f"Missing head element: {page}")
+              page.write_text(html, encoding="utf-8")
+          print(f"Added noindex to {len(pages)} HTML pages")
+          PY
       - name: Upload public directory
         uses: actions/upload-pages-artifact@v3
         with:
