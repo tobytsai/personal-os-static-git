@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f2edff">
+<meta name="description" content="依臺北市各行政區整理生活資訊入口。">
+<title>台北生活啟動器｜Personal OS</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--ink:#28324b;--muted:#778298;--line:#e2e6ef;--violet:#7257df;--mint:#e5f8ef;--paper:#fbf9f2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:radial-gradient(circle at 4% 8%,#ffe6a2 0 8rem,transparent 8.1rem),radial-gradient(circle at 98% 44%,#c8f1df 0 10rem,transparent 10.1rem),linear-gradient(145deg,#f5f1ff,#fffdf5 53%,#eaf8f2)}
+main{width:min(1040px,100%);margin:auto;padding:16px 20px 50px}.back{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;padding:9px 14px;border:1px solid #fff;border-radius:999px;background:#ffffffdb;color:#45536c;text-decoration:none;font-size:13px;font-weight:850;box-shadow:0 5px 15px #28324b12}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(25px,5vw,43px);border-radius:30px;color:#fff;background:linear-gradient(120deg,#6050c9,#8963e8 55%,#32aeb3);box-shadow:0 18px 42px #6151c433}.hero:before,.hero:after{position:absolute;z-index:-1;content:"";border:2px solid #ffffff42;border-radius:50%}.hero:before{width:250px;height:250px;right:-30px;top:-130px}.hero:after{width:150px;height:150px;right:27%;bottom:-110px}.eyebrow{display:inline-block;padding:7px 11px;border:1px solid #ffffff68;border-radius:999px;background:#ffffff22;font-size:12px;font-weight:850;letter-spacing:.07em}
+h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max-width:720px;margin:0;color:#f5f4ff;font-size:15px;line-height:1.75}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.stats span{padding:7px 11px;border:1px solid #ffffff55;border-radius:999px;background:#ffffff1f;font-size:12px;font-weight:800}
+.section{margin-top:23px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:0 2px 12px}.section-head h2{margin:0;font-size:21px}.hint{color:var(--muted);font-size:12px}
+.districts{display:flex;gap:9px;overflow:auto;padding:4px 2px 11px;scrollbar-color:#b7b2ce transparent;scrollbar-width:thin}.district{flex:none;padding:10px 15px;border:1px solid var(--line);border-radius:999px;background:#ffffffdf;color:#3f4c61;font:800 13px system-ui;cursor:pointer;box-shadow:0 4px 12px #28324b08;transition:.16s}.district:hover{transform:translateY(-2px)}.district.active{border-color:var(--violet);background:var(--violet);color:white;box-shadow:0 7px 16px #7257df38}
+.area-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.area-grid[hidden]{display:none}.area{display:flex;min-height:128px;flex-direction:column;justify-content:space-between;padding:16px;border:1px solid #fff;border-radius:20px;background:#ffffffed;box-shadow:0 9px 22px #28324b0d}.area h3{margin:0;font-size:17px}.area p{margin:7px 0;color:var(--muted);font-size:12px;line-height:1.55}.area button{align-self:flex-start;padding:7px 10px;border:0;border-radius:999px;background:#eeeaff;color:#5947b6;font:800 11px system-ui;cursor:pointer}
+.selected{display:none;padding:22px;border:1px solid #fff;border-radius:22px;background:#ffffffed;box-shadow:0 9px 22px #28324b0d}.selected.show{display:block}.selected h3{margin:0 0 6px;font-size:20px}.selected p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}.empty-note{margin-top:14px;padding:15px;border:1px dashed #c8cadb;border-radius:15px;background:#f8f7ff;color:#69748b;font-size:13px;line-height:1.7}.subcategory-title{margin:18px 0 10px;font-size:15px}.subcategory-list{display:flex;gap:9px;flex-wrap:wrap}.subcategory-button{padding:10px 16px;border:1px solid #ddd5ff;border-radius:999px;background:#eeeaff;color:#5947b6;font:800 13px system-ui;cursor:pointer}.store-card{margin-top:13px;padding:16px;border:1px solid #e2e6ef;border-radius:18px;background:#fff;box-shadow:0 8px 20px #28324b0d}.store-card h4{margin:0 0 8px;font-size:17px}.store-card p{margin:5px 0;color:var(--muted);font-size:13px}.map-link{display:inline-flex;margin-top:10px;padding:9px 13px;border-radius:999px;background:#7257df;color:#fff;text-decoration:none;font-size:12px;font-weight:850}
+.store-image{display:block;width:100%;max-height:230px;object-fit:cover;border-radius:12px;margin:0 0 11px}footer{margin-top:25px;color:var(--muted);text-align:center;font-size:11px}
+@media(max-width:720px){main{padding:12px 13px 35px}.area-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{border-radius:24px}}
+@media(max-width:430px){.area-grid{gap:8px}.area{min-height:120px;padding:13px;border-radius:17px}.area h3{font-size:15px}.area p{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body><main>
+<a class="back" href="../index.html">← 回到 Toby 首頁</a>
+<header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAIPEI LIFE</span><h1>台北生活啟動器</h1><p>依桃園市行政區整理日常生活入口。先選擇行政區，再逐步加入在地服務、交通、採買、醫療與休閒資訊。</p><div class="stats"><span>📍 台北 12 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
+<section class="section"><div class="section-head"><h2>📍 台北行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="桃園市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
+<footer>台北生活資訊整理頁 · 行政區分類依臺北市 12 區建立</footer>
+</main><script src="../shared-nav.js?v=20261025-2" defer></script>
+<script>
+const districts=["中正區","大同區","中山區","松山區","大安區","萬華區","信義區","士林區","北投區","內湖區","南港區","文山區"];
+const intros={
+"中正區":"中正區生活資訊分類。",
+"大同區":"大同區生活資訊分類。",
+"中山區":"中山區生活資訊分類。",
+"松山區":"松山區生活資訊分類。",
+"大安區":"大安區生活資訊分類。",
+"萬華區":"萬華區生活資訊分類。",
+"信義區":"信義區生活資訊分類。",
+"士林區":"士林區生活資訊分類。",
+"北投區":"北投區生活資訊分類。",
+"內湖區":"內湖區生活資訊分類。",
+"南港區":"南港區生活資訊分類。",
+"文山區":"文山區生活資訊分類。"
+};
+const nav=document.getElementById("districts"),grid=document.getElementById("areaGrid"),selected=document.getElementById("selected"),selectedContent=document.getElementById("selectedContent");
+function renderDistrictContent(name){
+ if(name==="大同區"){
+  selectedContent.innerHTML='<h4 class="subcategory-title">大同區次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="historyCategory" type="button">🏛️ 歷史文化</button></div><div id="storeResults"></div>';
+  document.getElementById("historyCategory").addEventListener("click",()=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("臺灣新文化運動紀念館 台北市大同區寧夏路87號");
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>臺灣新文化運動紀念館</h4><p>歷史文化 · 原北警察署，市定古蹟，館內保留歷史拘留空間。</p><p>📍 台北市大同區寧夏路87號</p><p>🕒 週二至週日 09:30–17:30</p><p>⛔ 週一休館</p><p>🎟️ 免門票</p><p>🖼️ 特展「麗島大周遊－日本時代的臺灣旅行特展」，展至 2027/08/15。</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://www.facebook.com/share/p/1gtAoewEAF/" target="_blank" rel="noopener noreferrer">查看 Facebook 貼文 ↗</a></article>';
+  });
+  return;
+ }
+ selectedContent.innerHTML='<div class="empty-note">這個行政區的生活入口尚未加入。可逐步整理美食、藝文、交通、採買與休閒資訊。</div>';
+}
+function choose(name){document.querySelectorAll(".district").forEach(b=>b.classList.toggle("active",b.dataset.area===name));if(name==="全部桃園"){selected.classList.remove("show");grid.hidden=false;return}grid.hidden=true;selected.classList.add("show");document.getElementById("selectedTitle").textContent="📍 "+name;document.getElementById("selectedIntro").textContent=intros[name];renderDistrictContent(name)}
+nav.innerHTML=["全部桃園",...districts].map(n=>'<button class="district '+(n==="全部桃園"?"active":"")+'" data-area="'+n+'">'+n+"</button>").join("");
+nav.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>choose(b.dataset.area)));
+grid.innerHTML=districts.map(n=>'<article class="area"><div><h3>'+n+'</h3><p>'+intros[n]+'</p></div><button data-pick="'+n+'">查看分類 →</button></article>').join("");
+grid.querySelectorAll("[data-pick]").forEach(b=>b.addEventListener("click",()=>{choose(b.dataset.pick);nav.querySelector('[data-area="'+b.dataset.pick+'"]').scrollIntoView({behavior:"smooth",block:"nearest"})}));
+</script></body></html>
