@@ -48,14 +48,14 @@ let rows=[],onlyFavs=false;
 function regionName(value){if(value==="國際")return"國際";return String(value||"地區未標示").replace(/^台灣[，,]\s*/,"").trim()||"地區未標示"}
 function makeCard(item){
  const name=esc(item.name),city=esc(regionName(item.city)),img=cleanUrl(item.image),fav=getFavs().includes(item.name);
- const profile=cleanUrl(item.profile),exhibitions=cleanUrl(item.exhibitions),website=cleanUrl(item.website);
+ const profile=cleanUrl(item.profile),exhibitions=cleanUrl(item.exhibitions),website=cleanUrl(item.website),map=cleanUrl(item.map);
  const phone=String(item.phone||"").trim(),tel=phone.replace(/[^+\d]/g,"");
  const address=String(item.address||"").trim(),hours=String(item.hours||"").trim(),intro=String(item.intro||"").replace(/\s+/g," ").trim();
  const meta=[];
  if(address)meta.push("📍 "+esc(address));
  if(hours)meta.push("◷ "+esc(hours));
  if(phone)meta.push('☎️ <a href="tel:'+esc(tel)+'">'+esc(phone)+'</a>');
- return '<article class="card"><div class="cover '+(img&&!item.cover?"logo":"")+'">'+(img?'<img src="'+esc(img)+'" alt="'+name+'" loading="lazy" onerror="this.parentElement.innerHTML=\'<span class=&quot;fallback&quot;>✦</span>\'">':'<span class="fallback">✦</span>')+'</div><div class="body"><div class="top"><div><div class="name">'+name+'</div><span class="region">'+city+'</span></div><button class="star '+(fav?"active":"")+'" type="button" aria-label="'+(fav?"取消收藏":"加入收藏")+'" data-fav="'+esc(item.name)+'">'+(fav?"★":"☆")+'</button></div><p class="detail">'+(intro?esc(intro):"查看畫廊展覽資訊與線上介紹。")+'</p>'+(meta.length?'<div class="meta">'+meta.join("<br>")+'</div>':'')+'<div class="actions">'+(exhibitions?'<a href="'+esc(exhibitions)+'" target="_blank" rel="noopener noreferrer">✦ 展覽資訊</a>':'')+(profile?'<a class="secondary" href="'+esc(profile)+'" target="_blank" rel="noopener noreferrer">畫廊介紹</a>':'')+(website?'<a class="secondary" href="'+esc(website)+'" target="_blank" rel="noopener noreferrer">官網</a>':'')+'</div></div></article>';
+ return '<article class="card"><div class="cover '+(img&&!item.cover?"logo":"")+'">'+(img?'<img src="'+esc(img)+'" alt="'+name+'" loading="lazy" onerror="this.parentElement.innerHTML=\'<span class=&quot;fallback&quot;>✦</span>\'">':'<span class="fallback">✦</span>')+'</div><div class="body"><div class="top"><div><div class="name">'+name+'</div><span class="region">'+city+'</span></div><button class="star '+(fav?"active":"")+'" type="button" aria-label="'+(fav?"取消收藏":"加入收藏")+'" data-fav="'+esc(item.name)+'">'+(fav?"★":"☆")+'</button></div><p class="detail">'+(intro?esc(intro):"查看畫廊展覽資訊與線上介紹。")+'</p>'+(meta.length?'<div class="meta">'+meta.join("<br>")+'</div>':'')+'<div class="actions">'+(exhibitions?'<a href="'+esc(exhibitions)+'" target="_blank" rel="noopener noreferrer">✦ 展覽資訊</a>':'')+(profile?'<a class="secondary" href="'+esc(profile)+'" target="_blank" rel="noopener noreferrer">畫廊介紹</a>':'')+(website?'<a class="secondary" href="'+esc(website)+'" target="_blank" rel="noopener noreferrer">官網</a>':'')+(map?'<a class="secondary" href="'+esc(map)+'" target="_blank" rel="noopener noreferrer">Google 地圖</a>':'')+'</div></div></article>';
 }
 function render(){
  const term=query.value.trim().toLocaleLowerCase(),selected=region.value,favs=getFavs();
