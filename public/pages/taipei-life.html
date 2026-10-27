@@ -21,11 +21,15 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 @media(max-width:720px){main{padding:12px 13px 35px}.area-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{border-radius:24px}}
 @media(max-width:430px){.area-grid{gap:8px}.area{min-height:120px;padding:13px;border-radius:17px}.area h3{font-size:15px}.area p{font-size:11px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+.quick-section{margin-top:22px}.quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick-grid .store-card{margin:0}.quick-empty{color:var(--muted);font-size:13px}.save-card{border:1px solid #d8cffd;border-radius:999px;background:#f2edff;color:#6046bb;padding:7px 12px;cursor:pointer;font-weight:700}.store-card .save-card{margin-top:8px}.quick-grid .map-link{margin-right:4px}@media(max-width:600px){.quick-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
 <header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAIPEI LIFE</span><h1>台北生活啟動器</h1><p>依臺北市行政區整理日常生活入口。先選擇行政區，再逐步加入在地服務、交通、採買、醫療與休閒資訊。</p><div class="stats"><span>📍 台北 12 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
+<section class="quick-section"><div class="section-head"><h2>🕘 最近開啟</h2></div><div class="quick-grid" id="lifeRecent"></div></section>
+<section class="quick-section"><div class="section-head"><h2>⭐ 我的收藏</h2></div><div class="quick-grid" id="lifeFavorites"></div></section>
+<section class="quick-section"><div class="section-head"><h2>🆕 最近新增 10 項</h2></div><div class="quick-grid" id="lifeNewest"></div></section>
 <section class="section"><div class="section-head"><h2>📍 台北行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="臺北市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
 <footer>台北生活資訊整理頁 · 行政區分類依臺北市 12 區建立</footer>
 </main><script src="../shared-nav.js?v=20261025-2" defer></script>
@@ -62,4 +66,74 @@ nav.innerHTML=["全部台北",...districts].map(n=>'<button class="district '+(n
 nav.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>choose(b.dataset.area)));
 grid.innerHTML=districts.map(n=>'<article class="area"><div><h3>'+n+'</h3><p>'+intros[n]+'</p></div><button data-pick="'+n+'">查看分類 →</button></article>').join("");
 grid.querySelectorAll("[data-pick]").forEach(b=>b.addEventListener("click",()=>{choose(b.dataset.pick);nav.querySelector('[data-area="'+b.dataset.pick+'"]').scrollIntoView({behavior:"smooth",block:"nearest"})}));
+/* 快速入口：依行政區和項目名稱保存收藏與最近使用。 */
+const lifeStoreKey="taipeiLifeQuickV1";
+function readLifeState(){try{return JSON.parse(localStorage.getItem(lifeStoreKey))||{}}catch(e){return {}}}
+let lifeState=readLifeState();
+lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
+lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
+const lifeCatalog=new Map();
+const initialNewest=["臺灣新文化運動紀念館"];
+function lifeKey(district,name){return district+"｜"+name}
+function saveLifeState(){try{localStorage.setItem(lifeStoreKey,JSON.stringify(lifeState))}catch(e){}}
+function collectLifeCards(){
+ for(const district of districts){
+  choose(district);
+  const buttons=[...selectedContent.querySelectorAll(".subcategory-button")];
+  for(const button of buttons){
+   button.click();
+   for(const card of selectedContent.querySelectorAll(".store-card")){
+    const name=card.querySelector("h4")?.textContent.trim();
+    if(name){const key=lifeKey(district,name);lifeCatalog.set(key,{key,name,district,html:card.outerHTML});}
+   }
+  }
+ }
+ choose("全部台北");
+ const keys=[...lifeCatalog.keys()];
+ if(!Array.isArray(lifeState.known)){lifeState.known=keys;lifeState.added=[];}
+ else{
+  const known=new Set(lifeState.known);
+  const added=keys.filter(k=>!known.has(k));
+  lifeState.added=[...added,...(Array.isArray(lifeState.added)?lifeState.added:[])].filter((k,i,a)=>lifeCatalog.has(k)&&a.indexOf(k)===i);
+  lifeState.known=keys;
+ }
+ saveLifeState();
+}
+function lifeCard(key){
+ const item=lifeCatalog.get(key);if(!item)return "";
+ const box=document.createElement("div");box.innerHTML=item.html;
+ const card=box.firstElementChild;card.dataset.lifeKey=key;
+ const label=document.createElement("p");label.textContent="📍 "+item.district;card.insertBefore(label,card.children[1]||null);
+ const b=document.createElement("button");b.type="button";b.className="save-card";b.dataset.lifeFavorite=key;
+ b.setAttribute("aria-pressed",String(lifeState.favorites.includes(key)));
+ b.textContent=lifeState.favorites.includes(key)?"★ 已收藏":"☆ 收藏";
+ card.appendChild(b);return card.outerHTML;
+}
+function drawLifeLists(){
+ const newestSeed=initialNewest.map(name=>[...lifeCatalog.values()].find(x=>x.name===name)?.key).filter(Boolean);
+ const newest=[...(lifeState.added||[]),...newestSeed].filter((k,i,a)=>lifeCatalog.has(k)&&a.indexOf(k)===i).slice(0,10);
+ const show=(id,keys,empty)=>{document.getElementById(id).innerHTML=keys.map(lifeCard).filter(Boolean).join("")||'<p class="quick-empty">'+empty+'</p>';};
+ show("lifeRecent",lifeState.recent.filter(k=>lifeCatalog.has(k)).slice(0,10),"開啟卡片中的連結後，會顯示在這裡。");
+ show("lifeFavorites",lifeState.favorites.filter(k=>lifeCatalog.has(k)),"按卡片上的「收藏」，常用項目就會出現在這裡。");
+ show("lifeNewest",newest,"目前沒有新增項目。");
+ decorateLifeCards();
+}
+function decorateLifeCards(){
+ const district=document.getElementById("selectedTitle").textContent.replace(/^📍\s*/,"");
+ for(const card of selectedContent.querySelectorAll(".store-card")){
+  const name=card.querySelector("h4")?.textContent.trim(),key=lifeKey(district,name);
+  if(!lifeCatalog.has(key))continue;
+  card.dataset.lifeKey=key;
+  let b=card.querySelector(".save-card");if(!b){b=document.createElement("button");b.type="button";b.className="save-card";card.appendChild(b)}
+  b.dataset.lifeFavorite=key;b.textContent=lifeState.favorites.includes(key)?"★ 已收藏":"☆ 收藏";b.setAttribute("aria-pressed",String(lifeState.favorites.includes(key)));
+ }
+}
+document.addEventListener("click",e=>{
+ const fav=e.target.closest("[data-life-favorite]");
+ if(fav){const key=fav.dataset.lifeFavorite;lifeState.favorites=lifeState.favorites.includes(key)?lifeState.favorites.filter(k=>k!==key):[key,...lifeState.favorites];saveLifeState();drawLifeLists();return;}
+ const card=e.target.closest(".store-card[data-life-key]");
+ if(card&&e.target.closest("a")){const key=card.dataset.lifeKey;lifeState.recent=[key,...lifeState.recent.filter(k=>k!==key)].slice(0,10);saveLifeState();drawLifeLists();}
+ if(e.target.closest(".subcategory-button"))setTimeout(decorateLifeCards,0);
+});
+collectLifeCards();drawLifeLists();
 </script></body></html>
