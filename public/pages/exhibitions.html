@@ -104,11 +104,11 @@ function render(){
  }));
  grid.querySelectorAll("[data-open-artist]").forEach(link=>link.addEventListener("click",event=>{
   event.preventDefault();const id=link.dataset.openArtist;if(!artists.some(a=>a.id===id))return;
-  focusArtistId=id;focusGalleryId="";query.value="";filterSelect.value="";setMode("artist");
+  focusGalleryId="";query.value="";filterSelect.value="";setMode("artist");focusArtistId=id;render();
  }));
  grid.querySelectorAll("[data-open-gallery]").forEach(link=>link.addEventListener("click",event=>{
   event.preventDefault();const id=link.dataset.openGallery;if(!galleries.some(g=>g.id===id))return;
-  focusGalleryId=id;focusArtistId="";query.value="";filterSelect.value="";setMode("gallery");
+  focusArtistId="";query.value="";filterSelect.value="";setMode("gallery");focusGalleryId=id;render();
  }));
 }
 function setMode(next){
