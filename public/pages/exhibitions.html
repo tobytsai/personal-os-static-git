@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4eafa">
+<meta name="description" content="以達利資料庫 Airtable artEmperor Grid view 整理的畫廊與展覽入口。">
+<title>展覽啟動器｜Toby Personal OS</title>
+<style>
+:root{--ink:#31263d;--muted:#766b80;--line:#eadff0;--purple:#7449a5;--pink:#f1b6d4;--paper:#fffdfb}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:radial-gradient(circle at 5% 8%,#ffe6b7 0 8rem,transparent 8.1rem),radial-gradient(circle at 96% 32%,#d8f1e7 0 10rem,transparent 10.1rem),linear-gradient(145deg,#f7effa,#fffdf9 56%,#f1f6fb)}
+main{width:min(1200px,100%);margin:auto;padding:18px 20px 50px}.back{display:inline-flex;margin:0 0 14px;padding:9px 14px;border:1px solid #fff;border-radius:999px;background:#ffffffd9;color:#554661;text-decoration:none;font-size:13px;font-weight:850;box-shadow:0 5px 15px #35234012}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(25px,5vw,44px);border-radius:30px;color:#fff;background:linear-gradient(118deg,#503575,#8050a9 54%,#ca6b9c);box-shadow:0 18px 42px #68418136}.hero:before,.hero:after{position:absolute;z-index:-1;content:"";border:2px solid #ffffff40;border-radius:50%}.hero:before{width:260px;height:260px;right:-45px;top:-135px}.hero:after{width:155px;height:155px;right:23%;bottom:-112px}.eyebrow{display:inline-block;padding:7px 11px;border:1px solid #ffffff66;border-radius:999px;background:#ffffff20;font-size:12px;font-weight:850;letter-spacing:.09em}h1{margin:14px 0 8px;font-size:clamp(34px,7vw,54px);line-height:1.13}.hero p{max-width:750px;margin:0;color:#f8effb;font-size:15px;line-height:1.8}.hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.hero-actions a{padding:9px 13px;border-radius:999px;background:#fff;color:#593c70;text-decoration:none;font-size:12px;font-weight:850}.stats{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}.stat{padding:9px 12px;border:1px solid #fff;border-radius:14px;background:#ffffffd9;color:#52425d;font-size:13px;font-weight:850}
+.toolbar{display:grid;grid-template-columns:minmax(220px,1fr) minmax(185px,260px) auto;gap:10px;margin:18px 0 13px}.search{position:relative}.search span{position:absolute;left:14px;top:50%;transform:translateY(-50%)}input,select{width:100%;height:46px;padding:0 14px;border:1px solid #e3d5eb;border-radius:14px;background:#fff;color:var(--ink);font:inherit;outline:none}input{padding-left:42px}input:focus,select:focus{border-color:#9363b8;box-shadow:0 0 0 3px #7449a51c}.toggle{border:1px solid #e3d5eb;border-radius:14px;background:#fff;color:#674383;padding:0 15px;font:800 13px system-ui;cursor:pointer;white-space:nowrap}.toggle[aria-pressed="true"]{background:#7449a5;color:#fff;border-color:#7449a5}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:18px 3px 11px}.section-head h2{margin:0;font-size:20px}.hint{color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:13px}.card{overflow:hidden;display:flex;flex-direction:column;min-width:0;border:1px solid #fff;border-radius:20px;background:#ffffffed;box-shadow:0 9px 24px #38264712;transition:transform .16s,box-shadow .16s}.card:hover{transform:translateY(-3px);box-shadow:0 15px 28px #3826471b}.cover{height:142px;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,#f5e5f0,#eeeafa 55%,#e6f4ef)}.cover img{width:100%;height:100%;object-fit:cover}.cover.logo img{width:min(76%,230px);height:100px;object-fit:contain}.cover .fallback{font-size:40px;opacity:.55}.body{display:flex;flex:1;flex-direction:column;padding:14px}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.name{font-size:16px;font-weight:900;line-height:1.4;overflow-wrap:anywhere}.region{display:inline-block;margin-top:6px;padding:4px 8px;border-radius:999px;background:#f1e8f8;color:#674383;font-size:11px;font-weight:850}.star{flex:0 0 36px;width:36px;height:36px;border:0;border-radius:12px;background:#f5eff8;color:#8a7a91;font-size:20px;cursor:pointer}.star.active{background:#fff1c2;color:#d49305}.detail{margin:10px 0;color:#706579;font-size:12px;line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:58px}.meta{display:grid;gap:5px;margin:0 0 13px;color:#736a7b;font-size:11px;line-height:1.5}.meta a{color:#674383;text-decoration:none}.actions{display:flex;gap:7px;margin-top:auto}.actions a{flex:1;display:flex;align-items:center;justify-content:center;min-height:38px;padding:7px 6px;border-radius:11px;background:#7449a5;color:#fff;text-decoration:none;text-align:center;font-size:11px;font-weight:850}.actions a.secondary{background:#f3eaf7;color:#624079}.empty{grid-column:1/-1;padding:34px 18px;text-align:center;border:1px dashed #d6c8de;border-radius:17px;background:#ffffffa8;color:var(--muted)}footer{margin:24px 4px 0;color:var(--muted);font-size:11px;line-height:1.7}
+@media(max-width:720px){main{padding:12px 13px 35px}.hero{border-radius:24px}.toolbar{grid-template-columns:1fr 1fr}.search{grid-column:1/-1}.toggle{min-height:44px}.grid{grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:9px}}
+@media(max-width:440px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cover{height:108px}.body{padding:10px}.name{font-size:13px}.region{font-size:10px}.detail{font-size:11px;min-height:72px}.meta{font-size:10px}.actions{flex-direction:column}.actions a{min-height:34px}.star{width:32px;height:32px;flex-basis:32px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body><main>
+<a class="back" href="../index.html">← 回到 Toby 首頁</a>
+<header class="hero">
+<span class="eyebrow">ARTEMPEROR · GALLERY & EXHIBITIONS</span>
+<h1>展覽啟動器</h1>
+<p>從畫廊出發尋找正在展出的藝術。資料整理自 Airtable「達利」資料庫的 <b>artemperor · Grid view</b>，可用地區或關鍵字瀏覽，並直接開啟各畫廊的展覽資訊、介紹頁與官網。</p>
+<div class="hero-actions"><a href="https://artemperor.tw/" target="_blank" rel="noopener noreferrer">↗ 前往 artEmperor</a><a href="../index.html">⌂ 啟動器首頁</a></div>
+</header>
+<div class="stats"><span class="stat">🖼️ <b id="total">載入中…</b> 筆畫廊</span><span class="stat">📍 <b id="regionTotal">—</b> 個地區</span><span class="stat">✦ 收藏會保存在此瀏覽器</span></div>
+<div class="toolbar">
+<label class="search"><span>⌕</span><input id="query" type="search" placeholder="搜尋畫廊、地區、地址或介紹" aria-label="搜尋畫廊"></label>
+<select id="region" aria-label="依地區篩選"><option value="">全部地區</option></select>
+<button class="toggle" id="favoritesOnly" type="button" aria-pressed="false">☆ 只看收藏</button>
+</div>
+<section>
+<div class="section-head"><h2>畫廊與展覽</h2><span class="hint" id="resultCount">讀取資料中…</span></div>
+<div class="grid" id="grid" aria-live="polite"><div class="empty">正在讀取畫廊資料…</div></div>
+</section>
+<footer>資料來源：Airtable「達利」資料庫 · artemperor（Grid view）。電話、地址、營業時間與展覽資訊請以畫廊最新公告為準。</footer>
+</main>
+<script src="../shared-nav.js?v=20261025-2" defer></script>
+<script>
+const grid=document.getElementById("grid"),query=document.getElementById("query"),region=document.getElementById("region"),total=document.getElementById("total"),regionTotal=document.getElementById("regionTotal"),resultCount=document.getElementById("resultCount"),favoritesOnly=document.getElementById("favoritesOnly");
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const cleanUrl=s=>{if(!s)return"";let u=String(s).trim();if(!/^https?:\/\//i.test(u))u="https://"+u;try{const x=new URL(u);return x.protocol==="https:"||x.protocol==="http:"?x.href:""}catch{return""}};
+const getFavs=()=>{try{return JSON.parse(localStorage.getItem("exhibitionLauncherFavs")||"[]")}catch{return[]}};
+let rows=[],onlyFavs=false;
+function regionName(value){if(value==="國際")return"國際";return String(value||"地區未標示").replace(/^台灣[，,]\s*/,"").trim()||"地區未標示"}
+function makeCard(item){
+ const name=esc(item.name),city=esc(regionName(item.city)),img=cleanUrl(item.image),fav=getFavs().includes(item.name);
+ const profile=cleanUrl(item.profile),exhibitions=cleanUrl(item.exhibitions),website=cleanUrl(item.website);
+ const phone=String(item.phone||"").trim(),tel=phone.replace(/[^+\d]/g,"");
+ const address=String(item.address||"").trim(),hours=String(item.hours||"").trim(),intro=String(item.intro||"").replace(/\s+/g," ").trim();
+ const meta=[];
+ if(address)meta.push("📍 "+esc(address));
+ if(hours)meta.push("◷ "+esc(hours));
+ if(phone)meta.push('☎️ <a href="tel:'+esc(tel)+'">'+esc(phone)+'</a>');
+ return '<article class="card"><div class="cover '+(img&&!item.cover?"logo":"")+'">'+(img?'<img src="'+esc(img)+'" alt="'+name+'" loading="lazy" onerror="this.parentElement.innerHTML=\'<span class=&quot;fallback&quot;>✦</span>\'">':'<span class="fallback">✦</span>')+'</div><div class="body"><div class="top"><div><div class="name">'+name+'</div><span class="region">'+city+'</span></div><button class="star '+(fav?"active":"")+'" type="button" aria-label="'+(fav?"取消收藏":"加入收藏")+'" data-fav="'+esc(item.name)+'">'+(fav?"★":"☆")+'</button></div><p class="detail">'+(intro?esc(intro):"查看畫廊展覽資訊與線上介紹。")+'</p>'+(meta.length?'<div class="meta">'+meta.join("<br>")+'</div>':'')+'<div class="actions">'+(exhibitions?'<a href="'+esc(exhibitions)+'" target="_blank" rel="noopener noreferrer">✦ 展覽資訊</a>':'')+(profile?'<a class="secondary" href="'+esc(profile)+'" target="_blank" rel="noopener noreferrer">畫廊介紹</a>':'')+(website?'<a class="secondary" href="'+esc(website)+'" target="_blank" rel="noopener noreferrer">官網</a>':'')+'</div></div></article>';
+}
+function render(){
+ const term=query.value.trim().toLocaleLowerCase(),selected=region.value,favs=getFavs();
+ const filtered=rows.filter(item=>{
+  const hay=[item.name,item.city,item.address,item.intro,item.hours].join(" ").toLocaleLowerCase();
+  return (!term||hay.includes(term))&&(!selected||regionName(item.city)===selected)&&(!onlyFavs||favs.includes(item.name));
+ });
+ total.textContent=rows.length;resultCount.textContent="顯示 "+filtered.length+" / "+rows.length+" 筆";
+ grid.innerHTML=filtered.length?filtered.map(makeCard).join(""):'<div class="empty">沒有符合條件的畫廊，請調整地區或搜尋文字。</div>';
+ grid.querySelectorAll("[data-fav]").forEach(btn=>btn.addEventListener("click",()=>{
+  const name=btn.dataset.fav,list=getFavs(),next=list.includes(name)?list.filter(x=>x!==name):[...list,name];
+  localStorage.setItem("exhibitionLauncherFavs",JSON.stringify(next));render();
+ }));
+}
+fetch("../data/artemperor-galleries.json").then(r=>{if(!r.ok)throw new Error("data");return r.json()}).then(data=>{
+ rows=data;const counts={};rows.forEach(x=>{const n=regionName(x.city);counts[n]=(counts[n]||0)+1});
+ const regions=Object.keys(counts).sort((a,b)=>a==="國際"?1:b==="國際"?-1:a.localeCompare(b,"zh-Hant"));
+ regionTotal.textContent=regions.length;
+ region.innerHTML='<option value="">全部地區（'+rows.length+'）</option>'+regions.map(n=>'<option value="'+esc(n)+'">'+esc(n)+'（'+counts[n]+'）</option>').join("");
+ render();
+}).catch(()=>{total.textContent="—";regionTotal.textContent="—";resultCount.textContent="無法載入資料";grid.innerHTML='<div class="empty">畫廊資料目前無法載入，請稍後重新整理。</div>'});
+query.addEventListener("input",render);region.addEventListener("change",render);favoritesOnly.addEventListener("click",()=>{onlyFavs=!onlyFavs;favoritesOnly.setAttribute("aria-pressed",String(onlyFavs));favoritesOnly.textContent=onlyFavs?"★ 顯示全部":"☆ 只看收藏";render()});
+</script>
+</body></html>
