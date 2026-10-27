@@ -26,8 +26,8 @@ main{width:min(1200px,100%);margin:auto;padding:18px 20px 50px}.back{display:inl
 <p>瀏覽達利資料庫的畫廊、藝術家與藝術品，並整合 Trello「藝術展覽」中的藝術家清單。可從藝術家卡片開啟對應的 Trello 卡片，並查看其代理畫廊與作品。</p>
 <div class="hero-actions"><a href="https://artemperor.tw/" target="_blank" rel="noopener noreferrer">↗ 前往 artEmperor</a><a href="../index.html">⌂ 啟動器首頁</a></div>
 </header>
-<div class="stats"><span class="stat">🖼️ 畫廊 <b id="galleryTotal">載入中…</b> 家</span><span class="stat">🎨 藝術家 <b id="artistTotal">載入中…</b> 筆</span><span class="stat">🔗 Trello 藝術家清單 <b id="trelloArtistTotal">載入中…</b> 張卡片</span><span class="stat">🖼️ 藝術品 <b id="artworkTotal">載入中…</b> 件</span><span class="stat">🔗 代理連結畫廊 <b id="agencyGalleryTotal">—</b> 家</span><span class="stat">✦ 收藏會保存在此瀏覽器</span></div>
-<div class="view-switch" role="tablist" aria-label="瀏覽方式"><button class="mode active" id="galleryMode" type="button" role="tab" aria-selected="true">🏛️ 畫廊 → 藝術家</button><button class="mode" id="artistMode" type="button" role="tab" aria-selected="false">🎨 藝術家 → 畫廊／藝術品</button><button class="mode" id="artworkMode" type="button" role="tab" aria-selected="false">🖼️ 藝術品 → 藝術家／畫廊</button></div>
+<div class="stats"><span class="stat">🖼️ 畫廊 <b id="galleryTotal">載入中…</b> 家</span><span class="stat">🎨 藝術家 <b id="artistTotal">載入中…</b> 筆</span><span class="stat">🔗 Trello 藝術家清單 <b id="trelloArtistTotal">載入中…</b> 張卡片</span><span class="stat">🖼️ 藝術品 <b id="artworkTotal">載入中…</b> 件</span><span class="stat">🗞️ 展覽專題 <b id="exhibitionTotal">載入中…</b> 筆</span><span class="stat">🔗 代理連結畫廊 <b id="agencyGalleryTotal">—</b> 家</span><span class="stat">✦ 收藏會保存在此瀏覽器</span></div>
+<div class="view-switch" role="tablist" aria-label="瀏覽方式"><button class="mode active" id="galleryMode" type="button" role="tab" aria-selected="true">🏛️ 畫廊 → 藝術家</button><button class="mode" id="artistMode" type="button" role="tab" aria-selected="false">🎨 藝術家 → 畫廊／藝術品</button><button class="mode" id="artworkMode" type="button" role="tab" aria-selected="false">🖼️ 藝術品 → 藝術家／畫廊</button><button class="mode" id="exhibitionMode" type="button" role="tab" aria-selected="false">🧵 展覽專題 → 畫廊／藝術家／作品</button></div>
 <div class="toolbar">
 <label class="search"><span>⌕</span><input id="query" type="search" placeholder="搜尋畫廊、地區、地址或介紹" aria-label="搜尋畫廊與藝術家"></label>
 <select id="filterSelect" aria-label="依地區篩選"><option value="">全部地區</option></select>
@@ -42,13 +42,13 @@ main{width:min(1200px,100%);margin:auto;padding:18px 20px 50px}.back{display:inl
 <script src="../shared-nav.js?v=20261025-2" defer></script>
 <script>
 const grid=document.getElementById("grid"),query=document.getElementById("query"),filterSelect=document.getElementById("filterSelect"),resultCount=document.getElementById("resultCount"),favoritesOnly=document.getElementById("favoritesOnly"),sectionTitle=document.getElementById("sectionTitle");
-const galleryMode=document.getElementById("galleryMode"),artistMode=document.getElementById("artistMode"),artworkMode=document.getElementById("artworkMode");
+const galleryMode=document.getElementById("galleryMode"),artistMode=document.getElementById("artistMode"),artworkMode=document.getElementById("artworkMode"),exhibitionMode=document.getElementById("exhibitionMode");
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const cleanUrl=s=>{if(!s)return"";let u=String(s).trim();if(!/^https?:\/\//i.test(u))u="https://"+u;try{const x=new URL(u);return x.protocol==="https:"||x.protocol==="http:"?x.href:""}catch{return""}};
 const getFavs=()=>{try{return JSON.parse(localStorage.getItem("exhibitionLauncherFavs")||"[]")}catch{return[]}};
-let galleries=[],artists=[],artworks=[],mode="gallery",onlyFavs=false,focusGalleryId="",focusArtistId="",focusArtworkId="";
+let galleries=[],artists=[],artworks=[],exhibitions=[],mode="gallery",onlyFavs=false,focusGalleryId="",focusArtistId="",focusArtworkId="",focusExhibitionId="";
 function regionName(value){return String(value||"地區未標示").trim()||"地區未標示"}
-function itemType(){return mode==="gallery"?"gallery":mode==="artist"?"artist":"artwork"}
+function itemType(){return mode==="gallery"?"gallery":mode==="artist"?"artist":mode==="artwork"?"artwork":"exhibition"}
 function favKey(item){return itemType()+":"+item.id}
 function isFav(item){return getFavs().includes(favKey(item))}
 function actionLink(url,label,secondary){const u=cleanUrl(url);return u?'<a class="'+(secondary?"secondary":"")+'" href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+label+'</a>':""}
@@ -73,8 +73,19 @@ function makeArtworkCard(item){
  const detail=[item.englishName,item.year?("創作年份："+item.year):"",item.price].filter(Boolean).join("｜");
  return '<article class="card">'+cover(item.image,item.title,"🖼️")+'<div class="body"><div class="top"><div><div class="name">'+esc(item.title)+'</div><span class="region">藝術品</span></div>'+star(item)+'</div>'+(detail?'<div class="meta">'+esc(detail)+'</div>':"")+(item.details?'<p class="detail">'+esc(item.details)+'</p>':"")+'<div class="roster"><strong>藝術家（'+(item.artists||[]).length+'）</strong><div class="roster-list">'+artistLinks+'</div></div><div class="roster"><strong>關聯畫廊（'+(item.galleries||[]).length+'）</strong><div class="roster-list">'+galleryLinks+'</div></div></div></article>';
 }
+function makeExhibitionCard(item){
+ const eventArtists=item.artistIds.map(id=>artists.find(x=>x.id===id)).filter(Boolean);
+ const eventWorks=item.artworkIds.map(id=>artworks.find(x=>x.id===id)).filter(Boolean);
+ const venue='<a class="relation-chip" href="#" data-open-gallery="'+esc(item.venueId)+'">'+esc(item.venue)+'</a>';
+ const meta=['🗞️ '+esc(item.category)+'｜'+esc(item.publishedDate)+'｜'+esc(item.author),'📅 '+esc(item.startDate)+' – '+esc(item.endDate),'🎉 開幕 '+esc(item.opening),'📍 '+esc(item.address),'◷ '+esc(item.hours)+'（'+esc(item.closed)+'）','✦ '+esc(item.event)];
+ return '<article class="card">'+cover(item.image,item.title,"🧵")+'<div class="body"><div class="top"><div><div class="name">'+esc(item.title)+'</div><span class="region">'+esc(item.status)+'</span></div>'+star(item)+'</div><p class="detail">'+esc(item.summary)+'</p><div class="meta">'+meta.join("<br>")+'</div><div class="roster"><strong>展覽場地</strong><div class="roster-list">'+venue+'</div></div><div class="roster"><strong>參展藝術家（'+eventArtists.length+'）</strong><div class="roster-list">'+relationChips(eventArtists,"artist")+'</div></div><div class="roster"><strong>文中作品（'+eventWorks.length+'）</strong><div class="roster-list">'+artworkChips(eventWorks)+'</div></div><p class="detail">場地簡介｜'+esc(item.venueInfo)+'</p><div class="actions">'+actionLink(item.articleUrl,"閱讀 artEmperor 原文",false)+'</div></div></article>';
+}
 function updateFilterOptions(){
- if(mode==="gallery"){
+ if(mode==="exhibition"){
+  const names=[...new Set(exhibitions.flatMap(e=>e.artistIds.map(id=>artists.find(a=>a.id===id)?.name).filter(Boolean)))].sort((a,b)=>a.localeCompare(b,"zh-Hant"));
+  filterSelect.setAttribute("aria-label","依藝術家篩選");filterSelect.innerHTML='<option value="">全部展覽專題（'+exhibitions.length+'）</option>'+names.map(n=>'<option value="'+esc(n)+'">'+esc(n)+'</option>').join("");
+  query.placeholder="搜尋展名、畫廊、藝術家或作品";sectionTitle.textContent="展覽專題與參展作品";
+ }else if(mode==="gallery"){
   const regions=[...new Set(galleries.map(x=>regionName(x.city)))].sort((a,b)=>a.localeCompare(b,"zh-Hant"));
   filterSelect.setAttribute("aria-label","依地區篩選");filterSelect.innerHTML='<option value="">全部地區（'+galleries.length+'）</option>'+regions.map(n=>'<option value="'+esc(n)+'">'+esc(n)+'</option>').join("");
   query.placeholder="搜尋畫廊、地區、地址、藝術家或作品";sectionTitle.textContent="畫廊、藝術家與藝術品";
@@ -92,38 +103,50 @@ function updateFilterOptions(){
 }
 function render(){
  const term=query.value.trim().toLocaleLowerCase(),selected=filterSelect.value;
- const items=mode==="gallery"?galleries:mode==="artist"?artists:artworks;
+ const items=mode==="gallery"?galleries:mode==="artist"?artists:mode==="artwork"?artworks:exhibitions;
  const filtered=items.filter(item=>{
-  const rel=mode==="gallery"?[...(item.artists||[]),...(item.artworks||[])].map(x=>x.name||x.title).join(" "):mode==="artist"?[...(item.galleries||[]),...(item.artworks||[])].map(x=>x.name||x.title).join(" "):[...(item.artists||[]),...(item.galleries||[])].map(x=>x.name).join(" ");
-  const hay=mode==="gallery"?[item.name,item.city,item.address,item.intro,item.hours,rel].join(" "):mode==="artist"?[item.name,item.bio,rel].join(" "):[item.title,item.englishName,item.details,item.year,item.price,rel].join(" ");
-  const relationMatch=!selected||(mode==="gallery"?regionName(item.city)===selected:mode==="artist"?(item.galleries||[]).some(g=>g.name===selected):(item.artists||[]).some(a=>a.name===selected));
-  const focused=mode==="gallery"?(!focusGalleryId||item.id===focusGalleryId):mode==="artist"?(!focusArtistId||item.id===focusArtistId):(!focusArtworkId||item.id===focusArtworkId);
+  const rel=mode==="gallery"?[...(item.artists||[]),...(item.artworks||[])].map(x=>x.name||x.title).join(" "):mode==="artist"?[...(item.galleries||[]),...(item.artworks||[])].map(x=>x.name||x.title).join(" "):mode==="artwork"?[...(item.artists||[]),...(item.galleries||[])].map(x=>x.name).join(" "):[item.venue,...item.artistIds.map(id=>artists.find(a=>a.id===id)?.name||""),...item.artworkIds.map(id=>artworks.find(a=>a.id===id)?.title||"")].join(" ");
+  const hay=mode==="gallery"?[item.name,item.city,item.address,item.intro,item.hours,rel].join(" "):mode==="artist"?[item.name,item.bio,rel].join(" "):mode==="artwork"?[item.title,item.englishName,item.details,item.year,item.price,rel].join(" "):[item.title,item.summary,item.venue,item.address,item.startDate,item.endDate,item.event,rel].join(" ");
+  const relationMatch=!selected||(mode==="gallery"?regionName(item.city)===selected:mode==="artist"?(item.galleries||[]).some(g=>g.name===selected):mode==="artwork"?(item.artists||[]).some(a=>a.name===selected):item.artistIds.some(id=>artists.some(a=>a.id===id&&a.name===selected)));
+  const focused=mode==="gallery"?(!focusGalleryId||item.id===focusGalleryId):mode==="artist"?(!focusArtistId||item.id===focusArtistId):mode==="artwork"?(!focusArtworkId||item.id===focusArtworkId):(!focusExhibitionId||item.id===focusExhibitionId);
   return (!term||hay.toLocaleLowerCase().includes(term))&&relationMatch&&(!onlyFavs||isFav(item))&&focused;
  });
- const label=mode==="gallery"?"畫廊":mode==="artist"?"藝術家":"藝術品";
+ const label=mode==="gallery"?"畫廊":mode==="artist"?"藝術家":mode==="artwork"?"藝術品":"展覽專題";
  resultCount.textContent="顯示 "+filtered.length+" / "+items.length+" 筆"+label;
- grid.innerHTML=filtered.length?filtered.map(mode==="gallery"?makeGalleryCard:mode==="artist"?makeArtistCard:makeArtworkCard).join(""):'<div class="empty">沒有符合條件的資料，請調整篩選或搜尋文字。</div>';
+ grid.innerHTML=filtered.length?filtered.map(mode==="gallery"?makeGalleryCard:mode==="artist"?makeArtistCard:mode==="artwork"?makeArtworkCard:makeExhibitionCard).join(""):'<div class="empty">沒有符合條件的資料，請調整篩選或搜尋文字。</div>';
  grid.querySelectorAll("[data-fav-key]").forEach(btn=>btn.addEventListener("click",()=>{const list=getFavs(),key=btn.dataset.favKey;localStorage.setItem("exhibitionLauncherFavs",JSON.stringify(list.includes(key)?list.filter(x=>x!==key):[...list,key]));render()}));
  grid.querySelectorAll("[data-open-artist]").forEach(link=>link.addEventListener("click",event=>{event.preventDefault();const id=link.dataset.openArtist;if(!artists.some(x=>x.id===id))return;focusGalleryId=focusArtworkId="";query.value="";filterSelect.value="";setMode("artist");focusArtistId=id;render()}));
  grid.querySelectorAll("[data-open-gallery]").forEach(link=>link.addEventListener("click",event=>{event.preventDefault();const id=link.dataset.openGallery;if(!galleries.some(x=>x.id===id))return;focusArtistId=focusArtworkId="";query.value="";filterSelect.value="";setMode("gallery");focusGalleryId=id;render()}));
  grid.querySelectorAll("[data-open-artwork]").forEach(link=>link.addEventListener("click",event=>{event.preventDefault();const id=link.dataset.openArtwork;if(!artworks.some(x=>x.id===id))return;focusGalleryId=focusArtistId="";query.value="";filterSelect.value="";setMode("artwork");focusArtworkId=id;render()}));
 }
 function setMode(next){
- mode=next;focusGalleryId=focusArtistId=focusArtworkId="";
- galleryMode.classList.toggle("active",mode==="gallery");artistMode.classList.toggle("active",mode==="artist");artworkMode.classList.toggle("active",mode==="artwork");
- galleryMode.setAttribute("aria-selected",String(mode==="gallery"));artistMode.setAttribute("aria-selected",String(mode==="artist"));artworkMode.setAttribute("aria-selected",String(mode==="artwork"));
+ mode=next;focusGalleryId=focusArtistId=focusArtworkId=focusExhibitionId="";
+ galleryMode.classList.toggle("active",mode==="gallery");artistMode.classList.toggle("active",mode==="artist");artworkMode.classList.toggle("active",mode==="artwork");exhibitionMode.classList.toggle("active",mode==="exhibition");
+ galleryMode.setAttribute("aria-selected",String(mode==="gallery"));artistMode.setAttribute("aria-selected",String(mode==="artist"));artworkMode.setAttribute("aria-selected",String(mode==="artwork"));exhibitionMode.setAttribute("aria-selected",String(mode==="exhibition"));
  favoritesOnly.setAttribute("aria-pressed","false");favoritesOnly.textContent="☆ 只看收藏";onlyFavs=false;updateFilterOptions();render();
 }
-galleryMode.addEventListener("click",()=>setMode("gallery"));artistMode.addEventListener("click",()=>setMode("artist"));artworkMode.addEventListener("click",()=>setMode("artwork"));
+galleryMode.addEventListener("click",()=>setMode("gallery"));artistMode.addEventListener("click",()=>setMode("artist"));artworkMode.addEventListener("click",()=>setMode("artwork"));exhibitionMode.addEventListener("click",()=>setMode("exhibition"));
 query.addEventListener("input",()=>{focusGalleryId=focusArtistId=focusArtworkId="";render()});filterSelect.addEventListener("change",()=>{focusGalleryId=focusArtistId=focusArtworkId="";render()});
 favoritesOnly.addEventListener("click",()=>{onlyFavs=!onlyFavs;favoritesOnly.setAttribute("aria-pressed",String(onlyFavs));favoritesOnly.textContent=onlyFavs?"★ 顯示全部":"☆ 只看收藏";render()});
-Promise.all([fetch("../data/artemperor-gallery-table.json?v=20261027-3way"),fetch("../data/artemperor-artists.json?v=20261027-3way"),fetch("../data/artemperor-artworks.json?v=20261027-3way"),fetch("../data/trello-exhibition-artists.json?v=20261027-trello")]).then(rs=>{if(rs.some(r=>!r.ok))throw new Error("data");return Promise.all(rs.map(r=>r.json()))}).then(data=>{
- galleries=data[0];artists=data[1];artworks=data[2];
+Promise.all([fetch("../data/artemperor-gallery-table.json?v=20261027-3way"),fetch("../data/artemperor-artists.json?v=20261027-3way"),fetch("../data/artemperor-artworks.json?v=20261027-3way"),fetch("../data/trello-exhibition-artists.json?v=20261027-trello"),fetch("../data/artemperor-featured-exhibitions.json?v=20261027-focus7179")]).then(rs=>{if(rs.some(r=>!r.ok))throw new Error("data");return Promise.all(rs.map(r=>r.json()))}).then(data=>{
+ galleries=data[0];artists=data[1];artworks=data[2];exhibitions=data[4];
  const normalizeArtistName=s=>String(s||"").normalize("NFKC").toLocaleLowerCase().replace(/[\s　·・.．,，、\-—_]/g,"");
  const artistByName=new Map(artists.map(item=>[normalizeArtistName(item.name),item]));
  data[3].forEach(item=>{const existing=artistByName.get(normalizeArtistName(item.name));if(existing){existing.trelloUrl=item.trelloUrl;existing.description=existing.description||item.description}else{const trelloArtist={id:"trello:"+item.id,name:item.name,image:"",profile:"",website:"",galleries:[],artworks:[],description:item.description,trelloUrl:item.trelloUrl,trelloOnly:true};artists.push(trelloArtist);artistByName.set(normalizeArtistName(item.name),trelloArtist)}});
+ const norm=s=>String(s||"").normalize("NFKC").toLocaleLowerCase().replace(/[\s　·・.．,，、\-—_]/g,"");
+ const addRef=(arr,obj)=>{if(!arr.some(x=>x.id===obj.id))arr.push(obj)};
+ exhibitions.forEach(expo=>{
+  let gallery=galleries.find(g=>norm(g.name)===norm(expo.venue));
+  if(!gallery){gallery={id:expo.venueId,name:expo.venue,image:"",city:"新北市",address:expo.address,hours:expo.hours+"；"+expo.closed,intro:expo.venueInfo,exhibitions:expo.articleUrl,artists:[],artworks:[]};galleries.push(gallery)}else{expo.venueId=gallery.id;gallery.exhibitions=gallery.exhibitions||expo.articleUrl}
+  const artistIdMap={};
+  expo.artists.forEach(person=>{const oldId=person.id;let artist=artists.find(a=>norm(a.name)===norm(person.name));if(!artist){artist={id:person.id,name:person.name,image:"",profile:"",website:"",bio:person.bio,galleries:[],artworks:[]};artists.push(artist)}else{artist.bio=artist.bio||person.bio}person.id=artist.id;artistIdMap[oldId]=artist.id;addRef(artist.galleries,{id:gallery.id,name:gallery.name});addRef(gallery.artists,{id:artist.id,name:artist.name})});
+  expo.artistIds=expo.artists.map(a=>a.id);
+  expo.artworks.forEach(work=>{work.artistId=artistIdMap[work.artistId]||work.artistId;const artist=artists.find(a=>a.id===work.artistId);let artwork=artworks.find(w=>norm(w.title)===norm(work.title));if(!artwork){artwork={id:work.id,title:work.title,image:"",details:work.details,year:"",price:"",artists:[],galleries:[]};artworks.push(artwork)}else{work.id=artwork.id;artwork.details=artwork.details||work.details}if(artist){addRef(artwork.artists,{id:artist.id,name:artist.name});addRef(artist.artworks,{id:artwork.id,title:artwork.title,image:artwork.image||""})}addRef(artwork.galleries,{id:gallery.id,name:gallery.name});addRef(gallery.artworks,{id:artwork.id,title:artwork.title,image:artwork.image||""})});
+  expo.artworkIds=expo.artworks.map(w=>w.id);
+ });
+ document.getElementById("exhibitionTotal").textContent=exhibitions.length;
  document.getElementById("galleryTotal").textContent=galleries.length;document.getElementById("artistTotal").textContent=artists.length;document.getElementById("trelloArtistTotal").textContent=data[3].length;document.getElementById("artworkTotal").textContent=artworks.length;
  document.getElementById("agencyGalleryTotal").textContent=galleries.filter(g=>(g.artists||[]).length).length;updateFilterOptions();render();
-}).catch(()=>{document.getElementById("galleryTotal").textContent="—";document.getElementById("artistTotal").textContent="—";document.getElementById("trelloArtistTotal").textContent="—";document.getElementById("artworkTotal").textContent="—";document.getElementById("agencyGalleryTotal").textContent="—";resultCount.textContent="無法載入資料";grid.innerHTML='<div class="empty">畫廊、藝術家或藝術品資料目前無法載入，請稍後重新整理。</div>'});
+}).catch(()=>{document.getElementById("exhibitionTotal").textContent="—";document.getElementById("galleryTotal").textContent="—";document.getElementById("artistTotal").textContent="—";document.getElementById("trelloArtistTotal").textContent="—";document.getElementById("artworkTotal").textContent="—";document.getElementById("agencyGalleryTotal").textContent="—";resultCount.textContent="無法載入資料";grid.innerHTML='<div class="empty">畫廊、藝術家或藝術品資料目前無法載入，請稍後重新整理。</div>'});
 </script>
 </body></html>
