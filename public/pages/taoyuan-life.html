@@ -48,6 +48,15 @@ const intros={
 };
 const nav=document.getElementById("districts"),grid=document.getElementById("areaGrid"),selected=document.getElementById("selected"),selectedContent=document.getElementById("selectedContent");
 function renderDistrictContent(name){
+ if(name==="平鎮區"){
+  selectedContent.innerHTML='<h4 class="subcategory-title">平鎮次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="pingzhenEventsCategory" type="button">🎉 活動市集</button></div><div id="storeResults"></div>';
+  document.getElementById("pingzhenEventsCategory").addEventListener("click",()=>{
+   const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("桃園市新勢公園 桃園市平鎮區中原路與延平路一段交叉口");
+   const articleUrl="https://www.taiwanhot.net/news/1152079/%E3%80%8C%E5%BF%97%E9%A1%98%E8%A1%8C%E5%8B%95%EF%BC%8E%E5%B9%B8%E7%A6%8F%E8%BD%89%E5%8B%95%E3%80%8D%E6%A1%83%E5%9C%92%E5%BF%97%E5%B7%A5%E5%98%89%E5%B9%B4%E8%8F%AF%E6%9A%A8NPO%E6%88%90%E6%9E%9C%E5%B8%82%E9%9B%86+10-31%E7%86%B1%E6%83%85%E7%99%BB%E5%A0%B4";
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>「志願行動．幸福轉動」桃園市115年志願服務嘉年華暨 NPO 成果市集</h4><p>活動市集 · 志工與非營利組織成果展示</p><p>📅 2026年10月31日（六）09:00–12:00</p><p>📍 桃園市新勢公園（平鎮區中原路與延平路一段交叉口）</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="'+articleUrl+'" target="_blank" rel="noopener noreferrer">查看活動報導 ↗</a></article>';
+  });
+  return;
+ }
  if(name==="新屋區"){
   selectedContent.innerHTML='<h4 class="subcategory-title">新屋區次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="agricultureProductsCategory" type="button">🌾 農產品</button><button class="subcategory-button" id="xinwuFoodCategory" type="button">🍲 美食</button><button class="subcategory-button" id="xinwuHistoryCategory" type="button">🏛️ 歷史文化</button><button class="subcategory-button" id="xinwuGovernmentCategory" type="button">🏢 政府機關</button></div><div id="storeResults"></div>';
   document.getElementById("agricultureProductsCategory").addEventListener("click",()=>{
