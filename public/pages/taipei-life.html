@@ -25,8 +25,8 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 </head>
 <body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
-<header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAIPEI LIFE</span><h1>台北生活啟動器</h1><p>依桃園市行政區整理日常生活入口。先選擇行政區，再逐步加入在地服務、交通、採買、醫療與休閒資訊。</p><div class="stats"><span>📍 台北 12 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
-<section class="section"><div class="section-head"><h2>📍 台北行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="桃園市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
+<header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAIPEI LIFE</span><h1>台北生活啟動器</h1><p>依臺北市行政區整理日常生活入口。先選擇行政區，再逐步加入在地服務、交通、採買、醫療與休閒資訊。</p><div class="stats"><span>📍 台北 12 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
+<section class="section"><div class="section-head"><h2>📍 台北行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="臺北市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
 <footer>台北生活資訊整理頁 · 行政區分類依臺北市 12 區建立</footer>
 </main><script src="../shared-nav.js?v=20261025-2" defer></script>
 <script>
@@ -57,8 +57,8 @@ function renderDistrictContent(name){
  }
  selectedContent.innerHTML='<div class="empty-note">這個行政區的生活入口尚未加入。可逐步整理美食、藝文、交通、採買與休閒資訊。</div>';
 }
-function choose(name){document.querySelectorAll(".district").forEach(b=>b.classList.toggle("active",b.dataset.area===name));if(name==="全部桃園"){selected.classList.remove("show");grid.hidden=false;return}grid.hidden=true;selected.classList.add("show");document.getElementById("selectedTitle").textContent="📍 "+name;document.getElementById("selectedIntro").textContent=intros[name];renderDistrictContent(name)}
-nav.innerHTML=["全部桃園",...districts].map(n=>'<button class="district '+(n==="全部桃園"?"active":"")+'" data-area="'+n+'">'+n+"</button>").join("");
+function choose(name){document.querySelectorAll(".district").forEach(b=>b.classList.toggle("active",b.dataset.area===name));if(name==="全部台北"){selected.classList.remove("show");grid.hidden=false;return}grid.hidden=true;selected.classList.add("show");document.getElementById("selectedTitle").textContent="📍 "+name;document.getElementById("selectedIntro").textContent=intros[name];renderDistrictContent(name)}
+nav.innerHTML=["全部台北",...districts].map(n=>'<button class="district '+(n==="全部台北"?"active":"")+'" data-area="'+n+'">'+n+"</button>").join("");
 nav.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>choose(b.dataset.area)));
 grid.innerHTML=districts.map(n=>'<article class="area"><div><h3>'+n+'</h3><p>'+intros[n]+'</p></div><button data-pick="'+n+'">查看分類 →</button></article>').join("");
 grid.querySelectorAll("[data-pick]").forEach(b=>b.addEventListener("click",()=>{choose(b.dataset.pick);nav.querySelector('[data-area="'+b.dataset.pick+'"]').scrollIntoView({behavior:"smooth",block:"nearest"})}));
