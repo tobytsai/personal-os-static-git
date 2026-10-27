@@ -54,9 +54,11 @@ function galleryLocations(item){
  const raw=[item.city,item.artTaipei2026Region].filter(Boolean).join(" / ").normalize("NFKC").replace(/臺/g,"台");
  const domestic=new Set(),international=new Set();
  for(const chunk of raw.split(/[、,，;；]/)){
-  for(let token of chunk.split(/[\/／]/)){
-   token=token.trim().replace(/^台灣(?:省)?\s*/,"").trim();
-   if(!token||countryNames.has(token)||token==="台灣")continue;
+  const tokens=chunk.split(/[\\/／]/).map(token=>token.trim());
+  for(let i=0;i<tokens.length;i++){
+   let token=tokens[i].replace(/^台灣(?:省)?\\s*/,"").trim();
+   if(!token||token==="台灣")continue;
+   if(countryNames.has(token)){if(tokens.length===1)international.add(cleanPlace(token));continue}
    const place=cleanPlace(token);
    if(!place)continue;
    if(taiwanPlaces.has(place))domestic.add(place);else international.add(place);
@@ -97,6 +99,7 @@ function makeExhibitionCard(item){
  return '<article class="card">'+cover(item.image,item.title,"🧵")+'<div class="body"><div class="top"><div><div class="name">'+esc(item.title)+'</div><span class="region">'+esc(item.status)+'</span></div>'+star(item)+'</div><p class="detail">'+esc(item.summary)+'</p><div class="meta">'+meta.join("<br>")+'</div><div class="roster"><strong>展覽場地</strong><div class="roster-list">'+venue+'</div></div><div class="roster"><strong>參展藝術家（'+eventArtists.length+'）</strong><div class="roster-list">'+relationChips(eventArtists,"artist")+'</div></div><div class="roster"><strong>文中作品（'+eventWorks.length+'）</strong><div class="roster-list">'+artworkChips(eventWorks)+'</div></div><p class="detail">場地簡介｜'+esc(item.venueInfo)+'</p><div class="actions">'+actionLink(item.articleUrl,"閱讀 artEmperor 原文",false)+'</div></div></article>';
 }
 function updateFilterOptions(){
+ const isGalleryMode=mode==="gallery";domesticFilterSelect.hidden=!isGalleryMode;internationalFilterSelect.hidden=!isGalleryMode;filterSelect.hidden=isGalleryMode;
  if(mode==="exhibition"){
   const names=[...new Set(exhibitions.flatMap(e=>e.artistIds.map(id=>artists.find(a=>a.id===id)?.name).filter(Boolean)))].sort((a,b)=>a.localeCompare(b,"zh-Hant"));
   filterSelect.setAttribute("aria-label","依藝術家篩選");filterSelect.innerHTML='<option value="">全部展覽專題（'+exhibitions.length+'）</option>'+names.map(n=>'<option value="'+esc(n)+'">'+esc(n)+'</option>').join("");
