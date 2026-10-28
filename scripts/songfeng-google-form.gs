@@ -39,7 +39,7 @@ function installSongfengGoogleForm() {
     try { form = FormApp.openById(oldId); } catch (error) { form = null; }
   }
   if (!form) {
-    form = FormApp.create("松風閣｜框條單價報價採集表單");
+    form = FormApp.create("松風閣｜框條單價報價採集表單", true);
     form.setDescription(
       "逐筆記錄同一框型在兩組尺寸的松風閣報價，反推每 15cm 計價單位的框價。\n\n" +
       "請先在模擬器選相同框型與相同工法，再記錄 30×30cm、30×45cm（或其他兩組尺寸）。\n" +
