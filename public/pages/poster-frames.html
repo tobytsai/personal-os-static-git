@@ -315,11 +315,11 @@ document.querySelectorAll("[data-sfg-preset]").forEach(b=>b.addEventListener("cl
  sfgEl("sfg-length").value=p[0];sfgEl("sfg-width").value=p[1];sfgCalculate();
 }));
 if(activeSize){const p=sizeSpecs[activeSize];sfgEl("sfg-length").value=Math.max(p[2],p[3]);sfgEl("sfg-width").value=Math.min(p[2],p[3]);}
-if(location.hash==="#songfeng"||new URLSearchParams(location.search).get("vendor")==="songfeng")mode="sfg";
+if(location.hash==="#songfeng"||location.hash==="#songfeng-reverse"||new URLSearchParams(location.search).get("vendor")==="songfeng")mode="sfg";
 sfgRenderCategories();
 sfgRenderFrames();
 sfgSyncLink();
 sfgCalculate();
 
 for(const id of ["all","takaha","ikea","shop","sfg","fav","recent"])document.getElementById(id).addEventListener("click",()=>{mode=id;render()});search.addEventListener("input",render);render();
-</script><script src="../data/songfeng-reverse.js?v=20261028-1"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
+</script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
