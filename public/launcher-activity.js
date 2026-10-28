@@ -123,8 +123,12 @@
   var hero=document.querySelector("header.hero");
   if(hero&&hero.parentNode)hero.insertAdjacentElement("afterend",panel);
   else{
-   var target=document.querySelector("main, .wrap")||document.body;
-   target.insertBefore(panel,target.firstChild);
+   var heading=document.querySelector("main h1, .wrap h1");
+   if(heading&&heading.parentNode)heading.insertAdjacentElement("afterend",panel);
+   else{
+    var target=document.querySelector("main, .wrap")||document.body;
+    target.insertBefore(panel,target.firstChild);
+   }
   }
   renderPanels();
  }
