@@ -120,13 +120,15 @@ function setText(id,text){$(id).textContent=text;}
 function updateSaved(){
  const x=selection(),entry=!x.custom?saved[x.name]:null;
  setText("sfg-rev-selected","目前選擇框型："+x.name);
- setText("sfg-rev-saved",entry&&Number.isFinite(entry.rate)?"本機已有反推價："+money(entry.rate)+"（"+(entry.date||"先前儲存")+"，只保存在這台裝置）":"尚未儲存此框型的反推價。");
+ setText("sfg-rev-saved",entry&&Number.isFinite(entry.rate)?"本機已有反推價："+money(entry.rate)+"（"+(entry.date||"先前儲存")+"，僅供比對；如有試算表價格會以試算表為主）":"尚未儲存此框型的反推價。");
  $("sfg-rev-clear").hidden=!(entry&&Number.isFinite(entry.rate));
 }
 function updateReference(rate){
  const x=selection(),base=originalRate();
- if(base===null){setText("sfg-rev-reference","參考資料：這款框型尚無可對照的 Airtable／官網舊價格。");return;}
- const src=x.frame.rateSource==="airtable"?"Airtable 達利・松風閣（2026/10/28 快照）":"先前官網參考價";
+ if(base===null){setText("sfg-rev-reference","價格來源：試算表沒有這款框型的單價；請自行核對。");return;}
+ const src=x.frame.rateSource==="sheet-verified"?"試算表・已核對官網價（2026/10/29 快照）":
+ x.frame.rateSource==="sheet-unverified"?"試算表・官網價欄（待核對，2026/10/29 快照）":
+ x.frame.rateSource==="sheet-airtable"?"試算表・Airtable 參考價":"原始參考價";
  const diff=Number.isFinite(rate)?"；與反推單價相差 "+money(Math.abs(rate-base))+(rate>base?"（反推較高）":rate<base?"（反推較低）":"（一致）"):"";
  setText("sfg-rev-reference",src+"："+money(base)+diff+"。");
 }
@@ -201,11 +203,13 @@ function apply(){
 }
 function applySavedIfAny(){
  const x=selection();
+ // 避免本機舊紀錄默默取代使用者指定的 Google 試算表單價。
+ if(x.frame.rateSource&&x.frame.rateSource.startsWith("sheet-"))return;
  const entry=!x.custom?saved[x.name]:null;
  if(entry&&Number.isFinite(entry.rate)&&entry.rate>0){
   $("sfg-frame-rate").value=String(entry.rate);
   sfgCalculate();
-  setText("sfg-price-source","價格來源：本機儲存的反推價（不是松風閣正式單價）");
+  setText("sfg-price-source","價格來源：本機儲存的反推價（試算表尚無該款單價；不是正式報價）");
  }
 }
 ["sfg-rev-l1","sfg-rev-w1","sfg-rev-p1","sfg-rev-l2","sfg-rev-w2","sfg-rev-p2",
@@ -218,7 +222,7 @@ $("sfg-rev-save").addEventListener("click",()=>{
  try{localStorage.setItem(key,JSON.stringify(candidate));saved=candidate;}
  catch{setText("sfg-rev-message","無法存入此瀏覽器；可先使用「套用到裱框試算」。");return;}
  applySavedIfAny();updateSaved();calculate();
- setText("sfg-rev-message","已儲存 "+x.name+" 的反推單價 "+money(last.rate)+"，下次在這台裝置選此框型會自動套用。未修改 Airtable。");
+ setText("sfg-rev-message","已儲存 "+x.name+" 的反推單價 "+money(last.rate)+"。如有 Google 試算表價格，下次選框仍優先使用試算表；若要使用反推價，請按「套用到裱框試算」。未修改 Google 試算表或 Airtable。");
 });
 $("sfg-rev-clear").addEventListener("click",()=>{
  const x=selection();if(x.custom||!Object.prototype.hasOwnProperty.call(saved,x.name))return;
