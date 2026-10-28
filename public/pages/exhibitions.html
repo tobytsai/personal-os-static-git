@@ -181,4 +181,4 @@ Promise.all([fetch("../data/artemperor-gallery-table.json?v=20261027-3way"),fetc
  document.getElementById("agencyGalleryTotal").textContent=galleries.filter(g=>(g.artists||[]).length).length;updateFilterOptions();render();
 }).catch(()=>{document.getElementById("exhibitionTotal").textContent="—";document.getElementById("galleryTotal").textContent="—";document.getElementById("artistTotal").textContent="—";document.getElementById("trelloArtistTotal").textContent="—";document.getElementById("artworkTotal").textContent="—";document.getElementById("agencyGalleryTotal").textContent="—";resultCount.textContent="無法載入資料";grid.innerHTML='<div class="empty">畫廊、藝術家或藝術品資料目前無法載入，請稍後重新整理。</div>'});
 </script>
-</body></html>
+<script defer src="../launcher-activity.js?v=20261028-1" data-mode="recent" data-track="main a[href]"></script></body></html>
