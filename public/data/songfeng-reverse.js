@@ -56,6 +56,7 @@ layout.insertAdjacentHTML("beforebegin",String.raw`
 <summary><span>🧮 反推框條單價｜兩筆購物車報價</span><small>預設 30 × 30 與 30 × 45 公分</small></summary>
 <div class="sfg-rev-body">
 <p class="sfg-rev-intro">在 <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">松風閣模擬框</a>選擇<strong>同一框型與相同工法</strong>，先後用兩種尺寸取得購物車金額並填入。無法直接讀取你在 <a href="https://sfg218.com/shoplist.php" target="_blank" rel="noopener noreferrer">官網購物車</a>的內容，須手動填入報價。</p>
+<p class="sfg-rev-help"><a href="https://docs.google.com/spreadsheets/d/1AEPuvr4RXX-aN-fKZb7lJbWrFnOWTdCo84MMAd8JiFQ/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer"><strong>🗂️ 開啟 Google 試算表｜填寫表單與報價紀錄 ↗</strong></a>　可在 Google 試算表自動保存；如要逐筆送出 Google 表單，請先依「操作說明」完成一次 Apps Script 設定。</p>
 <div class="sfg-rev-pairs">
 <div class="sfg-rev-sample"><h4>報價 ①｜30 × 30cm（係數 4）</h4>
 <div class="sfg-rev-fields"><label for="sfg-rev-l1">長（cm）<input id="sfg-rev-l1" type="number" min="0.1" step="0.1" value="30" inputmode="decimal"></label>
