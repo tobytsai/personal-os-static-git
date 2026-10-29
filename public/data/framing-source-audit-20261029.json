@@ -1,0 +1,585 @@
+{
+  "auditedAt": "2026-10-29",
+  "sourceStatus": {
+    "tachang": "目前無法直接存取大昌原站商品頁（502／連線錯誤），本次是已存的官網型錄索引一致性查核",
+    "tayuan": "目前無法直接存取大圓原站商品頁（502／連線錯誤），本次是2026-09-30歷史索引與Airtable紀錄交叉比對",
+    "launcher": "GitHub 原始程式與資料已取回核對，GitHub Pages 內容以發布版本為準"
+  },
+  "dachang": {
+    "items": 1154,
+    "groups": 7,
+    "subcategories": 50,
+    "categoryUrlMappingIssues": 0,
+    "duplicateProductUrls": 0,
+    "invoiceModels": 104,
+    "invoiceRecords": 368,
+    "priceMismatchOrOrphanGroupCount": 0
+  },
+  "tayuan": {
+    "archivedItems": 363,
+    "airtableProducts": 337,
+    "uniqueCodes": 376,
+    "savedImages": 306,
+    "missingImageFiles": 0,
+    "categoryUrlDifferences": 69,
+    "conflictCases": [
+      {
+        "productCode": "I8",
+        "productName": "金屬藝術框",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "62",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=I8",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=62&parent_id=0&prod_id=I8"
+      },
+      {
+        "productCode": "J01",
+        "productName": "牛皮紙膠帶、opp膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J01",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J01"
+      },
+      {
+        "productCode": "IL0",
+        "productName": "證照制式鋁框",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "62",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=IL0",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=62&parent_id=0&prod_id=IL0"
+      },
+      {
+        "productCode": "Y06",
+        "productName": "法比亞諾設計素描本",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y06",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y06"
+      },
+      {
+        "productCode": "N1",
+        "productName": "圓寶放大鏡",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=N1",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=N1"
+      },
+      {
+        "productCode": "Y08",
+        "productName": "義大利盾牌含棉水彩本",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y08",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y08"
+      },
+      {
+        "productCode": "CA",
+        "productName": "不反光玻璃",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=CA",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=CA"
+      },
+      {
+        "productCode": "C890B",
+        "productName": "無酸完美底板",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=C890B",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=C890B"
+      },
+      {
+        "productCode": "IL",
+        "productName": "鋁框鏡子",
+        "archiveCategoryId": "66",
+        "airtableCategoryId": "62",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=IL",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=62&parent_id=0&prod_id=IL"
+      },
+      {
+        "productCode": "CARP",
+        "productName": "博物館壓克力",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=CARP",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=CARP"
+      },
+      {
+        "productCode": "J055",
+        "productName": "綠色和紙膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J055",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J055"
+      },
+      {
+        "productCode": "Y03",
+        "productName": "義大利水彩紙",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y03",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y03"
+      },
+      {
+        "productCode": "G10",
+        "productName": "無酸棉紙、卡紙",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G10",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G10"
+      },
+      {
+        "productCode": "ID5625",
+        "productName": "鋁框ID-5625",
+        "archiveCategoryId": "62",
+        "airtableCategoryId": "58",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=62&parent_id=0&prod_id=ID5625",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=ID5625"
+      },
+      {
+        "productCode": "G02",
+        "productName": "大寬幅無酸雙面膠帶",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G02",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G02"
+      },
+      {
+        "productCode": "J0712",
+        "productName": "３M泡棉膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J0712",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J0712"
+      },
+      {
+        "productCode": "G070",
+        "productName": "3M無酸膠帶",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G070",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G070"
+      },
+      {
+        "productCode": "Y02",
+        "productName": "13g棉紙",
+        "archiveCategoryId": "64",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=Y02",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y02"
+      },
+      {
+        "productCode": "ICA4",
+        "productName": "A4壓克力框",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=ICA4",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=ICA4"
+      },
+      {
+        "productCode": "Y04T290",
+        "productName": "太保羅純棉平紋版畫水彩紙",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y04T290",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y04T290"
+      },
+      {
+        "productCode": "Y07",
+        "productName": "Hahnemuhle100%棉水彩本",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y07",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y07"
+      },
+      {
+        "productCode": "TY",
+        "productName": "風扣板",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=TY",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=TY"
+      },
+      {
+        "productCode": "C5117",
+        "productName": "插畫紙板、無酸水彩紙板",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "58",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=C5117",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=C5117"
+      },
+      {
+        "productCode": "J071",
+        "productName": "布雙面膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J071",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J071"
+      },
+      {
+        "productCode": "Y04",
+        "productName": "花冠條紋素描紙",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y04",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y04"
+      },
+      {
+        "productCode": "Y04W",
+        "productName": "法比亞諾水彩紙",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y04W",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y04W"
+      },
+      {
+        "productCode": "J12",
+        "productName": "雙面膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J12",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J12"
+      },
+      {
+        "productCode": "J05",
+        "productName": "PVC手撕膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J05",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J05"
+      },
+      {
+        "productCode": "H08",
+        "productName": "立體型口罩",
+        "archiveCategoryId": "66",
+        "airtableCategoryId": "60",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=H08",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=60&parent_id=0&prod_id=H08"
+      },
+      {
+        "productCode": "I0241",
+        "productName": "紙箱封口繩扣組",
+        "archiveCategoryId": "64",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=I0241",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=I0241"
+      },
+      {
+        "productCode": "I07",
+        "productName": "井字小畫架",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=I07",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=I07"
+      },
+      {
+        "productCode": "Y05",
+        "productName": "圖畫紙",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y05",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y05"
+      },
+      {
+        "productCode": "G0204",
+        "productName": "超透明無酸雙面膠帶",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G0204",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G0204"
+      },
+      {
+        "productCode": "H",
+        "productName": "造型黏扣帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=H",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=H"
+      },
+      {
+        "productCode": "Y04160",
+        "productName": "法比亞諾素描設計紙",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y04160",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y04160"
+      },
+      {
+        "productCode": "CT",
+        "productName": "不反光壓克力板",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=CT",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=CT"
+      },
+      {
+        "productCode": "K20-1452",
+        "productName": "防潮櫃",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "60",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=K20-1452",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=60&parent_id=0&prod_id=K20-1452"
+      },
+      {
+        "productCode": "G0221",
+        "productName": "P無酸修復膠帶",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G0221",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G0221"
+      },
+      {
+        "productCode": "G0223",
+        "productName": "SH無酸布膠帶",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G0223",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G0223"
+      },
+      {
+        "productCode": "G0291",
+        "productName": "裱框手壓板",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G0291",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G0291"
+      },
+      {
+        "productCode": "H01",
+        "productName": "多色粘扣帶、大和小防撞貼片",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=H01",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=H01"
+      },
+      {
+        "productCode": "G0211",
+        "productName": "可重複黏貼無酸雙面膠帶",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G0211",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G0211"
+      },
+      {
+        "productCode": "J056",
+        "productName": "藍色和紙膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J056",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J056"
+      },
+      {
+        "productCode": "S043",
+        "productName": "無酸平光處理劑CR-450",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=S043",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=S043"
+      },
+      {
+        "productCode": "L70",
+        "productName": "全麻畫布",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=L70",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=L70"
+      },
+      {
+        "productCode": "ZA104",
+        "productName": "A4割孔襯紙",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=ZA104",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=ZA104"
+      },
+      {
+        "productCode": "G021",
+        "productName": "高黏性無酸雙面膠帶",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G021",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G021"
+      },
+      {
+        "productCode": "G0222",
+        "productName": "P90 plus無酸紙膠帶",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=G0222",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=G0222"
+      },
+      {
+        "productCode": "E01",
+        "productName": "模型紙板、灰紙板",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=E01",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=E01"
+      },
+      {
+        "productCode": "E05",
+        "productName": "心白卡",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=E05",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=E05"
+      },
+      {
+        "productCode": "I02031220",
+        "productName": "硬平板",
+        "archiveCategoryId": "58",
+        "airtableCategoryId": "59",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=I02031220",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=59&parent_id=0&prod_id=I02031220"
+      },
+      {
+        "productCode": "L70A123",
+        "productName": "無酸畫布#123",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "58",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=L70A123",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=58&parent_id=0&prod_id=L70A123"
+      },
+      {
+        "productCode": "J06",
+        "productName": "低黏性和紙膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J06",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J06"
+      },
+      {
+        "productCode": "J044",
+        "productName": "彩色OPP膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J044",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J044"
+      },
+      {
+        "productCode": "O048",
+        "productName": "自粘塑膠袋",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=O048",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=O048"
+      },
+      {
+        "productCode": "J042",
+        "productName": "大管心膠帶切割器",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J042",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J042"
+      },
+      {
+        "productCode": "I0215",
+        "productName": "紅牛皮瓦楞版",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=I0215",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=I0215"
+      },
+      {
+        "productCode": "R012",
+        "productName": "蝶古巴特膠(琉璃膠)",
+        "archiveCategoryId": "63",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=63&parent_id=0&prod_id=R012",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=R012"
+      },
+      {
+        "productCode": "J11",
+        "productName": "多色彩虹膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "63",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J11",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=63&parent_id=0&prod_id=J11"
+      },
+      {
+        "productCode": "J07",
+        "productName": "泡棉雙面膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J07",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J07"
+      },
+      {
+        "productCode": "T03",
+        "productName": "相機三腳架固定版",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=T03",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=T03"
+      },
+      {
+        "productCode": "Y09",
+        "productName": "法比亞諾水彩本",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y09",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y09"
+      },
+      {
+        "productCode": "J1024",
+        "productName": "沾水牛皮紙膠帶",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "64",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=J1024",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=64&parent_id=0&prod_id=J1024"
+      },
+      {
+        "productCode": "W06",
+        "productName": "50色色紙",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=W06",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=W06"
+      },
+      {
+        "productCode": "L70TA4",
+        "productName": "環保畫布版",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=L70TA4",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=L70TA4"
+      },
+      {
+        "productCode": "O07",
+        "productName": "圖筒",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "66",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=O07",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=66&parent_id=0&prod_id=O07"
+      },
+      {
+        "productCode": "Y061",
+        "productName": "各式繪圖本",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=Y061",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=Y061"
+      },
+      {
+        "productCode": "AT",
+        "productName": "作品板",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=AT",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=AT"
+      },
+      {
+        "productCode": "E01N",
+        "productName": "新白色模型紙板",
+        "archiveCategoryId": "65",
+        "airtableCategoryId": "61",
+        "archiveUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=65&parent_id=0&prod_id=E01N",
+        "airtableUrl": "http://www.tayuanart.com.tw/ec99/webstyle02/GoodsDescr.asp?category_id=61&parent_id=0&prod_id=E01N"
+      }
+    ]
+  },
+  "notes": [
+    "分類網址差異不等於商品分類錯誤：同款商品可能在多個網站分類中呈現；未能即時連上官網前，均保留雙來源。",
+    "大昌單據價格並非官網牌價；尺寸與加工條件可能不同。",
+    "不應將分類 URL 出現的 category_id 認為是商品唯一且永久的歸類。"
+  ]
+}
