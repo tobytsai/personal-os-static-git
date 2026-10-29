@@ -161,6 +161,7 @@ main{width:100%;max-width:1120px;min-width:0}
 .sfg-mobile-quote{display:none}#sfg-quote-results{scroll-margin-top:85px}
 @media(max-width:850px){.sfg-layout{grid-template-columns:minmax(0,1fr)}.sfg-summary{position:static}.sfg-mobile-quote{position:fixed;display:flex;justify-content:space-between;align-items:center;gap:10px;bottom:0;left:0;right:0;z-index:80;background:#fffffff5;border-top:1px solid #cfdaed;box-shadow:0 -5px 22px #2d446519;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}.sfg-mobile-quote small{display:block;font-size:10px;color:#74849b}.sfg-mobile-quote strong{font-size:17px;color:#315b88}.sfg-mobile-quote a{padding:10px 14px;border-radius:11px;background:#5578b8;color:#fff;font-size:12px;font-weight:800}body{padding-bottom:85px}.sfg-preview-photo{height:200px}}
 @media(max-width:560px){.sfg-options-grid{grid-template-columns:minmax(0,1fr)}.sfg-option-top{flex-direction:row;justify-content:space-between;align-items:flex-start}.sfg-option-label{flex:1;min-width:0}.sfg-option-rate{flex:none;font-size:10px}.sfg-panel{padding:12px}.sfg-box,.sfg-summary{padding:13px}.sfg-heading-links{justify-content:flex-start}.hero{padding:22px}.sfg-service-presets button{font-size:11px}main{padding:12px}.sfg-heading h3{font-size:21px}}
+.sfg-dimension-results output{display:block;margin-top:4px;font-size:14px;font-weight:800;color:#304c72;overflow-wrap:anywhere}
 </style></head><body><main>
 <a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a>
 <header class="hero"><span>🖼️ 裱框找模式 · 松風閣</span><h1>松風閣畫框試算</h1><p>依松風閣線上模擬框整理，提供374款外框及21個工法、表面材質與結構配件選項。</p><a href="./framing-materials.html?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3">查看松風閣裱框材料 ↗</a></header>
@@ -173,7 +174,11 @@ main{width:100%;max-width:1120px;min-width:0}
 <p class="sfg-tip">點選尺寸可自動帶入下方長／高與寬（直式）；按鈕數字為寬 × 高，單位 mm。</p><div id="sfg-size-presets" class="sfg-presets" aria-label="點選尺寸自動填入長與寬"><button type="button" data-sfg-preset="A5" aria-label="A5，框內尺寸 149 × 211 毫米" aria-pressed="false"><strong>A5</strong><small>149 × 211 mm</small></button><button type="button" data-sfg-preset="B5" aria-label="B5，框內尺寸 183 × 258 毫米" aria-pressed="false"><strong>B5</strong><small>183 × 258 mm</small></button><button type="button" data-sfg-preset="A4" aria-label="A4，框內尺寸 211 × 298 毫米" class="selected" aria-pressed="true"><strong>A4</strong><small>211 × 298 mm</small></button><button type="button" data-sfg-preset="B4" aria-label="B4，框內尺寸 258 × 365 毫米" aria-pressed="false"><strong>B4</strong><small>258 × 365 mm</small></button><button type="button" data-sfg-preset="A3" aria-label="A3，框內尺寸 298 × 421 毫米" aria-pressed="false"><strong>A3</strong><small>298 × 421 mm</small></button><button type="button" data-sfg-preset="B3" aria-label="B3，框內尺寸 365 × 516 毫米" aria-pressed="false"><strong>B3</strong><small>365 × 516 mm</small></button><button type="button" data-sfg-preset="A2" aria-label="A2，框內尺寸 421 × 595 毫米" aria-pressed="false"><strong>A2</strong><small>421 × 595 mm</small></button><button type="button" data-sfg-preset="B2" aria-label="B2，框內尺寸 516 × 729 毫米" aria-pressed="false"><strong>B2</strong><small>516 × 729 mm</small></button><button type="button" data-sfg-preset="A1" aria-label="A1，框內尺寸 595 × 842 毫米" aria-pressed="false"><strong>A1</strong><small>595 × 842 mm</small></button><button type="button" data-sfg-preset="B1" aria-label="B1，框內尺寸 729 × 1031 毫米" aria-pressed="false"><strong>B1</strong><small>729 × 1031 mm</small></button><button type="button" data-sfg-preset="A0" aria-label="A0，框內尺寸 842 × 1190 毫米" aria-pressed="false"><strong>A0</strong><small>842 × 1190 mm</small></button><button type="button" data-sfg-preset="B0" aria-label="B0，框內尺寸 1031 × 1457 毫米" aria-pressed="false"><strong>B0</strong><small>1031 × 1457 mm</small></button></div>
 <p id="sfg-size-status" class="sfg-tip" role="status" aria-live="polite" hidden></p><div class="sfg-tip sfg-size-footnote">這些是參考網站標示的<strong>畫框內尺寸</strong>，與 ISO 標準紙張尺寸可能相差 1～數毫米。請以實際作品及框型規格為準。</div>
 <div class="sfg-fields"><label for="sfg-length">作品長／高（mm）<input id="sfg-length" type="number" min="1" step="0.1" value="298" inputmode="decimal"></label><label for="sfg-width">作品寬（mm）<input id="sfg-width" type="number" min="1" step="0.1" value="211" inputmode="decimal"></label></div>
-<p id="sfg-dimension-price-formulas" class="sfg-tip">松風閣：（長＋寬）÷15 × 框條單價；<br>達利：（長＋寬）÷2.54 × 達利每吋單價。<br>兩者的長寬皆為 cm。</p>
+<div id="sfg-dimension-price-formulas" class="sfg-formulas sfg-dimension-results">
+<p>松風閣：（長＋寬）÷15 × 框條單價<output id="sfg-dimension-songfeng-result" aria-live="polite"></output></p>
+<p>達利：（長＋寬）÷2.54 × 達利每吋單價<output id="sfg-dimension-dali-result" aria-live="polite"></output></p>
+<p class="sfg-tip" id="sfg-dimension-price-note">兩者的長寬皆為 cm；依所選框條單價與達利訂價倍率計算外框參考價。</p>
+</div>
 <p class="sfg-inch-result"><span>📏 長＋寬換算吋數</span><output id="sfg-size-inches" aria-live="polite">（29.8 ＋ 21.1）÷ 2.54 ＝ 20.04 吋</output><small>輸入單位是 mm，會先換算成 cm，再除以 2.54。</small></p>
 <p class="sfg-tip">也能手動輸入 mm。工法與配件預設跟隨作品尺寸，勾選後可改用個別尺寸與數量。</p></div>
 <div class="sfg-box"><h4>② 選擇松風閣外框</h4><label class="sfg-check" for="sfg-frame-on"><input type="checkbox" id="sfg-frame-on" checked>另計所選外框</label><p class="sfg-tip" id="sfg-frame-on-note"></p>
@@ -436,7 +441,30 @@ function sfgApplyServicePreset(type){
  sfgRenderOptions();sfgCalculate();
 }
 
+function sfgDimensionPriceText(input){
+ const h=Number(input.heightMm),w=Number(input.widthMm),margin=Number(input.marginMm);
+ const good=String(input.heightMm).trim()!==""&&String(input.widthMm).trim()!==""&&[h,w,margin].every(Number.isFinite)&&h>0&&w>0&&margin>=0;
+ if(!good)return {songfeng:"請輸入有效的作品長／高與寬。",dali:"請輸入有效的作品長／高與寬。"};
+ const L=(h+2*margin)/10,W=(w+2*margin)/10,pair="（"+sfgDec(L,1)+" ＋ "+sfgDec(W,1)+"）";
+ if(input.frameEnabled===false)return {songfeng:pair+" ÷15；目前未另計外框。",dali:pair+" ÷2.54；目前未另計外框。"};
+ const raw=String(input.rateRaw).trim(),rate=Number(raw);
+ if(raw===""||!Number.isFinite(rate)||rate<0)return {songfeng:pair+" ÷15 ＝ "+sfgDec((L+W)/15,4)+"；待填框條單價。",dali:pair+" ÷2.54 ＝ "+sfgDec((L+W)/2.54,4)+" 吋；待填框條單價。"};
+ const songfeng=pair+" ÷15 × "+sfgDec(rate,2)+" ＝ "+sfgMoney((L+W)/15*rate);
+ const multiRaw=String(input.multiplierRaw).trim(),multi=Number(multiRaw);
+ if(multiRaw===""||!Number.isFinite(multi)||multi<=0||multi>10)return {songfeng,dali:"待填有效的達利訂價倍率（大於 0，最多 10 倍）。"};
+ const unit=rate*2.54/15*multi;
+ return {songfeng,dali:pair+" ÷2.54 × "+sfgDec(unit,4)+" ＝ "+sfgMoney((L+W)/2.54*unit)};
+}
+function sfgUpdateDimensionPriceResults(){
+ const margin=typeof sfgScenario!=="undefined"&&sfgScenario!=="general"?sfgNum("sfg-margin"):0;
+ const frameSwitch=document.getElementById("sfg-frame-on");
+ const result=sfgDimensionPriceText({heightMm:sfgEl("sfg-length").value,widthMm:sfgEl("sfg-width").value,marginMm:margin,rateRaw:sfgEl("sfg-frame-rate").value,multiplierRaw:sfgEl("sfg-dali-multiplier").value,frameEnabled:frameSwitch?frameSwitch.checked:true});
+ sfgEl("sfg-dimension-songfeng-result").textContent=result.songfeng;
+ sfgEl("sfg-dimension-dali-result").textContent=result.dali;
+ sfgEl("sfg-dimension-price-note").textContent="兩者的長寬皆為 cm；依所選框條單價與達利訂價倍率計算外框參考價。"+(margin>0?"目前長寬已包含四邊留白各 "+sfgDec(margin,0)+" mm。":"");
+}
 function sfgCalculate(){
+ sfgUpdateDimensionPriceResults();
  const mmL=sfgNum("sfg-length"),mmW=sfgNum("sfg-width"),sizeEntered=sfgEl("sfg-length").value.trim()!==""&&sfgEl("sfg-width").value.trim()!=="";
  const sizeValid=sizeEntered&&Number.isFinite(mmL)&&Number.isFinite(mmW)&&mmL>0&&mmW>0;
  sfgEl("sfg-size-inches").textContent=sizeValid?"（"+sfgDec(mmL/10,1)+" ＋ "+sfgDec(mmW/10,1)+"）÷ 2.54 ＝ "+sfgDec((mmL+mmW)/25.4,2)+" 吋":"請輸入有效的長、寬尺寸";
