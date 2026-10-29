@@ -580,6 +580,27 @@
   "notes": [
     "分類網址差異不等於商品分類錯誤：同款商品可能在多個網站分類中呈現；未能即時連上官網前，均保留雙來源。",
     "大昌單據價格並非官網牌價；尺寸與加工條件可能不同。",
-    "不應將分類 URL 出現的 category_id 認為是商品唯一且永久的歸類。"
-  ]
+    "不應將分類 URL 出現的 category_id 認為是商品唯一且永久的歸類。",
+    "松風閣可讀取的原始型錄快照中，內框 15/15 名稱及型材尺寸一致，卡紙第1頁48/48色號相符；卡紙第2頁未獲取。"
+  ],
+  "songfeng": {
+    "innerFrames": {
+      "listedInAccessibleOfficialSnapshot": 15,
+      "launcherCount": 15,
+      "matchingNamesAndMeasurements": 15,
+      "officialUrl": "https://sfg218.com/frame_class.php?class=16",
+      "sourceCrawledApproximately": "1.9 years ago",
+      "status": "Matches available cached official listing; live recent changes not confirmed"
+    },
+    "matboards": {
+      "officialFirstPageCodes": 48,
+      "matchedLauncherFirstPage": 48,
+      "officialPages": 2,
+      "officialUrl": "https://sfg218.com/frame2.php?class=1",
+      "sourceCrawledApproximately": "9 months ago",
+      "secondPageStatus": "not retrievable in this run",
+      "launcherTotal": 65,
+      "status": "First page 48 codes match. Remaining 17 not verified live."
+    }
+  }
 }
