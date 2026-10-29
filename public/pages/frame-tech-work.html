@@ -42,7 +42,7 @@ dialog{width:min(700px,calc(100% - 28px));max-height:86vh;border:0;padding:0;bor
 <div class="cats" id="cats"></div>
 <div class="result-info"><span id="count">讀取資料中…</span><span>原始資料保留 · 2026/10/30 整理</span></div>
 <section class="entries" id="entries" aria-live="polite"></section>
-<div class="footer">個人技術案例資料庫 · 靜態整理版本 · 收藏與最近紀錄僅保存在本機<br>67 張附件圖片已轉存 GitHub；無照片的工作案例保留分類圖示。</div>
+<div class="footer">個人技術案例資料庫 · 靜態整理版本 · 收藏與最近紀錄僅保存在本機<br>封面優先使用筆記正文第一張圖片，其次才是 Airtable 附件；兩者都沒有時顯示分類圖示。</div>
 </main>
 <dialog id="detailDialog"><div class="dialog-inner"><div class="dialog-head"><h2 id="detailTitle"></h2><button id="closeDialog" type="button" aria-label="關閉">✕</button></div><div class="gallery" id="detailGallery"></div><dl class="details" id="detailContent"></dl></div></dialog>
 <dialog id="helpDialog"><div class="dialog-inner"><div class="dialog-head"><h2>使用說明</h2><button type="button" id="closeHelp" aria-label="關閉">✕</button></div><p class="details">從七個主要分類選擇工作類型，再使用下方細分類篩選。搜尋可查作品名稱、框型、價格、技術筆記、標籤。點選「查看內容」可查看筆記連結及照片；按 ☆ 收藏，或用「最近開啟」快速找回上次看過的案例。圖片已轉存到 GitHub，不會受 Airtable 暫時附件連結到期影響。這是 2026/10/30 的 Airtable 快照，更新原始表格不會自動同步此頁。</p></div></dialog>
@@ -69,15 +69,15 @@ return !q||[x.name,x.title,x.category,x.note,x.price,x.tags,...x.options].join("
 function render(){renderGroups();categories();$("favoriteBtn").classList.toggle("active",view==="fav");$("recentBtn").classList.toggle("active",view==="recent");
 const found=filter();$("count").textContent="顯示 "+found.length+" / "+items.length+" 筆工作案例";
 $("entries").innerHTML=found.map(x=>{
-const g=groupOf(x),img=x.images[0]?.url,src=img?safeUrl(img):"",note=x.title||x.tags||x.note.slice(0,95)||"查看原始工作案例與技術筆記";
+const g=groupOf(x),img=x.noteCover || x.images[0]?.url,src=img?safeUrl(img):"",note=x.title||x.tags||x.note.slice(0,95)||"查看原始工作案例與技術筆記";
 const imageHtml=src?'<img loading="lazy" src="'+esc(src)+'" alt="'+esc(x.name)+'" onerror="this.parentElement.textContent=\''+g.icon+'\';">':g.icon;
 const primaryLink=x.links.find(safeUrl),linkHtml=primaryLink?'<a href="'+esc(safeUrl(primaryLink))+'" target="_blank" rel="noopener" data-open="'+x.id+'">原始筆記 ↗</a>':"";
-return '<article class="entry"><button type="button" class="preview" data-detail="'+x.id+'" aria-label="查看 '+esc(x.name)+' 的照片">'+imageHtml+(x.images.length?'<span class="photo-count">📷 '+x.images.length+' 張照片</span>':'')+'</button><div class="entry-body"><div class="entry-meta"><span>'+g.icon+' '+esc(x.category)+'</span>'+(x.price?'<span>價格 '+esc(x.price)+'</span>':"")+'</div><h3>'+esc(x.name)+'</h3><p>'+esc(note)+'</p><div class="actions"><button type="button" class="primary" data-detail="'+x.id+'">查看內容</button>'+linkHtml+'<button type="button" class="star '+(favs.includes(x.id)?"saved":"")+'" data-star="'+x.id+'" aria-label="收藏">'+(favs.includes(x.id)?"★":"☆")+'</button></div></div></article>'
+return '<article class="entry"><button type="button" class="preview" data-detail="'+x.id+'" aria-label="查看 '+esc(x.name)+' 的照片">'+imageHtml+(x.noteCover?'<span class="photo-count">📓 筆記首圖</span>':x.images.length?'<span class="photo-count">📷 '+x.images.length+' 張照片</span>':'')+'</button><div class="entry-body"><div class="entry-meta"><span>'+g.icon+' '+esc(x.category)+'</span>'+(x.price?'<span>價格 '+esc(x.price)+'</span>':"")+'</div><h3>'+esc(x.name)+'</h3><p>'+esc(note)+'</p><div class="actions"><button type="button" class="primary" data-detail="'+x.id+'">查看內容</button>'+linkHtml+'<button type="button" class="star '+(favs.includes(x.id)?"saved":"")+'" data-star="'+x.id+'" aria-label="收藏">'+(favs.includes(x.id)?"★":"☆")+'</button></div></div></article>'
 }).join("")||'<div class="empty">沒有符合條件的工作案例，請試試不同分類或關鍵字。</div>'}
 function openDetail(id){const x=byId.get(id);if(!x)return;
 recent=[id,...recent.filter(v=>v!==id)].slice(0,10);save();
 $("detailTitle").textContent=x.name;
-$("detailGallery").innerHTML=x.images.map(v=>'<img loading="lazy" src="'+esc(safeUrl(v.url))+'" alt="'+esc(v.filename||x.name)+'" onerror="this.style.display=\'none\'">').join("");
+$("detailGallery").innerHTML=(x.noteCover?[{url:x.noteCover,filename:"筆記首圖"}]:[]).concat(x.images).map(v=>'<img loading="lazy" src="'+esc(safeUrl(v.url))+'" alt="'+esc(v.filename||x.name)+'" onerror="this.style.display=\'none\'">').join("");
 let chunks=[["原始分類",x.category],["補充標題",x.title],["工法或說明",x.note],["價格",x.price],["標籤",x.tags],["其他選項",x.options.join("、")]];
 $("detailContent").innerHTML=chunks.filter(y=>y[1]).map(y=>'<dt>'+esc(y[0])+'</dt><dd>'+esc(y[1])+'</dd>').join("")+'<dt>原始連結</dt><dd>'+(x.links.length?x.links.map((url,i)=>safeUrl(url)?'<a href="'+esc(safeUrl(url))+'" target="_blank" rel="noopener">開啟筆記 '+(i+1)+' ↗</a>':"").join("　"):'<a href="https://airtable.com/appPXSnxWroL0MXbl" target="_blank" rel="noopener">查看 Airtable 表格 ↗</a>')+'</dd>';
 $("detailDialog").showModal();if(view==="recent")render();
@@ -97,7 +97,7 @@ $("closeDialog").addEventListener("click",()=>$("detailDialog").close());
 $("helpBtn").addEventListener("click",()=>$("helpDialog").showModal());
 $("closeHelp").addEventListener("click",()=>$("helpDialog").close());
 fetch("../data/frame-tech-work.json").then(r=>{if(!r.ok)throw new Error("資料讀取失敗");return r.json()}).then(d=>{
-items=d.items;groups=d.groups;byId=new Map(items.map(x=>[x.id,x]));$("stats").innerHTML='<span class="stat">📚 '+items.length+' 筆資料</span><span class="stat">▦ '+new Set(items.map(x=>x.category)).size+' 種原始分類</span><span class="stat">🧭 '+groups.length+' 大工作類型</span><span class="stat">🖼 '+items.filter(x=>x.images.length).length+' 筆附有照片</span>';render()
+items=d.items;groups=d.groups;byId=new Map(items.map(x=>[x.id,x]));$("stats").innerHTML='<span class="stat">📚 '+items.length+' 筆資料</span><span class="stat">▦ '+new Set(items.map(x=>x.category)).size+' 種原始分類</span><span class="stat">🧭 '+groups.length+' 大工作類型</span><span class="stat">🖼 '+items.filter(x=>x.images.length).length+' 筆 Airtable 附圖</span><span class="stat">📓 '+items.filter(x=>x.noteCover).length+' 筆筆記首圖</span>';render()
 }).catch(err=>{$("count").textContent="載入失敗";$("entries").innerHTML='<div class="alert">資料檔案未能載入：'+esc(err.message)+'。請重新整理或開啟 Airtable 原始資料。</div>'});
 </script>
 <script defer src="../shared-nav.js"></script>
