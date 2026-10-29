@@ -491,7 +491,7 @@ items.forEach(item=>{
  if(["songfeng","songfeng-inner","songfeng-matboard","songfeng-backing","songfeng-silk","songfeng-juan","songfeng-brocade","songfeng-service","songfeng-puzzle","songfeng-film","songfeng-cart-reference"].includes(item.sourceType))item.vendor="松風閣";
  else if(item.sourceType==="hongchang-mirror")item.vendor="宏昌";
  else if(item.sourceType==="tachang")item.vendor="大昌";
- else if(item.sourceType==="tayuan")item.vendor="大圓";
+ else if(["tayuan","tayuan-price"].includes(item.sourceType))item.vendor="大圓";
  else if(String(item.id).startsWith("peixin-ps-")||((item.supplier||"").includes("培欣")&&(item.material||"").includes("PS板"))){
   item.vendor="培欣";item.category="PS板";
  }else item.vendor="藝框界";
