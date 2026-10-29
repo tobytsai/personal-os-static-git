@@ -78,9 +78,16 @@ if(v.type==="theme"){
 if(n==="國畫牡丹")return x.details.includes("牡丹") && /花鳥|山水|人物|國畫/.test(x.category);
 return x.details.includes(key)||x.name.includes(key)||x.category===key;
 }
-if(v.type==="placement")return x.rooms.includes(key)||x.category===key||x.category===key+"布置"||x.category.replace(/布置$/,"")===key;
+if(v.type==="placement"){
+if(n==="玄關書房布置")return ["玄關布置","書房布置"].includes(x.category);
+if(n==="診所店面布置")return ["診所布置","店面布置"].includes(x.category);
+return x.rooms.includes(key)||x.category===key||x.category===key+"布置"||x.category.replace(/布置$/,"")===key;
+}
 if(v.type==="price")return x.price!==null && Number(x.price)===Number(key);
-if(v.type==="size")return x.size===key||x.frames.includes(key);
+if(v.type==="size"){
+const normalized=key.replace(/ copy$/i,"").replace(/^1:1.2s*/,"");
+return x.size===normalized||x.frames.includes(normalized);
+}
 return x.name.includes(key)||x.note.includes(key);
 }
 function renderGroups(){
