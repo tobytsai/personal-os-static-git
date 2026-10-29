@@ -1,0 +1,50 @@
+name: Import Tayuan product images from Airtable
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tayuan-airtable-image-import
+  cancel-in-progress: false
+
+jobs:
+  import-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install image importer dependencies
+        run: python -m pip install --disable-pip-version-check requests "Pillow>=10.0"
+      - name: Verify Airtable read-only token
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+        run: |
+          if [ -z "$AIRTABLE_TOKEN" ]; then
+            echo "::error::Set AIRTABLE_TOKEN in Settings > Secrets and variables > Actions (Airtable PAT with data.records:read for base 達利)."
+            exit 1
+          fi
+      - name: Download and optimize product images
+        env:
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+        run: python scripts/sync_tayuan_airtable_images.py
+      - name: Commit stable images and photo map
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/assets/tayuan/ public/data/tayuan-images.js public/data/tayuan-image-sync-report.json
+          if git diff --cached --quiet; then
+            echo "Images already up-to-date."
+          else
+            git commit -m "Sync Tayuan product pictures from user-owned Airtable"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
