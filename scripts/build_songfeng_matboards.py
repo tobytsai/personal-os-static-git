@@ -216,5 +216,66 @@ def main():
           "errors:",dict(issues),flush=True)
     print("Matboard detail samples:",json.dumps(detail_examples,ensure_ascii=False),flush=True)
 
+
+def build_backing_fabric_photo():
+    """Verify the sole official class-2 backing-fabric product and enrich its photo."""
+    file = ROOT / "public/data/songfeng-backing-fabrics.js"
+    if not file.exists():
+        print("Song Feng Ge backing fabric: no source catalog; skipped", flush=True)
+        return
+    src = file.read_text(encoding="utf-8")
+    meta = jsvalue(src, "SFG_BACKING_CATALOG_META")
+    products = jsvalue(src, "SFG_BACKING_CATALOG_ITEMS")
+    if len(products) != 1 or products[0].get("productNo") != "301":
+        raise ValueError("Expected the single official backing-fabric product 301")
+    item = products[0]
+    url = "https://sfg218.com/frame2_info.php?class=2&no=147"
+    if item.get("productUrl") != url:
+        raise ValueError("Backing fabric source URL has unexpectedly changed")
+    verified = False
+    try:
+        from bs4 import BeautifulSoup
+        html = gethtml(url, timeout=12)
+        soup = BeautifulSoup(html, "html.parser")
+        name = soup.find("h1")
+        name = name.get_text(" ", strip=True) if name else ""
+        detail = soup.get_text(" ", strip=True)
+        # A generic site image must not be mislabeled as this specific fabric.
+        if name != "麻布" or not re.search(r"編號\s*[：:]\s*301\b", detail):
+            raise ValueError("The official detail page does not match 麻布 / product 301")
+        verified = True
+        m = re.search(r"優惠價\s*[：:]\s*(?:NT\s*\$)?\s*([\d,]+)", detail, re.I)
+        if m:
+            item["priceTwd"] = int(m.group(1).replace(",", ""))
+        m = re.search(r"最低收費\s*為?\s*(\d+)\s*才", detail)
+        if m:
+            item["minimumCai"] = int(m.group(1))
+            meta["minimumCai"] = item["minimumCai"]
+        image, candidates = detail_picture(html)
+        if image and image.startswith("https://sfg218.com/"):
+            item["productImage"] = image
+        meta["officialPhotoCount"] = int(bool(item.get("productImage")))
+        meta["photoStatus"] = ("official-verified" if item.get("productImage")
+                               else "not-confirmed")
+        meta["detailVerified"] = True
+        print("Song Feng Ge backing fabric:", item["name"], "no:", item["productNo"],
+              "price:", item["priceTwd"], "min cai:", item["minimumCai"],
+              "photo:", item.get("productImage") or "not verified", flush=True)
+    except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+        meta["detailVerified"] = False
+        meta["photoStatus"] = "unavailable"
+        print("Song Feng Ge backing fabric: official detail unavailable:",
+              type(exc).__name__, str(exc)[:200], "; snapshot preserved", flush=True)
+
+    output = (
+        "/* 松風閣底布 class=2｜官方商品301；只用同一商品詳情頁的實品照片。 */\n"
+        "window.SFG_BACKING_CATALOG_META=" + json.dumps(meta, ensure_ascii=False, separators=(",", ":")) + ";\n"
+        "window.SFG_BACKING_CATALOG_ITEMS=" + json.dumps(products, ensure_ascii=False, separators=(",", ":")) + ";\n"
+    )
+    file.write_text(output, encoding="utf-8")
+    if not verified:
+        print("Song Feng Ge backing fabric: kept verified static snapshot", flush=True)
+
 if __name__ == "__main__":
     main()
+    build_backing_fabric_photo()
