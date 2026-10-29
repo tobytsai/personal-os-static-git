@@ -97,9 +97,9 @@ footer{margin-top:25px;color:var(--muted);text-align:center;font-size:11px}
 </section>
 <section id="tayuanCatalogPanel" class="sfg-catalog-panel" hidden aria-labelledby="tayuanTitle">
 <h3 id="tayuanTitle">🖼️ 大圓美術｜商品索引、原始詳情與歷史報價</h3>
-<p class="tayuan-alert"><strong>資料狀態：尚未完成官網全站核對。</strong>2026/10/29 大圓原站無法即時查核，現已根據2026/09/30完整歷史索引，以及「達利」Airtable 原有的大圓商品、圖片來源、說明和432筆歷史報價還原資料。<strong>官網分類ID保留；中文名稱取自歷史 Airtable 分類或整理用標籤。2022年起的報價資料不能作為2026年實際售價，Airtable附件未複製為本站圖片。</strong></p>
+<p class="tayuan-alert"><strong>資料狀態：尚未完成官網全站核對。</strong>2026/10/29 大圓原站無法即時查核，現已根據2026/09/30完整歷史索引，以及「達利」Airtable 原有的大圓商品、圖片來源、說明和432筆歷史報價還原資料。<strong>官網分類ID保留；中文名稱取自歷史 Airtable 分類或整理用標籤。2022年起的報價資料不能作為2026年實際售價，Airtable圖片可使用安全同步流程轉為本站自架圖片；此操作須先設定GitHub Actions專用的Airtable唯讀權杖。</strong></p>
 <p id="tayuanSummary" class="tayuan-intro"></p>
-<div class="sfg-source-links"><a href="http://www.tayuanart.com.tw/ec99/webstyle02/ShowGoods.asp?category_id=59&amp;parent_id=0" target="_blank" rel="noopener noreferrer">大圓官網商品入口 ↗</a><a href="http://www.tayuanart.com.tw/" target="_blank" rel="noopener noreferrer">大圓官方網站 ↗</a><a href="https://www.yes123.com.tw/wk_index/comp_info.asp?p_id=20180328101345_84524261" target="_blank" rel="noopener noreferrer">歷史產品系列資料來源 ↗</a></div>
+<div class="sfg-source-links"><a href="http://www.tayuanart.com.tw/ec99/webstyle02/ShowGoods.asp?category_id=59&amp;parent_id=0" target="_blank" rel="noopener noreferrer">大圓官網商品入口 ↗</a><a href="http://www.tayuanart.com.tw/" target="_blank" rel="noopener noreferrer">大圓官方網站 ↗</a><a href="https://github.com/tobytsai/personal-os-static-git/actions/workflows/tayuan-airtable-images.yml" target="_blank" rel="noopener noreferrer">Airtable 商品圖片同步工作流程 ↗</a><a href="https://www.yes123.com.tw/wk_index/comp_info.asp?p_id=20180328101345_84524261" target="_blank" rel="noopener noreferrer">歷史產品系列資料來源 ↗</a></div>
 <p class="tayuan-sub" id="tayuanChooseHint">先選原始官網分類ID（58–66），再用Airtable既有的細類標籤篩選。歷史報價獨立成類，避免與現行售價混淆。</p>
 <section id="tayuanSubcategorySection" hidden><div class="filter-head"><span>③ 選擇大圓整理用細分類（非官網原始分類）</span></div><nav class="category-row subcategory-row" id="tayuanSubcategories" aria-label="大圓產品系列整理細分類"></nav></section>
 </section>
@@ -213,6 +213,7 @@ footer{margin-top:25px;color:var(--muted);text-align:center;font-size:11px}
 <script src="../data/tayuan-catalog.js?v=20261029-archive2"></script>
 <script src="../data/tayuan-airtable-products.js?v=20261029-airtable1"></script>
 <script src="../data/tayuan-airtable-prices.js?v=20261029-airtable1"></script>
+<script src="../data/tayuan-images.js?v=20261029-photos1"></script>
 <script src="../data/tachang-catalog.js?v=20261029-catalog1"></script><script src="../data/songfeng-frames.js?v=20261028"></script>
 <script src="../data/songfeng-sheet-prices.js?v=20261029-1"></script>
 <script src="../data/songfeng-photos.js?v=20261029-photo1"></script>
@@ -889,6 +890,7 @@ function tachangCard(item){
 function tayuanCard(item){
  const id=esc(item.id);
  const isPrice=item.sourceType==="tayuan-price";
+ const imagePath=!isPrice?(window.TAYUAN_IMAGE_MAP||{})[String(item.code||"")]:null;
  const label=isPrice?"歷史報價明細":"大圓商品索引";
  const official=item.productUrl?'<a class="open-link shop" href="'+esc(item.productUrl)+'" target="_blank" rel="noopener noreferrer" onclick="remember(\''+id+'\')">原始商品詳情 ↗</a>':"";
  const photo=item.originalImageViewerUrl?'<a class="open-link guide" href="'+esc(item.originalImageViewerUrl)+'" target="_blank" rel="noopener noreferrer" onclick="remember(\''+id+'\')">歷史商品圖片來源 ↗</a>':"";
@@ -908,9 +910,10 @@ function tayuanCard(item){
    (item.description?'<details class="tayuan-detail"><summary>完整介紹與規格</summary><p>'+esc(item.description)+'</p></details>':"")+
    (item.categoryTags?.length?'<div>歷史網站標籤：'+esc(item.categoryTags.join("、"))+'</div>':"")+
    (item.relatedPriceRecordIds?.length?'<div>已關聯 '+esc(item.relatedPriceRecordIds.length)+' 筆 Airtable 歷史細目報價</div>':"")+
-   (item.hasAirtableAttachments?'<div class="tayuan-source">Airtable 已留存照片（未複製到公開網站）</div>':"")+
+   (item.hasAirtableAttachments&&!imagePath?'<div class="tayuan-source">Airtable 已留存照片（尚未同步到本站）</div>':"")+
    '<div class="tayuan-source">資料來源：2022年起 Airtable 紀錄／2026年9月歷史索引；2026現行商品規格與售價未核對。</div></div>';
- const visual='<div class="product-placeholder"><strong>'+(isPrice?"Airtable 歷史報價":item.hasAirtableAttachments?"Airtable 留存圖片":"照片待核")+'</strong><span>'+(isPrice?"2022年起建檔，非即時報價":item.originalImageViewerUrl?"圖片請點下方來源連結":"無可核實的公開圖片")+'</span></div>';
+ const fallback='<div class="product-placeholder tayuan-photo-placeholder"><strong>'+(isPrice?"Airtable 歷史報價":item.hasAirtableAttachments?"Airtable 留存圖片":"照片待核")+'</strong><span>'+(isPrice?"2022年起建檔，非即時報價":item.originalImageViewerUrl?"圖片請點下方來源連結":"無可核實的公開圖片")+'</span></div>';
+ const visual=imagePath?'<a class="product-image-link" href="'+esc(item.productUrl||imagePath)+'" target="_blank" rel="noopener noreferrer" data-mid="'+id+'" onclick="remember(this.dataset.mid)"><img class="product-thumb" src="'+esc(imagePath)+'" alt="'+esc(item.name)+' 大圓 Airtable 留存商品照片" loading="lazy" decoding="async" onerror="this.parentElement.hidden=true;this.parentElement.nextElementSibling.hidden=false"></a>'+fallback.replace('class="product-placeholder tayuan-photo-placeholder"','class="product-placeholder tayuan-photo-placeholder" hidden'):fallback;
  const related=!isPrice&&item.relatedPriceRecordIds?.length?'<button class="open-link guide" type="button" onclick="showMaterial(\'tayuan-price-'+esc(item.relatedPriceRecordIds[0])+'\')">查看歷史報價 ↗</button>':"";
  return '<article class="material tayuan-card" id="material-'+id+'">'+
  '<div class="material-top"><span class="number">'+esc(item.number)+'</span><span class="category">'+label+'</span></div>'+
@@ -922,7 +925,7 @@ function renderTayuanPanel(){
  const panel=document.getElementById("tayuanCatalogPanel");
  panel.hidden=searchAllVendors||activeVendor!=="大圓";
  if(panel.hidden)return;
- document.getElementById("tayuanSummary").textContent="商品編號 "+tayuanProductItems.filter(x=>!x.isNonProduct).length+" 個（附原始官網商品連結 "+tayuanProductItems.filter(x=>!x.isNonProduct&&x.productUrl).length+" 個）｜Airtable歷史報價 "+tayuanPriceItems.length+" 筆｜網站非商品延伸資料 "+tayuanProductItems.filter(x=>x.isNonProduct).length+" 筆｜分類及明細合計 "+tayuanGroups.length+" 大類、"+tayuanCategories.length+" 細分類。歷史資料，不代表官網現售商品或即時價格。";
+ document.getElementById("tayuanSummary").textContent="已自架照片 "+Object.keys(window.TAYUAN_IMAGE_MAP||{}).length+" 張｜商品編號 "+tayuanProductItems.filter(x=>!x.isNonProduct).length+" 個（附原始官網商品連結 "+tayuanProductItems.filter(x=>!x.isNonProduct&&x.productUrl).length+" 個）｜Airtable歷史報價 "+tayuanPriceItems.length+" 筆｜網站非商品延伸資料 "+tayuanProductItems.filter(x=>x.isNonProduct).length+" 筆｜分類及明細合計 "+tayuanGroups.length+" 大類、"+tayuanCategories.length+" 細分類。歷史資料，不代表官網現售商品或即時價格。";
  const leaves=tayuanCategories.filter(x=>x.group===activeCategory);
  const groupChosen=tayuanGroups.includes(activeCategory);
  if(!leaves.some(x=>x.name===tayuanSubcategory))tayuanSubcategory="全部";
