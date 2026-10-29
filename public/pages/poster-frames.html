@@ -171,8 +171,8 @@ main{width:100%;max-width:1120px;min-width:0}
 <div class="sfg-config">
 <div class="sfg-box"><h4>① 作品尺寸</h4>
 <p class="sfg-tip sfg-size-intro">📐 常見畫框內尺寸參考（單位：mm）</p>
-<div class="sfg-presets" aria-label="依原網站畫框內尺寸快速選擇"><button type="button" data-sfg-preset="A5" aria-label="A5，框內尺寸 149 × 211 毫米" aria-pressed="false"><strong>A5</strong><small>149 × 211 mm</small></button><button type="button" data-sfg-preset="B5" aria-label="B5，框內尺寸 183 × 258 毫米" aria-pressed="false"><strong>B5</strong><small>183 × 258 mm</small></button><button type="button" data-sfg-preset="A4" aria-label="A4，框內尺寸 211 × 298 毫米" class="selected" aria-pressed="true"><strong>A4</strong><small>211 × 298 mm</small></button><button type="button" data-sfg-preset="B4" aria-label="B4，框內尺寸 258 × 365 毫米" aria-pressed="false"><strong>B4</strong><small>258 × 365 mm</small></button><button type="button" data-sfg-preset="A3" aria-label="A3，框內尺寸 298 × 421 毫米" aria-pressed="false"><strong>A3</strong><small>298 × 421 mm</small></button><button type="button" data-sfg-preset="B3" aria-label="B3，框內尺寸 365 × 516 毫米" aria-pressed="false"><strong>B3</strong><small>365 × 516 mm</small></button><button type="button" data-sfg-preset="A2" aria-label="A2，框內尺寸 421 × 595 毫米" aria-pressed="false"><strong>A2</strong><small>421 × 595 mm</small></button><button type="button" data-sfg-preset="B2" aria-label="B2，框內尺寸 516 × 729 毫米" aria-pressed="false"><strong>B2</strong><small>516 × 729 mm</small></button><button type="button" data-sfg-preset="A1" aria-label="A1，框內尺寸 595 × 842 毫米" aria-pressed="false"><strong>A1</strong><small>595 × 842 mm</small></button><button type="button" data-sfg-preset="B1" aria-label="B1，框內尺寸 729 × 1031 毫米" aria-pressed="false"><strong>B1</strong><small>729 × 1031 mm</small></button><button type="button" data-sfg-preset="A0" aria-label="A0，框內尺寸 842 × 1190 毫米" aria-pressed="false"><strong>A0</strong><small>842 × 1190 mm</small></button><button type="button" data-sfg-preset="B0" aria-label="B0，框內尺寸 1031 × 1457 毫米" aria-pressed="false"><strong>B0</strong><small>1031 × 1457 mm</small></button></div>
-<div class="sfg-tip sfg-size-footnote">這些是參考網站標示的<strong>畫框內尺寸</strong>，與 ISO 標準紙張尺寸可能相差 1～數毫米。請以實際作品及框型規格為準。</div>
+<p class="sfg-tip">點選尺寸可自動帶入下方長／高與寬（直式）；按鈕數字為寬 × 高，單位 mm。</p><div id="sfg-size-presets" class="sfg-presets" aria-label="點選尺寸自動填入長與寬"><button type="button" data-sfg-preset="A5" aria-label="A5，框內尺寸 149 × 211 毫米" aria-pressed="false"><strong>A5</strong><small>149 × 211 mm</small></button><button type="button" data-sfg-preset="B5" aria-label="B5，框內尺寸 183 × 258 毫米" aria-pressed="false"><strong>B5</strong><small>183 × 258 mm</small></button><button type="button" data-sfg-preset="A4" aria-label="A4，框內尺寸 211 × 298 毫米" class="selected" aria-pressed="true"><strong>A4</strong><small>211 × 298 mm</small></button><button type="button" data-sfg-preset="B4" aria-label="B4，框內尺寸 258 × 365 毫米" aria-pressed="false"><strong>B4</strong><small>258 × 365 mm</small></button><button type="button" data-sfg-preset="A3" aria-label="A3，框內尺寸 298 × 421 毫米" aria-pressed="false"><strong>A3</strong><small>298 × 421 mm</small></button><button type="button" data-sfg-preset="B3" aria-label="B3，框內尺寸 365 × 516 毫米" aria-pressed="false"><strong>B3</strong><small>365 × 516 mm</small></button><button type="button" data-sfg-preset="A2" aria-label="A2，框內尺寸 421 × 595 毫米" aria-pressed="false"><strong>A2</strong><small>421 × 595 mm</small></button><button type="button" data-sfg-preset="B2" aria-label="B2，框內尺寸 516 × 729 毫米" aria-pressed="false"><strong>B2</strong><small>516 × 729 mm</small></button><button type="button" data-sfg-preset="A1" aria-label="A1，框內尺寸 595 × 842 毫米" aria-pressed="false"><strong>A1</strong><small>595 × 842 mm</small></button><button type="button" data-sfg-preset="B1" aria-label="B1，框內尺寸 729 × 1031 毫米" aria-pressed="false"><strong>B1</strong><small>729 × 1031 mm</small></button><button type="button" data-sfg-preset="A0" aria-label="A0，框內尺寸 842 × 1190 毫米" aria-pressed="false"><strong>A0</strong><small>842 × 1190 mm</small></button><button type="button" data-sfg-preset="B0" aria-label="B0，框內尺寸 1031 × 1457 毫米" aria-pressed="false"><strong>B0</strong><small>1031 × 1457 mm</small></button></div>
+<p id="sfg-size-status" class="sfg-tip" role="status" aria-live="polite" hidden></p><div class="sfg-tip sfg-size-footnote">這些是參考網站標示的<strong>畫框內尺寸</strong>，與 ISO 標準紙張尺寸可能相差 1～數毫米。請以實際作品及框型規格為準。</div>
 <div class="sfg-fields"><label for="sfg-length">作品長／高（mm）<input id="sfg-length" type="number" min="1" step="0.1" value="298" inputmode="decimal"></label><label for="sfg-width">作品寬（mm）<input id="sfg-width" type="number" min="1" step="0.1" value="211" inputmode="decimal"></label></div>
 <p class="sfg-inch-result"><span>📏 長＋寬換算吋數</span><output id="sfg-size-inches" aria-live="polite">（29.8 ＋ 21.1）÷ 2.54 ＝ 20.04 吋</output><small>輸入單位是 mm，會先換算成 cm，再除以 2.54。</small></p>
 <p class="sfg-tip">上面可點選框內尺寸，也能手動輸入 mm；若需加寬四邊留白，請在情境材料中設定。</p></div>
@@ -515,10 +515,29 @@ function sfgSyncLink(){
 }
 for(const id of ["sfg-length","sfg-width","sfg-frame-rate","sfg-back-rate","sfg-acrylic-rate","sfg-labor","sfg-custom-name","sfg-custom-width","sfg-dali-multiplier"])sfgEl(id).addEventListener("input",sfgCalculate);
 for(const id of ["sfg-back-on","sfg-acrylic-on"])sfgEl(id).addEventListener("change",sfgCalculate);
-document.querySelectorAll("[data-sfg-preset]").forEach(b=>b.addEventListener("click",()=>{
- const p=sfgPresets[b.dataset.sfgPreset];
- sfgEl("sfg-length").value=p[0];sfgEl("sfg-width").value=p[1];sfgCalculate();
-}));
+function sfgSyncSizePreset(){
+ const height=sfgNum("sfg-length"),width=sfgNum("sfg-width");
+ document.querySelectorAll("[data-sfg-preset]").forEach(button=>{
+  const dimensions=sfgPresets[button.dataset.sfgPreset];
+  const selected=!!dimensions&&dimensions[0]===height&&dimensions[1]===width;
+  button.classList.toggle("selected",selected);button.setAttribute("aria-pressed",String(selected));
+ });
+}
+function sfgApplySizePreset(name){
+ const dimensions=sfgPresets[name];if(!dimensions)return;
+ sfgEl("sfg-length").value=String(dimensions[0]);
+ sfgEl("sfg-width").value=String(dimensions[1]);
+ sfgCalculate();sfgSyncSizePreset();
+ const status=sfgEl("sfg-size-status");
+ status.hidden=false;status.textContent="已帶入 "+name+"：長／高 "+dimensions[0]+" mm，寬 "+dimensions[1]+" mm。";
+}
+sfgEl("sfg-size-presets").addEventListener("click",event=>{
+ const button=event.target.closest("[data-sfg-preset]");if(!button)return;
+ sfgApplySizePreset(button.dataset.sfgPreset);
+});
+for(const id of ["sfg-length","sfg-width"])sfgEl(id).addEventListener("input",()=>{
+ sfgEl("sfg-size-status").hidden=true;sfgSyncSizePreset();
+});
 if(activeSize){const p=sizeSpecs[activeSize];sfgEl("sfg-length").value=Math.max(p[2],p[3]);sfgEl("sfg-width").value=Math.min(p[2],p[3]);}
 if(Object.hasOwn(sfgScenarioSpecs,new URLSearchParams(location.search).get("scenario"))||location.hash==="#sfg-poster-scenarios"||location.hash==="#songfeng"||location.hash==="#songfeng-reverse"||new URLSearchParams(location.search).get("vendor")==="songfeng")mode="sfg";
 /* 網站照片若無法載入，自動復原為原有的框色示意，不顯示破圖。 */
