@@ -106,7 +106,7 @@ def main() -> int:
     previous = {}
     if MAP.exists():
         existing = MAP.read_text("utf-8")
-        match = re.search(r"window\.TAYUAN_LOCAL_IMAGES\s*=\s*(\{.*\})\s*;", existing)
+        match = re.search(r"window\.TAYUAN_IMAGE_MAP\s*=\s*(\{.*\})\s*;", existing)
         if match:
             previous = json.loads(match.group(1))
     mapping = {code: list(paths) for code, paths in previous.items()}
@@ -118,7 +118,7 @@ def main() -> int:
     for code in mapping:
         mapping[code].sort()
     MAP.write_text("/* Durable public image paths keyed by Tayuan product code; one code may have multiple images. */\n"
-                   + "window.TAYUAN_LOCAL_IMAGES=" + json.dumps(mapping, ensure_ascii=False, separators=(",", ":")) + ";\n",
+                   + "window.TAYUAN_IMAGE_MAP=" + json.dumps(mapping, ensure_ascii=False, separators=(",", ":")) + ";\n",
                    encoding="utf-8")
     failed = [{k: v for k, v in item.items() if k != "path"} for item in results if item["status"] == "error"]
     report = {
