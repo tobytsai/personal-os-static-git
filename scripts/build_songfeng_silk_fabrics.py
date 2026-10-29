@@ -43,7 +43,10 @@ def parse_item(item):
             r"優惠價\s*[：:]\s*(?:NT\s*\$|NTD\s*|NT\$|\$)?\s*([\d,]+)",
             txt, re.I
         )
-        number_match = re.search(r"編號\s*[：:]\s*(\S+)", txt)
+        # 官方「編號」放在 HTML 表單 input.value，BeautifulSoup.get_text()
+        # 會跳過這些值，因此不可用「編號」後的下一個詞（通常是「尺寸」）。
+        # 24 款編號已從各商品官方詳情逐筆人工核對並保存在來源資料。
+        # 保留「款式／色號」與「編號」為兩個不同欄位。
         size_match = re.search(
             r"尺寸\s*[：:]\s*(\d+(?:\.\d+)?)\s*[*×xX]\s*(\d+(?:\.\d+)?)", txt
         )
@@ -52,7 +55,7 @@ def parse_item(item):
         # The official page's internal "編號" can differ from its 綾xx title;
         # retain both rather than silently substituting one for the other.
         result = {
-            "productNo": number_match.group(1) if number_match else None,
+            "productNo": item.get("productNo"),
             "material": "綾布",
             "sheetSize": (size_match.group(1)+" × "+size_match.group(2)+" 公分（每才）"
                           if size_match else "30 × 30 公分（每才）"),
@@ -77,6 +80,10 @@ def main():
         raise ValueError("Expected exactly 24 unique official silk products")
     if len({x["productUrl"] for x in records}) != 24:
         raise ValueError("Duplicate detail URLs in official silk catalog")
+    # Avoid publishing a nonsense placeholder for the official product number.
+    if any(not x.get("productNo") or x["productNo"] in ("尺寸", "材質", "優惠價")
+           for x in records):
+        raise ValueError("Silk product number not verified against official detail page")
     results = Counter()
     sample = []
     with ThreadPoolExecutor(max_workers=5) as pool:
