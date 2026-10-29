@@ -233,5 +233,48 @@ def main():
     STATUS_JSON.write_text(json.dumps({**meta, "errors": dict(errors), "direct_success": detail_success}, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Song Feng Ge: {total}/{len(photos)} official photos available for GitHub Pages", flush=True)
 
+
+def build_inner_photos():
+    """Only match each inner-frame image to its own official class=16 detail URL.
+
+    The price, model, wood/linen material and dimensions are a verified static
+    snapshot; only the optional product-image link is enriched at build time.
+    """
+    file = DATA / "songfeng-inner-frames.js"
+    if not file.exists():
+        print("Song Feng Ge: no inner-frame catalog file", flush=True)
+        return
+    meta = extract_js_value(file, "SFG_INNER_CATALOG_META")
+    records = extract_js_value(file, "SFG_INNER_CATALOG_ITEMS")
+    if len(records) != 15 or len({item["no"] for item in records}) != 15:
+        raise ValueError("Expected 15 unique inner-frame products")
+    pending = [
+        (i, item["url"]) for i, item in enumerate(records)
+        if not item.get("productImage")
+        and re.fullmatch(r"https://sfg218\.com/frame_info\.php\?class=16&no=\d+", item.get("url", ""))
+    ]
+    photos = 0
+    errors = defaultdict(int)
+    if pending:
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            futures = [pool.submit(from_detail, entry) for entry in pending]
+            for future in as_completed(futures):
+                index, picture, error = future.result()
+                if picture and picture.get("full", "").startswith(BASE):
+                    records[index]["productImage"] = picture["full"]
+                    photos += 1
+                else:
+                    errors[error or "unknown"] += 1
+    meta["photoCount"] = sum(bool(item.get("productImage")) for item in records)
+    meta["photoSource"] = "official-product-detail" if photos else "none-verified"
+    output = (
+        "/* 松風閣內框：商品逐筆對應官網詳情；未能驗證的照片留空。 */\n"
+        "window.SFG_INNER_CATALOG_META=" + json.dumps(meta, ensure_ascii=False, separators=(",", ":")) + ";\n"
+        "window.SFG_INNER_CATALOG_ITEMS=" + json.dumps(records, ensure_ascii=False, separators=(",", ":")) + ";\n"
+    )
+    file.write_text(output, encoding="utf-8")
+    print(f"Song Feng Ge inner frames: {len(records)} products; {meta['photoCount']} verified official photos; errors {dict(errors)}", flush=True)
+
 if __name__ == "__main__":
     main()
+    build_inner_photos()
