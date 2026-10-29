@@ -57,7 +57,9 @@ const frames=catalog.map((item,index)=>{
   url:validDetail(row?.url)?row.url:null,tone:colors(item.name)};
 });
 let frame=frames.find(f=>f.name==="241平白")||frames.find(f=>f.rate!==null)||frames[0]||null;
-let category="all",limit=48,scenario="direct",family="F",sizeKey="F6",custom=false;
+const initialOilSize=new URLSearchParams(location.search).get("size");
+let category="all",limit=48,scenario="direct",family="F",sizeKey=oilSizes[initialOilSize]?initialOilSize:"F6",custom=false;
+family=sizeKey==="SM"?"M":sizeKey.charAt(0);
 const scenarioText={
  direct:"已有布架｜直接裱外框",
  shadow:"布架立體框｜框＋卡板＋壓克力＋底布",
@@ -307,7 +309,7 @@ function install(){
   $("sfg-preview-frame").hidden=scenario==="stretch";
   $("sfg-preview-note").textContent="官網照片暫時無法載入，改用示意框。";
  });
- renderCategories();renderSizePresets();updateFrameSelection();refreshScenario();
+ renderCategories();chooseSize(sizeKey);updateFrameSelection();refreshScenario();
 }
 install();
 })();
