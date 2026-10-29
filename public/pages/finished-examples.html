@@ -143,7 +143,21 @@ for(const image of methods){
  const p=byId.get(String(image.pid));if(!p||!image.fid||seenMethods.has(image.fid))continue;
  seenMethods.add(image.fid);p.methods.push(image);
 }
-for(const p of all){if(p.examples.length&&p.category==="未分類")p.category="成品說明圖";if(!p.examples.length&&p.methods.length)p.category="額緣框作法";}
+// 成品圖封面排序：彩色主視覺 illustrated 優先；資料表／作法圖不作封面。
+function exampleImageRank(image){
+ const filename=String(image.title||"").trim().toLocaleLowerCase();
+ if(/^\\d+[-_]\\d+[-_]illustrated\\.(?:png|jpe?g|webp)$/i.test(filename))return 0;
+ if(/illustrated|主視覺|封面|成品主圖|主圖展示/.test(filename))return 1;
+ if(/成品實拍|實際成品|完成效果/.test(filename))return 10;
+ if(/額緣框作法|作法|method|施工|工序|製作流程/.test(filename))return 95;
+ if(/說明|資料|清單|規格|流程|價格|bom|資訊|工法|圖解/.test(filename))return 75;
+ return 25;
+}
+for(const p of all){
+ p.examples.sort((a,b)=>exampleImageRank(a)-exampleImageRank(b)||String(a.title||"").localeCompare(String(b.title||""),"zh-Hant"));
+ if(p.examples.length&&p.category==="未分類")p.category="成品說明圖";
+ if(!p.examples.length&&p.methods.length)p.category="額緣框作法";
+}
 const catSet=new Set(all.filter(p=>p.examples.length||p.methods.length).map(p=>p.category));
 const cats=["全部分類",...Array.from(catSet).sort((a,b)=>a.localeCompare(b,"zh-Hant"))];
 const $=id=>document.getElementById(id);
@@ -211,7 +225,7 @@ function render(){
    '<div class="modejump">'+
    (p.examples.length?'<button type="button" data-open="'+escapeHtml(p.id)+'" data-group="examples">🖼 成品 '+p.examples.length+' 張</button>':'<button type="button" disabled>尚無成品圖</button>')+
    (p.methods.length?'<button type="button" data-open="'+escapeHtml(p.id)+'" data-group="methods">🛠 作法 '+p.methods.length+' 張</button>':'<button type="button" disabled>尚無作法圖</button>')+
-   '</div><div class="cardlinks"><a href="'+escapeHtml(detailUrl(p,p.methods.length?"methods":"examples"))+'" target="_blank" rel="noopener">專屬對照連結 ↗</a><a href="'+escapeHtml(p.link)+'" target="_blank" rel="noopener" data-visit="'+escapeHtml(p.id)+'">商品詳情 ↗</a></div></div></article>';
+   '</div><div class="cardlinks"><a href="'+escapeHtml(detailUrl(p,p.examples.length||p.image?"examples":"methods"))+'" target="_blank" rel="noopener">專屬對照連結 ↗</a><a href="'+escapeHtml(p.link)+'" target="_blank" rel="noopener" data-visit="'+escapeHtml(p.id)+'">商品詳情 ↗</a></div></div></article>';
  }).join(""):'<div class="empty">目前沒有符合條件的商品。可切換其他分類或清除搜尋條件。</div>';
  grid.querySelectorAll("img[data-fallback]").forEach(img=>{img.addEventListener("error",()=>{const fallback=img.dataset.fallback;if(fallback&&img.src!==fallback){img.removeAttribute("data-fallback");img.src=fallback}else{img.style.display="none";img.parentElement.style.background="#e9ecf1"}})});
  const more=$("more");more.hidden=limit>=list.length;more.textContent="顯示更多（尚有 "+Math.max(0,list.length-limit)+" 項）";
