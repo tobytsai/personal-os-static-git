@@ -22,8 +22,8 @@ OUTPUT_DIR = Path("public/images/oil/tianxia")
 REPORT = Path("public/data/oil/tianxia-image-report.json")
 PREFIX = "../../images/oil/tianxia/"
 ALLOWED = {"v5.airtableusercontent.com", "airtableusercontent.com", "dl.airtable.com"}
-MAX_BYTES = 15_000_000
-Image.MAX_IMAGE_PIXELS = 40_000_000
+MAX_BYTES = 30_000_000
+Image.MAX_IMAGE_PIXELS = 120_000_000
 
 def allowed_url(value):
     try:
@@ -43,8 +43,11 @@ def convert(url):
         for chunk in r.iter_content(chunk_size=65536):
             data.extend(chunk)
             if len(data) > MAX_BYTES:
-                raise ValueError("Attachment exceeded 15MB")
+                raise ValueError("Attachment exceeded 30MB")
     with Image.open(BytesIO(data)) as original:
+        # Decode very large source JPEGs at reduced resolution to control memory.
+        if original.format == "JPEG":
+            original.draft("RGB", (1024, 1024))
         image = ImageOps.exif_transpose(original)
         image.thumbnail((1024, 1024), Image.Resampling.LANCZOS)
         if image.mode != "RGB":
