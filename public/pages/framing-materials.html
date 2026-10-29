@@ -438,7 +438,7 @@ const tayuanCatalogByCode=new Map(tayuanAirtableProducts.map(item=>[String(item.
 const tayuanArchiveCodes=new Set(tayuanArchiveItems.map(item=>String(item.code)));
 const mergeTayuan=item=>{
  const master=tayuanCatalogByCode.get(String(item.code));
- if(item.isNonProduct)return {...item,sourceType:"tayuan",category:"網站延伸資料／非商品",subcategory:"文章、認證、服務與欣賞"};
+ if(item.isNonProduct)return {...item,...(master||{}),isNonProduct:true,sourceType:"tayuan",vendor:"大圓",category:"網站延伸資料／非商品",subcategory:"文章、認證、服務與欣賞",name:master?.name||item.name,description:master?.description||"",productUrl:master?.productUrl||item.productUrl||null};
  const merged={...item,...(master||{}),sourceType:"tayuan",vendor:"大圓"};
  merged.category=tayuanOfficialCategoryMap[merged.catalogCategoryId]||"來源分類待核對";
  merged.subcategory=(master?.leafLabel||item.subcategory||"未分細類").trim();
