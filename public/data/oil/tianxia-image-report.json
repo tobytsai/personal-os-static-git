@@ -1,0 +1,20 @@
+{
+  "source": "Airtable 油畫資料 → 天下畫博",
+  "utc": "2026-10-29T22:38:28+00:00",
+  "record_count": 4673,
+  "images_total_in_catalog": 5030,
+  "images_processed_this_run": 5030,
+  "downloaded": 5029,
+  "cached": 0,
+  "failed": 1,
+  "images_with_stable_urls": 5029,
+  "records_with_stable_images": 4671,
+  "errors": [
+    {
+      "id": "rec1dCEWsDj41oQaL",
+      "index": 1,
+      "reason": "ValueError"
+    }
+  ],
+  "note": "Artwork image previews are now hosted by GitHub Pages; the Airtable source is unchanged."
+}
