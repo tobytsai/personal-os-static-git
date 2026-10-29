@@ -1,5 +1,184 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>油畫框商品探索｜裱框找模式啟動器</title><link rel="icon" href="../favicon.svg" type="image/svg+xml"><style>
 *{box-sizing:border-box}body{margin:0;background:#f8f6ef;color:#303548;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}main{max-width:1120px;margin:auto;padding:20px 20px 60px}a{text-decoration:none;color:inherit}.back{display:inline-block;padding:10px 15px;background:white;border-radius:30px;font-weight:700;color:#586886}.hero{background:linear-gradient(120deg,#5477b4,#7da4c8);color:white;padding:32px;border-radius:28px;margin:18px 0;box-shadow:0 14px 35px #5272a62a}.hero h1{font-size:clamp(30px,6vw,48px);margin:8px 0}.hero p{line-height:1.7}.hero a{display:inline-block;background:#ffffff2b;padding:10px 14px;border-radius:25px;margin:3px}.sizes{background:#fff;padding:20px;border-radius:22px;margin:20px 0}.sizes h2{margin:0 0 8px}.sizes p{color:#68778a;line-height:1.6}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:7px 11px;background:#eef2fb;border-radius:30px;font-size:13px}.chip.active{background:#5578b8;color:white}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.controls input{flex:1;min-width:200px;padding:13px;border:1px solid #cbd5e3;border-radius:14px;font:inherit}.controls button,.save,.pager button{border:0;border-radius:14px;padding:10px 14px;background:#e8eef9;color:#445f91;font-weight:700;cursor:pointer}.controls button.active{background:#5578b8;color:white}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 25px #40506a14;display:flex;flex-direction:column}.card img{width:100%;height:210px;object-fit:contain;background:#fff}.body{padding:15px;display:flex;flex-direction:column;flex:1}.body h3{font-size:16px;margin:0 0 6px}.original,.note{font-size:12px;color:#718099;line-height:1.6}.price{color:#31578d;font-weight:800;font-size:16px;margin:8px 0}.price small{display:block;font-size:11px;font-weight:400;color:#78859a}.buttons{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:auto}.open{background:#5578b8;color:white;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:700}.save{margin-left:auto}.pager{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:24px}.pager button:disabled{opacity:.45;cursor:default}.empty{color:#7b8494}@media(max-width:700px){main{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card img{height:145px}.body{padding:11px}.body h3{font-size:15px}}
+
+/* 松風閣一般裱框：獨立式選框及計價，不干擾油畫框商品收藏 */
+[hidden],.grid[hidden],.sfg-panel[hidden],.controls input[hidden]{display:none!important}
+.sfg-panel{margin:14px 0 24px;padding:clamp(15px,3vw,25px);border:1px solid #d5e1f2;border-radius:22px;background:linear-gradient(145deg,#fff,#f0f5fc);box-shadow:0 8px 25px #40506a12}
+.sfg-panel button,.sfg-panel input,.sfg-panel select{font:inherit}
+.sfg-heading{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;align-items:flex-start}
+.sfg-heading h3{font-size:clamp(20px,3vw,27px);margin:5px 0;color:#314f80}
+.sfg-heading p{margin:5px 0;color:#63748d;line-height:1.6;font-size:14px}
+.sfg-heading-links{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.sfg-heading a{display:inline-block;padding:9px 12px;border:1px solid #cbdaf0;border-radius:11px;background:#fff;color:#4168a5;text-decoration:none;font-size:12px;font-weight:800}
+.sfg-step-label{display:inline-block;font-size:11px;font-weight:850;letter-spacing:.05em;color:#4168a5}
+.sfg-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(255px,1fr);gap:14px;align-items:start;margin-top:18px}
+.sfg-config{display:grid;gap:13px;min-width:0}
+.sfg-box,.sfg-summary{background:white;border:1px solid #e2e8f2;border-radius:18px;padding:17px}
+.sfg-box h4{margin:0 0 11px;font-size:16px;color:#334f78}
+.sfg-presets{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.sfg-presets button,.sfg-frame-filter button{border:1px solid #cddbf1;border-radius:999px;background:#fff;color:#476b9f;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.sfg-presets button.selected,.sfg-frame-filter button.selected{background:#5578b8;color:#fff;border-color:#5578b8}
+.sfg-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sfg-fields label,.sfg-amount-field{display:flex;flex-direction:column;gap:5px;color:#52637d;font-size:12px;font-weight:750}
+.sfg-fields input,.sfg-fields select,.sfg-amount-field input,.sfg-frame-search{width:100%;min-width:0;padding:10px 11px;border:1px solid #ccd6e5;border-radius:11px;background:white;color:#253852;outline:none;font-size:14px}
+.sfg-fields input:focus-visible,.sfg-frame-search:focus-visible{outline:2px solid #6386c7;outline-offset:1px}
+.sfg-frame-tools{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.sfg-frame-search{flex:1}
+.sfg-frame-filter{display:flex;gap:7px;flex-wrap:wrap;padding:2px 0 7px;scrollbar-width:thin}.sfg-frame-filter button{white-space:normal;text-align:left;font-size:12px;line-height:1.4}.sfg-frame-filter button small{display:block;opacity:.8;font-weight:600}
+.sfg-frames{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:385px;overflow-y:auto;padding:2px;scrollbar-width:thin}
+.sfg-frame-choice{min-width:0;width:100%;padding:10px;display:flex;gap:9px;align-items:center;border:1px solid #e0e7f1;border-radius:13px;background:#fff;text-align:left;cursor:pointer}
+.sfg-frame-choice.is-selected{background:#e7efff;border:2px solid #5277b9;padding:9px}
+.sfg-mini-frame{flex:none;display:block;width:44px;height:49px;padding:7px;border:7px solid var(--sfg-tone,#555);border-radius:2px;background:#fffaf0;box-shadow:inset 0 0 0 1px #b7bdc7,0 2px 5px #1f304020}
+.sfg-frame-copy{min-width:0;display:block;line-height:1.4}
+.sfg-frame-copy strong{display:block;color:#344a68;font-size:12px;overflow-wrap:anywhere}
+.sfg-frame-copy small{display:block;margin-top:3px;font-size:11px;color:#64758a}.sfg-frame-copy em{display:block;margin-top:4px;color:#996b32;font-size:11px;font-style:normal;font-weight:800}.sfg-frame-count{margin:0 0 8px}
+.sfg-custom{display:block;width:100%;margin-top:10px;padding:9px 12px;border:1px dashed #adc4e6;border-radius:11px;background:#f5f9ff;color:#4265a2;font-size:12px;font-weight:800;cursor:pointer}
+.sfg-custom-fields{margin-top:12px;padding-top:12px;border-top:1px dashed #dae3f1}
+.sfg-rate-row{display:flex;gap:9px;align-items:end;justify-content:space-between;flex-wrap:wrap;margin-top:11px}
+.sfg-rate-row label{flex:1;min-width:155px}
+.sfg-rate-row a{font-size:12px;color:#426bac;text-decoration:underline;text-underline-offset:2px;max-width:140px;text-align:right}
+.sfg-check{display:flex;gap:9px;align-items:center;color:#425673;font-size:13px;font-weight:800;margin:10px 0}
+.sfg-check input{accent-color:#5578b8;width:17px;height:17px;flex:none}
+.sfg-tip{font-size:12px;color:#7a8798;line-height:1.6;margin:8px 0 0}
+.sfg-summary{position:sticky;top:16px;box-shadow:0 9px 25px #40506a10}
+.sfg-summary h4{font-size:16px;color:#334f78;margin:0 0 13px}
+.sfg-preview{min-height:240px;border-radius:14px;background:radial-gradient(circle at top,#f5f6f8,#e9eef5);display:flex;align-items:center;justify-content:center;padding:16px;overflow:hidden}
+.sfg-preview-frame{box-sizing:content-box;display:grid;place-items:center;border:10px solid #395878;box-shadow:2px 4px 13px #1f2e4350,inset 0 0 0 2px #0002;max-width:100%}
+.sfg-preview-art{width:100%;height:100%;padding:8px;display:grid;place-items:center;background:linear-gradient(165deg,#f9f6e9,#e7eef4);color:#8a94a3;font-size:12px}
+.sfg-preview-art span{border-top:1px solid #b2c5cf;border-bottom:1px solid #b2c5cf;letter-spacing:.18em;padding:15px 0;text-align:center}
+.sfg-preview-note{display:block;text-align:center;font-size:11px;color:#8a91a2;margin:8px 0 14px}
+.sfg-selected-name{font-weight:850;color:#354f79;font-size:14px;margin-bottom:12px;line-height:1.6}
+.sfg-breakdown{border-top:1px solid #e5ebf3;padding-top:7px}
+.sfg-line{display:flex;justify-content:space-between;gap:8px;font-size:13px;line-height:1.65;padding:5px 0;color:#586780}
+.sfg-line strong{font-variant-numeric:tabular-nums;white-space:nowrap;color:#334f80}
+.sfg-total{margin-top:11px;padding:13px;border-radius:15px;background:#e2ecfb;display:flex;justify-content:space-between;gap:10px;align-items:center;color:#31578d}
+.sfg-total span{font-size:12px;font-weight:800}
+.sfg-total strong{font-size:23px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sfg-formulas{font-size:12px;color:#586a85;line-height:1.75;margin-top:12px;overflow-wrap:anywhere}
+.sfg-formulas p{margin:6px 0}
+.sfg-warning{font-size:12px;color:#975b29;line-height:1.7;font-weight:700}
+.sfg-sources{margin:16px 1px 0;color:#6b7890;font-size:12px;line-height:1.8}
+.sfg-sources a{color:#4168a6;text-decoration:underline}
+.sfg-empty{padding:16px 7px;font-size:12px;color:#667891}
+@media(max-width:810px){.sfg-layout{grid-template-columns:1fr}.sfg-summary{position:static}.sfg-frames{max-height:310px}}
+@media(max-width:560px){.sfg-frame-filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:11px}.sfg-frame-filter button{flex:none;max-width:170px;white-space:normal}.sfg-panel{padding:12px}.sfg-box,.sfg-summary{padding:13px}.sfg-frame-choice{padding:7px}.sfg-frame-choice.is-selected{padding:6px}.sfg-frame-copy strong{font-size:11px}.sfg-frames{gap:6px}.sfg-preview{min-height:220px}.sfg-total strong{font-size:21px}}
+@media(max-width:350px){.sfg-fields,.sfg-frames{grid-template-columns:1fr}}
+
+
+/* 手機版：避免外框分類拉寬整頁 */
+html,body{max-width:100%;overflow-x:clip}
+main{width:100%;max-width:1120px;min-width:0}
+.sfg-panel,.sfg-layout,.sfg-config,.sfg-box,.sfg-summary,.sfg-frame-tools,.sfg-frame-filter,.sfg-frames{min-width:0;max-width:100%}
+.sfg-panel{width:100%;overflow:clip}
+.sfg-layout{width:100%;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}
+.sfg-config{grid-template-columns:minmax(0,1fr);width:100%}
+.sfg-box,.sfg-summary{width:100%}
+.sfg-frame-filter{width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain}
+.sfg-frame-filter button{flex:0 0 auto;overflow-wrap:anywhere}
+.sfg-frame-choice,.sfg-frame-copy{min-width:0;max-width:100%}
+.sfg-heading-links{max-width:100%;min-width:0}
+.sfg-total{min-width:0}
+.sfg-total strong{font-size:clamp(17px,2.5vw,23px)}
+@media(max-width:810px){.sfg-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){
+ .sfg-frame-filter{flex-wrap:nowrap;max-width:100%;width:100%;overflow-x:auto}
+ .sfg-frame-filter button{max-width:156px;white-space:normal;flex:0 0 auto}
+ .sfg-frames{grid-template-columns:minmax(0,1fr)}
+ .sfg-rate-row label{flex:1 1 100%;min-width:0}
+ .sfg-rate-row a{max-width:100%}
+ .sfg-total{gap:4px;padding:10px}
+ .sfg-total strong{font-size:20px}
+}
+
+/* 尺寸預設：原網站 A5~A0、B5~B0 畫框內尺寸。防止手機版頁面變寬 */
+.sfg-presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:10px 0 12px;min-width:0;width:100%}
+.sfg-presets button{min-width:0;width:100%;display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;text-align:left;padding:10px 12px;border-radius:13px;overflow-wrap:anywhere}
+.sfg-presets button strong{font-size:14px;font-weight:850;letter-spacing:.01em}
+.sfg-presets button small{font-size:clamp(10px,1.3vw,12px);font-weight:650;white-space:normal;letter-spacing:0;line-height:1.45}
+.sfg-size-intro{margin:0 0 8px;font-weight:800;color:#526c94}
+.sfg-size-footnote{margin:0 0 12px}
+@media(max-width:560px){
+ .sfg-presets{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ .sfg-presets button{flex-direction:column;align-items:flex-start;gap:3px;padding:9px 10px}
+ .sfg-presets button strong{font-size:13px}
+ .sfg-presets button small{font-size:11px;line-height:1.35}
+}
+
+/* 作品尺寸下方的英吋換算，使用 mm→cm→inch，保持手機版不溢出 */
+.sfg-inch-result{display:flex;flex-direction:column;gap:4px;min-width:0;max-width:100%;margin:12px 0 10px;padding:10px 0;border-top:1px solid #e3e9f3;border-bottom:1px solid #e3e9f3;color:#476180;line-height:1.55}
+.sfg-inch-result>span{font-size:12px;font-weight:800}
+.sfg-inch-result output{font-size:clamp(13px,1.5vw,16px);font-weight:850;color:#304c72;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.sfg-inch-result small{font-size:11px;color:#748399;line-height:1.5}
+
+/* 松風閣外框參考價換算達利每吋報價；不改動原有材料總價 */
+.sfg-dali{margin-top:15px;padding:14px;border:1px solid #c8d9ec;border-radius:15px;background:#f8fbff;min-width:0;max-width:100%}
+.sfg-dali h5{margin:0 0 6px;color:#304f7b;font-size:15px;line-height:1.5}
+.sfg-dali p{margin:6px 0;color:#667891;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+.sfg-dali label{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:11px 0;font-size:12px;font-weight:800;color:#47627f}
+.sfg-dali label input{width:110px;max-width:100%;min-width:0;padding:8px 10px;border:1px solid #c7d6e8;border-radius:10px;background:#fff;color:#294365;font-size:14px}
+.sfg-dali label input:focus-visible{outline:2px solid #6c92c7;outline-offset:2px}
+.sfg-dali-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.sfg-dali-metric{min-width:0;padding:10px;border:1px solid #d9e4f3;border-radius:12px;background:white}
+.sfg-dali-metric span{display:block;color:#61758f;font-size:11px;line-height:1.5}
+.sfg-dali-metric strong{display:block;overflow-wrap:anywhere;font-size:clamp(17px,2vw,22px);font-weight:850;color:#325783;font-variant-numeric:tabular-nums;margin-top:4px}
+.sfg-dali-metric.main{border-color:#9ab9e2;background:#edf4ff}
+.sfg-dali .sfg-dali-formula{margin-top:8px;color:#466381;font-size:11px}
+@media(max-width:390px){.sfg-dali{padding:11px}.sfg-dali-metrics{grid-template-columns:minmax(0,1fr)}}
+
+/* 松風閣：官網實品圖片取代色塊；圖片不可用時保留原本示意色框。 */
+.sfg-frame-photo{flex:none;display:block;width:53px;height:57px;max-width:53px;border:1px solid #e1e6ef;border-radius:9px;background:#fff;object-fit:contain;padding:3px;box-shadow:0 2px 6px #22334c12}
+.sfg-frame-photo[hidden],.sfg-preview-photo[hidden],.sfg-mini-frame[hidden]{display:none!important}
+.sfg-frame-choice:has(.sfg-frame-photo) .sfg-frame-copy{flex:1;min-width:0}
+.sfg-preview-photo{display:block;width:min(100%,370px);height:230px;max-width:100%;object-fit:contain;background:#fff;border-radius:11px;padding:7px;box-shadow:0 2px 12px #253a5712}
+@media(max-width:560px){.sfg-frame-photo{width:48px;height:52px;max-width:48px}.sfg-preview-photo{height:215px}}
+
+
+/* 三種油畫布裱框情境：手機排版與木布架估價 */
+.sfg-oil-scenarios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0;min-width:0}
+.sfg-oil-scenario{display:flex;align-items:flex-start;gap:8px;min-width:0;padding:12px 13px;border-radius:15px;border:1px solid #cdd9e8;background:white;cursor:pointer}
+.sfg-oil-scenario.selected,.sfg-oil-scenario:has(input:checked){background:#e5eefc;border-color:#7597ca;box-shadow:0 0 0 1px #91add6}
+.sfg-oil-scenario input{width:18px;height:18px;flex:0 0 auto;accent-color:#4e78b8;margin:1px 0 0}
+.sfg-oil-scenario strong{display:block;color:#2f4f7b;font-weight:850;font-size:13px;line-height:1.5}
+.sfg-oil-scenario small{display:block;color:#687b95;font-size:11px;line-height:1.55;margin-top:4px}
+.sfg-oil-family-buttons{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
+.sfg-oil-family-buttons button,.sfg-oil-sizes button{border:1px solid #cddbf1;border-radius:11px;background:#fff;color:#476b9f;padding:8px 11px;font-size:12px;font-weight:800;cursor:pointer}
+.sfg-oil-family-buttons button.selected,.sfg-oil-sizes button.selected{border-color:#567fb9;background:#5578b8;color:#fff}
+.sfg-oil-sizes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;min-width:0;max-height:210px;overflow:auto;padding:2px}
+.sfg-oil-sizes button{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.35}
+.sfg-oil-sizes button strong{font-size:13px}
+.sfg-oil-sizes button small{font-size:10px;font-weight:650;line-height:1.35;white-space:normal;text-align:left}
+.sfg-oil-size-label{font-size:12px;font-weight:800;color:#5a7598;margin:10px 0}
+.sfg-oil-help{font-size:12px;line-height:1.7;color:#6b7d95;margin:9px 0}
+.sfg-oil-help a{color:#4770a9;text-decoration:underline}
+.sfg-oil-block{min-width:0;max-width:100%}
+.sfg-oil-canvas-preview{box-sizing:border-box;position:relative;display:grid;place-items:center;width:145px;height:175px;background:linear-gradient(145deg,#f4ebda,#e7d6bc);border:9px solid #e8dbc4;box-shadow:5px 7px 0 #bfab8d,7px 9px 12px #263a4b34;max-width:90%;font-size:14px;font-weight:850;color:#8c7759;text-align:center;line-height:1.55}
+.sfg-oil-canvas-preview[hidden],.sfg-oil-block[hidden],.sfg-dali[hidden]{display:none!important}
+.sfg-oil-canvas-preview span{padding:10px}
+.sfg-oil-breakdown{border-top:1px solid #e5ebf3;padding-top:8px}
+.sfg-oil-breakdown .sfg-line{font-size:12px}
+.sfg-oil-breakdown .sfg-line span{max-width:65%}
+.sfg-oil-breakdown .sfg-line strong{max-width:44%;text-align:right;overflow-wrap:anywhere;white-space:normal}
+.sfg-oil-note{font-size:12px;line-height:1.65;color:#697e99}
+.sfg-oil-field-hint{font-size:11px;color:#73849a;line-height:1.6;margin:8px 0 0}
+.sfg-oil-missing-note{margin-top:9px;padding:10px;border:1px dashed #bccfe8;border-radius:12px;background:#f9fbff;color:#557497;font-size:12px;line-height:1.7}
+.sfg-dali{margin-top:15px;padding:14px;border:1px solid #c8d9ec;border-radius:15px;background:#f8fbff;min-width:0;max-width:100%}
+.sfg-dali h5{margin:0 0 6px;color:#304f7b;font-size:15px}
+.sfg-dali p{margin:6px 0;color:#667891;font-size:12px;line-height:1.65}
+.sfg-dali label{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:11px 0;font-size:12px;font-weight:800;color:#47627f}
+.sfg-dali label input{width:110px;max-width:100%;min-width:0;padding:8px 10px;border:1px solid #c7d6e8;border-radius:10px;background:#fff;color:#294365;font-size:14px}
+.sfg-dali-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.sfg-dali-metric{min-width:0;padding:10px;border:1px solid #d9e4f3;border-radius:12px;background:white}
+.sfg-dali-metric strong{display:block;overflow-wrap:anywhere;font-size:clamp(17px,2vw,22px);font-weight:850;color:#325783}
+.sfg-dali-metric span{display:block;color:#61758f;font-size:11px;line-height:1.5}
+.sfg-dali-metric.main{border-color:#9ab9e2;background:#edf4ff}
+.sfg-frame-photo:not([hidden]),.sfg-preview-photo:not([hidden]){cursor:zoom-in}
+.sfg-frame-photo[hidden],.sfg-preview-photo[hidden],.sfg-mini-frame[hidden]{display:none!important}
+.sfg-frame-photo{width:53px;height:57px;max-width:53px;flex:none;object-fit:contain;padding:3px;background:white;border:1px solid #e1e6ef;border-radius:9px}
+.sfg-preview-photo{width:min(100%,370px);height:230px;max-width:100%;object-fit:contain;padding:7px;background:white;border-radius:11px}
+[hidden],.sfg-panel[hidden],.grid[hidden],.pager[hidden],.controls input[hidden]{display:none!important}
+@media(max-width:850px){.sfg-oil-scenarios{grid-template-columns:minmax(0,1fr)}.sfg-oil-scenario{align-items:center}}
+@media(max-width:560px){.sfg-oil-sizes{grid-template-columns:repeat(2,minmax(0,1fr))}.sfg-oil-breakdown .sfg-line{font-size:12px}.sfg-dali-metrics{grid-template-columns:minmax(0,1fr)}}
+
 </style></head><body><main><a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a><header class="hero"><span>🖼 裱框找模式 · 油畫框</span><h1>油畫框商品探索</h1><p>整理油畫與畫布作品使用的畫框，依店家、尺寸與名稱探索。IKEA 為含畫作的附框畫，作為框型參考。</p><a href="https://www.gakubuti.net/product/list/2" target="_blank" rel="noopener noreferrer">高橋油畫框分類 ↗</a><a href="https://www.frame-shop.jp/view/category/ct69" target="_blank" rel="noopener noreferrer">額緣專門店油畫框分類 ↗</a><a href="https://www.ikea.com.tw/zh/products/home-decoration/pictures" target="_blank" rel="noopener noreferrer">IKEA 台灣裝飾畫分類 ↗</a></header><section class="sizes"><h2>📐 常見尺寸參考</h2><p>依日本高橋網站標示的畫框內尺寸分類。選框前請核對作品的實際長寬、厚度及框的容納深度。</p><div id="size-links" class="chips"></div><p class="note">F、P、M、S 尺寸依日本規格；高橋參考官網尺寸清單，專門店依商品名稱篩選。IKEA 附框畫為展示參考，不列入油畫框尺寸篩選。</p></section><section><h2 id="heading">油畫框商品</h2><p class="note" id="overview"></p><p class="note">日本商品台幣參考價以 2026/10/27 匯率 1 日圓＝NT$0.2064 換算，未含運費與可能的進口稅費；高橋標示全尺寸起價，專門店標示該商品規格價格。商品價格與庫存以官網為準。</p><div class="controls"><input id="search" type="search" placeholder="搜尋型號、名稱或尺寸" aria-label="搜尋商品"><button id="all" class="active">全部商品</button><button id="high">高橋</button><button id="ikea">IKEA</button><button id="shop">專門店</button><button id="fav">⭐ 收藏</button><button id="recent">🕘 最近開啟</button></div><p id="count" class="note"></p><div class="grid" id="grid"></div><div class="pager"><button id="prev">← 上一頁</button><span id="page"></span><button id="next">下一頁 →</button></div></section></main><script>window.FLAT_ITEMS=[];</script>
 <script src="../data/oil-frames-0.js"></script>
 <script src="../data/oil-frames-1.js"></script>
