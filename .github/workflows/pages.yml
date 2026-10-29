@@ -58,6 +58,9 @@ jobs:
       - name: Collect Song Feng Ge juan fabric products and official photos
         run: |
           python3 scripts/build_songfeng_juan_fabrics.py
+      - name: Collect Song Feng Ge brocade products and official photos
+        run: |
+          python3 scripts/build_songfeng_brocade_fabrics.py
       - name: Upload public directory
         uses: actions/upload-pages-artifact@v3
         with:
