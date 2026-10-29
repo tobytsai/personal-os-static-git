@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Persist 天下畫博 Airtable image previews for the user-owned oil painting launcher.
 
+Includes supplemental photos beyond 12 per record and refreshed retry URLs.
+
 Source: temporary preview URLs already recorded in the imported catalog.
 Output: public/images/oil/tianxia/*.webp and a detailed import report.
 The original Airtable base is never modified.
