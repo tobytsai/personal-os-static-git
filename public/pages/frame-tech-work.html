@@ -70,7 +70,7 @@ function render(){renderGroups();categories();$("favoriteBtn").classList.toggle(
 const found=filter();$("count").textContent="顯示 "+found.length+" / "+items.length+" 筆工作案例";
 $("entries").innerHTML=found.map(x=>{
 const g=groupOf(x),img=x.images[0]?.url,src=img?safeUrl(img):"",note=x.title||x.tags||x.note.slice(0,95)||"查看原始工作案例與技術筆記";
-const imageHtml=src?'<img loading="lazy" src="'+esc(src)+'" alt="'+esc(x.name)+'" onerror="this.remove();this.parentElement.textContent=\''+g.icon+'\';">':g.icon;
+const imageHtml=src?'<img loading="lazy" src="'+esc(src)+'" alt="'+esc(x.name)+'" onerror="this.parentElement.textContent=\''+g.icon+'\';">':g.icon;
 const primaryLink=x.links.find(safeUrl),linkHtml=primaryLink?'<a href="'+esc(safeUrl(primaryLink))+'" target="_blank" rel="noopener" data-open="'+x.id+'">原始筆記 ↗</a>':"";
 return '<article class="entry"><div class="preview">'+imageHtml+'</div><div class="entry-body"><div class="entry-meta"><span>'+g.icon+' '+esc(x.category)+'</span>'+(x.price?'<span>價格 '+esc(x.price)+'</span>':"")+'</div><h3>'+esc(x.name)+'</h3><p>'+esc(note)+'</p><div class="actions"><button type="button" class="primary" data-detail="'+x.id+'">查看內容</button>'+linkHtml+'<button type="button" class="star '+(favs.includes(x.id)?"saved":"")+'" data-star="'+x.id+'" aria-label="收藏">'+(favs.includes(x.id)?"★":"☆")+'</button></div></div></article>'
 }).join("")||'<div class="empty">沒有符合條件的工作案例，請試試不同分類或關鍵字。</div>'}
