@@ -13,7 +13,7 @@ button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-deco
 h1{font-size:clamp(24px,4vw,36px);letter-spacing:-.025em;margin:0}.lead{color:var(--soft);max-width:720px;margin:6px 0 0;font-size:14px}
 .badge{display:inline-flex;align-items:center;padding:4px 10px;background:#efeafa;color:#554593;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:9px}
 .action{border:1px solid var(--stroke);background:#fff;padding:9px 13px;border-radius:11px;font-size:13px;font-weight:650}.action:hover{background:#f1f0f8;text-decoration:none}.actions{display:flex;gap:8px;flex-wrap:wrap}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
 .metric{background:#fff;border:1px solid var(--stroke);border-radius:16px;padding:14px 18px}.metric strong{font-size:26px;display:block;line-height:1.3}.metric span{font-size:12px;color:var(--soft)}
 .toolbar{border:1px solid var(--stroke);background:#fff;border-radius:18px;padding:15px;margin:12px 0 16px;box-shadow:0 5px 18px rgba(24,31,52,.03)}
 .searchrow{display:flex;gap:10px;flex-wrap:wrap}.searchrow input{flex:1 1 290px;min-width:0;border:1px solid var(--stroke);border-radius:12px;padding:12px 13px;background:#f9fafb;outline-color:#8d7aca}
@@ -28,7 +28,7 @@ h1{font-size:clamp(24px,4vw,36px);letter-spacing:-.025em;margin:0}.lead{color:va
 .sectiontop h2{font-size:19px;margin:0}.small{font-size:12px;color:var(--soft)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:14px}
 .card{border-radius:17px;background:var(--paper);border:1px solid var(--stroke);box-shadow:0 4px 17px rgba(35,42,62,.045);overflow:hidden;display:flex;flex-direction:column;min-width:0}
-.photo{position:relative;border:0;background:#f1f1f3;width:100%;height:230px;display:block;padding:0;overflow:hidden}
+.pairpreview{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#fff}.pairpreview .photo{height:230px}.pairpreview .photo-note{font-size:10px;max-width:calc(100% - 10px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;left:5px;bottom:5px}.modejump{display:grid;grid-template-columns:1fr 1fr;gap:7px}.modejump button{background:#f7f6fb;color:#51438e;border:1px solid #dfd9f7;border-radius:10px;padding:8px 5px;font-size:12px;font-weight:650}.modejump button[disabled]{color:#9ba0a7;background:#f5f6f8;border-color:#e6e7ed;cursor:not-allowed}.modejump button.is-active{background:#5f50a2;color:white;border-color:#5f50a2}.photo{position:relative;border:0;background:#f1f1f3;width:100%;height:230px;display:block;padding:0;overflow:hidden}
 .photo img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .25s}
 .photo:hover img{transform:scale(1.035)}.photo .photo-note{position:absolute;bottom:8px;left:8px;border-radius:6px;background:#272930c9;color:#fff;padding:3px 8px;font-size:11px}
 .cardbody{padding:13px 13px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
@@ -55,7 +55,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 .viewside h3{font-size:16px;margin:0}.viewside p{font-size:12px;color:var(--soft);margin:0}.viewlinks{display:grid;gap:7px}.viewlinks a{border:1px solid var(--stroke);padding:9px 12px;border-radius:10px;background:#f9fafb;text-align:center;font-size:12px;font-weight:650}
 .thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px}.thumb{border:2px solid transparent;padding:0;border-radius:8px;background:#f6f7f8;overflow:hidden;width:57px;height:57px}
 .thumb img{width:100%;height:100%;object-fit:contain}.thumb.active{border-color:#7760ca}.notice{font-size:11px;color:#777;background:#f3f4f6;padding:9px;border-radius:10px}
-@media(max-width:700px){.shell{padding:8px 12px 60px}.masthead{display:block}.actions{margin-top:14px}.metrics{gap:7px}.metric{padding:10px 11px}.metric strong{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:170px}.cardbody{padding:9px}.card h3{font-size:12px;min-height:38px}.cardlinks{flex-wrap:wrap}.cardlinks a,.cardlinks button{min-width:100%}.viewerbody{display:block}.bigstage{min-height:280px;max-height:55dvh}.bigstage img{max-height:50dvh}.viewside{padding:12px}.sectiontop h2{font-size:16px}}
+@media(max-width:700px){.metrics{grid-template-columns:repeat(2,1fr)}.pairpreview .photo{height:170px}.shell{padding:8px 12px 60px}.masthead{display:block}.actions{margin-top:14px}.metrics{gap:7px}.metric{padding:10px 11px}.metric strong{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:170px}.cardbody{padding:9px}.card h3{font-size:12px;min-height:38px}.cardlinks{flex-wrap:wrap}.cardlinks a,.cardlinks button{min-width:100%}.viewerbody{display:block}.bigstage{min-height:280px;max-height:55dvh}.bigstage img{max-height:50dvh}.viewside{padding:12px}.sectiontop h2{font-size:16px}}
 </style>
 </head>
 <body>
@@ -67,12 +67,15 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <section class="metrics" aria-label="圖庫統計">
 <div class="metric"><strong id="totalProducts">—</strong><span>商品資料</span></div>
 <div class="metric"><strong id="totalExamples">—</strong><span>已對應 Drive 示範圖的商品</span></div>
-<div class="metric"><strong id="totalPictures">—</strong><span>已配對的 Google Drive 圖片</span></div>
+<div class="metric"><strong id="totalPictures">—</strong><span>成品示範照片</span></div>
+<div class="metric"><strong id="methodPictures">—</strong><span>額緣框作法圖片</span></div>
 </section>
 <section class="toolbar" aria-label="圖庫篩選">
 <div class="searchrow"><input id="search" type="search" placeholder="搜尋商品名稱、編號、內容、分類…" aria-label="搜尋商品"><select id="catSelect" aria-label="成品分類"><option value="全部分類">全部分類</option></select></div>
 <div class="tabs" id="modeTabs">
-<button class="tab" type="button" data-mode="examples" aria-pressed="true">🖼 有示範圖</button>
+<button class="tab" type="button" data-mode="examples" aria-pressed="true">🖼 成品示範</button>
+<button class="tab" type="button" data-mode="methods" aria-pressed="false">🛠 額緣框作法</button>
+<button class="tab" type="button" data-mode="paired" aria-pressed="false">↔ 成品／作法對照</button>
 <button class="tab" type="button" data-mode="all" aria-pressed="false">全部商品</button>
 <button class="tab" type="button" data-mode="favorites" aria-pressed="false">★ 我的收藏</button>
 <button class="tab" type="button" data-mode="recent" aria-pressed="false">↻ 最近開啟</button>
@@ -89,6 +92,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <li><a href="https://docs.google.com/spreadsheets/d/16VnaDpdwOQBt1YhfCUp8q3ufaJ0PL6vn/edit" target="_blank" rel="noopener">商品試算表（4,159 項）</a></li>
 <li><a href="https://drive.google.com/drive/folders/1Ts2K5AGGRAkBMRbTecHk6BryAgBuOfjA" target="_blank" rel="noopener">裱框成品分類示範與說明圖資料夾</a></li>
 <li><a href="https://drive.google.com/drive/folders/1lO3IwTEz-EtAbH9RAA-hxXh9N4fVdNFY" target="_blank" rel="noopener">前 150 項商品說明圖資料夾</a></li>
+<li><a href="https://drive.google.com/drive/folders/1IXJJziOwC9-A-JT2sxxqEk8l1Y_pmIOs" target="_blank" rel="noopener">額緣框作法（2,162 張）原始資料夾</a></li>
 </ul>
 <p>Drive 示範圖沒有公開共用權限時，網站圖片可能無法直接顯示；會優先改顯示供應商商品圖片。點「原始 Drive 大圖」可於已登入且有存取權的帳號中查看。</p>
 </details>
@@ -97,12 +101,12 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <div class="viewerhead"><strong id="viewerTitle">成品圖片</strong><button type="button" class="action" id="closeViewer" aria-label="關閉大圖">✕ 關閉</button></div>
 <div class="viewerbody">
 <div class="bigstage"><button type="button" class="navarrow prev" id="prev" aria-label="上一張">‹</button><img id="bigImage" alt="成品大圖"><button type="button" class="navarrow next" id="next" aria-label="下一張">›</button></div>
-<div class="viewside"><h3 id="productTitle"></h3><p id="imageLabel"></p><p id="productDesc"></p><p id="productPrice"></p><div class="thumbs" id="thumbs"></div><div class="viewlinks"><a id="bigOriginal" href="#" target="_blank" rel="noopener">↗ 開啟原始大圖</a><a id="productOriginal" href="#" target="_blank" rel="noopener">↗ 商品官網詳情</a><a id="folderOriginal" href="#" target="_blank" rel="noopener" hidden>↗ 查看分類資料夾</a></div><div class="notice">可用左右箭頭切換圖片；Google Drive 圖片需有對應權限才可預覽。</div></div>
+<div class="viewside"><h3 id="productTitle"></h3><div class="modejump"><button type="button" id="jumpExamples">🖼 成品示範</button><button type="button" id="jumpMethods">🛠 額緣框作法</button></div><p class="small" id="switchHint"></p><p id="imageLabel"></p><p id="productDesc"></p><p id="productPrice"></p><div class="thumbs" id="thumbs"></div><div class="viewlinks"><a id="bigOriginal" href="#" target="_blank" rel="noopener">↗ 開啟原始大圖</a><a id="productOriginal" href="#" target="_blank" rel="noopener">↗ 商品官網詳情</a><a id="folderOriginal" href="#" target="_blank" rel="noopener" hidden>↗ 查看分類資料夾</a><a id="pairedLink" href="#" target="_blank" rel="noopener">↔ 本商品的示範／作法對照連結</a></div><div class="notice">可用左右箭頭切換圖片；Google Drive 圖片需有對應權限才可預覽。</div></div>
 </div>
 </dialog>
 <dialog id="helpDialog" aria-label="操作說明" style="padding:22px;max-width:520px">
 <h2 style="margin-top:0">成品示範啟動器使用說明</h2>
-<p>卡片大圖點一下就能進入放大檢視，左右切換多張 Google Drive 成品示範圖、商品官網圖。另可使用「原始大圖」連結在新分頁查看。</p>
+<p>成品示範、額緣框作法已用商品 ID 雙向配對。卡片內點「成品」或「作法」可直接切換到同款圖片；大圖視窗也可隨時來回切換，並以獨立網址分享指定商品。每張圖片都可開啟 Google Drive 原圖。</p>
 <p>可輸入商品 ID、名稱或關鍵字搜尋，也可用分類篩選。星號加入收藏，最近開啟保留 10 項。收藏和紀錄只存在目前這台裝置的瀏覽器。</p>
 <p>為保留私人 Google Drive 原有權限，系統不會公開分享或轉存原始圖片；無法讀取 Drive 圖時，商品卡片自動嘗試使用官網圖片。</p>
 <button type="button" class="action" id="helpClose">了解</button>
@@ -118,31 +122,45 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <script src="../data/finished-images-1.js"></script>
 <script src="../data/finished-images-2.js"></script>
 <script src="../data/finished-images-3.js"></script>
+<script src="../data/finished-methods-0.js"></script>
+<script src="../data/finished-methods-1.js"></script>
+<script src="../data/finished-methods-2.js"></script>
 <script>
 (function(){
 "use strict";
 const all=Array.isArray(window.FINISHED_PRODUCTS)?window.FINISHED_PRODUCTS:[];
 const photos=Array.isArray(window.FINISHED_IMAGES)?window.FINISHED_IMAGES:[];
-const byId=new Map();const seenPhotos=new Set();
-for(const product of all){product.examples=[];product.category="未分類";byId.set(String(product.id),product);}
+const methods=Array.isArray(window.FINISHED_METHODS)?window.FINISHED_METHODS:[];
+const byId=new Map();const seenPhotos=new Set(),seenMethods=new Set();
+for(const product of all){product.examples=[];product.methods=[];product.category="未分類";byId.set(String(product.id),product);}
 for(const img of photos){
  const product=byId.get(String(img.pid));if(!product||!img.fid||seenPhotos.has(img.fid))continue;
  seenPhotos.add(img.fid);
  product.examples.push(img);
  if(product.category==="未分類"&&img.category!=="前150項商品示範圖")product.category=img.category;
 }
-for(const p of all)if(p.examples.length&&p.category==="未分類")p.category="成品說明圖";
-const catSet=new Set(all.filter(p=>p.examples.length).map(p=>p.category));
+for(const image of methods){
+ const p=byId.get(String(image.pid));if(!p||!image.fid||seenMethods.has(image.fid))continue;
+ seenMethods.add(image.fid);p.methods.push(image);
+}
+for(const p of all){if(p.examples.length&&p.category==="未分類")p.category="成品說明圖";if(!p.examples.length&&p.methods.length)p.category="額緣框作法";}
+const catSet=new Set(all.filter(p=>p.examples.length||p.methods.length).map(p=>p.category));
 const cats=["全部分類",...Array.from(catSet).sort((a,b)=>a.localeCompare(b,"zh-Hant"))];
 const $=id=>document.getElementById(id);
 const escapeHtml=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const saved=(key,def)=>{try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:def}catch(e){return def}};
 let favorites=saved("finishedExamplesFavorites",[]);
 let recent=saved("finishedExamplesRecent",[]);
-let mode="examples",category="全部分類",term="",limit=48,current=null,currentIdx=0,currentImages=[];
+let mode="examples",category="全部分類",term="",limit=48,current=null,currentIdx=0,currentImages=[],currentGroup="examples";
 const driveThumb=(id,w=800)=>"https://drive.google.com/thumbnail?id="+encodeURIComponent(id)+"&sz=w"+w;
 const driveView=id=>"https://drive.google.com/file/d/"+encodeURIComponent(id)+"/view";
-const picList=p=>[...p.examples.map(x=>({url:driveThumb(x.fid,1500),thumb:driveThumb(x.fid,180),original:driveView(x.fid),name:"Google Drive 示範圖｜"+x.category})),...([p.image,p.image2].filter(Boolean).map((url,i)=>({url,thumb:url,original:url,name:"供應商商品圖 "+(i+1)})))];
+const picList=(p,group)=>{
+ const list=group==="methods"?p.methods:p.examples;
+ const pictures=list.map(x=>({url:driveThumb(x.fid,1500),thumb:driveThumb(x.fid,180),original:driveView(x.fid),name:(group==="methods"?"額緣框作法":"成品示範")+"｜"+(x.category||x.title||"Google Drive"),folder:x.folder||"1IXJJziOwC9-A-JT2sxxqEk8l1Y_pmIOs"}));
+ if(group==="examples")pictures.push(...[p.image,p.image2].filter(Boolean).map((url,i)=>({url,thumb:url,original:url,name:"供應商商品圖 "+(i+1),folder:null})));
+ return pictures;
+};
+const detailUrl=(p,group)=>location.pathname+"?id="+encodeURIComponent(p.id)+"&view="+encodeURIComponent(group);
 function remember(id){
  recent=[id,...recent.filter(x=>x!==id)].slice(0,10);
  try{localStorage.setItem("finishedExamplesRecent",JSON.stringify(recent))}catch(e){}
@@ -153,58 +171,89 @@ function toggleFavorite(id){
  render();
 }
 function getItems(){
- let list=all.filter(p=>{
+ const list=all.filter(p=>{
   if(mode==="examples"&&!p.examples.length)return false;
+  if(mode==="methods"&&!p.methods.length)return false;
+  if(mode==="paired"&&(!p.examples.length||!p.methods.length))return false;
   if(mode==="favorites"&&!favorites.includes(p.id))return false;
   if(mode==="recent"&&!recent.includes(p.id))return false;
   if(category!=="全部分類"&&p.category!==category)return false;
-  return !term||(p.id+" "+p.name+" "+p.desc+" "+p.category).toLocaleLowerCase().includes(term);
+  return !term||(p.id+" "+p.name+" "+p.desc+" "+p.category+" "+p.methods.map(x=>x.title).join(" ")).toLocaleLowerCase().includes(term);
  });
  if(mode==="recent")list.sort((a,b)=>recent.indexOf(a.id)-recent.indexOf(b.id));
  else if(mode==="favorites")list.sort((a,b)=>favorites.indexOf(a.id)-favorites.indexOf(b.id));
- else if(mode==="examples")list.sort((a,b)=>a.examples.length-b.examples.length||a.category.localeCompare(b.category,"zh-Hant"));
+ else if(mode==="methods")list.sort((a,b)=>b.methods.length-a.methods.length||a.id.localeCompare(b.id));
+ else if(mode==="paired")list.sort((a,b)=>b.methods.length+b.examples.length-a.methods.length-a.examples.length);
+ else if(mode==="examples")list.sort((a,b)=>b.examples.length-a.examples.length||a.category.localeCompare(b.category,"zh-Hant"));
  return list;
 }
 function render(){
  const list=getItems(),shown=list.slice(0,limit);
- $("heading").textContent=mode==="examples"?"成品示範圖":mode==="favorites"?"我的收藏":mode==="recent"?"最近開啟":"完整商品清單";
+ $("heading").textContent=mode==="examples"?"成品示範圖":mode==="methods"?"額緣框作法":mode==="paired"?"成品與作法對照":mode==="favorites"?"我的收藏":mode==="recent"?"最近開啟":"完整商品清單";
  $("resultInfo").textContent="顯示 "+shown.length+" / "+list.length+" 項";
+ const photoButton=(p,im,group,label)=>{
+  const src=im?driveThumb(im.fid,600):p.image;
+  const fb=p.image&&p.image!==src?p.image:(p.image2||"");
+  return '<button class="photo" type="button" data-open="'+escapeHtml(p.id)+'" data-group="'+group+'" aria-label="查看 '+escapeHtml(p.name)+' '+label+'">'+
+   (src?'<img loading="lazy" src="'+escapeHtml(src)+'" data-fallback="'+escapeHtml(fb)+'" alt="'+escapeHtml(p.name)+' '+label+'">':'<div class="empty">無圖片</div>')+
+   '<span class="photo-note">'+escapeHtml(label)+'</span></button>';
+ };
  const grid=$("cards");
  grid.innerHTML=shown.length?shown.map(p=>{
-  const im=p.examples[0];
-  const main=im?driveThumb(im.fid,600):p.image;
-  const fallback=p.image&&p.image!==main?p.image:(p.image2||"");
   const isFav=favorites.includes(p.id);
-  return '<article class="card"><button class="photo" type="button" data-open="'+escapeHtml(p.id)+'" aria-label="查看 '+escapeHtml(p.name)+' 大圖">'+
-   (main?'<img loading="lazy" src="'+escapeHtml(main)+'" data-fallback="'+escapeHtml(fallback)+'" alt="'+escapeHtml(p.name)+' 裱框成品示範">':'<div class="empty">無圖片</div>')+
-   '<span class="photo-note">'+(p.examples.length?("成品示範 "+p.examples.length+" 張"):"商品官網圖")+'</span></button>'+
+  const group=(mode==="methods")?"methods":"examples";
+  const preview=(mode==="paired")?
+   '<div class="pairpreview">'+photoButton(p,p.examples[0],"examples","成品 "+p.examples.length+" 張")+photoButton(p,p.methods[0],"methods","作法 "+p.methods.length+" 張")+'</div>':
+   photoButton(p,group==="methods"?p.methods[0]:p.examples[0],group,group==="methods"?"額緣框作法 "+p.methods.length+" 張":p.examples.length?"成品示範 "+p.examples.length+" 張":"供應商商品圖");
+  return '<article class="card" id="product-'+escapeHtml(p.id)+'">'+preview+
    '<div class="cardbody"><div class="cardtop"><span class="pcode"># '+escapeHtml(p.id)+'</span><button class="fav" type="button" data-fav="'+escapeHtml(p.id)+'" aria-label="'+(isFav?"取消收藏":"加入收藏")+'">'+(isFav?"★":"☆")+'</button></div>'+
    '<h3>'+escapeHtml(p.name)+'</h3><p class="desc">'+escapeHtml(p.desc||"暫無商品說明")+'</p><div class="info"><span class="price">'+escapeHtml(p.price||"價格請洽官網")+'</span><span class="tag">'+escapeHtml(p.category)+'</span></div>'+
-   '<div class="cardlinks"><button type="button" data-open="'+escapeHtml(p.id)+'">放大看圖</button><a href="'+escapeHtml(p.link)+'" target="_blank" rel="noopener" data-visit="'+escapeHtml(p.id)+'">商品詳情 ↗</a></div></div></article>';
- }).join(""):'<div class="empty">目前沒有符合條件的商品。可切換「全部商品」或清除搜尋條件。</div>';
+   '<div class="modejump">'+
+   (p.examples.length?'<button type="button" data-open="'+escapeHtml(p.id)+'" data-group="examples">🖼 成品 '+p.examples.length+' 張</button>':'<button type="button" disabled>尚無成品圖</button>')+
+   (p.methods.length?'<button type="button" data-open="'+escapeHtml(p.id)+'" data-group="methods">🛠 作法 '+p.methods.length+' 張</button>':'<button type="button" disabled>尚無作法圖</button>')+
+   '</div><div class="cardlinks"><a href="'+escapeHtml(detailUrl(p,p.methods.length?"methods":"examples"))+'" target="_blank" rel="noopener">專屬對照連結 ↗</a><a href="'+escapeHtml(p.link)+'" target="_blank" rel="noopener" data-visit="'+escapeHtml(p.id)+'">商品詳情 ↗</a></div></div></article>';
+ }).join(""):'<div class="empty">目前沒有符合條件的商品。可切換其他分類或清除搜尋條件。</div>';
  grid.querySelectorAll("img[data-fallback]").forEach(img=>{img.addEventListener("error",()=>{const fallback=img.dataset.fallback;if(fallback&&img.src!==fallback){img.removeAttribute("data-fallback");img.src=fallback}else{img.style.display="none";img.parentElement.style.background="#e9ecf1"}})});
  const more=$("more");more.hidden=limit>=list.length;more.textContent="顯示更多（尚有 "+Math.max(0,list.length-limit)+" 項）";
  $("modeTabs").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
- const pills=$("pills");
- pills.innerHTML=cats.map(c=>'<button type="button" data-category="'+escapeHtml(c)+'" aria-pressed="'+String(c===category)+'">'+escapeHtml(c)+'</button>').join("");
+ $("pills").innerHTML=cats.map(c=>'<button type="button" data-category="'+escapeHtml(c)+'" aria-pressed="'+String(c===category)+'">'+escapeHtml(c)+'</button>').join("");
  $("catSelect").value=category;
 }
-function openViewer(id){
- const p=byId.get(id);if(!p)return;current=p;currentIdx=0;currentImages=picList(p);
+function openViewer(id,group){
+ const p=byId.get(String(id));if(!p)return;current=p;currentIdx=0;
+ const preferred=group==="methods"?"methods":"examples";
+ currentGroup=preferred==="methods"&&p.methods.length?"methods":preferred==="examples"&&(p.examples.length||p.image)?"examples":p.methods.length?"methods":"examples";
+ currentImages=picList(p,currentGroup);
  remember(p.id);
- $("viewerTitle").textContent="成品大圖 · 編號 "+p.id;
+ $("viewerTitle").textContent="成品／作法對照 · 編號 "+p.id;
  $("productTitle").textContent=p.name;
  $("productDesc").textContent=p.desc||"";
  $("productPrice").textContent=p.price||"";
  $("productOriginal").href=p.link||"#";
- const folder=p.examples.find(x=>x.category!=="前150項商品示範圖")||p.examples[0];
- $("folderOriginal").hidden=!folder;
- if(folder)$("folderOriginal").href="https://drive.google.com/drive/folders/"+folder.folder;
  renderViewerImage();
  if(!$("viewer").open)$("viewer").showModal();
 }
+function switchViewerGroup(group){
+ if(!current)return;
+ if(group==="methods"&&!current.methods.length)return;
+ if(group==="examples"&&!current.examples.length&&!current.image)return;
+ currentGroup=group;currentIdx=0;currentImages=picList(current,group);
+ renderViewerImage();
+}
 function renderViewerImage(){
- if(!current||!currentImages.length)return;
+ if(!current)return;
+ $("jumpExamples").disabled=!(current.examples.length||current.image);
+ $("jumpMethods").disabled=!current.methods.length;
+ $("jumpExamples").classList.toggle("is-active",currentGroup==="examples");
+ $("jumpMethods").classList.toggle("is-active",currentGroup==="methods");
+ $("switchHint").textContent="成品 "+current.examples.length+" 張 · 額緣框作法 "+current.methods.length+" 張。兩種圖片依商品 ID 雙向連結。";
+ $("pairedLink").href=detailUrl(current,currentGroup);
+ if(!currentImages.length){
+  $("bigImage").removeAttribute("src");$("imageLabel").textContent="尚無圖片";$("thumbs").innerHTML="";
+  $("bigOriginal").hidden=true;$("folderOriginal").hidden=true;
+  return;
+ }
+ $("bigOriginal").hidden=false;
  const v=currentImages[currentIdx],img=$("bigImage");
  img.onerror=()=>{
   if(v.url.includes("drive.google.com/thumbnail")&&current.image){img.onerror=null;img.src=current.image;$("imageLabel").textContent=v.name+"（Drive 限制預覽，已顯示官網備用圖）"}
@@ -213,6 +262,9 @@ function renderViewerImage(){
  img.src=v.url;img.alt=current.name+"｜"+v.name;
  $("imageLabel").textContent=(currentIdx+1)+" / "+currentImages.length+" · "+v.name;
  $("bigOriginal").href=v.original;
+ const folder=v.folder;
+ $("folderOriginal").hidden=!folder;
+ if(folder)$("folderOriginal").href="https://drive.google.com/drive/folders/"+folder;
  $("thumbs").innerHTML=currentImages.map((x,i)=>'<button type="button" class="thumb '+(i===currentIdx?"active":"")+'" data-img="'+i+'" aria-label="查看第 '+(i+1)+' 張圖片"><img loading="lazy" src="'+escapeHtml(x.thumb)+'" alt="'+escapeHtml(x.name)+'"></button>').join("");
  $("thumbs").querySelectorAll("img").forEach(im=>im.addEventListener("error",()=>{im.style.display="none"}));
 }
@@ -220,21 +272,26 @@ function move(n){if(!currentImages.length)return;currentIdx=(currentIdx+n+curren
 $("totalProducts").textContent=all.length.toLocaleString("zh-TW");
 $("totalExamples").textContent=all.filter(p=>p.examples.length).length.toLocaleString("zh-TW");
 $("totalPictures").textContent=seenPhotos.size.toLocaleString("zh-TW");
+$("methodPictures").textContent=seenMethods.size.toLocaleString("zh-TW");
 $("catSelect").innerHTML=cats.map(c=>'<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+'</option>').join("");
 $("search").addEventListener("input",e=>{term=e.target.value.trim().toLocaleLowerCase();limit=48;render()});
 $("catSelect").addEventListener("change",e=>{category=e.target.value;limit=48;render()});
 $("pills").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(b){category=b.dataset.category;limit=48;render()}});
 $("modeTabs").addEventListener("click",e=>{const b=e.target.closest("[data-mode]");if(b){mode=b.dataset.mode;limit=48;render()}});
-$("cards").addEventListener("click",e=>{const fav=e.target.closest("[data-fav]");if(fav){toggleFavorite(fav.dataset.fav);return}const view=e.target.closest("[data-open]");if(view){openViewer(view.dataset.open);return}const visit=e.target.closest("[data-visit]");if(visit)remember(visit.dataset.visit)});
+$("cards").addEventListener("click",e=>{const fav=e.target.closest("[data-fav]");if(fav){toggleFavorite(fav.dataset.fav);return}const view=e.target.closest("[data-open]");if(view){openViewer(view.dataset.open,view.dataset.group);return}const visit=e.target.closest("[data-visit]");if(visit)remember(visit.dataset.visit)});
 $("more").addEventListener("click",()=>{limit+=48;render()});
 $("closeViewer").addEventListener("click",()=>$("viewer").close());
 $("viewer").addEventListener("click",e=>{if(e.target===$("viewer"))$("viewer").close()});
+$("jumpExamples").addEventListener("click",()=>switchViewerGroup("examples"));
+$("jumpMethods").addEventListener("click",()=>switchViewerGroup("methods"));
 $("prev").addEventListener("click",()=>move(-1));$("next").addEventListener("click",()=>move(1));
 $("thumbs").addEventListener("click",e=>{const el=e.target.closest("[data-img]");if(el){currentIdx=Number(el.dataset.img);renderViewerImage()}});
 document.addEventListener("keydown",e=>{if(!$("viewer").open)return;if(e.key==="ArrowLeft")move(-1);if(e.key==="ArrowRight")move(1)});
 $("helpBtn").addEventListener("click",()=>$("helpDialog").showModal());
 $("helpClose").addEventListener("click",()=>$("helpDialog").close());
 render();
+const deepLink=new URLSearchParams(location.search);const target=deepLink.get("id");
+if(target&&byId.has(target))openViewer(target,deepLink.get("view"));
 })();
 </script>
 <script src="../shared-nav.js?v=20261029" defer></script>
