@@ -179,6 +179,16 @@ main{width:100%;max-width:1120px;min-width:0}
 @media(max-width:850px){.sfg-oil-scenarios{grid-template-columns:minmax(0,1fr)}.sfg-oil-scenario{align-items:center}}
 @media(max-width:560px){.sfg-oil-sizes{grid-template-columns:repeat(2,minmax(0,1fr))}.sfg-oil-breakdown .sfg-line{font-size:12px}.sfg-dali-metrics{grid-template-columns:minmax(0,1fr)}}
 
+
+/* 油畫框的外框選擇器比照海報框：分類、已選款、官網圖片、價格 */
+.sfg-oil-selected-frame{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0;margin:9px 0 11px;padding:10px 12px;background:#eaf3ff;border:1px solid #b7cdea;border-radius:12px}
+.sfg-oil-selected-label{font-size:11px;font-weight:800;color:#51719b;white-space:nowrap}
+.sfg-oil-selected-frame strong{font-size:13px;font-weight:850;color:#264b7c;overflow-wrap:anywhere}
+.sfg-oil-selected-frame small{font-size:11px;color:#526f92;line-height:1.5;overflow-wrap:anywhere}
+.sfg-oil-jump{margin-left:auto;padding:7px 10px;border:1px solid #a9c3e8;border-radius:9px;background:#fff;color:#3c659d;font-size:11px;font-weight:850;cursor:pointer}
+.sfg-oil-jump:focus-visible{outline:2px solid #678cbf;outline-offset:2px}
+.sfg-oil-selection-hint{font-size:11px;line-height:1.65;color:#54749b;margin:6px 0 9px}
+@media(max-width:560px){.sfg-oil-selected-frame{align-items:flex-start;flex-direction:column;gap:4px}.sfg-oil-jump{margin-left:0;align-self:flex-start}.sfg-frame-filter{min-width:0;max-width:100%;overflow-x:auto;flex-wrap:nowrap}.sfg-frame-filter button{flex:0 0 auto;max-width:170px;white-space:normal}}
 </style></head><body><main><a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a><header class="hero"><span>🖼 裱框找模式 · 油畫框</span><h1>油畫框商品探索</h1><p>整理油畫框與三種松風閣油畫裱框情境：已有布架、立體框、無框畫。保留原有商品搜尋、尺寸分類與收藏。</p><a href="https://www.gakubuti.net/product/list/2" target="_blank" rel="noopener noreferrer">高橋油畫框分類 ↗</a><a href="https://www.frame-shop.jp/view/category/ct69" target="_blank" rel="noopener noreferrer">額緣專門店油畫框分類 ↗</a><a href="https://www.ikea.com.tw/zh/products/home-decoration/pictures" target="_blank" rel="noopener noreferrer">IKEA 台灣裝飾畫分類 ↗</a><a href="./poster-frames.html#songfeng">參考海報框選框 ↗</a></header><section class="sizes"><h2>📐 常見尺寸參考</h2><p>依日本高橋網站標示的畫框內尺寸分類。選框前請核對作品的實際長寬、厚度及框的容納深度。</p><div id="size-links" class="chips"></div><p class="note">F、P、M、S 尺寸可用於商品探索，也能在松風閣油畫情境中快速套用。IKEA 附框畫僅為展示參考。</p></section><section><h2 id="heading">油畫框商品</h2><p class="note" id="overview"></p><p class="note" id="oil-product-note">日本商品台幣參考價以 2026/10/27 匯率 1 日圓＝NT$0.2064 換算，未含運費與可能的進口稅費；高橋標示全尺寸起價，專門店標示該商品規格價格。商品價格與庫存以官網為準。</p><div class="controls"><input id="search" type="search" placeholder="搜尋型號、名稱或尺寸" aria-label="搜尋商品"><button id="all" class="active">全部商品</button><button id="high">高橋</button><button id="ikea">IKEA</button><button id="shop">專門店</button><button id="sfg" type="button" aria-controls="sfg-calculator" aria-expanded="false">松風閣｜油畫情境</button><button id="fav">⭐ 收藏</button><button id="recent">🕘 最近開啟</button></div>
 <section id="sfg-calculator" class="sfg-panel" aria-labelledby="sfg-heading" hidden>
 <header class="sfg-heading">
@@ -213,11 +223,18 @@ main{width:100%;max-width:1120px;min-width:0}
 </section>
 
 <section id="sfg-oil-frame-section" class="sfg-box sfg-oil-block">
- <h4>② 選擇松風閣外框</h4>
+ <h4>② 選擇松風閣外框｜與海報框相同的選框介面</h4>
  <p class="sfg-oil-help" id="sfg-oil-frame-tip">已有布架仍要確認框型內槽深度。型材 H 高度不等於可容納布架的內槽深度。</p>
  <div class="sfg-frame-tools"><input class="sfg-frame-search" id="sfg-frame-search" type="search" placeholder="搜尋型號、顏色或框寬" aria-label="搜尋松風閣框型"></div>
- <div class="sfg-frame-filter" id="sfg-frame-filter" aria-label="依松風閣框型分類"></div>
+ <div class="sfg-frame-filter" id="sfg-frame-filter" aria-label="依松風閣官網框型分類"></div>
  <p class="sfg-tip" id="sfg-frame-count" aria-live="polite"></p>
+ <div class="sfg-oil-selected-frame" id="sfg-oil-selected-frame" aria-live="polite">
+  <span class="sfg-oil-selected-label">已選外框</span>
+  <strong id="sfg-oil-selected-name">尚未選擇</strong>
+  <small id="sfg-oil-selected-detail">點選下方框型可帶入試算價格</small>
+  <button type="button" class="sfg-oil-jump" id="sfg-oil-show-selected">定位已選框型</button>
+ </div>
+ <p class="sfg-oil-selection-hint">🔍 點照片查看官網大圖；點選卡片其他位置會帶入框型、框寬及試算表單價。</p>
  <div class="sfg-frames" id="sfg-frame-grid" aria-label="選擇松風閣外框"></div>
  <button type="button" id="sfg-load-more" class="sfg-custom" hidden>顯示更多框型</button>
  <button type="button" id="sfg-custom" class="sfg-custom" aria-expanded="false">找不到合適框型？自行輸入</button>
@@ -226,7 +243,7 @@ main{width:100%;max-width:1120px;min-width:0}
   <label for="sfg-custom-width">自訂框條面寬（cm）<input id="sfg-custom-width" type="number" min="0.1" step="0.1" value="3"></label>
  </div>
  <div class="sfg-rate-row">
-  <label class="sfg-amount-field" for="sfg-frame-rate">外框單價（NT$／15cm計價單位）<input id="sfg-frame-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="無價格時請自行輸入"></label>
+  <label class="sfg-amount-field" for="sfg-frame-rate">所選框型單價（NT$／15cm，優先採用試算表）<input id="sfg-frame-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="無價格時請自行輸入"></label>
   <a id="sfg-frame-link" href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">核對松風閣框型 ↗</a>
  </div>
  <p class="sfg-tip" id="sfg-price-source" aria-live="polite">價格依 Google 試算表，並非即時報價。</p>
