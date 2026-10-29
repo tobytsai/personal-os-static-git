@@ -890,8 +890,8 @@ function tayuanCard(item){
  const id=esc(item.id);
  const isPrice=item.sourceType==="tayuan-price";
  const label=isPrice?"歷史報價明細":"大圓商品索引";
- const official=item.productUrl?'<a class="open-link shop" href="'+esc(item.productUrl)+'" target="_blank" rel="noopener noreferrer" onclick="remember(\\''+id+'\\')">原始商品詳情 ↗</a>':"";
- const photo=item.originalImageViewerUrl?'<a class="open-link guide" href="'+esc(item.originalImageViewerUrl)+'" target="_blank" rel="noopener noreferrer" onclick="remember(\\''+id+'\\')">歷史商品圖片來源 ↗</a>':"";
+ const official=item.productUrl?'<a class="open-link shop" href="'+esc(item.productUrl)+'" target="_blank" rel="noopener noreferrer" onclick="remember(\''+id+'\')">原始商品詳情 ↗</a>':"";
+ const photo=item.originalImageViewerUrl?'<a class="open-link guide" href="'+esc(item.originalImageViewerUrl)+'" target="_blank" rel="noopener noreferrer" onclick="remember(\''+id+'\')">歷史商品圖片來源 ↗</a>':"";
  const money=num=>num==null?"未記錄":"NT$ "+Number(num).toLocaleString("zh-TW",{maximumFractionDigits:2});
  const facts=isPrice?
   '<div class="material-facts"><div>系列：'+esc(item.series||"未註明")+'</div>'+
@@ -911,12 +911,12 @@ function tayuanCard(item){
    (item.hasAirtableAttachments?'<div class="tayuan-source">Airtable 已留存照片（未複製到公開網站）</div>':"")+
    '<div class="tayuan-source">資料來源：2022年起 Airtable 紀錄／2026年9月歷史索引；2026現行商品規格與售價未核對。</div></div>';
  const visual='<div class="product-placeholder"><strong>'+(isPrice?"Airtable 歷史報價":item.hasAirtableAttachments?"Airtable 留存圖片":"照片待核")+'</strong><span>'+(isPrice?"2022年起建檔，非即時報價":item.originalImageViewerUrl?"圖片請點下方來源連結":"無可核實的公開圖片")+'</span></div>';
- const related=!isPrice&&item.relatedPriceRecordIds?.length?'<button class="open-link guide" type="button" onclick="showMaterial(\\'tayuan-price-'+esc(item.relatedPriceRecordIds[0])+'\\')">查看歷史報價 ↗</button>':"";
+ const related=!isPrice&&item.relatedPriceRecordIds?.length?'<button class="open-link guide" type="button" onclick="showMaterial(\'tayuan-price-'+esc(item.relatedPriceRecordIds[0])+'\')">查看歷史報價 ↗</button>':"";
  return '<article class="material tayuan-card" id="material-'+id+'">'+
  '<div class="material-top"><span class="number">'+esc(item.number)+'</span><span class="category">'+label+'</span></div>'+
  visual+'<div class="name">'+esc(item.name)+'</div>'+facts+
  '<div class="item-actions">'+official+photo+related+'</div>'+
- '<button class="star '+(favorites.includes(item.id)?"active":"")+'" type="button" aria-label="'+(favorites.includes(item.id)?"取消收藏 ":"加入收藏 ")+esc(item.name)+'" onclick="toggleFavorite(event,\\''+id+'\\')">'+(favorites.includes(item.id)?"★":"☆")+'</button></article>';
+ '<button class="star '+(favorites.includes(item.id)?"active":"")+'" type="button" aria-label="'+(favorites.includes(item.id)?"取消收藏 ":"加入收藏 ")+esc(item.name)+'" onclick="toggleFavorite(event,\''+id+'\')">'+(favorites.includes(item.id)?"★":"☆")+'</button></article>';
 }
 function renderTayuanPanel(){
  const panel=document.getElementById("tayuanCatalogPanel");
