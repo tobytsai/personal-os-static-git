@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "updated": "2026-10-30",
+  "title": "油畫啟動器",
+  "structure": [
+    "主頁",
+    "資料來源",
+    "題材分類",
+    "作品卡片"
+  ],
+  "sources": [
+    {
+      "id": "tianxia",
+      "name": "天下畫博",
+      "status": "active",
+      "kind": "作品圖庫",
+      "description": "Airtable 油畫資料表：題材、尺寸、空間、品種與作品照片",
+      "href": "./oil/tianxia.html",
+      "source": "Airtable 油畫資料",
+      "tableId": "tblkZiqP0Ra0E8Nj7",
+      "index": "../data/oil/tianxia/index.json"
+    },
+    {
+      "id": "moments",
+      "name": "朋友圈",
+      "status": "planned",
+      "kind": "其他來源",
+      "description": "保留未來的作品分類子頁",
+      "tableId": "tblf0KhwhnFcCa0Ju"
+    },
+    {
+      "id": "yuanshi",
+      "name": "元始",
+      "status": "planned",
+      "kind": "供應商圖庫",
+      "description": "未匯入，預留獨立子頁",
+      "tableId": "tblijuuc0ol3YMBoH"
+    },
+    {
+      "id": "panshi",
+      "name": "盤石",
+      "status": "planned",
+      "kind": "供應商圖庫",
+      "description": "未匯入，預留獨立子頁",
+      "tableId": "tbl0hC0RjlP1xiJKd"
+    },
+    {
+      "id": "dingxin",
+      "name": "鼎新",
+      "status": "planned",
+      "kind": "供應商圖庫",
+      "description": "未匯入，預留獨立子頁",
+      "tableId": "tblxr896gfUuUhlyo"
+    }
+  ]
+}
