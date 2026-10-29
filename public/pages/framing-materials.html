@@ -54,7 +54,7 @@ footer{margin-top:25px;color:var(--muted);text-align:center;font-size:11px}
 .sfg-load-wrap[hidden]{display:none!important}
 .sfg-load-wrap button{padding:11px 24px;border:0;border-radius:999px;background:#665fc0;color:#fff;font:800 13px system-ui;cursor:pointer}
 
-/* 廠商 → 分類兩層導覽 */
+/* 廠商 → 材料大類 → 商品細類；其他廠商沿用原本兩層分類 */
 .supplier-filter{margin:17px 0 10px}
 .filter-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:14px 2px 7px;color:#65738d;font-size:12px;font-weight:850}
 .vendor-row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}
@@ -68,18 +68,28 @@ footer{margin-top:25px;color:var(--muted);text-align:center;font-size:11px}
 @media(max-width:800px){.vendor-row{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:560px){.vendor-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.vendor-pill{font-size:14px;min-height:60px}}
 .product-placeholder[hidden]{display:none!important}
+#subcategorySection[hidden]{display:none!important}
+.subcategory-row{padding-top:6px;padding-bottom:9px}
+.subcategory-row .pill{background:#f4f6ff;border-color:#dce2f3}
+.subcategory-row .pill.active{background:#3d689e;border-color:#3d689e;color:#fff}
+.pill .pill-count{display:inline-block;font-size:10px;margin-left:7px;font-weight:750;opacity:.78}
+
 </style>
 </head>
 <body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
-<header class="hero"><span class="eyebrow">🖼️ FRAME MATERIALS · PERSONAL OS</span><h1>裱框材料啟動器</h1><p>以供應商為第一層、材料種類為第二層，集中管理裱框材料、工具，以及松風閣外框、內框、卡紙、底布、綾布、絹布、錦布型錄；保留搜尋、收藏及最近開啟紀錄。</p><div class="hero-actions"><a href="https://drive.google.com/drive/folders/1tlrmAb2YVpSmrX_vRxlVAVT82zTQ6eeo" target="_blank" rel="noopener noreferrer">🗂️ 開啟 Drive 材料資料夾 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E5%A4%96%E6%A1%86#songfengCatalogPanel">🖼️ 松風閣外框型錄 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E5%85%A7%E6%A1%86#songfengInnerPanel">🪵 松風閣內框型錄 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E5%8D%A1%E7%B4%99#songfengMatboardPanel">🎨 松風閣卡紙色號 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E5%BA%95%E5%B8%83#songfengBackingPanel">🧵 松風閣底布 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E7%B6%BE%E5%B8%83#songfengSilkPanel">🪡 松風閣綾布 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E7%B5%B9%E5%B8%83#songfengJuanPanel">🧶 松風閣絹布 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E9%8C%A6%E5%B8%83#songfengBrocadePanel">🧵 松風閣錦布 ↗</a><button id="helpButton" type="button">？ 使用說明</button></div></header>
+<header class="hero"><span class="eyebrow">🖼️ FRAME MATERIALS · PERSONAL OS</span><h1>裱框材料啟動器</h1><p>依供應商整理裱框材料；松風閣採「材料大類 → 商品細類」三層導覽，收錄畫框、表面材質、背板、底板、卡紙與裱褙材料。保留搜尋、收藏及最近開啟紀錄。</p><div class="hero-actions"><a href="https://drive.google.com/drive/folders/1tlrmAb2YVpSmrX_vRxlVAVT82zTQ6eeo" target="_blank" rel="noopener noreferrer">🗂️ 開啟 Drive 材料資料夾 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E7%95%AB%E6%A1%86&subcategory=%E5%A4%96%E6%A1%86#songfengCatalogPanel">🖼️ 松風閣外框型錄 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E7%95%AB%E6%A1%86&subcategory=%E5%85%A7%E6%A1%86#songfengInnerPanel">🪵 松風閣內框型錄 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E5%8D%A1%E7%B4%99#songfengMatboardPanel">🎨 松風閣卡紙色號 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E5%BA%95%E6%9D%BF&subcategory=%E5%BA%95%E5%B8%83#songfengBackingPanel">🧵 松風閣底布 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E8%A3%B1%E8%A4%99%E6%9D%90%E6%96%99&subcategory=%E7%B6%BE%E5%B8%83#songfengSilkPanel">🪡 松風閣綾布 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E8%A3%B1%E8%A4%99%E6%9D%90%E6%96%99&subcategory=%E7%B5%B9%E5%B8%83#songfengJuanPanel">🧶 松風閣絹布 ↗</a><a href="?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3&category=%E8%A3%B1%E8%A4%99%E6%9D%90%E6%96%99&subcategory=%E9%8C%A6%E5%B8%83#songfengBrocadePanel">🧵 松風閣錦布 ↗</a><button id="helpButton" type="button">？ 使用說明</button></div></header>
 <section class="section"><div class="quick-grid"><article class="quick-panel"><h3>⭐ 我的收藏 <span class="hint" id="favCount"></span></h3><div class="quick-list" id="favorites"></div></article><article class="quick-panel"><h3>↻ 最近開啟 <span class="hint">最多 8 筆</span></h3><div class="quick-list" id="recent"></div></article></div></section>
 <div class="search"><input id="searchInput" type="search" placeholder="搜尋材料、品牌、型號或工具…"><label class="search-all-label"><input id="searchAllVendors" type="checkbox">跨廠商搜尋／瀏覽全部商品</label></div>
 <section class="supplier-filter" aria-label="裱框材料供應商與品項分類">
  <div class="filter-head"><span>① 選擇供應商</span><span>最上層依廠商整理</span></div>
  <nav class="vendor-row" id="vendors" aria-label="裱框材料供應商"></nav>
- <div class="filter-head"><span>② 選擇商品分類</span><span id="categoryHint"></span></div>
- <nav class="category-row" id="categories" aria-label="目前供應商的商品分類"></nav>
+ <div class="filter-head"><span id="categoryLevelLabel">② 選擇商品分類</span><span id="categoryHint"></span></div>
+ <nav class="category-row" id="categories" aria-label="目前供應商的商品大類"></nav>
+ <section id="subcategorySection" hidden>
+  <div class="filter-head"><span>③ 選擇商品細類</span><span id="subcategoryHint" class="hint"></span></div>
+  <nav class="category-row subcategory-row" id="subcategories" aria-label="松風閣商品細分類"></nav>
+ </section>
 </section>
 <section id="songfengCatalogPanel" class="sfg-catalog-panel" hidden>
  <h3>🖼️ 松風閣外框｜型號、規格、價格與來源</h3>
@@ -148,7 +158,7 @@ footer{margin-top:25px;color:var(--muted);text-align:center;font-size:11px}
 <section class="materials-grid" id="materialsGrid" aria-live="polite"></section>
 <div class="sfg-load-wrap" id="loadMaterialsWrap" hidden><button id="loadMaterials" type="button">顯示更多商品</button></div>
 <footer>原有 85 張 Drive 產品說明圖、培欣 PS 板 3 筆；松風閣外框 374 款、內框 15 款、卡紙 65 款、底布 1 款、綾布 24 款、絹布 9 款、錦布 5 款 · 優惠價非進貨價或含工報價</footer>
-<dialog id="helpDialog"><h2>？ 裱框材料啟動器說明</h2><ul><li>第一層選擇大圓、大昌、名門、松風閣、培欣、宏昌、藝框界；第二層顯示該廠商的商品分類。原有八種材料分類放在藝框界下。</li><li>松風閣外框可依原官網的細框／中框／粗框／特粗框、木質／貼箔噴漆／鋁框細分類篩選；支援搜尋型號與規格。</li><li>只有明確核實的價格才標記「官網已核對」，其他價格為試算表參考價。並非所有外框都適合油畫布架。</li><li>每款外框可開啟官網詳情，也可帶入油畫框試算器；沒有核實照片時僅顯示框色示意。</li><li>松風閣 → 內框，另收錄官網 15 款（中框 8／粗框 7）；顯示材質、W/H、官網每 15 公分優惠單價、商品詳情。以（長＋寬）÷15 × 單價計算；非裱框含工總價。</li><li>松風閣 → 卡紙，收錄官網卡紙色號、實品照片（確認後才顯示）、材質、商品連結及優惠單價。與外框不同，官網卡紙公式為（長×寬）÷900×單價，單位公分。</li><li>松風閣 → 底布，官網目前收錄麻布（編號 301）1 款，優惠單價 NT$100／才，最低 3 才；依（長×寬）÷900 計算，未達 3 才依 3 才計。此為官網優惠價，非進貨價或含工總價。</li><li>松風閣 → 綾布，依官方型錄收錄 24 款。每張卡片有款式／色號與官網編號、照片、優惠單價、計價規則、詳情連結；「底布含貼」最低計收 3 才，套裝優惠須洽門市。商品編號可能與款式代碼不同。</li><li>松風閣 → 絹布，收錄官網 9 款及全部商品詳情，含型號、官網編號、實品照片、材質、優惠價及面積計價。絹09 單價 60 元／才，其他 8 款為 100 元／才。官網未在絹09 頁註明底布含貼最低 3 才，應向門市確認。</li><li>松風閣 → 錦布，收錄官網5款，含官方照片、型號、編號、原始材質、優惠價及最低3才計價。宋錦02每才300元，其他4款每才100元。韓錦03、韓錦04官網材質寫「綾布」，須照原文保留。</li><li>搜尋框預設在目前廠商和分類中查找；勾選「跨廠商搜尋」可查全站。</li><li>按卡片上的星號收藏常用材料；收藏與最近開啟資料只保存在目前瀏覽器。</li><li>有來源連結的商品可開啟 Google Drive 產品說明圖或原商品頁。自建材料記錄會在卡片上直接顯示規格、廠商與價格，沒有提供連結或圖片的品項不會顯示空連結。</li></ul><button id="closeHelp" type="button">知道了</button></dialog>
+<dialog id="helpDialog"><h2>？ 裱框材料啟動器說明</h2><ul><li>第一層選擇大圓、大昌、名門、松風閣、培欣、宏昌、藝框界。松風閣第二層分為畫框、表面材質、背板、底板、卡紙、裱褙材料；第三層選商品細類。卡紙可直接瀏覽。表面材質與背板的新品項目前尚未建檔，不借用其他廠商商品；藝框界仍沿用原有分類。</li><li>松風閣外框可依原官網的細框／中框／粗框／特粗框、木質／貼箔噴漆／鋁框細分類篩選；支援搜尋型號與規格。</li><li>只有明確核實的價格才標記「官網已核對」，其他價格為試算表參考價。並非所有外框都適合油畫布架。</li><li>每款外框可開啟官網詳情，也可帶入油畫框試算器；沒有核實照片時僅顯示框色示意。</li><li>松風閣 → 內框，另收錄官網 15 款（中框 8／粗框 7）；顯示材質、W/H、官網每 15 公分優惠單價、商品詳情。以（長＋寬）÷15 × 單價計算；非裱框含工總價。</li><li>松風閣 → 卡紙，收錄官網卡紙色號、實品照片（確認後才顯示）、材質、商品連結及優惠單價。與外框不同，官網卡紙公式為（長×寬）÷900×單價，單位公分。</li><li>松風閣 → 底布，官網目前收錄麻布（編號 301）1 款，優惠單價 NT$100／才，最低 3 才；依（長×寬）÷900 計算，未達 3 才依 3 才計。此為官網優惠價，非進貨價或含工總價。</li><li>松風閣 → 綾布，依官方型錄收錄 24 款。每張卡片有款式／色號與官網編號、照片、優惠單價、計價規則、詳情連結；「底布含貼」最低計收 3 才，套裝優惠須洽門市。商品編號可能與款式代碼不同。</li><li>松風閣 → 絹布，收錄官網 9 款及全部商品詳情，含型號、官網編號、實品照片、材質、優惠價及面積計價。絹09 單價 60 元／才，其他 8 款為 100 元／才。官網未在絹09 頁註明底布含貼最低 3 才，應向門市確認。</li><li>松風閣 → 錦布，收錄官網5款，含官方照片、型號、編號、原始材質、優惠價及最低3才計價。宋錦02每才300元，其他4款每才100元。韓錦03、韓錦04官網材質寫「綾布」，須照原文保留。</li><li>搜尋框預設在目前廠商和分類中查找；勾選「跨廠商搜尋」可查全站。</li><li>按卡片上的星號收藏常用材料；收藏與最近開啟資料只保存在目前瀏覽器。</li><li>有來源連結的商品可開啟 Google Drive 產品說明圖或原商品頁。自建材料記錄會在卡片上直接顯示規格、廠商與價格，沒有提供連結或圖片的品項不會顯示空連結。</li></ul><button id="closeHelp" type="button">知道了</button></dialog>
 </main>
 <script src="../shared-nav.js?v=20261025-2" defer></script>
 <script src="../data/songfeng-frames.js?v=20261028"></script>
@@ -297,23 +307,61 @@ const songfengBrocadeItems=brocadeCatalog.map((f,i)=>({
 }));
 items.push(...songfengItems,...songfengInnerItems,...songfengMatboardItems,...songfengBackingItems,...songfengSilkItems,...songfengJuanItems,...songfengBrocadeItems);
 const vendors=["大圓","大昌","名門","松風閣","培欣","宏昌","藝框界"];
-// 85 筆原有材料歸藝框界；培欣 3 筆 PS 板與松風閣外框、內框、卡紙、底布、綾布、絹布、錦布歸所屬供應商。
+// 固定建立松風閣的材料大類及細類，未提供商品的分類標示「待建檔」。
+const songfengGroupMap={
+ "畫框":["外框","內框"],
+ "表面材質":["壓克力","玻璃","抗UV壓克力"],
+ "背板":["木板","KT板"],
+ "底板":["底布"],
+ "卡紙":["卡紙"],
+ "裱褙材料":["綾布","絹布","錦布"]
+};
+const songfengGroupOrder=Object.keys(songfengGroupMap);
+const songfengGroupForLeaf=leaf=>songfengGroupOrder.find(group=>songfengGroupMap[group].includes(leaf))||null;
+// 商品原分類和 ID 不動，僅增加分類層級；原收藏、近期開啟與價格資料均沿用。
 items.forEach(item=>{
  if(["songfeng","songfeng-inner","songfeng-matboard","songfeng-backing","songfeng-silk","songfeng-juan","songfeng-brocade"].includes(item.sourceType))item.vendor="松風閣";
  else if(String(item.id).startsWith("peixin-ps-")||((item.supplier||"").includes("培欣")&&(item.material||"").includes("PS板"))){
   item.vendor="培欣";item.category="PS板";
  }else item.vendor="藝框界";
+ item.materialGroup=item.vendor==="松風閣"?(songfengGroupForLeaf(item.category)||item.category):item.category;
 });
-const catsForVendor=vendor=>["全部","★ 收藏",...new Set(items.filter(item=>item.vendor===vendor).map(item=>item.category))];
+const catsForVendor=vendor=>vendor==="松風閣"?
+ ["全部","★ 收藏",...songfengGroupOrder,
+  ...new Set(items.filter(item=>item.vendor==="松風閣"&&!songfengGroupOrder.includes(item.materialGroup)).map(item=>item.materialGroup))]:
+ ["全部","★ 收藏",...new Set(items.filter(item=>item.vendor===vendor).map(item=>item.category))];
+const songfengLeavesForGroup=group=>songfengGroupMap[group]||
+ [...new Set(items.filter(item=>item.vendor==="松風閣"&&item.materialGroup===group).map(item=>item.category))];
 const favoriteKey="frameMaterialsFavorites",recentKey="frameMaterialsRecent";
 const requestedParams=new URLSearchParams(location.search);
 const legacyRequestedCategory=requestedParams.get("category");
 const requestedCategory=legacyRequestedCategory==="底布-裱框裱褙"?"底布":legacyRequestedCategory;
+const requestedSubcategory=requestedParams.get("subcategory")||requestedParams.get("sub");
 const oldSongfengLink=requestedCategory==="松風閣外框";
-const requestedVendor=requestedParams.get("vendor")||(oldSongfengLink||requestedCategory==="外框"||requestedCategory==="內框"||requestedCategory==="卡紙"||requestedCategory==="底布"||requestedCategory==="綾布"||requestedCategory==="絹布"||requestedCategory==="錦布"?"松風閣":requestedCategory==="PS板"?"培欣":"藝框界");
+const songfengExistingLeaves=new Set(items.filter(item=>item.vendor==="松風閣").map(item=>item.category));
+const requestedVendor=requestedParams.get("vendor")||
+ (oldSongfengLink||songfengGroupOrder.includes(requestedCategory)||songfengExistingLeaves.has(requestedCategory)?"松風閣":
+ requestedCategory==="PS板"?"培欣":"藝框界");
 let activeVendor=vendors.includes(requestedVendor)?requestedVendor:"藝框界";
 const initialCategory=oldSongfengLink?"外框":requestedCategory;
-let activeCategory=catsForVendor(activeVendor).includes(initialCategory)?initialCategory:"全部",searchQuery="";
+let activeGroup="全部",activeCategory="全部",searchQuery="";
+if(activeVendor==="松風閣"){
+ if(initialCategory==="★ 收藏"){
+  activeGroup="★ 收藏";activeCategory="★ 收藏";
+ }else if(initialCategory==="全部"||!initialCategory){
+  activeGroup="全部";activeCategory="全部";
+ }else if(catsForVendor("松風閣").includes(initialCategory)){
+  activeGroup=initialCategory;
+  const leaves=songfengLeavesForGroup(activeGroup);
+  activeCategory=activeGroup==="卡紙"?"卡紙":leaves.includes(requestedSubcategory)?requestedSubcategory:"全部";
+ }else{
+  const leafGroup=songfengGroupForLeaf(initialCategory);
+  if(leafGroup){activeGroup=leafGroup;activeCategory=initialCategory;}
+ }
+}else{
+ activeCategory=catsForVendor(activeVendor).includes(initialCategory)?initialCategory:"全部";
+ activeGroup=activeCategory;
+}
 let searchAllVendors=false;
 let songfengType="全部框型";
 let songfengInnerType="全部內框";
@@ -337,7 +385,7 @@ function toggleFavorite(event,id){event.preventDefault();event.stopPropagation()
 function showMaterial(id){
  const item=items.find(x=>x.id===id);
  if(!item)return;
- activeVendor=item.vendor;activeCategory=item.category;
+ activeVendor=item.vendor;activeGroup=item.materialGroup;activeCategory=item.category;
  songfengType="全部框型";songfengInnerType="全部內框";
  searchAllVendors=false;document.getElementById("searchAllVendors").checked=false;
  searchQuery="";
@@ -562,21 +610,52 @@ function render(){
   return '<button class="vendor-pill '+(activeVendor===vendor?'active':'')+'" type="button" data-vendor="'+esc(vendor)+'" aria-pressed="'+(activeVendor===vendor)+'">'+esc(vendor)+'<small>'+(count?count+' 項':'待建檔')+'</small></button>';
  }).join("");
  vendorNav.querySelectorAll("[data-vendor]").forEach(button=>button.addEventListener("click",()=>{
-  activeVendor=button.dataset.vendor;activeCategory="全部";songfengType="全部框型";songfengInnerType="全部內框";
-  searchAllVendors=false;document.getElementById("searchAllVendors").checked=false;
-  visibleCount=pageSize;render();
- }));
- const cats=catsForVendor(activeVendor);
- document.getElementById("categories").innerHTML=cats.map(cat=>
-  '<button class="pill '+(activeCategory===cat?'active':'')+'" type="button" data-category="'+esc(cat)+'" aria-pressed="'+(activeCategory===cat)+'">'+esc(cat)+'</button>'
- ).join("");
- document.querySelectorAll("[data-category]").forEach(button=>button.addEventListener("click",()=>{
-  activeCategory=button.dataset.category;songfengType="全部框型";songfengInnerType="全部內框";
+  activeVendor=button.dataset.vendor;activeGroup="全部";activeCategory="全部";songfengType="全部框型";songfengInnerType="全部內框";
   searchAllVendors=false;document.getElementById("searchAllVendors").checked=false;
   visibleCount=pageSize;render();
  }));
  const vendorItems=items.filter(item=>item.vendor===activeVendor);
- document.getElementById("categoryHint").textContent=vendorItems.length?activeVendor+' · '+vendorItems.length+' 項':activeVendor+' · 尚未建檔';
+ const isSongfeng=activeVendor==="松風閣";
+ const cats=catsForVendor(activeVendor);
+ document.getElementById("categoryLevelLabel").textContent=isSongfeng?"② 選擇材料大類":"② 選擇商品分類";
+ const groupCount=cat=>cat==="全部"?vendorItems.length:
+  cat==="★ 收藏"?vendorItems.filter(x=>favorites.includes(x.id)).length:
+  vendorItems.filter(x=>isSongfeng?x.materialGroup===cat:x.category===cat).length;
+ document.getElementById("categories").innerHTML=cats.map(cat=>{
+  const active=(isSongfeng?activeGroup:activeCategory)===cat;
+  const count=groupCount(cat);
+  const suffix=isSongfeng?'<small class="pill-count">'+(count?count+" 項":"待建檔")+'</small>':"";
+  return '<button class="pill '+(active?'active':'')+'" type="button" data-category="'+esc(cat)+'" aria-pressed="'+active+'">'+esc(cat)+suffix+'</button>';
+ }).join("");
+ document.querySelectorAll("[data-category]").forEach(button=>button.addEventListener("click",()=>{
+  const cat=button.dataset.category;
+  activeGroup=cat;activeCategory=isSongfeng?(cat==="卡紙"?"卡紙":cat==="★ 收藏"?"★ 收藏":"全部"):cat;
+  songfengType="全部框型";songfengInnerType="全部內框";
+  searchAllVendors=false;document.getElementById("searchAllVendors").checked=false;
+  visibleCount=pageSize;render();
+ }));
+ const subSection=document.getElementById("subcategorySection");
+ subSection.hidden=!isSongfeng||["全部","★ 收藏","卡紙"].includes(activeGroup);
+ if(!subSection.hidden){
+  const leaves=songfengLeavesForGroup(activeGroup);
+  const countForLeaf=leaf=>vendorItems.filter(x=>x.materialGroup===activeGroup&&(leaf==="全部"||x.category===leaf)).length;
+  document.getElementById("subcategoryHint").textContent=activeGroup+" · "+countForLeaf("全部")+" 項";
+  document.getElementById("subcategories").innerHTML=["全部",...leaves].map(leaf=>{
+   const count=countForLeaf(leaf),active=activeCategory===leaf;
+   return '<button class="pill '+(active?'active':'')+'" type="button" data-subcategory="'+esc(leaf)+'" aria-pressed="'+active+'">'+esc(leaf)+'<small class="pill-count">'+(count?count+" 項":"待建檔")+'</small></button>';
+  }).join("");
+  document.querySelectorAll("[data-subcategory]").forEach(button=>button.addEventListener("click",()=>{
+   activeCategory=button.dataset.subcategory;songfengType="全部框型";songfengInnerType="全部內框";
+   searchAllVendors=false;document.getElementById("searchAllVendors").checked=false;
+   visibleCount=pageSize;render();
+  }));
+ }else{
+  document.getElementById("subcategories").innerHTML="";
+  document.getElementById("subcategoryHint").textContent="";
+ }
+ document.getElementById("categoryHint").textContent=vendorItems.length?
+  activeVendor+" · "+vendorItems.length+" 項"+(isSongfeng?" · "+songfengGroupOrder.length+" 大類":""):
+  activeVendor+" · 尚未建檔";
  const catalogPanel=document.getElementById("songfengCatalogPanel");
  catalogPanel.hidden=searchAllVendors||activeVendor!=="松風閣"||activeCategory!==songfengCategory;
  if(!catalogPanel.hidden){
@@ -674,12 +753,24 @@ function render(){
    " 款｜材質標示為綾布 "+mislabeled+" 款（依官網原始資料保留）｜資料日期 "+(brocadeCatalogMeta.captured||"待確認")+"。";
  }
  const heading=searchAllVendors?"全部廠商｜商品搜尋與瀏覽":activeVendor==="松風閣"?
-   "松風閣｜"+(activeCategory==="全部"?"全部商品":activeCategory==="★ 收藏"?"我的收藏":activeCategory+"商品"):
-   activeVendor+"｜"+(activeCategory==="全部"?"全部材料":activeCategory==="★ 收藏"?"我的收藏":activeCategory);
+  "松風閣｜"+(activeGroup==="全部"?"全部商品":activeGroup==="★ 收藏"?"我的收藏":
+   activeGroup==="卡紙"?"卡紙商品":
+   activeGroup+(activeCategory==="全部"?"商品":"／"+activeCategory+"商品")):
+  activeVendor+"｜"+(activeCategory==="全部"?"全部材料":activeCategory==="★ 收藏"?"我的收藏":activeCategory);
  document.getElementById("materialsHeading").textContent=heading;
+ const matchesCurrentSelection=item=>{
+  if(searchAllVendors)return true;
+  if(item.vendor!==activeVendor)return false;
+  if(activeVendor!=="松風閣"){
+   if(activeCategory==="全部")return true;
+   return activeCategory==="★ 收藏"?favorites.includes(item.id):item.category===activeCategory;
+  }
+  if(activeGroup==="全部")return true;
+  if(activeGroup==="★ 收藏")return favorites.includes(item.id);
+  return item.materialGroup===activeGroup&&(activeCategory==="全部"||item.category===activeCategory);
+ };
  const list=items.filter(item=>
-  (searchAllVendors||(item.vendor===activeVendor&&(activeCategory==="全部"||
-    (activeCategory==="★ 收藏"?favorites.includes(item.id):item.category===activeCategory))))&&
+  matchesCurrentSelection(item)&&
   (searchAllVendors||item.sourceType!=="songfeng"||songfengType==="全部框型"||item.frameCategory===songfengType)&&
   (searchAllVendors||item.sourceType!=="songfeng-inner"||songfengInnerType==="全部內框"||item.frameCategory===songfengInnerType)&&
   (!searchQuery||(item.name+" "+item.vendor+" "+item.category+" "+item.number+" "+(item.supplier||"")+" "+(item.material||"")+" "+
@@ -687,8 +778,15 @@ function render(){
    (item.frameW??"")+" "+(item.frameH??"")+" "+(item.frameRateTwd??"")).toLocaleLowerCase().includes(searchQuery)));
  const visible=list.slice(0,visibleCount);
  document.getElementById("resultCount").textContent="顯示 "+visible.length+" / "+list.length+" 項｜全站 "+items.length+" 項";
- const emptyText=!searchAllVendors&&vendorItems.length===0?activeVendor+" 的材料尚未建檔。可先切換其他廠商查看商品。":
-   activeCategory==="★ 收藏"&&!searchAllVendors?"此廠商尚未收藏商品。":"找不到符合條件的材料。";
+ const emptyGroup=!searchAllVendors&&isSongfeng&&!["全部","★ 收藏"].includes(activeGroup)&&
+  !vendorItems.some(item=>item.materialGroup===activeGroup);
+ const emptyLeaf=!searchAllVendors&&isSongfeng&&!["全部","★ 收藏"].includes(activeGroup)&&
+  activeCategory!=="全部"&&!vendorItems.some(item=>item.materialGroup===activeGroup&&item.category===activeCategory);
+ const emptyText=!searchAllVendors&&vendorItems.length===0?
+  activeVendor+" 的材料尚未建檔。可先切換其他廠商查看商品。":
+  emptyLeaf?"「松風閣 → "+activeGroup+" → "+activeCategory+"」已建立分類，商品尚未建檔。":
+  emptyGroup?"「松風閣 → "+activeGroup+"」分類已建立，可選擇細類；目前尚無商品。":
+  activeGroup==="★ 收藏"&&!searchAllVendors?"此廠商尚未收藏商品。":"找不到符合條件的材料。";
  document.getElementById("materialsGrid").innerHTML=visible.length?visible.map(renderCard).join(""):'<div class="zero">'+esc(emptyText)+'</div>';
  const more=document.getElementById("loadMaterialsWrap");
  more.hidden=visible.length>=list.length;
