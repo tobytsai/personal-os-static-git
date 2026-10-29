@@ -71,7 +71,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 .viewside h3{font-size:16px;margin:0}.viewside p{font-size:12px;color:var(--soft);margin:0}.viewlinks{display:grid;gap:7px}.viewlinks a{border:1px solid var(--stroke);padding:9px 12px;border-radius:10px;background:#f9fafb;text-align:center;font-size:12px;font-weight:650}
 .thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px}.thumb{border:2px solid transparent;padding:0;border-radius:8px;background:#f6f7f8;overflow:hidden;width:57px;height:57px}
 .thumb img{width:100%;height:100%;object-fit:contain}.thumb.active{border-color:#7760ca}.notice{font-size:11px;color:#777;background:#f3f4f6;padding:9px;border-radius:10px}
-@media(max-width:700px){.majorgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.majorbtn{padding:9px;font-size:12px}.tier{padding:10px}.minorhips button{font-size:11px}.metrics{grid-template-columns:repeat(2,1fr)}.pairpreview .photo{height:170px}.shell{padding:8px 12px 60px}.masthead{display:block}.actions{margin-top:14px}.metrics{gap:7px}.metric{padding:10px 11px}.metric strong{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:170px}.cardbody{padding:9px}.card h3{font-size:12px;min-height:38px}.cardlinks{flex-wrap:wrap}.cardlinks a,.cardlinks button{min-width:100%}.viewerbody{display:block}.bigstage{min-height:280px;max-height:55dvh}.bigstage img{max-height:50dvh}.viewside{padding:12px}.sectiontop h2{font-size:16px}}
+@media(max-width:700px){.majorgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.majorbtn{padding:9px;font-size:12px}.tier{padding:10px}.minorchips button{font-size:11px}.metrics{grid-template-columns:repeat(2,1fr)}.pairpreview .photo{height:170px}.shell{padding:8px 12px 60px}.masthead{display:block}.actions{margin-top:14px}.metrics{gap:7px}.metric{padding:10px 11px}.metric strong{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:170px}.cardbody{padding:9px}.card h3{font-size:12px;min-height:38px}.cardlinks{flex-wrap:wrap}.cardlinks a,.cardlinks button{min-width:100%}.viewerbody{display:block}.bigstage{min-height:280px;max-height:55dvh}.bigstage img{max-height:50dvh}.viewside{padding:12px}.sectiontop h2{font-size:16px}}
 </style>
 </head>
 <body>
@@ -221,8 +221,9 @@ function showHierarchy(){
  if(category!=="全部分類"&&!countsForLeaves.has(category))category="全部分類";
  const majorBtns=[{name:"全部大類",icon:"▦",count:base.length},...majorsToShow.map(g=>({name:g.name,icon:g.icon,count:counts.get(g.name)}))];
  $("majorTabs").innerHTML=majorBtns.map(g=>'<button class="majorbtn" type="button" data-major="'+escapeHtml(g.name)+'" aria-pressed="'+String(g.name===major)+'"><span>'+escapeHtml(g.icon+" "+g.name)+'</span><small>'+g.count.toLocaleString("zh-TW")+'</small></button>').join("");
- const minorBtns=[["全部細分類",Array.from(countsForLeaves.values()).reduce((a,b)=>a+b,0)],...Array.from(countsForLeaves).sort((a,b)=>a[0].localeCompare(b[0],"zh-Hant"))];
- $("minorTabs").innerHTML=minorBtns.map(([name,n])=>'<button type="button" data-minor="'+escapeHtml(name)+'" aria-pressed="'+String((name==="全部細分類"&&category==="全部分類")||name===category)+'">'+escapeHtml(name)+' · '+n.toLocaleString("zh-TW")+'</button>').join("");
+ const minorBtns=major==="全部大類"?[["全部細分類",base.length]]:[["全部細分類",Array.from(countsForLeaves.values()).reduce((a,b)=>a+b,0)],...Array.from(countsForLeaves).sort((a,b)=>a[0].localeCompare(b[0],"zh-Hant"))];
+ $("minorTabs").innerHTML=minorBtns.map(([name,n])=>'<button type="button" data-minor="'+escapeHtml(name)+'" aria-pressed="'+String((name==="全部細分類"&&category==="全部分類")||name===category)+'">'+escapeHtml(name)+' · '+n.toLocaleString("zh-TW")+'</button>').join(""); 
+ if(major==="全部大類")$("minorTabs").insertAdjacentHTML("beforeend",'<span class="small" style="align-self:center">先選第二層用途大類，再展開所屬細分類。</span>');
  $("modeTabs").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
  $("utilityModes").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
  const modeText={examples:"成品示範",methods:"額緣框作法",paired:"成品／作法對照",all:"全部商品",favorites:"我的收藏",recent:"最近開啟"};
