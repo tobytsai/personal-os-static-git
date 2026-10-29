@@ -55,7 +55,7 @@ function save(){localStorage.setItem("osFrameTechFavs",JSON.stringify(favs));loc
 function countCat(cat){return items.filter(x=>x.category===cat).length}
 function countGroup(g){return items.filter(x=>g.cats.includes(x.category)).length}
 function groupOf(x){return groups.find(g=>g.cats.includes(x.category))||{id:"other",name:"其他",icon:"🖼"}}
-function safeUrl(url){try{const u=new URL(url);return u.protocol==="https:"||u.protocol==="http:"?u.href:""}catch{return ""}}
+function safeUrl(url){try{const value=String(url||"").trim();if(!value)return "";const u=new URL(value,document.baseURI);return u.protocol==="https:"||u.protocol==="http:"?u.href:""}catch{return ""}}
 function renderGroups(){const all='<button type="button" class="group '+(activeGroup==="all"?"active":"")+'" data-group="all"><span class="icon">▦</span><b>'+items.length+'</b><strong>全部工作案例</strong><span>瀏覽全部分類</span></button>';
 $("groups").innerHTML=all+groups.map(g=>'<button type="button" class="group '+(activeGroup===g.id?"active":"")+'" data-group="'+g.id+'"><span class="icon">'+g.icon+'</span><b>'+countGroup(g)+'</b><strong>'+esc(g.name)+'</strong><span>'+esc(g.desc)+'</span></button>').join("")}
 function categories(){const cats=activeGroup==="all"?[...new Set(items.map(x=>x.category))]:groups.find(g=>g.id===activeGroup)?.cats.filter(c=>countCat(c))||[];$("cats").innerHTML='<button class="cat '+(activeCat==="all"?"active":"")+'" data-cat="all">全部細類</button>'+cats.map(cat=>'<button class="cat '+(activeCat===cat?"active":"")+'" data-cat="'+esc(cat)+'">'+esc(cat)+' <small>'+countCat(cat)+'</small></button>').join("")}
