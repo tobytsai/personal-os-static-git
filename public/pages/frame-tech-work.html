@@ -96,7 +96,7 @@ $("resetBtn").addEventListener("click",()=>{view="all";activeGroup="all";activeC
 $("closeDialog").addEventListener("click",()=>$("detailDialog").close());
 $("helpBtn").addEventListener("click",()=>$("helpDialog").showModal());
 $("closeHelp").addEventListener("click",()=>$("helpDialog").close());
-fetch("../data/frame-tech-work.json").then(r=>{if(!r.ok)throw new Error("資料讀取失敗");return r.json()}).then(d=>{
+fetch("../data/frame-tech-work.json?v=20261030-note-covers-200").then(r=>{if(!r.ok)throw new Error("資料讀取失敗");return r.json()}).then(d=>{
 items=d.items;groups=d.groups;byId=new Map(items.map(x=>[x.id,x]));$("stats").innerHTML='<span class="stat">📚 '+items.length+' 筆資料</span><span class="stat">▦ '+new Set(items.map(x=>x.category)).size+' 種原始分類</span><span class="stat">🧭 '+groups.length+' 大工作類型</span><span class="stat">🖼 '+items.filter(x=>x.images.length).length+' 筆 Airtable 附圖</span><span class="stat">📓 '+items.filter(x=>x.noteCover).length+' 筆筆記首圖</span>';render()
 }).catch(err=>{$("count").textContent="載入失敗";$("entries").innerHTML='<div class="alert">資料檔案未能載入：'+esc(err.message)+'。請重新整理或開啟 Airtable 原始資料。</div>'});
 </script>
