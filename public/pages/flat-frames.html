@@ -130,6 +130,13 @@ main{width:100%;max-width:1120px;min-width:0}
 .sfg-dali-metric.main{border-color:#9ab9e2;background:#edf4ff}
 .sfg-dali .sfg-dali-formula{margin-top:8px;color:#466381;font-size:11px}
 @media(max-width:390px){.sfg-dali{padding:11px}.sfg-dali-metrics{grid-template-columns:minmax(0,1fr)}}
+
+/* 松風閣：官網實品圖片取代色塊；圖片不可用時保留原本示意色框。 */
+.sfg-frame-photo{flex:none;display:block;width:53px;height:57px;max-width:53px;border:1px solid #e1e6ef;border-radius:9px;background:#fff;object-fit:contain;padding:3px;box-shadow:0 2px 6px #22334c12}
+.sfg-frame-photo[hidden],.sfg-preview-photo[hidden],.sfg-mini-frame[hidden]{display:none!important}
+.sfg-frame-choice:has(.sfg-frame-photo) .sfg-frame-copy{flex:1;min-width:0}
+.sfg-preview-photo{display:block;width:min(100%,370px);height:230px;max-width:100%;object-fit:contain;background:#fff;border-radius:11px;padding:7px;box-shadow:0 2px 12px #253a5712}
+@media(max-width:560px){.sfg-frame-photo{width:48px;height:52px;max-width:48px}.sfg-preview-photo{height:215px}}
 </style></head><body><main><a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a><header class="hero"><span>🖼 裱框找模式 · 平面框</span><h1>平面框商品探索</h1><p>整理適合紙本、版畫、水彩及照片的平面框，並提供與海報框商品探索一致的松風閣選框試算。</p><a href="https://www.gakubuti.net/product/list/9" target="_blank" rel="noopener noreferrer">高橋一般額分類 ↗</a><a href="https://www.frame-shop.jp/view/category/ct74" target="_blank" rel="noopener noreferrer">額緣專門店素描框分類 ↗</a><a href="https://www.ikea.com.tw/zh/products/home-decoration/frames-and-wall-decoration" target="_blank" rel="noopener noreferrer">IKEA 台灣相框分類 ↗</a><a href="./poster-frames.html">查看海報框商品探索 ↗</a></header><section class="sizes"><h2>📐 常見尺寸參考</h2><p>參考海報框商品探索所用的原網站「畫框內尺寸」（mm）；平面框商品篩選仍依各商家標示的實際規格，日本 B 系列與其他 B 系列可能不同。選框前請再次核對。</p><div id="size-links" class="chips"></div><p class="note">上方尺寸用於瀏覽商品；松風閣的精確長寬與即時計價，請切換下方「松風閣」分頁。各廠商商品內尺寸可能與此參考值略有差異。</p></section><section><h2 id="heading">平面框商品</h2><p class="note" id="overview"></p><p class="note" id="flat-product-note">日本商品台幣參考價以 2026/10/27 匯率 1 日圓＝NT$0.2064 換算，未含運費與可能的進口稅費；高橋標示各尺寸起價，專門店標示該商品規格價格。商品價格與庫存以官網為準。</p><div class="controls"><input id="search" type="search" placeholder="搜尋型號、名稱或尺寸" aria-label="搜尋商品"><button id="all" class="active">全部商品</button><button id="high">高橋</button><button id="ikea">IKEA</button><button id="shop">專門店</button><button id="sfg" type="button" aria-controls="sfg-calculator" aria-expanded="false">松風閣</button><button id="fav">⭐ 收藏</button><button id="recent">🕘 最近開啟</button></div><section id="sfg-calculator" class="sfg-panel" aria-labelledby="sfg-heading" hidden>
 <header class="sfg-heading"><div><span class="sfg-step-label">SONG FENG GE · 選框與計價</span><h3 id="sfg-heading">🖼️ 松風閣｜平面框選框試算</h3><p>一般裱框＝<strong>背板 ＋ 外框 ＋ 壓克力</strong>，先選框條，再依作品尺寸計算。</p></div><div class="sfg-heading-links"><a href="https://docs.google.com/spreadsheets/d/1ddZNssGS1xiPZpxEBNRDW9LDdtO8ULY4RQu4ewkKD14/edit" target="_blank" rel="noopener noreferrer">📋 Google 試算表｜採集框價 ↗</a> <a href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">松風閣官網框樣 ↗</a> <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">官網完整模擬框 ↗</a></div></header>
 <div class="sfg-layout">
@@ -148,7 +155,7 @@ main{width:100%;max-width:1120px;min-width:0}
 <button id="sfg-custom" class="sfg-custom" type="button" aria-expanded="false">找不到框型？輸入其他框型與單價</button>
 <div id="sfg-custom-fields" class="sfg-fields sfg-custom-fields" hidden><label for="sfg-custom-name">自訂框型名稱<input id="sfg-custom-name" type="text" maxlength="80" placeholder="例如 783咖"></label><label for="sfg-custom-width">框寬（cm，預覽用）<input id="sfg-custom-width" type="number" min="0.2" max="15" step="0.1" value="2" inputmode="decimal"></label></div>
 <div class="sfg-rate-row"><label class="sfg-amount-field" for="sfg-frame-rate">所選框型單價（NT$／15cm；優先採用試算表，可手動修改）<input id="sfg-frame-rate" type="number" min="0" step="0.01" value="75" inputmode="decimal"></label><a id="sfg-frame-link" href="https://sfg218.com/frame_info.php?class=17&amp;no=685" target="_blank" rel="noopener noreferrer">核對選定框型的官網價格 ↗</a></div>
-<p id="sfg-price-source" class="sfg-tip" aria-live="polite">價格來源：待選擇框型</p><p class="sfg-tip">下方框色為方便挑選的示意色，不是原廠照片。價格以指定的 Google 試算表「框型清單」優先：先讀 I 欄「官網優惠單價」，沒有時才用 E 欄 Airtable 參考價。已輸入 I 欄價格 359 款（其中 6 款有明確官網核對紀錄），15 款待補。資料為 2026/10/29 快照，不會即時同步；未核對價格請以官網實際報價為準。</p></div>
+<p id="sfg-price-source" class="sfg-tip" aria-live="polite">價格來源：待選擇框型</p><p class="sfg-tip">圖片取自松風閣官方商品圖；沒有可核對照片的框型才顯示示意色。價格以指定的 Google 試算表「框型清單」優先：先讀 I 欄「官網優惠單價」，沒有時才用 E 欄 Airtable 參考價。已輸入 I 欄價格 359 款（其中 6 款有明確官網核對紀錄），15 款待補。資料為 2026/10/29 快照，不會即時同步；未核對價格請以官網實際報價為準。</p></div>
 <div class="sfg-box"><h4>③ 背板、壓克力與工資</h4>
 <label class="sfg-check" for="sfg-back-on"><input type="checkbox" id="sfg-back-on" checked> 木背板（預設 4mm）</label>
 <div class="sfg-fields"><label for="sfg-back-rate">背板單價（NT$／才）<input id="sfg-back-rate" type="number" min="0" step="0.01" value="70" inputmode="decimal"></label><label for="sfg-acrylic-rate">壓克力單價（NT$／才）<input id="sfg-acrylic-rate" type="number" min="0" step="0.01" value="100" inputmode="decimal"></label></div>
@@ -158,8 +165,8 @@ main{width:100%;max-width:1120px;min-width:0}
 </div>
 <aside class="sfg-summary" aria-label="裱框估價結果">
 <h4>即時計算・選框預覽</h4>
-<div class="sfg-preview"><div id="sfg-preview-frame" class="sfg-preview-frame" aria-hidden="true"><div class="sfg-preview-art"><span>作品示意</span></div></div></div>
-<small class="sfg-preview-note">形狀、顏色僅為比例示意，不是松風閣實品圖</small>
+<div class="sfg-preview"><img id="sfg-preview-photo" class="sfg-preview-photo" alt="" referrerpolicy="no-referrer" decoding="async" hidden><div id="sfg-preview-frame" class="sfg-preview-frame" aria-hidden="true"><div class="sfg-preview-art"><span>作品示意</span></div></div></div>
+<small class="sfg-preview-note" id="sfg-preview-note">松風閣官網實品照片；沒有照片的款式仍顯示示意框。</small>
 <div class="sfg-selected-name" id="sfg-selected-name">選擇外框：(上)411藍</div>
 <div class="sfg-breakdown">
 <div class="sfg-line"><span>松風閣外框參考價</span><strong id="sfg-frame-sum">NT$253.50</strong></div>
@@ -194,7 +201,7 @@ main{width:100%;max-width:1120px;min-width:0}
 <script src="../data/flat-frames-6.js"></script>
 <script src="../data/flat-frames-7.js"></script>
 <script src="../data/songfeng-frames.js?v=20261028"></script>
-<script src="../data/songfeng-sheet-prices.js?v=20261029-1"></script>
+<script src="../data/songfeng-sheet-prices.js?v=20261029-1"></script><script src="../data/songfeng-photos.js?v=20261029-photo1"></script>
 <script>
 const items=window.FLAT_ITEMS, sizeNames=['A5','B5','A4','B4','A3','B3','A2','B2','A1','B1','A0','B0'];
 const dims={A5:[148,210],B5:[182,257],A4:[210,297],B4:[257,364],A3:[297,420],B3:[364,515],A2:[420,594],B2:[515,728],A1:[594,841],B1:[728,1030],A0:[841,1189],B0:[1030,1456]};
@@ -248,6 +255,10 @@ const sfgNorm=s=>String(s).replace(/[（]/g,"(").replace(/[）]/g,")").replace(/
 const sfgVerified=new Map(sfgPreviouslyPriced.map(x=>[sfgNorm(x.name),x]));
 const sfgSheetRows=Array.isArray(window.SFG_SHEET_FRAME_PRICES)?window.SFG_SHEET_FRAME_PRICES:[];
 const sfgSheetMeta=window.SFG_SHEET_PRICE_META||{};
+const sfgPhotoItems=Array.isArray(window.SFG_OFFICIAL_FRAME_PHOTOS)?window.SFG_OFFICIAL_FRAME_PHOTOS:[];
+const sfgPhotoMeta=window.SFG_OFFICIAL_PHOTO_META||{};
+const sfgOfficialPhoto=url=>typeof url==="string"&&/^https:\/\/sfg218\.com\/admin\/goods_pic\/[A-Za-z0-9_-]+\.(?:jpe?g|png|webp)$/i.test(url);
+
 const sfgPriceValid=n=>typeof n==="number"&&Number.isFinite(n)&&n>0;
 if(sfgSheetRows.length!==sfgCatalog.length)console.warn("松風閣試算表價格快照與框型清單數量不符，未對應的框型會顯示待填單價。");
 function sfgTint(name){
@@ -272,8 +283,12 @@ const sfgFrames=sfgCatalog.map((frame,index)=>{
  const rate=official!==null?official:airtable;
  const rateSource=official!==null?(sheetRow.verified?"sheet-verified":"sheet-unverified"):airtable!==null?"sheet-airtable":null;
  const detailUrl=sheetRow&&typeof sheetRow.url==="string"&&/^https:\/\/sfg218\.com\/frame_info\.php\?/.test(sheetRow.url)?sheetRow.url:null;
+ const photoRow=sfgPhotoItems.length===sfgCatalog.length?sfgPhotoItems[index]:null;
+ const full=photoRow&&sfgOfficialPhoto(photoRow.full)?photoRow.full:null;
+ const thumb=photoRow&&sfgOfficialPhoto(photoRow.thumb)?photoRow.thumb:full;
  return {...frame,id:"sf-"+index,rate,rateSource,verified:!!sheetRow?.verified,
-   url:detailUrl,no:sheetRow?.pageId??old?.no??null,tone:old?.tone||sfgTint(frame.name)};
+   url:detailUrl,no:sheetRow?.pageId??old?.no??null,tone:old?.tone||sfgTint(frame.name),
+   photo:full,thumb};
 });
 let sfgChosen=sfgFrames.find(f=>f.no===685)||sfgFrames[0];
 let sfgCategory="all",sfgPageSize=48,sfgShowLimit=48,sfgCustomMode=false;
@@ -297,10 +312,12 @@ function sfgRenderFrames(){
  const visible=sfgFrames.filter(f=>(sfgCategory==="all"||String(f.cat)===sfgCategory)&&
  (f.name+" "+sfgCategories[f.cat]+" "+f.w+" "+f.h).toLocaleLowerCase().includes(query));
  const shown=visible.slice(0,sfgShowLimit);
- sfgEl("sfg-frame-count").textContent="顯示 "+shown.length+" / "+visible.length+" 款｜試算表官網價欄 "+(sfgSheetMeta.withOfficialColumn??0)+" 款（已核對 "+(sfgSheetMeta.explicitlyVerified??0)+" 款），未有價格 "+(sfgSheetMeta.withoutPrice??0)+" 款；W／H 單位 cm";
+ sfgEl("sfg-frame-count").textContent="顯示 "+shown.length+" / "+visible.length+" 款｜實品照片 "+sfgFrames.filter(x=>x.photo).length+" 款｜試算表價格 "+(sfgSheetMeta.withOfficialColumn??0)+" 款；W／H 單位 cm";
  sfgEl("sfg-frame-grid").innerHTML=shown.length?shown.map(f=>
   '<button class="sfg-frame-choice'+(!sfgCustomMode&&sfgChosen.id===f.id?' is-selected':'')+'" type="button" data-sfg-frame="'+f.id+'" aria-pressed="'+(!sfgCustomMode&&sfgChosen.id===f.id)+'">'+
-  '<span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'"></span><span class="sfg-frame-copy"><strong>'+esc(f.name)+'</strong><small>W'+sfgDec(f.w,1)+' / H'+sfgDec(f.h,1)+' cm</small>'+
+  (f.photo?'<img class="sfg-frame-photo" src="'+esc(f.thumb||f.photo)+'" alt="'+esc(f.name)+' 松風閣實品框條" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'" hidden></span>':
+  '<span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'"></span>')+
+  '<span class="sfg-frame-copy"><strong>'+esc(f.name)+'</strong><small>W'+sfgDec(f.w,1)+' / H'+sfgDec(f.h,1)+' cm</small>'+
   (f.rate!==null?'<small>'+(f.rateSource==="sheet-verified"?"官網已核對單價":f.rateSource==="sheet-unverified"?"試算表價格（待核對）":"試算表 Airtable 參考價")+' NT$'+sfgDec(f.rate,0)+'</small>':'<em>試算表尚無價格 · 請自行輸入</em>')+'</span></button>'
  ).join(""):'<p class="sfg-empty">'+(sfgCategory==="9"&&!query?"松風閣官網此分類目前顯示「尚無上架資料」。":"目前沒有符合搜尋的框型，請修改關鍵字或切換分類。")+'</p>';
  const more=sfgEl("sfg-load-more");
@@ -356,6 +373,21 @@ function sfgCalculate(){
  }
  preview.style.borderWidth=Math.min(22,Math.max(6,(Number.isFinite(selectedWidth)?selectedWidth:2)*4))+"px";
  preview.style.borderColor=sfgCustomMode?"#66768b":sfgChosen.tone;
+ const officialFull=!sfgCustomMode?sfgChosen.photo:null;
+ const picture=sfgEl("sfg-preview-photo"),note=sfgEl("sfg-preview-note");
+ if(officialFull&&picture.dataset.failed!==officialFull){
+  if(picture.dataset.current!==officialFull){
+   picture.dataset.current=officialFull;
+   picture.alt="松風閣 "+sfgChosen.name+" 框條實品照片";
+   picture.src=officialFull;
+  }
+  picture.hidden=false;preview.hidden=true;
+  note.textContent="實品照片：松風閣官網「"+sfgChosen.name+"」；框型與色澤請以官網實物為準。";
+ }else{
+  picture.hidden=true;preview.hidden=false;
+  note.textContent=officialFull?"官方圖片暫時無法載入，改用框色示意。":"這款框型暫無可核對的官網照片，以下為比例／色彩示意。";
+ }
+
  sfgEl("sfg-alert").textContent="";
  if(!valid){
   ["sfg-frame-sum","sfg-back-sum","sfg-acrylic-sum","sfg-labor-sum","sfg-total"].forEach(id=>sfgEl(id).textContent="—");
@@ -406,6 +438,21 @@ document.querySelectorAll("[data-sfg-preset]").forEach(b=>b.addEventListener("cl
 }));
 if(activeSize&&sfgPresets[activeSize]){const p=sfgPresets[activeSize];sfgEl("sfg-length").value=p[0];sfgEl("sfg-width").value=p[1];}
 if(location.hash==="#songfeng"||location.hash==="#songfeng-reverse"||new URLSearchParams(location.search).get("vendor")==="songfeng")mode="sfg";
+/* 網站照片若無法載入，自動復原為原有的框色示意，不顯示破圖。 */
+sfgEl("sfg-frame-grid").addEventListener("error",event=>{
+ const img=event.target;
+ if(!img?.classList?.contains("sfg-frame-photo"))return;
+ img.hidden=true;
+ const placeholder=img.nextElementSibling;
+ if(placeholder?.classList?.contains("sfg-mini-frame"))placeholder.hidden=false;
+},true);
+sfgEl("sfg-preview-photo").addEventListener("error",()=>{
+ const img=sfgEl("sfg-preview-photo");
+ img.dataset.failed=img.dataset.current||"";
+ img.hidden=true;
+ sfgEl("sfg-preview-frame").hidden=false;
+ sfgEl("sfg-preview-note").textContent="官方圖片暫時無法載入，改用框色示意。";
+});
 sfgRenderCategories();
 sfgRenderFrames();
 sfgSyncLink();
