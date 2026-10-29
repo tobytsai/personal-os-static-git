@@ -1,0 +1,30 @@
+name: Import 同行 Airtable Images
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/peers-photo-import-input.json
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - run: python3 -m pip install -q --disable-pip-version-check requests Pillow
+      - run: python3 scripts/import_peers_photos.py
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A public/images/peers public/pages/peers.html public/data/peers-photo-import-report.json scripts/peers-photo-import-input.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Save Airtable peers images locally"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
