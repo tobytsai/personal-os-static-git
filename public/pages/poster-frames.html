@@ -194,7 +194,7 @@ main{width:100%;max-width:1120px;min-width:0}
 <div class="sfg-box" id="sfg-scenario-materials" hidden><h4 id="sfg-extra-heading">③ 情境材料</h4>
 <div class="sfg-fields"><label for="sfg-margin">四邊留白寬度（每邊 mm）<input id="sfg-margin" type="number" min="0" step="1" value="0" inputmode="decimal"></label></div>
 <p class="sfg-tip">留白預設 0；框內長寬＝作品長寬＋兩倍留白，外框、背板及表面材料依框內尺寸計算。</p>
-<div id="sfg-mat-material" hidden><div class="sfg-fields"><label for="sfg-mat-choice">卡紙色號<select id="sfg-mat-choice" aria-describedby="sfg-mat-source"></select></label><label for="sfg-mat-rate">卡紙單價（NT$／才）<input id="sfg-mat-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="選擇色號或填入單價"></label></div><p id="sfg-mat-source" class="sfg-tip"></p></div>
+<div id="sfg-mat-material" hidden><div class="sfg-fields"><label for="sfg-mat-choice">卡紙色號<select id="sfg-mat-choice" aria-describedby="sfg-mat-source"></select></label><label for="sfg-mat-rate">卡紙單價（NT$／才）<input id="sfg-mat-rate" type="number" min="0" step="0.01" value="60" inputmode="decimal" placeholder="選擇色號或填入單價"></label></div><p id="sfg-mat-source" class="sfg-tip">卡紙單價預設 60 元／才，可自行修改或選擇色號帶入價格。</p></div>
 <div id="sfg-shadowbox-material" hidden><div class="sfg-fields"><label for="sfg-cardboard-fee">卡板費用（NT$／整件）<input id="sfg-cardboard-fee" type="number" min="0" step="0.01" inputmode="decimal" placeholder="依卡板款式填入整件費用"></label><label for="sfg-float-rate">浮板單價（NT$／才）<input id="sfg-float-rate" type="number" min="0" step="0.01" value="100" inputmode="decimal"></label><label for="sfg-fabric-rate">底布：麻布 301（NT$／才）<input id="sfg-fabric-rate" type="number" min="0" step="0.01" value="100" inputmode="decimal"></label></div><p class="sfg-tip">浮板按框內面積進位至整才；麻布 301 按框內面積計算，最低計收 3 才。卡板依款式另填整件費用；立體作品請核對外框容納深度（H）。</p></div>
 <p class="sfg-tip"><a href="./framing-materials.html?v=20261029-scenarios2&amp;vendor=松風閣" target="_blank" rel="noopener noreferrer">查詢松風閣材料與價格 ↗</a> · 空白或無效的材料價格會標示待填，已知金額僅為小計。</p></div>
 <div class="sfg-box"><h4 id="sfg-base-materials-heading">③ 背板、壓克力與工資</h4>
@@ -508,8 +508,8 @@ function sfgApplyScenario(key,navigate=false){
 }
 function sfgSelectMatboard(){
  const row=sfgMatboards.find(x=>x.code===sfgEl("sfg-mat-choice").value);
- sfgEl("sfg-mat-rate").value=row?.priceTwd??"";
- sfgEl("sfg-mat-source").textContent=row?(row.priceTwd===null?row.name+" 尚無已核對單價，請填入。":row.name+"：材料啟動器官網價格快照，可手動修改。") :"請選擇卡紙色號。";
+ sfgEl("sfg-mat-rate").value=row?(row.priceTwd??""):60;
+ sfgEl("sfg-mat-source").textContent=row?(row.priceTwd===null?row.name+" 尚無已核對單價，請填入。":row.name+"：材料啟動器官網價格快照，可手動修改。") :"卡紙單價預設 60 元／才，可自行修改或選擇色號帶入價格。";
  sfgCalculate();
 }
 sfgEl("sfg-mat-choice").innerHTML='<option value="">選擇卡紙色號</option>'+sfgMatboards.map(row=>'<option value="'+esc(row.code)+'">'+esc(row.name)+(row.priceTwd===null?'（待填價格）':' · NT$'+row.priceTwd+'／才')+'</option>').join("");
