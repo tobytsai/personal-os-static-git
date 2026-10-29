@@ -45,6 +45,10 @@ jobs:
               page.write_text(html, encoding="utf-8")
           print(f"Added noindex to {len(pages)} HTML pages")
           PY
+      - name: Collect Song Feng Ge official frame photos
+        run: |
+          python3 -m pip install -q --disable-pip-version-check beautifulsoup4 || true
+          python3 scripts/build_songfeng_photos.py
       - name: Upload public directory
         uses: actions/upload-pages-artifact@v3
         with:
