@@ -40,7 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/assets/tayuan/ public/data/tayuan-images.js public/data/tayuan-image-sync-report.json
+          git add public/assets/tayuan/ public/data/tayuan-images.js public/data/tayuan-image-sync-report.json public/data/tayuan-image-state.json
           if git diff --cached --quiet; then
             echo "Images already up-to-date."
           else
