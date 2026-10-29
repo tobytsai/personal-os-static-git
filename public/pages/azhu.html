@@ -163,7 +163,7 @@ $("reset").addEventListener("click",()=>{activeGroup="all";activeView=null;activ
 $("closeDetail").addEventListener("click",()=>$("detailsDialog").close());
 $("help").addEventListener("click",()=>$("helpDialog").showModal());
 $("closeHelp").addEventListener("click",()=>$("helpDialog").close());
-fetch("../data/azhu-catalog.json?v=20261030").then(r=>{if(!r.ok)throw Error("無法取得資料庫");return r.json()}).then(d=>{
+fetch("../data/azhu-catalog.json?v=20261030-photos807").then(r=>{if(!r.ok)throw Error("無法取得資料庫");return r.json()}).then(d=>{
 data=d;
 renderSelectors();render();
 $("stats").innerHTML='<span class="stat">🖼 '+data.items.length+' 筆作品／布置卡片</span><span class="stat">📚 '+data.views.length+' 個 Gallery 視圖</span><span class="stat">🧭 '+data.groups.length+' 大分類</span><span class="stat">📸 '+data.items.reduce((n,x)=>n+(x.images?.length||0),0)+' 張已匯入圖片</span><span class="stat">🔖 '+data.items.filter(x=>x.isProduct).length+' 筆商品記錄</span>';
