@@ -179,7 +179,124 @@ main{width:100%;max-width:1120px;min-width:0}
 @media(max-width:850px){.sfg-oil-scenarios{grid-template-columns:minmax(0,1fr)}.sfg-oil-scenario{align-items:center}}
 @media(max-width:560px){.sfg-oil-sizes{grid-template-columns:repeat(2,minmax(0,1fr))}.sfg-oil-breakdown .sfg-line{font-size:12px}.sfg-dali-metrics{grid-template-columns:minmax(0,1fr)}}
 
-</style></head><body><main><a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a><header class="hero"><span>🖼 裱框找模式 · 油畫框</span><h1>油畫框商品探索</h1><p>整理油畫與畫布作品使用的畫框，依店家、尺寸與名稱探索。IKEA 為含畫作的附框畫，作為框型參考。</p><a href="https://www.gakubuti.net/product/list/2" target="_blank" rel="noopener noreferrer">高橋油畫框分類 ↗</a><a href="https://www.frame-shop.jp/view/category/ct69" target="_blank" rel="noopener noreferrer">額緣專門店油畫框分類 ↗</a><a href="https://www.ikea.com.tw/zh/products/home-decoration/pictures" target="_blank" rel="noopener noreferrer">IKEA 台灣裝飾畫分類 ↗</a></header><section class="sizes"><h2>📐 常見尺寸參考</h2><p>依日本高橋網站標示的畫框內尺寸分類。選框前請核對作品的實際長寬、厚度及框的容納深度。</p><div id="size-links" class="chips"></div><p class="note">F、P、M、S 尺寸依日本規格；高橋參考官網尺寸清單，專門店依商品名稱篩選。IKEA 附框畫為展示參考，不列入油畫框尺寸篩選。</p></section><section><h2 id="heading">油畫框商品</h2><p class="note" id="overview"></p><p class="note">日本商品台幣參考價以 2026/10/27 匯率 1 日圓＝NT$0.2064 換算，未含運費與可能的進口稅費；高橋標示全尺寸起價，專門店標示該商品規格價格。商品價格與庫存以官網為準。</p><div class="controls"><input id="search" type="search" placeholder="搜尋型號、名稱或尺寸" aria-label="搜尋商品"><button id="all" class="active">全部商品</button><button id="high">高橋</button><button id="ikea">IKEA</button><button id="shop">專門店</button><button id="fav">⭐ 收藏</button><button id="recent">🕘 最近開啟</button></div><p id="count" class="note"></p><div class="grid" id="grid"></div><div class="pager"><button id="prev">← 上一頁</button><span id="page"></span><button id="next">下一頁 →</button></div></section></main><script>window.FLAT_ITEMS=[];</script>
+</style></head><body><main><a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a><header class="hero"><span>🖼 裱框找模式 · 油畫框</span><h1>油畫框商品探索</h1><p>整理油畫與畫布作品使用的畫框，依店家、尺寸與名稱探索。IKEA 為含畫作的附框畫，作為框型參考。</p><a href="https://www.gakubuti.net/product/list/2" target="_blank" rel="noopener noreferrer">高橋油畫框分類 ↗</a><a href="https://www.frame-shop.jp/view/category/ct69" target="_blank" rel="noopener noreferrer">額緣專門店油畫框分類 ↗</a><a href="https://www.ikea.com.tw/zh/products/home-decoration/pictures" target="_blank" rel="noopener noreferrer">IKEA 台灣裝飾畫分類 ↗</a></header><section class="sizes"><h2>📐 常見尺寸參考</h2><p>依日本高橋網站標示的畫框內尺寸分類。選框前請核對作品的實際長寬、厚度及框的容納深度。</p><div id="size-links" class="chips"></div><p class="note">F、P、M、S 尺寸依日本規格；高橋參考官網尺寸清單，專門店依商品名稱篩選。IKEA 附框畫為展示參考，不列入油畫框尺寸篩選。</p></section><section><h2 id="heading">油畫框商品</h2><p class="note" id="overview"></p><p class="note">日本商品台幣參考價以 2026/10/27 匯率 1 日圓＝NT$0.2064 換算，未含運費與可能的進口稅費；高橋標示全尺寸起價，專門店標示該商品規格價格。商品價格與庫存以官網為準。</p><div class="controls"><input id="search" type="search" placeholder="搜尋型號、名稱或尺寸" aria-label="搜尋商品"><button id="all" class="active">全部商品</button><button id="high">高橋</button><button id="ikea">IKEA</button><button id="shop">專門店</button><button id="fav">⭐ 收藏</button><button id="recent">🕘 最近開啟</button></div>
+<section id="sfg-calculator" class="sfg-panel" aria-labelledby="sfg-heading" hidden>
+<header class="sfg-heading">
+ <div><span class="sfg-step-label">SONG FENG GE · 油畫裱框情境</span>
+ <h3 id="sfg-heading">🖼️ 松風閣｜油畫框情境試算</h3>
+ <p>依油畫布是否已有布架，切換外框、立體框與無框畫三種做法，參考價格不等於正式報價。</p></div>
+ <div class="sfg-heading-links">
+  <a href="https://sfg218.com/frame3_class.php?class=2" target="_blank" rel="noopener noreferrer">官網油畫裱框作法 ↗</a>
+  <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">官網模擬框 ↗</a>
+  <a href="https://docs.google.com/spreadsheets/d/1ddZNssGS1xiPZpxEBNRDW9LDdtO8ULY4RQu4ewkKD14/edit" target="_blank" rel="noopener noreferrer">框型價格試算表 ↗</a>
+ </div>
+</header>
+<div class="sfg-oil-scenarios" id="sfg-oil-scenarios" aria-label="選擇油畫裱框情境">
+ <label class="sfg-oil-scenario selected"><input type="radio" name="sfg-oil-scenario" value="direct" checked><span><strong>① 已有布架 ⇒ 直接裱外框</strong><small>已有繃好的畫布，只算外框、安裝工資及五金。</small></span></label>
+ <label class="sfg-oil-scenario"><input type="radio" name="sfg-oil-scenario" value="shadow"><span><strong>② 布架立體框</strong><small>框＋卡板＋壓克力＋底布，另計安裝工資。</small></span></label>
+ <label class="sfg-oil-scenario"><input type="radio" name="sfg-oil-scenario" value="stretch"><span><strong>③ 油畫布繃成無框畫</strong><small>不加外框，改算布架木料、繃布工資及畫布材料。</small></span></label>
+</div>
+<div class="sfg-layout">
+<div class="sfg-config">
+<section class="sfg-box">
+ <h4>① 油畫作品／布架尺寸</h4>
+ <p class="sfg-oil-help">快速選 F／P／M／S 系列，或自行填作品實際尺寸；有布架時也請測量厚度。</p>
+ <div id="sfg-oil-families" class="sfg-oil-family-buttons" aria-label="油畫尺寸系列"></div>
+ <div id="sfg-oil-sizes" class="sfg-oil-sizes" aria-label="油畫尺寸快速選擇"></div>
+ <p id="sfg-oil-size-label" class="sfg-oil-size-label"></p>
+ <div class="sfg-fields">
+  <label for="sfg-length">作品長／高（mm）<input id="sfg-length" type="number" min="1" step="0.1" inputmode="decimal" value="409"></label>
+  <label for="sfg-width">作品寬（mm）<input id="sfg-width" type="number" min="1" step="0.1" inputmode="decimal" value="318"></label>
+  <label for="sfg-oil-canvas-depth">布架厚度（mm，選填）<input id="sfg-oil-canvas-depth" type="number" min="0" step="0.1" inputmode="decimal" placeholder="請輸入實際厚度"></label>
+ </div>
+ <p class="sfg-inch-result"><span>📏 長＋寬換算吋數</span><output id="sfg-size-inches" aria-live="polite">（40.9 ＋ 31.8）÷ 2.54 ＝ 28.62 吋</output><small>輸入 mm，先換成 cm，再除以 2.54。</small></p>
+</section>
+
+<section id="sfg-oil-frame-section" class="sfg-box sfg-oil-block">
+ <h4>② 選擇松風閣外框</h4>
+ <p class="sfg-oil-help" id="sfg-oil-frame-tip">已有布架仍要確認框型內槽深度。型材 H 高度不等於可容納布架的內槽深度。</p>
+ <div class="sfg-frame-tools"><input class="sfg-frame-search" id="sfg-frame-search" type="search" placeholder="搜尋型號、顏色或框寬" aria-label="搜尋松風閣框型"></div>
+ <div class="sfg-frame-filter" id="sfg-frame-filter" aria-label="依松風閣框型分類"></div>
+ <p class="sfg-tip" id="sfg-frame-count" aria-live="polite"></p>
+ <div class="sfg-frames" id="sfg-frame-grid" aria-label="選擇松風閣外框"></div>
+ <button type="button" id="sfg-load-more" class="sfg-custom" hidden>顯示更多框型</button>
+ <button type="button" id="sfg-custom" class="sfg-custom" aria-expanded="false">找不到合適框型？自行輸入</button>
+ <div id="sfg-oil-custom-fields" class="sfg-custom-fields sfg-fields" hidden>
+  <label for="sfg-custom-name">自訂框型名稱<input id="sfg-custom-name" type="text" placeholder="自訂框型"></label>
+  <label for="sfg-custom-width">自訂框條面寬（cm）<input id="sfg-custom-width" type="number" min="0.1" step="0.1" value="3"></label>
+ </div>
+ <div class="sfg-rate-row">
+  <label class="sfg-amount-field" for="sfg-frame-rate">外框單價（NT$／15cm計價單位）<input id="sfg-frame-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="無價格時請自行輸入"></label>
+  <a id="sfg-frame-link" href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">核對松風閣框型 ↗</a>
+ </div>
+ <p class="sfg-tip" id="sfg-price-source" aria-live="polite">價格依 Google 試算表，並非即時報價。</p>
+ <p class="sfg-oil-missing-note">一般外框型錄不保證每款都適合油畫布架／立體框，必須另核實內槽深度、墊高、裝法及作品厚度。</p>
+</section>
+
+<section id="sfg-oil-install-section" class="sfg-box sfg-oil-block">
+ <h4>③ 已有布架：直接裝外框</h4>
+ <p class="sfg-oil-help">不自動加入背板或壓克力；以下工資、五金為自訂費用。</p>
+ <div class="sfg-fields">
+  <label for="sfg-oil-install-labor">裝框工資（NT$）<input id="sfg-oil-install-labor" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+  <label for="sfg-oil-install-parts">掛件／五金等材料（NT$）<input id="sfg-oil-install-parts" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+ </div>
+ <p class="sfg-oil-field-hint">工資預設 0 僅代表尚未另行輸入，不表示工資免費。</p>
+</section>
+
+<section id="sfg-oil-shadow-section" class="sfg-box sfg-oil-block" hidden>
+ <h4>③ 立體框：卡板＋壓克力＋底布</h4>
+ <p class="sfg-oil-help">另加外框及組裝工資。卡板、底布沒有已核實單價，請自行輸入；壓克力每才價可調整。</p>
+ <div class="sfg-fields">
+  <label for="sfg-oil-card-rate">卡板（NT$／才）<input id="sfg-oil-card-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="待輸入"></label>
+  <label for="sfg-oil-acrylic-rate">壓克力（NT$／才）<input id="sfg-oil-acrylic-rate" type="number" min="0" step="0.01" value="100" inputmode="decimal"></label>
+  <label for="sfg-oil-bottom-rate">底布（NT$／才）<input id="sfg-oil-bottom-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="待輸入"></label>
+  <label for="sfg-oil-shadow-labor">立體框安裝工資（NT$）<input id="sfg-oil-shadow-labor" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+ </div>
+ <p class="sfg-oil-field-hint">1 才＝900 cm²。先以畫布正面面積估算，若卡板／底布需外擴、墊高或另收最低工資，須按實際規格修正。</p>
+</section>
+
+<section id="sfg-oil-stretch-section" class="sfg-box sfg-oil-block" hidden>
+ <h4>③ 油畫布繃成無框畫</h4>
+ <p class="sfg-oil-help">無外框；改用布架木料、繃布工資及選填畫布材料估算。</p>
+ <div class="sfg-fields">
+  <label for="sfg-oil-stretcher-rate">布架木料（NT$／15cm，自訂估算）<input id="sfg-oil-stretcher-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="請自行輸入"></label>
+  <label for="sfg-oil-stretch-labor">繃布工資（NT$）<input id="sfg-oil-stretch-labor" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+  <label for="sfg-oil-canvas-rate">另購畫布（NT$／才；自備可填 0）<input id="sfg-oil-canvas-rate" type="number" min="0" step="0.01" value="0" inputmode="decimal"></label>
+  <label for="sfg-oil-wrap-margin">畫布包邊預留（每側 cm）<input id="sfg-oil-wrap-margin" type="number" min="0" step="0.5" value="5" inputmode="decimal"></label>
+ </div>
+ <p class="sfg-oil-field-hint" id="sfg-oil-stretch-area">需確認畫布包邊量、加強桿、木料規格與繃布工法。</p>
+ <p class="sfg-oil-missing-note">布架木料的「每15cm單價」是自訂估算係數，不是松風閣已核實的無框畫工法售價。</p>
+</section>
+</div>
+
+<aside class="sfg-summary" aria-label="油畫裱框計算結果">
+ <h4>油畫裱框・情境試算</h4>
+ <div class="sfg-preview">
+  <img id="sfg-preview-photo" class="sfg-preview-photo" alt="" referrerpolicy="no-referrer" decoding="async" hidden>
+  <div id="sfg-preview-frame" class="sfg-preview-frame" aria-hidden="true"><div class="sfg-preview-art"><span>油畫作品示意</span></div></div>
+  <div id="sfg-oil-canvas-preview" class="sfg-oil-canvas-preview" aria-hidden="true" hidden><span>油畫布<br>無框畫</span></div>
+ </div>
+ <small id="sfg-preview-note" class="sfg-preview-note">框型來源為松風閣官網；作品示意不代表實際完成品。</small>
+ <div class="sfg-selected-name" id="sfg-selected-name">目前框型：尚未選擇</div>
+ <div id="sfg-oil-breakdown" class="sfg-oil-breakdown"></div>
+ <div class="sfg-total"><span>情境參考合計</span><strong id="sfg-total" aria-live="polite">待計算</strong></div>
+ <div id="sfg-oil-formulas" class="sfg-formulas" aria-live="polite"></div>
+ <p class="sfg-warning" id="sfg-oil-alert" role="status"></p>
+ <section id="sfg-oil-dali" class="sfg-dali" aria-labelledby="sfg-dali-heading">
+  <h5 id="sfg-dali-heading">🔄 達利外框價格換算</h5>
+  <p>松風閣：(長＋寬)÷15 × 框條單價；達利：(長＋寬)÷2.54 × 每吋單價（長、寬用 cm）。</p>
+  <label for="sfg-dali-multiplier"><span>達利加價倍率</span><input id="sfg-dali-multiplier" type="number" min="0.01" max="10" step="0.05" value="1.00" inputmode="decimal"></label>
+  <div class="sfg-dali-metrics">
+   <div class="sfg-dali-metric"><span>換算達利每吋單價</span><strong id="sfg-dali-unit">—</strong></div>
+   <div class="sfg-dali-metric main"><span>達利外框參考價</span><strong id="sfg-dali-frame">—</strong></div>
+  </div>
+  <p id="sfg-dali-formula" class="sfg-formulas"></p>
+  <p>預設 1 倍只轉換計價單位，額外材料與工資不包含在這個外框換算內。</p>
+ </section>
+</aside>
+</div>
+<p class="sfg-sources">作法分類參考 <a href="https://sfg218.com/frame3_class.php?class=2" target="_blank" rel="noopener noreferrer">松風閣官方油畫裱框說明</a>。選框價格沿用 Google 試算表快照；並非松風閣正式報價或下單系統。布架厚度、立體框所需墊高、內槽適配與加工工資均須另外確認。</p>
+</section><p id="count" class="note"></p><div class="grid" id="grid"></div><div class="pager" id="pager"><button id="prev">← 上一頁</button><span id="page"></span><button id="next">下一頁 →</button></div></section></main><script>window.FLAT_ITEMS=[];</script>
 <script src="../data/oil-frames-0.js"></script>
 <script src="../data/oil-frames-1.js"></script>
 <script src="../data/oil-frames-2.js"></script>
