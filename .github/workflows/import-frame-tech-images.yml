@@ -1,0 +1,42 @@
+name: Persist Airtable framing-technique card images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/import_frame_tech_images.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: frame-tech-images-import
+  cancel-in-progress: false
+
+jobs:
+  import-frame-tech-images:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Install image library
+        run: python3 -m pip install --disable-pip-version-check -q requests 'Pillow>=10'
+      - name: Import and optimize Airtable attachment photos
+        run: python3 scripts/import_frame_tech_images.py
+      - name: Commit durable photos and catalog updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A public/images/frame-tech public/data/frame-tech-work.json public/data/frame-tech-image-import-report.json
+          if git diff --cached --quiet; then
+            echo "No new photos to commit"
+          else
+            git commit -m "Persist Airtable framing technique photos for 仕事 cards"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
