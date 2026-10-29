@@ -52,6 +52,9 @@ jobs:
       - name: Collect Song Feng Ge matboard products and verified photos
         run: |
           python3 scripts/build_songfeng_matboards.py
+      - name: Collect Song Feng Ge silk fabric products and verified photos
+        run: |
+          python3 scripts/build_songfeng_silk_fabrics.py
       - name: Upload public directory
         uses: actions/upload-pages-artifact@v3
         with:
