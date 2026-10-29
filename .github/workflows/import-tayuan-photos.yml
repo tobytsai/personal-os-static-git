@@ -1,0 +1,40 @@
+name: Import approved Tayuan Airtable product photos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/tayuan-photo-import.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tayuan-photo-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install image processing dependencies
+        run: python3 -m pip install --disable-pip-version-check -q requests pillow
+      - name: Download and persist Airtable product photos
+        run: python3 scripts/import_tayuan_photos.py
+      - name: Commit durable photos, public mapping and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A public/images/tayuan public/data/tayuan-images.js public/data/tayuan-photo-import-report.json scripts/tayuan-photo-import.json
+          if git diff --cached --quiet; then
+            echo "No photo changes"
+          else
+            git commit -m "Import Tayuan product photos from approved Airtable attachments"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
