@@ -106,11 +106,11 @@ def main():
     failures = []
     for record in records:
         fields = record.get("fields", {})
-        if fields.get(VENDOR_FIELD) != "大圓":
+        if fields.get(VENDOR_FIELD, fields.get(FIELD_IDS[VENDOR_FIELD])) != "大圓":
             continue
-        code = code_from_url(fields.get(SOURCE_FIELD, ""))
+        code = code_from_url(fields.get(SOURCE_FIELD, fields.get(FIELD_IDS[SOURCE_FIELD], "")))
         label = safe_code(code)
-        attachments = fields.get(IMAGE_FIELD, [])
+        attachments = fields.get(IMAGE_FIELD, fields.get(FIELD_IDS[IMAGE_FIELD], []))
         if not code or not label or not attachments:
             skipped += 1
             continue
