@@ -146,7 +146,7 @@ for(const image of methods){
 // 成品圖封面排序：彩色主視覺 illustrated 優先；資料表／作法圖不作封面。
 function exampleImageRank(image){
  const filename=String(image.title||"").trim().toLocaleLowerCase();
- if(/^\\d+[-_]\\d+[-_]illustrated\\.(?:png|jpe?g|webp)$/i.test(filename))return 0;
+ if(/^[0-9]+[-_][0-9]+[-_]illustrated[.](?:png|jpe?g|webp)$/i.test(filename))return 0;
  if(/illustrated|主視覺|封面|成品主圖|主圖展示/.test(filename))return 1;
  if(/成品實拍|實際成品|完成效果/.test(filename))return 10;
  if(/額緣框作法|作法|method|施工|工序|製作流程/.test(filename))return 95;
