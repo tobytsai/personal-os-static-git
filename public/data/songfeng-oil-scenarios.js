@@ -215,7 +215,7 @@ function calculate(){
  updateVisual(l,w);
  const rows=[],missing=[];
  const push=(label,cost)=>{rows.push({label,cost});};
- let outer=null;
+ let outer=null,cardCalculation=null;
  if(scenario!=="stretch"){
   const raw=$("sfg-frame-rate").value.trim();
   const rate=signedValue("sfg-frame-rate");
@@ -234,11 +234,14 @@ function calculate(){
   }else{
    const card=signedValue("sfg-oil-card-rate"),acrylic=signedValue("sfg-oil-acrylic-rate"),
     cloth=signedValue("sfg-oil-bottom-rate"),labor=signedValue("sfg-oil-shadow-labor");
-   push("卡板（按面積／才）",card===null?null:area*card);
+   // 原始筆記的試算為 (長＋寬)÷15×單價，100×100cm 得 1333.33 元並取整十元為 1330。
+   // 卡板採線性計算；壓克力及底布才依面積計價。
+   cardCalculation=card===null?null:{rate:card,raw:perimeter*card,total:Math.round(perimeter*card/10)*10};
+   push("卡板 4.5cm（按長寬／十元取整）",cardCalculation===null?null:cardCalculation.total);
    push("壓克力（按面積／才）",acrylic===null?null:area*acrylic);
    push("底布（按面積／才）",cloth===null?null:area*cloth);
    push("立體框組裝工資",labor);
-   if(card===null)missing.push("卡板每才單價");
+   if(card===null)missing.push("卡板 4.5cm 每15cm單價");
    if(acrylic===null)missing.push("壓克力每才單價");
    if(cloth===null)missing.push("底布每才單價");
    if(labor===null)missing.push("組裝工資");
@@ -270,6 +273,11 @@ function calculate(){
  formula.textContent=sizeOk?type+"｜長 "+decimal(length,1)+"cm、寬 "+decimal(width,1)+
   "cm；外框／布架線性係數："+decimal(perimeter,3)+"；作品面積："+decimal(area,3)+" 才。":
   type+"｜請輸入有效的作品尺寸。";
+ if(scenario==="shadow"&&sizeOk&&cardCalculation!==null){
+  formula.textContent+="\n卡板 4.5cm：（"+decimal(length,1)+"＋"+decimal(width,1)+"）÷15 × "+
+   decimal(cardCalculation.rate,2)+"＝"+amount(cardCalculation.raw)+
+   "；依原始筆記範例取整十元："+amount(cardCalculation.total)+"。";
+ }
  const multiplier=positiveValue("sfg-dali-multiplier");
  const actualRate=scenario==="stretch"?null:signedValue("sfg-frame-rate");
  const daliUnit=actualRate!==null&&multiplier!==null?actualRate*2.54/15*multiplier:null;
