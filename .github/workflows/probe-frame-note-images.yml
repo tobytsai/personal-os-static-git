@@ -1,0 +1,27 @@
+name: Probe public Yinxiang note cover images
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/probe_frame_note_images.py
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install -q --disable-pip-version-check requests beautifulsoup4
+      - run: python3 scripts/probe_frame_note_images.py
+      - name: Publish non-sensitive diagnostics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/frame-note-probe.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record public note accessibility probe metadata"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
