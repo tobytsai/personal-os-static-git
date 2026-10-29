@@ -162,6 +162,7 @@ main{width:100%;max-width:1120px;min-width:0}
 @media(max-width:850px){.sfg-layout{grid-template-columns:minmax(0,1fr)}.sfg-summary{position:static}.sfg-mobile-quote{position:fixed;display:flex;justify-content:space-between;align-items:center;gap:10px;bottom:0;left:0;right:0;z-index:80;background:#fffffff5;border-top:1px solid #cfdaed;box-shadow:0 -5px 22px #2d446519;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}.sfg-mobile-quote small{display:block;font-size:10px;color:#74849b}.sfg-mobile-quote strong{font-size:17px;color:#315b88}.sfg-mobile-quote a{padding:10px 14px;border-radius:11px;background:#5578b8;color:#fff;font-size:12px;font-weight:800}body{padding-bottom:85px}.sfg-preview-photo{height:200px}}
 @media(max-width:560px){.sfg-options-grid{grid-template-columns:minmax(0,1fr)}.sfg-option-top{flex-direction:row;justify-content:space-between;align-items:flex-start}.sfg-option-label{flex:1;min-width:0}.sfg-option-rate{flex:none;font-size:10px}.sfg-panel{padding:12px}.sfg-box,.sfg-summary{padding:13px}.sfg-heading-links{justify-content:flex-start}.hero{padding:22px}.sfg-service-presets button{font-size:11px}main{padding:12px}.sfg-heading h3{font-size:21px}}
 .sfg-dimension-results output{display:block;margin-top:4px;font-size:14px;font-weight:800;color:#304c72;overflow-wrap:anywhere}
+.sfg-dali-rate-field{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0;color:#476180;font-size:12px;font-weight:750}.sfg-dali-rate-field input{width:110px;max-width:100%;padding:8px 10px;border:1px solid #c7d6e8;border-radius:10px;font:inherit;background:white;color:#294365}.sfg-dali-rate-field input:focus-visible{outline:2px solid #6386c7;outline-offset:2px}
 </style></head><body><main>
 <a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a>
 <header class="hero"><span>🖼️ 裱框找模式 · 松風閣</span><h1>松風閣畫框試算</h1><p>依松風閣線上模擬框整理，提供374款外框及21個工法、表面材質與結構配件選項。</p><a href="./framing-materials.html?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3">查看松風閣裱框材料 ↗</a></header>
@@ -176,8 +177,8 @@ main{width:100%;max-width:1120px;min-width:0}
 <div class="sfg-fields"><label for="sfg-length">作品長／高（mm）<input id="sfg-length" type="number" min="1" step="0.1" value="298" inputmode="decimal"></label><label for="sfg-width">作品寬（mm）<input id="sfg-width" type="number" min="1" step="0.1" value="211" inputmode="decimal"></label></div>
 <div id="sfg-dimension-price-formulas" class="sfg-formulas sfg-dimension-results">
 <p>松風閣：（長＋寬）÷15 × 框條單價<output id="sfg-dimension-songfeng-result" aria-live="polite"></output></p>
-<p>達利：（長＋寬）÷2.54 × 達利每吋單價<output id="sfg-dimension-dali-result" aria-live="polite"></output></p>
-<p class="sfg-tip" id="sfg-dimension-price-note">兩者的長寬皆為 cm；依所選框條單價與達利訂價倍率計算外框參考價。</p>
+<p>達利：（長＋寬）÷2.54 × 達利每吋單價<label class="sfg-dali-rate-field" for="sfg-dali-rate"><span>每吋單價</span><input id="sfg-dali-rate" type="number" min="0" step="0.01" value="44" inputmode="decimal" placeholder="填入單價" aria-describedby="sfg-dimension-price-note"><span>元／吋</span></label><output id="sfg-dimension-dali-result" aria-live="polite"></output></p>
+<p class="sfg-tip" id="sfg-dimension-price-note">兩者的長寬皆為 cm；達利依自行填入的每吋單價計算外框參考價。</p>
 </div>
 <p class="sfg-inch-result"><span>📏 長＋寬換算吋數</span><output id="sfg-size-inches" aria-live="polite">（29.8 ＋ 21.1）÷ 2.54 ＝ 20.04 吋</output><small>輸入單位是 mm，會先換算成 cm，再除以 2.54。</small></p>
 <p class="sfg-tip">也能手動輸入 mm。工法與配件預設跟隨作品尺寸，勾選後可改用個別尺寸與數量。</p></div>
@@ -210,15 +211,14 @@ main{width:100%;max-width:1120px;min-width:0}
 <p id="sfg-quote-status" class="sfg-quote-status" role="status"></p>
 <div id="sfg-formulas" class="sfg-formulas" aria-live="polite"></div>
 <section class="sfg-dali" aria-labelledby="sfg-dali-heading">
-<h5 id="sfg-dali-heading">🔄 達利外框價格換算</h5>
+<h5 id="sfg-dali-heading">🧮 達利外框試算</h5>
 <p>松風閣：（長＋寬）÷15 × 框條單價；達利：（長＋寬）÷2.54 × 達利每吋單價。兩者的長寬皆為 cm。</p>
-<label for="sfg-dali-multiplier"><span>達利訂價倍率（可調整）</span><input id="sfg-dali-multiplier" type="number" inputmode="decimal" min="0.01" max="10" step="0.05" value="1.00" aria-describedby="sfg-dali-hint"></label>
 <div class="sfg-dali-metrics">
-<div class="sfg-dali-metric"><span>換算達利每吋單價</span><strong id="sfg-dali-unit" aria-live="polite">—</strong></div>
+<div class="sfg-dali-metric"><span>自行設定達利每吋單價</span><strong id="sfg-dali-unit" aria-live="polite">—</strong></div>
 <div class="sfg-dali-metric main"><span>達利外框參考價</span><strong id="sfg-dali-frame" aria-live="polite">—</strong></div>
 </div>
 <p id="sfg-dali-formula" class="sfg-dali-formula" aria-live="polite"></p>
-<p id="sfg-dali-hint">預設 1 倍只換算計價單位，與松風閣外框價相同；若達利另行訂價，可調整倍率。這裡只計外框，不含背板、壓克力、工資，且不是達利正式售價。</p>
+<p id="sfg-dali-hint">上方每吋單價預設 44 元，可自行修改。這裡只計達利外框參考價，不含背板、壓克力與工資。</p>
 </section>
 <p class="sfg-warning" id="sfg-alert" role="status"></p>
 </aside>
@@ -444,24 +444,25 @@ function sfgApplyServicePreset(type){
 function sfgDimensionPriceText(input){
  const h=Number(input.heightMm),w=Number(input.widthMm),margin=Number(input.marginMm);
  const good=String(input.heightMm).trim()!==""&&String(input.widthMm).trim()!==""&&[h,w,margin].every(Number.isFinite)&&h>0&&w>0&&margin>=0;
- if(!good)return {songfeng:"請輸入有效的作品長／高與寬。",dali:"請輸入有效的作品長／高與寬。"};
+ if(!good)return {songfeng:"請輸入有效的作品長／高與寬。",dali:"請輸入有效的作品長／高與寬。",daliUnit:null,daliAmount:null};
  const L=(h+2*margin)/10,W=(w+2*margin)/10,pair="（"+sfgDec(L,1)+" ＋ "+sfgDec(W,1)+"）";
- if(input.frameEnabled===false)return {songfeng:pair+" ÷15；目前未另計外框。",dali:pair+" ÷2.54；目前未另計外框。"};
  const raw=String(input.rateRaw).trim(),rate=Number(raw);
- if(raw===""||!Number.isFinite(rate)||rate<0)return {songfeng:pair+" ÷15 ＝ "+sfgDec((L+W)/15,4)+"；待填框條單價。",dali:pair+" ÷2.54 ＝ "+sfgDec((L+W)/2.54,4)+" 吋；待填框條單價。"};
- const songfeng=pair+" ÷15 × "+sfgDec(rate,2)+" ＝ "+sfgMoney((L+W)/15*rate);
- const multiRaw=String(input.multiplierRaw).trim(),multi=Number(multiRaw);
- if(multiRaw===""||!Number.isFinite(multi)||multi<=0||multi>10)return {songfeng,dali:"待填有效的達利訂價倍率（大於 0，最多 10 倍）。"};
- const unit=rate*2.54/15*multi;
- return {songfeng,dali:pair+" ÷2.54 × "+sfgDec(unit,4)+" ＝ "+sfgMoney((L+W)/2.54*unit)};
+ const songfeng=input.frameEnabled===false?pair+" ÷15；目前未另計外框。":raw===""||!Number.isFinite(rate)||rate<0?pair+" ÷15 ＝ "+sfgDec((L+W)/15,4)+"；待填框條單價。":pair+" ÷15 × "+sfgDec(rate,2)+" ＝ "+sfgMoney((L+W)/15*rate);
+ const daliRaw=String(input.daliRateRaw).trim(),unit=Number(daliRaw);
+ if(daliRaw===""||!Number.isFinite(unit)||unit<0)return {songfeng,dali:pair+" ÷2.54 ＝ "+sfgDec((L+W)/2.54,4)+" 吋；請填入達利每吋單價。",daliUnit:null,daliAmount:null};
+ const amount=(L+W)/2.54*unit;
+ return {songfeng,dali:pair+" ÷2.54 × "+sfgDec(unit,2)+" ＝ "+sfgMoney(amount),daliUnit:unit,daliAmount:amount};
 }
 function sfgUpdateDimensionPriceResults(){
  const margin=typeof sfgScenario!=="undefined"&&sfgScenario!=="general"?sfgNum("sfg-margin"):0;
  const frameSwitch=document.getElementById("sfg-frame-on");
- const result=sfgDimensionPriceText({heightMm:sfgEl("sfg-length").value,widthMm:sfgEl("sfg-width").value,marginMm:margin,rateRaw:sfgEl("sfg-frame-rate").value,multiplierRaw:sfgEl("sfg-dali-multiplier").value,frameEnabled:frameSwitch?frameSwitch.checked:true});
+ const result=sfgDimensionPriceText({heightMm:sfgEl("sfg-length").value,widthMm:sfgEl("sfg-width").value,marginMm:margin,rateRaw:sfgEl("sfg-frame-rate").value,daliRateRaw:sfgEl("sfg-dali-rate").value,frameEnabled:frameSwitch?frameSwitch.checked:true});
  sfgEl("sfg-dimension-songfeng-result").textContent=result.songfeng;
  sfgEl("sfg-dimension-dali-result").textContent=result.dali;
- sfgEl("sfg-dimension-price-note").textContent="兩者的長寬皆為 cm；依所選框條單價與達利訂價倍率計算外框參考價。"+(margin>0?"目前長寬已包含四邊留白各 "+sfgDec(margin,0)+" mm。":"");
+ sfgEl("sfg-dimension-price-note").textContent="兩者的長寬皆為 cm；達利依自行填入的每吋單價計算外框參考價。"+(margin>0?"目前長寬已包含四邊留白各 "+sfgDec(margin,0)+" mm。":"");
+ sfgEl("sfg-dali-unit").textContent=result.daliUnit===null?"待填單價":"NT$"+sfgDec(result.daliUnit,2)+"／吋";
+ sfgEl("sfg-dali-frame").textContent=result.daliAmount===null?"待輸入":sfgMoney(result.daliAmount);
+ sfgEl("sfg-dali-formula").textContent="達利："+result.dali;
 }
 function sfgCalculate(){
  sfgUpdateDimensionPriceResults();
@@ -500,12 +501,6 @@ function sfgCalculate(){
  sfgEl("sfg-mobile-count").textContent=quote.lines.length+" 項明細";
  for(const line of quote.lines){const output=sfgEl("sfg-option-result-"+line.id);if(output)output.textContent=line.amount===null?"金額待輸入":sfgMoney(line.amount)+(line.minimumApplied?"（已套用最低收費）":"");}
  sfgEl("sfg-formulas").innerHTML=sizeValid?"<p>作品："+sfgDec(mmL/10,1)+" × "+sfgDec(mmW/10,1)+" cm；面積 "+sfgDec(mmL*mmW/90000,3)+" 才。</p><p>工法與配件：每件才數無條件進位後 × 單價；板架另有每件最低1,000元。貼工依自行輸入的固定工資計價。</p>":"";
- const multiRaw=sfgEl("sfg-dali-multiplier").value.trim(),multi=Number(multiRaw),multiValid=multiRaw!==""&&Number.isFinite(multi)&&multi>0&&multi<=10;
- const daliUnit=frameEnabled&&hasFrameRate&&multiValid?frameRate*2.54/15*multi:null;
- const daliOuter=sizeValid&&daliUnit!==null?(mmL+mmW)/25.4*daliUnit:null;
- sfgEl("sfg-dali-unit").textContent=daliUnit===null?"未另計外框或待填框價":"NT$"+sfgDec(daliUnit,4)+"／吋";
- sfgEl("sfg-dali-frame").textContent=daliOuter===null?"—":sfgMoney(daliOuter);
- sfgEl("sfg-dali-formula").textContent=daliOuter!==null?"達利：（"+sfgDec(mmL/10,1)+"＋"+sfgDec(mmW/10,1)+"）÷2.54 ×（"+sfgDec(frameRate,2)+"×2.54÷15×"+sfgDec(multi,2)+"）＝"+sfgMoney(daliOuter):"單獨勾選外框並填入有效框價與倍率後，可換算達利外框參考價。";
  sfgEl("sfg-alert").textContent=!quote.validSize?"請輸入大於0的有效作品尺寸。":Math.max(mmL,mmW)>1500?"大尺寸作品的板材、框條與運輸請向門市確認。":"";
  document.querySelectorAll("[data-sfg-preset]").forEach(button=>{const dimensions=sfgPresets[button.dataset.sfgPreset],on=dimensions[0]===mmL&&dimensions[1]===mmW;button.classList.toggle("selected",on);button.setAttribute("aria-pressed",String(on));});
 }
@@ -525,7 +520,7 @@ function sfgSyncLink(){
  link.href=sfgCustomMode?"https://sfg218.com/frame_class.php?class=17":sfgFrameUrl(sfgChosen);
  link.textContent=(!sfgCustomMode&&sfgChosen.url)?"核對選定框型的官網價格 ↗":"前往松風閣外框目錄查詢 ↗";
 }
-for(const id of ["sfg-length","sfg-width","sfg-frame-rate","sfg-labor","sfg-custom-name","sfg-custom-width","sfg-dali-multiplier"])sfgEl(id).addEventListener("input",sfgCalculate);
+for(const id of ["sfg-length","sfg-width","sfg-frame-rate","sfg-labor","sfg-custom-name","sfg-custom-width","sfg-dali-rate"])sfgEl(id).addEventListener("input",sfgCalculate);
 sfgEl("sfg-frame-on").addEventListener("change",sfgCalculate);
 sfgEl("sfg-options-grid").addEventListener("change",sfgOptionInput);
 sfgEl("sfg-options-grid").addEventListener("input",sfgOptionInput);
