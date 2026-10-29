@@ -1,0 +1,40 @@
+name: Import 阿竹 Airtable artwork images
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/azhu-photo-import-input.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: azhu-photo-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Install image conversion libraries
+        run: python3 -m pip install -q --disable-pip-version-check requests 'Pillow>=10'
+      - name: Import and optimize Airtable photos
+        run: python3 scripts/import_azhu_photos.py
+      - name: Publish durable photo gallery and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A public/images/azhu public/data/azhu-catalog.json public/data/azhu-import-report.json scripts/azhu-photo-import-input.json
+          if git diff --cached --quiet; then
+            echo "No new photo changes"
+          else
+            git commit -m "Import 阿竹 Airtable artwork photos as durable WebP gallery"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
