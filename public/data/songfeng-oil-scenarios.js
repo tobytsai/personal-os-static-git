@@ -60,6 +60,28 @@ let frame=frames.find(f=>f.name==="241平白")||frames.find(f=>f.rate!==null)||f
 const initialOilSize=new URLSearchParams(location.search).get("size");
 let category="all",limit=48,scenario="direct",family="F",sizeKey=oilSizes[initialOilSize]?initialOilSize:"F6",custom=false;
 family=sizeKey==="SM"?"M":sizeKey.charAt(0);
+const cardOptions={
+ "4.5":{name:"卡板 4.5 公分",height:"H4.5",rate:100},
+ "3":{name:"卡板 3 公分",height:"H3.0",rate:80}
+};
+let cardSize="4.5";
+const cardRates={"4.5":100,"3":80};
+function updateCardChoice(){
+ const selected=cardOptions[cardSize];
+ $("sfg-card-spec-title").textContent=selected.name+"｜實木｜參考單價 NT$"+selected.rate;
+ $("sfg-card-spec-detail").textContent="編號："+selected.name.replace(/ /g,"")+"｜尺寸："+selected.height+"｜所在分店：均有（來源記載）";
+ $("sfg-card-rate-label").textContent=selected.name+"（NT$／15cm，按來源範例）";
+ const rate=signedValue("sfg-oil-card-rate");
+ const usedRate=rate===null?selected.rate:rate;
+ const raw=200/15*usedRate,rounded=Math.round(raw/10)*10;
+ $("sfg-card-example").textContent="100×100cm 範例："+selected.name+"，（100＋100）÷15×"+
+  decimal(usedRate,2)+"＝"+amount(raw)+" → 取整十元 "+amount(rounded)+"。";
+ panel.querySelectorAll('input[name="sfg-card-size"]').forEach(input=>{
+  const label=input.closest(".sfg-card-size-option");
+  if(label)label.classList.toggle("selected",input.checked);
+ });
+ calculate();
+}
 const scenarioText={
  direct:"已有布架｜直接裱外框",
  shadow:"布架立體框｜框＋卡板＋壓克力＋底布",
@@ -237,11 +259,11 @@ function calculate(){
    // 原始筆記的試算為 (長＋寬)÷15×單價，100×100cm 得 1333.33 元並取整十元為 1330。
    // 卡板採線性計算；壓克力及底布才依面積計價。
    cardCalculation=card===null?null:{rate:card,raw:perimeter*card,total:Math.round(perimeter*card/10)*10};
-   push("卡板 4.5cm（按長寬／十元取整）",cardCalculation===null?null:cardCalculation.total);
+   push(cardOptions[cardSize].name+"｜"+$("sfg-oil-card-color").value+"（長寬／十元取整）",cardCalculation===null?null:cardCalculation.total);
    push("壓克力（按面積／才）",acrylic===null?null:area*acrylic);
    push("底布（按面積／才）",cloth===null?null:area*cloth);
    push("立體框組裝工資",labor);
-   if(card===null)missing.push("卡板 4.5cm 每15cm單價");
+   if(card===null)missing.push(cardOptions[cardSize].name+" 每15cm單價");
    if(acrylic===null)missing.push("壓克力每才單價");
    if(cloth===null)missing.push("底布每才單價");
    if(labor===null)missing.push("組裝工資");
@@ -274,7 +296,7 @@ function calculate(){
   "cm；外框／布架線性係數："+decimal(perimeter,3)+"；作品面積："+decimal(area,3)+" 才。":
   type+"｜請輸入有效的作品尺寸。";
  if(scenario==="shadow"&&sizeOk&&cardCalculation!==null){
-  formula.textContent+="\n卡板 4.5cm：（"+decimal(length,1)+"＋"+decimal(width,1)+"）÷15 × "+
+  formula.textContent+="\n"+cardOptions[cardSize].name+"：（"+decimal(length,1)+"＋"+decimal(width,1)+"）÷15 × "+
    decimal(cardCalculation.rate,2)+"＝"+amount(cardCalculation.raw)+
    "；依原始筆記範例取整十元："+amount(cardCalculation.total)+"。";
  }
@@ -333,6 +355,14 @@ function install(){
  $("sfg-custom").addEventListener("click",()=>{
   custom=!custom;updateFrameSelection();
  });
+ panel.querySelectorAll('input[name="sfg-card-size"]').forEach(input=>input.addEventListener("change",()=>{
+  if(!input.checked)return;
+  cardRates[cardSize]=signedValue("sfg-oil-card-rate");
+  cardSize=input.value;
+  $("sfg-oil-card-rate").value=cardRates[cardSize]??"";
+  updateCardChoice();
+ }));
+ $("sfg-oil-card-color").addEventListener("change",calculate);
  const ids=["sfg-length","sfg-width","sfg-oil-canvas-depth","sfg-frame-rate","sfg-custom-width","sfg-custom-name",
   "sfg-oil-install-labor","sfg-oil-install-parts",
   "sfg-oil-card-rate","sfg-oil-acrylic-rate","sfg-oil-bottom-rate","sfg-oil-shadow-labor",
@@ -340,7 +370,10 @@ function install(){
   "sfg-dali-multiplier"];
  ids.forEach(id=>$(id).addEventListener("input",()=>{
   if(id==="sfg-length"||id==="sfg-width"){sizeKey=null;renderSizePresets();}
-  calculate();
+  if(id==="sfg-oil-card-rate"){
+   cardRates[cardSize]=signedValue(id);
+   updateCardChoice();
+  }else calculate();
  }));
  // Real photos are preferred. When a provider image fails, show the original mock frame.
  $("sfg-frame-grid").addEventListener("error",e=>{
@@ -355,7 +388,7 @@ function install(){
   $("sfg-preview-frame").hidden=scenario==="stretch";
   $("sfg-preview-note").textContent="官網照片暫時無法載入，改用示意框。";
  });
- renderCategories();chooseSize(sizeKey);updateFrameSelection();refreshScenario();
+ renderCategories();chooseSize(sizeKey);updateFrameSelection();updateCardChoice();refreshScenario();
 }
 install();
 })();
