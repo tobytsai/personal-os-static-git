@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-Hant"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="松風閣畫框選框與試算：作品尺寸、框型照片、外框單價、背板、壓克力、工資及達利外框價格換算。">
+<meta name="description" content="松風閣畫框、工法與配件試算：374款外框、21項服務，支援個別尺寸、數量、計收才數、套裝與達利框價換算。">
 <title>松風閣畫框試算｜裱框找模式啟動器</title>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <style>
@@ -137,11 +137,35 @@ main{width:100%;max-width:1120px;min-width:0}
 .sfg-frame-choice:has(.sfg-frame-photo) .sfg-frame-copy{flex:1;min-width:0}
 .sfg-preview-photo{display:block;width:min(100%,370px);height:230px;max-width:100%;object-fit:contain;background:#fff;border-radius:11px;padding:7px;box-shadow:0 2px 12px #253a5712}
 @media(max-width:560px){.sfg-frame-photo{width:48px;height:52px;max-width:48px}.sfg-preview-photo{height:215px}}
+
+/* 工法與配件 */
+.sfg-layout{grid-template-columns:minmax(0,1.5fr) minmax(295px,1fr)}.sfg-summary{min-width:0;position:sticky;top:78px}
+.sfg-service-presets,.sfg-option-filters{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.sfg-service-presets button,.sfg-option-filters button{padding:8px 10px;min-height:37px;border:1px solid #cddbf1;border-radius:11px;background:#f6f9ff;color:#355b8e;font-size:12px;font-weight:800;cursor:pointer}
+.sfg-option-filters button.selected{background:#5578b8;color:#fff;border-color:#5578b8}
+.sfg-selection-note{margin:8px 0;color:#526e90;font-size:12px;line-height:1.6}.sfg-selection-note:empty{display:none}
+.sfg-option-search-label{display:flex;flex-direction:column;gap:6px;color:#52637d;font-size:12px;font-weight:750}
+.sfg-options-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.sfg-option{min-width:0;border:1px solid #dce4ef;border-radius:13px;padding:12px;background:#fff;overflow-wrap:anywhere}
+.sfg-option.is-on{border-color:#7393c3;background:#f2f7ff;box-shadow:0 0 0 1px #7393c322}.sfg-option.is-covered{background:#f4f5f6;color:#738096}
+.sfg-option-top{display:flex;flex-direction:column;gap:7px}.sfg-option-label{display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:800;line-height:1.65;cursor:pointer}
+.sfg-option-label input{width:18px;height:18px;flex:none;margin:2px 0 0;accent-color:#5578b8}.sfg-option-rate{align-self:flex-start;color:#305e8f;background:#e8f0fb;border-radius:7px;padding:4px 7px;font-size:11px;font-weight:850}
+.sfg-option-desc{font-size:11px;color:#63758c;line-height:1.65;margin:7px 0}.sfg-option-included{font-size:11px;line-height:1.65;color:#8d652d;margin:6px 0}
+.sfg-option-source{font-size:11px;font-weight:750;color:#426ba4;text-decoration:underline;text-underline-offset:3px}.sfg-option-config{margin-top:10px;border-top:1px solid #d8e3f3;padding-top:10px}
+.sfg-option-config .sfg-fields{gap:7px}.sfg-option-config .sfg-fields label{font-size:11px}.sfg-option-config input[type="number"]{font-size:13px;padding:8px 7px}
+.sfg-option-sync{font-size:11px!important;margin:10px 0}.sfg-option-line-total{font-weight:850;font-size:12px;color:#325f92;margin:9px 0 0}
+.sfg-quote-line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 8px;padding:11px 0;border-bottom:1px solid #e5ebf3;font-size:12px}
+.sfg-quote-line strong{line-height:1.6;overflow-wrap:anywhere}.sfg-quote-line b{color:#315b88;white-space:nowrap}
+.sfg-quote-line small{grid-column:1/-1;color:#738199;line-height:1.65;font-size:11px;overflow-wrap:anywhere}
+.sfg-quote-status{font-size:11px;color:#657b91;line-height:1.7}.sfg-quote-status.has-pending{color:#9b6320;background:#fff3dd;padding:9px;border-radius:9px}
+.sfg-mobile-quote{display:none}#sfg-quote-results{scroll-margin-top:85px}
+@media(max-width:850px){.sfg-layout{grid-template-columns:minmax(0,1fr)}.sfg-summary{position:static}.sfg-mobile-quote{position:fixed;display:flex;justify-content:space-between;align-items:center;gap:10px;bottom:0;left:0;right:0;z-index:80;background:#fffffff5;border-top:1px solid #cfdaed;box-shadow:0 -5px 22px #2d446519;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}.sfg-mobile-quote small{display:block;font-size:10px;color:#74849b}.sfg-mobile-quote strong{font-size:17px;color:#315b88}.sfg-mobile-quote a{padding:10px 14px;border-radius:11px;background:#5578b8;color:#fff;font-size:12px;font-weight:800}body{padding-bottom:85px}.sfg-preview-photo{height:200px}}
+@media(max-width:560px){.sfg-options-grid{grid-template-columns:minmax(0,1fr)}.sfg-option-top{flex-direction:row;justify-content:space-between;align-items:flex-start}.sfg-option-label{flex:1;min-width:0}.sfg-option-rate{flex:none;font-size:10px}.sfg-panel{padding:12px}.sfg-box,.sfg-summary{padding:13px}.sfg-heading-links{justify-content:flex-start}.hero{padding:22px}.sfg-service-presets button{font-size:11px}main{padding:12px}.sfg-heading h3{font-size:21px}}
 </style></head><body><main>
 <a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a>
-<header class="hero"><span>🖼️ 裱框找模式 · 松風閣</span><h1>松風閣畫框試算</h1><p>輸入作品尺寸、挑選外框，試算外框、背板、壓克力與工資，並換算達利外框參考價。</p><a href="./framing-materials.html?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3">查看松風閣裱框材料 ↗</a></header>
+<header class="hero"><span>🖼️ 裱框找模式 · 松風閣</span><h1>松風閣畫框試算</h1><p>依松風閣線上模擬框整理，提供374款外框及21個工法、表面材質與結構配件選項。</p><a href="./framing-materials.html?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3">查看松風閣裱框材料 ↗</a></header>
 <section id="sfg-calculator" class="sfg-panel" aria-labelledby="sfg-heading">
-<header class="sfg-heading"><div><span class="sfg-step-label">SONG FENG GE · 選框與計價</span><h3 id="sfg-heading">🖼️ 松風閣｜一般裱框試算</h3><p>一般裱框＝<strong>背板 ＋ 外框 ＋ 壓克力</strong>，先選框條，再依作品尺寸計算。</p></div><div class="sfg-heading-links"><a href="https://docs.google.com/spreadsheets/d/1ddZNssGS1xiPZpxEBNRDW9LDdtO8ULY4RQu4ewkKD14/edit" target="_blank" rel="noopener noreferrer">📋 Google 試算表｜採集框價 ↗</a> <a href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">松風閣官網框樣 ↗</a> <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">官網完整模擬框 ↗</a></div></header>
+<header class="sfg-heading"><div><span class="sfg-step-label">SONG FENG GE · 選框與計價</span><h3 id="sfg-heading">🖼️ 選框、工法與配件試算</h3><p>先輸入作品尺寸，再選外框、工法與配件；所選項目的尺寸、數量、單價會列入明細。</p></div><div class="sfg-heading-links"><a href="https://docs.google.com/spreadsheets/d/1ddZNssGS1xiPZpxEBNRDW9LDdtO8ULY4RQu4ewkKD14/edit" target="_blank" rel="noopener noreferrer">📋 Google 試算表｜採集框價 ↗</a> <a href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">松風閣官網框樣 ↗</a> <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">官網完整模擬框 ↗</a></div></header>
 <div class="sfg-layout">
 <div class="sfg-config">
 <div class="sfg-box"><h4>① 作品尺寸</h4>
@@ -150,8 +174,8 @@ main{width:100%;max-width:1120px;min-width:0}
 <div class="sfg-tip sfg-size-footnote">這些是參考網站標示的<strong>畫框內尺寸</strong>，與 ISO 標準紙張尺寸可能相差 1～數毫米。請以實際作品及框型規格為準。</div>
 <div class="sfg-fields"><label for="sfg-length">作品長／高（mm）<input id="sfg-length" type="number" min="1" step="0.1" value="298" inputmode="decimal"></label><label for="sfg-width">作品寬（mm）<input id="sfg-width" type="number" min="1" step="0.1" value="211" inputmode="decimal"></label></div>
 <p class="sfg-inch-result"><span>📏 長＋寬換算吋數</span><output id="sfg-size-inches" aria-live="polite">（29.8 ＋ 21.1）÷ 2.54 ＝ 20.04 吋</output><small>輸入單位是 mm，會先換算成 cm，再除以 2.54。</small></p>
-<p class="sfg-tip">上面可點選原網站標示的框內尺寸，也能手動輸入 mm；此處計算不含卡紙的一般平面框。</p></div>
-<div class="sfg-box"><h4>② 選擇松風閣外框</h4>
+<p class="sfg-tip">也能手動輸入 mm。工法與配件預設跟隨作品尺寸，勾選後可改用個別尺寸與數量。</p></div>
+<div class="sfg-box"><h4>② 選擇松風閣外框</h4><label class="sfg-check" for="sfg-frame-on"><input type="checkbox" id="sfg-frame-on" checked>另計所選外框</label><p class="sfg-tip" id="sfg-frame-on-note"></p>
 <div class="sfg-frame-tools"><input class="sfg-frame-search" id="sfg-frame-search" type="search" placeholder="搜尋型號、顏色，例如 411、柚木" aria-label="搜尋松風閣框型"></div>
 <div class="sfg-frame-filter" id="sfg-frame-filter" aria-label="依松風閣官網框型分類"></div><p class="sfg-tip" id="sfg-frame-count" aria-live="polite"></p>
 <div class="sfg-frames" id="sfg-frame-grid" aria-label="可選框條"></div><button id="sfg-load-more" class="sfg-custom" type="button" hidden>顯示更多框型</button>
@@ -159,25 +183,25 @@ main{width:100%;max-width:1120px;min-width:0}
 <div id="sfg-custom-fields" class="sfg-fields sfg-custom-fields" hidden><label for="sfg-custom-name">自訂框型名稱<input id="sfg-custom-name" type="text" maxlength="80" placeholder="例如 783咖"></label><label for="sfg-custom-width">框寬（cm，預覽用）<input id="sfg-custom-width" type="number" min="0.2" max="15" step="0.1" value="2" inputmode="decimal"></label></div>
 <div class="sfg-rate-row"><label class="sfg-amount-field" for="sfg-frame-rate">所選框型單價（NT$／15cm；優先採用試算表，可手動修改）<input id="sfg-frame-rate" type="number" min="0" step="0.01" value="75" inputmode="decimal"></label><a id="sfg-frame-link" href="https://sfg218.com/frame_info.php?class=17&amp;no=685" target="_blank" rel="noopener noreferrer">核對選定框型的官網價格 ↗</a></div>
 <p id="sfg-price-source" class="sfg-tip" aria-live="polite">價格來源：待選擇框型</p><p class="sfg-tip">圖片取自松風閣官方商品圖；沒有可核對照片的框型才顯示示意色。價格以指定的 Google 試算表「框型清單」優先：先讀 I 欄「官網優惠單價」，沒有時才用 E 欄 Airtable 參考價。已輸入 I 欄價格 359 款（其中 6 款有明確官網核對紀錄），15 款待補。資料為 2026/10/29 快照，不會即時同步；未核對價格請以官網實際報價為準。</p></div>
-<div class="sfg-box"><h4>③ 背板、壓克力與工資</h4>
-<label class="sfg-check" for="sfg-back-on"><input type="checkbox" id="sfg-back-on" checked> 木背板（預設 4mm）</label>
-<div class="sfg-fields"><label for="sfg-back-rate">背板單價（NT$／才）<input id="sfg-back-rate" type="number" min="0" step="0.01" value="70" inputmode="decimal"></label><label for="sfg-acrylic-rate">壓克力單價（NT$／才）<input id="sfg-acrylic-rate" type="number" min="0" step="0.01" value="100" inputmode="decimal"></label></div>
-<label class="sfg-check" for="sfg-acrylic-on"><input type="checkbox" id="sfg-acrylic-on" checked> 使用壓克力</label>
-<div class="sfg-fields"><label for="sfg-labor">另加工資（NT$，自行輸入）<input id="sfg-labor" type="number" min="0" step="1" value="0" inputmode="decimal"></label></div>
-<p class="sfg-tip">壓克力 NT$100／才已核對官網；背板 NT$70／才為可調整參考值，尚未逐項核對目前官網實際收費。工資預設 0，並非免工資。<a href="https://sfg218.com/frame3_info.php?class=2&amp;no=9" target="_blank" rel="noopener noreferrer">壓克力公式 ↗</a></p></div>
-</div>
-<aside class="sfg-summary" aria-label="裱框估價結果">
+<div class="sfg-box"><h4>③ 工法與配件</h4>
+<p class="sfg-tip">依官網目前顯示的21個選項整理，單價資料為2026/10/29。拼圖套裝已含框與部分材料，選取後會取消重複計價。</p>
+<div class="sfg-service-presets" aria-label="快速套用裱框方案">
+<button type="button" data-service-preset="general">一般裱框</button><button type="button" data-service-preset="diamond">拼圖・冷裱熱壓</button><button type="button" data-service-preset="acrylic">拼圖・壓克力</button><button type="button" data-service-preset="mounting">只做裱褙</button><button type="button" data-service-preset="clear">清空所有選項</button></div>
+<p class="sfg-selection-note" id="sfg-selection-note" role="status"></p>
+<label class="sfg-option-search-label" for="sfg-option-search">搜尋工法與配件<input id="sfg-option-search" class="sfg-frame-search" type="search" placeholder="例如：膠膜、玻璃、浮板"></label>
+<div class="sfg-option-filters" aria-label="工法與配件分類"><button type="button" data-option-filter="全部" class="selected">全部</button><button type="button" data-option-filter="工法" class="">工法</button><button type="button" data-option-filter="表面材質" class="">表面材質</button><button type="button" data-option-filter="背板與結構" class="">背板與結構</button><button type="button" data-option-filter="已選" class="">已選</button></div>
+<p class="sfg-tip" id="sfg-option-count" aria-live="polite"></p><div id="sfg-options-grid" class="sfg-options-grid"></div></div>
+<div class="sfg-box"><h4>④ 額外工資</h4>
+<label class="sfg-amount-field" for="sfg-labor">另加工資（NT$，自行輸入）<input id="sfg-labor" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
+<p class="sfg-tip">另加工資預設0；若已勾選「貼工」並填寫工資，請確認此處只加入其他工資。</p></div></div>
+<aside class="sfg-summary" id="sfg-quote-results" aria-label="裱框估價結果">
 <h4>即時計算・選框預覽</h4>
 <div class="sfg-preview"><img id="sfg-preview-photo" class="sfg-preview-photo" alt="" referrerpolicy="no-referrer" decoding="async" hidden><div id="sfg-preview-frame" class="sfg-preview-frame" aria-hidden="true"><div class="sfg-preview-art"><span>作品示意</span></div></div></div>
 <small class="sfg-preview-note" id="sfg-preview-note">松風閣官網實品照片；沒有照片的款式仍顯示示意框。</small>
 <div class="sfg-selected-name" id="sfg-selected-name">選擇外框：(上)411藍</div>
-<div class="sfg-breakdown">
-<div class="sfg-line"><span>松風閣外框參考價</span><strong id="sfg-frame-sum">NT$253.50</strong></div>
-<div class="sfg-line"><span>背板</span><strong id="sfg-back-sum">NT$48.51</strong></div>
-<div class="sfg-line"><span>壓克力</span><strong id="sfg-acrylic-sum">NT$69.30</strong></div>
-<div class="sfg-line"><span>自行輸入工資</span><strong id="sfg-labor-sum">NT$0.00</strong></div>
-</div>
-<div class="sfg-total"><span>參考試算合計</span><strong id="sfg-total">NT$371.31</strong></div>
+<div class="sfg-breakdown" id="sfg-quote-lines" aria-label="所選項目試算明細" aria-live="polite"></div>
+<div class="sfg-total"><span id="sfg-total-label">參考試算合計</span><strong id="sfg-total">—</strong></div>
+<p id="sfg-quote-status" class="sfg-quote-status" role="status"></p>
 <div id="sfg-formulas" class="sfg-formulas" aria-live="polite"></div>
 <section class="sfg-dali" aria-labelledby="sfg-dali-heading">
 <h5 id="sfg-dali-heading">🔄 達利外框價格換算</h5>
@@ -195,7 +219,7 @@ main{width:100%;max-width:1120px;min-width:0}
 </div>
 <p class="sfg-sources">資料依 <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">松風閣線上模擬框型錄</a>、<a href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">松風閣裝框裱褙</a>及<a href="https://sfg218.com/frame_class.php?class=17" target="_blank" rel="noopener noreferrer">外框目錄</a>公開資訊重建選框與計價功能。這是你網站內的<strong>獨立參考試算</strong>，並非直接連接松風閣購物車或即時報價。特殊尺寸、材料最低收費、組裝工資與門市報價可能另計，請以原廠最終報價為準。</p>
 </section>
-</main>
+</main><div class="sfg-mobile-quote"><div><small id="sfg-mobile-count"></small><strong id="sfg-mobile-total">—</strong></div><a href="#sfg-quote-results">查看明細 ↑</a></div>
 <script src="../data/songfeng-frames.js?v=20261028"></script>
 <script src="../data/songfeng-sheet-prices.js?v=20261029-1"></script>
 <script src="../data/songfeng-photos.js?v=20261029-photo1"></script>
@@ -308,85 +332,155 @@ function sfgRenderFrames(){
   sfgRenderFrames();sfgSyncLink();sfgCalculate();
  }));
 }
-function sfgCalculate(){
- const mmL=sfgNum("sfg-length"),mmW=sfgNum("sfg-width"),rateRaw=sfgEl("sfg-frame-rate").value.trim(),frameRate=Number(rateRaw);
- const backRate=sfgNum("sfg-back-rate"),acrylicRate=sfgNum("sfg-acrylic-rate"),labor=sfgNum("sfg-labor");
- const sizeEntered=sfgEl("sfg-length").value.trim()!==""&&sfgEl("sfg-width").value.trim()!=="";
- const sizeValid=sizeEntered&&Number.isFinite(mmL)&&Number.isFinite(mmW)&&mmL>0&&mmW>0;
- sfgEl("sfg-size-inches").textContent=sizeValid?
-  "（"+sfgDec(mmL/10,1)+" ＋ "+sfgDec(mmW/10,1)+"）÷ 2.54 ＝ "+sfgDec((mmL+mmW)/25.4,2)+" 吋":
-  "請輸入有效的長、寬尺寸";
- const valid=[mmL,mmW,backRate,acrylicRate,labor].every(Number.isFinite)&&mmL>0&&mmW>0&&backRate>=0&&acrylicRate>=0&&labor>=0;
- const priceMatchesStored=!sfgCustomMode&&rateRaw!==""&&sfgChosen.rate!==null&&frameRate===sfgChosen.rate;
- sfgEl("sfg-price-source").textContent=sfgCustomMode?"自訂框型：請自行核對並輸入單價":
- priceMatchesStored&&sfgChosen.rateSource==="sheet-verified"?"價格來源：Google 試算表官網優惠單價（此款有明確核對紀錄；2026/10/29 快照）":
- priceMatchesStored&&sfgChosen.rateSource==="sheet-unverified"?"價格來源：Google 試算表「官網優惠單價」欄（尚未逐筆核對；2026/10/29 快照）":
- priceMatchesStored&&sfgChosen.rateSource==="sheet-airtable"?"價格來源：Google 試算表 Airtable 參考價（未取得官網單價；非即時價）":
- rateRaw!==""?"價格來源：手動輸入的單價，請核對":"此框型尚無可用單價，請查詢並輸入";
- const hasFrameRate=rateRaw!==""&&Number.isFinite(frameRate)&&frameRate>=0;
- const daliMultiplierRaw=sfgEl("sfg-dali-multiplier").value.trim();
- const daliMultiplier=Number(daliMultiplierRaw);
- const daliMultiplierValid=daliMultiplierRaw!==""&&Number.isFinite(daliMultiplier)&&daliMultiplier>0&&daliMultiplier<=10;
- const daliUnit=hasFrameRate&&daliMultiplierValid?frameRate*2.54/15*daliMultiplier:null;
- const daliOuter=sizeValid&&daliUnit!==null?(mmL+mmW)/25.4*daliUnit:null;
- sfgEl("sfg-dali-unit").textContent=daliUnit===null?"待填有效框價／倍率":"NT$"+sfgDec(daliUnit,4)+"／吋";
- sfgEl("sfg-dali-frame").textContent=daliOuter===null?"待輸入":sfgMoney(daliOuter);
- sfgEl("sfg-dali-formula").textContent=daliOuter!==null?
-  "達利：（"+sfgDec(mmL/10,1)+"＋"+sfgDec(mmW/10,1)+"）÷2.54 ×（"+sfgDec(frameRate,2)+"×2.54÷15×"+sfgDec(daliMultiplier,2)+"）＝"+sfgMoney(daliOuter):
-  "請填入作品尺寸、松風閣框條單價及有效的達利訂價倍率（0～10 倍，須大於 0）。";
+const sfgOptions=[{"id":92,"name":"拼圖框（圖壓框/獅子裱）","group":"工法","rate":600,"url":"https://sfg218.com/frame3_info.php?no=92","code":"圖壓框(拼圖)","description":"含框、背板、冷裱膜、熱壓、浮板及組裝工資。","min":0,"package":true,"includes":[8,12,11,28,31],"fixed":false},{"id":26,"name":"膠膜","group":"工法","rate":70,"url":"https://sfg218.com/frame3_info.php?no=26","code":"0000","description":"膠膜保護處理。","min":0,"package":false,"includes":[],"fixed":false},{"id":31,"name":"貼工","group":"工法","rate":null,"url":"https://sfg218.com/frame3_info.php?no=31","code":"0003","description":"工資依施工難度另議；請填入已確認的單件工資。","min":0,"package":false,"includes":[],"fixed":true},{"id":94,"name":"拼圖框（鑽石膜 / 冷裱熱壓）","group":"工法","rate":500,"url":"https://sfg218.com/frame3_info.php?no=94","code":"2021053002","description":"含框、背板、冷裱膜（鑽石膜）、熱壓及組裝工資。","min":0,"package":true,"includes":[8,12,11,31],"fixed":false},{"id":93,"name":"拼圖框（含木板+浮板+鑽石膜+熱壓+底布含貼）","group":"工法","rate":500,"url":"https://sfg218.com/frame3_info.php?no=93","code":"2021053001","description":"懸浮立體框套裝：含框、底板、浮板、鑽石膜、熱壓、底布含貼及組裝工資。","min":0,"package":true,"includes":[8,28,12,11,31],"fixed":false},{"id":95,"name":"拼圖框（壓克力）","group":"工法","rate":350,"url":"https://sfg218.com/frame3_info.php?no=95","code":"2021053003","description":"含框、背板、壓克力及組裝工資（上拼圖膠、貼板）。","min":0,"package":true,"includes":[8,9,31],"fixed":false},{"id":9,"name":"壓克力","group":"表面材質","rate":100,"url":"https://sfg218.com/frame3_info.php?no=9","code":"0000","description":"壓克力表面保護膜於作品裝框完成、準備懸掛時撕除。","min":0,"package":false,"includes":[],"fixed":false},{"id":12,"name":"冷裱膜（鑽石膜）","group":"表面材質","rate":120,"url":"https://sfg218.com/frame3_info.php?no=12","code":"0000","description":"拼圖用冷裱膜，官網說明為霧面、防水處理。","min":0,"package":false,"includes":[],"fixed":false},{"id":11,"name":"熱壓","group":"表面材質","rate":100,"url":"https://sfg218.com/frame3_info.php?no=11","code":"0000","description":"官網說明為紙本素描的霧面熱壓處理；材質欄原文另標示「油畫表面處理」。","min":0,"package":false,"includes":[],"fixed":false},{"id":17,"name":"裱褙","group":"工法","rate":200,"url":"https://sfg218.com/frame3_info.php?no=17","code":"裱褙","description":"手工裱／熱裱。","min":0,"package":false,"includes":[],"fixed":false},{"id":21,"name":"相紙輸出","group":"工法","rate":100,"url":"https://sfg218.com/frame3_info.php?no=21","code":"輸出相紙材質","description":"提供上膜與不上膜相紙；官網說明上膜可防水，不上膜需搭配壓克力。","min":0,"package":false,"includes":[],"fixed":false},{"id":22,"name":"油畫布輸出","group":"工法","rate":150,"url":"https://sfg218.com/frame3_info.php?no=22","code":"輸出油畫布材質","description":"可輸出後繃布架做成無框畫，也可裱框。","min":0,"package":false,"includes":[],"fixed":false},{"id":5,"name":"布架","group":"背板與結構","rate":120,"url":"https://sfg218.com/frame3_info.php?no=5","code":"布架","description":"用於繃油畫布或布類作品，製成無框畫。","min":0,"package":false,"includes":[],"fixed":false},{"id":58,"name":"隱形玻璃","group":"表面材質","rate":1000,"url":"https://sfg218.com/frame3_info.php?no=58","code":"2021052801","description":"","min":0,"package":false,"includes":[],"fixed":false},{"id":30,"name":"高級明鏡5mm","group":"表面材質","rate":220,"url":"https://sfg218.com/frame3_info.php?no=30","code":"001","description":"","min":0,"package":false,"includes":[],"fixed":false},{"id":90,"name":"後箱美背（美背）","group":"背板與結構","rate":350,"url":"https://sfg218.com/frame3_info.php?no=90","code":"美背","description":"","min":0,"package":false,"includes":[],"fixed":false},{"id":91,"name":"後箱美背（後箱）","group":"背板與結構","rate":350,"url":"https://sfg218.com/frame3_info.php?no=91","code":"後箱","description":"","min":0,"package":false,"includes":[],"fixed":false},{"id":33,"name":"油畫凡尼斯保護","group":"表面材質","rate":200,"url":"https://sfg218.com/frame3_info.php?no=33","code":"0002","description":"","min":0,"package":false,"includes":[],"fixed":false},{"id":8,"name":"木板（背板/底板）","group":"背板與結構","rate":70,"url":"https://sfg218.com/frame3_info.php?no=8","code":"0000","description":"木板厚度4mm，雙面貼白紙。","min":0,"package":false,"includes":[],"fixed":false},{"id":27,"name":"板架","group":"背板與結構","rate":200,"url":"https://sfg218.com/frame3_info.php?no=27","code":"0000","description":"支撐結構加木板；依官網說明，每件最低收費 NT$1,000（5 才）。","min":1000,"package":false,"includes":[],"fixed":false},{"id":28,"name":"浮板","group":"背板與結構","rate":100,"url":"https://sfg218.com/frame3_info.php?no=28","code":"浮板","description":"適用於絲巾、海報、拼圖、書法及水墨等懸浮立體框。","min":0,"package":false,"includes":[],"fixed":false}];
+function sfgComputeQuote(input, states){
+ const lines=[],unknown=[];
+ const number=value=>value!==""&&value!==null&&value!==undefined&&Number.isFinite(Number(value))?Number(value):null;
+ const L=number(input.lengthCm),W=number(input.widthCm);
+ const validSize=L!==null&&W!==null&&L>0&&W>0;
+ let knownTotal=0;
+ if(!validSize)unknown.push("請填寫有效的作品尺寸");
+ function addLine(line){lines.push(line);if(line.amount!==null)knownTotal+=line.amount;else unknown.push(line.name);}
+ if(input.frameEnabled){
+  const rate=number(input.frameRate);
+  const amount=validSize&&rate!==null&&rate>=0?Math.round((L+W)/15*rate*100)/100:null;
+  addLine({id:"frame",name:"外框："+input.frameName,formula:amount!==null?"（"+L+"＋"+W+"）÷15 × "+rate:"請填寫有效框價及尺寸",amount});
+ }
+ for(const option of sfgOptions){
+  const state=states.get(option.id);
+  if(!state.selected)continue;
+  const length=state.sync?L:number(state.lengthCm),width=state.sync?W:number(state.widthCm);
+  const qty=number(state.qty),rate=number(state.rate);
+  const valid=qty!==null&&Number.isInteger(qty)&&qty>0&&rate!==null&&rate>=0&&
+   (option.fixed||(length!==null&&width!==null&&length>0&&width>0));
+  if(!valid){addLine({id:option.id,name:option.name,formula:option.fixed?"請輸入單件工資與數量":"請輸入有效單價、尺寸與整數數量",amount:null});continue;}
+  const rawCai=option.fixed?null:length*width/900,chargedCai=option.fixed?null:Math.ceil(rawCai);
+  const trial=option.fixed?rate:Math.round(chargedCai*rate);
+  const minimumApplied=!option.fixed&&trial<option.min;
+  const each=option.fixed?trial:Math.max(option.min,trial);
+  const formula=option.fixed?rate+" 元 × "+qty+" 件":
+   length+" × "+width+" cm＝"+rawCai.toFixed(3)+" 才 → "+chargedCai+" 才 × "+rate+" 元"+
+   (minimumApplied?"；每件最低 "+option.min+" 元":"")+" × "+qty+" 件";
+  addLine({id:option.id,name:option.name,formula,amount:Math.round(each*qty*100)/100,minimumApplied,rawCai,chargedCai,quantity:qty});
+ }
+ const labor=number(input.labor);
+ if(labor===null||labor<0)addLine({id:"labor",name:"另加工資",formula:"請輸入非負數工資",amount:null});
+ else if(labor>0)addLine({id:"labor",name:"另加工資",formula:"自行輸入的額外工資",amount:labor});
+ knownTotal=Math.round(knownTotal*100)/100;
+ return {lines,knownTotal,unknown,validSize,total:unknown.length?null:knownTotal};
+}
 
+const sfgOptionStates=new Map(sfgOptions.map(option=>[option.id,{selected:[8,9].includes(option.id),rate:option.rate===null?"":String(option.rate),qty:"1",sync:true,lengthCm:"",widthCm:""}]));
+let sfgOptionFilter="全部";
+function sfgActivePackage(){return sfgOptions.find(option=>option.package&&sfgOptionStates.get(option.id).selected);}
+function sfgRenderOptions(){
+ const query=sfgEl("sfg-option-search").value.trim().toLocaleLowerCase();
+ const bundle=sfgActivePackage(),included=new Set(bundle?.includes||[]);
+ const visible=sfgOptions.filter(option=>(sfgOptionFilter==="全部"||sfgOptionFilter==="已選"&&sfgOptionStates.get(option.id).selected||sfgOptionFilter===option.group)&&
+  (option.name+" "+option.code+" "+option.description).toLocaleLowerCase().includes(query));
+ sfgEl("sfg-option-count").textContent="官網工法與配件 "+sfgOptions.length+" 項 · 已選 "+sfgOptions.filter(option=>sfgOptionStates.get(option.id).selected).length+" 項";
+ sfgEl("sfg-options-grid").innerHTML=visible.length?visible.map(option=>{
+  const state=sfgOptionStates.get(option.id),covered=included.has(option.id);
+  return '<article class="sfg-option'+(state.selected?' is-on':'')+(covered?' is-covered':'')+'">'+
+   '<div class="sfg-option-top"><label class="sfg-option-label" for="sfg-option-'+option.id+'"><input id="sfg-option-'+option.id+'" type="checkbox" data-option-id="'+option.id+'" data-field="selected" '+(state.selected?'checked ':'')+(covered?'disabled ':'')+'><span>'+esc(option.name)+'</span></label>'+
+   '<span class="sfg-option-rate">'+(covered?'套裝已含':option.fixed?'工資另議':'官網 NT$'+option.rate.toLocaleString("zh-TW")+'／才')+'</span></div>'+
+   '<p class="sfg-option-desc">'+esc(option.description||("商品編號："+option.code))+'</p>'+
+   (option.package?'<p class="sfg-option-included">此套裝已含外框及部分材料；選取後會取消重複的單項費用。</p>':'')+
+   '<a class="sfg-option-source" href="'+esc(option.url)+'" target="_blank" rel="noopener noreferrer">商品詳情 ↗</a>'+
+   '<div class="sfg-option-config" '+(state.selected?'':'hidden')+'>'+
+   '<div class="sfg-fields"><label for="sfg-option-rate-'+option.id+'">'+(option.fixed?'單件工資（元）':'每才單價（元）')+
+   '<input id="sfg-option-rate-'+option.id+'" data-option-id="'+option.id+'" data-field="rate" type="number" min="0" step="0.01" inputmode="decimal" value="'+esc(state.rate)+'" placeholder="'+(option.fixed?'請填已確認工資':'單價')+'"></label>'+
+   '<label for="sfg-option-qty-'+option.id+'">數量（件）<input id="sfg-option-qty-'+option.id+'" data-option-id="'+option.id+'" data-field="qty" type="number" min="1" step="1" inputmode="numeric" value="'+esc(state.qty)+'"></label></div>'+
+   (option.fixed?'':
+    '<label class="sfg-check sfg-option-sync" for="sfg-option-sync-'+option.id+'"><input id="sfg-option-sync-'+option.id+'" data-option-id="'+option.id+'" data-field="sync" type="checkbox" '+(state.sync?'checked':'')+'>尺寸跟隨作品</label>'+
+    '<div class="sfg-fields" '+(state.sync?'hidden':'')+'><label for="sfg-option-length-'+option.id+'">本項長（cm）<input id="sfg-option-length-'+option.id+'" data-option-id="'+option.id+'" data-field="lengthCm" type="number" min="0.1" step="0.1" inputmode="decimal" value="'+esc(state.lengthCm)+'"></label>'+
+    '<label for="sfg-option-width-'+option.id+'">本項寬（cm）<input id="sfg-option-width-'+option.id+'" data-option-id="'+option.id+'" data-field="widthCm" type="number" min="0.1" step="0.1" inputmode="decimal" value="'+esc(state.widthCm)+'"></label></div>')+
+   '<p class="sfg-option-line-total" id="sfg-option-result-'+option.id+'"></p></div></article>';
+ }).join(""):'<p class="sfg-empty">沒有符合的選項，請切換分類或修改關鍵字。</p>';
+ document.querySelectorAll("[data-option-filter]").forEach(button=>button.classList.toggle("selected",button.dataset.optionFilter===sfgOptionFilter));
+ sfgEl("sfg-frame-on").disabled=!!bundle;
+ sfgEl("sfg-frame-on-note").textContent=bundle?"「"+bundle.name+"」已含外框，不再另計所選框條。":"可單獨選購工法與配件；勾選時才另計外框。";
+}
+function sfgOptionInput(event){
+ const target=event.target;
+ if(!target.dataset.optionId)return;
+ const id=Number(target.dataset.optionId),option=sfgOptions.find(x=>x.id===id),state=sfgOptionStates.get(id),field=target.dataset.field;
+ if(!option||!state)return;
+ if(field==="selected"||field==="sync"){
+  if(event.type!=="change")return;
+  state[field]=target.checked;
+  if(field==="sync"&&!state.sync){
+   state.lengthCm=String(sfgNum("sfg-length")/10||"");
+   state.widthCm=String(sfgNum("sfg-width")/10||"");
+  }
+  if(field==="selected"&&state.selected&&option.package){
+   sfgEl("sfg-frame-on").checked=false;
+   for(const other of sfgOptions)if((other.package&&other.id!==id)||[8,9,...option.includes].includes(other.id))sfgOptionStates.get(other.id).selected=false;
+   sfgEl("sfg-selection-note").textContent="已選取套裝；已取消另計外框與重複的基本材料。";
+  }else sfgEl("sfg-selection-note").textContent="";
+  sfgRenderOptions();
+ }else{
+  if(event.type!=="input")return;
+  state[field]=target.value;
+ }
+ sfgCalculate();
+}
+function sfgApplyServicePreset(type){
+ const ids=({general:[8,9],diamond:[94],acrylic:[95],mounting:[17],clear:[]})[type]||[];
+ for(const state of sfgOptionStates.values()){state.selected=false;state.qty="1";state.sync=true;}
+ ids.forEach(id=>sfgOptionStates.get(id).selected=true);
+ sfgEl("sfg-frame-on").checked=type==="general";
+ sfgEl("sfg-selection-note").textContent=type==="clear"?"已清空外框、工法與配件。":"已套用方案，仍可自行勾選其他項目。";
+ sfgEl("sfg-option-search").value="";sfgOptionFilter="全部";
+ sfgRenderOptions();sfgCalculate();
+}
+
+function sfgCalculate(){
+ const mmL=sfgNum("sfg-length"),mmW=sfgNum("sfg-width"),sizeEntered=sfgEl("sfg-length").value.trim()!==""&&sfgEl("sfg-width").value.trim()!=="";
+ const sizeValid=sizeEntered&&Number.isFinite(mmL)&&Number.isFinite(mmW)&&mmL>0&&mmW>0;
+ sfgEl("sfg-size-inches").textContent=sizeValid?"（"+sfgDec(mmL/10,1)+" ＋ "+sfgDec(mmW/10,1)+"）÷ 2.54 ＝ "+sfgDec((mmL+mmW)/25.4,2)+" 吋":"請輸入有效的長、寬尺寸";
+ const rateRaw=sfgEl("sfg-frame-rate").value.trim(),frameRate=Number(rateRaw),frameEnabled=sfgEl("sfg-frame-on").checked;
+ const hasFrameRate=rateRaw!==""&&Number.isFinite(frameRate)&&frameRate>=0;
+ const priceMatchesStored=!sfgCustomMode&&hasFrameRate&&sfgChosen.rate!==null&&frameRate===sfgChosen.rate;
+ sfgEl("sfg-price-source").textContent=sfgCustomMode?"自訂框型：請自行核對並輸入單價":
+  priceMatchesStored?(sfgChosen.rateSource==="sheet-verified"?"價格來源：Google 試算表官網優惠單價（有核對紀錄）":sfgChosen.rateSource==="sheet-unverified"?"價格來源：Google 試算表官網優惠單價（尚未逐筆核對）":"價格來源：Google 試算表 Airtable 參考價"):
+  rateRaw!==""?"價格來源：手動輸入單價":"此框型尚無可用單價，請查詢並輸入";
  const selectedName=sfgCustomMode?(sfgEl("sfg-custom-name").value.trim()||"自訂框型"):sfgChosen.name;
  const selectedWidth=sfgCustomMode?Number(sfgEl("sfg-custom-width").value):sfgChosen.w;
- sfgEl("sfg-selected-name").textContent="框型："+selectedName+(valid?" · 尺寸 "+sfgDec(mmL/10,1)+" × "+sfgDec(mmW/10,1)+" cm":"");
+ sfgEl("sfg-selected-name").textContent=frameEnabled?"框型："+selectedName+(sizeValid?" · "+sfgDec(mmL/10,1)+" × "+sfgDec(mmW/10,1)+" cm":""):"未另計外框（套裝已含框，或僅選工法與配件）";
  const preview=sfgEl("sfg-preview-frame");
- if(Number.isFinite(mmL)&&Number.isFinite(mmW)&&mmL>0&&mmW>0){
-  const ratio=Math.min(1.8,Math.max(.58,mmW/mmL)),h=Math.min(180,182/Math.max(1,ratio));
-  preview.style.width=h*ratio+"px";preview.style.height=h+"px";
- }
+ if(sizeValid){const ratio=Math.min(1.8,Math.max(.58,mmW/mmL)),h=Math.min(180,182/Math.max(1,ratio));preview.style.width=h*ratio+"px";preview.style.height=h+"px";}
  preview.style.borderWidth=Math.min(22,Math.max(6,(Number.isFinite(selectedWidth)?selectedWidth:2)*4))+"px";
  preview.style.borderColor=sfgCustomMode?"#66768b":sfgChosen.tone;
- const officialFull=!sfgCustomMode?sfgChosen.photo:null;
- const picture=sfgEl("sfg-preview-photo"),note=sfgEl("sfg-preview-note");
- if(officialFull&&picture.dataset.failed!==officialFull){
-  if(picture.dataset.current!==officialFull){
-   picture.dataset.current=officialFull;
-   picture.alt="松風閣 "+sfgChosen.name+" 框條實品照片";
-   picture.src=officialFull;
-  }
-  picture.hidden=false;preview.hidden=true;
-  note.textContent="實品照片：松風閣官網「"+sfgChosen.name+"」；框型與色澤請以官網實物為準。";
+ const picture=sfgEl("sfg-preview-photo"),note=sfgEl("sfg-preview-note"),officialFull=!sfgCustomMode?sfgChosen.photo:null;
+ picture.parentElement.hidden=!frameEnabled;
+ if(frameEnabled&&officialFull&&picture.dataset.failed!==officialFull){
+  if(picture.dataset.current!==officialFull){picture.dataset.current=officialFull;picture.alt="松風閣 "+sfgChosen.name+" 框條實品照片";picture.src=officialFull;}
+  picture.hidden=false;preview.hidden=true;note.textContent="松風閣官網「"+sfgChosen.name+"」實品照片";
  }else{
-  picture.hidden=true;preview.hidden=false;
-  note.textContent=officialFull?"官方圖片暫時無法載入，改用框色示意。":"這款框型暫無可核對的官網照片，以下為比例／色彩示意。";
+  picture.hidden=true;preview.hidden=!frameEnabled;note.textContent=frameEnabled?"框型比例與色彩示意，請以官網實品為準。":"請依所選套裝的商品詳情確認框型與內容。";
  }
-
- sfgEl("sfg-alert").textContent="";
- if(!valid){
-  ["sfg-frame-sum","sfg-back-sum","sfg-acrylic-sum","sfg-labor-sum","sfg-total"].forEach(id=>sfgEl(id).textContent="—");
-  sfgEl("sfg-formulas").textContent="請輸入有效的作品尺寸（大於 0）與非負數配件單價。";
-  sfgEl("sfg-alert").textContent="作品尺寸或材料單價不正確，無法計算。";
-  return;
- }
- const L=mmL/10,W=mmW/10,cai=L*W/900;
- const boardCost=sfgEl("sfg-back-on").checked?cai*backRate:0;
- const acrylicCost=sfgEl("sfg-acrylic-on").checked?cai*acrylicRate:0;
- const frameCost=hasFrameRate?(L+W)/15*frameRate:null;
- sfgEl("sfg-frame-sum").textContent=hasFrameRate?sfgMoney(frameCost):"待填單價";
- sfgEl("sfg-back-sum").textContent=sfgMoney(boardCost);
- sfgEl("sfg-acrylic-sum").textContent=sfgMoney(acrylicCost);
- sfgEl("sfg-labor-sum").textContent=sfgMoney(labor);
- sfgEl("sfg-total").textContent=hasFrameRate?sfgMoney(frameCost+boardCost+acrylicCost+labor):"待填框價";
- sfgEl("sfg-formulas").innerHTML=
-  "<p>外框：（"+sfgDec(L,1)+"＋"+sfgDec(W,1)+"）÷15×"+(hasFrameRate?sfgDec(frameRate)+"＝"+sfgMoney(frameCost):"待填單價")+"</p>"+
-  "<p>面積："+sfgDec(L,1)+"×"+sfgDec(W,1)+"÷900＝"+sfgDec(cai,3)+" 才</p>"+
-  "<p>背板："+(sfgEl("sfg-back-on").checked?sfgDec(cai,3)+" 才 × NT$"+sfgDec(backRate):"未選")+"；壓克力："+(sfgEl("sfg-acrylic-on").checked?sfgDec(cai,3)+" 才 × NT$"+sfgDec(acrylicRate):"未選")+"</p>";
- if(!hasFrameRate)sfgEl("sfg-alert").textContent="這款框型在試算表沒有可用的單價。請查詢官網價格並填入「所選框型單價」，才會計算裱框合計。";
- else if(Math.max(mmL,mmW)>1500)sfgEl("sfg-alert").textContent="⚠️ 大尺寸作品可能有特殊板材、框條與運輸限制，請以門市實際報價為準。";
- document.querySelectorAll("[data-sfg-preset]").forEach(button=>{
-  const sizes=sfgPresets[button.dataset.sfgPreset];
-  const on=sizes[0]===mmL&&sizes[1]===mmW;button.classList.toggle("selected",on);button.setAttribute("aria-pressed",String(on));
- });
+ const quote=sfgComputeQuote({lengthCm:sizeValid?mmL/10:null,widthCm:sizeValid?mmW/10:null,frameEnabled,frameRate:rateRaw,frameName:selectedName,labor:sfgEl("sfg-labor").value.trim()},sfgOptionStates);
+ sfgEl("sfg-quote-lines").innerHTML=quote.lines.length?quote.lines.map(line=>
+  '<div class="sfg-quote-line"><strong>'+esc(line.name)+'</strong><b>'+esc(line.amount===null?"待輸入":sfgMoney(line.amount))+'</b><small>'+esc(line.formula)+'</small></div>').join(""):'<p class="sfg-tip">尚未選擇外框、工法或配件。</p>';
+ sfgEl("sfg-total-label").textContent=quote.total===null?"已知金額小計（尚未完成）":"參考試算合計";
+ sfgEl("sfg-total").textContent=quote.validSize?sfgMoney(quote.knownTotal):"—";
+ sfgEl("sfg-quote-status").textContent=quote.unknown.length?"待補："+quote.unknown.join("、"):"明細已包含所選項目的尺寸、計收才數、數量與最低收費。";
+ sfgEl("sfg-quote-status").classList.toggle("has-pending",quote.unknown.length>0);
+ sfgEl("sfg-mobile-total").textContent=quote.validSize?(quote.total===null?"待補資料 · ": "")+sfgMoney(quote.knownTotal):"請輸入尺寸";
+ sfgEl("sfg-mobile-count").textContent=quote.lines.length+" 項明細";
+ for(const line of quote.lines){const output=sfgEl("sfg-option-result-"+line.id);if(output)output.textContent=line.amount===null?"金額待輸入":sfgMoney(line.amount)+(line.minimumApplied?"（已套用最低收費）":"");}
+ sfgEl("sfg-formulas").innerHTML=sizeValid?"<p>作品："+sfgDec(mmL/10,1)+" × "+sfgDec(mmW/10,1)+" cm；面積 "+sfgDec(mmL*mmW/90000,3)+" 才。</p><p>工法與配件：每件才數無條件進位後 × 單價；板架另有每件最低1,000元。貼工依自行輸入的固定工資計價。</p>":"";
+ const multiRaw=sfgEl("sfg-dali-multiplier").value.trim(),multi=Number(multiRaw),multiValid=multiRaw!==""&&Number.isFinite(multi)&&multi>0&&multi<=10;
+ const daliUnit=frameEnabled&&hasFrameRate&&multiValid?frameRate*2.54/15*multi:null;
+ const daliOuter=sizeValid&&daliUnit!==null?(mmL+mmW)/25.4*daliUnit:null;
+ sfgEl("sfg-dali-unit").textContent=daliUnit===null?"未另計外框或待填框價":"NT$"+sfgDec(daliUnit,4)+"／吋";
+ sfgEl("sfg-dali-frame").textContent=daliOuter===null?"—":sfgMoney(daliOuter);
+ sfgEl("sfg-dali-formula").textContent=daliOuter!==null?"達利：（"+sfgDec(mmL/10,1)+"＋"+sfgDec(mmW/10,1)+"）÷2.54 ×（"+sfgDec(frameRate,2)+"×2.54÷15×"+sfgDec(multi,2)+"）＝"+sfgMoney(daliOuter):"單獨勾選外框並填入有效框價與倍率後，可換算達利外框參考價。";
+ sfgEl("sfg-alert").textContent=!quote.validSize?"請輸入大於0的有效作品尺寸。":Math.max(mmL,mmW)>1500?"大尺寸作品的板材、框條與運輸請向門市確認。":"";
+ document.querySelectorAll("[data-sfg-preset]").forEach(button=>{const dimensions=sfgPresets[button.dataset.sfgPreset],on=dimensions[0]===mmL&&dimensions[1]===mmW;button.classList.toggle("selected",on);button.setAttribute("aria-pressed",String(on));});
 }
+
 sfgEl("sfg-frame-search").addEventListener("input",()=>{sfgShowLimit=sfgPageSize;sfgRenderFrames();});
 sfgEl("sfg-load-more").addEventListener("click",()=>{sfgShowLimit+=sfgPageSize;sfgRenderFrames();});
 sfgEl("sfg-custom").addEventListener("click",()=>{
@@ -402,8 +496,13 @@ function sfgSyncLink(){
  link.href=sfgCustomMode?"https://sfg218.com/frame_class.php?class=17":sfgFrameUrl(sfgChosen);
  link.textContent=(!sfgCustomMode&&sfgChosen.url)?"核對選定框型的官網價格 ↗":"前往松風閣外框目錄查詢 ↗";
 }
-for(const id of ["sfg-length","sfg-width","sfg-frame-rate","sfg-back-rate","sfg-acrylic-rate","sfg-labor","sfg-custom-name","sfg-custom-width","sfg-dali-multiplier"])sfgEl(id).addEventListener("input",sfgCalculate);
-for(const id of ["sfg-back-on","sfg-acrylic-on"])sfgEl(id).addEventListener("change",sfgCalculate);
+for(const id of ["sfg-length","sfg-width","sfg-frame-rate","sfg-labor","sfg-custom-name","sfg-custom-width","sfg-dali-multiplier"])sfgEl(id).addEventListener("input",sfgCalculate);
+sfgEl("sfg-frame-on").addEventListener("change",sfgCalculate);
+sfgEl("sfg-options-grid").addEventListener("change",sfgOptionInput);
+sfgEl("sfg-options-grid").addEventListener("input",sfgOptionInput);
+sfgEl("sfg-option-search").addEventListener("input",()=>{sfgRenderOptions();sfgCalculate();});
+document.querySelectorAll("[data-option-filter]").forEach(button=>button.addEventListener("click",()=>{sfgOptionFilter=button.dataset.optionFilter;sfgRenderOptions();sfgCalculate();}));
+document.querySelectorAll("[data-service-preset]").forEach(button=>button.addEventListener("click",()=>sfgApplyServicePreset(button.dataset.servicePreset)));
 document.querySelectorAll("[data-sfg-preset]").forEach(b=>b.addEventListener("click",()=>{
  const p=sfgPresets[b.dataset.sfgPreset];
  sfgEl("sfg-length").value=p[0];sfgEl("sfg-width").value=p[1];sfgCalculate();
@@ -426,6 +525,7 @@ sfgEl("sfg-preview-photo").addEventListener("error",()=>{
 sfgRenderCategories();
 sfgRenderFrames();
 sfgSyncLink();
+sfgRenderOptions();
 sfgCalculate();
 </script>
 <script src="../data/songfeng-lightbox.js?v=20261029-zoom1"></script>
