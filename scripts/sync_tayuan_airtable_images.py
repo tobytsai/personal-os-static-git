@@ -17,12 +17,15 @@ from urllib.parse import urlparse, parse_qs
 
 import requests
 from PIL import Image, ImageOps, UnidentifiedImageError
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 BASE_ID = "appPXSnxWroL0MXbl"
 TABLE_ID = "tblYJeqEuWIeUsm36"  # 達利 → 裱畫材料
 OUT_DIR = Path("public/assets/tayuan")
 MAP_FILE = Path("public/data/tayuan-images.js")
 REPORT_FILE = Path("public/data/tayuan-image-sync-report.json")
+STATE_FILE = Path("public/data/tayuan-image-state.json")
 SOURCE_FIELD = "当前网页URL"
 IMAGE_FIELD = "Attachments"
 VENDOR_FIELD = "廠商"
@@ -34,7 +37,7 @@ FIELD_IDS = {
 MAX_CONTENT_BYTES = 20_000_000
 MAX_WIDTH = 900
 
-def get_records(session):
+def get_records(session, token):
     api = f"https://api.airtable.com/v0/{BASE_ID}/{TABLE_ID}"
     records = []
     offset = None
@@ -48,7 +51,7 @@ def get_records(session):
         ]
         if offset:
             params.append(("offset", offset))
-        response = session.get(api, params=params, timeout=35)
+        response = session.get(api, params=params, timeout=35, headers={"Authorization": "Bearer " + token})
         response.raise_for_status()
         obj = response.json()
         records.extend(obj.get("records", []))
@@ -96,14 +99,23 @@ def main():
     if not token:
         raise SystemExit("Missing AIRTABLE_TOKEN: configure the repository Actions secret.")
     session = requests.Session()
-    session.headers.update({"Authorization": "Bearer " + token})
-    records = get_records(session)
+    retry = Retry(total=3, connect=3, backoff_factor=0.8, status_forcelist=[429, 500, 502, 503, 504], allowed_methods=["GET"])
+    session.mount("https://", HTTPAdapter(max_retries=retry))
+    # Security: the Airtable PAT is only sent to api.airtable.com, never to image hosts.
+    records = get_records(session, token)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     found = {}
     successes = 0
     cached = 0
     skipped = 0
     failures = []
+    try:
+        previous_state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
+        if not isinstance(previous_state, dict):
+            previous_state = {}
+    except (FileNotFoundError, ValueError):
+        previous_state = {}
+    new_state = dict(previous_state)
     for record in records:
         fields = record.get("fields", {})
         if fields.get(VENDOR_FIELD, fields.get(FIELD_IDS[VENDOR_FIELD])) != "大圓":
@@ -119,13 +131,15 @@ def main():
             skipped += 1
             continue
         filepath = OUT_DIR / (label + ".webp")
-        if filepath.exists() and filepath.stat().st_size > 100:
+        attachment_id = image.get("id", "")
+        if filepath.exists() and filepath.stat().st_size > 100 and attachment_id and previous_state.get(code) == attachment_id:
             cached += 1
             found[code] = "../assets/tayuan/" + label + ".webp"
             continue
         try:
             contents = download_photo(session, image["url"])
             filepath.write_bytes(contents)
+            new_state[code] = attachment_id
             found[code] = "../assets/tayuan/" + label + ".webp"
             successes += 1
         except (requests.RequestException, OSError, ValueError, UnidentifiedImageError) as err:
@@ -141,6 +155,7 @@ def main():
     manifest = "/* Stable, self-hosted product photos imported from user-owned Airtable. */\n"
     manifest += "window.TAYUAN_IMAGE_MAP=" + json.dumps(dict(sorted(found.items())), ensure_ascii=False, separators=(",", ":")) + ";\n"
     MAP_FILE.write_text(manifest, encoding="utf-8")
+    STATE_FILE.write_text(json.dumps(new_state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     report = {
         "source": "Airtable 達利 → 裱畫材料 → 大圓",
         "completed_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
