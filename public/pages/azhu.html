@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf5ed">
+<meta name="description" content="阿竹啟動器：292 筆藝術作品、55 個以上題材與場景分類、155 種原始 Gallery 視圖、807 張 Airtable 作品照片。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>阿竹啟動器｜Personal OS</title>
+<style>
+:root{--ink:#302e39;--muted:#777786;--line:#e8e2e1;--accent:#815e9b;--accent-light:#f2ebf9;--panel:#fffdfb;--shadow:0 8px 26px #35284412}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 0 9%,#f9e5e2 0,transparent 28%),radial-gradient(circle at 100% 15%,#dfebe5 0,transparent 32%),#f7f6f3;font:14px/1.65 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif}
+a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9871d1;outline-offset:2px}
+main{max-width:1240px;margin:auto;padding:20px 19px 70px}.back{display:inline-flex;text-decoration:none;border:1px solid #e7e1e1;background:#fff;border-radius:999px;padding:8px 15px;margin:0 0 14px;font-size:12px;font-weight:850}
+.hero{padding:clamp(24px,5vw,44px);border-radius:28px;color:#fff;background:linear-gradient(115deg,#4c5879,#8569a4 52%,#b98c73);box-shadow:0 15px 38px #473a6a32}.eyebrow{font-size:11px;letter-spacing:.15em;font-weight:850;color:#f2ebff}
+h1{font-size:clamp(32px,5vw,49px);margin:9px 0 10px;line-height:1.2}.hero p{max-width:800px;margin:0;color:#fff9;font-size:14px;line-height:1.9}.hero .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.hero a,.hero button{color:#fff;text-decoration:none;background:#ffffff22;border:1px solid #ffffff74;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800}
+.stats{display:flex;gap:7px;flex-wrap:wrap;margin:17px 0}.stat{padding:8px 12px;background:#fff;border-radius:999px;border:1px solid var(--line);color:#695777;font-weight:750;font-size:12px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:23px 0 12px}.head h2{font-size:21px;margin:0}.head small{font-size:12px;color:var(--muted)}
+.groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.group{border:1px solid white;border-radius:21px;background:#fffc;box-shadow:var(--shadow);text-align:left;padding:17px;min-height:130px;transition:.16s}
+.group:hover{transform:translateY(-3px)}.group.active{outline:2px solid var(--accent);background:#faf3ff}.group i{font-style:normal;font-size:28px}.group strong{display:block;font-size:16px;margin:7px 0 2px}.group small{font-size:11px;color:var(--muted)}.group .n{float:right;color:var(--accent);font-size:13px;font-weight:900}
+.control-panel{padding:16px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 5px 16px #44344c08;margin:19px 0 7px}
+.search{width:100%;height:45px;padding:10px 14px;border:1px solid #ded9e0;background:#fbfafc;border-radius:12px;font-size:14px}
+.filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:11px}.filter{display:flex;flex-direction:column;gap:3px}.filter label{font-size:11px;color:var(--muted);font-weight:800}.filter select{border:1px solid #ded9e0;border-radius:10px;background:#fbfafc;padding:8px;min-width:0;color:#4a4257;font-size:12px}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.action{border:1px solid var(--line);padding:7px 11px;border-radius:11px;background:#fbf9fc;color:#5c5273;font-size:12px;font-weight:850}.action.active{background:#f0e7fd;border-color:#cbb6e7;color:#533582}
+.view-box{margin-top:16px;padding:14px;border:1px solid #e8e0ec;border-radius:16px;background:#fcfaff}.view-box h3{font-size:15px;margin:0 0 4px}.view-box p{font-size:12px;color:var(--muted);margin:0 0 9px}
+.pills{display:flex;gap:7px;overflow:auto;padding:3px 0 10px;scrollbar-width:thin}.pill{flex:none;padding:7px 12px;border:1px solid #e4dde8;border-radius:999px;background:white;color:#64566c;font-size:11px;font-weight:850}.pill.active{background:var(--accent);border-color:var(--accent);color:#fff}.pill em{font-size:10px;font-style:normal;opacity:.65}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.entry{min-width:0;display:flex;flex-direction:column;overflow:hidden;border-radius:19px;border:1px solid #fff;background:#fff;box-shadow:var(--shadow)}.cover{display:grid;place-items:center;position:relative;height:205px;min-width:0;width:100%;border:0;padding:0;background:linear-gradient(135deg,#f2e8eb,#e9f2eb);color:#8f7091;font-size:31px;font-weight:850}
+.cover img{width:100%;height:100%;object-fit:contain}.photo-n{position:absolute;right:9px;bottom:9px;border-radius:999px;background:#30253cce;color:#fff;padding:4px 9px;font-size:11px}.body{padding:14px;display:flex;flex-direction:column;flex:1}.badges{display:flex;gap:6px;flex-wrap:wrap}.tag{border-radius:999px;padding:4px 7px;background:#f3edf9;color:#765c8b;font-size:10px;font-weight:750}.tag.price{background:#eef7ef;color:#3c7450}
+.entry h3{font-size:14px;line-height:1.55;margin:10px 0 6px;overflow-wrap:anywhere}.entry p{flex:1;margin:0 0 12px;font-size:12px;line-height:1.65;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.buttons{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.buttons button,.buttons a{padding:7px 9px;border:1px solid #e5dfe9;border-radius:10px;background:#fbf9fc;color:#69537b;font-weight:850;text-decoration:none;font-size:11px}.buttons button.primary{background:#eee6f8;color:#694595}.buttons .star{margin-left:auto;font-size:16px;padding:4px 8px}.buttons .star.on{color:#d39a20;background:#fff7db}
+.results{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:20px 0 10px;color:var(--muted);font-size:12px}.zero{grid-column:1/-1;border:1px dashed #d5cddd;background:#fff;border-radius:16px;padding:24px;color:#787184;text-align:center}
+dialog{width:min(760px,calc(100% - 24px));max-height:88vh;padding:0;border:0;border-radius:21px;color:var(--ink);box-shadow:0 20px 60px #30273b74}dialog::backdrop{background:#23212c98}.dialog-body{padding:22px;overflow:auto;max-height:86vh}.dialog-top{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.dialog-top h2{font-size:20px;line-height:1.45;margin:0}.close{flex:none;border:1px solid var(--line);border-radius:99px;background:#fff;width:34px;height:34px}.gallery{display:flex;gap:9px;overflow-x:auto;margin:16px 0;padding:3px 0 8px}.gallery a{flex:0 0 auto;width:min(390px,85vw);border:1px solid var(--line);border-radius:13px;overflow:hidden;display:grid;place-items:center;background:#fafafa}.gallery img{width:100%;height:260px;object-fit:contain}
+.detail-list{font-size:13px;line-height:1.85}.detail-list dt{font-weight:900;margin-top:11px;color:#6c4a80}.detail-list dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.detail-list a{color:#6047af}
+.footer{font-size:12px;color:var(--muted);text-align:center;margin-top:27px;line-height:1.9}
+@media(max-width:920px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){main{padding:12px 12px 38px}.groups{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.group{padding:12px;min-height:120px}.group strong{font-size:13px}.group small{font-size:11px}.grid{grid-template-columns:1fr}.cover{height:250px}.head h2{font-size:19px}.hero{border-radius:21px}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head><body><main>
+<a class="back" href="../index.html">← 返回 Personal OS 首頁</a>
+<header class="hero"><span class="eyebrow">ART CATALOG · 達利 AIRTABLE</span><h1>阿竹啟動器</h1><p>收藏畫作、室內布置、風水寓意與藝術家案例。依原始 Airtable「阿竹」Gallery 視圖整理，作品只建一張卡片；可按畫種、題材、擺放空間、尺寸及價格篩選。</p><div class="links"><a href="https://airtable.com/appPXSnxWroL0MXbl/tblukd3GqkxDxt9zO" target="_blank" rel="noopener">開啟 Airtable 阿竹 ↗</a><button type="button" id="help">？ 使用說明</button></div></header>
+<div class="stats" id="stats"><span class="stat">資料載入中……</span></div>
+<div class="head"><h2>六大作品入口</h2><small>選擇大類後，還可依原始細分類篩選</small></div>
+<section class="groups" id="groups" aria-label="作品大類"></section>
+<section class="control-panel">
+<input class="search" id="search" type="search" placeholder="搜尋畫作名稱、編號、牡丹、荷花、價格、尺寸、擺放情境……" aria-label="搜尋阿竹作品">
+<div class="filters">
+<div class="filter"><label for="category">原始作品類別</label><select id="category"></select></div>
+<div class="filter"><label for="room">適合擺放</label><select id="room"></select></div>
+<div class="filter"><label for="detail">題材細分</label><select id="detail"></select></div>
+<div class="filter"><label for="price">價格區間（資料庫歷史標價）</label><select id="price"><option value="all">不限價格</option><option value="0-4999">未滿 5,000</option><option value="5000-9999">5,000–9,999</option><option value="10000-14999">10,000–14,999</option><option value="15000-19999">15,000–19,999</option><option value="20000-999999">20,000 以上</option><option value="none">未標示價格</option></select></div>
+</div>
+<div class="actions"><button class="action" id="favorites" type="button">☆ 我的收藏</button><button class="action" id="recents" type="button">↻ 最近開啟</button><button class="action" id="reset" type="button">重設所有篩選</button></div>
+<div class="view-box"><h3>依 Airtable 原始 Gallery 視圖查找</h3><p>保留原始 155 個 Gallery 視圖名稱，依類別、主題、空間、價格及尺寸整理。點擊下方視圖會直接過濾對應作品。</p>
+<div class="pills" id="viewTypes"></div><div class="pills" id="viewItems"></div></div>
+</section>
+<div class="results"><b id="count">載入中……</b><span>阿竹資料庫 · 2026/10/30 靜態整理版</span></div>
+<section class="grid" id="grid" aria-live="polite"></section>
+<div class="footer">價格與外框尺寸為 Airtable 原有紀錄，僅供歷史參考，不代表即時售價、庫存或目前可購買狀態。<br>原始 Airtable 資料未修改；圖片優先使用轉存至網站的作品照片。收藏及最近使用記錄儲存於這個瀏覽器。</div>
+</main>
+<dialog id="detailsDialog"><div class="dialog-body"><div class="dialog-top"><h2 id="detailTitle"></h2><button class="close" id="closeDetail" type="button" aria-label="關閉">✕</button></div><div class="gallery" id="detailImages"></div><dl class="detail-list" id="detailText"></dl></div></dialog>
+<dialog id="helpDialog"><div class="dialog-body"><div class="dialog-top"><h2>阿竹啟動器使用說明</h2><button class="close" id="closeHelp" type="button" aria-label="關閉">✕</button></div><p>點選六大作品入口篩選畫種類型，也可依作品題材、適合擺放空間、價格及原始 Airtable Gallery 視圖進行交叉檢索。「查看作品」可打開作品說明與多張照片，原始商品連結可能已下架，僅保留作歷史參考。</p><p>所有卡片內容是 2026/10/30 的 Airtable 靜態快照；後續原表更新不會自動同步。收藏、最近開啟保存在自己的瀏覽器中。</p></div></dialog>
+<script>
+const $=id=>document.getElementById(id);
+const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl=v=>{try{let u=new URL(String(v||""),document.baseURI);return ["https:","http:"].includes(u.protocol)?u.href:""}catch{return ""}};
+const types=[["category","畫作分類"],["theme","題材與寓意"],["placement","空間布置"],["price","依價格"],["size","依尺寸"]];
+const favKey="azhuLauncherFavoriteIds",recentKey="azhuLauncherRecentIds";
+function loadStorage(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch{return []}}
+let favorites=loadStorage(favKey),recent=loadStorage(recentKey);
+let data={items:[],groups:[],views:[]},activeGroup="all",activeView=null,activeViewType="category",activeMode="all",search="";
+const unique=a=>[...new Set(a)].filter(Boolean).sort((a,b)=>a.localeCompare(b,"zh-Hant"));
+function getGroup(x){return data.groups.find(g=>g.cats.includes(x.category))||{id:"other",icon:"🖼",name:"其他"}}
+function getViewCount(v){return data.items.filter(x=>matchesView(x,v)).length}
+function matchesView(x,v){
+if(!v)return true;
+const key=v.key||v.name,n=v.name;
+if(v.type==="category")return x.category===key;
+if(v.type==="theme"){
+if(n==="國畫牡丹")return x.details.includes("牡丹") && /花鳥|山水|人物|國畫/.test(x.category);
+return x.details.includes(key)||x.name.includes(key)||x.category===key;
+}
+if(v.type==="placement")return x.rooms.includes(key)||x.category===key||x.category===key+"布置"||x.category.replace(/布置$/,"")===key;
+if(v.type==="price")return x.price!==null && Number(x.price)===Number(key);
+if(v.type==="size")return x.size===key||x.frames.includes(key);
+return x.name.includes(key)||x.note.includes(key);
+}
+function renderGroups(){
+const count=g=>data.items.filter(x=>g.cats.includes(x.category)).length;
+$("groups").innerHTML='<button class="group '+(activeGroup==="all"?"active":"")+'" data-group="all"><i>▦</i><span class="n">'+data.items.length+'</span><strong>全部作品與布置</strong><small>所有 Airtable 阿竹卡片</small></button>'+
+data.groups.map(g=>'<button class="group '+(activeGroup===g.id?"active":"")+'" data-group="'+g.id+'"><i>'+g.icon+'</i><span class="n">'+count(g)+'</span><strong>'+escapeHtml(g.name)+'</strong><small>'+escapeHtml(g.hint)+'</small></button>').join("");
+}
+function renderSelectors(){
+const cats=activeGroup==="all"?unique(data.items.map(x=>x.category)):unique(data.items.filter(x=>getGroup(x).id===activeGroup).map(x=>x.category));
+const select=(id,options,placeholder)=>{const el=$(id),v=el.value;el.innerHTML='<option value="all">'+escapeHtml(placeholder)+'</option>'+options.map(n=>'<option value="'+escapeHtml(n)+'">'+escapeHtml(n)+'</option>').join("");el.value=options.includes(v)?v:"all"};
+select("category",cats,"全部作品類別");
+select("detail",unique(data.items.flatMap(x=>x.details)),"全部題材");
+select("room",unique(data.items.flatMap(x=>x.rooms)),"所有擺放空間");
+}
+function renderViews(){
+$("viewTypes").innerHTML=types.map(([type,label])=>'<button type="button" class="pill '+(activeViewType===type?"active":"")+'" data-vtype="'+type+'">'+label+' <em>'+data.views.filter(x=>x.type===type).length+'</em></button>').join("");
+const vs=data.views.filter(x=>x.type===activeViewType);
+$("viewItems").innerHTML='<button type="button" class="pill '+(!activeView?"active":"")+'" data-view="all">全部視圖</button>'+vs.map(v=>'<button type="button" class="pill '+(activeView===v.id?"active":"")+'" data-view="'+v.id+'">'+escapeHtml(v.name)+' <em>'+getViewCount(v)+'</em></button>').join("");
+}
+function filtered(){
+const groupOk=x=>activeGroup==="all"||getGroup(x).id===activeGroup;
+const v=data.views.find(x=>x.id===activeView);
+const q=search.trim().toLocaleLowerCase();
+const p=$("price").value;
+let result=data.items.filter(x=>{
+if(!groupOk(x))return false;
+if($("category").value!=="all"&&x.category!==$("category").value)return false;
+if($("room").value!=="all"&&!x.rooms.includes($("room").value))return false;
+if($("detail").value!=="all"&&!x.details.includes($("detail").value))return false;
+if(p==="none"&&x.price!==null)return false;
+if(p!=="all"&&p!=="none"){let [min,max]=p.split("-").map(Number);if(x.price===null||x.price<min||x.price>max)return false}
+if(!matchesView(x,v))return false;
+if(activeMode==="fav"&&!favorites.includes(x.id))return false;
+if(activeMode==="recent"&&!recent.includes(x.id))return false;
+return !q||[x.name,x.category,x.note,x.size,x.price,x.details.join(" "),x.rooms.join(" "),x.frames.join(" ")].join(" ").toLocaleLowerCase().includes(q);
+});
+if(activeMode==="recent")result.sort((a,b)=>recent.indexOf(a.id)-recent.indexOf(b.id));
+return result;
+}
+function render(){
+renderGroups();renderViews();
+$("favorites").classList.toggle("active",activeMode==="fav");$("recents").classList.toggle("active",activeMode==="recent");
+const found=filtered();
+$("count").textContent="顯示 "+found.length+" / "+data.items.length+" 筆資料";
+$("grid").innerHTML=found.map(x=>{
+const image=safeUrl(x.images?.[0]?.url),g=getGroup(x);
+const cover=image?'<img loading="lazy" src="'+escapeHtml(image)+'" alt="'+escapeHtml(x.name)+'" onerror="this.parentElement.textContent=&#39;🖼&#39;">':g.icon;
+const picNum=x.images?.length||0;
+const tags='<span class="tag">'+escapeHtml(x.category)+'</span>'+(x.price!==null?'<span class="tag price">NT$ '+Number(x.price).toLocaleString("zh-TW")+'</span>':'')+(x.size?'<span class="tag">'+escapeHtml(x.size)+'</span>':'');
+return '<article class="entry"><button type="button" class="cover" data-detail="'+x.id+'" aria-label="查看 '+escapeHtml(x.name)+' 作品圖片">'+cover+(picNum?'<span class="photo-n">📷 '+picNum+' 張</span>':'')+'</button><div class="body"><div class="badges">'+tags+'</div><h3>'+escapeHtml(x.name)+'</h3><p>'+escapeHtml(x.note||x.details.join("、")||"畫作及布置作品")+'</p><div class="buttons"><button type="button" class="primary" data-detail="'+x.id+'">查看作品</button>'+(x.originalUrl&&safeUrl(x.originalUrl)?'<a href="'+escapeHtml(safeUrl(x.originalUrl))+'" target="_blank" rel="noopener noreferrer" data-open="'+x.id+'">原商品網址 ↗</a>':'')+'<button type="button" data-star="'+x.id+'" class="star '+(favorites.includes(x.id)?"on":"")+'" aria-label="收藏">'+(favorites.includes(x.id)?"★":"☆")+'</button></div></div></article>';
+}).join("")||'<div class="zero">目前沒有符合條件的作品。試試清除搜尋條件或改選其他視圖。</div>';
+}
+function save(){localStorage.setItem(favKey,JSON.stringify(favorites));localStorage.setItem(recentKey,JSON.stringify(recent))}
+function markOpened(id){recent=[id,...recent.filter(x=>x!==id)].slice(0,10);save()}
+function openDetails(id){
+const x=data.items.find(v=>v.id===id);if(!x)return;
+markOpened(id);
+$("detailTitle").textContent=x.name;
+$("detailImages").innerHTML=(x.images||[]).map((im,i)=>'<a target="_blank" rel="noopener" href="'+escapeHtml(safeUrl(im.url))+'"><img loading="lazy" src="'+escapeHtml(safeUrl(im.url))+'" alt="'+escapeHtml(x.name)+'，圖片 '+(i+1)+'" onerror="this.style.display=&#39;none&#39;"></a>').join("")||'<div class="zero">這筆資料目前尚未載入作品照片。</div>';
+const details=[["分類",x.category],["題材細分",x.details.join("、")],["適合擺放",x.rooms.join("、")],["資料庫歷史標價",x.price!==null?"NT$ "+Number(x.price).toLocaleString("zh-TW"):"未標價"],["作品尺寸",x.size],["可用外框規格",x.frames.join("；")],["作品說明",x.note],["商品註記",x.isProduct?"原 Airtable 標示為商品":"布置／知識／其他資料"]];
+$("detailText").innerHTML=details.filter(z=>z[1]).map(z=>'<dt>'+escapeHtml(z[0])+'</dt><dd>'+escapeHtml(z[1])+'</dd>').join("")+'<dt>原始來源</dt><dd><a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(safeUrl(x.airtableUrl))+'">查看 Airtable 原紀錄 ↗</a>'+(x.originalUrl&&safeUrl(x.originalUrl)?'　<a target="_blank" rel="noopener noreferrer" href="'+escapeHtml(safeUrl(x.originalUrl))+'">歷史商品網址 ↗</a>':'')+'</dd>';
+$("detailsDialog").showModal();if(activeMode==="recent")render();
+}
+$("groups").addEventListener("click",e=>{let t=e.target.closest("[data-group]");if(!t)return;activeGroup=t.dataset.group;activeView=null;renderSelectors();render()});
+$("viewTypes").addEventListener("click",e=>{let t=e.target.closest("[data-vtype]");if(!t)return;activeViewType=t.dataset.vtype;activeView=null;render()});
+$("viewItems").addEventListener("click",e=>{let t=e.target.closest("[data-view]");if(!t)return;activeView=t.dataset.view==="all"?null:t.dataset.view;activeGroup="all";$("category").value="all";render()});
+$("grid").addEventListener("click",e=>{let t=e.target.closest("[data-star]");if(t){let id=t.dataset.star;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[id,...favorites];save();render();return}t=e.target.closest("[data-detail]");if(t){openDetails(t.dataset.detail);return}t=e.target.closest("[data-open]");if(t)markOpened(t.dataset.open)});
+["category","room","detail","price"].forEach(id=>$(id).addEventListener("change",render));
+$("search").addEventListener("input",e=>{search=e.target.value;render()});
+$("favorites").addEventListener("click",()=>{activeMode=activeMode==="fav"?"all":"fav";render()});
+$("recents").addEventListener("click",()=>{activeMode=activeMode==="recent"?"all":"recent";render()});
+$("reset").addEventListener("click",()=>{activeGroup="all";activeView=null;activeMode="all";search="";$("search").value="";$("price").value="all";renderSelectors();render()});
+$("closeDetail").addEventListener("click",()=>$("detailsDialog").close());
+$("help").addEventListener("click",()=>$("helpDialog").showModal());
+$("closeHelp").addEventListener("click",()=>$("helpDialog").close());
+fetch("../data/azhu-catalog.json?v=20261030").then(r=>{if(!r.ok)throw Error("無法取得資料庫");return r.json()}).then(d=>{
+data=d;
+renderSelectors();render();
+$("stats").innerHTML='<span class="stat">🖼 '+data.items.length+' 筆作品／布置卡片</span><span class="stat">📚 '+data.views.length+' 個 Gallery 視圖</span><span class="stat">🧭 '+data.groups.length+' 大分類</span><span class="stat">📸 '+data.items.reduce((n,x)=>n+(x.images?.length||0),0)+' 張已匯入圖片</span><span class="stat">🔖 '+data.items.filter(x=>x.isProduct).length+' 筆商品記錄</span>';
+}).catch(e=>{$("count").textContent="載入失敗";$("grid").innerHTML='<div class="zero">'+escapeHtml(e.message)+'。請重新整理或開啟 Airtable 原始資料。</div>'});
+</script>
+<script src="../shared-nav.js" defer></script>
+</body></html>
