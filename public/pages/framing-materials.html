@@ -854,8 +854,8 @@ function tayuanCard(item){
  '<div class="name">'+esc(item.name)+'</div>'+
  '<div class="material-facts"><div>整理大類：'+esc(item.category)+'</div><div>整理細類：'+esc(item.subcategory)+'</div>'+
  '<div class="tayuan-source">來源：公開公司介紹 · 官網商品頁、價格及照片待核實</div></div>'+
- '<div class="item-actions"><a class="open-link shop" href="'+esc(tayuanMeta.officialCatalogUrl||"http://www.tayuanart.com.tw/")+'" target="_blank" rel="noopener noreferrer" onclick="remember(\\''+id+'\\')">大圓官網入口 ↗</a></div>'+
- '<button class="star '+(favorites.includes(item.id)?'active':'')+'" type="button" aria-label="'+(favorites.includes(item.id)?'取消收藏 ':'加入收藏 ')+esc(item.name)+'" onclick="toggleFavorite(event,\\''+id+'\\')">'+(favorites.includes(item.id)?'★':'☆')+'</button></article>';
+ '<div class="item-actions"><a class="open-link shop" href="'+esc(tayuanMeta.officialCatalogUrl||"http://www.tayuanart.com.tw/")+'" target="_blank" rel="noopener noreferrer" onclick="remember(\''+id+'\')">大圓官網入口 ↗</a></div>'+
+ '<button class="star '+(favorites.includes(item.id)?'active':'')+'" type="button" aria-label="'+(favorites.includes(item.id)?'取消收藏 ':'加入收藏 ')+esc(item.name)+'" onclick="toggleFavorite(event,\''+id+'\')">'+(favorites.includes(item.id)?'★':'☆')+'</button></article>';
 }
 function renderTayuanPanel(){
  const panel=document.getElementById("tayuanCatalogPanel");
