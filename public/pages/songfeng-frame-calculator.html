@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="松風閣畫框選框與試算：作品尺寸、框型照片、外框單價、背板、壓克力、工資及達利外框價格換算。">
+<title>松風閣畫框試算｜裱框找模式啟動器</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f8f6ef;color:#303548;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}main{max-width:1120px;margin:auto;padding:20px 20px 60px}a{text-decoration:none;color:inherit}.back{display:inline-block;padding:10px 15px;background:white;border-radius:30px;font-weight:700;color:#586886}.hero{background:linear-gradient(120deg,#5477b4,#7da4c8);color:white;padding:32px;border-radius:28px;margin:18px 0;box-shadow:0 14px 35px #5272a62a}.hero h1{font-size:clamp(30px,6vw,48px);margin:8px 0}.hero p{line-height:1.7}.hero a{display:inline-block;background:#ffffff2b;padding:10px 14px;border-radius:25px}.sizes{background:#fff;padding:20px;border-radius:22px;margin:20px 0}.sizes h2{margin:0 0 8px}.sizes p{color:#68778a;line-height:1.6}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:7px 11px;background:#eef2fb;border-radius:30px;font-size:13px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.controls input{flex:1;min-width:200px;padding:13px;border:1px solid #cbd5e3;border-radius:14px;font:inherit}.controls button,.save{border:0;border-radius:14px;padding:10px 14px;background:#e8eef9;color:#445f91;font-weight:700;cursor:pointer}.controls button.active{background:#5578b8;color:white}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 25px #40506a14;display:flex;flex-direction:column}.card img{width:100%;height:210px;object-fit:contain;background:#fff}.body{padding:15px;display:flex;flex-direction:column;flex:1}.body h3{font-size:17px;margin:0 0 6px}.original{font-size:12px;color:#718099}.price{color:#31578d;font-weight:800;font-size:16px;margin:8px 0 0}.price small{display:block;font-size:11px;font-weight:400;color:#78859a;margin-top:3px}.desc{color:#657288;font-size:13px;line-height:1.65;flex:1}.buttons{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.open{background:#5578b8;color:white;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:700}.save{margin-left:auto}.group{margin:24px 0 30px}.group h3{margin:0 0 8px;color:#445f91}.group p{line-height:1.6}.chip:hover,.chip:focus-visible{background:#d4def6}.empty{color:#7b8494}.note{color:#78859a;font-size:12px;line-height:1.7}@media(max-width:700px){main{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card img{height:145px}.body{padding:11px}.body h3{font-size:15px}.buttons{flex-wrap:wrap}}
+
+/* 松風閣一般裱框：獨立式選框及計價，不干擾海報框商品收藏 */
+[hidden],.grid[hidden],.sfg-panel[hidden],.controls input[hidden]{display:none!important}
+.sfg-panel{margin:14px 0 24px;padding:clamp(15px,3vw,25px);border:1px solid #d5e1f2;border-radius:22px;background:linear-gradient(145deg,#fff,#f0f5fc);box-shadow:0 8px 25px #40506a12}
+.sfg-panel button,.sfg-panel input,.sfg-panel select{font:inherit}
+.sfg-heading{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;align-items:flex-start}
+.sfg-heading h3{font-size:clamp(20px,3vw,27px);margin:5px 0;color:#314f80}
+.sfg-heading p{margin:5px 0;color:#63748d;line-height:1.6;font-size:14px}
+.sfg-heading-links{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.sfg-heading a{display:inline-block;padding:9px 12px;border:1px solid #cbdaf0;border-radius:11px;background:#fff;color:#4168a5;text-decoration:none;font-size:12px;font-weight:800}
+.sfg-step-label{display:inline-block;font-size:11px;font-weight:850;letter-spacing:.05em;color:#4168a5}
+.sfg-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(255px,1fr);gap:14px;align-items:start;margin-top:18px}
+.sfg-config{display:grid;gap:13px;min-width:0}
+.sfg-box,.sfg-summary{background:white;border:1px solid #e2e8f2;border-radius:18px;padding:17px}
+.sfg-box h4{margin:0 0 11px;font-size:16px;color:#334f78}
+.sfg-presets{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.sfg-presets button,.sfg-frame-filter button{border:1px solid #cddbf1;border-radius:999px;background:#fff;color:#476b9f;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.sfg-presets button.selected,.sfg-frame-filter button.selected{background:#5578b8;color:#fff;border-color:#5578b8}
+.sfg-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sfg-fields label,.sfg-amount-field{display:flex;flex-direction:column;gap:5px;color:#52637d;font-size:12px;font-weight:750}
+.sfg-fields input,.sfg-fields select,.sfg-amount-field input,.sfg-frame-search{width:100%;min-width:0;padding:10px 11px;border:1px solid #ccd6e5;border-radius:11px;background:white;color:#253852;outline:none;font-size:14px}
+.sfg-fields input:focus-visible,.sfg-frame-search:focus-visible{outline:2px solid #6386c7;outline-offset:1px}
+.sfg-frame-tools{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.sfg-frame-search{flex:1}
+.sfg-frame-filter{display:flex;gap:7px;flex-wrap:wrap;padding:2px 0 7px;scrollbar-width:thin}.sfg-frame-filter button{white-space:normal;text-align:left;font-size:12px;line-height:1.4}.sfg-frame-filter button small{display:block;opacity:.8;font-weight:600}
+.sfg-frames{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:385px;overflow-y:auto;padding:2px;scrollbar-width:thin}
+.sfg-frame-choice{min-width:0;width:100%;padding:10px;display:flex;gap:9px;align-items:center;border:1px solid #e0e7f1;border-radius:13px;background:#fff;text-align:left;cursor:pointer}
+.sfg-frame-choice.is-selected{background:#e7efff;border:2px solid #5277b9;padding:9px}
+.sfg-mini-frame{flex:none;display:block;width:44px;height:49px;padding:7px;border:7px solid var(--sfg-tone,#555);border-radius:2px;background:#fffaf0;box-shadow:inset 0 0 0 1px #b7bdc7,0 2px 5px #1f304020}
+.sfg-frame-copy{min-width:0;display:block;line-height:1.4}
+.sfg-frame-copy strong{display:block;color:#344a68;font-size:12px;overflow-wrap:anywhere}
+.sfg-frame-copy small{display:block;margin-top:3px;font-size:11px;color:#64758a}.sfg-frame-copy em{display:block;margin-top:4px;color:#996b32;font-size:11px;font-style:normal;font-weight:800}.sfg-frame-count{margin:0 0 8px}
+.sfg-custom{display:block;width:100%;margin-top:10px;padding:9px 12px;border:1px dashed #adc4e6;border-radius:11px;background:#f5f9ff;color:#4265a2;font-size:12px;font-weight:800;cursor:pointer}
+.sfg-custom-fields{margin-top:12px;padding-top:12px;border-top:1px dashed #dae3f1}
+.sfg-rate-row{display:flex;gap:9px;align-items:end;justify-content:space-between;flex-wrap:wrap;margin-top:11px}
+.sfg-rate-row label{flex:1;min-width:155px}
+.sfg-rate-row a{font-size:12px;color:#426bac;text-decoration:underline;text-underline-offset:2px;max-width:140px;text-align:right}
+.sfg-check{display:flex;gap:9px;align-items:center;color:#425673;font-size:13px;font-weight:800;margin:10px 0}
+.sfg-check input{accent-color:#5578b8;width:17px;height:17px;flex:none}
+.sfg-tip{font-size:12px;color:#7a8798;line-height:1.6;margin:8px 0 0}
+.sfg-summary{position:sticky;top:16px;box-shadow:0 9px 25px #40506a10}
+.sfg-summary h4{font-size:16px;color:#334f78;margin:0 0 13px}
+.sfg-preview{min-height:240px;border-radius:14px;background:radial-gradient(circle at top,#f5f6f8,#e9eef5);display:flex;align-items:center;justify-content:center;padding:16px;overflow:hidden}
+.sfg-preview-frame{box-sizing:content-box;display:grid;place-items:center;border:10px solid #395878;box-shadow:2px 4px 13px #1f2e4350,inset 0 0 0 2px #0002;max-width:100%}
+.sfg-preview-art{width:100%;height:100%;padding:8px;display:grid;place-items:center;background:linear-gradient(165deg,#f9f6e9,#e7eef4);color:#8a94a3;font-size:12px}
+.sfg-preview-art span{border-top:1px solid #b2c5cf;border-bottom:1px solid #b2c5cf;letter-spacing:.18em;padding:15px 0;text-align:center}
+.sfg-preview-note{display:block;text-align:center;font-size:11px;color:#8a91a2;margin:8px 0 14px}
+.sfg-selected-name{font-weight:850;color:#354f79;font-size:14px;margin-bottom:12px;line-height:1.6}
+.sfg-breakdown{border-top:1px solid #e5ebf3;padding-top:7px}
+.sfg-line{display:flex;justify-content:space-between;gap:8px;font-size:13px;line-height:1.65;padding:5px 0;color:#586780}
+.sfg-line strong{font-variant-numeric:tabular-nums;white-space:nowrap;color:#334f80}
+.sfg-total{margin-top:11px;padding:13px;border-radius:15px;background:#e2ecfb;display:flex;justify-content:space-between;gap:10px;align-items:center;color:#31578d}
+.sfg-total span{font-size:12px;font-weight:800}
+.sfg-total strong{font-size:23px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sfg-formulas{font-size:12px;color:#586a85;line-height:1.75;margin-top:12px;overflow-wrap:anywhere}
+.sfg-formulas p{margin:6px 0}
+.sfg-warning{font-size:12px;color:#975b29;line-height:1.7;font-weight:700}
+.sfg-sources{margin:16px 1px 0;color:#6b7890;font-size:12px;line-height:1.8}
+.sfg-sources a{color:#4168a6;text-decoration:underline}
+.sfg-empty{padding:16px 7px;font-size:12px;color:#667891}
+@media(max-width:810px){.sfg-layout{grid-template-columns:1fr}.sfg-summary{position:static}.sfg-frames{max-height:310px}}
+@media(max-width:560px){.sfg-frame-filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:11px}.sfg-frame-filter button{flex:none;max-width:170px;white-space:normal}.sfg-panel{padding:12px}.sfg-box,.sfg-summary{padding:13px}.sfg-frame-choice{padding:7px}.sfg-frame-choice.is-selected{padding:6px}.sfg-frame-copy strong{font-size:11px}.sfg-frames{gap:6px}.sfg-preview{min-height:220px}.sfg-total strong{font-size:21px}}
+@media(max-width:350px){.sfg-fields,.sfg-frames{grid-template-columns:1fr}}
+
+
+/* 手機版：避免外框分類拉寬整頁 */
+html,body{max-width:100%;overflow-x:clip}
+main{width:100%;max-width:1120px;min-width:0}
+.sfg-panel,.sfg-layout,.sfg-config,.sfg-box,.sfg-summary,.sfg-frame-tools,.sfg-frame-filter,.sfg-frames{min-width:0;max-width:100%}
+.sfg-panel{width:100%;overflow:clip}
+.sfg-layout{width:100%;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}
+.sfg-config{grid-template-columns:minmax(0,1fr);width:100%}
+.sfg-box,.sfg-summary{width:100%}
+.sfg-frame-filter{width:100%;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain}
+.sfg-frame-filter button{flex:0 0 auto;overflow-wrap:anywhere}
+.sfg-frame-choice,.sfg-frame-copy{min-width:0;max-width:100%}
+.sfg-heading-links{max-width:100%;min-width:0}
+.sfg-total{min-width:0}
+.sfg-total strong{font-size:clamp(17px,2.5vw,23px)}
+@media(max-width:810px){.sfg-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){
+ .sfg-frame-filter{flex-wrap:nowrap;max-width:100%;width:100%;overflow-x:auto}
+ .sfg-frame-filter button{max-width:156px;white-space:normal;flex:0 0 auto}
+ .sfg-frames{grid-template-columns:minmax(0,1fr)}
+ .sfg-rate-row label{flex:1 1 100%;min-width:0}
+ .sfg-rate-row a{max-width:100%}
+ .sfg-total{gap:4px;padding:10px}
+ .sfg-total strong{font-size:20px}
+}
+
+/* 尺寸預設：原網站 A5~A0、B5~B0 畫框內尺寸。防止手機版頁面變寬 */
+.sfg-presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:10px 0 12px;min-width:0;width:100%}
+.sfg-presets button{min-width:0;width:100%;display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;text-align:left;padding:10px 12px;border-radius:13px;overflow-wrap:anywhere}
+.sfg-presets button strong{font-size:14px;font-weight:850;letter-spacing:.01em}
+.sfg-presets button small{font-size:clamp(10px,1.3vw,12px);font-weight:650;white-space:normal;letter-spacing:0;line-height:1.45}
+.sfg-size-intro{margin:0 0 8px;font-weight:800;color:#526c94}
+.sfg-size-footnote{margin:0 0 12px}
+@media(max-width:560px){
+ .sfg-presets{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ .sfg-presets button{flex-direction:column;align-items:flex-start;gap:3px;padding:9px 10px}
+ .sfg-presets button strong{font-size:13px}
+ .sfg-presets button small{font-size:11px;line-height:1.35}
+}
+
+/* 作品尺寸下方的英吋換算，使用 mm→cm→inch，保持手機版不溢出 */
+.sfg-inch-result{display:flex;flex-direction:column;gap:4px;min-width:0;max-width:100%;margin:12px 0 10px;padding:10px 0;border-top:1px solid #e3e9f3;border-bottom:1px solid #e3e9f3;color:#476180;line-height:1.55}
+.sfg-inch-result>span{font-size:12px;font-weight:800}
+.sfg-inch-result output{font-size:clamp(13px,1.5vw,16px);font-weight:850;color:#304c72;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.sfg-inch-result small{font-size:11px;color:#748399;line-height:1.5}
+
+/* 松風閣外框參考價換算達利每吋報價；不改動原有材料總價 */
+.sfg-dali{margin-top:15px;padding:14px;border:1px solid #c8d9ec;border-radius:15px;background:#f8fbff;min-width:0;max-width:100%}
+.sfg-dali h5{margin:0 0 6px;color:#304f7b;font-size:15px;line-height:1.5}
+.sfg-dali p{margin:6px 0;color:#667891;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+.sfg-dali label{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:11px 0;font-size:12px;font-weight:800;color:#47627f}
+.sfg-dali label input{width:110px;max-width:100%;min-width:0;padding:8px 10px;border:1px solid #c7d6e8;border-radius:10px;background:#fff;color:#294365;font-size:14px}
+.sfg-dali label input:focus-visible{outline:2px solid #6c92c7;outline-offset:2px}
+.sfg-dali-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.sfg-dali-metric{min-width:0;padding:10px;border:1px solid #d9e4f3;border-radius:12px;background:white}
+.sfg-dali-metric span{display:block;color:#61758f;font-size:11px;line-height:1.5}
+.sfg-dali-metric strong{display:block;overflow-wrap:anywhere;font-size:clamp(17px,2vw,22px);font-weight:850;color:#325783;font-variant-numeric:tabular-nums;margin-top:4px}
+.sfg-dali-metric.main{border-color:#9ab9e2;background:#edf4ff}
+.sfg-dali .sfg-dali-formula{margin-top:8px;color:#466381;font-size:11px}
+@media(max-width:390px){.sfg-dali{padding:11px}.sfg-dali-metrics{grid-template-columns:minmax(0,1fr)}}
+
+/* 松風閣：官網實品圖片取代色塊；圖片不可用時保留原本示意色框。 */
+.sfg-frame-photo{flex:none;display:block;width:53px;height:57px;max-width:53px;border:1px solid #e1e6ef;border-radius:9px;background:#fff;object-fit:contain;padding:3px;box-shadow:0 2px 6px #22334c12}
+.sfg-frame-photo[hidden],.sfg-preview-photo[hidden],.sfg-mini-frame[hidden]{display:none!important}
+.sfg-frame-choice:has(.sfg-frame-photo) .sfg-frame-copy{flex:1;min-width:0}
+.sfg-preview-photo{display:block;width:min(100%,370px);height:230px;max-width:100%;object-fit:contain;background:#fff;border-radius:11px;padding:7px;box-shadow:0 2px 12px #253a5712}
+@media(max-width:560px){.sfg-frame-photo{width:48px;height:52px;max-width:48px}.sfg-preview-photo{height:215px}}
+</style></head><body><main>
+<a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a>
+<header class="hero"><span>🖼️ 裱框找模式 · 松風閣</span><h1>松風閣畫框試算</h1><p>輸入作品尺寸、挑選外框，試算外框、背板、壓克力與工資，並換算達利外框參考價。</p><a href="./framing-materials.html?vendor=%E6%9D%BE%E9%A2%A8%E9%96%A3">查看松風閣裱框材料 ↗</a></header>
+<section id="sfg-calculator" class="sfg-panel" aria-labelledby="sfg-heading">
+<header class="sfg-heading"><div><span class="sfg-step-label">SONG FENG GE · 選框與計價</span><h3 id="sfg-heading">🖼️ 松風閣｜一般裱框試算</h3><p>一般裱框＝<strong>背板 ＋ 外框 ＋ 壓克力</strong>，先選框條，再依作品尺寸計算。</p></div><div class="sfg-heading-links"><a href="https://docs.google.com/spreadsheets/d/1ddZNssGS1xiPZpxEBNRDW9LDdtO8ULY4RQu4ewkKD14/edit" target="_blank" rel="noopener noreferrer">📋 Google 試算表｜採集框價 ↗</a> <a href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">松風閣官網框樣 ↗</a> <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">官網完整模擬框 ↗</a></div></header>
+<div class="sfg-layout">
+<div class="sfg-config">
+<div class="sfg-box"><h4>① 作品尺寸</h4>
+<p class="sfg-tip sfg-size-intro">📐 常見畫框內尺寸參考（單位：mm）</p>
+<div class="sfg-presets" aria-label="依原網站畫框內尺寸快速選擇"><button type="button" data-sfg-preset="A5" aria-label="A5，框內尺寸 149 × 211 毫米" aria-pressed="false"><strong>A5</strong><small>149 × 211 mm</small></button><button type="button" data-sfg-preset="B5" aria-label="B5，框內尺寸 183 × 258 毫米" aria-pressed="false"><strong>B5</strong><small>183 × 258 mm</small></button><button type="button" data-sfg-preset="A4" aria-label="A4，框內尺寸 211 × 298 毫米" class="selected" aria-pressed="true"><strong>A4</strong><small>211 × 298 mm</small></button><button type="button" data-sfg-preset="B4" aria-label="B4，框內尺寸 258 × 365 毫米" aria-pressed="false"><strong>B4</strong><small>258 × 365 mm</small></button><button type="button" data-sfg-preset="A3" aria-label="A3，框內尺寸 298 × 421 毫米" aria-pressed="false"><strong>A3</strong><small>298 × 421 mm</small></button><button type="button" data-sfg-preset="B3" aria-label="B3，框內尺寸 365 × 516 毫米" aria-pressed="false"><strong>B3</strong><small>365 × 516 mm</small></button><button type="button" data-sfg-preset="A2" aria-label="A2，框內尺寸 421 × 595 毫米" aria-pressed="false"><strong>A2</strong><small>421 × 595 mm</small></button><button type="button" data-sfg-preset="B2" aria-label="B2，框內尺寸 516 × 729 毫米" aria-pressed="false"><strong>B2</strong><small>516 × 729 mm</small></button><button type="button" data-sfg-preset="A1" aria-label="A1，框內尺寸 595 × 842 毫米" aria-pressed="false"><strong>A1</strong><small>595 × 842 mm</small></button><button type="button" data-sfg-preset="B1" aria-label="B1，框內尺寸 729 × 1031 毫米" aria-pressed="false"><strong>B1</strong><small>729 × 1031 mm</small></button><button type="button" data-sfg-preset="A0" aria-label="A0，框內尺寸 842 × 1190 毫米" aria-pressed="false"><strong>A0</strong><small>842 × 1190 mm</small></button><button type="button" data-sfg-preset="B0" aria-label="B0，框內尺寸 1031 × 1457 毫米" aria-pressed="false"><strong>B0</strong><small>1031 × 1457 mm</small></button></div>
+<div class="sfg-tip sfg-size-footnote">這些是參考網站標示的<strong>畫框內尺寸</strong>，與 ISO 標準紙張尺寸可能相差 1～數毫米。請以實際作品及框型規格為準。</div>
+<div class="sfg-fields"><label for="sfg-length">作品長／高（mm）<input id="sfg-length" type="number" min="1" step="0.1" value="298" inputmode="decimal"></label><label for="sfg-width">作品寬（mm）<input id="sfg-width" type="number" min="1" step="0.1" value="211" inputmode="decimal"></label></div>
+<p class="sfg-inch-result"><span>📏 長＋寬換算吋數</span><output id="sfg-size-inches" aria-live="polite">（29.8 ＋ 21.1）÷ 2.54 ＝ 20.04 吋</output><small>輸入單位是 mm，會先換算成 cm，再除以 2.54。</small></p>
+<p class="sfg-tip">上面可點選原網站標示的框內尺寸，也能手動輸入 mm；此處計算不含卡紙的一般平面框。</p></div>
+<div class="sfg-box"><h4>② 選擇松風閣外框</h4>
+<div class="sfg-frame-tools"><input class="sfg-frame-search" id="sfg-frame-search" type="search" placeholder="搜尋型號、顏色，例如 411、柚木" aria-label="搜尋松風閣框型"></div>
+<div class="sfg-frame-filter" id="sfg-frame-filter" aria-label="依松風閣官網框型分類"></div><p class="sfg-tip" id="sfg-frame-count" aria-live="polite"></p>
+<div class="sfg-frames" id="sfg-frame-grid" aria-label="可選框條"></div><button id="sfg-load-more" class="sfg-custom" type="button" hidden>顯示更多框型</button>
+<button id="sfg-custom" class="sfg-custom" type="button" aria-expanded="false">找不到框型？輸入其他框型與單價</button>
+<div id="sfg-custom-fields" class="sfg-fields sfg-custom-fields" hidden><label for="sfg-custom-name">自訂框型名稱<input id="sfg-custom-name" type="text" maxlength="80" placeholder="例如 783咖"></label><label for="sfg-custom-width">框寬（cm，預覽用）<input id="sfg-custom-width" type="number" min="0.2" max="15" step="0.1" value="2" inputmode="decimal"></label></div>
+<div class="sfg-rate-row"><label class="sfg-amount-field" for="sfg-frame-rate">所選框型單價（NT$／15cm；優先採用試算表，可手動修改）<input id="sfg-frame-rate" type="number" min="0" step="0.01" value="75" inputmode="decimal"></label><a id="sfg-frame-link" href="https://sfg218.com/frame_info.php?class=17&amp;no=685" target="_blank" rel="noopener noreferrer">核對選定框型的官網價格 ↗</a></div>
+<p id="sfg-price-source" class="sfg-tip" aria-live="polite">價格來源：待選擇框型</p><p class="sfg-tip">圖片取自松風閣官方商品圖；沒有可核對照片的框型才顯示示意色。價格以指定的 Google 試算表「框型清單」優先：先讀 I 欄「官網優惠單價」，沒有時才用 E 欄 Airtable 參考價。已輸入 I 欄價格 359 款（其中 6 款有明確官網核對紀錄），15 款待補。資料為 2026/10/29 快照，不會即時同步；未核對價格請以官網實際報價為準。</p></div>
+<div class="sfg-box"><h4>③ 背板、壓克力與工資</h4>
+<label class="sfg-check" for="sfg-back-on"><input type="checkbox" id="sfg-back-on" checked> 木背板（預設 4mm）</label>
+<div class="sfg-fields"><label for="sfg-back-rate">背板單價（NT$／才）<input id="sfg-back-rate" type="number" min="0" step="0.01" value="70" inputmode="decimal"></label><label for="sfg-acrylic-rate">壓克力單價（NT$／才）<input id="sfg-acrylic-rate" type="number" min="0" step="0.01" value="100" inputmode="decimal"></label></div>
+<label class="sfg-check" for="sfg-acrylic-on"><input type="checkbox" id="sfg-acrylic-on" checked> 使用壓克力</label>
+<div class="sfg-fields"><label for="sfg-labor">另加工資（NT$，自行輸入）<input id="sfg-labor" type="number" min="0" step="1" value="0" inputmode="decimal"></label></div>
+<p class="sfg-tip">壓克力 NT$100／才已核對官網；背板 NT$70／才為可調整參考值，尚未逐項核對目前官網實際收費。工資預設 0，並非免工資。<a href="https://sfg218.com/frame3_info.php?class=2&amp;no=9" target="_blank" rel="noopener noreferrer">壓克力公式 ↗</a></p></div>
+</div>
+<aside class="sfg-summary" aria-label="裱框估價結果">
+<h4>即時計算・選框預覽</h4>
+<div class="sfg-preview"><img id="sfg-preview-photo" class="sfg-preview-photo" alt="" referrerpolicy="no-referrer" decoding="async" hidden><div id="sfg-preview-frame" class="sfg-preview-frame" aria-hidden="true"><div class="sfg-preview-art"><span>作品示意</span></div></div></div>
+<small class="sfg-preview-note" id="sfg-preview-note">松風閣官網實品照片；沒有照片的款式仍顯示示意框。</small>
+<div class="sfg-selected-name" id="sfg-selected-name">選擇外框：(上)411藍</div>
+<div class="sfg-breakdown">
+<div class="sfg-line"><span>松風閣外框參考價</span><strong id="sfg-frame-sum">NT$253.50</strong></div>
+<div class="sfg-line"><span>背板</span><strong id="sfg-back-sum">NT$48.51</strong></div>
+<div class="sfg-line"><span>壓克力</span><strong id="sfg-acrylic-sum">NT$69.30</strong></div>
+<div class="sfg-line"><span>自行輸入工資</span><strong id="sfg-labor-sum">NT$0.00</strong></div>
+</div>
+<div class="sfg-total"><span>參考試算合計</span><strong id="sfg-total">NT$371.31</strong></div>
+<div id="sfg-formulas" class="sfg-formulas" aria-live="polite"></div>
+<section class="sfg-dali" aria-labelledby="sfg-dali-heading">
+<h5 id="sfg-dali-heading">🔄 達利外框價格換算</h5>
+<p>松風閣：（長＋寬）÷15 × 框條單價；達利：（長＋寬）÷2.54 × 達利每吋單價。兩者的長寬皆為 cm。</p>
+<label for="sfg-dali-multiplier"><span>達利訂價倍率（可調整）</span><input id="sfg-dali-multiplier" type="number" inputmode="decimal" min="0.01" max="10" step="0.05" value="1.00" aria-describedby="sfg-dali-hint"></label>
+<div class="sfg-dali-metrics">
+<div class="sfg-dali-metric"><span>換算達利每吋單價</span><strong id="sfg-dali-unit" aria-live="polite">—</strong></div>
+<div class="sfg-dali-metric main"><span>達利外框參考價</span><strong id="sfg-dali-frame" aria-live="polite">—</strong></div>
+</div>
+<p id="sfg-dali-formula" class="sfg-dali-formula" aria-live="polite"></p>
+<p id="sfg-dali-hint">預設 1 倍只換算計價單位，與松風閣外框價相同；若達利另行訂價，可調整倍率。這裡只計外框，不含背板、壓克力、工資，且不是達利正式售價。</p>
+</section>
+<p class="sfg-warning" id="sfg-alert" role="status"></p>
+</aside>
+</div>
+<p class="sfg-sources">資料依 <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">松風閣線上模擬框型錄</a>、<a href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">松風閣裝框裱褙</a>及<a href="https://sfg218.com/frame_class.php?class=17" target="_blank" rel="noopener noreferrer">外框目錄</a>公開資訊重建選框與計價功能。這是你網站內的<strong>獨立參考試算</strong>，並非直接連接松風閣購物車或即時報價。特殊尺寸、材料最低收費、組裝工資與門市報價可能另計，請以原廠最終報價為準。</p>
+</section>
+</main>
+<script src="../data/songfeng-frames.js?v=20261028"></script>
+<script src="../data/songfeng-sheet-prices.js?v=20261029-1"></script>
+<script src="../data/songfeng-photos.js?v=20261029-photo1"></script>
+<script>const esc=s=>String(s||"").replace(/[&<>"\']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","\'":"&#39;"}[c]));
+const sfgPresets={A5:[211,149],B5:[258,183],A4:[298,211],B4:[365,258],A3:[421,298],B3:[516,365],A2:[595,421],B2:[729,516],A1:[842,595],B1:[1031,729],A0:[1190,842],B0:[1457,1031]};
+/* 每筆單價皆來自松風閣公開框樣詳情頁，框色只是示意。 */
+const sfgPreviouslyPriced=[
+{id:"411blue",name:"(上)411藍",rate:75,w:1.5,h:2,tone:"#35577f",no:685},
+{id:"412blue",name:"412藍",rate:75,w:1.8,h:2,tone:"#395879",no:382},
+{id:"816brown",name:"816咖",rate:70,w:2.3,h:2.1,tone:"#684839",no:411},
+{id:"716gold",name:"716金",rate:75,w:2.4,h:1.6,tone:"#b99043",no:221},
+{id:"inchteak",name:"1吋柚",rate:80,w:2.8,h:2.1,tone:"#9b6d3d",no:511},
+{id:"241white",name:"241平白",rate:90,w:2,h:3,tone:"#eee9dc",no:182},
+{id:"723gold",name:"723燙金",rate:90,w:3.2,h:2.5,tone:"#c79d4a",no:225},
+{id:"352brown",name:"352咖",rate:115,w:3.8,h:2.1,tone:"#78513e",no:610},
+{id:"325blue",name:"325藍",rate:120,w:3.5,h:2,tone:"#3c5d82",no:329},
+{id:"233silver",name:"233銀",rate:135,w:4.6,h:2.2,tone:"#afb3bb",no:257},
+{id:"545gold",name:"545金",rate:155,w:6.4,h:3.4,tone:"#be9856",no:266},
+{id:"670teak",name:"670柚",rate:180,w:4.4,h:3.4,tone:"#9c6540",no:595},
+{id:"307green",name:"307抓絲綠",rate:180,w:6,h:3,tone:"#58766b",no:191},
+{id:"938brown",name:"上938咖",rate:200,w:6,h:3.1,tone:"#5c4032",no:563},
+{id:"a1062silver",name:"（上）A1062銀",rate:420,w:8.5,h:3,tone:"#a7a9ad",no:445}
+];
+
+/* 外框分類及 W/H 來自松風閣模擬器。僅部分品項帶有上一次記錄的參考價格。 */
+const sfgCategories=Array.isArray(window.SFG_CATALOG_CATEGORIES)?window.SFG_CATALOG_CATEGORIES:[];
+const sfgCatalog=Array.isArray(window.SFG_CATALOG_ITEMS)?window.SFG_CATALOG_ITEMS:[];
+const sfgNorm=s=>String(s).replace(/[（]/g,"(").replace(/[）]/g,")").replace(/\s+/g,"");
+const sfgVerified=new Map(sfgPreviouslyPriced.map(x=>[sfgNorm(x.name),x]));
+const sfgSheetRows=Array.isArray(window.SFG_SHEET_FRAME_PRICES)?window.SFG_SHEET_FRAME_PRICES:[];
+const sfgSheetMeta=window.SFG_SHEET_PRICE_META||{};
+const sfgPhotoItems=Array.isArray(window.SFG_OFFICIAL_FRAME_PHOTOS)?window.SFG_OFFICIAL_FRAME_PHOTOS:[];
+const sfgPhotoMeta=window.SFG_OFFICIAL_PHOTO_META||{};
+const sfgOfficialPhoto=url=>typeof url==="string"&&/^https:\/\/sfg218\.com\/admin\/goods_pic\/[A-Za-z0-9_-]+\.(?:jpe?g|png|webp)$/i.test(url);
+
+const sfgPriceValid=n=>typeof n==="number"&&Number.isFinite(n)&&n>0;
+if(sfgSheetRows.length!==sfgCatalog.length)console.warn("松風閣試算表價格快照與框型清單數量不符，未對應的框型會顯示待填單價。");
+function sfgTint(name){
+ if(/金|古銅|燙金|G$/.test(name))return "#b38b48";
+ if(/銀|白銀|S$/.test(name))return "#a5b0bd";
+ if(/黑/.test(name))return "#2f3034";
+ if(/白|米|原木/.test(name))return "#dfd9c8";
+ if(/粉|紫/.test(name))return "#b68eaa";
+ if(/紅/.test(name))return "#934c48";
+ if(/藍/.test(name))return "#426c98";
+ if(/綠/.test(name))return "#567961";
+ if(/柚/.test(name))return "#96653f";
+ if(/咖|燒|胡桃/.test(name))return "#74503e";
+ if(/灰|鐵/.test(name))return "#777c83";
+ return "#7e8088";
+}
+const sfgFrames=sfgCatalog.map((frame,index)=>{
+ const old=sfgVerified.get(sfgNorm(frame.name));
+ const sheetRow=sfgSheetRows[index]&&sfgSheetRows[index].name===frame.name?sfgSheetRows[index]:null;
+ const official=sheetRow&&sfgPriceValid(sheetRow.official)?sheetRow.official:null;
+ const airtable=sheetRow&&sfgPriceValid(sheetRow.airtable)?sheetRow.airtable:null;
+ const rate=official!==null?official:airtable;
+ const rateSource=official!==null?(sheetRow.verified?"sheet-verified":"sheet-unverified"):airtable!==null?"sheet-airtable":null;
+ const detailUrl=sheetRow&&typeof sheetRow.url==="string"&&/^https:\/\/sfg218\.com\/frame_info\.php\?/.test(sheetRow.url)?sheetRow.url:null;
+ const photoRow=sfgPhotoItems.length===sfgCatalog.length?sfgPhotoItems[index]:null;
+ const full=photoRow&&sfgOfficialPhoto(photoRow.full)?photoRow.full:null;
+ const thumb=photoRow&&sfgOfficialPhoto(photoRow.thumb)?photoRow.thumb:full;
+ return {...frame,id:"sf-"+index,rate,rateSource,verified:!!sheetRow?.verified,
+   url:detailUrl,no:sheetRow?.pageId??old?.no??null,tone:old?.tone||sfgTint(frame.name),
+   photo:full,thumb};
+});
+let sfgChosen=sfgFrames.find(f=>f.no===685)||sfgFrames[0];
+let sfgCategory="all",sfgPageSize=48,sfgShowLimit=48,sfgCustomMode=false;
+const sfgEl=id=>document.getElementById(id);
+const sfgNum=id=>Number(sfgEl(id).value);
+const sfgMoney=n=>"NT$"+n.toLocaleString("zh-TW",{minimumFractionDigits:2,maximumFractionDigits:2});
+const sfgDec=(n,d=2)=>n.toLocaleString("zh-TW",{minimumFractionDigits:d,maximumFractionDigits:d});
+function sfgFrameUrl(frame){return frame.url||"https://sfg218.com/frame_class.php?class=17";}
+function sfgRenderCategories(){
+ const root=sfgEl("sfg-frame-filter");
+ const choices=[["all","全部框型",sfgFrames.length],...sfgCategories.map((name,i)=>[String(i),name,sfgFrames.filter(f=>f.cat===i).length])];
+ root.innerHTML=choices.map(([id,label,count])=>
+  '<button type="button" class="'+(sfgCategory===id?'selected':'')+'" data-sfg-cat="'+id+'" aria-pressed="'+(sfgCategory===id)+'">'+esc(label)+' <small>'+count+' 款</small></button>'
+ ).join("");
+ root.querySelectorAll("[data-sfg-cat]").forEach(b=>b.addEventListener("click",()=>{
+  sfgCategory=b.dataset.sfgCat;sfgShowLimit=sfgPageSize;sfgRenderCategories();sfgRenderFrames();
+ }));
+}
+function sfgRenderFrames(){
+ const query=sfgEl("sfg-frame-search").value.trim().toLocaleLowerCase();
+ const visible=sfgFrames.filter(f=>(sfgCategory==="all"||String(f.cat)===sfgCategory)&&
+ (f.name+" "+sfgCategories[f.cat]+" "+f.w+" "+f.h).toLocaleLowerCase().includes(query));
+ const shown=visible.slice(0,sfgShowLimit);
+ sfgEl("sfg-frame-count").textContent="顯示 "+shown.length+" / "+visible.length+" 款｜實品照片 "+sfgFrames.filter(x=>x.photo).length+" 款｜試算表價格 "+(sfgSheetMeta.withOfficialColumn??0)+" 款；W／H 單位 cm";
+ sfgEl("sfg-frame-grid").innerHTML=shown.length?shown.map(f=>
+  '<button class="sfg-frame-choice'+(!sfgCustomMode&&sfgChosen.id===f.id?' is-selected':'')+'" type="button" data-sfg-frame="'+f.id+'" aria-pressed="'+(!sfgCustomMode&&sfgChosen.id===f.id)+'">'+
+  (f.photo?'<img class="sfg-frame-photo" src="'+esc(f.thumb||f.photo)+'" alt="'+esc(f.name)+' 松風閣實品框條" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'" hidden></span>':
+  '<span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'"></span>')+
+  '<span class="sfg-frame-copy"><strong>'+esc(f.name)+'</strong><small>W'+sfgDec(f.w,1)+' / H'+sfgDec(f.h,1)+' cm</small>'+
+  (f.rate!==null?'<small>'+(f.rateSource==="sheet-verified"?"官網已核對單價":f.rateSource==="sheet-unverified"?"試算表價格（待核對）":"試算表 Airtable 參考價")+' NT$'+sfgDec(f.rate,0)+'</small>':'<em>試算表尚無價格 · 請自行輸入</em>')+'</span></button>'
+ ).join(""):'<p class="sfg-empty">'+(sfgCategory==="9"&&!query?"松風閣官網此分類目前顯示「尚無上架資料」。":"目前沒有符合搜尋的框型，請修改關鍵字或切換分類。")+'</p>';
+ const more=sfgEl("sfg-load-more");
+ more.hidden=shown.length>=visible.length;
+ if(!more.hidden)more.textContent="顯示更多框型（剩餘 "+(visible.length-shown.length)+" 款）";
+ sfgEl("sfg-frame-grid").querySelectorAll("[data-sfg-frame]").forEach(button=>button.addEventListener("click",()=>{
+  const frame=sfgFrames.find(f=>f.id===button.dataset.sfgFrame);
+  if(!frame)return;
+  sfgChosen=frame;sfgCustomMode=false;
+  sfgEl("sfg-custom-fields").hidden=true;
+  sfgEl("sfg-custom").setAttribute("aria-expanded","false");
+  sfgEl("sfg-custom").textContent="找不到框型？輸入其他框型與單價";
+  // 重要：不能沿用前一款框的價格，否則會顯示不實報價。
+  sfgEl("sfg-frame-rate").value=frame.rate===null?"":frame.rate;
+  sfgEl("sfg-frame-rate").placeholder=frame.rate===null?"此型號單價尚未核對，請填寫":"單價";
+  sfgRenderFrames();sfgSyncLink();sfgCalculate();
+ }));
+}
+function sfgCalculate(){
+ const mmL=sfgNum("sfg-length"),mmW=sfgNum("sfg-width"),rateRaw=sfgEl("sfg-frame-rate").value.trim(),frameRate=Number(rateRaw);
+ const backRate=sfgNum("sfg-back-rate"),acrylicRate=sfgNum("sfg-acrylic-rate"),labor=sfgNum("sfg-labor");
+ const sizeEntered=sfgEl("sfg-length").value.trim()!==""&&sfgEl("sfg-width").value.trim()!=="";
+ const sizeValid=sizeEntered&&Number.isFinite(mmL)&&Number.isFinite(mmW)&&mmL>0&&mmW>0;
+ sfgEl("sfg-size-inches").textContent=sizeValid?
+  "（"+sfgDec(mmL/10,1)+" ＋ "+sfgDec(mmW/10,1)+"）÷ 2.54 ＝ "+sfgDec((mmL+mmW)/25.4,2)+" 吋":
+  "請輸入有效的長、寬尺寸";
+ const valid=[mmL,mmW,backRate,acrylicRate,labor].every(Number.isFinite)&&mmL>0&&mmW>0&&backRate>=0&&acrylicRate>=0&&labor>=0;
+ const priceMatchesStored=!sfgCustomMode&&rateRaw!==""&&sfgChosen.rate!==null&&frameRate===sfgChosen.rate;
+ sfgEl("sfg-price-source").textContent=sfgCustomMode?"自訂框型：請自行核對並輸入單價":
+ priceMatchesStored&&sfgChosen.rateSource==="sheet-verified"?"價格來源：Google 試算表官網優惠單價（此款有明確核對紀錄；2026/10/29 快照）":
+ priceMatchesStored&&sfgChosen.rateSource==="sheet-unverified"?"價格來源：Google 試算表「官網優惠單價」欄（尚未逐筆核對；2026/10/29 快照）":
+ priceMatchesStored&&sfgChosen.rateSource==="sheet-airtable"?"價格來源：Google 試算表 Airtable 參考價（未取得官網單價；非即時價）":
+ rateRaw!==""?"價格來源：手動輸入的單價，請核對":"此框型尚無可用單價，請查詢並輸入";
+ const hasFrameRate=rateRaw!==""&&Number.isFinite(frameRate)&&frameRate>=0;
+ const daliMultiplierRaw=sfgEl("sfg-dali-multiplier").value.trim();
+ const daliMultiplier=Number(daliMultiplierRaw);
+ const daliMultiplierValid=daliMultiplierRaw!==""&&Number.isFinite(daliMultiplier)&&daliMultiplier>0&&daliMultiplier<=10;
+ const daliUnit=hasFrameRate&&daliMultiplierValid?frameRate*2.54/15*daliMultiplier:null;
+ const daliOuter=sizeValid&&daliUnit!==null?(mmL+mmW)/25.4*daliUnit:null;
+ sfgEl("sfg-dali-unit").textContent=daliUnit===null?"待填有效框價／倍率":"NT$"+sfgDec(daliUnit,4)+"／吋";
+ sfgEl("sfg-dali-frame").textContent=daliOuter===null?"待輸入":sfgMoney(daliOuter);
+ sfgEl("sfg-dali-formula").textContent=daliOuter!==null?
+  "達利：（"+sfgDec(mmL/10,1)+"＋"+sfgDec(mmW/10,1)+"）÷2.54 ×（"+sfgDec(frameRate,2)+"×2.54÷15×"+sfgDec(daliMultiplier,2)+"）＝"+sfgMoney(daliOuter):
+  "請填入作品尺寸、松風閣框條單價及有效的達利訂價倍率（0～10 倍，須大於 0）。";
+
+ const selectedName=sfgCustomMode?(sfgEl("sfg-custom-name").value.trim()||"自訂框型"):sfgChosen.name;
+ const selectedWidth=sfgCustomMode?Number(sfgEl("sfg-custom-width").value):sfgChosen.w;
+ sfgEl("sfg-selected-name").textContent="框型："+selectedName+(valid?" · 尺寸 "+sfgDec(mmL/10,1)+" × "+sfgDec(mmW/10,1)+" cm":"");
+ const preview=sfgEl("sfg-preview-frame");
+ if(Number.isFinite(mmL)&&Number.isFinite(mmW)&&mmL>0&&mmW>0){
+  const ratio=Math.min(1.8,Math.max(.58,mmW/mmL)),h=Math.min(180,182/Math.max(1,ratio));
+  preview.style.width=h*ratio+"px";preview.style.height=h+"px";
+ }
+ preview.style.borderWidth=Math.min(22,Math.max(6,(Number.isFinite(selectedWidth)?selectedWidth:2)*4))+"px";
+ preview.style.borderColor=sfgCustomMode?"#66768b":sfgChosen.tone;
+ const officialFull=!sfgCustomMode?sfgChosen.photo:null;
+ const picture=sfgEl("sfg-preview-photo"),note=sfgEl("sfg-preview-note");
+ if(officialFull&&picture.dataset.failed!==officialFull){
+  if(picture.dataset.current!==officialFull){
+   picture.dataset.current=officialFull;
+   picture.alt="松風閣 "+sfgChosen.name+" 框條實品照片";
+   picture.src=officialFull;
+  }
+  picture.hidden=false;preview.hidden=true;
+  note.textContent="實品照片：松風閣官網「"+sfgChosen.name+"」；框型與色澤請以官網實物為準。";
+ }else{
+  picture.hidden=true;preview.hidden=false;
+  note.textContent=officialFull?"官方圖片暫時無法載入，改用框色示意。":"這款框型暫無可核對的官網照片，以下為比例／色彩示意。";
+ }
+
+ sfgEl("sfg-alert").textContent="";
+ if(!valid){
+  ["sfg-frame-sum","sfg-back-sum","sfg-acrylic-sum","sfg-labor-sum","sfg-total"].forEach(id=>sfgEl(id).textContent="—");
+  sfgEl("sfg-formulas").textContent="請輸入有效的作品尺寸（大於 0）與非負數配件單價。";
+  sfgEl("sfg-alert").textContent="作品尺寸或材料單價不正確，無法計算。";
+  return;
+ }
+ const L=mmL/10,W=mmW/10,cai=L*W/900;
+ const boardCost=sfgEl("sfg-back-on").checked?cai*backRate:0;
+ const acrylicCost=sfgEl("sfg-acrylic-on").checked?cai*acrylicRate:0;
+ const frameCost=hasFrameRate?(L+W)/15*frameRate:null;
+ sfgEl("sfg-frame-sum").textContent=hasFrameRate?sfgMoney(frameCost):"待填單價";
+ sfgEl("sfg-back-sum").textContent=sfgMoney(boardCost);
+ sfgEl("sfg-acrylic-sum").textContent=sfgMoney(acrylicCost);
+ sfgEl("sfg-labor-sum").textContent=sfgMoney(labor);
+ sfgEl("sfg-total").textContent=hasFrameRate?sfgMoney(frameCost+boardCost+acrylicCost+labor):"待填框價";
+ sfgEl("sfg-formulas").innerHTML=
+  "<p>外框：（"+sfgDec(L,1)+"＋"+sfgDec(W,1)+"）÷15×"+(hasFrameRate?sfgDec(frameRate)+"＝"+sfgMoney(frameCost):"待填單價")+"</p>"+
+  "<p>面積："+sfgDec(L,1)+"×"+sfgDec(W,1)+"÷900＝"+sfgDec(cai,3)+" 才</p>"+
+  "<p>背板："+(sfgEl("sfg-back-on").checked?sfgDec(cai,3)+" 才 × NT$"+sfgDec(backRate):"未選")+"；壓克力："+(sfgEl("sfg-acrylic-on").checked?sfgDec(cai,3)+" 才 × NT$"+sfgDec(acrylicRate):"未選")+"</p>";
+ if(!hasFrameRate)sfgEl("sfg-alert").textContent="這款框型在試算表沒有可用的單價。請查詢官網價格並填入「所選框型單價」，才會計算裱框合計。";
+ else if(Math.max(mmL,mmW)>1500)sfgEl("sfg-alert").textContent="⚠️ 大尺寸作品可能有特殊板材、框條與運輸限制，請以門市實際報價為準。";
+ document.querySelectorAll("[data-sfg-preset]").forEach(button=>{
+  const sizes=sfgPresets[button.dataset.sfgPreset];
+  const on=sizes[0]===mmL&&sizes[1]===mmW;button.classList.toggle("selected",on);button.setAttribute("aria-pressed",String(on));
+ });
+}
+sfgEl("sfg-frame-search").addEventListener("input",()=>{sfgShowLimit=sfgPageSize;sfgRenderFrames();});
+sfgEl("sfg-load-more").addEventListener("click",()=>{sfgShowLimit+=sfgPageSize;sfgRenderFrames();});
+sfgEl("sfg-custom").addEventListener("click",()=>{
+ sfgCustomMode=!sfgCustomMode;
+ sfgEl("sfg-custom-fields").hidden=!sfgCustomMode;
+ sfgEl("sfg-custom").setAttribute("aria-expanded",String(sfgCustomMode));
+ sfgEl("sfg-custom").textContent=sfgCustomMode?"← 改回選擇官網框型":"找不到框型？輸入其他框型與單價";
+ sfgEl("sfg-frame-rate").value=sfgCustomMode?"":sfgChosen.rate===null?"":sfgChosen.rate;
+ sfgRenderFrames();sfgSyncLink();sfgCalculate();
+});
+function sfgSyncLink(){
+ const link=sfgEl("sfg-frame-link");
+ link.href=sfgCustomMode?"https://sfg218.com/frame_class.php?class=17":sfgFrameUrl(sfgChosen);
+ link.textContent=(!sfgCustomMode&&sfgChosen.url)?"核對選定框型的官網價格 ↗":"前往松風閣外框目錄查詢 ↗";
+}
+for(const id of ["sfg-length","sfg-width","sfg-frame-rate","sfg-back-rate","sfg-acrylic-rate","sfg-labor","sfg-custom-name","sfg-custom-width","sfg-dali-multiplier"])sfgEl(id).addEventListener("input",sfgCalculate);
+for(const id of ["sfg-back-on","sfg-acrylic-on"])sfgEl(id).addEventListener("change",sfgCalculate);
+document.querySelectorAll("[data-sfg-preset]").forEach(b=>b.addEventListener("click",()=>{
+ const p=sfgPresets[b.dataset.sfgPreset];
+ sfgEl("sfg-length").value=p[0];sfgEl("sfg-width").value=p[1];sfgCalculate();
+}));
+/* 網站照片若無法載入，自動復原為原有的框色示意，不顯示破圖。 */
+sfgEl("sfg-frame-grid").addEventListener("error",event=>{
+ const img=event.target;
+ if(!img?.classList?.contains("sfg-frame-photo"))return;
+ img.hidden=true;
+ const placeholder=img.nextElementSibling;
+ if(placeholder?.classList?.contains("sfg-mini-frame"))placeholder.hidden=false;
+},true);
+sfgEl("sfg-preview-photo").addEventListener("error",()=>{
+ const img=sfgEl("sfg-preview-photo");
+ img.dataset.failed=img.dataset.current||"";
+ img.hidden=true;
+ sfgEl("sfg-preview-frame").hidden=false;
+ sfgEl("sfg-preview-note").textContent="官方圖片暫時無法載入，改用框色示意。";
+});
+sfgRenderCategories();
+sfgRenderFrames();
+sfgSyncLink();
+sfgCalculate();
+</script>
+<script src="../data/songfeng-lightbox.js?v=20261029-zoom1"></script>
+<script src="../shared-nav.js?v=20261025-2" defer></script>
+</body></html>
