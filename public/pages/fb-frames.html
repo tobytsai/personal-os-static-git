@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f5f6f8">
+<title>Fb畫框啟動器｜Framebridge 商品圖鑑</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--bg:#f5f6f8;--paper:#fff;--text:#263043;--muted:#667383;--line:#e1e6ed;--blue:#425c9a;--light:#edf2fa;--shadow:0 9px 26px #23354c10}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif}
+a{text-decoration:none;color:inherit}a:hover{text-decoration:underline}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1440px;margin:auto;padding:24px 24px 90px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.back,.action{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:700;font-size:12px}.action:hover,.back:hover{background:var(--light);text-decoration:none}
+.intro{display:flex;gap:24px;justify-content:space-between;align-items:center;margin:22px 0 18px;flex-wrap:wrap}.intro h1{font-size:clamp(27px,4vw,43px);line-height:1.2;letter-spacing:-.035em;margin:4px 0 10px}.intro p{color:var(--muted);margin:0;max-width:750px}.eyebrow{color:var(--blue);font-weight:800;letter-spacing:.08em;font-size:12px}.intro-art{width:125px;height:115px;display:grid;place-items:center;border:11px solid #bfa787;outline:7px solid #e6d9c5;outline-offset:-30px;box-shadow:0 14px 25px #786b5a26;background:linear-gradient(145deg,#eff1f4,#f9f9fa);border-radius:5px;color:#6c6480;font-size:35px;font-family:Georgia,serif;font-weight:700;transform:rotate(-4deg)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}.metric{padding:14px 18px;border:1px solid var(--line);border-radius:17px;background:#fff}.metric strong{display:block;font-size:26px;line-height:1.25}.metric span{font-size:12px;color:var(--muted)}
+.toolbar{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:var(--shadow)}.searchrow{display:flex;gap:9px;flex-wrap:wrap}.searchrow input{flex:1 1 360px;min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;outline-color:#7d96c7}.searchrow select{flex:1 1 150px;min-width:120px;max-width:260px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#f9fbff}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.chip{border:1px solid #d8dfeb;background:#f9fbfe;color:#526078;border-radius:999px;padding:7px 12px;font-size:12px}.chip[aria-pressed=true]{background:#344f86;color:#fff;border-color:#344f86}.chip em{font-style:normal;opacity:.68;margin-left:5px}
+.views{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:13px;border-top:1px solid var(--line);padding-top:13px}.views button{border:1px solid #d8dfeb;background:#fff;color:#53637d;border-radius:11px;padding:7px 13px;font-weight:700;font-size:12px}.views button[aria-pressed=true]{background:#e8edf7;color:#294376;border-color:#b7c7e5}.views .clear{margin-left:auto}
+.hint{font-size:12px;color:var(--muted);line-height:1.65;margin:14px 2px}.notice{background:#fff9ef;border:1px solid #f2e5cc;border-radius:12px;padding:10px 14px;color:#785d32;margin:10px 0 18px;font-size:12px}.listing{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:20px 0 12px}.listing h2{margin:0;font-size:18px}.listing span{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.item{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:var(--shadow)}
+.preview{height:215px;position:relative;background:#fbfbfc;display:grid;place-items:center;overflow:hidden}.preview img{display:block;width:100%;height:100%;object-fit:contain;padding:9px}.seq{position:absolute;left:10px;top:10px;padding:3px 9px;border-radius:8px;background:#ffffffed;color:#48586b;font-size:11px;font-weight:800;border:1px solid #e2e5ec}.fav{position:absolute;right:10px;top:9px;width:35px;height:35px;border:1px solid #e2e6ee;border-radius:50%;background:#fffffff2;color:#65758d;font-size:21px;line-height:1}.fav[aria-pressed=true]{color:#ca872f;background:#fff7e7;border-color:#e8c68d}
+.info{padding:14px;display:flex;flex-direction:column;gap:5px;flex:1}.smallcategory{color:var(--blue);font-size:11px;font-weight:700}.info h3{font-size:15px;margin:1px 0;line-height:1.4;min-height:42px}.en{font-size:11px;color:#8791a0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.state{display:inline-block;width:fit-content;font-size:10px;font-weight:750;border-radius:999px;padding:3px 8px;background:#e8f6ed;color:#297347}.state.off{background:#fff1e6;color:#946232}.state.dead{background:#fff0f1;color:#ad5056}
+.price{font-weight:850;color:#2a4b82;font-size:17px;margin:6px 0 0}.price-sub{font-size:11px;color:var(--muted)}.spec{font-size:12px;color:#626e7d;line-height:1.5;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:36px}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto;padding-top:9px}.buttons a,.buttons button{display:grid;place-items:center;text-align:center;border:1px solid #dce3ef;background:#f5f8fd;color:#34517c;border-radius:10px;padding:8px 5px;font-size:12px;font-weight:750}.buttons a:hover,.buttons button:hover{background:#e8effb;text-decoration:none}.buttons .primary{background:#365890;color:#fff;border-color:#365890}.buttons .primary:hover{background:#263f70}.buttons .wide{grid-column:span 2}
+.empty{text-align:center;padding:56px 20px;background:white;border-radius:16px;color:var(--muted);grid-column:1/-1;border:1px dashed #ccd4e0}.more{display:block;margin:24px auto 0;background:#fff;border:1px solid #ced7e5;border-radius:12px;padding:12px 24px;font-weight:750;color:#3c5481}.more[hidden]{display:none}
+dialog{border:0;border-radius:22px;width:min(730px,calc(100% - 24px));max-height:87vh;padding:0;box-shadow:0 28px 80px #162f5060;overflow:auto}dialog::backdrop{background:#14213990}.dialogcontent{padding:24px}.dialoghead{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}.dialoghead h2{margin:0;font-size:23px}.close{background:#f0f2f6;border:0;border-radius:12px;padding:7px 12px;font-size:18px}.detailimg{width:100%;max-height:330px;object-fit:contain;margin:14px auto;background:#fafafa;border-radius:13px}.details{display:grid;grid-template-columns:115px 1fr;border:1px solid var(--line);border-radius:14px;overflow:hidden}.details dt,.details dd{padding:10px 12px;border-bottom:1px solid var(--line);margin:0;overflow-wrap:anywhere}.details dt{background:#f6f8fc;font-weight:750;color:#58677c;font-size:12px}.details dd{font-size:13px}.details dt:last-of-type,.details dd:last-of-type{border-bottom:0}.dialogActions{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}.foot{font-size:12px;color:var(--muted);padding:20px 0}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:740px){.wrap{padding:16px 12px 80px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.metrics{grid-template-columns:repeat(2,1fr)}.intro-art{display:none}.preview{height:165px}.item{border-radius:14px}.info{padding:11px}.info h3{font-size:13px;min-height:37px}.buttons{grid-template-columns:1fr}.buttons .wide{grid-column:auto}.buttons a,.buttons button{font-size:11px}.searchrow select{max-width:none;flex:1 1 120px}.details{grid-template-columns:100px 1fr}}@media(max-width:375px){.grid{grid-template-columns:1fr}.preview{height:220px}}
+</style>
+</head><body><main class="wrap">
+<div class="topline"><a class="back" href="../index.html">⌂ 返回啟動器首頁</a><div class="topline">
+<a class="action" href="https://docs.google.com/spreadsheets/d/1Q_Ew03qLM8fqVZn4d_vcGvN_rWZPjIlI/edit" target="_blank" rel="noopener">來源 Excel</a>
+<a class="action" href="https://drive.google.com/drive/folders/1BRx_PSW0FMwhDyyedTZP_JKBA74tc8vh" target="_blank" rel="noopener">繁中說明圖資料夾</a>
+<button class="action" id="helpBtn" type="button">？ 使用說明</button></div></div>
+<header class="intro"><div><span class="eyebrow">FRAMEBRIDGE · PRODUCTS &amp; FRAMING</span><h1>Fb畫框啟動器</h1><p>Framebridge 商品圖鑑｜以 2026 年 9 月 27 日追蹤表建立，整合商品名稱、價格、尺寸、框型、繁中說明圖及原廠連結。</p></div><div class="intro-art" aria-hidden="true">Fb</div></header>
+<section class="metrics" aria-label="商品統計"><div class="metric"><strong id="total">250</strong><span>商品筆數</span></div><div class="metric"><strong id="complete">250</strong><span>繁中說明圖已完成</span></div><div class="metric"><strong id="kinds">9</strong><span>商品類別</span></div><div class="metric"><strong id="unavailable">13</strong><span>追蹤表標示不可購買</span></div></section>
+<section class="toolbar" aria-label="商品篩選">
+<div class="searchrow"><input id="search" type="search" placeholder="搜尋中文／英文商品名、尺寸、框型、SKU…" aria-label="搜尋商品"><select id="status" aria-label="可購買狀態"><option value="all">全部購買狀態</option><option value="yes">可購買</option><option value="no">不可購買</option><option value="404">原廠頁面 404</option></select><select id="sort" aria-label="排序方式"><option value="order">依追蹤表順序</option><option value="name">依商品名稱</option><option value="low">依參考價：低到高</option><option value="high">依參考價：高到低</option></select></div>
+<div id="categories" class="chips" aria-label="商品類型"></div>
+<div class="views" id="views"><button data-mode="all" aria-pressed="true">全部商品</button><button data-mode="favs" aria-pressed="false">★ 我的收藏 <span id="favCount">0</span></button><button data-mode="recent" aria-pressed="false">◷ 最近開啟 <span id="recentCount">0</span></button><button class="clear" id="reset" type="button">清除篩選</button></div>
+</section>
+<p class="hint" id="crumb">全部分類 · 共 250 筆</p>
+<p class="notice">商品價格與購買狀態是 2026/09/27 Excel 的歷史紀錄，台幣為 2026/09/24 參考匯率 1 USD ≈ NT$31.83 的估價，並非即時報價。原廠已下架的商品仍保留作為裱框研究參考。</p>
+<section><div class="listing"><h2 id="listTitle">商品卡片</h2><span id="counter"></span></div><div class="grid" id="cards"></div><button class="more" id="more" type="button" hidden>顯示更多商品</button></section>
+<footer class="foot">資料來源：Framebridge 商品資料追蹤表（2026-09-27）；繁中說明圖存於使用者指定的 Google Drive。商品照片使用表內的原廠主圖；Drive 圖片可能需要登入授權。</footer>
+</main>
+<dialog id="detail"><div class="dialogcontent"><div class="dialoghead"><div><div class="eyebrow" id="dCategory"></div><h2 id="dTitle"></h2><div class="en" id="dEnglish"></div></div><button type="button" class="close" id="closeDetail" aria-label="關閉">×</button></div><img class="detailimg" id="dPhoto" alt=""><dl class="details" id="dSpecs"></dl><div class="dialogActions"><a class="action" id="dIllustration" href="#" target="_blank" rel="noopener">查看繁中說明圖</a><a class="action" id="dOriginal" href="#" target="_blank" rel="noopener">查看原廠商品</a><button class="action" id="dFav" type="button">☆ 加入收藏</button></div></div></dialog>
+<dialog id="help"><div class="dialogcontent"><div class="dialoghead"><h2>使用說明</h2><button type="button" class="close" id="closeHelp" aria-label="關閉">×</button></div><p>本頁完整收錄 250 筆商品，依 Excel「商品類型」分組。可用搜尋框查詢商品、框型、尺寸或 SKU，再依價格、購買狀態篩選。</p><p>點「詳細資料」查看作品尺寸、成框尺寸、材質、價格與產品備註。點「繁中說明圖」查看 Google Drive 製作完成的說明圖；點「原廠商品」前往 Framebridge 網站。</p><p>按 ★ 可收藏商品。開啟商品詳細資訊、圖片或原廠連結後，會進入最近開啟，最多顯示 10 筆。收藏與最近開啟僅保存在目前瀏覽器中，不會修改 Excel 或 Google Drive。</p><p>原廠主圖用於卡片預覽，Drive 說明圖可能需要 Google 帳號權限；歷史價格與庫存僅供比較研究。</p></div></dialog>
+<script src="../data/framebridge-products.js"></script>
+<script>
+(function(){
+'use strict';
+var products=Array.isArray(window.FRAMEBRIDGE_PRODUCTS)?window.FRAMEBRIDGE_PRODUCTS:[];
+var byNum=new Map(products.map(function(x){return [x.n,x]}));
+var $=function(id){return document.getElementById(id)};
+var storeFav='osFbFrameFavoritesV1',storeRecent='osFbFrameRecentV1';
+function load(key){try{var v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v.filter(function(n){return byNum.has(n)}):[]}catch(e){return []}}
+function save(key,list){try{localStorage.setItem(key,JSON.stringify(list))}catch(e){}}
+var favs=load(storeFav),recent=load(storeRecent),category='全部',mode='all',limit=32,detailId=null;
+function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function safeUrl(v){return typeof v==='string'&&/^https:\/\//.test(v)?v:'#'}
+function driveUrl(p){return p.drive?'https://drive.google.com/file/d/'+encodeURIComponent(p.drive)+'/view':'https://drive.google.com/drive/folders/1BRx_PSW0FMwhDyyedTZP_JKBA74tc8vh'}
+function dollars(n){if(n==null||Number.isNaN(n))return '未提供';return 'US$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:2})}
+function twd(n){return n==null||Number.isNaN(n)?'未提供':'NT$'+Number(n).toLocaleString('zh-TW')}
+function range(a,b,fmt){if(a==null)return '未提供';return fmt(a)+(b!=null&&b!==a?' – '+fmt(b):'')}
+function status(p){if(/404/.test(p.check||''))return ['原廠頁面 404','dead'];return p.buy?['追蹤時可購買','']:['追蹤時不可購買','off']}
+function remember(n){recent=[n].concat(recent.filter(function(x){return x!==n})).slice(0,10);save(storeRecent,recent);updateCounts()}
+function toggle(n){if(favs.includes(n))favs=favs.filter(function(x){return x!==n});else favs=[n].concat(favs);save(storeFav,favs);render();if(detailId===n)$('dFav').textContent=favs.includes(n)?'★ 取消收藏':'☆ 加入收藏'}
+function updateCounts(){$('favCount').textContent=favs.length;$('recentCount').textContent=recent.length}
+var typeCounts={};products.forEach(function(p){typeCounts[p.type]=(typeCounts[p.type]||0)+1});
+$('total').textContent=products.length;$('complete').textContent=products.filter(function(p){return !!p.drive}).length;$('kinds').textContent=Object.keys(typeCounts).length;$('unavailable').textContent=products.filter(function(p){return !p.buy}).length;
+function categories(){$('categories').innerHTML=['全部'].concat(Object.keys(typeCounts).sort(function(a,b){return typeCounts[b]-typeCounts[a]})).map(function(c){return '<button type="button" class="chip" data-cat="'+esc(c)+'" aria-pressed="'+(category===c)+'">'+esc(c)+' <em>'+ (c==='全部'?products.length:typeCounts[c])+'</em></button>'}).join('')}
+function getFiltered(){
+ var term=$('search').value.trim().toLocaleLowerCase(),state=$('status').value,sort=$('sort').value;
+ var xs=products.filter(function(p){
+  if(category!=='全部'&&p.type!==category)return false;
+  if(state==='yes'&&!p.buy)return false;
+  if(state==='no'&&p.buy)return false;
+  if(state==='404'&&!/404/.test(p.check||''))return false;
+  if(mode==='favs'&&!favs.includes(p.n))return false;
+  if(mode==='recent'&&!recent.includes(p.n))return false;
+  if(term){var hay=[p.zh,p.en,p.h,p.type,p.frame,p.size,p.out,p.material,p.sku,p.desc].join(' ').toLocaleLowerCase();if(!hay.includes(term))return false}
+  return true;
+ });
+ if(mode==='recent'&&sort==='order')xs.sort(function(a,b){return recent.indexOf(a.n)-recent.indexOf(b.n)});
+ else if(sort==='name')xs.sort(function(a,b){return a.zh.localeCompare(b.zh,'zh-Hant')});
+ else if(sort==='low')xs.sort(function(a,b){return (a.twmin??Infinity)-(b.twmin??Infinity)});
+ else if(sort==='high')xs.sort(function(a,b){return (b.twmax??-Infinity)-(a.twmax??-Infinity)});
+ else if(sort==='order')xs.sort(function(a,b){return a.n-b.n});
+ return xs;
+}
+function card(p){
+ var st=status(p),im=safeUrl(p.photo);
+ return '<article class="item" id="item-'+p.n+'"><div class="preview"><img loading="lazy" src="'+esc(im)+'" alt="'+esc(p.zh)+' 商品主圖" onerror="this.style.visibility=\'hidden\'"><span class="seq">#'+String(p.n).padStart(3,'0')+'</span><button class="fav" type="button" data-fav="'+p.n+'" aria-pressed="'+favs.includes(p.n)+'" aria-label="'+(favs.includes(p.n)?'取消收藏':'收藏商品')+'">'+(favs.includes(p.n)?'★':'☆')+'</button></div>'+
+ '<div class="info"><span class="smallcategory">'+esc(p.type)+'</span><h3>'+esc(p.zh)+'</h3><div class="en" title="'+esc(p.en)+'">'+esc(p.en)+'</div><span class="state '+st[1]+'">'+st[0]+'</span>'+
+ '<div class="price">'+esc(range(p.twmin,p.twmax,twd))+'</div><div class="price-sub">約價 · '+esc(range(p.min,p.max,dollars))+'</div>'+
+ '<div class="spec">'+esc(p.size?('作品：'+p.size):(p.frame?'框型：'+p.frame:'商品編號：'+p.h))+'</div>'+
+ '<div class="buttons"><button class="wide" type="button" data-detail="'+p.n+'">查看詳細資料</button><a class="primary" href="'+esc(driveUrl(p))+'" target="_blank" rel="noopener" data-visit="'+p.n+'">繁中說明圖 ↗</a><a href="'+esc(safeUrl(p.src))+'" target="_blank" rel="noopener" data-visit="'+p.n+'">原廠商品 ↗</a></div></div></article>';
+}
+function render(){categories();updateCounts();$('views').querySelectorAll('[data-mode]').forEach(function(btn){btn.setAttribute('aria-pressed',String(btn.dataset.mode===mode))});
+ var list=getFiltered(),visible=list.slice(0,limit);$('cards').innerHTML=visible.length?visible.map(card).join(''):'<div class="empty">目前沒有符合條件的商品，試試其他分類或搜尋字詞。</div>';
+ $('counter').textContent='顯示 '+visible.length+' / '+list.length+' 筆';
+ $('crumb').textContent=category+' · '+(mode==='favs'?'我的收藏':mode==='recent'?'最近開啟':'全部商品')+' · 共 '+list.length+' 筆';
+ $('listTitle').textContent=mode==='favs'?'收藏商品':mode==='recent'?'最近開啟':'商品卡片';
+ $('more').hidden=visible.length>=list.length;$('more').textContent='顯示更多商品（剩餘 '+(list.length-visible.length)+' 筆）';
+}
+function openDetail(n){var p=byNum.get(n);if(!p)return;detailId=n;remember(n);
+ $('dCategory').textContent='#'+String(n).padStart(3,'0')+' · '+p.type;$('dTitle').textContent=p.zh;$('dEnglish').textContent=p.en;
+ $('dPhoto').src=safeUrl(p.photo);$('dPhoto').alt=p.zh+' 商品主圖';$('dPhoto').style.display=p.photo?'':'none';
+ var st=status(p),fields=[['追蹤時狀態',st[0]+'／'+(p.check||'無查核資料')],['價格（美元）',range(p.min,p.max,dollars)],['台幣參考價',range(p.twmin,p.twmax,twd)],['作品尺寸',p.size],['成框尺寸',p.out],['方向',p.dir],['框型',p.frame],['襯墊',p.mat],['材質／顏色',p.material],['SKU',p.sku],['變體數量',p.variations],['商品說明',p.desc],['異常備註',p.note]];
+ $('dSpecs').innerHTML=fields.filter(function(f){return f[1]!=null&&String(f[1]).trim()!==''}).map(function(f){return '<dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>'}).join('');
+ $('dOriginal').href=safeUrl(p.src);$('dIllustration').href=driveUrl(p);$('dFav').textContent=favs.includes(n)?'★ 取消收藏':'☆ 加入收藏';
+ $('detail').showModal();render();
+ try{history.replaceState(null,'',location.pathname+'?product='+encodeURIComponent(p.h))}catch(e){}
+}
+$('search').addEventListener('input',function(){limit=32;render()});
+$('sort').addEventListener('change',function(){limit=32;render()});
+$('status').addEventListener('change',function(){limit=32;render()});
+$('categories').addEventListener('click',function(e){var b=e.target.closest('[data-cat]');if(!b)return;category=b.dataset.cat;limit=32;render()});
+$('views').addEventListener('click',function(e){var b=e.target.closest('[data-mode]');if(!b)return;mode=b.dataset.mode;limit=32;render()});
+$('reset').addEventListener('click',function(){$('search').value='';$('status').value='all';$('sort').value='order';category='全部';mode='all';limit=32;render()});
+$('cards').addEventListener('click',function(e){
+ var f=e.target.closest('[data-fav]');if(f){toggle(Number(f.dataset.fav));return}
+ var d=e.target.closest('[data-detail]');if(d){openDetail(Number(d.dataset.detail));return}
+ var a=e.target.closest('[data-visit]');if(a){remember(Number(a.dataset.visit));if(mode==='recent')render()}
+});
+$('more').addEventListener('click',function(){limit+=32;render()});
+$('closeDetail').addEventListener('click',function(){$('detail').close()});
+$('detail').addEventListener('close',function(){detailId=null;try{history.replaceState(null,'',location.pathname)}catch(e){}});
+$('detail').addEventListener('click',function(e){if(e.target===$('detail'))$('detail').close()});
+$('dOriginal').addEventListener('click',function(){if(detailId)remember(detailId)});
+$('dIllustration').addEventListener('click',function(){if(detailId)remember(detailId)});
+$('dFav').addEventListener('click',function(){if(detailId)toggle(detailId)});
+$('helpBtn').addEventListener('click',function(){$('help').showModal()});$('closeHelp').addEventListener('click',function(){$('help').close()});
+$('help').addEventListener('click',function(e){if(e.target===$('help'))$('help').close()});
+render();
+var target=new URLSearchParams(location.search).get('product');if(target){var match=products.find(function(x){return x.h===target});if(match)openDetail(match.n)}
+})();
+</script>
+<script src="../shared-nav.js?v=20261029" defer></script>
+</body></html>
