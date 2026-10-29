@@ -115,6 +115,21 @@ main{width:100%;max-width:1120px;min-width:0}
 .desc{color:#657288;font-size:13px;line-height:1.65;flex:1;margin:10px 0}
 .card,.grid,.controls,.pager{min-width:0}
 @media(max-width:700px){.hero{padding:clamp(18px,5vw,32px)}.sizes{padding:15px}.controls input{min-width:min(200px,100%)}}
+
+/* 松風閣外框參考價換算達利每吋報價；不改動原有材料總價 */
+.sfg-dali{margin-top:15px;padding:14px;border:1px solid #c8d9ec;border-radius:15px;background:#f8fbff;min-width:0;max-width:100%}
+.sfg-dali h5{margin:0 0 6px;color:#304f7b;font-size:15px;line-height:1.5}
+.sfg-dali p{margin:6px 0;color:#667891;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+.sfg-dali label{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:11px 0;font-size:12px;font-weight:800;color:#47627f}
+.sfg-dali label input{width:110px;max-width:100%;min-width:0;padding:8px 10px;border:1px solid #c7d6e8;border-radius:10px;background:#fff;color:#294365;font-size:14px}
+.sfg-dali label input:focus-visible{outline:2px solid #6c92c7;outline-offset:2px}
+.sfg-dali-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.sfg-dali-metric{min-width:0;padding:10px;border:1px solid #d9e4f3;border-radius:12px;background:white}
+.sfg-dali-metric span{display:block;color:#61758f;font-size:11px;line-height:1.5}
+.sfg-dali-metric strong{display:block;overflow-wrap:anywhere;font-size:clamp(17px,2vw,22px);font-weight:850;color:#325783;font-variant-numeric:tabular-nums;margin-top:4px}
+.sfg-dali-metric.main{border-color:#9ab9e2;background:#edf4ff}
+.sfg-dali .sfg-dali-formula{margin-top:8px;color:#466381;font-size:11px}
+@media(max-width:390px){.sfg-dali{padding:11px}.sfg-dali-metrics{grid-template-columns:minmax(0,1fr)}}
 </style></head><body><main><a class="back" href="./framing-business-model.html">← 返回裱框找模式啟動器</a><header class="hero"><span>🖼 裱框找模式 · 平面框</span><h1>平面框商品探索</h1><p>整理適合紙本、版畫、水彩及照片的平面框，並提供與海報框商品探索一致的松風閣選框試算。</p><a href="https://www.gakubuti.net/product/list/9" target="_blank" rel="noopener noreferrer">高橋一般額分類 ↗</a><a href="https://www.frame-shop.jp/view/category/ct74" target="_blank" rel="noopener noreferrer">額緣專門店素描框分類 ↗</a><a href="https://www.ikea.com.tw/zh/products/home-decoration/frames-and-wall-decoration" target="_blank" rel="noopener noreferrer">IKEA 台灣相框分類 ↗</a><a href="./poster-frames.html">查看海報框商品探索 ↗</a></header><section class="sizes"><h2>📐 常見尺寸參考</h2><p>參考海報框商品探索所用的原網站「畫框內尺寸」（mm）；平面框商品篩選仍依各商家標示的實際規格，日本 B 系列與其他 B 系列可能不同。選框前請再次核對。</p><div id="size-links" class="chips"></div><p class="note">上方尺寸用於瀏覽商品；松風閣的精確長寬與即時計價，請切換下方「松風閣」分頁。各廠商商品內尺寸可能與此參考值略有差異。</p></section><section><h2 id="heading">平面框商品</h2><p class="note" id="overview"></p><p class="note" id="flat-product-note">日本商品台幣參考價以 2026/10/27 匯率 1 日圓＝NT$0.2064 換算，未含運費與可能的進口稅費；高橋標示各尺寸起價，專門店標示該商品規格價格。商品價格與庫存以官網為準。</p><div class="controls"><input id="search" type="search" placeholder="搜尋型號、名稱或尺寸" aria-label="搜尋商品"><button id="all" class="active">全部商品</button><button id="high">高橋</button><button id="ikea">IKEA</button><button id="shop">專門店</button><button id="sfg" type="button" aria-controls="sfg-calculator" aria-expanded="false">松風閣</button><button id="fav">⭐ 收藏</button><button id="recent">🕘 最近開啟</button></div><section id="sfg-calculator" class="sfg-panel" aria-labelledby="sfg-heading" hidden>
 <header class="sfg-heading"><div><span class="sfg-step-label">SONG FENG GE · 選框與計價</span><h3 id="sfg-heading">🖼️ 松風閣｜平面框選框試算</h3><p>一般裱框＝<strong>背板 ＋ 外框 ＋ 壓克力</strong>，先選框條，再依作品尺寸計算。</p></div><div class="sfg-heading-links"><a href="https://docs.google.com/spreadsheets/d/1ddZNssGS1xiPZpxEBNRDW9LDdtO8ULY4RQu4ewkKD14/edit" target="_blank" rel="noopener noreferrer">📋 Google 試算表｜採集框價 ↗</a> <a href="https://sfg218.com/frame.php" target="_blank" rel="noopener noreferrer">松風閣官網框樣 ↗</a> <a href="https://sfg218.com/simulation.php?Clear=Clear&amp;winshow=no&amp;df_pic=yes" target="_blank" rel="noopener noreferrer">官網完整模擬框 ↗</a></div></header>
 <div class="sfg-layout">
@@ -147,13 +162,24 @@ main{width:100%;max-width:1120px;min-width:0}
 <small class="sfg-preview-note">形狀、顏色僅為比例示意，不是松風閣實品圖</small>
 <div class="sfg-selected-name" id="sfg-selected-name">選擇外框：(上)411藍</div>
 <div class="sfg-breakdown">
-<div class="sfg-line"><span>外框</span><strong id="sfg-frame-sum">NT$253.50</strong></div>
+<div class="sfg-line"><span>松風閣外框參考價</span><strong id="sfg-frame-sum">NT$253.50</strong></div>
 <div class="sfg-line"><span>背板</span><strong id="sfg-back-sum">NT$48.51</strong></div>
 <div class="sfg-line"><span>壓克力</span><strong id="sfg-acrylic-sum">NT$69.30</strong></div>
 <div class="sfg-line"><span>自行輸入工資</span><strong id="sfg-labor-sum">NT$0.00</strong></div>
 </div>
 <div class="sfg-total"><span>參考試算合計</span><strong id="sfg-total">NT$371.31</strong></div>
 <div id="sfg-formulas" class="sfg-formulas" aria-live="polite"></div>
+<section class="sfg-dali" aria-labelledby="sfg-dali-heading">
+<h5 id="sfg-dali-heading">🔄 達利外框價格換算</h5>
+<p>松風閣：（長＋寬）÷15 × 框條單價；達利：（長＋寬）÷2.54 × 達利每吋單價。兩者的長寬皆為 cm。</p>
+<label for="sfg-dali-multiplier"><span>達利訂價倍率（可調整）</span><input id="sfg-dali-multiplier" type="number" inputmode="decimal" min="0.01" max="10" step="0.05" value="1.00" aria-describedby="sfg-dali-hint"></label>
+<div class="sfg-dali-metrics">
+<div class="sfg-dali-metric"><span>換算達利每吋單價</span><strong id="sfg-dali-unit" aria-live="polite">—</strong></div>
+<div class="sfg-dali-metric main"><span>達利外框參考價</span><strong id="sfg-dali-frame" aria-live="polite">—</strong></div>
+</div>
+<p id="sfg-dali-formula" class="sfg-dali-formula" aria-live="polite"></p>
+<p id="sfg-dali-hint">預設 1 倍只換算計價單位，與松風閣外框價相同；若達利另行訂價，可調整倍率。這裡只計外框，不含背板、壓克力、工資，且不是達利正式售價。</p>
+</section>
 <p class="sfg-warning" id="sfg-alert" role="status"></p>
 </aside>
 </div>
@@ -309,6 +335,17 @@ function sfgCalculate(){
  priceMatchesStored&&sfgChosen.rateSource==="sheet-airtable"?"價格來源：Google 試算表 Airtable 參考價（未取得官網單價；非即時價）":
  rateRaw!==""?"價格來源：手動輸入的單價，請核對":"此框型尚無可用單價，請查詢並輸入";
  const hasFrameRate=rateRaw!==""&&Number.isFinite(frameRate)&&frameRate>=0;
+ const daliMultiplierRaw=sfgEl("sfg-dali-multiplier").value.trim();
+ const daliMultiplier=Number(daliMultiplierRaw);
+ const daliMultiplierValid=daliMultiplierRaw!==""&&Number.isFinite(daliMultiplier)&&daliMultiplier>0&&daliMultiplier<=10;
+ const daliUnit=hasFrameRate&&daliMultiplierValid?frameRate*2.54/15*daliMultiplier:null;
+ const daliOuter=sizeValid&&daliUnit!==null?(mmL+mmW)/25.4*daliUnit:null;
+ sfgEl("sfg-dali-unit").textContent=daliUnit===null?"待填有效框價／倍率":"NT$"+sfgDec(daliUnit,4)+"／吋";
+ sfgEl("sfg-dali-frame").textContent=daliOuter===null?"待輸入":sfgMoney(daliOuter);
+ sfgEl("sfg-dali-formula").textContent=daliOuter!==null?
+  "達利：（"+sfgDec(mmL/10,1)+"＋"+sfgDec(mmW/10,1)+"）÷2.54 ×（"+sfgDec(frameRate,2)+"×2.54÷15×"+sfgDec(daliMultiplier,2)+"）＝"+sfgMoney(daliOuter):
+  "請填入作品尺寸、松風閣框條單價及有效的達利訂價倍率（0～10 倍，須大於 0）。";
+
  const selectedName=sfgCustomMode?(sfgEl("sfg-custom-name").value.trim()||"自訂框型"):sfgChosen.name;
  const selectedWidth=sfgCustomMode?Number(sfgEl("sfg-custom-width").value):sfgChosen.w;
  sfgEl("sfg-selected-name").textContent="框型："+selectedName+(valid?" · 尺寸 "+sfgDec(mmL/10,1)+" × "+sfgDec(mmW/10,1)+" cm":"");
@@ -361,7 +398,7 @@ function sfgSyncLink(){
  link.href=sfgCustomMode?"https://sfg218.com/frame_class.php?class=17":sfgFrameUrl(sfgChosen);
  link.textContent=(!sfgCustomMode&&sfgChosen.url)?"核對選定框型的官網價格 ↗":"前往松風閣外框目錄查詢 ↗";
 }
-for(const id of ["sfg-length","sfg-width","sfg-frame-rate","sfg-back-rate","sfg-acrylic-rate","sfg-labor","sfg-custom-name","sfg-custom-width"])sfgEl(id).addEventListener("input",sfgCalculate);
+for(const id of ["sfg-length","sfg-width","sfg-frame-rate","sfg-back-rate","sfg-acrylic-rate","sfg-labor","sfg-custom-name","sfg-custom-width","sfg-dali-multiplier"])sfgEl(id).addEventListener("input",sfgCalculate);
 for(const id of ["sfg-back-on","sfg-acrylic-on"])sfgEl(id).addEventListener("change",sfgCalculate);
 document.querySelectorAll("[data-sfg-preset]").forEach(b=>b.addEventListener("click",()=>{
  const p=sfgPresets[b.dataset.sfgPreset];
