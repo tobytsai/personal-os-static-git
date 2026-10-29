@@ -61,7 +61,7 @@ dialog{width:min(760px,calc(100% - 24px));max-height:88vh;padding:0;border:0;bor
 <script>
 const $=id=>document.getElementById(id);
 const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const safeUrl=v=>{try{let u=new URL(String(v||""),document.baseURI);return ["https:","http:"].includes(u.protocol)?u.href:""}catch{return ""}};
+const safeUrl=v=>{try{const raw=String(v||"").trim();if(!raw)return "";let u=new URL(raw,document.baseURI);return ["https:","http:"].includes(u.protocol)?u.href:""}catch{return ""}};
 const types=[["category","畫作分類"],["theme","題材與寓意"],["placement","空間布置"],["price","依價格"],["size","依尺寸"]];
 const favKey="azhuLauncherFavoriteIds",recentKey="azhuLauncherRecentIds";
 function loadStorage(k){try{return JSON.parse(localStorage.getItem(k)||"[]")}catch{return []}}
@@ -146,7 +146,7 @@ $("detailsDialog").showModal();if(activeMode==="recent")render();
 }
 $("groups").addEventListener("click",e=>{let t=e.target.closest("[data-group]");if(!t)return;activeGroup=t.dataset.group;activeView=null;renderSelectors();render()});
 $("viewTypes").addEventListener("click",e=>{let t=e.target.closest("[data-vtype]");if(!t)return;activeViewType=t.dataset.vtype;activeView=null;render()});
-$("viewItems").addEventListener("click",e=>{let t=e.target.closest("[data-view]");if(!t)return;activeView=t.dataset.view==="all"?null:t.dataset.view;activeGroup="all";$("category").value="all";render()});
+$("viewItems").addEventListener("click",e=>{let t=e.target.closest("[data-view]");if(!t)return;activeView=t.dataset.view==="all"?null:t.dataset.view;activeGroup="all";renderSelectors();$("category").value="all";render()});
 $("grid").addEventListener("click",e=>{let t=e.target.closest("[data-star]");if(t){let id=t.dataset.star;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[id,...favorites];save();render();return}t=e.target.closest("[data-detail]");if(t){openDetails(t.dataset.detail);return}t=e.target.closest("[data-open]");if(t)markOpened(t.dataset.open)});
 ["category","room","detail","price"].forEach(id=>$(id).addEventListener("change",render));
 $("search").addEventListener("input",e=>{search=e.target.value;render()});
