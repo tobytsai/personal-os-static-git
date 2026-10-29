@@ -66,31 +66,40 @@ const scenarioText={
  stretch:"油畫布繃成無框畫"
 };
 function note(text){$("sfg-oil-alert").textContent=text||"";}
+/* 與海報框商品探索一致的 10 類框型按鈕、縮圖卡片及單價標示。 */
 function renderCategories(){
- const nodes=[["all","全部框型",frames.length],
-  ...categories.map((v,i)=>[String(i),v,frames.filter(f=>f.cat===i).length])];
- $("sfg-frame-filter").innerHTML=nodes.map(([id,label,n])=>
-  '<button type="button" data-sfg-category="'+esc(id)+'" class="'+(category===id?"selected":"")+
-  '" aria-pressed="'+(category===id)+'">'+esc(label)+' <small>'+n+' 款</small></button>').join("");
+ const root=$("sfg-frame-filter");
+ const choices=[["all","全部框型",frames.length],...categories.map((name,i)=>[String(i),name,frames.filter(f=>f.cat===i).length])];
+ root.innerHTML=choices.map(([id,label,count])=>
+  '<button type="button" data-sfg-cat="'+esc(id)+'" class="'+(category===id?'selected':'')+
+  '" aria-pressed="'+(category===id)+'">'+esc(label)+' <small>'+count+' 款</small></button>'
+ ).join("");
 }
 function renderFrames(){
  const query=$("sfg-frame-search").value.trim().toLocaleLowerCase();
  const found=frames.filter(f=>(category==="all"||String(f.cat)===category)&&
   (f.name+" "+categories[f.cat]+" "+f.w+" "+f.h).toLocaleLowerCase().includes(query));
- const slice=found.slice(0,limit);
- $("sfg-frame-count").textContent="顯示 "+slice.length+" / "+found.length+" 款｜價格採試算表快照（"+
- (sheetMeta.withOfficialColumn??0)+" 款已填價）；照片為松風閣官網圖，須核對是否適用油畫布架";
- $("sfg-frame-grid").innerHTML=slice.length?slice.map(f=>
-  '<button class="sfg-frame-choice'+(!custom&&frame?.id===f.id?" is-selected":"")+
+ const shown=found.slice(0,limit);
+ const imageCount=frames.filter(f=>Boolean(f.photo)).length;
+ const priceCount=frames.filter(f=>f.rate!==null).length;
+ $("sfg-frame-count").textContent="顯示 "+shown.length+" / "+found.length+" 款｜實品照片 "+imageCount+
+  " 款｜試算表參考價格 "+priceCount+" 款；W 為框寬、H 為框高（cm）";
+ $("sfg-frame-grid").innerHTML=shown.length?shown.map(f=>
+  '<button class="sfg-frame-choice'+(!custom&&frame?.id===f.id?' is-selected':'')+
   '" type="button" data-sfg-frame="'+f.id+'" aria-pressed="'+(!custom&&frame?.id===f.id)+'">'+
-  (f.photo?'<img class="sfg-frame-photo" src="'+esc(f.thumb||f.photo)+'" alt="'+esc(f.name)+' 松風閣框條" loading="lazy" referrerpolicy="no-referrer" decoding="async"><span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'" hidden></span>':
-  '<span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'"></span>')+
-  '<span class="sfg-frame-copy"><strong>'+esc(f.name)+'</strong><small>W'+decimal(f.w,1)+'／H'+decimal(f.h,1)+' cm</small>'+
-  (f.rate===null?'<em>待補單價</em>':'<small>'+esc(f.rateSource||"參考價")+'：'+amount(f.rate)+'</small>')+
-  '</span></button>').join(""):
-  '<p class="sfg-empty">'+(category==="9"&&!query?"此分類目前沒有上架框型。":"沒有符合搜尋條件的框型。")+'</p>';
- $("sfg-load-more").hidden=slice.length>=found.length;
- $("sfg-load-more").textContent="顯示更多框型（剩餘 "+(found.length-slice.length)+" 款）";
+  (f.photo?'<img class="sfg-frame-photo" src="'+esc(f.thumb||f.photo)+'" alt="'+esc(f.name)+' 松風閣實品框條" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'" hidden></span>':
+   '<span class="sfg-mini-frame" style="--sfg-tone:'+f.tone+'"></span>')+
+  '<span class="sfg-frame-copy"><strong>'+esc(f.name)+'</strong><small>W'+decimal(f.w,1)+' / H'+decimal(f.h,1)+' cm</small>'+
+  (f.rate===null?'<em>試算表尚無價格 · 需自行輸入</em>':
+    '<small>'+(f.rateSource==="已核對官網價"?"官網已核對單價":
+       f.rateSource==="試算表價格・待核對"?"試算表價格（待核對）":"試算表 Airtable 參考價")+
+    ' '+amount(f.rate)+'</small>')+
+  '</span></button>'
+ ).join(""):'<p class="sfg-empty">'+(category==="9"&&!query?
+  "松風閣官網此分類目前沒有上架資料。":"目前沒有符合條件的框型，請修改搜尋或切換分類。")+'</p>';
+ const more=$("sfg-load-more");
+ more.hidden=shown.length>=found.length;
+ more.textContent="顯示更多框型（剩餘 "+(found.length-shown.length)+" 款）";
 }
 function sizeFamilyOf(name){
  if(name==="SM")return "M";
@@ -136,6 +145,22 @@ function refreshScenario(){
  });
  renderFrames();calculate();
 }
+
+function renderSelectedFrame(){
+ const name=custom?$("sfg-custom-name").value.trim()||"自訂框型":frame?.name||"尚未選擇";
+ const raw=$("sfg-frame-rate").value.trim(),entered=raw!==""?Number(raw):null;
+ const hasEntered=entered!==null&&Number.isFinite(entered)&&entered>=0;
+ const source=!custom&&hasEntered&&frame?.rate!==null&&entered===frame.rate?frame.rateSource:"手動輸入";
+ $("sfg-oil-selected-name").textContent=name;
+ const width=custom?Number($("sfg-custom-width").value):frame?.w;
+ const height=custom?null:frame?.h;
+ $("sfg-oil-selected-detail").textContent=
+  (Number.isFinite(width)&&width>0?"框寬 W"+decimal(width,1)+"cm":"框寬待查")+
+  (Number.isFinite(height)?" / 框高 H"+decimal(height,1)+"cm":"")+
+  "｜"+(hasEntered?amount(entered)+"／15cm":"待輸入單價")+
+  (hasEntered&&source?"（"+source+"）":"");
+ $("sfg-oil-show-selected").hidden=custom||!frame;
+}
 function updateFrameSelection(){
  $("sfg-frame-rate").value=custom?"":frame?.rate??"";
  $("sfg-frame-rate").placeholder=custom?"自行輸入每 15cm 單價":"沒有核對單價時請手動輸入";
@@ -179,6 +204,7 @@ function updateVisual(mmL,mmW){
  }
 }
 function calculate(){
+ renderSelectedFrame();
  const l=mm("sfg-length"),w=mm("sfg-width");
  const sizeOk=l!==null&&w!==null;
  const length=sizeOk?l/10:0,width=sizeOk?w/10:0,area=length*width/900,
@@ -274,10 +300,22 @@ function install(){
   if(r.checked){scenario=r.value;refreshScenario();}
  }));
  $("sfg-frame-filter").addEventListener("click",e=>{
-  const b=e.target.closest("[data-sfg-category]");if(!b)return;
-  category=b.dataset.sfgCategory;limit=48;renderCategories();renderFrames();
+  const b=e.target.closest("[data-sfg-cat]");if(!b)return;
+  category=b.dataset.sfgCat;limit=48;renderCategories();renderFrames();
  });
  $("sfg-frame-search").addEventListener("input",()=>{limit=48;renderFrames();});
+ $("sfg-oil-show-selected").addEventListener("click",()=>{
+  if(!frame||custom)return;
+  category=String(frame.cat);
+  $("sfg-frame-search").value="";
+  const siblings=frames.filter(item=>item.cat===frame.cat);
+  const selectedIndex=siblings.findIndex(item=>item.id===frame.id);
+  limit=Math.max(48,Math.ceil((selectedIndex+1)/48)*48);
+  renderCategories();renderFrames();
+  const selected=$("sfg-frame-grid").querySelector(".sfg-frame-choice.is-selected");
+  if(selected?.scrollIntoView)selected.scrollIntoView({block:"nearest",behavior:"smooth"});
+ });
+
  $("sfg-load-more").addEventListener("click",()=>{limit+=48;renderFrames();});
  $("sfg-frame-grid").addEventListener("click",e=>{
   const b=e.target.closest("[data-sfg-frame]");if(!b)return;
@@ -287,7 +325,7 @@ function install(){
  $("sfg-custom").addEventListener("click",()=>{
   custom=!custom;updateFrameSelection();
  });
- const ids=["sfg-length","sfg-width","sfg-canvas-depth","sfg-frame-rate","sfg-custom-width","sfg-custom-name",
+ const ids=["sfg-length","sfg-width","sfg-oil-canvas-depth","sfg-frame-rate","sfg-custom-width","sfg-custom-name",
   "sfg-oil-install-labor","sfg-oil-install-parts",
   "sfg-oil-card-rate","sfg-oil-acrylic-rate","sfg-oil-bottom-rate","sfg-oil-shadow-labor",
   "sfg-oil-stretcher-rate","sfg-oil-stretch-labor","sfg-oil-canvas-rate","sfg-oil-wrap-margin",
