@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eeeefb">
+<meta name="description" content="達利畫框技術仕事：攝影、油畫、書畫、海報、鏡子與特殊物件裱框案例，共257筆。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>仕事啟動器｜畫框技術仕事｜Personal OS</title>
+<style>
+:root{color-scheme:light;--ink:#26314a;--muted:#6e7b91;--line:#dfe5ef;--purple:#655bd9;--bg:#f5f6fc}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 2% 3%,#e7ddff 0,transparent 33%),radial-gradient(circle at 100% 13%,#d9f5ef 0,transparent 35%),var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif}
+a{color:inherit}button,input{font:inherit}button{cursor:pointer}
+main{max-width:1200px;margin:0 auto;padding:20px 18px 56px}
+.back{display:inline-block;margin:0 0 13px;padding:9px 13px;background:#fff;border:1px solid var(--line);border-radius:99px;text-decoration:none;font-size:13px;font-weight:750}
+.hero{border-radius:28px;padding:clamp(22px,4vw,38px);background:linear-gradient(115deg,#303b79,#6859b8 54%,#388f9d);color:#fff;box-shadow:0 16px 32px #4c52a331}.eyebrow{font-size:12px;letter-spacing:.11em;font-weight:900;color:#e6e6ff}
+h1{margin:10px 0;font-size:clamp(33px,5vw,48px)}.hero p{margin:0;max-width:720px;line-height:1.7;color:#f4f4ff;font-size:14px}.hero-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero-links a,.hero-links button{color:#fff;text-decoration:none;padding:9px 13px;border:1px solid #ffffff77;border-radius:99px;background:#ffffff20;font-size:12px;font-weight:800}
+.stats{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0}.stat{background:#fff;border:1px solid var(--line);padding:9px 13px;border-radius:99px;font-weight:750;font-size:12px;color:#586580}
+.section-title{margin:26px 0 12px;display:flex;align-items:end;justify-content:space-between;gap:10px}.section-title h2{font-size:22px;margin:0}.section-title small{color:var(--muted);font-size:12px}
+.groups{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.group{border:1px solid #fff;background:#ffffffea;border-radius:19px;text-align:left;min-height:137px;padding:16px;box-shadow:0 8px 20px #29324d0c;transition:transform .15s}.group:hover{transform:translateY(-3px)}.group.active{outline:2px solid var(--purple);background:#f1eeff}.group .icon{font-size:27px}.group strong{display:block;margin-top:8px;font-size:15px}.group span{display:block;color:var(--muted);font-size:12px;margin-top:5px;line-height:1.5}.group b{float:right;color:var(--purple);font-size:12px}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:22px}.toolbar input{flex:1;min-width:180px;padding:13px 15px;border:1px solid var(--line);border-radius:15px;background:#fff;outline:none;font-size:14px}.view-toggle{padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:#4c5671;font-size:12px;font-weight:850}.view-toggle.active{background:#eceafe;border-color:#b9b2f3;color:#4f42af}
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.cat{padding:8px 12px;border-radius:99px;border:1px solid var(--line);background:#fff;color:#59667e;font-size:12px;font-weight:800}.cat.active{background:#6155ce;color:#fff;border-color:#6155ce}.cat small{opacity:.75}
+.result-info{display:flex;align-items:center;justify-content:space-between;margin:10px 0;color:var(--muted);font-size:12px}.entries{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.entry{display:flex;flex-direction:column;position:relative;overflow:hidden;border:1px solid #fff;border-radius:20px;background:#fff;box-shadow:0 7px 22px #2a334d0c}.preview{width:100%;height:170px;display:grid;place-items:center;background:linear-gradient(130deg,#eeeafa,#eef7f8);color:#6d66b7;text-align:center;font-weight:900;font-size:32px}.preview img{width:100%;height:100%;object-fit:contain}.entry-body{display:flex;flex-direction:column;flex:1;padding:14px 15px 15px}.entry-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:11px;color:#7769c0}.entry-meta span{border-radius:99px;background:#f0edff;padding:4px 8px}.entry h3{font-size:15px;line-height:1.5;margin:10px 0 7px;overflow-wrap:anywhere}.entry p{font-size:12px;color:var(--muted);line-height:1.55;margin:0 0 12px;flex:1}.actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:auto}.actions a,.actions button{display:inline-flex;align-items:center;border:1px solid #e0e5ee;background:#f7f8fc;padding:8px 10px;border-radius:10px;text-decoration:none;color:#52617c;font-size:12px;font-weight:800}.actions button.primary{background:#eeebff;color:#5147b5}.actions .star{margin-left:auto;font-size:18px;padding:5px 8px}.star.saved{color:#e3a426;background:#fff7dc;border-color:#f2dd99}
+.empty,.alert{grid-column:1/-1;padding:22px;background:#fff;border:1px dashed var(--line);border-radius:16px;color:var(--muted);font-size:14px;line-height:1.7}
+dialog{width:min(700px,calc(100% - 28px));max-height:86vh;border:0;padding:0;border-radius:23px;box-shadow:0 18px 80px #1b234e77;color:var(--ink)}dialog::backdrop{background:#11183195}.dialog-inner{padding:24px}.dialog-head{display:flex;gap:12px;justify-content:space-between}.dialog-head h2{font-size:21px;line-height:1.4;margin:0}.dialog-head button{align-self:start;border:1px solid var(--line);border-radius:99px;background:#fff;width:34px;height:34px}.details{font-size:13px;line-height:1.8;color:#536078}.details dt{margin-top:12px;font-weight:900;color:var(--ink)}.details dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.details a{color:#4d53b7}.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0}.gallery img{width:100%;aspect-ratio:1.25;object-fit:contain;border:1px solid #e3e8f0;border-radius:12px;background:#f7f8fb}
+.footer{margin:30px auto 0;color:var(--muted);font-size:12px;text-align:center;line-height:1.8}
+@media(max-width:920px){.groups{grid-template-columns:repeat(3,1fr)}.entries{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){main{padding:14px 12px 40px}.hero{border-radius:20px}.groups{grid-template-columns:repeat(2,1fr)}.group{min-height:120px;padding:12px}.group strong{font-size:13px}.group span{font-size:11px}.entries{grid-template-columns:1fr}.preview{height:190px}.toolbar input{flex-basis:100%}.section-title h2{font-size:19px}}
+</style>
+</head>
+<body><main>
+<a class="back" href="../index.html">← 返回首頁</a>
+<header class="hero"><span class="eyebrow">達利 · FRAME TECHNIQUE LIBRARY</span><h1>仕事啟動器</h1>
+<p>依畫種、作品形式、框材與工法分類查找裝裱案例。資料來自 Airtable「達利 → 畫框技術仕事」Grid view；保留作品、原始分類、照片及筆記連結，不變更 Airtable 原始資料。</p>
+<div class="hero-links"><a href="https://airtable.com/appPXSnxWroL0MXbl" target="_blank" rel="noopener">開啟 Airtable 原始資料 ↗</a><button id="helpBtn" type="button">？ 使用說明</button></div></header>
+<section class="stats" id="stats"><span class="stat">讀取資料中…</span></section>
+<div class="section-title"><h2>依工作類型分類</h2><small>先選大類，再按原始工法細分</small></div>
+<section class="groups" id="groups" aria-label="工作分類"></section>
+<div class="toolbar"><input id="search" type="search" placeholder="搜尋作品、框型、尺寸、材料、技法……" aria-label="搜尋全部資料"><button class="view-toggle" id="favoriteBtn" type="button">☆ 我的收藏</button><button class="view-toggle" id="recentBtn" type="button">↻ 最近開啟</button><button class="view-toggle" id="resetBtn" type="button">全部資料</button></div>
+<div class="cats" id="cats"></div>
+<div class="result-info"><span id="count">讀取資料中…</span><span>原始資料保留 · 2026/10/30 整理</span></div>
+<section class="entries" id="entries" aria-live="polite"></section>
+<div class="footer">個人技術案例資料庫 · 靜態整理版本 · 收藏與最近紀錄僅保存在本機<br>如照片因 Airtable 附件網址到期而未顯示，請至 Airtable 原始表格查看。</div>
+</main>
+<dialog id="detailDialog"><div class="dialog-inner"><div class="dialog-head"><h2 id="detailTitle"></h2><button id="closeDialog" type="button" aria-label="關閉">✕</button></div><div class="gallery" id="detailGallery"></div><dl class="details" id="detailContent"></dl></div></dialog>
+<dialog id="helpDialog"><div class="dialog-inner"><div class="dialog-head"><h2>使用說明</h2><button type="button" id="closeHelp" aria-label="關閉">✕</button></div><p class="details">從七個主要分類選擇工作類型，再使用下方細分類篩選。搜尋可查作品名稱、框型、價格、技術筆記、標籤。點選「查看內容」可查看筆記連結及照片；按 ☆ 收藏，或用「最近開啟」快速找回上次看過的案例。這是 2026/10/30 的 Airtable 快照，更新原始表格不會自動同步此頁。</p></div></dialog>
+<script>
+let items=[],groups=[],byId=new Map(),activeGroup="all",activeCat="all",view="all",query="";
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function stored(key){try{return JSON.parse(localStorage.getItem(key)||"[]")}catch{return []}}
+let favs=stored("osFrameTechFavs"),recent=stored("osFrameTechRecent");
+function save(){localStorage.setItem("osFrameTechFavs",JSON.stringify(favs));localStorage.setItem("osFrameTechRecent",JSON.stringify(recent))}
+function countCat(cat){return items.filter(x=>x.category===cat).length}
+function countGroup(g){return items.filter(x=>g.cats.includes(x.category)).length}
+function groupOf(x){return groups.find(g=>g.cats.includes(x.category))||{id:"other",name:"其他",icon:"🖼"}}
+function safeUrl(url){try{const u=new URL(url);return u.protocol==="https:"||u.protocol==="http:"?u.href:""}catch{return ""}}
+function renderGroups(){const all='<button type="button" class="group '+(activeGroup==="all"?"active":"")+'" data-group="all"><span class="icon">▦</span><b>'+items.length+'</b><strong>全部工作案例</strong><span>瀏覽全部分類</span></button>';
+$("groups").innerHTML=all+groups.map(g=>'<button type="button" class="group '+(activeGroup===g.id?"active":"")+'" data-group="'+g.id+'"><span class="icon">'+g.icon+'</span><b>'+countGroup(g)+'</b><strong>'+esc(g.name)+'</strong><span>'+esc(g.desc)+'</span></button>').join("")}
+function categories(){const cats=activeGroup==="all"?[...new Set(items.map(x=>x.category))]:groups.find(g=>g.id===activeGroup)?.cats.filter(c=>countCat(c))||[];$("cats").innerHTML='<button class="cat '+(activeCat==="all"?"active":"")+'" data-cat="all">全部細類</button>'+cats.map(cat=>'<button class="cat '+(activeCat===cat?"active":"")+'" data-cat="'+esc(cat)+'">'+esc(cat)+' <small>'+countCat(cat)+'</small></button>').join("")}
+function filter(){const q=query.trim().toLocaleLowerCase();return items.filter(x=>{
+if(view==="fav"&&!favs.includes(x.id))return false;
+if(view==="recent"&&!recent.includes(x.id))return false;
+if(activeGroup!=="all"&&!groups.find(g=>g.id===activeGroup)?.cats.includes(x.category))return false;
+if(activeCat!=="all"&&x.category!==activeCat)return false;
+return !q||[x.name,x.title,x.category,x.note,x.price,x.tags,...x.options].join(" ").toLocaleLowerCase().includes(q)
+}).sort((a,b)=>view==="recent"?recent.indexOf(a.id)-recent.indexOf(b.id):0)}
+function render(){renderGroups();categories();$("favoriteBtn").classList.toggle("active",view==="fav");$("recentBtn").classList.toggle("active",view==="recent");
+const found=filter();$("count").textContent="顯示 "+found.length+" / "+items.length+" 筆工作案例";
+$("entries").innerHTML=found.map(x=>{
+const g=groupOf(x),img=x.images[0]?.url,src=img?safeUrl(img):"",note=x.title||x.tags||x.note.slice(0,95)||"查看原始工作案例與技術筆記";
+const imageHtml=src?'<img loading="lazy" src="'+esc(src)+'" alt="'+esc(x.name)+'" onerror="this.remove();this.parentElement.textContent=\''+g.icon+'\';">':g.icon;
+const primaryLink=x.links.find(safeUrl),linkHtml=primaryLink?'<a href="'+esc(safeUrl(primaryLink))+'" target="_blank" rel="noopener" data-open="'+x.id+'">原始筆記 ↗</a>':"";
+return '<article class="entry"><div class="preview">'+imageHtml+'</div><div class="entry-body"><div class="entry-meta"><span>'+g.icon+' '+esc(x.category)+'</span>'+(x.price?'<span>價格 '+esc(x.price)+'</span>':"")+'</div><h3>'+esc(x.name)+'</h3><p>'+esc(note)+'</p><div class="actions"><button type="button" class="primary" data-detail="'+x.id+'">查看內容</button>'+linkHtml+'<button type="button" class="star '+(favs.includes(x.id)?"saved":"")+'" data-star="'+x.id+'" aria-label="收藏">'+(favs.includes(x.id)?"★":"☆")+'</button></div></div></article>'
+}).join("")||'<div class="empty">沒有符合條件的工作案例，請試試不同分類或關鍵字。</div>'}
+function openDetail(id){const x=byId.get(id);if(!x)return;
+recent=[id,...recent.filter(v=>v!==id)].slice(0,10);save();
+$("detailTitle").textContent=x.name;
+$("detailGallery").innerHTML=x.images.map(v=>'<img loading="lazy" src="'+esc(safeUrl(v.url))+'" alt="'+esc(v.filename||x.name)+'" onerror="this.style.display=\'none\'">').join("");
+let chunks=[["原始分類",x.category],["補充標題",x.title],["工法或說明",x.note],["價格",x.price],["標籤",x.tags],["其他選項",x.options.join("、")]];
+$("detailContent").innerHTML=chunks.filter(y=>y[1]).map(y=>'<dt>'+esc(y[0])+'</dt><dd>'+esc(y[1])+'</dd>').join("")+'<dt>原始連結</dt><dd>'+(x.links.length?x.links.map((url,i)=>safeUrl(url)?'<a href="'+esc(safeUrl(url))+'" target="_blank" rel="noopener">開啟筆記 '+(i+1)+' ↗</a>':"").join("　"):'<a href="https://airtable.com/appPXSnxWroL0MXbl" target="_blank" rel="noopener">查看 Airtable 表格 ↗</a>')+'</dd>';
+$("detailDialog").showModal();if(view==="recent")render();
+}
+$("groups").addEventListener("click",e=>{const b=e.target.closest("[data-group]");if(!b)return;activeGroup=b.dataset.group;activeCat="all";view="all";render()});
+$("cats").addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;activeCat=b.dataset.cat;render()});
+$("entries").addEventListener("click",e=>{
+const star=e.target.closest("[data-star]");if(star){const id=star.dataset.star;favs=favs.includes(id)?favs.filter(v=>v!==id):[id,...favs];save();render();return}
+const d=e.target.closest("[data-detail]");if(d){openDetail(d.dataset.detail);return}
+const a=e.target.closest("[data-open]");if(a){const id=a.dataset.open;recent=[id,...recent.filter(v=>v!==id)].slice(0,10);save()}
+});
+$("search").addEventListener("input",e=>{query=e.target.value;render()});
+$("favoriteBtn").addEventListener("click",()=>{view=view==="fav"?"all":"fav";activeGroup="all";activeCat="all";render()});
+$("recentBtn").addEventListener("click",()=>{view=view==="recent"?"all":"recent";activeGroup="all";activeCat="all";render()});
+$("resetBtn").addEventListener("click",()=>{view="all";activeGroup="all";activeCat="all";query="";$("search").value="";render()});
+$("closeDialog").addEventListener("click",()=>$("detailDialog").close());
+$("helpBtn").addEventListener("click",()=>$("helpDialog").showModal());
+$("closeHelp").addEventListener("click",()=>$("helpDialog").close());
+fetch("../data/frame-tech-work.json").then(r=>{if(!r.ok)throw new Error("資料讀取失敗");return r.json()}).then(d=>{
+items=d.items;groups=d.groups;byId=new Map(items.map(x=>[x.id,x]));$("stats").innerHTML='<span class="stat">📚 '+items.length+' 筆資料</span><span class="stat">▦ '+new Set(items.map(x=>x.category)).size+' 種原始分類</span><span class="stat">🧭 '+groups.length+' 大工作類型</span><span class="stat">🖼 '+items.filter(x=>x.images.length).length+' 筆附有照片</span>';render()
+}).catch(err=>{$("count").textContent="載入失敗";$("entries").innerHTML='<div class="alert">資料檔案未能載入：'+esc(err.message)+'。請重新整理或開啟 Airtable 原始資料。</div>'});
+</script>
+<script defer src="../shared-nav.js"></script>
+</body></html>
