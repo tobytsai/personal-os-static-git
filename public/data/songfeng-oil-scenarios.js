@@ -57,6 +57,12 @@ const frames=catalog.map((item,index)=>{
   url:validDetail(row?.url)?row.url:null,tone:colors(item.name)};
 });
 let frame=frames.find(f=>f.name==="241平白")||frames.find(f=>f.rate!==null)||frames[0]||null;
+/* 從裱框材料啟動器點「帶入油畫框試算」時，依共用型錄的索引預選同一款外框。 */
+const requestedMaterialFrame=new URLSearchParams(location.search).get("songfengFrame");
+if(requestedMaterialFrame!==null&&/^\d+$/.test(requestedMaterialFrame)){
+ const frameIndex=Number(requestedMaterialFrame);
+ if(Number.isSafeInteger(frameIndex)&&frameIndex>=0&&frameIndex<frames.length)frame=frames[frameIndex];
+}
 const initialOilSize=new URLSearchParams(location.search).get("size");
 let category="all",limit=48,scenario="direct",family="F",sizeKey=oilSizes[initialOilSize]?initialOilSize:"F6",custom=false;
 family=sizeKey==="SM"?"M":sizeKey.charAt(0);
