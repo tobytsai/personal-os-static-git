@@ -160,6 +160,10 @@ main{width:100%;max-width:1120px;min-width:0}
 .sfg-oil-breakdown .sfg-line strong{max-width:44%;text-align:right;overflow-wrap:anywhere;white-space:normal}
 .sfg-oil-note{font-size:12px;line-height:1.65;color:#697e99}
 .sfg-oil-field-hint{font-size:11px;color:#73849a;line-height:1.6;margin:8px 0 0}
+.sfg-card-spec{padding:12px 13px;margin:12px 0;border:1px solid #bcd1ea;border-radius:13px;background:#f1f7ff;color:#3d5778;font-size:12px;line-height:1.75}
+.sfg-card-spec strong{display:block;font-size:14px;color:#305381;margin-bottom:4px}
+.sfg-card-spec small{display:block;font-size:11px;color:#6b7d94;line-height:1.65;margin-top:5px}
+#sfg-oil-formulas{white-space:pre-line}
 .sfg-oil-missing-note{margin-top:9px;padding:10px;border:1px dashed #bccfe8;border-radius:12px;background:#f9fbff;color:#557497;font-size:12px;line-height:1.7}
 .sfg-dali{margin-top:15px;padding:14px;border:1px solid #c8d9ec;border-radius:15px;background:#f8fbff;min-width:0;max-width:100%}
 .sfg-dali h5{margin:0 0 6px;color:#304f7b;font-size:15px}
@@ -262,15 +266,21 @@ main{width:100%;max-width:1120px;min-width:0}
 
 <section id="sfg-oil-shadow-section" class="sfg-box sfg-oil-block" hidden>
  <h4>③ 立體框：卡板＋壓克力＋底布</h4>
- <p class="sfg-oil-help">另加外框及組裝工資。卡板價格可開啟下方資料連結查閱（需登入印象筆記）；底布仍需自行輸入單價，壓克力每才價可調整。</p>
+ <p class="sfg-oil-help">另加外框及組裝工資。已依提供的卡板 4.5 公分資料預填單價 100 元，採用筆記中的長寬線性公式；底布仍需自行輸入單價，壓克力每才價可調整。</p>
+  <div class="sfg-card-spec">
+   <strong>卡板 4.5 公分｜實木｜參考價 NT$100</strong>
+   裝在立體框外框內側，修飾內部上漆處；壓克力須夾在外框與卡板之間。來源記載各分店均有，實際庫存仍需向店家確認。
+   <small>顏色：白、黑、咖啡、金、銀、手工染灰、手工染柚。</small>
+  </div>
  <div class="sfg-fields">
-  <label for="sfg-oil-card-rate">卡板（NT$／才）<input id="sfg-oil-card-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="待輸入"></label>
+  <label for="sfg-oil-card-rate">卡板 4.5 公分（NT$／15cm，依筆記公式）<input id="sfg-oil-card-rate" type="number" min="0" step="0.01" inputmode="decimal" value="100"></label>
   <label for="sfg-oil-acrylic-rate">壓克力（NT$／才）<input id="sfg-oil-acrylic-rate" type="number" min="0" step="0.01" value="100" inputmode="decimal"></label>
   <label for="sfg-oil-bottom-rate">底布（NT$／才）<input id="sfg-oil-bottom-rate" type="number" min="0" step="0.01" inputmode="decimal" placeholder="待輸入"></label>
   <label for="sfg-oil-shadow-labor">立體框安裝工資（NT$）<input id="sfg-oil-shadow-labor" type="number" min="0" step="1" value="0" inputmode="decimal"></label>
  </div>
- <p class="sfg-oil-field-hint"><a href="https://app.yinxiang.com/shard/s66/nl/15132851/3be49c24-42d3-4025-9429-27b3a0be6f1e/" target="_blank" rel="noopener noreferrer">📋 印象筆記｜卡板價格參考 ↗</a>　請核對報價單位後，將單價換算成 NT$／才再填入；本頁不會自動讀取筆記價格。</p>
-  <p class="sfg-oil-field-hint">1 才＝900 cm²。先以畫布正面面積估算，若卡板／底布需外擴、墊高或另收最低工資，須按實際規格修正。</p>
+ <p class="sfg-oil-field-hint"><a href="https://app.yinxiang.com/shard/s66/nl/15132851/3be49c24-42d3-4025-9429-27b3a0be6f1e/" target="_blank" rel="noopener noreferrer">📋 卡板 4.5 公分｜原始價格筆記 ↗</a>　來源標題寫「100 元／才」，但範例是（長＋寬）÷15×100，並非面積才。本站依實際範例暫按每 15cm 計價，最後取整至十元；實際報價單位仍需向店家確認。</p>
+  <p class="sfg-oil-field-hint">來源範例：100×100cm → (100＋100)÷15×100＝NT$1,333.33，取整十元＝NT$1,330。</p>
+  <p class="sfg-oil-field-hint">僅壓克力與底布按面積計算（1 才＝900 cm²）；卡板採長＋寬的線性算法。如卡板需外擴、墊高或另收安裝工資，請按實際規格修正。</p>
 </section>
 
 <section id="sfg-oil-stretch-section" class="sfg-box sfg-oil-block" hidden>
@@ -350,4 +360,4 @@ function render(){
 for(const id of ['all','high','ikea','shop','sfg','fav','recent'])document.getElementById(id).addEventListener('click',()=>{mode=id;page=1;render()});search.addEventListener('input',()=>{page=1;render()});document.getElementById('prev').addEventListener('click',()=>{page--;render();document.getElementById('count').scrollIntoView({block:'start'})});document.getElementById('next').addEventListener('click',()=>{page++;render();document.getElementById('count').scrollIntoView({block:'start'})});document.addEventListener('click',e=>{let a=e.target.closest('[data-open]');if(a){recent=[a.dataset.open,...recent.filter(x=>x!==a.dataset.open)].slice(0,10);persist()}let b=e.target.closest('[data-save]');if(b){let id=b.dataset.save;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[id,...favorites];persist();render()}});document.getElementById('overview').textContent='資料整理於 2026/10/27｜高橋 '+items.filter(x=>x.source==='high').length+' 款、IKEA '+items.filter(x=>x.source==='ikea').length+' 項、額緣專門店 '+items.filter(x=>x.source==='shop').length+' 個商品規格。';
 if(location.hash==="#songfeng"||new URLSearchParams(location.search).get("vendor")==="songfeng")mode="sfg";
 render();
-</script><script src="../data/songfeng-oil-scenarios.js?v=20261029-1"></script><script src="../data/songfeng-lightbox.js?v=20261029-zoom1"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
+</script><script src="../data/songfeng-oil-scenarios.js?v=20261029-card45"></script><script src="../data/songfeng-lightbox.js?v=20261029-zoom1"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
