@@ -1,0 +1,38 @@
+name: Persist 天下畫博 Airtable previews
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/import_tianxia_images.py
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: tianxia-images
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - name: Checkout repository main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Install image processor
+        run: python3 -m pip install -q --disable-pip-version-check requests 'Pillow>=10'
+      - name: Import temporary Airtable previews as persistent WebP files
+        run: python3 scripts/import_tianxia_images.py
+      - name: Publish image files and updated catalog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A public/images/oil/tianxia public/data/oil/tianxia public/data/oil/tianxia-image-report.json
+          if git diff --cached --quiet; then
+            echo "No image changes"
+          else
+            git commit -m "Persist 天下畫博 Airtable artwork preview images"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
