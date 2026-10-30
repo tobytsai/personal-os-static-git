@@ -134,14 +134,14 @@ function parseDailyIndex(report){
     if(!Array.isArray(t.fields)||!Array.isArray(t.data))continue;
     const name=t.fields.indexOf('指數');
     const close=t.fields.indexOf('收盤指數');
-    const percent=t.fields.indexOf('漲跌百分比');
+    const percent=t.fields.findIndex(x=>x.includes('漲跌百分比'));
     if(name<0||close<0||percent<0)continue;
     const row=t.data.find(c=>Array.isArray(c)&&clean(c[name])==='發行量加權股價指數');
     if(!row)continue;
     const value=number(clean(row[close]));
     const p=number(clean(row[percent]));
     if(value===null||p===null)continue;
-    const sign=t.fields.indexOf('漲跌');
+    const sign=t.fields.findIndex(x=>x==='漲跌'||x.includes('漲跌('));
     const deltaSign=sign>=0&&/-|\u2212|▼|跌/.test(clean(row[sign]))?-1:1;
     const pointsCol=t.fields.indexOf('漲跌點數');
     return {'日期':requested,'指數':'發行量加權股價指數',
@@ -181,7 +181,7 @@ function flowsFromOfficial(report){
     const name=nap(row[label]);
     const value=number(row[net]);
     if(value===null)continue;
-    if(/外資及陸資/.test(name)&&!/自營商/.test(name))totals.foreign=value;
+    if(name.startsWith('外資及陸資'))totals.foreign=value;
     else if(/^投信/.test(name))totals.trust=value;
     else if(/自營商/.test(name)&&/自行買賣/.test(name))totals.dealerSelf=value;
     else if(/自營商/.test(name)&&/避險/.test(name))totals.dealerHedge=value;
