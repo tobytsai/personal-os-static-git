@@ -13,7 +13,7 @@ main{width:min(1100px,100%);margin:auto;padding:16px 20px 48px}.back{display:inl
 .section{margin-top:20px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:0 2px 11px}.section-head h2{margin:0;font-size:20px}.hint{color:var(--muted);font-size:11px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tile{--tone:#f1b82a;position:relative;display:flex;min-width:0;min-height:137px;flex-direction:column;overflow:hidden;padding:14px;border:1px solid #fff;border-radius:20px;background:#fff;box-shadow:0 8px 20px #263a5110;transition:transform .18s,box-shadow .18s}.tile:before{position:absolute;inset:0 0 auto;height:6px;background:var(--tone);content:""}.tile:after{position:absolute;right:-28px;bottom:-48px;width:94px;height:94px;border-radius:50%;background:color-mix(in srgb,var(--tone) 13%,white);content:"";pointer-events:none}.tile:hover{transform:translateY(-3px);box-shadow:0 14px 28px #263a511b}.tiletop{position:relative;z-index:1;display:flex;align-items:center;gap:10px;min-width:0}.brand{display:grid;flex:none;width:42px;height:42px;place-items:center;border-radius:14px;background:color-mix(in srgb,var(--tone) 13%,white);color:var(--tone);font-size:18px;font-weight:950}.brand.word{font-size:13px}.titlelink{min-width:0;text-decoration:none}.name{margin:0;font-size:15px;font-weight:900;line-height:1.35;overflow-wrap:anywhere}.category{margin-top:3px;color:var(--muted);font-size:10px;font-weight:750}.desc{position:relative;z-index:1;margin:10px 0 8px;color:#6c7889;font-size:11px;line-height:1.5}.tilefoot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:7px;margin-top:auto}.help{border:0;border-radius:999px;background:#f0f4f4;color:#3d615d;padding:6px 9px;font:800 10px system-ui;cursor:pointer}.help:hover,.help:focus-visible{background:#dcf1e9;outline:2px solid #59aa9d;outline-offset:2px}.open{color:var(--tone);font-size:10px;font-weight:900;text-decoration:none}.star{border:0;background:transparent;color:#aeb5bf;font-size:20px;line-height:1;cursor:pointer}.star.on{color:#edaa14}.empty{display:none;padding:23px;border:1px dashed #c9d4df;border-radius:17px;background:#ffffffb7;color:var(--muted);text-align:center}.overlay{position:fixed;inset:0;z-index:10;display:none;place-items:center;padding:17px;background:#17263888}.overlay.show{display:grid}.dialog{width:min(440px,100%);padding:22px;border:1px solid white;border-radius:22px;background:white;box-shadow:0 20px 54px #101b2c55}.dialog h2{margin:0 0 8px;font-size:20px}.dialog p{margin:0;color:#657286;line-height:1.7}.close{display:block;margin:17px 0 0 auto;padding:9px 14px;border:0;border-radius:12px;background:#263c57;color:white;font:800 13px system-ui;cursor:pointer}.notice{margin-top:22px;padding:14px 16px;border:1px solid #f0dfab;border-radius:16px;background:#fff9e7;color:#756435;font-size:12px;line-height:1.7}.footnote{margin-top:18px;color:var(--muted);text-align:center;font-size:11px}
 @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:540px){main{padding:13px 12px 35px}.hero{border-radius:23px}.grid{gap:8px}.tile{min-height:137px;padding:12px;border-radius:17px}.name{font-size:13px}.brand{width:36px;height:36px;border-radius:12px}.desc{font-size:10px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
-</style><link rel="stylesheet" href="../stock-workspace.css?v=20261030"></head><body><main>
+</style><link rel="stylesheet" href="../stock-workspace.css?v=20261030-2"></head><body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
 <header class="hero"><span class="eyebrow">📈 PERSONAL OS · MARKET DESK</span><br><h1>股票啟動器</h1><p>每天開盤前整理資訊、盤中追蹤觀察股、收盤後留下復盤紀錄。保留原有市場研究網站、分類與收藏入口。</p><div class="stats"><span>🔎 搜尋與分類</span><span>⭐ 收藏常用入口</span><span>🧩 個股與產業主題</span></div></header>
 
@@ -56,7 +56,7 @@ main{width:min(1100px,100%);margin:auto;padding:16px 20px 48px}.back{display:inl
   </div>
  </section>
  <section class="stk-panel" id="stkWatch">
-  <div class="stk-row"><div><h2>⭐ 我的股票觀察清單</h2><p class="stk-sub">已從你提供的兩張截圖整理 15 檔不重複股票。按 ☆ 設為重點；按「筆記」寫下自己的研究理由。</p></div><span class="stk-mini" id="stkPriorityCount">0 檔重點觀察</span></div>
+  <div class="stk-row"><div><h2>⭐ 我的股票觀察清單</h2><p class="stk-sub">已從你的截圖整理觀察股。按 ☆ 設為重點；點產業欄位旁的「✎ 編輯」可修改股票名稱、代碼、產業分類與筆記。</p></div><span class="stk-mini" id="stkPriorityCount">0 檔重點觀察</span></div>
   <div class="stk-today" id="stkSnapshotDate">行情資料日：尚未取得</div>
   <div class="stk-controls">
    <input type="search" class="stk-input" id="stkSearch" placeholder="搜尋代碼、名稱、分類或筆記" aria-label="搜尋觀察股">
@@ -69,6 +69,26 @@ main{width:min(1100px,100%);margin:auto;padding:16px 20px 48px}.back{display:inl
   <div class="stk-chips" id="stkGroups" aria-label="觀察股產業分類"></div>
   <div class="stk-tablewrap">
    <table class="stk-table"><thead><tr><th>重點</th><th>股票／代碼</th><th>產業</th><th>收盤價</th><th>漲跌／漲跌幅</th><th>成交張數</th><th>研究</th><th>管理</th></tr></thead><tbody id="stkWatchRows"></tbody></table>
+  </div>
+  <div id="stkEditToast" class="stk-status" role="status" aria-live="polite"></div>
+  <div class="stk-edit-panel" id="stkEditPanel" hidden>
+   <div class="stk-row"><h3 id="stkEditTitle">✎ 編輯觀察股資料</h3><button class="stk-btn alt" id="stkEditClose" type="button">取消</button></div>
+   <p class="stk-sub">可修改已加入股票的代碼、名稱、產業分類和筆記；不會刪除原本的重點星號紀錄。</p>
+   <form id="stkEditForm">
+    <div class="stk-edit-grid">
+     <div class="stk-field"><label for="stkEditCode">股票代碼</label><input id="stkEditCode" class="stk-input" required maxlength="10" autocomplete="off"></div>
+     <div class="stk-field"><label for="stkEditName">股票名稱</label><input id="stkEditName" class="stk-input" required maxlength="59" autocomplete="off"></div>
+     <div class="stk-field"><label for="stkEditSector">產業分類</label>
+      <select id="stkEditSector" class="stk-select" required>
+       <option>AI伺服器／組裝</option><option>半導體</option><option>記憶體</option><option>電源／電力</option>
+       <option>電腦／品牌</option><option>航運</option><option>環保／循環</option><option>ETF／指數</option><option>其他</option>
+      </select>
+     </div>
+     <div class="stk-field"><label for="stkEditNote">個股觀察筆記</label><textarea id="stkEditNote" class="stk-textarea" rows="2" maxlength="600" placeholder="研究重點、觀察價位、財報消息等"></textarea></div>
+    </div>
+    <div class="stk-actions" style="margin-top:12px"><button id="stkEditSave" class="stk-btn" type="submit">✓ 儲存修改</button></div>
+    <div id="stkEditStatus" class="stk-status" role="status"></div>
+   </form>
   </div>
   <p class="stk-mini" id="stkWatchCount"></p>
   <div class="stk-warning">價格、漲跌幅、成交量只顯示交易所最近公布的盤後統計，並非盤中即時行情。點股票名稱可前往 Yahoo 股市查閱較新的個股報價；不同資料日不要當成同一天比較。觀察清單並不代表已持有這些股票。</div>
@@ -167,4 +187,4 @@ function renderRecent(){renderGrid("recentGrid",recent.map(id=>resources.find(x=
 function renderAll(){const shown=resources.filter(x=>(active==="全部"||x.category===active)&&(!query||(x.name+" "+x.category+" "+x.description).toLowerCase().includes(query.toLowerCase())));renderGrid("allGrid",shown,"allEmpty");renderGrid("favoritesGrid",favorites.map(id=>resources.find(x=>x.id===id)).filter(Boolean),"favoritesEmpty");renderRecent();document.getElementById("count").textContent=shown.length+" / "+resources.length+" 個入口";document.getElementById("allTitle").textContent=active==="全部"?"✨ 全部股票入口":"📚 "+active}
 function showHelp(id){const x=resources.find(r=>r.id===id);if(!x)return;document.getElementById("dialogTitle").textContent="？ "+x.name;document.getElementById("dialogBody").textContent=x.description+" 分類依用途整理；點「開啟」可前往網站。";document.getElementById("overlay").classList.add("show");document.getElementById("close").focus()}
 document.getElementById("search").addEventListener("input",e=>{query=e.target.value;renderAll()});document.getElementById("close").onclick=()=>document.getElementById("overlay").classList.remove("show");document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("show")});document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("overlay").classList.remove("show")});renderFilters();renderAll();
-</script><script src="../stock-workspace.js?v=20261030"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
+</script><script src="../stock-workspace.js?v=20261030-2"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
