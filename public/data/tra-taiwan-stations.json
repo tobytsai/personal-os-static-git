@@ -1541,7 +1541,20 @@
       "transfer": [
         "臺中捷運綠線松竹站"
       ],
-      "tags": []
+      "tags": [],
+      "metroConnections": [
+        {
+          "system": "臺中捷運",
+          "city": "臺中市",
+          "line": "TC-G",
+          "lineName": "綠線",
+          "code": "104",
+          "name": "松竹",
+          "type": "連通步行",
+          "note": "臺鐵松竹站與捷運松竹站轉乘，依通道指標",
+          "url": "./metro-central-south.html?city=taichung&code=104"
+        }
+      ]
     },
     {
       "id": "3280",
@@ -1609,7 +1622,20 @@
       "transfer": [
         "臺中捷運綠線大慶站"
       ],
-      "tags": []
+      "tags": [],
+      "metroConnections": [
+        {
+          "system": "臺中捷運",
+          "city": "臺中市",
+          "line": "TC-G",
+          "lineName": "綠線",
+          "code": "115",
+          "name": "大慶",
+          "type": "連通步行",
+          "note": "臺鐵大慶站與捷運大慶站轉乘",
+          "url": "./metro-central-south.html?city=taichung&code=115"
+        }
+      ]
     },
     {
       "id": "3330",
@@ -1646,7 +1672,20 @@
         "type": "連通步行",
         "note": "臺鐵新烏日站與高鐵台中站由通道相接",
         "connected": true
-      }
+      },
+      "metroConnections": [
+        {
+          "system": "臺中捷運",
+          "city": "臺中市",
+          "line": "TC-G",
+          "lineName": "綠線",
+          "code": "119",
+          "name": "高鐵臺中站",
+          "type": "連通步行",
+          "note": "由捷運站連通道前往臺鐵新烏日",
+          "url": "./metro-central-south.html?city=taichung&code=119"
+        }
+      ]
     },
     {
       "id": "3350",
@@ -2318,7 +2357,20 @@
         "west-south"
       ],
       "status": "營運中",
-      "tags": []
+      "tags": [],
+      "metroConnections": [
+        {
+          "system": "高雄捷運",
+          "city": "高雄市",
+          "line": "KH-R",
+          "lineName": "紅線",
+          "code": "RK1",
+          "name": "岡山車站",
+          "type": "連通步行",
+          "note": "捷運岡山車站與臺鐵岡山站接續轉乘",
+          "url": "./metro-central-south.html?city=kaohsiung&code=RK1"
+        }
+      ]
     },
     {
       "id": "4320",
@@ -2334,7 +2386,20 @@
       "transfer": [
         "高雄捷運紅線橋頭火車站"
       ],
-      "tags": []
+      "tags": [],
+      "metroConnections": [
+        {
+          "system": "高雄捷運",
+          "city": "高雄市",
+          "line": "KH-R",
+          "lineName": "紅線",
+          "code": "R23",
+          "name": "橋頭火車站",
+          "type": "連通步行",
+          "note": "捷運橋頭火車站與臺鐵橋頭站轉乘",
+          "url": "./metro-central-south.html?city=kaohsiung&code=R23"
+        }
+      ]
     },
     {
       "id": "4330",
@@ -2371,7 +2436,20 @@
         "type": "連通步行",
         "note": "可步行轉乘臺鐵新左營站",
         "connected": true
-      }
+      },
+      "metroConnections": [
+        {
+          "system": "高雄捷運",
+          "city": "高雄市",
+          "line": "KH-R",
+          "lineName": "紅線",
+          "code": "R16",
+          "name": "左營",
+          "type": "連通步行",
+          "note": "捷運左營站與臺鐵新左營站相接",
+          "url": "./metro-central-south.html?city=kaohsiung&code=R16"
+        }
+      ]
     },
     {
       "id": "4350",
@@ -2410,7 +2488,20 @@
         "west-south"
       ],
       "status": "營運中",
-      "tags": []
+      "tags": [],
+      "metroConnections": [
+        {
+          "system": "高雄環狀輕軌",
+          "city": "高雄市",
+          "line": "KH-C",
+          "lineName": "環狀輕軌",
+          "code": "C21",
+          "name": "美術館",
+          "type": "步行轉乘",
+          "note": "高雄輕軌美術館站與臺鐵美術館站接續",
+          "url": "./metro-central-south.html?city=kaohsiung&code=C21"
+        }
+      ]
     },
     {
       "id": "4380",
@@ -2423,7 +2514,20 @@
         "west-south"
       ],
       "status": "營運中",
-      "tags": []
+      "tags": [],
+      "metroConnections": [
+        {
+          "system": "高雄環狀輕軌",
+          "city": "高雄市",
+          "line": "KH-C",
+          "lineName": "環狀輕軌",
+          "code": "C18",
+          "name": "鼓山",
+          "type": "步行轉乘",
+          "note": "鼓山輕軌與臺鐵鼓山站轉乘，依沿途指標",
+          "url": "./metro-central-south.html?city=kaohsiung&code=C18"
+        }
+      ]
     },
     {
       "id": "4390",
@@ -2455,6 +2559,19 @@
       ],
       "tags": [
         "鐵道交會"
+      ],
+      "metroConnections": [
+        {
+          "system": "高雄捷運",
+          "city": "高雄市",
+          "line": "KH-R",
+          "lineName": "紅線",
+          "code": "R11",
+          "name": "高雄車站",
+          "type": "站內連通",
+          "note": "高雄車站地下化站體，依指標轉乘臺鐵",
+          "url": "./metro-central-south.html?city=kaohsiung&code=R11"
+        }
       ]
     },
     {
@@ -2481,7 +2598,20 @@
         "pingtung"
       ],
       "status": "營運中",
-      "tags": []
+      "tags": [],
+      "metroConnections": [
+        {
+          "system": "高雄環狀輕軌",
+          "city": "高雄市",
+          "line": "KH-C",
+          "lineName": "環狀輕軌",
+          "code": "C30",
+          "name": "科工館",
+          "type": "站外步行",
+          "note": "輕軌科工館站與臺鐵科工館站不同位置，先確認步行路線",
+          "url": "./metro-central-south.html?city=kaohsiung&code=C30"
+        }
+      ]
     },
     {
       "id": "4430",
