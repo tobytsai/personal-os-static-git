@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#277eaa"><meta name="description" content="交通啟動器逐站車站資訊，依站碼查詢專屬路線、周邊景點、轉乘、鄰站與官方車站資料。">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<title>捷運車站詳細資訊｜交通啟動器</title>
+<style>
+:root{--ink:#28384e;--muted:#64788d;--line:#dce7f0;--accent:#267fae}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 95% 0,#d7f3ec 0,transparent 30%),linear-gradient(150deg,#eef7fd,#f8fafc 60%,#f3f8f5);color:var(--ink);font:14px/1.8 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;min-height:100vh}
+a{color:inherit}button{font:inherit;cursor:pointer}.wrap{max-width:880px;margin:auto;padding:24px 18px 62px}.back{display:inline-flex;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:12px;font-weight:800;margin:0 0 15px}
+.hero{border-radius:25px;background:linear-gradient(120deg,#19496c,#317fae 58%,#3ba28b);color:#fff;padding:28px;box-shadow:0 16px 38px #1e537527}
+.hero small{font-size:11px;font-weight:850;letter-spacing:.12em;color:#dbf6ff}.hero h1{font-size:clamp(29px,5vw,42px);margin:10px 0}.hero p{margin:0;color:#e8f7ff}
+.code{display:inline-block;border:1px solid #ffffff8d;border-radius:12px;padding:5px 12px;background:#ffffff28;font:900 22px ui-monospace,Consolas,monospace;vertical-align:middle;margin-right:10px}
+.sheet{margin-top:16px;border:1px solid var(--line);border-radius:21px;background:#fff;padding:21px;box-shadow:0 8px 24px #2352780d}
+.sheet h2{margin:0 0 12px;font-size:19px}.sheet p{margin:0 0 15px;color:#4d6174}.hint{color:var(--muted)!important;font-size:12px}
+.tags,.actions{display:flex;gap:8px;flex-wrap:wrap}.tag{display:inline-block;padding:5px 10px;background:#eef7fc;border:1px solid #d7e5ee;border-radius:99px;font-size:11px;font-weight:800;color:#47718c}
+.actions a{display:inline-flex;text-decoration:none;font-size:12px;font-weight:850;color:#285f84;border:1px solid #c9ddea;border-radius:12px;padding:10px 13px;background:#f4faff}.actions a.primary{background:#2a7fa8;color:#fff;border-color:#2a7fa8}
+.section{margin-top:15px}.section h2{margin-bottom:12px}
+.transfer{border:1px solid #e0ebef;border-radius:13px;background:#f9fcfd;padding:12px 14px;margin:9px 0}
+.transfer strong{font-size:13px}.transfer p{font-size:12px;margin:4px 0 0}.transfer a{display:inline-flex;margin-top:7px;font-size:11px;color:#237f92;font-weight:850}
+.warning{padding:13px 15px;background:#fff8e9;border:1px solid #efe0bd;border-radius:13px;font-size:12px;color:#855e27}
+.siblings{display:flex;gap:7px;flex-wrap:wrap}.siblings a{background:#fff;border:1px solid #d6e5f0;padding:6px 10px;border-radius:10px;text-decoration:none;font-size:12px;color:#33769d;font-weight:750}
+.empty{border:1px dashed #bfd2dc;padding:20px;background:#fff;border-radius:15px}
+@media(max-width:570px){.wrap{padding:12px 12px 45px}.hero{padding:23px 19px}.sheet{padding:14px}.code{font-size:17px}}
+</style></head><body><main class="wrap">
+<a class="back" href="./transport.html">← 返回交通啟動器</a>
+<header class="hero"><small>PERSONAL OS · METRO STATION</small><h1 id="heading">🚇 車站資訊</h1><p id="subheading">讀取所選車站中…</p></header>
+<div id="content"><div class="sheet empty">正在取得車站卡片…</div></div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const params=new URLSearchParams(location.search),requestedLine=params.get("line")||"",requestedCode=params.get("code")||"";
+const dataSources=["../data/transport-north-stations.json?v=20261031-official-links","../data/metro-taichung-kaohsiung.json?v=20261031-official-links"];
+const normalizeCode=code=>String(code).toLowerCase();
+function mapLink(line,station){const type=line.id.startsWith("TC")?"臺中捷運":line.id.startsWith("KH")?"高雄捷運":line.id==="A"?"桃園機場捷運":line.id.startsWith("TRA")?"臺鐵":"捷運";return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(type+" "+station.name+"站")}
+function detailLink(line,station){return "./metro-station.html?line="+encodeURIComponent(line.id)+"&code="+encodeURIComponent(station.stationCode||station.code||"")}
+function build(){
+ Promise.all(dataSources.map(url=>fetch(url).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}))).then(([north,south])=>{
+ const allLines=[...north.lines.filter(l=>!l.id.startsWith("TRA-")),...south.lines];
+ const found=allLines.flatMap(l=>l.stations.map(st=>({line:l,st,code:st.stationCode||st.code}))).find(x=>normalizeCode(x.code)===normalizeCode(requestedCode)&&(!requestedLine||x.line.id===requestedLine));
+ if(!found){$("content").innerHTML='<div class="sheet empty">找不到這個車站。請返回交通啟動器重新選擇站點。</div>';return}
+ const {line,st,code}=found;
+ document.title=code+" "+st.name+"站｜交通啟動器";
+ $("heading").innerHTML='<span class="code">'+esc(code)+'</span>'+esc(st.name)+'站';
+ const sys=line.system||line.operator||"捷運";
+ $("subheading").textContent=sys+" · "+line.name+(line.city?" · "+line.city:"");
+ const direct=st.officialStationUrl||"";
+ const officialDirectory=st.officialDirectoryUrl||line.official||line.source||"";
+ const badge=st.projectCode?'<span class="tag">工程代號 '+esc(st.projectCode)+'</span>':"";
+ const transferable=Array.isArray(st.transferDirect)?st.transferDirect:Array.isArray(st.transfers)?st.transfers:[];
+ const officialAction=direct?'<a class="primary" href="'+esc(direct)+'" target="_blank" rel="noopener noreferrer">'+(st.officialLinkType==="diagram"?"📐 官方本站配置圖":"🏛️ 官方本站資訊")+'</a>':"";
+ const altAction=officialDirectory?'<a href="'+esc(officialDirectory)+'" target="_blank" rel="noopener noreferrer">官方路線／車站一覽</a>':"";
+ let notice="";
+ if(!direct)notice='<div class="warning">此站尚未核對到獨立的官方車站網址。下方可開啟官方路線／車站列表，但那不是本站的專屬官方頁面；本站介紹及轉乘資料已在此逐站呈現。</div>';
+ const codeToStation=new Map(allLines.flatMap(l=>l.stations.map(s=>[l.id+":"+(s.stationCode||s.code),{line:l,st:s}])));
+ const transfers=transferable.map(t=>{
+  const target=allLines.flatMap(l=>l.stations.filter(s=>(s.stationCode||s.code)===t.toCode&&(!t.toLine||l.id===t.toLine)).map(s=>({line:l,st:s})))[0];
+  const url=t.link||target&&detailLink(target.line,target.st);
+  return '<div class="transfer"><strong>'+esc((t.toLine||t.system||"其他交通")+" · "+(t.toStation||t.name||"轉乘站")+" "+(t.toCode||t.code||""))+'</strong><p>'+esc((t.type||"依現場指標轉乘")+(t.note?" · "+t.note:""))+'</p>'+(url?'<a href="'+esc(url)+'">查看轉乘資訊 →</a>':"")+'</div>';
+ }).join("");
+ const nearby=(st.transferNearby||[]).slice(0,5).map(t=>'<div class="transfer"><strong>搭 '+t.stops+' 站至 '+esc(t.viaStation)+'（'+esc(t.viaCode)+'）</strong><p>轉乘 '+esc(t.toName)+' · 沿線換車提示</p></div>').join("");
+ const sibling=allLines.flatMap(l=>l.stations.filter(x=>x.name===st.name&&l.id!==line.id).map(x=>({line:l,st:x})));
+ const other=sibling.length?'<div class="sheet section"><h2>同名或轉乘路線</h2><div class="siblings">'+sibling.map(x=>'<a href="'+esc(detailLink(x.line,x.st))+'">'+esc(x.line.name)+' · '+esc(x.st.stationCode||x.st.code)+'</a>').join("")+'</div></div>':"";
+ $("content").innerHTML='<section class="sheet"><h2>車站介紹</h2><div class="tags"><span class="tag">'+esc(line.name)+'</span><span class="tag">站碼 '+esc(code)+'</span>'+badge+'</div><p style="margin-top:13px">'+esc(st.intro)+'</p><div class="actions"><a href="'+esc(mapLink(line,st))+'" target="_blank" rel="noopener noreferrer">📍 Google 地圖</a>'+officialAction+altAction+'</div></section>'+
+ (notice?'<section class="sheet">'+notice+'</section>':"")+
+ (transfers||nearby?'<section class="sheet section"><h2>🔁 轉乘與附近換線站</h2>'+transfers+nearby+'</section>':"")+other+
+ '<section class="sheet"><p class="hint">註：本站介紹與轉乘提示為交通啟動器整理資料；車站出入口、營運與路線請以捷運公司官方公告為準。</p></section>';
+ }).catch(e=>{$("content").innerHTML='<div class="sheet empty">暫時無法讀取車站資料：'+esc(e.message)+'</div>'});
+}
+build();
+</script><script src="../shared-nav.js" defer></script></body></html>
