@@ -200,7 +200,7 @@ function refreshMain(){
  $("regionName").textContent="目前：" + selectedRegion +" · "+label;
  const metroNorth=allLines.filter(l=>l.operator!=="臺鐵").reduce((n,l)=>n+l.stations.length,0);
  const traNorth=allLines.filter(l=>l.operator==="臺鐵").reduce((n,l)=>n+l.stations.length,0);
- const metroRegion=regionalLines.filter(l=>l.city===(selectedRegion==="中部"?"臺中市":"高雄市")).reduce((n,l)=>n+l.stations.length,0);
+ const metroRegion=(selectedRegion==="東部"?0:regionalLines.filter(l=>l.city===(selectedRegion==="中部"?"臺中市":"高雄市")).reduce((n,l)=>n+l.stations.length,0));
  const traRegion=(traNation?.stations||[]).filter(st=>st.region===selectedRegion).length;
  const hsrRegion=thsrStations.filter(st=>st.region===selectedRegion).length;
  const count=selectedRoot==="hsr"?hsrRegion:selectedRoot==="tra"?traRegion:selectedRoot==="metro"?(selectedRegion==="北部"?metroNorth:metroRegion):(selectedRegion==="北部"?metroNorth+traNorth:metroRegion+traRegion);
