@@ -17,7 +17,16 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #57b5
 .eyebrow{font-size:11px;font-weight:850;letter-spacing:.18em;color:#dbf2ff}
 h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margin:0;max-width:760px;line-height:1.75;color:#e6f6ff}
 .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.badges span{font-size:11px;padding:7px 10px;border:1px solid #ffffff65;border-radius:99px;background:#ffffff16;font-weight:750}
-.tree{margin:20px 0 12px;background:#fff;border:1px solid var(--line);padding:17px;border-radius:21px;box-shadow:var(--shadow)}
+.hero-station-link{font-size:12px;padding:7px 12px;border:1px solid #ffffff70;border-radius:99px;background:#fff;color:#1b668e;text-decoration:none;font-weight:850}
+ .national-link{display:inline-flex;align-items:center;text-decoration:none;background:#e4f4f4!important;color:#1c697c!important}
+ .tra-national{display:flex;align-items:center;gap:14px;padding:19px 20px;margin:0 0 16px;border:1px solid #b5dce2;border-radius:20px;background:linear-gradient(112deg,#e7f7f5,#f2faff);text-decoration:none;box-shadow:var(--shadow)}
+ .tra-national-icon{flex:none;width:56px;height:56px;border-radius:15px;background:#c7e8ef;display:grid;place-items:center;font-size:30px}
+ .tra-national div:nth-child(2){display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+ .tra-national strong{font-size:18px;color:#1a617b}
+ .tra-national span{font-size:12px;color:#536f7f}
+ .tra-national b{font-size:12px;color:#207393;white-space:nowrap}
+ @media(max-width:570px){.tra-national{padding:12px;gap:8px}.tra-national-icon{height:43px;width:43px;font-size:24px}.tra-national strong{font-size:14px}.tra-national b{display:none}.tra-national span{font-size:11px}}
+ .tree{margin:20px 0 12px;background:#fff;border:1px solid var(--line);padding:17px;border-radius:21px;box-shadow:var(--shadow)}
 .tree-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.tree h2{font-size:17px;margin:0}.tree .tip{color:var(--muted);font-size:11px}
 .path{display:grid;grid-template-columns:1fr 1fr 2fr;gap:10px;margin-top:13px}
 .step{min-width:0;border:1px solid var(--line);border-radius:16px;padding:13px;background:#f8fbff}
@@ -84,11 +93,11 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 <a class="back" href="../index.html">← 返回 Toby 首頁</a>
 <header class="hero"><div class="eyebrow">PERSONAL OS · RAIL NETWORK</div><h1>🚆 交通啟動器</h1>
 <p>大臺北鐵路及捷運路網逐站探索：鐵路 → 北部 → 路線 → 車站卡片。整合車站介紹、轉乘資訊、附近地標、列車動態與原始時刻表照片。</p>
-<div class="badges"><span>🗺️ 北部路網</span><span id="stats">讀取車站資料中…</span><span>🚉 官方捷運站碼</span><span>🔁 轉乘提示</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div></header>
+<div class="badges"><span>🗺️ 北部路網</span><a class="hero-station-link" href="./tra-stations.html">🚉 臺鐵全臺車站 →</a><span id="stats">讀取車站資料中…</span><span>🚉 官方捷運站碼</span><span>🔁 轉乘提示</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div></header>
 <section class="tree" aria-label="交通三級分類">
 <div class="tree-head"><h2>🗂️ 三層分類導覽</h2><span class="tip">先選交通類別，再選地區與路線</span></div>
 <div class="path">
-<div class="step"><div class="step-label">第一層｜交通類別</div><div class="choice-list"><button class="choice active" type="button" data-root="rail" aria-pressed="true">🚆 鐵路</button><button class="choice" type="button" data-root="tra" aria-pressed="false">🗃️ 台鐵</button></div></div>
+<div class="step"><div class="step-label">第一層｜交通類別</div><div class="choice-list"><button class="choice active" type="button" data-root="rail" aria-pressed="true">🚆 鐵路</button><button class="choice" type="button" data-root="tra" aria-pressed="false">🗃️ 台鐵資料</button><a class="choice national-link" href="./tra-stations.html" aria-label="開啟全臺臺鐵車站資料庫">🚉 全臺臺鐵車站 ↗</a></div></div>
 <div class="step"><div class="step-label">第二層｜地區</div><div class="path-value" id="regionName">📍 北部</div></div>
 <div class="step"><div class="step-label">第三層｜路線</div><div id="routeFilter"><div class="group-filter" id="operatorChips"></div><div class="route-list" id="routeChips"><span class="count">路線資料讀取中…</span></div></div><div class="path-value" id="documentName" hidden>🚉 列車動態・路線照片・時刻表</div></div>
 </div></section>
@@ -100,7 +109,7 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 <div class="more" id="loadMoreWrap" hidden><button type="button" id="loadMore">顯示更多車站</button></div>
 </section>
 <section id="traSection" class="section" hidden>
-<div class="section-head"><h2>台鐵｜資料與照片卡片</h2><span class="count">4 張資料卡片</span></div><div class="grid" id="documentGrid"></div>
+<div class="section-head"><h2>台鐵｜資料與照片卡片</h2><span class="count">4 張資料卡片</span></div><a class="tra-national" href="./tra-stations.html"><div class="tra-national-icon">🚉</div><div><strong>全臺臺鐵車站資料庫</strong><span>北部／中部／南部／東部・官方站碼・逐站介紹・縣市路線與轉乘</span></div><b>開啟車站卡片 →</b></a><div class="grid" id="documentGrid"></div>
 </section>
 <section class="section" id="favoritesSection" hidden><div class="section-head"><h2>⭐ 我的收藏</h2><span class="count" id="favCount"></span></div><div class="grid mini" id="favoriteCards"></div></section>
 <section class="section" id="recentsSection" hidden><div class="section-head"><h2>🕘 最近開啟</h2><span class="count" id="recentCount"></span></div><div class="grid mini" id="recentCards"></div></section>
