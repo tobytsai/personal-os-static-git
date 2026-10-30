@@ -30,7 +30,7 @@ a{color:inherit}button{font:inherit;cursor:pointer}.wrap{max-width:880px;margin:
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const params=new URLSearchParams(location.search),requestedLine=params.get("line")||"",requestedCode=params.get("code")||"";
-const dataSources=["../data/transport-north-stations.json?v=20261031-verified68","../data/metro-taichung-kaohsiung.json?v=20261031-official-links"];
+const dataSources=["../data/transport-north-stations.json?v=20261031-verified115","../data/metro-taichung-kaohsiung.json?v=20261031-official-links"];
 const normalizeCode=code=>String(code).toLowerCase();
 function mapLink(line,station){const type=line.id.startsWith("TC")?"臺中捷運":line.id.startsWith("KH")?"高雄捷運":line.id==="A"?"桃園機場捷運":line.id.startsWith("TRA")?"臺鐵":"捷運";return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(type+" "+station.name+"站")}
 function detailLink(line,station){return "./metro-station.html?line="+encodeURIComponent(line.id)+"&code="+encodeURIComponent(station.stationCode||station.code||"")}
