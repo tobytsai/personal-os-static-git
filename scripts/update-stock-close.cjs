@@ -15,7 +15,8 @@ const sources = {
   stocks:'https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL',
   index:'https://openapi.twse.com.tw/v1/exchangeReport/MI_INDEX',
   tpex:'https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes',
-  flows:'https://www.twse.com.tw/rwd/zh/fund/BFI82U?dayDate='+ymd+'&type=day&response=json'
+  flows:'https://www.twse.com.tw/rwd/zh/fund/BFI82U?dayDate='+ymd+'&type=day&response=json',
+  daily:'https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date='+ymd+'&type=ALLBUT0999&response=json'
 };
 const nap = value => String(value ?? '').trim();
 const number = value => {
@@ -82,6 +83,75 @@ function asQuote(raw,market){
   if(result.TradeVolume!==null && result.TradeVolume<0)return null;
   return result;
 }
+
+const clean = v=>nap(v).replace(/<[^>]+>/g,'').replace(/&nbsp;/gi,' ').trim();
+function parseDailyReport(report,watch){
+  if(report?.stat!=='OK'||!Array.isArray(report.tables))return {};
+  if(report.date&&iso(report.date)!==requested){
+    console.warn('Requested daily report returned different date: '+report.date);
+    return {};
+  }
+  const wanted=new Set(watch.map(x=>x.code));
+  const table=report.tables.find(t=>Array.isArray(t.fields)&&Array.isArray(t.data)
+    &&t.fields.includes('證券代號')&&t.fields.includes('收盤價')&&t.fields.includes('成交股數'));
+  if(!table)return {};
+  const getIndex=n=>table.fields.indexOf(n);
+  const col={
+    code:getIndex('證券代號'),name:getIndex('證券名稱'),
+    vol:getIndex('成交股數'),val:getIndex('成交金額'),
+    open:getIndex('開盤價'),high:getIndex('最高價'),low:getIndex('最低價'),
+    close:getIndex('收盤價'),chg:getIndex('漲跌價差')
+  };
+  const sign=table.fields.findIndex(x=>x.includes('漲跌(')||x.includes('漲跌(＋')||x.includes('漲跌(+'));
+  const out={};
+  for(const cells of table.data){
+    if(!Array.isArray(cells))continue;
+    const code=clean(cells[col.code]);
+    if(!wanted.has(code))continue;
+    const raw=n=>col[n]<0?'':clean(cells[col[n]]);
+    let delta=number(raw('chg'));
+    if(delta!==null&&sign>=0){
+      const direction=clean(cells[sign]);
+      if(/-|\u2212|▼|▽|跌/.test(direction))delta=-Math.abs(delta);
+      else if(/\+|▲|△|漲/.test(direction))delta=Math.abs(delta);
+      else if(/X|不比價/.test(direction))delta=null;
+    }
+    const close=number(raw('close'));
+    if(close===null||close<=0)continue;
+    out[code]={
+      Code:code,Name:raw('name'),Date:requested,ClosingPrice:close,Change:delta,
+      OpeningPrice:number(raw('open')),HighestPrice:number(raw('high')),
+      LowestPrice:number(raw('low')),TradeVolume:number(raw('vol')),
+      TradeValue:number(raw('val')),market:'TWSE',source:sources.daily
+    };
+  }
+  return out;
+}
+function parseDailyIndex(report){
+  if(report?.stat!=='OK'||!Array.isArray(report.tables))return null;
+  if(report.date&&iso(report.date)!==requested)return null;
+  for(const t of report.tables){
+    if(!Array.isArray(t.fields)||!Array.isArray(t.data))continue;
+    const name=t.fields.indexOf('指數');
+    const close=t.fields.indexOf('收盤指數');
+    const percent=t.fields.indexOf('漲跌百分比');
+    if(name<0||close<0||percent<0)continue;
+    const row=t.data.find(c=>Array.isArray(c)&&clean(c[name])==='發行量加權股價指數');
+    if(!row)continue;
+    const value=number(clean(row[close]));
+    const p=number(clean(row[percent]));
+    if(value===null||p===null)continue;
+    const sign=t.fields.indexOf('漲跌');
+    const deltaSign=sign>=0&&/-|\u2212|▼|跌/.test(clean(row[sign]))?-1:1;
+    const pointsCol=t.fields.indexOf('漲跌點數');
+    return {'日期':requested,'指數':'發行量加權股價指數',
+      '收盤指數':value,'漲跌百分比':deltaSign*Math.abs(p),
+      '漲跌點數':pointsCol>=0?deltaSign*Math.abs(number(clean(row[pointsCol]))||0):null,
+      source:sources.daily};
+  }
+  return null;
+}
+
 function indexRow(rows){
   if(!Array.isArray(rows))return null;
   const row=rows.find(x=>nap(x['指數'])==='發行量加權股價指數');
@@ -124,12 +194,22 @@ async function main(){
   if(!/^\d{4}-\d{2}-\d{2}$/.test(requested)||requested>today)throw new Error('Invalid future date '+requested);
   const watch=defaultStocks();
   const query=await Promise.allSettled([
-    getJSON(sources.stocks),getJSON(sources.index),getJSON(sources.tpex),getJSON(sources.flows)
+    getJSON(sources.stocks),getJSON(sources.index),getJSON(sources.tpex),getJSON(sources.flows),
+    getJSON(sources.daily)
   ]);
   for(let i=0;i<query.length;i++)
     if(query[i].status==='rejected')console.warn('Source unavailable:',Object.keys(sources)[i],String(query[i].reason));
   const listed=query[0].status==='fulfilled'?query[0].value:[];
   const otc=query[2].status==='fulfilled'?query[2].value:[];
+  const daily=query[4].status==='fulfilled'?query[4].value:null;
+  console.log('Official source dates:', JSON.stringify({
+    request:requested,
+    twse:iso(Array.isArray(listed)?listed.find(x=>x?.Date)?.Date:''),
+    index:iso(query[1].status==='fulfilled'&&Array.isArray(query[1].value)?query[1].value.find(x=>x?.['日期'])?.['日期']:''),
+    tpex:iso(Array.isArray(otc)?otc.find(x=>x?.Date)?.Date:''),
+    datedReport:daily?.stat||'no response',
+    datedDate:daily?.date||null
+  }));
   const quotes={};
   for(const [rows,market] of [[listed,'TWSE'],[otc,'TPEx']]){
     if(!Array.isArray(rows))continue;
@@ -139,6 +219,8 @@ async function main(){
       if(q&&q.Date===requested)quotes[q.Code]=q;
     }
   }
+  const sameDayListed=parseDailyReport(daily,watch);
+  for(const [code,record] of Object.entries(sameDayListed))quotes[code]=record;
   const count=Object.keys(quotes).length;
   if(count===0){
     console.log('No verified quotes for '+requested+'; existing site data unchanged.');
@@ -147,7 +229,7 @@ async function main(){
   if(count<Math.ceil(watch.length*.65)) {
     throw Error('Only '+count+' of '+watch.length+' quotes verified. Refusing incomplete publication.');
   }
-  const index=query[1].status==='fulfilled'?indexRow(query[1].value):null;
+  const index=parseDailyIndex(daily)||(query[1].status==='fulfilled'?indexRow(query[1].value):null);
   const flows=query[3].status==='fulfilled'?flowsFromOfficial(query[3].value):null;
   const old=fs.existsSync(LATEST)?JSON.parse(fs.readFileSync(LATEST,'utf8')):null;
   if(old?.tradeDate>requested) {
