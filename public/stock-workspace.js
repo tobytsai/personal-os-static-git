@@ -10,7 +10,7 @@ const DEFAULTS=[
  ['2376','技嘉','AI伺服器／組裝'],['2317','鴻海','AI伺服器／組裝'],
  ['2357','華碩','電腦／品牌'],['2369','菱生','半導體'],
  ['8422','可寧衛*','環保／循環'],['2344','華邦電','記憶體'],
- ['2324','仁寶','AI伺服器／組裝']
+ ['2324','仁寶','AI伺服器／組裝'],['2408','南亞科','半導體']
 ].map(([code,name,sector])=>({code,name,sector,priority:false,note:''}));
 const WATCH_KEY='tobyStocksWatchV20261030', JOURNAL_KEY='tobyStocksJournalV20261030';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
