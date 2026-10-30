@@ -137,6 +137,70 @@ async function loadQuotes(){
  renderIndex();renderWatch();renderReport();
  loading=false;$('stkReload').disabled=false;$('stkReload').textContent='↻ 更新官方盤後資料';
 }
+
+function twseDayUrl(day){
+ return 'https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date='+day.replace(/-/g,'')+'&type=ALLBUT0999&response=json';
+}
+function sanitizeTwseText(x){return String(x??'').replace(/<[^>]*>/g,'').replace(/&nbsp;/gi,' ').replace(/\s+/g,' ').trim()}
+function parseTwseChange(sign,value){
+ const raw=sanitizeTwseText(value),n=num(raw.replace(/[+−-]/g,''));
+ if(n===null)return null;
+ const mark=(sanitizeTwseText(sign)+' '+raw).toLowerCase();
+ if(/[-−]/.test(mark)||/▼|跌/.test(mark))return -Math.abs(n);
+ if(/\+/.test(mark)||/▲|漲/.test(mark))return Math.abs(n);
+ return n;
+}
+function parseTwseDaily(data,day){
+ if(data?.stat!=='OK'||!Array.isArray(data.tables))return null;
+ const table=data.tables.find(t=>Array.isArray(t.fields)&&Array.isArray(t.data)
+   &&t.fields.includes('證券代號')&&t.fields.includes('收盤價')&&t.fields.includes('成交股數'));
+ if(!table)return null;
+ const field=label=>table.fields.indexOf(label);
+ const idx={code:field('證券代號'),name:field('證券名稱'),vol:field('成交股數'),val:field('成交金額'),open:field('開盤價'),high:field('最高價'),low:field('最低價'),close:field('收盤價'),chg:field('漲跌價差')};
+ const signIdx=table.fields.findIndex(x=>x.includes('漲跌(')||x==='漲跌(+/-)'||x==='漲跌(+／－)');
+ const out={};
+ for(const row of table.data){
+  if(!Array.isArray(row))continue;
+  const code=sanitizeTwseText(row[idx.code]);
+  if(!/^[0-9A-Z.]{2,10}$/.test(code))continue;
+  const v=k=>idx[k]>=0?sanitizeTwseText(row[idx[k]]):'';
+  out[code]={
+   Code:code,Name:v('name'),Date:day.slice(0,4)+'-'+day.slice(4,6)+'-'+day.slice(6,8),
+   TradeVolume:v('vol'),TradeValue:v('val'),OpeningPrice:v('open'),HighestPrice:v('high'),
+   LowestPrice:v('low'),ClosingPrice:v('close'),
+   Change:idx.chg<0?'':(parseTwseChange(signIdx<0?'':row[signIdx],row[idx.chg])??'')
+  };
+ }
+ return Object.keys(out).length?out:null;
+}
+async function fetchTodayClose({manual=false}={}){
+ const day=today(),date=day.replace(/-/g,'');
+ const status=$('stkTodayStatus');
+ const button=$('stkFetchToday');
+ button.disabled=true;button.textContent='讀取今日盤後…';
+ status.textContent='查詢 '+day+' 證交所當日正式收盤報表（非即時）…';
+ $('stkTodayReportLink').href=twseDayUrl(day);
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
+ try{
+  const response=await fetch(twseDayUrl(day),{cache:'no-store',signal:controller.signal});
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const payload=await response.json();
+  const responseDate=String(payload.date??'').replace(/[-/]/g,'');
+  if(responseDate&&responseDate!==date){
+   throw Error('來源日期 '+responseDate+'，不是今天 '+date);
+  }
+  const rows=parseTwseDaily(payload,date);
+  if(!rows)throw Error(payload.stat&&payload.stat!=='OK'?'當日報表尚未公布：'+payload.stat:'目前沒有可辨識的當日個股資料');
+  prices=rows;quoteDate=day;
+  renderIndex();renderWatch();renderReport();
+  status.textContent='✓ 已取得 '+day+' 官方個股收盤行情，共 '+Object.keys(rows).length+' 檔。這是盤後數據，不是盤中即時報價。';
+ }catch(e){
+  status.textContent='今日盤後資料尚未載入：'+(e?.name==='AbortError'?'連線逾時':e?.message||'瀏覽器無法連接')+'。可直接開啟官方當日報表或盤中行情；下方數據仍以標示日期為準。';
+ }finally{
+  clearTimeout(timer);
+  button.disabled=false;button.textContent='📆 查詢今天官方盤後';
+ }
+}
 function updateJournal(){
  const obj={...dayNote()};
  document.querySelectorAll('[data-stk-journal]').forEach(e=>{obj[e.dataset.stkJournal]=e.type==='checkbox'?e.checked:e.value});
@@ -233,7 +297,11 @@ $('stkGroups').addEventListener('click',e=>{const b=e.target.closest('[data-grou
 $('stkSearch').addEventListener('input',e=>{search=e.target.value.trim();renderWatch()});
 $('stkSort').addEventListener('change',e=>{sort=e.target.value;renderWatch()});
 $('stkPriorityOnly').addEventListener('change',e=>{priorityOnly=e.target.checked;renderWatch()});
-$('stkReload').addEventListener('click',loadQuotes);
+$('stkReload').addEventListener('click',()=>{loadQuotes()});
+$('stkFetchToday').addEventListener('click',()=>fetchTodayClose({manual:true}));
+$('stkTodayReportLink').href=twseDayUrl(today());
+$('stkTodayDate').textContent=today();
+$('stkMisLink').href='https://mis.twse.com.tw/';
 $('stkAddButton').addEventListener('click',()=>{
  const code=$('stkAddCode').value.trim().toUpperCase(),name=$('stkAddName').value.trim(),sector=$('stkAddSector').value;
  if(!/^[0-9A-Z.]{2,10}$/.test(code)){alert('請輸入有效的股票代碼');return}
@@ -248,5 +316,7 @@ $('stkBackup').addEventListener('click',exportBackup);
 $('stkImport').addEventListener('change',e=>importBackup(e.target.files?.[0]));
 $('stkQuoteDate').textContent='尚未載入';
 restoreJournal();status();renderWatch();renderIndex();renderReport();loadQuotes();
+const taipeiHour=Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
+if(taipeiHour>=14){fetchTodayClose()}
 setInterval(status,60000);
 })();
