@@ -19,7 +19,9 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.badges span{font-size:11px;padding:7px 10px;border:1px solid #ffffff65;border-radius:99px;background:#ffffff16;font-weight:750}
 .hero-station-link{font-size:12px;padding:7px 12px;border:1px solid #ffffff70;border-radius:99px;background:#fff;color:#1b668e;text-decoration:none;font-weight:850}
  .national-link{display:inline-flex;align-items:center;text-decoration:none;background:#e4f4f4!important;color:#1c697c!important}
- .tra-national{display:flex;align-items:center;gap:14px;padding:19px 20px;margin:0 0 16px;border:1px solid #b5dce2;border-radius:20px;background:linear-gradient(112deg,#e7f7f5,#f2faff);text-decoration:none;box-shadow:var(--shadow)}
+ .hsr-national{background:linear-gradient(112deg,#fff4db,#fffcf0);border-color:#e5cc99}.hsr-national .tra-national-icon{background:#ffe7a7}.hsr-national strong{color:#92671c}
+.hsr-card .station-code{background:#a77a2d}.hsr-card .card-body h3{margin-top:3px}.hsr-hint{padding:8px 9px;margin:5px 0 12px;background:#fff7e9;border-radius:10px;color:#866526;font-size:11px}.hsr-transfer{padding:7px 9px;border:1px solid #deece8;border-radius:10px;background:#f5faf8;font-size:11px;color:#526b67;margin-bottom:10px}
+.tra-national{display:flex;align-items:center;gap:14px;padding:19px 20px;margin:0 0 16px;border:1px solid #b5dce2;border-radius:20px;background:linear-gradient(112deg,#e7f7f5,#f2faff);text-decoration:none;box-shadow:var(--shadow)}
  .tra-national-icon{flex:none;width:56px;height:56px;border-radius:15px;background:#c7e8ef;display:grid;place-items:center;font-size:30px}
  .tra-national div:nth-child(2){display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
  .tra-national strong{font-size:18px;color:#1a617b}
@@ -98,9 +100,9 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 <section class="tree" aria-label="交通三級分類">
 <div class="tree-head"><h2>🗂️ 三層分類導覽</h2><span class="tip">先選交通類別，再選地區與路線</span></div>
 <div class="path">
-<div class="step"><div class="step-label">第一層｜交通類別</div><div class="choice-list"><button class="choice active" type="button" data-root="rail" aria-pressed="true">🚆 鐵路</button><button class="choice" type="button" data-root="tra" aria-pressed="false">🗃️ 台鐵資料</button><a class="choice national-link" href="./tra-stations.html" aria-label="開啟全臺臺鐵車站資料庫">🚉 全臺臺鐵車站 ↗</a></div></div>
+<div class="step"><div class="step-label">第一層｜交通類別</div><div class="choice-list"><button class="choice active" type="button" data-root="rail" aria-pressed="true">🚆 鐵路</button><button class="choice" type="button" data-root="tra" aria-pressed="false">🗃️ 台鐵資料</button><button class="choice" type="button" data-root="hsr" aria-pressed="false">🚄 高鐵</button><a class="choice national-link" href="./tra-stations.html" aria-label="開啟全臺臺鐵車站資料庫">🚉 全臺臺鐵車站 ↗</a><a class="choice national-link" href="./thsr-stations.html" aria-label="開啟台灣高鐵車站資料庫">🚄 高鐵全線12站 ↗</a></div></div>
 <div class="step"><div class="step-label">第二層｜地區</div><div class="path-value" id="regionName">📍 北部</div></div>
-<div class="step"><div class="step-label">第三層｜路線</div><div id="routeFilter"><div class="group-filter" id="operatorChips"></div><div class="route-list" id="routeChips"><span class="count">路線資料讀取中…</span></div></div><div class="path-value" id="documentName" hidden>🚉 列車動態・路線照片・時刻表</div></div>
+<div class="step"><div class="step-label">第三層｜路線</div><div id="routeFilter"><div class="group-filter" id="operatorChips"></div><div class="route-list" id="routeChips"><span class="count">路線資料讀取中…</span></div></div><div class="path-value" id="documentName" hidden>🚉 列車動態・路線照片・時刻表</div><div class="path-value" id="highSpeedName" hidden>🚄 高鐵全線｜南港 → 左營</div></div>
 </div></section>
 <div class="toolbar" id="searchTools"><input class="search" id="search" type="search" placeholder="搜尋捷運站碼（如 BL12）、站名、路線或景點…" aria-label="搜尋車站"><button type="button" class="soft" id="clearFilters">清除篩選</button></div>
 <section id="northSection" class="section">
@@ -109,7 +111,7 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 <div id="stationGroups"></div>
 <div class="more" id="loadMoreWrap" hidden><button type="button" id="loadMore">顯示更多車站</button></div>
 </section>
-<section id="traSection" class="section" hidden>
+<section id="hsrSection" class="section" hidden><div class="section-head"><h2>🚄 台灣高鐵｜全線車站</h2><span class="count" id="hsrCount">12 站</span></div><a class="tra-national hsr-national" href="./thsr-stations.html"><div class="tra-national-icon">🚄</div><div><strong>高鐵全線 12 站</strong><span>北部／中部／南部・站名英文簡碼・臺鐵捷運轉乘・景點・時刻查詢・收藏</span></div><b>開啟完整高鐵資料庫 →</b></a><div class="links" style="margin:0 0 13px"><a class="primary" href="https://www.thsrc.com.tw/ArticleContent/a3b630bb-1066-4352-a1ef-58c7b4e8ef7c" target="_blank" rel="noopener">高鐵時刻與票價</a><a href="https://irs.thsrc.com.tw/IMINT/" target="_blank" rel="noopener">高鐵訂票</a><a href="https://www.thsrc.com.tw/ArticleContent/99e64de4-a5eb-4081-ad3c-c3596b4f307f" target="_blank" rel="noopener">高鐵轉乘資訊</a></div><div class="grid" id="hsrGrid"><div class="empty">讀取高鐵車站中…</div></div></section><section id="traSection" class="section" hidden>
 <div class="section-head"><h2>台鐵｜資料與照片卡片</h2><span class="count">4 張資料卡片</span></div><a class="tra-national" href="./tra-stations.html"><div class="tra-national-icon">🚉</div><div><strong>全臺臺鐵車站資料庫</strong><span>北部／中部／南部／東部・官方站碼・逐站介紹・縣市路線與轉乘</span></div><b>開啟車站卡片 →</b></a><div class="grid" id="documentGrid"></div>
 </section>
 <section class="section" id="favoritesSection" hidden><div class="section-head"><h2>⭐ 我的收藏</h2><span class="count" id="favCount"></span></div><div class="grid mini" id="favoriteCards"></div></section>
@@ -175,11 +177,29 @@ function stationCard(st,line){
 }
 function documentCard(d){return '<article class="card doc"><div class="doc-icon" aria-hidden="true">'+esc(d.icon)+'</div><div class="heading"><div><h3>'+esc(d.name)+'</h3><div class="meta">'+esc(d.meta)+'</div></div>'+favoriteBtn(d.id)+'</div><p>'+esc(d.desc)+'</p><div class="warn">'+esc(d.date)+'</div><div class="links"><a class="primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(d.id)+'">'+esc(d.button)+' ↗</a></div></article>'}
 function refreshMain(){
-$("northSection").hidden=selectedRoot!=="rail";$("traSection").hidden=selectedRoot!=="tra";$("routeFilter").hidden=selectedRoot!=="rail";$("documentName").hidden=selectedRoot!=="tra";$("regionName").textContent=selectedRoot==="rail"?"📍 北部":"📍 台鐵資料";$("search").placeholder=selectedRoot==="rail"?"搜尋站碼（如 R10）、站名、路線或景點…":"搜尋台鐵列車動態與照片…";document.querySelectorAll("[data-root]").forEach(b=>{b.classList.toggle("active",b.dataset.root===selectedRoot);b.setAttribute("aria-pressed",b.dataset.root===selectedRoot)});
-if(selectedRoot==="tra"){const q=$("search").value.trim().toLowerCase();$("documentGrid").innerHTML=documents.filter(d=>(d.name+" "+d.meta+" "+d.desc).toLowerCase().includes(q)).map(documentCard).join("")||'<div class="empty">沒有符合條件的台鐵資料。</div>'}
-else renderStations();
-renderShelves();
+ $("northSection").hidden=selectedRoot!=="rail";
+ $("traSection").hidden=selectedRoot!=="tra";
+ $("hsrSection").hidden=selectedRoot!=="hsr";
+ $("routeFilter").hidden=selectedRoot!=="rail";
+ $("documentName").hidden=selectedRoot!=="tra";
+ $("highSpeedName").hidden=selectedRoot!=="hsr";
+ $("regionName").textContent=selectedRoot==="rail"?"📍 北部":selectedRoot==="hsr"?"📍 全臺（北／中／南）":"📍 台鐵資料";
+ $("search").placeholder=selectedRoot==="rail"?"搜尋站碼（如 R10）、站名、路線或景點…":selectedRoot==="hsr"?"搜尋高鐵站、縣市、縮寫（如 TAY）、轉乘…":"搜尋台鐵列車動態與照片…";
+ document.querySelectorAll("[data-root]").forEach(b=>{b.classList.toggle("active",b.dataset.root===selectedRoot);b.setAttribute("aria-pressed",b.dataset.root===selectedRoot)});
+ if(selectedRoot==="tra"){const q=$("search").value.trim().toLowerCase();$("documentGrid").innerHTML=documents.filter(d=>(d.name+" "+d.meta+" "+d.desc).toLowerCase().includes(q)).map(documentCard).join("")||'<div class="empty">沒有符合條件的台鐵資料。</div>'}
+ if(selectedRoot==="hsr")renderHSR();
+ if(selectedRoot==="rail")renderStations();
+ renderShelves();
 }
+let thsrStations=[];
+function renderHSR(){
+ if(!thsrStations.length)return;
+ const q=$("search").value.trim().toLowerCase();
+ const list=thsrStations.filter(x=>!q||[x.name,x.code,x.county,x.district,x.english,x.intro,x.notice,...x.transfer.flatMap(t=>[t.name,t.code,t.mode,t.type])].join(" ").toLowerCase().includes(q));
+ $("hsrCount").textContent=list.length+"／"+thsrStations.length+" 站";
+ $("hsrGrid").innerHTML=list.map(x=>'<article class="card hsr-card"><div class="accent" style="--line-color:#c49845"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(x.code)+'</span><span class="id-chip">'+String(x.seq).padStart(2,"0")+'／12</span></div><h3>'+esc(x.name)+'站</h3><div class="meta">'+esc(x.region)+' · '+esc(x.county)+' '+esc(x.district)+'</div><p>'+esc(x.intro)+'</p><div class="hsr-transfer">🔁 '+x.transfer.map(t=>esc(t.mode+' '+t.name+'（'+t.code+'）· '+t.type)).join("；")+'</div><div class="hsr-hint">'+esc(x.notice)+'</div><div class="links"><a class="primary" href="./thsr-stations.html?code='+encodeURIComponent(x.code)+'">完整車站卡片</a><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">高鐵官方</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent("高鐵"+x.name+"站 "+x.county)+'" target="_blank" rel="noopener noreferrer">地圖</a></div></div></article>').join("")||'<div class="empty">找不到符合的高鐵站。</div>';
+}
+fetch("../data/thsr-stations.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{thsrStations=d.stations||[];renderHSR()}).catch(()=>{$("hsrGrid").innerHTML='<div class="empty">高鐵車站資料暫時無法載入，可從「高鐵全線12站」進入專頁。</div>'});
 function renderFilters(){
 const operators=["全部",...new Set(allLines.map(l=>l.operator))];
 $("operatorChips").innerHTML=operators.map(op=>'<button type="button" class="choice'+(selectedOperator===op?" active":"")+'" data-operator="'+esc(op)+'">'+esc(op)+'</button>').join("");
