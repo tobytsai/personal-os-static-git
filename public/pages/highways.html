@@ -79,7 +79,7 @@ function selector(id,values,selected,key){
 function renderFilters(){
  if(!db)return;
  selector("classFilter",[["全部","全部道路"],["國道高速公路","🚙 國道高速公路"],["省道快速道路","🛣️ 省道快速道路"]],roadClass,"class");
- selector("region",[["全部","全臺"],["北部","北部"],["中部","中部"],["南部","南部"],["東部","東部"]],region,"region");
+ selector("regionFilter",[["全部","全臺"],["北部","北部"],["中部","中部"],["南部","南部"],["東部","東部"]],region,"region");
  const routes=filteredRoutes();
  if(route!=="全部"&&!routes.some(r=>r.id===route))route="全部";
  selector("routeFilter",[["全部","全部路線",routes.length],...routes.map(r=>[r.id,r.no,r.exits.filter(e=>region==="全部"||e.region===region).length])],route,"route");
@@ -106,7 +106,7 @@ function render(){
  renderShelves();
 }
 $("classFilter").addEventListener("click",e=>{const b=e.target.closest("[data-class]");if(!b)return;roadClass=b.dataset.class;route="全部";limit=48;render()});
-$("region").addEventListener("click",e=>{const b=e.target.closest("[data-region]");if(!b)return;region=b.dataset.region;route="全部";limit=48;render()});
+$("regionFilter").addEventListener("click",e=>{const b=e.target.closest("[data-region]");if(!b)return;region=b.dataset.region;route="全部";limit=48;render()});
 $("routeFilter").addEventListener("click",e=>{const b=e.target.closest("[data-route]");if(!b)return;route=b.dataset.route;limit=48;render()});
 $("search").addEventListener("input",e=>{query=e.target.value;limit=48;render()});
 $("clear").addEventListener("click",()=>{roadClass="全部";region="全部";route="全部";query="";limit=48;$("search").value="";render()});
