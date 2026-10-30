@@ -161,14 +161,27 @@ function renderReport(){
 }
 
 async function loadPublishedSnapshot(){
- const url='../data/stocks-latest.json?t='+Date.now();
+ // Public default tickers only: GitHub Actions commits do not necessarily retrigger Pages.
+ // Prefer the latest repository file; fall back to the deployed Pages copy.
+ const version=Date.now();
+ const urls=[
+  'https://raw.githubusercontent.com/tobytsai/personal-os-static-git/main/public/data/stocks-latest.json?t='+version,
+  '../data/stocks-latest.json?t='+version
+ ];
  const note=$('stkPublishedStatus');
  try{
-  const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),10000);
-  let response;
-  try{response=await fetch(url,{cache:'no-store',signal:ctl.signal})}finally{clearTimeout(timer)}
-  if(!response.ok)throw Error('HTTP '+response.status);
-  const s=await response.json();
+  let s=null,lastError=null;
+  for(const url of urls){
+   const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),8500);
+   try{
+    const response=await fetch(url,{cache:'no-store',signal:ctl.signal});
+    if(!response.ok)throw Error('HTTP '+response.status);
+    const candidate=await response.json();
+    if(candidate?.version!==1||!candidate.tradeDate||!candidate.quotes)throw Error('無有效每日備份');
+    s=candidate;break;
+   }catch(e){lastError=e}finally{clearTimeout(timer)}
+  }
+  if(!s)throw lastError||Error('兩個備份來源皆無資料');
   if(s?.version!==1||!/^20\d\d-\d\d-\d\d$/.test(s.tradeDate||'')||
     !s.quotes||typeof s.quotes!=='object'||Array.isArray(s.quotes)||Object.keys(s.quotes).length<1)
     throw Error('每日資料尚未建立或格式不符');
