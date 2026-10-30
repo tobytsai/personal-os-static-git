@@ -360,7 +360,6 @@ document.body.addEventListener("click",e=>{
 fetch("../data/transport-north-stations.json?v=20261031-verified115").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];if(activeNorth())refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
 renderMainInitial();
 function renderMainInitial(){$("documentGrid").innerHTML=documents.map(documentCard).join("");renderShelves()}
-</script><script src="../shared-nav.js" defer>
 /* Road mode is independent: leaves the existing rail/metro/high-speed filters intact. */
 let highwayDataset=null,highwayType="全部",highwayRoute="全部",highwayVisible=30;
 function highwayChoices(){
@@ -433,6 +432,6 @@ $("roadTypeChips").addEventListener("click",e=>{const b=e.target.closest("[data-
 $("roadRouteChips").addEventListener("click",e=>{const b=e.target.closest("[data-road-route]");if(b){highwayRoute=b.dataset.roadRoute;highwayVisible=30;highwayDraw()}});
 $("roadMore").addEventListener("click",()=>{highwayVisible+=30;highwayDraw()});
 fetch("../data/taiwan-expressway-interchanges.json?v=20261031-2").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{highwayDataset=d;if(selectedRoot==="road")highwayDraw()}).catch(()=>{$("roadGrid").innerHTML='<div class="empty">資料暫時無法載入，請使用完整公路資料庫或官方路況入口。</div>'});
-
+</script><script src="../shared-nav.js" defer>
 </script>
 </body></html>
