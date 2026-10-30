@@ -129,7 +129,7 @@ const documents=[
 {id:"tra-qidu-stops",name:"七堵站｜各列車停靠站對照表",icon:"🛤️",meta:"台鐵｜七堵站現場停靠站表",desc:"往基隆及東行宜蘭、花蓮、臺東等方向之列車與停靠車站對照，適合核對不同車種停站差異。",url:"https://drive.google.com/file/d/1qMWwOPehHfn_iRv_wtMns42CuTp0Uioq/view?usp=drivesdk",date:"照片標示：2026/10/03 修訂",button:"查看停靠站原圖"},
 {id:"tra-qidu-timetable",name:"七堵站｜東行列車時刻表",icon:"🕒",meta:"台鐵｜七堵站現場發車時刻",desc:"往宜蘭、蘇澳、花蓮等東部方向的班次分鐘與車種索引，依照片逐小時排列。",url:"https://drive.google.com/file/d/1b2NXHnyNZc68v9e1VuPAKz1MZOhqw9Ad/view?usp=drivesdk",date:"照片標示：2026/10/02 修訂",button:"查看時刻表原圖"}
 ];
-let allLines=[],selectedRoot="rail",selectedOperator="全部",selectedLine="全部",visibleCount=48;
+let allLines=[],selectedRoot="rail",selectedRegion="北部",selectedOperator="全部",selectedLine="全部",visibleCount=48,traNation=null,selectedTraRoute="全部",traVisible=36;
 const favKey="toby-transport-favorites",recentKey="toby-transport-recent";
 function getStored(key){try{const a=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(a)?a:[]}catch(e){return []}}
 let favs=getStored(favKey),recents=getStored(recentKey);
@@ -179,36 +179,50 @@ function stationCard(st,line){
  return '<article class="card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="id-chip">'+esc(line.name)+'</span>'+favoriteBtn(id)+'</div><h3>'+code+esc(st.name)+'站</h3><p>'+esc(st.intro)+'</p>'+hints+'<div class="links"><a class="primary" target="_blank" rel="noopener noreferrer" href="'+esc(mapLink(line,st))+'" data-open="'+esc(id)+'">📍 地圖</a>'+(st.traCode?'<a href="./tra-stations.html?code='+encodeURIComponent(st.traCode)+'" data-open="'+esc(id)+'">🚉 全臺車站卡</a>':'')+'<a href="'+esc(official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">'+(st.traCode?'官方站務資料':st.stationCode?'站碼／官方資訊':'官方路線')+'</a></div></div></article>';
 }
 function documentCard(d){return '<article class="card doc"><div class="doc-icon" aria-hidden="true">'+esc(d.icon)+'</div><div class="heading"><div><h3>'+esc(d.name)+'</h3><div class="meta">'+esc(d.meta)+'</div></div>'+favoriteBtn(d.id)+'</div><p>'+esc(d.desc)+'</p><div class="warn">'+esc(d.date)+'</div><div class="links"><a class="primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(d.id)+'">'+esc(d.button)+' ↗</a></div></article>'}
+function activeNorth(){return (selectedRoot==="rail"||selectedRoot==="metro")&&selectedRegion==="北部"}
+function activeRegional(){return (selectedRoot==="rail"||selectedRoot==="metro")&&(selectedRegion==="中部"||selectedRegion==="南部")}
+function activeTRA(){return selectedRoot==="tra"||(selectedRoot==="rail"&&selectedRegion!=="北部")}
 function refreshMain(){
- const regional=selectedRoot==="taichung"||selectedRoot==="kaohsiung";
- $("northSection").hidden=selectedRoot!=="rail";
- $("traSection").hidden=selectedRoot!=="tra";
- $("hsrSection").hidden=selectedRoot!=="hsr";
+ const north=activeNorth(),regional=activeRegional(),tra=activeTRA(),hsr=selectedRoot==="hsr";
+ $("northSection").hidden=!north;
  $("regionalSection").hidden=!regional;
- $("routeFilter").hidden=selectedRoot!=="rail";
+ $("traDirectorySection").hidden=!tra;
+ $("traSection").hidden=selectedRoot!=="tra";
+ $("hsrSection").hidden=!hsr;
+ $("routeFilter").hidden=!north;
+ $("regionalRouteFilter").hidden=!regional;
+ $("traRouteFilter").hidden=!tra;
+ $("hsrRouteFilter").hidden=!hsr;
  $("documentName").hidden=selectedRoot!=="tra";
- $("highSpeedName").hidden=selectedRoot!=="hsr";
- $("metroRegionalName").hidden=!regional;
- $("regionName").textContent=selectedRoot==="rail"?"📍 北部":selectedRoot==="hsr"?"📍 全臺（北／中／南）":selectedRoot==="taichung"?"📍 中部・臺中":selectedRoot==="kaohsiung"?"📍 南部・高雄":"📍 台鐵資料";
- $("search").placeholder=selectedRoot==="rail"?"搜尋站碼（如 R10）、站名、路線或景點…":selectedRoot==="hsr"?"搜尋高鐵站、縣市、縮寫（如 TAY）、轉乘…":regional?"搜尋捷運站碼、車站、轉乘或景點…":"搜尋台鐵列車動態與照片…";
- document.querySelectorAll("[data-root]").forEach(b=>{b.classList.toggle("active",b.dataset.root===selectedRoot);b.setAttribute("aria-pressed",b.dataset.root===selectedRoot)});
- if(selectedRoot==="tra"){const q=$("search").value.trim().toLowerCase();$("documentGrid").innerHTML=documents.filter(d=>(d.name+" "+d.meta+" "+d.desc).toLowerCase().includes(q)).map(documentCard).join("")||'<div class="empty">沒有符合條件的台鐵資料。</div>'}
- if(selectedRoot==="hsr")renderHSR();
+ $("highSpeedName").hidden=true;
+ $("eastRouteNote").hidden=!(selectedRoot==="metro"&&selectedRegion==="東部");
+ const label=selectedRoot==="rail"?"鐵路":selectedRoot==="tra"?"臺鐵資料":selectedRoot==="hsr"?"高鐵":"捷運／輕軌";
+ $("regionName").textContent="目前：" + selectedRegion +" · "+label;
+ document.querySelectorAll("[data-root]").forEach(b=>{const on=b.dataset.root===selectedRoot;b.classList.toggle("active",on);b.setAttribute("aria-pressed",String(on))});
+ document.querySelectorAll("[data-region]").forEach(b=>{const on=b.dataset.region===selectedRegion;b.classList.toggle("active",on);b.setAttribute("aria-pressed",String(on));b.disabled=(selectedRoot==="hsr"||selectedRoot==="metro")&&b.dataset.region==="東部"});
+ $("search").placeholder=selectedRoot==="hsr"?"搜尋高鐵站、站碼或縣市…":selectedRoot==="tra"?"搜尋臺鐵四位數站碼、站名或景點…":"搜尋站名、捷運／臺鐵編號、景點及轉乘資訊…";
+ if(north){renderFilters();renderStations()}
  if(regional)renderRegional();
- if(selectedRoot==="rail")renderStations();
+ if(tra)renderTRA();
+ if(hsr)renderHSR();
+ if(selectedRoot==="tra"){
+ const q=$("search").value.trim().toLowerCase();
+ $("documentGrid").innerHTML=documents.filter(d=>(d.name+" "+d.meta+" "+d.desc).toLowerCase().includes(q)).map(documentCard).join("")||'<div class="empty">沒有符合的臺鐵工具或照片。</div>';
+ }
  renderShelves();
 }
+
 let thsrStations=[];
 function renderHSR(){
  if(!thsrStations.length)return;
  const q=$("search").value.trim().toLowerCase();
- const list=thsrStations.filter(x=>!q||[x.name,x.code,x.county,x.district,x.english,x.intro,x.notice,...x.transfer.flatMap(t=>[t.name,t.code,t.mode,t.type])].join(" ").toLowerCase().includes(q));
- $("hsrCount").textContent=list.length+"／"+thsrStations.length+" 站";
- $("hsrGrid").innerHTML=list.map(x=>'<article class="card hsr-card"><div class="accent" style="--line-color:#c49845"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(x.code)+'</span><span class="id-chip">'+String(x.seq).padStart(2,"0")+'／12</span></div><h3>'+esc(x.name)+'站</h3><div class="meta">'+esc(x.region)+' · '+esc(x.county)+' '+esc(x.district)+'</div><p>'+esc(x.intro)+'</p><div class="hsr-transfer">🔁 '+x.transfer.map(t=>esc(t.mode+' '+t.name+'（'+t.code+'）· '+t.type)).join("；")+'</div><div class="hsr-hint">'+esc(x.notice)+'</div><div class="links"><a class="primary" href="./thsr-stations.html?code='+encodeURIComponent(x.code)+'">完整車站卡片</a><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">高鐵官方</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent("高鐵"+x.name+"站 "+x.county)+'" target="_blank" rel="noopener noreferrer">地圖</a></div></div></article>').join("")||'<div class="empty">找不到符合的高鐵站。</div>';
+ const list=thsrStations.filter(x=>x.region===selectedRegion&&(!q||[x.name,x.code,x.county,x.district,x.english,x.intro,x.notice,...x.transfer.flatMap(t=>[t.name,t.code,t.mode,t.type])].join(" ").toLowerCase().includes(q)));
+ $("hsrCount").textContent=selectedRegion+" · "+list.length+" 站";
+ $("hsrGrid").innerHTML=list.map(x=>'<article class="card hsr-card"><div class="accent" style="--line-color:#c49845"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(x.code)+'</span><span class="id-chip">'+String(x.seq).padStart(2,"0")+'／12</span></div><h3>'+esc(x.name)+'站</h3><div class="meta">'+esc(x.region)+' · '+esc(x.county)+' '+esc(x.district)+'</div><p>'+esc(x.intro)+'</p><div class="hsr-transfer">🔁 '+x.transfer.map(t=>esc(t.mode+' '+t.name+'（'+t.code+'）· '+t.type)).join("；")+'</div><div class="hsr-hint">'+esc(x.notice)+'</div><div class="links"><a class="primary" href="./thsr-stations.html?code='+encodeURIComponent(x.code)+'">完整車站卡片</a><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">高鐵官方</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent("高鐵"+x.name+"站 "+x.county)+'" target="_blank" rel="noopener noreferrer">地圖</a></div></div></article>').join("")||'<div class="empty">'+esc(selectedRegion)+'目前沒有符合的高鐵站。</div>';
 }
-fetch("../data/thsr-stations.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{thsrStations=d.stations||[];renderHSR()}).catch(()=>{$("hsrGrid").innerHTML='<div class="empty">高鐵車站資料暫時無法載入，可從「高鐵全線12站」進入專頁。</div>'});
+fetch("../data/thsr-stations.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{thsrStations=d.stations||[];if(selectedRoot==="hsr")renderHSR()}).catch(()=>{$("hsrGrid").innerHTML='<div class="empty">高鐵車站資料暫時無法載入，可從「高鐵全線12站」進入專頁。</div>'});
 let regionalLines=[],selectedRegionalRoute="全部";
-function regionalCity(){return selectedRoot==="taichung"?"臺中市":"高雄市"}
+function regionalCity(){return selectedRegion==="中部"?"臺中市":"高雄市"}
 function renderRegional(){
  const current=regionalCity(),matching=regionalLines.filter(l=>l.city===current);
  if(!matching.length)return;
@@ -229,26 +243,73 @@ function renderRegional(){
  return '<article class="card regional-station-card" style="--line-color:'+esc(l.color)+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(st.code)+'</span>'+project+'</div><h3>'+esc(st.name)+'站</h3><div class="meta">'+esc(l.name)+'</div><p>'+esc(st.intro)+'</p>'+transfers+'<div class="links"><a class="primary" href="'+esc(url)+'">車站詳情</a><a href="'+esc(l.official)+'" target="_blank" rel="noopener noreferrer">官方資訊</a></div></div></article>';
  }).join("")||'<div class="empty">找不到符合的車站。可以清除篩選。</div>';
 }
-fetch("../data/metro-taichung-kaohsiung.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{regionalLines=d.lines||[];renderRegional()}).catch(e=>{$("regionalGrid").innerHTML='<div class="empty">車站資料暫時無法讀取。可由「完整路線」進入專頁。</div>'});
+fetch("../data/metro-taichung-kaohsiung.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{regionalLines=d.lines||[];if(activeRegional())renderRegional()}).catch(e=>{$("regionalGrid").innerHTML='<div class="empty">車站資料暫時無法讀取。可由「完整路線」進入專頁。</div>'});
 $("regionalRouteTabs").addEventListener("click",e=>{const b=e.target.closest("[data-reg-route]");if(b){selectedRegionalRoute=b.dataset.regRoute;renderRegional()}});
-function renderFilters(){
-const operators=["全部",...new Set(allLines.map(l=>l.operator))];
-$("operatorChips").innerHTML=operators.map(op=>'<button type="button" class="choice'+(selectedOperator===op?" active":"")+'" data-operator="'+esc(op)+'">'+esc(op)+'</button>').join("");
-const lines=allLines.filter(l=>selectedOperator==="全部"||l.operator===selectedOperator);
-$("routeChips").innerHTML='<button type="button" class="route'+(selectedLine==="全部"?" active":"")+'" data-line="全部" style="--route-color:#6388a3"><span class="dot"></span>全部路線 <small>'+lines.length+' 條</small></button>'+lines.map(l=>'<button type="button" class="route'+(selectedLine===l.id?" active":"")+'" data-line="'+esc(l.id)+'" style="--route-color:'+esc(l.color)+'"><span class="dot"></span>'+esc(l.name)+' <small>'+l.stations.length+' 站</small></button>').join("");
+function routeMeta(){return new Map((traNation?.routes||[]).map(r=>[r.id,r]))}
+function renderTRA(){
+ if(!traNation)return;
+ const full=traNation.stations.filter(st=>st.region===selectedRegion);
+ const routeMap=routeMeta();
+ const relevant=traNation.routes.filter(r=>r.stationCodes.some(code=>full.some(st=>st.code===code)));
+ if(selectedTraRoute!=="全部"&&!relevant.some(r=>r.id===selectedTraRoute))selectedTraRoute="全部";
+ $("traRouteChips").innerHTML='<button class="route'+(selectedTraRoute==="全部"?" active":"")+'" type="button" data-tra-route="全部" style="--route-color:#557e9e"><span class="dot"></span>全部臺鐵路線</button>'+relevant.map(r=>'<button class="route'+(selectedTraRoute===r.id?" active":"")+'" type="button" data-tra-route="'+esc(r.id)+'" style="--route-color:#557e9e"><span class="dot"></span>'+esc(r.name)+'</button>').join("");
+ const q=$("search").value.trim().toLowerCase();
+ const list=full.filter(st=>(selectedTraRoute==="全部"||st.routes.includes(selectedTraRoute))&&(!q||[st.name,st.code,st.county,st.intro,...st.routes.map(id=>routeMap.get(id)?.name||"")].join(" ").toLowerCase().includes(q)));
+ const visible=list.slice(0,traVisible);
+ $("traDirectoryHeading").textContent="臺鐵 → "+selectedRegion+" → 車站";
+ $("traDirectoryCount").textContent=list.length+" 站";
+ $("traDirectoryFullLink").href="./tra-stations.html?region="+encodeURIComponent(selectedRegion);
+ $("traDirectoryGrid").innerHTML=visible.map(st=>{
+  const isLinked=st.thsr?'<div class="regional-transfer">🚄 高鐵：'+esc(st.thsr.name)+" · "+esc(st.thsr.type)+'</div>':"";
+  const metroLinked=(st.metroConnections||[]).map(t=>'<div class="regional-transfer">🚇 '+esc(t.system)+" "+esc(t.code)+" · "+esc(t.type)+'</div>').join("");
+  return '<article class="card tra-compact" style="--line-color:#527e9c"><div class="accent"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(st.code)+'</span><span class="id-chip">'+esc(st.county)+'</span></div><h3>'+esc(st.name)+'站</h3><div class="tra-directory-meta">'+esc(st.routes.map(id=>routeMap.get(id)?.name||"").join("／"))+'</div><p>'+esc(st.intro)+'</p>'+isLinked+metroLinked+'<div class="links"><a class="primary" href="./tra-stations.html?code='+encodeURIComponent(st.code)+'">車站詳情</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent("臺鐵"+st.name+"站 "+st.county)+'" target="_blank" rel="noopener noreferrer">地圖</a></div></div></article>';
+ }).join("")||'<div class="empty">此條件沒有符合的臺鐵車站。</div>';
+ $("traMoreWrap").hidden=visible.length>=list.length;
+ $("traMore").textContent="顯示更多臺鐵車站（尚有 "+Math.max(0,list.length-visible.length)+" 站）";
 }
-function filteredLines(){return allLines.filter(l=>(selectedOperator==="全部"||l.operator===selectedOperator)&&(selectedLine==="全部"||l.id===selectedLine))}
+fetch("../data/tra-taiwan-stations.json?v=20261031-region-layer").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{traNation=d;if(activeTRA())renderTRA()}).catch(()=>{$("traDirectoryGrid").innerHTML='<div class="empty">臺鐵資料暫時無法載入，請開啟全臺臺鐵車站資料庫。</div>'});
+$("traRouteChips").addEventListener("click",e=>{const b=e.target.closest("[data-tra-route]");if(b){selectedTraRoute=b.dataset.traRoute;traVisible=36;renderTRA()}});
+$("traMore").addEventListener("click",()=>{traVisible+=36;renderTRA()});
+
+function renderFilters(){
+ const source=allLines.filter(l=>selectedRoot!=="metro"||l.operator!=="臺鐵");
+ const operators=["全部",...new Set(source.map(l=>l.operator))];
+ if(selectedOperator!=="全部"&&!operators.includes(selectedOperator))selectedOperator="全部";
+ $("operatorChips").innerHTML=operators.map(op=>'<button type="button" class="choice'+(selectedOperator===op?" active":"")+'" data-operator="'+esc(op)+'">'+esc(op)+'</button>').join("");
+ const lines=source.filter(l=>selectedOperator==="全部"||l.operator===selectedOperator);
+ if(selectedLine!=="全部"&&!lines.some(l=>l.id===selectedLine))selectedLine="全部";
+ $("routeChips").innerHTML='<button type="button" class="route'+(selectedLine==="全部"?" active":"")+'" data-line="全部" style="--route-color:#6388a3"><span class="dot"></span>全部路線 <small>'+lines.length+' 條</small></button>'+lines.map(l=>'<button type="button" class="route'+(selectedLine===l.id?" active":"")+'" data-line="'+esc(l.id)+'" style="--route-color:'+esc(l.color)+'"><span class="dot"></span>'+esc(l.name)+' <small>'+l.stations.length+' 站</small></button>').join("");
+}
+function filteredLines(){return allLines.filter(l=>(selectedRoot!=="metro"||l.operator!=="臺鐵")&&(selectedOperator==="全部"||l.operator===selectedOperator)&&(selectedLine==="全部"||l.id===selectedLine))}
 function renderStations(){
 const q=$("search").value.trim().toLowerCase();const lines=filteredLines().map(line=>({line,stations:line.stations.filter(st=>!q||(st.name+" "+(st.stationCode||"")+" "+(st.traCode||"")+" "+(st.transferCodes||[]).join(" ")+" "+st.intro+" "+line.name+" "+line.operator).toLowerCase().includes(q))})).filter(x=>x.stations.length);
-const total=lines.reduce((n,x)=>n+x.stations.length,0);$("listCount").textContent=total+" 筆路線車站卡片";$("listHeading").textContent=selectedLine==="全部"?"鐵路 → 北部 → 全部路線":(allLines.find(x=>x.id===selectedLine)?.name||"北部車站");
+const total=lines.reduce((n,x)=>n+x.stations.length,0);$("listCount").textContent=total+" 筆路線車站卡片";$("listHeading").textContent=selectedLine==="全部"?(selectedRoot==="metro"?"捷運／輕軌 → 北部 → 全部路線":"鐵路 → 北部 → 全部路線"):(allLines.find(x=>x.id===selectedLine)?.name||"北部車站");
 let n=visibleCount;
 $("stationGroups").innerHTML=lines.length?lines.map(({line,stations})=>{const show=stations.slice(0,Math.max(n,0));n-=show.length;if(!show.length)return"";return '<section><div class="subgroup"><h3><span style="color:'+esc(line.color)+'">●</span> '+esc(line.name)+'</h3><span>'+esc(line.operator)+' · 共 '+stations.length+' 站</span></div><div class="grid">'+show.map(st=>stationCard(st,line)).join("")+'</div></section>'}).join(""):'<div class="empty">找不到符合條件的車站，試試搜尋其他站名或清除路線篩選。</div>';
 $("loadMoreWrap").hidden=visibleCount>=total;$("loadMore").textContent="顯示更多車站（剩餘 "+Math.max(0,total-visibleCount)+" 筆）";
 }
 function renderShelves(){const render=(ids,section,host,count)=>{const list=ids.map(findItem).filter(Boolean);$(section).hidden=!list.length;$(count).textContent=list.length+" 筆";$(host).innerHTML=list.map(entry=>entry.kind==="station"?stationCard(entry.item,entry.line):documentCard(entry.item)).join("")};render(favs,"favoritesSection","favoriteCards","favCount");render(recents,"recentsSection","recentCards","recentCount")}
-document.querySelector(".tree").addEventListener("click",e=>{const root=e.target.closest("[data-root]");if(root){selectedRoot=root.dataset.root;$("search").value="";refreshMain();return}const op=e.target.closest("[data-operator]");if(op){selectedOperator=op.dataset.operator;selectedLine="全部";visibleCount=48;renderFilters();renderStations();return}const line=e.target.closest("[data-line]");if(line){selectedLine=line.dataset.line;visibleCount=48;renderFilters();renderStations()}});
-$("search").addEventListener("input",()=>{visibleCount=48;refreshMain()});
-$("clearFilters").addEventListener("click",()=>{selectedOperator="全部";selectedLine="全部";visibleCount=48;$("search").value="";renderFilters();refreshMain()});
+document.querySelector(".tree").addEventListener("click",e=>{
+ const root=e.target.closest("[data-root]");
+ if(root){
+  selectedRoot=root.dataset.root;
+  if((selectedRoot==="metro"||selectedRoot==="hsr")&&selectedRegion==="東部")selectedRegion="北部";
+  selectedOperator="全部";selectedLine="全部";selectedRegionalRoute="全部";selectedTraRoute="全部";
+  visibleCount=48;traVisible=36;$("search").value="";refreshMain();return;
+ }
+ const region=e.target.closest("[data-region]");
+ if(region&&!region.disabled){
+  selectedRegion=region.dataset.region;
+  selectedOperator="全部";selectedLine="全部";selectedRegionalRoute="全部";selectedTraRoute="全部";
+  visibleCount=48;traVisible=36;$("search").value="";refreshMain();return;
+ }
+ const op=e.target.closest("[data-operator]");
+ if(op){selectedOperator=op.dataset.operator;selectedLine="全部";visibleCount=48;renderFilters();renderStations();return}
+ const line=e.target.closest("[data-line]");
+ if(line){selectedLine=line.dataset.line;visibleCount=48;renderFilters();renderStations()}
+});
+$("search").addEventListener("input",()=>{visibleCount=48;traVisible=36;refreshMain()});
+$("clearFilters").addEventListener("click",()=>{selectedOperator="全部";selectedLine="全部";selectedTraRoute="全部";selectedRegionalRoute="全部";visibleCount=48;traVisible=36;$("search").value="";refreshMain()});
 $("loadMore").addEventListener("click",()=>{visibleCount+=48;renderStations()});
 document.body.addEventListener("click",e=>{
  const jump=e.target.closest("[data-jump-line]");
@@ -256,6 +317,7 @@ document.body.addEventListener("click",e=>{
   const line=allLines.find(x=>x.id===jump.dataset.jumpLine);
   if(!line)return;
   selectedRoot="rail";
+  selectedRegion="北部";
   selectedOperator=line.operator;
   selectedLine=line.id;
   visibleCount=48;
@@ -281,7 +343,7 @@ document.body.addEventListener("click",e=>{
   renderShelves();
  }
 });
-fetch("../data/transport-north-stations.json?v=20261030-tracodes").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];$("stats").textContent=allLines.length+" 條路線 · "+allLines.reduce((n,x)=>n+x.stations.length,0)+" 筆車站卡片";renderFilters();refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
+fetch("../data/transport-north-stations.json?v=20261030-tracodes").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];$("stats").textContent=allLines.length+" 條路線 · "+allLines.reduce((n,x)=>n+x.stations.length,0)+" 筆車站卡片";if(activeNorth())refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
 renderMainInitial();
 function renderMainInitial(){$("documentGrid").innerHTML=documents.map(documentCard).join("");renderShelves()}
 </script><script src="../shared-nav.js" defer></script>
