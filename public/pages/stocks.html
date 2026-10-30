@@ -31,6 +31,8 @@ main{width:min(1100px,100%);margin:auto;padding:16px 20px 48px}.back{display:inl
    <div class="stk-badge">個股行情交易日<strong id="stkQuoteDate">—</strong></div>
   </div>
   <div class="stk-status" id="stkDataStatus" role="status" aria-live="polite">讀取官方盤後資料中…</div>
+  <div class="stk-status" id="stkPublishedStatus" role="status" aria-live="polite">正在檢查已保存的官方盤後行情…</div>
+  <div class="stk-today" id="stkInstitutionalSummary" style="line-height:1.7;margin:10px 0">三大法人：尚未取得同日官方資料。</div>
   <div style="border-top:1px solid #e4ebef;margin-top:14px;padding-top:12px">
    <div class="stk-row">
     <div><strong>📆 今日（<span id="stkTodayDate"></span>）的資料</strong><p class="stk-sub">盤中請開啟官方即時行情；收盤後可試著取得指定日期的官方盤後報表。</p></div>
@@ -228,4 +230,4 @@ function renderRecent(){renderGrid("recentGrid",recent.map(id=>resources.find(x=
 function renderAll(){const shown=resources.filter(x=>(active==="全部"||x.category===active)&&(!query||(x.name+" "+x.category+" "+x.description).toLowerCase().includes(query.toLowerCase())));renderGrid("allGrid",shown,"allEmpty");renderGrid("favoritesGrid",favorites.map(id=>resources.find(x=>x.id===id)).filter(Boolean),"favoritesEmpty");renderRecent();document.getElementById("count").textContent=shown.length+" / "+resources.length+" 個入口";document.getElementById("allTitle").textContent=active==="全部"?"✨ 全部股票入口":"📚 "+active}
 function showHelp(id){const x=resources.find(r=>r.id===id);if(!x)return;document.getElementById("dialogTitle").textContent="？ "+x.name;document.getElementById("dialogBody").textContent=x.description+" 分類依用途整理；點「開啟」可前往網站。";document.getElementById("overlay").classList.add("show");document.getElementById("close").focus()}
 document.getElementById("search").addEventListener("input",e=>{query=e.target.value;renderAll()});document.getElementById("close").onclick=()=>document.getElementById("overlay").classList.remove("show");document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("show")});document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("overlay").classList.remove("show")});renderFilters();renderAll();
-</script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="../stock-workspace.js?v=20261030-4"></script><script src="../stock-cloud-sync.js?v=20261030-1"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
+</script><script src="https://accounts.google.com/gsi/client" async defer></script><script src="../stock-workspace.js?v=20261030-5"></script><script src="../stock-cloud-sync.js?v=20261030-1"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
