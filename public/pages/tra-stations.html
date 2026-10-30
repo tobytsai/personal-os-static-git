@@ -34,6 +34,7 @@ a{color:inherit}button,input{font:inherit}button{cursor:pointer}a:focus-visible,
 .station-top{height:5px;background:linear-gradient(90deg,var(--route-color,#248b9b),#99d6cc)}
 .cardbody{padding:15px;display:flex;flex-direction:column;flex:1}
 .cardhead{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.code-group{display:flex;flex-direction:column;align-items:flex-start;gap:3px}.code-label{font-size:10px;font-weight:850;letter-spacing:.04em;color:#517d93}
 .code{font:900 14px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;color:#fff;background:#1b7190;border-radius:10px;padding:9px;display:inline-block;letter-spacing:.04em}
 .star{flex:none;background:#f7fafb;border:1px solid var(--line);border-radius:10px;min-width:35px;min-height:35px;color:#aeb9c5;font-size:20px}
 .star.on{background:#fff5d4;color:#b78106}
@@ -85,7 +86,7 @@ a{color:inherit}button,input{font:inherit}button{cursor:pointer}a:focus-visible,
 <script>
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-const dataUrl="../data/tra-taiwan-stations.json?v=20261030-1";
+const dataUrl="../data/tra-taiwan-stations.json?v=20261030-stationcode-links";
 const favKey="toby-tra-all-favs",recentKey="toby-tra-all-recent";
 function stored(k){try{const a=JSON.parse(localStorage.getItem(k)||"[]");return Array.isArray(a)?a:[]}catch(e){return []}}
 let database=null,selectedRegion="全部",selectedCounty="全部",selectedRoute="全部",query="",limit=48,favs=stored(favKey),recent=stored(recentKey);
@@ -105,7 +106,7 @@ function neighbors(st,lineId){const route=routes.get(lineId);if(!route)return ""
 }
 function card(st){
  const id=st.code,isFav=favs.includes(id),lineId=defaultLine(st),lineName=routes.get(lineId)?.name||"",routeNames=st.routes.map(x=>routes.get(x)?.name||x).join("／");
- const list=(st.transfer||[]);return '<article class="station"><div class="station-top" style="--route-color:'+esc(st.region==="北部"?"#2b7fa5":st.region==="中部"?"#5da57e":st.region==="南部"?"#df9b54":"#807cb3")+'"></div><div class="cardbody"><div class="cardhead"><span class="code">'+esc(st.code)+'</span><button type="button" class="star'+(isFav?" on":"")+'" data-fav="'+esc(id)+'" aria-label="'+(isFav?"取消收藏":"加入收藏")+'" aria-pressed="'+isFav+'">'+(isFav?"★":"☆")+'</button></div><h3>'+esc(st.name)+'站</h3><div class="meta">'+esc(st.region)+' · '+esc(st.county)+' · '+esc(routeNames)+'</div><p class="intro">'+esc(st.intro)+'</p>'+(st.tags?.length?'<div class="tags">'+st.tags.map(t=>'<span class="tag">'+esc(t)+'</span>').join("")+'</div>':"")+(list.length?'<div class="transfers">🔁 轉乘：'+list.map(x=>esc(x)).join("；")+'</div>':"")+neighbors(st,lineId)+'<div class="actions"><a class="primary" href="'+esc(mapUrl(st))+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">📍 地圖</a><a href="https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip130/query" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">🏛️ 官方車站</a><a href="https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip112/gobytime" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">🕒 查班次</a></div></div></article>';
+ const list=(st.transfer||[]);return '<article class="station"><div class="station-top" style="--route-color:'+esc(st.region==="北部"?"#2b7fa5":st.region==="中部"?"#5da57e":st.region==="南部"?"#df9b54":"#807cb3")+'"></div><div class="cardbody"><div class="cardhead"><div class="code-group"><span class="code-label">臺鐵站碼</span><span class="code" aria-label="臺鐵車站代碼 '+esc(st.code)+'">'+esc(st.code)+'</span></div><button type="button" class="star'+(isFav?" on":"")+'" data-fav="'+esc(id)+'" aria-label="'+(isFav?"取消收藏":"加入收藏")+'" aria-pressed="'+isFav+'">'+(isFav?"★":"☆")+'</button></div><h3>'+esc(st.name)+'站</h3><div class="meta">'+esc(st.region)+' · '+esc(st.county)+' · '+esc(routeNames)+'</div><p class="intro">'+esc(st.intro)+'</p>'+(st.tags?.length?'<div class="tags">'+st.tags.map(t=>'<span class="tag">'+esc(t)+'</span>').join("")+'</div>':"")+(list.length?'<div class="transfers">🔁 轉乘：'+list.map(x=>esc(x)).join("；")+'</div>':"")+neighbors(st,lineId)+'<div class="actions"><a class="primary" href="'+esc(mapUrl(st))+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">📍 地圖</a><a href="https://www.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewStaInfo/'+encodeURIComponent(st.code)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">🏛️ 官方車站</a><a href="https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip112/gobytime" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">🕒 查班次</a></div></div></article>';
 }
 function buttons(host,values,selected,field){$(host).innerHTML=values.map(val=>'<button type="button" class="choice'+(selected===val?" active":"")+'" data-'+field+'="'+esc(val)+'">'+esc(val==="全部"?"全部":val)+'</button>').join("")}
 function renderFilters(){
@@ -157,7 +158,7 @@ document.body.addEventListener("click",e=>{
  const link=e.target.closest("[data-open]");if(link){const id=link.dataset.open;recent=[id,...recent.filter(x=>x!==id)].slice(0,12);localStorage.setItem(recentKey,JSON.stringify(recent));renderShelves()}
 });
 fetch(dataUrl).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
- database=d;byCode=new Map(d.stations.map(st=>[st.code,st]));routes=new Map(d.routes.map(l=>[l.id,l]));
+ database=d;byCode=new Map(d.stations.map(st=>[st.code,st]));routes=new Map(d.routes.map(l=>[l.id,l]));const stationParam=new URLSearchParams(location.search).get("code");if(stationParam&&byCode.has(stationParam)){const target=byCode.get(stationParam);selectedRegion=target.region;selectedCounty=target.county;query=stationParam;$("search").value=stationParam;}
  $("statsStation").textContent=d.stations.length+" 個營運車站";
  $("statsRoutes").textContent=d.routes.length+" 組路線";
  $("statsCounties").textContent=new Set(d.stations.map(s=>s.county)).size+" 個縣市";
