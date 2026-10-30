@@ -553,7 +553,14 @@
         "高鐵南港站",
         "捷運板南線 BL22"
       ],
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "南港",
+        "code": "NAG",
+        "type": "共構",
+        "note": "臺鐵南港站，同站依指標換乘",
+        "connected": true
+      }
     },
     {
       "id": "0990",
@@ -587,7 +594,14 @@
         "捷運淡水信義線 R10、板南線 BL12",
         "機場捷運 A1（地下通道步行）"
       ],
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "台北",
+        "code": "TPE",
+        "type": "共構",
+        "note": "與臺鐵臺北站共構",
+        "connected": true
+      }
     },
     {
       "id": "1010",
@@ -617,7 +631,14 @@
         "高鐵板橋站",
         "捷運板南線 BL07、環狀線 Y16（站外步行）"
       ],
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "板橋",
+        "code": "BAQ",
+        "type": "共構",
+        "note": "臺鐵、高鐵與板南線於板橋車站轉乘",
+        "connected": true
+      }
     },
     {
       "id": "1030",
@@ -708,7 +729,14 @@
         "west-north"
       ],
       "status": "營運中",
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "桃園",
+        "code": "TAY",
+        "type": "非同站，需其他交通工具",
+        "note": "臺鐵桃園站位在桃園市中心，與高鐵青埔站不同地點",
+        "connected": false
+      }
     },
     {
       "id": "1090",
@@ -934,7 +962,14 @@
       "transfer": [
         "高鐵新竹站（六家線步行接續）"
       ],
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "新竹",
+        "code": "HSC",
+        "type": "連通步行",
+        "note": "可步行轉乘臺鐵六家線，銜接竹中、北新竹、新竹方向",
+        "connected": true
+      }
     },
     {
       "id": "1201",
@@ -1353,7 +1388,14 @@
         "west-mountain"
       ],
       "status": "營運中",
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "苗栗",
+        "code": "MIL",
+        "type": "連通步行",
+        "note": "可由高鐵苗栗站 5 號出口步行至臺鐵豐富站，轉往竹南、苗栗等方向",
+        "connected": true
+      }
     },
     {
       "id": "3160",
@@ -1597,7 +1639,14 @@
         "高鐵臺中站",
         "臺中捷運綠線高鐵臺中站"
       ],
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "台中",
+        "code": "TAC",
+        "type": "連通步行",
+        "note": "臺鐵新烏日站與高鐵台中站由通道相接",
+        "connected": true
+      }
     },
     {
       "id": "3350",
@@ -1714,7 +1763,14 @@
         "west-south"
       ],
       "status": "營運中",
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "彰化",
+        "code": "CHA",
+        "type": "需公車或其他交通工具",
+        "note": "高鐵彰化站與臺鐵田中站尚無營運中鐵路直接連通，請查詢地面接駁",
+        "connected": false
+      }
     },
     {
       "id": "3430",
@@ -1863,7 +1919,14 @@
         "west-south"
       ],
       "status": "營運中",
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "雲林",
+        "code": "YUL",
+        "type": "需公車或其他交通工具",
+        "note": "與臺鐵斗六站非同站，需搭公車或其他交通工具接駁",
+        "connected": false
+      }
     },
     {
       "id": "3480",
@@ -1944,7 +2007,14 @@
       "transfer": [
         "阿里山林業鐵路（另查接駁／班表）"
       ],
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "嘉義",
+        "code": "CHY",
+        "type": "非同站，需 BRT／公車",
+        "note": "高鐵嘉義站位於太保，臺鐵嘉義站位於嘉義市",
+        "connected": false
+      }
     },
     {
       "id": "4090",
@@ -2202,7 +2272,14 @@
       "transfer": [
         "高鐵臺南站"
       ],
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "台南",
+        "code": "TNN",
+        "type": "連通步行",
+        "note": "步行轉臺鐵沙崙線，經中洲往臺南市區",
+        "connected": true
+      }
     },
     {
       "id": "4290",
@@ -2287,7 +2364,14 @@
         "高鐵左營站",
         "高雄捷運紅線左營 R16"
       ],
-      "tags": []
+      "tags": [],
+      "thsr": {
+        "name": "左營",
+        "code": "ZUY",
+        "type": "連通步行",
+        "note": "可步行轉乘臺鐵新左營站",
+        "connected": true
+      }
     },
     {
       "id": "4350",
@@ -3737,5 +3821,6 @@
       "target": "預計2030年底",
       "source": "https://www.motc.gov.tw/ch/app/news_list/view?id=14&module=news&serno=fa2c9851-ddb6-4324-a19e-f26cdcbf359b"
     }
-  ]
+  ],
+  "highSpeedRailLinkedOn": "2026-10-31"
 }
