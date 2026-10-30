@@ -21,8 +21,14 @@ const store={
 function valid(x){return x&&/^[0-9A-Za-z.]{2,10}$/.test(x.code)&&typeof x.name==='string'&&x.name.length<60}
 let stored=store.read(WATCH_KEY,null);
 let stocks=Array.isArray(stored)?stored.filter(valid).slice(0,100):DEFAULTS.map(x=>({...x}));
-const existing=new Set(stocks.map(x=>x.code));
 if(!Array.isArray(stored)){store.write(WATCH_KEY,stocks)}
+// 一次性修正：舊版新增股票時分類預設為「AI伺服器／組裝」。
+// 使用者已指定 2408 南亞科應放在「半導體」；僅修正仍保留舊預設值的紀錄。
+const NANYA_FIX_KEY='tobyStocks2408SectorFixV1';
+if(!store.read(NANYA_FIX_KEY,false)){
+ const nanya=stocks.find(x=>x.code==='2408'&&x.name.includes('南亞科')&&x.sector==='AI伺服器／組裝');
+ if(nanya){nanya.sector='半導體';store.write(WATCH_KEY,stocks);store.write(NANYA_FIX_KEY,true)}
+}
 let journals=store.read(JOURNAL_KEY,{});
 if(!journals||typeof journals!=='object'||Array.isArray(journals))journals={};
 let prices={},indexData=null,quoteDate='',indexDate='',loading=false;
@@ -79,10 +85,10 @@ function renderWatch(){
  const quote='https://tw.stock.yahoo.com/quote/'+encodeURIComponent(s.code+'.TW');
  return '<tr><td><button type="button" class="stk-action '+(s.priority?'active':'')+'" data-priority="'+esc(s.code)+'" aria-label="'+(s.priority?'取消重點':'設為重點')+'">'+(s.priority?'★':'☆')+'</button></td>'+
  '<td><a class="stk-stockname" href="'+quote+'" target="_blank" rel="noopener noreferrer">'+esc(s.name)+'</a><div class="stk-small">'+esc(s.code)+'</div></td>'+
- '<td>'+esc(s.sector)+'</td><td><strong>'+fmt(d?.close)+'</strong></td><td class="'+changeCls+'">'+(d?signed(d.change)+' / '+signed(delta)+'%':'—')+'</td>'+
+ '<td><div>'+esc(s.sector)+'</div><button type="button" class="stk-action stk-sector-edit" data-edit="'+esc(s.code)+'" aria-label="編輯 '+esc(s.name)+' 的名稱與產業分類">✎ 編輯</button></td><td><strong>'+fmt(d?.close)+'</strong></td><td class="'+changeCls+'">'+(d?signed(d.change)+' / '+signed(delta)+'%':'—')+'</td>'+
  '<td>'+(d?.volume!==null&&d?.volume!==undefined?fmt(d.volume/1000,0):'—')+'</td>'+
  '<td><button type="button" class="stk-action" title="'+esc(s.note||'點擊編輯筆記')+'" data-note="'+esc(s.code)+'">✎ '+(s.note?'有筆記':'筆記')+'</button></td>'+
- '<td><button type="button" class="stk-action" data-remove="'+esc(s.code)+'">移除</button></td></tr>';
+ '<td><button type="button" class="stk-action" data-edit="'+esc(s.code)+'">編輯</button> <button type="button" class="stk-action" data-remove="'+esc(s.code)+'">移除</button></td></tr>';
  }).join('');
  $('stkWatchRows').innerHTML=rows||'<tr><td colspan="8" style="text-align:center;color:#7b8592;padding:23px">沒有符合條件的觀察股</td></tr>';
  $('stkPriorityCount').textContent=stocks.filter(x=>x.priority).length+' 檔重點觀察';
@@ -171,13 +177,56 @@ async function importBackup(file){
  }catch(e){$('stkSaveState').textContent='匯入失敗：'+(e?.message||'無法解析檔案')}
  finally{$('stkImport').value=''}
 }
+let editOriginalCode=null;
+function beginStockEdit(code){
+ const s=stocks.find(x=>x.code===code);if(!s)return;
+ editOriginalCode=code;
+ $('stkEditCode').value=s.code;
+ $('stkEditName').value=s.name;
+ const select=$('stkEditSector');
+ if(!Array.from(select.options).some(o=>o.value===s.sector))select.add(new Option(s.sector,s.sector));
+ select.value=s.sector;
+ $('stkEditNote').value=s.note||'';
+ $('stkEditToast').textContent='';
+ $('stkEditStatus').textContent='';
+ $('stkEditPanel').hidden=false;
+ $('stkEditPanel').scrollIntoView({behavior:'smooth',block:'nearest'});
+ $('stkEditName').focus({preventScroll:true});
+}
+function closeStockEdit(){
+ editOriginalCode=null;
+ $('stkEditPanel').hidden=true;
+}
+$('stkEditClose').addEventListener('click',closeStockEdit);
+$('stkEditForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ if(!editOriginalCode)return;
+ const s=stocks.find(x=>x.code===editOriginalCode);if(!s)return;
+ const code=$('stkEditCode').value.trim().toUpperCase();
+ const name=$('stkEditName').value.trim();
+ const sector=$('stkEditSector').value;
+ const note=$('stkEditNote').value.trim();
+ const notice=$('stkEditStatus');
+ if(!/^[0-9A-Z.]{2,10}$/.test(code)){notice.textContent='股票代碼須為 2–10 位英數字或小數點';return}
+ if(!name||name.length>59){notice.textContent='請輸入 1–59 字的股票名稱';return}
+ if(!sector){notice.textContent='請選擇產業分類';return}
+ if(code!==editOriginalCode&&stocks.some(x=>x.code===code)){notice.textContent='此股票代碼已在觀察清單，請改用其他代碼';return}
+ s.code=code;s.name=name;s.sector=sector;s.note=note.slice(0,600);
+ // 使用者日後手動調整南亞科分類時，不再套用舊分類的自動修正。
+ if(code==='2408')store.write(NANYA_FIX_KEY,true);
+ persistStocks();closeStockEdit();
+ filter='全部';search='';$('stkSearch').value='';
+ renderWatch();renderReport();
+ $('stkEditToast').textContent='✓ 已儲存 '+name+'（'+code+'）的股票資料與產業分類：'+sector;
+});
 $('stkWatchRows').addEventListener('click',e=>{
  const btn=e.target.closest('button');if(!btn)return;
- const c=btn.dataset.priority||btn.dataset.remove||btn.dataset.note;
+ const c=btn.dataset.priority||btn.dataset.remove||btn.dataset.note||btn.dataset.edit;
  const s=stocks.find(x=>x.code===c);if(!s)return;
+ if(btn.hasAttribute('data-edit')){beginStockEdit(c);return}
  if(btn.hasAttribute('data-priority'))s.priority=!s.priority;
  if(btn.hasAttribute('data-note')){const value=prompt(s.name+'（'+s.code+'）觀察筆記：\n例如：關注價位、財報日期、籌碼變化',s.note||'');if(value===null)return;s.note=value.slice(0,600)}
- if(btn.hasAttribute('data-remove')){if(!confirm('要把 '+s.name+'（'+s.code+'）從觀察股移除嗎？'))return;stocks=stocks.filter(x=>x.code!==c)}
+ if(btn.hasAttribute('data-remove')){if(!confirm('要把 '+s.name+'（'+s.code+'）從觀察股移除嗎？'))return;stocks=stocks.filter(x=>x.code!==c);if(editOriginalCode===c)closeStockEdit()}
  persistStocks();renderWatch();renderReport();
 });
 $('stkGroups').addEventListener('click',e=>{const b=e.target.closest('[data-group]');if(!b)return;filter=b.dataset.group;renderWatch()});
