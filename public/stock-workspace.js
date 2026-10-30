@@ -30,7 +30,7 @@ let filter='全部',search='',sort='original',priorityOnly=false;
 const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const dateKey=today();
 const prettyDate=x=>{if(/^\d{7}$/.test(String(x||'')))return (Number(x.slice(0,3))+1911)+'-'+x.slice(3,5)+'-'+x.slice(5,7);return String(x||'')};
-const num=x=>{const n=Number(String(x??'').replace(/,/g,'').trim());return Number.isFinite(n)?n:null};
+const num=x=>{if(x===null||x===undefined||String(x).trim()==='')return null;const n=Number(String(x).replace(/,/g,'').trim());return Number.isFinite(n)?n:null};
 const fmt=(x,d=2)=>x===null||x===undefined||!Number.isFinite(x)?'—':Number(x).toLocaleString('zh-TW',{maximumFractionDigits:d});
 const signed=x=>x==null||!Number.isFinite(x)?'—':(x>0?'+':'')+fmt(x,2);
 const dayNote=()=>journals[dateKey]||{};
