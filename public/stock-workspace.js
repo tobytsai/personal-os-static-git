@@ -31,6 +31,26 @@ if(!store.read(NANYA_FIX_KEY,false)){
 }
 let journals=store.read(JOURNAL_KEY,{});
 if(!journals||typeof journals!=='object'||Array.isArray(journals))journals={};
+const META_KEY='tobyStockCloudMetaV1';
+let syncMeta=store.read(META_KEY,{});
+if(!syncMeta||typeof syncMeta!=='object'||Array.isArray(syncMeta))syncMeta={};
+syncMeta.stockTimes=syncMeta.stockTimes||{};
+syncMeta.tombstones=syncMeta.tombstones||{};
+syncMeta.journalTimes=syncMeta.journalTimes||{};
+// 對舊版 localStorage 做非破壞性升級；預設股設 0，舊手機自己建立的清單設 1。
+const oldSaved=Array.isArray(stored);
+stocks.forEach(x=>{if(syncMeta.stockTimes[x.code]==null)syncMeta.stockTimes[x.code]=oldSaved?1:0});
+for(const [date,values] of Object.entries(journals)){
+ syncMeta.journalTimes[date]??={};
+ for(const field of Object.keys(values||{}))if(syncMeta.journalTimes[date][field]==null)syncMeta.journalTimes[date][field]=1;
+}
+store.write(META_KEY,syncMeta);
+let previousStockState=JSON.parse(JSON.stringify(stocks));
+let cloudDirtyListener=null;
+const cloudNotify=()=>{try{cloudDirtyListener?.()}catch(e){console.warn('cloud sync listener',e)}};
+const stampNow=()=>Date.now();
+function saveMeta(){store.write(META_KEY,syncMeta)}
+
 let prices={},indexData=null,quoteDate='',indexDate='',loading=false;
 let filter='全部',search='',sort='original',priorityOnly=false;
 const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
@@ -40,7 +60,21 @@ const num=x=>{if(x===null||x===undefined||String(x).trim()==='')return null;cons
 const fmt=(x,d=2)=>x===null||x===undefined||!Number.isFinite(x)?'—':Number(x).toLocaleString('zh-TW',{maximumFractionDigits:d});
 const signed=x=>x==null||!Number.isFinite(x)?'—':(x>0?'+':'')+fmt(x,2);
 const dayNote=()=>journals[dateKey]||{};
-function persistStocks(){store.write(WATCH_KEY,stocks)}
+function persistStocks(){
+ const old=new Map(previousStockState.map(x=>[x.code,x]));
+ const current=new Map(stocks.map(x=>[x.code,x]));
+ const timestamp=stampNow();
+ for(const [code,was] of old)if(!current.has(code)){syncMeta.tombstones[code]=timestamp;delete syncMeta.stockTimes[code]}
+ for(const [code,item] of current){
+  const prev=old.get(code);
+  if(!prev||JSON.stringify(prev)!==JSON.stringify(item)){
+   syncMeta.stockTimes[code]=timestamp;
+   delete syncMeta.tombstones[code];
+  }
+ }
+ const saved=store.write(WATCH_KEY,stocks);
+ if(saved){previousStockState=JSON.parse(JSON.stringify(stocks));saveMeta();cloudNotify()}
+}
 function status(){const d=new Date();const hour=Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',hour:'2-digit',hourCycle:'h23'}).format(d));const minute=Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',minute:'2-digit'}).format(d));const day=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',weekday:'short'}).format(d);const t=hour*60+minute;
 let name='非交易時段',details='休市日或交易時段以外';
 if(!['Sat','Sun'].includes(day)){
@@ -227,10 +261,18 @@ async function fetchTodayClose({manual=false}={}){
  }
 }
 function updateJournal(){
- const obj={...dayNote()};
- document.querySelectorAll('[data-stk-journal]').forEach(e=>{obj[e.dataset.stkJournal]=e.type==='checkbox'?e.checked:e.value});
- journals[dateKey]=obj;
- $('stkSaveState').textContent=store.write(JOURNAL_KEY,journals)?'當日紀錄已保存在此瀏覽器':'儲存失敗：請確認瀏覽器允許本機儲存';
+ const original={...dayNote()},obj={...original},timestamp=stampNow();
+ syncMeta.journalTimes[dateKey]??={};
+ document.querySelectorAll('[data-stk-journal]').forEach(e=>{
+  const key=e.dataset.stkJournal;
+  const value=e.type==='checkbox'?e.checked:e.value;
+  if(original[key]!==value)syncMeta.journalTimes[dateKey][key]=timestamp;
+  obj[key]=value;
+ });
+ journals[dateKey]=obj;saveMeta();
+ const ok=store.write(JOURNAL_KEY,journals);
+ $('stkSaveState').textContent=ok?'當日紀錄已保存在此瀏覽器':'儲存失敗：請確認瀏覽器允許本機儲存';
+ if(ok)cloudNotify();
 }
 function restoreJournal(){
  const obj=dayNote();$('stkDate').textContent=dateKey;
@@ -250,7 +292,7 @@ async function copyText(){
  catch{const box=$('stkAutoReport');box.value=value;box.focus();box.select();$('stkSaveState').textContent='已選取整理內容，可手動複製'}
 }
 function exportBackup(){
- const obj={exportedAt:new Date().toISOString(),watchlist:stocks,journals};
+ const obj={exportedAt:new Date().toISOString(),watchlist:stocks,journals,syncMeta};
  const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json;charset=utf-8'});
  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='股票啟動器備份-'+dateKey+'.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
@@ -260,8 +302,20 @@ async function importBackup(file){
   const j=JSON.parse(await file.text());
   if(!Array.isArray(j.watchlist)||!j.watchlist.every(valid)||typeof j.journals!=='object'||!j.journals||Array.isArray(j.journals))throw Error('不是有效的股票啟動器備份');
   if(!confirm('匯入將取代此瀏覽器現有的觀察股與每日筆記，確定繼續？'))return;
-  stocks=j.watchlist.slice(0,100);journals=j.journals;
-  persistStocks();store.write(JOURNAL_KEY,journals);restoreJournal();renderWatch();renderReport();
+  stocks=j.watchlist.slice(0,100);
+  persistStocks();
+  journals=j.journals;
+  const importedTimes=j.syncMeta?.journalTimes;
+  const timestamp=stampNow();
+  syncMeta.journalTimes=importedTimes&&typeof importedTimes==='object'?importedTimes:{};
+  for(const [date,record] of Object.entries(journals)){
+   syncMeta.journalTimes[date]??={};
+   for(const field of Object.keys(record||{})){
+    if(!syncMeta.journalTimes[date][field])syncMeta.journalTimes[date][field]=timestamp;
+   }
+  }
+  store.write(JOURNAL_KEY,journals);saveMeta();cloudNotify();
+  restoreJournal();renderWatch();renderReport();
   $('stkSaveState').textContent='已匯入 '+stocks.length+' 檔觀察股與分析筆記';
  }catch(e){$('stkSaveState').textContent='匯入失敗：'+(e?.message||'無法解析檔案')}
  finally{$('stkImport').value=''}
@@ -339,6 +393,27 @@ document.querySelectorAll('[data-stk-journal]').forEach(e=>e.addEventListener('i
 $('stkCopy').addEventListener('click',copyText);
 $('stkBackup').addEventListener('click',exportBackup);
 $('stkImport').addEventListener('change',e=>importBackup(e.target.files?.[0]));
+window.TobyStockCloudBridge={
+ getSnapshot:()=>({
+  stocks:JSON.parse(JSON.stringify(stocks)),
+  journals:JSON.parse(JSON.stringify(journals)),
+  meta:JSON.parse(JSON.stringify(syncMeta))
+ }),
+ applySnapshot:(snapshot)=>{
+  if(!snapshot||!Array.isArray(snapshot.stocks)||!snapshot.stocks.every(valid))throw Error('雲端股票格式不符合');
+  const nextMeta=snapshot.meta||{};
+  if(!nextMeta.stockTimes||!nextMeta.tombstones||!nextMeta.journalTimes)throw Error('雲端同步版本不相容');
+  stocks=snapshot.stocks.slice(0,100);
+  journals=snapshot.journals||{};
+  syncMeta=nextMeta;
+  store.write(WATCH_KEY,stocks);store.write(JOURNAL_KEY,journals);saveMeta();
+  previousStockState=JSON.parse(JSON.stringify(stocks));
+  filter='全部';search='';$('stkSearch').value='';
+  restoreJournal();renderWatch();renderReport();
+  if(editOriginalCode)closeStockEdit();
+ },
+ onLocalChange:(callback)=>{cloudDirtyListener=callback}
+};
 $('stkQuoteDate').textContent='尚未載入';
 restoreJournal();status();renderWatch();renderIndex();renderReport();loadQuotes();
 const taipeiHour=Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
