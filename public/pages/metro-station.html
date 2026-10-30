@@ -40,8 +40,9 @@ function build(){
  const found=allLines.flatMap(l=>l.stations.map(st=>({line:l,st,code:st.stationCode||st.code}))).find(x=>normalizeCode(x.code)===normalizeCode(requestedCode)&&(!requestedLine||x.line.id===requestedLine));
  if(!found){$("content").innerHTML='<div class="sheet empty">找不到這個車站。請返回交通啟動器重新選擇站點。</div>';return}
  const {line,st,code}=found;
- document.title=code+" "+st.name+"站｜交通啟動器";
- $("heading").innerHTML='<span class="code">'+esc(code)+'</span>'+esc(st.name)+'站';
+ const displayName=st.name.endsWith("站")?st.name:st.name+"站";
+ document.title=code+" "+displayName+"｜交通啟動器";
+ $("heading").innerHTML='<span class="code">'+esc(code)+'</span>'+esc(displayName);
  const sys=line.system||line.operator||"捷運";
  $("subheading").textContent=sys+" · "+line.name+(line.city?" · "+line.city:"");
  const direct=st.officialStationUrl||"";
