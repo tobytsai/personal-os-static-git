@@ -66,12 +66,13 @@ function exitCard(e,r,compact=false){
  const c=r.category==="國道高速公路"?"#2677a8":"#368969";
  const idx=r.exits.findIndex(x=>x.id===e.id);
  const around=[idx>0?{ex:r.exits[idx-1],label:"上一個"}:null,idx<r.exits.length-1?{ex:r.exits[idx+1],label:"下一個"}:null].filter(Boolean);
+ const links=(e.linkedRoadIds||[]).map(id=>{const other=db.routes.find(x=>x.id===id);return other?'<a href="./highways.html?route='+encodeURIComponent(id)+'&region='+encodeURIComponent(e.region)+'">🔁 轉往 '+esc(other.no)+'</a>':""}).join("");
  const neighbours=around.map(x=>'<button type="button" data-jump="'+esc(x.ex.id)+'">'+x.label+'：'+esc(x.ex.name)+'</button>').join("");
  const km=e.km!==null&&Number.isFinite(e.km)?e.km+"K":null;
  return '<article class="card" style="--line-color:'+c+'"><div class="stripe"></div><div class="card-main"><div class="top"><span class="road-badge">'+esc(r.no)+'</span><button class="star'+(fav?" active":"")+'" aria-pressed="'+fav+'" aria-label="'+(fav?"取消收藏":"加入收藏")+'" data-fav="'+esc(e.id)+'" type="button">'+(fav?"★":"☆")+'</button></div><h3>'+esc(e.name)+'</h3><div class="tags"><span class="tag">'+esc(e.region)+'</span><span class="tag">'+esc(e.type)+'</span>'+(km?'<span class="tag">里程 '+esc(km)+'</span>':'')+(e.county?'<span class="tag">'+esc(e.county)+'</span>':'')+'</div><p>'+esc(e.connection)+'</p>'+(e.notes?'<div class="quality">⚠️ '+esc(e.notes)+'</div>':"")+
  (!quality?'<div class="quality">⚠️ 候選交流道，尚未與公路局官方明細逐筆核對；請勿依此確認出口方向。</div>':"")+
  (compact?"":'<div class="adjacent">'+neighbours+'</div>')+
- '<div class="actions"><a class="primary" href="'+esc(mapUrl(r,e))+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">📍 查地圖</a><a href="'+esc(r.official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">官方資料</a><a href="'+esc(r.live)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">即時路況</a></div></div></article>';
+ '<div class="actions">'+links+'<a class="primary" href="'+esc(mapUrl(r,e))+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">📍 查地圖</a><a href="'+esc(r.official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">官方資料</a><a href="'+esc(r.live)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">即時路況</a></div></div></article>';
 }
 function selector(id,values,selected,key){
  $(id).innerHTML=values.map(v=>'<button type="button" class="chip'+(selected===v[0]?" active":"")+'" data-'+key+'="'+esc(v[0])+'">'+esc(v[1])+(v[2]!==undefined?'<span class="num">'+v[2]+'</span>':'')+'</button>').join("");
@@ -116,7 +117,7 @@ document.body.addEventListener("click",e=>{
  const star=e.target.closest("[data-fav]");if(star){const id=star.dataset.fav;favs=favs.includes(id)?favs.filter(x=>x!==id):[id,...favs];localStorage.setItem(favKey,JSON.stringify(favs));render();return}
  const link=e.target.closest("[data-open]");if(link){const id=link.dataset.open;recent=[id,...recent.filter(x=>x!==id)].slice(0,12);localStorage.setItem(recentKey,JSON.stringify(recent));renderShelves()}
 });
-fetch("../data/taiwan-expressway-interchanges.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+fetch("../data/taiwan-expressway-interchanges.json?v=20261031-3").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
  db=d;exitIndex=new Map(d.routes.flatMap(r=>r.exits.map(ex=>[ex.id,{r,ex}])));
  $("statsRoads").textContent=d.routes.length+" 組公路路線";$("statsExits").textContent=exitIndex.size+" 筆交流道／節點";
  const url=new URLSearchParams(location.search);
