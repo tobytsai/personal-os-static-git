@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#c78c18"><meta name="description" content="台灣高鐵全線12站：車站英文縮寫、各站官方連結、捷運臺鐵轉乘、旅遊介紹、搜尋收藏及最近開啟。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<title>台灣高鐵全線車站｜交通啟動器</title>
+<style>
+:root{--ink:#2e3748;--muted:#737d8e;--line:#e4e8ed;--gold:#a87516;--shadow:0 9px 26px #4b465d14}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);min-height:100vh;font:14px/1.65 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;background:radial-gradient(circle at 4% 4%,#fff0ba 0,transparent 30%),linear-gradient(145deg,#fff9ed,#f7f8fb 59%,#eaf5f0)}
+a{color:inherit}button,input{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #e2b249;outline-offset:2px}[hidden]{display:none!important}
+.wrap{width:min(1220px,100%);margin:auto;padding:20px 18px 70px}.back{display:inline-flex;text-decoration:none;background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:99px;font-weight:850;font-size:12px;margin-bottom:14px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(115deg,#4c3a20,#a97825 57%,#d4a849);color:#fff;border-radius:28px;padding:clamp(24px,5vw,44px);box-shadow:0 20px 40px #8b69253c}
+.hero:after{content:"";position:absolute;width:310px;height:310px;border:2px solid #ffffff35;border-radius:50%;right:-75px;bottom:-175px;pointer-events:none}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:.18em;opacity:.9}.hero h1{font-size:clamp(32px,5vw,50px);margin:9px 0;line-height:1.2}
+.hero p{line-height:1.85;margin:0;max-width:790px;color:#fff8e8}
+.stats,.quick{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.stats span{border:1px solid #ffffff70;background:#ffffff1b;border-radius:99px;padding:7px 12px;font-size:12px;font-weight:750}
+.quick{margin:17px 0}.quick a{border:1px solid var(--line);background:#fff;padding:10px 13px;text-decoration:none;color:#705423;border-radius:13px;font-size:12px;font-weight:850;box-shadow:var(--shadow)}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:17px 0 12px;align-items:center}.toolbar input{flex:1 1 230px;min-width:0;border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px 15px;box-shadow:var(--shadow);outline:none}.chip{border:1px solid #e4d6b2;background:#fff;color:#80652d;padding:9px 12px;border-radius:12px;font-size:12px;font-weight:850}.chip.active{background:#9d7125;color:#fff;border-color:#9d7125}
+.section{margin-top:22px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:12px}.section h2{margin:0;font-size:21px}.count{font-size:12px;color:var(--muted)}
+.route{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:19px 0 10px;padding:13px;background:#fff;border-radius:17px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.route button{display:flex;align-items:center;gap:6px;border:1px solid #e2d4b3;border-radius:10px;padding:7px 10px;background:#fff8e8;color:#825e20;font-size:11px;font-weight:850}
+.route button:hover{background:#fbe9c0}.route small{font-size:10px;color:#967f5c}.route .arrow{color:#b49a63;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:13px}.card{min-width:0;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}.card:hover{box-shadow:0 12px 35px #6f5f4d27}
+.bar{height:5px;background:linear-gradient(90deg,#c5943a,#f0c56b)}.cardbody{padding:16px;display:flex;flex-direction:column;flex:1}
+.cardhead{display:flex;gap:8px;justify-content:space-between;align-items:flex-start}.mark{display:flex;gap:7px;align-items:center}.code{font:900 13px/1.4 ui-monospace,Consolas,monospace;letter-spacing:.04em;padding:6px 9px;background:#8e6827;color:white;border-radius:9px}
+.order{font-size:10px;color:#89744d;background:#f8f0df;border-radius:9px;padding:6px 7px;font-weight:850}
+.star{background:#fffdf5;border:1px solid #eadfc4;border-radius:11px;width:35px;height:35px;color:#c6b79a;font-size:20px}
+.star.active{background:#fff1c6;color:#c28c24}.card h3{font-size:20px;margin:11px 0 2px}
+.sub{font-size:11px;color:#8b7c63;margin:0 0 12px;font-weight:750}
+.card p{font-size:12px;color:#657182;margin:0 0 11px;line-height:1.75}
+.transferbox{border-radius:12px;background:#f7faf9;border:1px solid #e0ece9;padding:9px 10px;margin:7px 0 10px;font-size:11px}
+.transferbox>strong{color:#38756e}.transfer{padding:7px 0;border-bottom:1px solid #e5eeea;display:flex;gap:6px;align-items:flex-start}
+.transfer:last-child{border:0}.type{flex:none;background:#dff2ea;color:#296b61;padding:3px 6px;border-radius:7px;font-size:10px;font-weight:850}
+.transfer.warn .type{background:#fff0d4;color:#946324}
+.transfer b{font-size:11px}.transfer small{display:block;color:#708b85;line-height:1.5;margin-top:2px;font-size:10px}
+.note{font-size:11px;color:#986d27;background:#fff6e2;padding:8px 10px;border-radius:10px;margin-top:auto;margin-bottom:10px}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}.actions a{border:1px solid #eedbb0;border-radius:10px;padding:7px 9px;text-decoration:none;color:#8f6829;background:#fff9ed;font-size:11px;font-weight:850}.actions a.primary{background:#a57826;color:#fff}
+.neighbor{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}.neighbor button{background:#f9f7f2;border:1px solid #e9e3d4;border-radius:8px;color:#9b7a40;font-weight:750;font-size:10px;padding:5px 7px}
+.empty{border:1px dashed #ddceae;border-radius:15px;padding:22px;background:#fff;color:var(--muted)}
+.notice{color:#798491;font-size:12px;line-height:1.85;margin:24px 0}
+.mini .cardbody{padding:12px}.mini .card h3{font-size:16px}.mini .transferbox{display:none}
+@media(max-width:580px){.wrap{padding:12px 11px 45px}.hero{padding:23px 20px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cardbody{padding:11px}.card h3{font-size:16px}.card p{font-size:11px}.transfer{flex-wrap:wrap}.transferbox{padding:7px}.type{font-size:9px}.actions a{font-size:10px;padding:6px}.note{font-size:10px}.order{display:none}.route{padding:10px}.route button{padding:6px;font-size:10px}.section h2{font-size:18px}}
+</style></head><body><main class="wrap">
+<a class="back" href="./transport.html">← 返回交通啟動器</a>
+<header class="hero"><div class="eyebrow">TAIWAN HIGH SPEED RAIL · STATION DIRECTORY</div><h1>🚄 台灣高鐵全線車站</h1><p>南港到左營 12 站逐站探索，附官方站點頁面、英文簡碼、周邊介紹、臺鐵／捷運接駁與重要步行提示。可依區域篩選、搜尋、收藏或點選相鄰站。</p>
+<div class="stats"><span id="statCount">12 站</span><span>北部／中部／南部</span><span>⭐ 收藏</span><span>🕘 最近開啟</span><span>🔁 跨運具轉乘</span></div></header>
+<nav class="quick" aria-label="高鐵常用入口">
+<a href="https://www.thsrc.com.tw/ArticleContent/a3b630bb-1066-4352-a1ef-58c7b4e8ef7c" target="_blank" rel="noopener">🕒 高鐵時刻與票價</a>
+<a href="https://irs.thsrc.com.tw/IMINT/" target="_blank" rel="noopener">🎫 高鐵線上訂票</a>
+<a href="https://www.thsrc.com.tw/ArticleContent/99e64de4-a5eb-4081-ad3c-c3596b4f307f" target="_blank" rel="noopener">🔁 官方轉乘資訊</a>
+<a href="https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip117/queryThsrTransferTra" target="_blank" rel="noopener">🚉 臺鐵／高鐵轉乘查詢</a>
+<a href="./tra-stations.html" >🗂️ 全臺臺鐵車站</a>
+</nav>
+<div class="toolbar" id="filterBar"><input type="search" id="search" aria-label="搜尋高鐵站" placeholder="搜尋站名、英文縮寫、縣市、臺鐵站碼、轉乘與景點…">
+<button class="chip active" type="button" data-region="全部">全部車站</button><button class="chip" type="button" data-region="北部">北部</button><button class="chip" type="button" data-region="中部">中部</button><button class="chip" type="button" data-region="南部">南部</button></div>
+<section class="section"><div class="section-head"><h2 id="heading">高鐵車站卡片</h2><span class="count" id="count"></span></div>
+<div class="route" id="routeStrip"><span class="count">高鐵全線（北 → 南）</span></div><div class="grid" id="cards"><div class="empty">高鐵車站資料讀取中…</div></div></section>
+<section id="favSection" class="section" hidden><div class="section-head"><h2>⭐ 收藏車站</h2><span class="count" id="favCount"></span></div><div id="favCards" class="grid mini"></div></section>
+<section id="recentSection" class="section" hidden><div class="section-head"><h2>🕘 最近開啟</h2><span class="count" id="recentCount"></span></div><div id="recentCards" class="grid mini"></div></section>
+<p class="notice">說明：01～12 僅為本頁北往南排列順序，不是高鐵官方車站編號；NAG、TPE 等為高鐵公司歷史文件使用的英文站名簡碼。臺鐵四位數站碼、捷運字母數字站碼及高鐵縮寫分別管理。本站不提供即時時刻或票價，請點擊高鐵官網確認。不同名與同名車站不一定相連，請留意卡片接駁標示。</p>
+</main>
+<script>
+const $=x=>document.getElementById(x),esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const favKey="toby-thsr-favorites",recentKey="toby-thsr-recent";
+const getArr=k=>{try{let v=JSON.parse(localStorage.getItem(k)||"[]");return Array.isArray(v)?v:[]}catch(e){return[]}};
+let items=[],selectedRegion="全部",q="",favs=getArr(favKey),recent=getArr(recentKey);
+const get=id=>items.find(x=>x.code===id);
+const mapUrl=s=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("高鐵"+s.name+"站 "+s.county);
+function card(s){
+ const fav=favs.includes(s.code),index=items.indexOf(s);
+ const transfers=s.transfer.map(t=>'<div class="transfer'+(/非同站|公車|其他交通工具|步行/.test(t.type)?" warn":"")+'"><span class="type">'+esc(t.type)+'</span><div><b>'+esc(t.mode)+'｜'+esc(t.name)+' '+esc(t.code)+'</b><small>'+esc(t.note)+'</small></div></div>').join("");
+ const near=(index>0?'<button type="button" data-visit="'+esc(items[index-1].code)+'">← '+esc(items[index-1].name)+'</button>':"")+(index<items.length-1?'<button type="button" data-visit="'+esc(items[index+1].code)+'">'+esc(items[index+1].name)+' →</button>':"");
+ return '<article class="card"><div class="bar"></div><div class="cardbody"><div class="cardhead"><div class="mark"><span class="code" title="英文站名簡碼">'+esc(s.code)+'</span><span class="order" title="本頁路線順序，非官方站碼">'+String(s.seq).padStart(2,"0")+' / 12</span></div><button class="star'+(fav?" active":"")+'" data-fav="'+esc(s.code)+'" type="button" aria-label="'+(fav?"取消收藏":"收藏車站")+'" aria-pressed="'+fav+'">'+(fav?"★":"☆")+'</button></div><h3>'+esc(s.name)+'站</h3><div class="sub">'+esc(s.county)+' · '+esc(s.district)+' · '+esc(s.english)+'</div><p>'+esc(s.intro)+'</p><div class="transferbox"><strong>🔁 交通轉乘提示</strong>'+transfers+'</div><p class="note">'+esc(s.notice)+'</p><div class="neighbor">'+near+'</div><div class="actions"><a href="'+esc(s.url)+'" target="_blank" rel="noopener" data-open="'+esc(s.code)+'" class="primary">🏛️ 高鐵官方車站</a><a href="'+esc(mapUrl(s))+'" target="_blank" rel="noopener" data-open="'+esc(s.code)+'">📍 地圖</a><a href="https://www.thsrc.com.tw/ArticleContent/a3b630bb-1066-4352-a1ef-58c7b4e8ef7c" target="_blank" rel="noopener" data-open="'+esc(s.code)+'">🕒 班次票價</a></div></div></article>';
+}
+function render(){
+ const term=q.trim().toLowerCase(),list=items.filter(s=>(selectedRegion==="全部"||s.region===selectedRegion)&&(!term||[s.name,s.code,s.county,s.district,s.english,s.intro,s.notice,...s.transfer.flatMap(x=>[x.name,x.code,x.note])].join(" ").toLowerCase().includes(term)));
+ $("cards").innerHTML=list.length?list.map(card).join(""):'<div class="empty">沒有符合條件的高鐵站，試著清除篩選。</div>';
+ $("count").textContent=list.length+" / "+items.length+" 站";
+ $("heading").textContent=selectedRegion==="全部"?"高鐵全線車站":selectedRegion+"高鐵站";
+ $("routeStrip").innerHTML='<span class="count">高鐵全線（北 → 南）</span>'+items.map(s=>'<button type="button" data-visit="'+esc(s.code)+'">'+esc(s.name)+' <small>'+esc(s.code)+'</small></button>').join('<span class="arrow">›</span>');
+ for(const [ids,section,host,cnt] of [[favs,"favSection","favCards","favCount"],[recent,"recentSection","recentCards","recentCount"]]){
+  const list=ids.map(get).filter(Boolean);$(section).hidden=!list.length;$(host).innerHTML=list.map(card).join("");$(cnt).textContent=list.length+" 站";
+ }
+ document.querySelectorAll("[data-region]").forEach(x=>x.classList.toggle("active",x.dataset.region===selectedRegion));
+}
+function show(code){const s=get(code);if(!s)return;selectedRegion=s.region;q=s.name;$("search").value=q;render();$("cards").scrollIntoView({behavior:"smooth",block:"start"})}
+$("filterBar").addEventListener("click",e=>{const b=e.target.closest("[data-region]");if(b){selectedRegion=b.dataset.region;render()}});
+$("search").addEventListener("input",e=>{q=e.target.value;render()});
+document.body.addEventListener("click",e=>{const b=e.target.closest("[data-fav]");if(b){const code=b.dataset.fav;favs=favs.includes(code)?favs.filter(x=>x!==code):[code,...favs];localStorage.setItem(favKey,JSON.stringify(favs));render();return}const nav=e.target.closest("[data-visit]");if(nav){show(nav.dataset.visit);return}const link=e.target.closest("[data-open]");if(link){const code=link.dataset.open;recent=[code,...recent.filter(x=>x!==code)].slice(0,12);localStorage.setItem(recentKey,JSON.stringify(recent));render()}});
+fetch("../data/thsr-stations.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{items=d.stations||[];$("statCount").textContent=items.length+" 站";render();const code=new URLSearchParams(location.search).get("code");if(code&&get(code))show(code)}).catch(e=>{$("cards").innerHTML='<div class="empty">資料讀取失敗，請重新整理頁面或開啟高鐵官網。'+esc(e.message)+'</div>'});
+</script><script src="../shared-nav.js" defer></script></body></html>
