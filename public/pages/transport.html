@@ -173,10 +173,15 @@ function transferCardHints(st,line){
 }
 function stationCard(st,line){
  const id=itemId(st),c=esc(line.color);
- const code=st.stationCode?'<span class="station-code" aria-label="捷運車站編號 '+esc(st.stationCode)+'">'+esc(st.stationCode)+'</span>':st.traCode?'<span class="station-code tra-station-code" aria-label="臺鐵車站代碼 '+esc(st.traCode)+'">'+esc(st.traCode)+'</span>':"";
+ const code=st.stationCode?'<span class="station-code" aria-label="捷運站碼 '+esc(st.stationCode)+'">'+esc(st.stationCode)+'</span>':st.traCode?'<span class="station-code tra-station-code" aria-label="臺鐵車站代碼 '+esc(st.traCode)+'">'+esc(st.traCode)+'</span>':"";
  const hints=transferCardHints(st,line);
- const official=st.traCode?'https://www.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewStaInfo/'+encodeURIComponent(st.traCode):(line.stationCodeSource||line.source);
- return '<article class="card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="id-chip">'+esc(line.name)+'</span>'+favoriteBtn(id)+'</div><h3>'+code+esc(st.name)+'站</h3><p>'+esc(st.intro)+'</p>'+hints+'<div class="links"><a class="primary" target="_blank" rel="noopener noreferrer" href="'+esc(mapLink(line,st))+'" data-open="'+esc(id)+'">📍 地圖</a>'+(st.traCode?'<a href="./tra-stations.html?code='+encodeURIComponent(st.traCode)+'" data-open="'+esc(id)+'">🚉 全臺車站卡</a>':'')+'<a href="'+esc(official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">'+(st.traCode?'官方站務資料':st.stationCode?'站碼／官方資訊':'官方路線')+'</a></div></div></article>';
+ const local="./metro-station.html?line="+encodeURIComponent(line.id)+"&code="+encodeURIComponent(st.stationCode||"");
+ const official=st.officialStationUrl?'<a href="'+esc(st.officialStationUrl)+'" target="_blank" rel="noopener noreferrer">'+(st.officialLinkType==="diagram"?"官方本站配置圖":"官方本站資訊")+'</a>':"";
+ const directory=st.stationCode&&!st.officialStationUrl&&(st.officialDirectoryUrl||line.source)?'<a href="'+esc(st.officialDirectoryUrl||line.source)+'" target="_blank" rel="noopener noreferrer">官方車站一覽</a>':"";
+ const officialTra=st.traCode?'https://www.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewStaInfo/'+encodeURIComponent(st.traCode):"";
+ return '<article class="card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="id-chip">'+esc(line.name)+'</span>'+favoriteBtn(id)+'</div><h3>'+code+esc(st.name)+'站</h3><p>'+esc(st.intro)+'</p>'+hints+'<div class="links"><a class="primary" target="_blank" rel="noopener noreferrer" href="'+esc(mapLink(line,st))+'" data-open="'+esc(id)+'">📍 地圖</a>'+
+ (st.traCode?'<a href="./tra-stations.html?code='+encodeURIComponent(st.traCode)+'" data-open="'+esc(id)+'">臺鐵本站詳情</a><a href="'+esc(officialTra)+'" target="_blank" rel="noopener noreferrer">臺鐵官方本站</a>':'<a href="'+esc(local)+'" data-open="'+esc(id)+'">站碼／本站資訊</a>'+official+directory)+
+ '</div></div></article>';
 }
 function documentCard(d){return '<article class="card doc"><div class="doc-icon" aria-hidden="true">'+esc(d.icon)+'</div><div class="heading"><div><h3>'+esc(d.name)+'</h3><div class="meta">'+esc(d.meta)+'</div></div>'+favoriteBtn(d.id)+'</div><p>'+esc(d.desc)+'</p><div class="warn">'+esc(d.date)+'</div><div class="links"><a class="primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(d.id)+'">'+esc(d.button)+' ↗</a></div></article>'}
 function activeNorth(){return (selectedRoot==="rail"||selectedRoot==="metro")&&selectedRegion==="北部"}
@@ -248,10 +253,10 @@ function renderRegional(){
  const project=st.projectCode?'<span class="reg-alt">工程代碼 '+esc(st.projectCode)+'</span>':"";
  const transfers=st.transfers.length?'<div class="regional-transfer">🔁 '+st.transfers.map(t=>esc(t.system+" "+t.name+"("+t.code+") · "+t.type)).join("；")+'</div>':"";
  const url=fullHref+"&code="+encodeURIComponent(st.code);
- return '<article class="card regional-station-card" style="--line-color:'+esc(l.color)+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(st.code)+'</span>'+project+'</div><h3>'+esc(st.name)+'站</h3><div class="meta">'+esc(l.name)+'</div><p>'+esc(st.intro)+'</p>'+transfers+'<div class="links"><a class="primary" href="'+esc(url)+'">車站詳情</a><a href="'+esc(l.official)+'" target="_blank" rel="noopener noreferrer">官方資訊</a></div></div></article>';
+ return '<article class="card regional-station-card" style="--line-color:'+esc(l.color)+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(st.code)+'</span>'+project+'</div><h3>'+esc(st.name)+'站</h3><div class="meta">'+esc(l.name)+'</div><p>'+esc(st.intro)+'</p>'+transfers+'<div class="links"><a class="primary" href="'+esc(url)+'">車站詳情</a><a href="'+esc(st.officialStationUrl||l.official)+'" target="_blank" rel="noopener noreferrer">'+(st.officialStationUrl?'官方本站資訊':'官方路線一覽')+'</a></div></div></article>';
  }).join("")||'<div class="empty">找不到符合的車站。可以清除篩選。</div>';
 }
-fetch("../data/metro-taichung-kaohsiung.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{regionalLines=d.lines||[];if(activeRegional())refreshMain()}).catch(e=>{$("regionalGrid").innerHTML='<div class="empty">車站資料暫時無法讀取。可由「完整路線」進入專頁。</div>'});
+fetch("../data/metro-taichung-kaohsiung.json?v=20261031-official-links").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{regionalLines=d.lines||[];if(activeRegional())refreshMain()}).catch(e=>{$("regionalGrid").innerHTML='<div class="empty">車站資料暫時無法讀取。可由「完整路線」進入專頁。</div>'});
 $("regionalRouteTabs").addEventListener("click",e=>{const b=e.target.closest("[data-reg-route]");if(b){selectedRegionalRoute=b.dataset.regRoute;renderRegional()}});
 function routeMeta(){return new Map((traNation?.routes||[]).map(r=>[r.id,r]))}
 function renderTRA(){
@@ -351,7 +356,7 @@ document.body.addEventListener("click",e=>{
   renderShelves();
  }
 });
-fetch("../data/transport-north-stations.json?v=20261030-tracodes").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];if(activeNorth())refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
+fetch("../data/transport-north-stations.json?v=20261031-official-links").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];if(activeNorth())refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
 renderMainInitial();
 function renderMainInitial(){$("documentGrid").innerHTML=documents.map(documentCard).join("");renderShelves()}
 </script><script src="../shared-nav.js" defer></script>
