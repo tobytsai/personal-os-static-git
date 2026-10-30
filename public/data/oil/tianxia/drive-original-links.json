@@ -8929,7 +8929,34 @@
     ],
     "method": "Airtable live record, attachment ID, file name and size, category and dimensions matched to existing Drive original; copied cloud-to-cloud; destination filename, JPEG MIME, size and not_shared verified. Independent visual content comparison not performed.",
     "date": "2026-10-31",
-    "airtableVerified": 50
+    "airtableVerified": 50,
+    "selectionWarnings": [
+      {
+        "code": "B18-5060",
+        "reason": "source_code_disagrees_with_Airtable_record_title",
+        "airtableTitle": "B19-5060-傳統靜物"
+      },
+      {
+        "code": "B21-5060",
+        "reason": "source_original_size_differs_from_Airtable_attachment",
+        "sourceFilename": "B21.jpg",
+        "sourceSizeBytes": 47384,
+        "airtableFilename": "B21-5060.jpg",
+        "airtableAttachmentSizeBytes": 498562
+      },
+      {
+        "code": "B26-5060",
+        "reason": "source_code_disagrees_with_Airtable_record_title",
+        "airtableTitle": "B25-5060-傳統靜物"
+      },
+      {
+        "code": "B27-5060",
+        "reason": "source_code_disagrees_with_Airtable_record_title",
+        "airtableTitle": "B26-5060-傳統靜物"
+      }
+    ],
+    "skippedCandidates": 4,
+    "failedCopies": 0
   },
   "byAttachment": {
     "rec8f11RLvQeiwQbE:attEXyCRniCyCPXyD": {
@@ -11092,7 +11119,9 @@
     "failed": 0,
     "source": "Airtable live metadata and existing Google Drive original JPGs",
     "note": "30×40: 28 verified originals; 50×60: 22 verified originals; no new downloads; independent visual review not performed",
-    "remainingEstimate": 4293
+    "remainingEstimate": 4293,
+    "skippedCandidates": 4,
+    "issuesNote": "4 candidates were skipped before copying because Airtable record title or original file size differed; not counted as failed copies or successful backups."
   },
   "pendingBatch": null
 }
