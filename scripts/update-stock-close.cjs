@@ -231,6 +231,19 @@ async function main(){
   }
   const index=parseDailyIndex(daily)||(query[1].status==='fulfilled'?indexRow(query[1].value):null);
   const flows=query[3].status==='fulfilled'?flowsFromOfficial(query[3].value):null;
+  if(!index&&daily?.tables){
+    console.log('Index schema diagnostic', JSON.stringify(daily.tables.slice(0,12).map(t=>({
+      title:t.title||'',fields:(t.fields||[]).slice(0,14),
+      first:(t.data||[])[0]?.slice(0,12)
+    }))).slice(0,12000));
+  }
+  if(!flows&&query[3].status==='fulfilled'){
+    const obj=query[3].value;
+    console.log('Institutional schema diagnostic',JSON.stringify({
+      stat:obj?.stat,date:obj?.date,title:obj?.title,
+      fields:obj?.fields,head:obj?.data?.slice(0,7)
+    }).slice(0,6000));
+  }
   const old=fs.existsSync(LATEST)?JSON.parse(fs.readFileSync(LATEST,'utf8')):null;
   if(old?.tradeDate>requested) {
     console.log('Repository has newer quote date '+old.tradeDate+'; refusing overwrite.');
