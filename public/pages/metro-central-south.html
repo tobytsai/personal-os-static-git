@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#32895b"><meta name="description" content="臺中捷運綠線及高雄捷運紅線橘線環狀輕軌：全站號、周邊景點、臺鐵高鐵轉乘、路線相鄰站、收藏及最近開啟。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg"><title>臺中・高雄捷運｜交通啟動器</title>
+<style>
+:root{--ink:#254153;--muted:#718695;--line:#dce7ea;--panel:#fff;--shadow:0 9px 25px #193f5114;--green:#288a6a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font:14px/1.65 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;background:radial-gradient(circle at 95% 5%,#cfefe0 0,transparent 30%),linear-gradient(145deg,#f3faf6,#f8fbfc 60%,#fff8ec)}
+a{color:inherit}button,input{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #72b8a7;outline-offset:2px}[hidden]{display:none!important}
+.wrap{max-width:1230px;margin:auto;padding:20px 18px 70px}.back{display:inline-flex;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-weight:850;font-size:12px;margin-bottom:16px}
+.hero{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(115deg,#184d66,#278b76 55%,#d0a454);padding:clamp(24px,5vw,42px);color:#fff;box-shadow:0 18px 39px #154d6730}
+.hero:before{content:"";position:absolute;width:290px;height:290px;border:2px solid #ffffff3e;border-radius:50%;right:-130px;top:-190px}
+.hero .eyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;opacity:.95}.hero h1{margin:10px 0 8px;font-size:clamp(32px,5vw,48px);line-height:1.2}.hero p{line-height:1.8;max-width:780px;color:#e9fffa;margin:0}
+.hero .stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.stats span{background:#ffffff20;border:1px solid #ffffff70;border-radius:99px;padding:7px 11px;font-size:11px;font-weight:800}
+.shortcut{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.shortcut a{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 12px;font-size:12px;font-weight:850;color:#367e76;text-decoration:none}
+.box{border:1px solid var(--line);background:#fff;border-radius:21px;padding:15px;box-shadow:var(--shadow);margin:13px 0}
+.titleline{display:flex;align-items:center;justify-content:space-between;gap:9px}.titleline h2{font-size:18px;margin:0}.count{font-size:12px;color:var(--muted)}
+.filters{display:grid;grid-template-columns:minmax(180px,.9fr) minmax(230px,1.5fr);gap:11px;margin-top:12px}.filterpane{background:#f8fbfa;border:1px solid var(--line);border-radius:14px;padding:12px}
+.filterpane label{display:block;font-size:11px;font-weight:850;color:#6d8e8d;margin-bottom:9px}.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{border:1px solid #d0e5e0;border-radius:11px;background:#fff;padding:8px 12px;font-size:12px;color:#4d7a72;font-weight:800}.chip.active{color:#fff;border-color:#2f8a73;background:#28836c}
+.chip .dot{display:inline-block;width:10px;height:10px;background:var(--c,#2f8a73);border-radius:50%;margin-right:5px}
+.searchline{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.searchline input{min-width:0;flex:1 1 260px;border-radius:14px;border:1px solid var(--line);background:#fff;padding:13px 15px;outline:none;box-shadow:var(--shadow)}.searchline button{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px 13px;font-size:12px;font-weight:850;color:#448276}
+.section{margin-top:20px}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}.sectionhead h2{font-size:20px;margin:0}
+.route-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:21px 0 12px}.route-row h3{margin:0;font-size:17px}.route-row small{font-size:11px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.station{display:flex;flex-direction:column;min-width:0;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.station:hover{box-shadow:0 13px 32px #1c4e5a20}.topline{height:5px;background:var(--line-color,#33895f)}.cardbody{padding:15px;flex:1;display:flex;flex-direction:column}
+.cardhead{display:flex;align-items:flex-start;justify-content:space-between;gap:7px}.codes{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.code{font:900 13px/1.3 ui-monospace,Consolas,monospace;background:var(--line-color);color:#fff;padding:8px 9px;border-radius:10px}.project-code{border-radius:9px;border:1px solid #d5e2e0;color:#537b73;font-size:10px;padding:5px 7px;font-weight:800;background:#f4faf7}
+.star{width:34px;height:34px;background:#f9fbfa;border:1px solid var(--line);border-radius:11px;font-size:20px;color:#9caeb0;flex:none}.star.active{background:#fff7d8;color:#db9e20}
+.station h3{font-size:18px;margin:11px 0 2px;line-height:1.4}.meta{color:#758b95;font-size:11px;font-weight:800;margin-bottom:10px}
+.station p{font-size:12px;color:#617788;line-height:1.75;margin:0 0 12px;flex:1}
+.transfer-box{border:1px solid #d4e9df;background:#f4fbf7;border-radius:12px;padding:9px 10px;margin-bottom:10px}
+.transfer-box>strong{font-size:11px;color:#377e69}
+.transfer-item{margin:7px 0 3px;padding:7px 0;border-top:1px solid #d9eae4;display:flex;gap:7px;align-items:flex-start;font-size:11px}
+.transfer-tag{font-size:10px;background:#d7eee2;color:#236f58;border-radius:8px;padding:4px 6px;font-weight:850;flex:none}
+.transfer-item.walk .transfer-tag{background:#fff1da;color:#91652e}
+.transfer-item b{font-weight:850}.transfer-item small{display:block;font-size:10px;color:#68857c;line-height:1.6;margin-top:2px}
+.jump{border:1px solid #b4d4c4;border-radius:8px;padding:4px 6px;font-size:10px;font-weight:800;background:#fff;color:#24795e;flex:none}
+.nearby{margin:4px 0 10px;display:flex;gap:6px;flex-wrap:wrap}.nearby button{border:1px solid #d1e6de;background:#f8fcfa;color:#447c6b;padding:5px 7px;font-size:10px;font-weight:850;border-radius:8px}
+.cardlinks{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}.cardlinks a{border:1px solid #d1e5df;text-decoration:none;background:#f1faf5;color:#357e65;border-radius:10px;padding:7px 10px;font-size:11px;font-weight:850}.cardlinks a.main{background:#28836c;border-color:#28836c;color:#fff}
+.empty{border:1px dashed #b9d1cd;background:#fff;border-radius:16px;padding:24px;font-size:13px;color:var(--muted)}
+.note{margin:25px 0;color:#77868e;font-size:12px;line-height:1.85}
+.mini .station h3{font-size:15px}.mini .cardbody{padding:11px}.mini .transfer-box{display:none}
+@media(max-width:700px){.filters{grid-template-columns:1fr}.filterpane{padding:10px}}
+@media(max-width:570px){.wrap{padding:12px 11px 45px}.hero{padding:24px 19px}.box{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cardbody{padding:11px}.station h3{font-size:15px}.station p,.meta{font-size:11px}.transfer-item{flex-wrap:wrap}.transfer-item>div{flex:1 1 calc(100% - 70px)}.jump{margin-left:auto}.code{font-size:11px;padding:6px}.project-code{font-size:9px}.sectionhead h2{font-size:18px}}
+</style></head><body>
+<main class="wrap"><a class="back" href="./transport.html">← 返回交通啟動器</a>
+<header class="hero"><div class="eyebrow">TAICHUNG & KAOHSIUNG METRO STATION DIRECTORY</div><h1>🚇 臺中・高雄捷運</h1><p>臺中綠線、高雄紅線與橘線、環狀輕軌逐站導覽。包含車站編號、相鄰站、官方資訊與臺鐵／高鐵及捷運轉乘提醒，並支援站名搜尋、收藏和最近開啟。</p>
+<div class="stats"><span id="stats">路線資料讀取中…</span><span>📍 臺中／高雄</span><span>🔁 轉乘</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div></header>
+<nav class="shortcut" aria-label="官方捷運連結"><a href="https://www.tmrt.com.tw/metro-life/station-information" target="_blank" rel="noopener">臺中捷運官方車站</a><a href="https://www.tmrt.com.tw/metro-life/first-last-train" target="_blank" rel="noopener">臺中首末班車</a><a href="https://www.krtc.com.tw/Guide/guide_map" target="_blank" rel="noopener">高雄捷運官方路網</a><a href="https://www.krtc.com.tw/Guide/station_guide" target="_blank" rel="noopener">高雄紅橘線各站</a><a href="https://www.krtc.com.tw/KLRT/station_guide" target="_blank" rel="noopener">高雄輕軌各站</a></nav>
+<section class="box"><div class="titleline"><h2>🗂️ 分類導覽</h2><span class="count">城市 → 路線 → 車站</span></div><div class="filters">
+<div class="filterpane"><label>城市</label><div class="chips" id="cityChips"><button class="chip active" type="button">全部</button></div></div>
+<div class="filterpane"><label>捷運路線</label><div class="chips" id="routeChips"></div></div>
+</div></section>
+<div class="searchline"><input id="search" type="search" placeholder="搜尋站名、站碼（如 103a、R16、O5、C21A）、景點、臺鐵高鐵轉乘…" aria-label="搜尋捷運車站"><button id="clear" type="button">清除條件</button></div>
+<section class="section" id="results"><div class="sectionhead"><h2 id="heading">捷運車站卡片</h2><span id="count" class="count">資料讀取中</span></div><div id="groups"></div></section>
+<section class="section" id="favSection" hidden><div class="sectionhead"><h2>⭐ 常用收藏</h2><span id="favCount" class="count"></span></div><div class="grid mini" id="favGrid"></div></section>
+<section class="section" id="recentSection" hidden><div class="sectionhead"><h2>🕘 最近開啟</h2><span id="recentCount" class="count"></span></div><div class="grid mini" id="recentGrid"></div></section>
+<p class="note">資料整理至 2026/10/31。臺中捷運以營運站碼（103a、103～119）為主，另附 G0、G3～G17 工程代號供對照。高雄捷運 RK1 岡山站已通車、環狀輕軌為環線。尚未通車的臺中藍線、高雄黃線及延伸段未納入營運車站。站間與轉乘方式為靜態導覽，請以當日官方營運公告及現場標示為準。收藏及最近開啟僅保存在本機瀏覽器。</p>
+</main>
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+let lines=[],city="全部",route="全部",search="",favKey="toby-regional-metro-favorites",recentKey="toby-regional-metro-recent";
+function stored(key){try{const x=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(x)?x:[]}catch(e){return []}}
+let fav=stored(favKey),recent=stored(recentKey);
+const stationMap=()=>new Map(lines.flatMap(l=>l.stations.map(st=>[st.id,{line:l,station:st}])));
+function mapURL(s,l){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(l.city+" "+l.system+" "+s.name+"站")}
+function directLink(t){if(t.line){const line=lines.find(l=>l.id===t.line);return line?'?city='+encodeURIComponent(line.city==="臺中市"?"taichung":"kaohsiung")+'&code='+encodeURIComponent(t.code):""}return t.link||""}
+function card(st,l){
+ const star=fav.includes(st.id);
+ const aliases=st.projectCode?'<span class="project-code" title="原工程代號">工程：'+esc(st.projectCode)+'</span>':"";
+ const transfers=(st.transfers||[]).map(t=>'<div class="transfer-item'+(/步行|公車|站外/.test(t.type)?" walk":"")+'"><span class="transfer-tag">'+esc(t.type)+'</span><div><b>'+esc(t.system)+' '+esc(t.name)+'（'+esc(t.code)+'）</b><small>'+esc(t.note)+'</small></div>'+(directLink(t)?'<button class="jump" type="button" data-jump="'+esc(t.line? t.line+"-"+t.code:"")+'" data-link="'+esc(!t.line?t.link:"")+'">查看</button>':"")+'</div>').join("");
+ const near=(st.nearby||[]).map(o=>'<button data-jump="'+esc(l.id+"-"+o.code)+'" type="button">'+esc(o.direction)+'：'+esc(o.code)+' '+esc(o.name)+'</button>').join("");
+ return '<article class="station" style="--line-color:'+esc(l.color)+'"><div class="topline"></div><div class="cardbody"><div class="cardhead"><div class="codes"><span class="code" title="營運車站編號">'+esc(st.code)+'</span>'+aliases+'</div><button type="button" class="star'+(star?" active":"")+'" data-fav="'+esc(st.id)+'" aria-label="'+(star?"取消收藏":"加入收藏")+'" aria-pressed="'+star+'">'+(star?"★":"☆")+'</button></div><h3>'+esc(st.name)+'站</h3><div class="meta">'+esc(l.city)+'｜'+esc(l.system)+' '+esc(l.name)+'</div><p>'+esc(st.intro)+'</p>'+(transfers?'<div class="transfer-box"><strong>🔁 轉乘提示</strong>'+transfers+'</div>':'')+'<div class="nearby">'+near+'</div><div class="cardlinks"><a class="main" href="'+esc(mapURL(st,l))+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(st.id)+'">📍 地圖</a><a href="'+esc(l.official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(st.id)+'">🏛️ 官方車站</a></div></div></article>';
+}
+function regionLines(){return lines.filter(l=>city==="全部"||l.city===city)}
+function renderFilters(){
+ $("cityChips").innerHTML=["全部","臺中市","高雄市"].map(c=>'<button type="button" class="chip'+(c===city?" active":"")+'" data-city="'+esc(c)+'">'+esc(c==="全部"?"兩地全部":c==="臺中市"?"臺中捷運":"高雄捷運")+'</button>').join("");
+ $("routeChips").innerHTML='<button type="button" class="chip'+(route==="全部"?" active":"")+'" data-route="全部">全部路線</button>'+regionLines().map(l=>'<button type="button" class="chip'+(route===l.id?" active":"")+'" data-route="'+esc(l.id)+'"><span class="dot" style="--c:'+esc(l.color)+'"></span>'+esc(l.name)+'（'+l.stations.length+'站）</button>').join("");
+}
+function render(){
+ if(!lines.length)return;
+ const q=search.toLocaleLowerCase();const matching=regionLines().filter(l=>route==="全部"||l.id===route).map(l=>({line:l,stations:l.stations.filter(st=>!q||[st.code,st.projectCode,st.name,st.intro,l.name,l.city,...st.transfers.flatMap(x=>[x.system,x.code,x.name])].join(" ").toLocaleLowerCase().includes(q))})).filter(x=>x.stations.length);
+ const count=matching.reduce((n,x)=>n+x.stations.length,0);
+ $("heading").textContent=city==="全部"?"臺中・高雄捷運車站":city+" 捷運車站";
+ $("count").textContent=count+" 筆路線車站卡片";
+ $("groups").innerHTML=matching.length?matching.map(({line,stations})=>'<section><div class="route-row"><h3><span style="color:'+esc(line.color)+'">●</span> '+esc(line.system)+' · '+esc(line.name)+'</h3><small>'+stations.length+' 站</small></div><div class="grid">'+stations.map(st=>card(st,line)).join("")+'</div></section>').join(""):'<div class="empty">找不到符合條件的站點；可清除篩選或輸入其他站碼。</div>';
+ const map=stationMap();for(const [set,section,grid,countEl] of [[fav,"favSection","favGrid","favCount"],[recent,"recentSection","recentGrid","recentCount"]]){
+  const list=set.map(id=>map.get(id)).filter(Boolean);$(section).hidden=!list.length;$(grid).innerHTML=list.map(x=>card(x.station,x.line)).join("");$(countEl).textContent=list.length+" 站";
+ }
+ renderFilters();
+}
+function show(id){
+ const item=stationMap().get(id);if(!item)return;
+ city=item.line.city;route=item.line.id;search=item.station.code;$("search").value=search;
+ render();$("results").scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("cityChips").addEventListener("click",e=>{const b=e.target.closest("[data-city]");if(b){city=b.dataset.city;route="全部";search="";$("search").value="";render()}});
+$("routeChips").addEventListener("click",e=>{const b=e.target.closest("[data-route]");if(b){route=b.dataset.route;search="";$("search").value="";render()}});
+$("search").addEventListener("input",e=>{search=e.target.value.trim();render()});
+$("clear").addEventListener("click",()=>{city="全部";route="全部";search="";$("search").value="";render()});
+document.body.addEventListener("click",e=>{
+ const j=e.target.closest("[data-jump]");if(j){if(j.dataset.link){location.href=j.dataset.link;return}show(j.dataset.jump);return}
+ const f=e.target.closest("[data-fav]");if(f){const id=f.dataset.fav;fav=fav.includes(id)?fav.filter(x=>x!==id):[id,...fav];localStorage.setItem(favKey,JSON.stringify(fav));render();return}
+ const link=e.target.closest("[data-open]");if(link){const id=link.dataset.open;recent=[id,...recent.filter(x=>x!==id)].slice(0,12);localStorage.setItem(recentKey,JSON.stringify(recent));render()}
+});
+fetch("../data/metro-taichung-kaohsiung.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+ lines=d.lines||[];$("stats").textContent=lines.reduce((sum,l)=>sum+l.stations.length,0)+" 筆車站 · "+lines.length+" 條路線";
+ const url=new URLSearchParams(location.search);
+ const c=url.get("city");
+ if(c==="taichung")city="臺中市";if(c==="kaohsiung")city="高雄市";
+ render();const code=url.get("code");if(code){const target=lines.flatMap(l=>l.stations).find(s=>s.code.toLowerCase()===code.toLowerCase()&&(city==="全部"||lines.find(l=>l.stations.includes(s))?.city===city));if(target)show(target.id)}
+}).catch(e=>$("groups").innerHTML='<div class="empty">捷運資料暫時無法載入，請重新整理或開啟官方車站頁面。'+esc(e.message)+'</div>');
+</script><script src="../shared-nav.js" defer></script></body></html>
