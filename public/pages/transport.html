@@ -19,7 +19,8 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.badges span{font-size:11px;padding:7px 10px;border:1px solid #ffffff65;border-radius:99px;background:#ffffff16;font-weight:750}
 .hero-station-link{font-size:12px;padding:7px 12px;border:1px solid #ffffff70;border-radius:99px;background:#fff;color:#1b668e;text-decoration:none;font-weight:850}
  .national-link{display:inline-flex;align-items:center;text-decoration:none;background:#e4f4f4!important;color:#1c697c!important}
- .metro-regional-banner{background:linear-gradient(112deg,#e8f6ed,#f6fcf9);border-color:#baddcb}.metro-regional-banner .tra-national-icon{background:#d1edda}.metro-regional-banner strong{color:#267956}
+ .road-banner{background:linear-gradient(115deg,#e8f4fb,#ecf9f1);border-color:#b9dce4}.road-banner .tra-national-icon{background:#daedf4}.road-banner strong{color:#256c86}.road-card .station-code{background:var(--line-color,#2b7a9f)}.road-alert{color:#855e2d;background:#fff8e9;border-radius:9px;padding:7px 9px;font-size:10px;margin:2px 0 10px}.road-location{font-size:11px;color:#618098;margin:3px 0 10px}.road-summary-note{font-size:11px;color:#648099;margin:8px 0 12px}
+.metro-regional-banner{background:linear-gradient(112deg,#e8f6ed,#f6fcf9);border-color:#baddcb}.metro-regional-banner .tra-national-icon{background:#d1edda}.metro-regional-banner strong{color:#267956}
 .regional-station-card .station-code{background:var(--line-color,#328863)}.reg-alt{font-size:10px;background:#edf8f3;padding:4px 7px;border-radius:8px;color:#346b59;border:1px solid #d2e9db}.regional-transfer{border:1px solid #d9ede5;background:#f2faf6;padding:8px 9px;border-radius:10px;margin:5px 0 12px;font-size:11px;color:#477366}.regional-station-card .meta{margin:5px 0 8px}.regional-station-card p{margin-bottom:8px}.metro-route-tabs{margin:0 0 14px}.metro-route-tabs .choice{background:#fff}
 .hsr-national{background:linear-gradient(112deg,#fff4db,#fffcf0);border-color:#e5cc99}.hsr-national .tra-national-icon{background:#ffe7a7}.hsr-national strong{color:#92671c}
 .hsr-card .station-code{background:#a77a2d}.hsr-card .card-body h3{margin-top:3px}.hsr-hint{padding:8px 9px;margin:5px 0 12px;background:#fff7e9;border-radius:10px;color:#866526;font-size:11px}.hsr-transfer{padding:7px 9px;border:1px solid #deece8;border-radius:10px;background:#f5faf8;font-size:11px;color:#526b67;margin-bottom:10px}
@@ -103,12 +104,12 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 <section class="tree" aria-label="交通三級分類">
 <div class="tree-head"><h2>🗂️ 三層分類導覽</h2><span class="tip">先選交通類別，再選地區與路線</span></div>
 <div class="path">
-<div class="step"><div class="step-label">第一層｜交通類別</div><div class="choice-list"><button class="choice active" type="button" data-root="rail" aria-pressed="true">🚆 鐵路</button><button class="choice" type="button" data-root="tra" aria-pressed="false">🗃️ 台鐵資料</button><button class="choice" type="button" data-root="hsr" aria-pressed="false">🚄 高鐵</button><button class="choice" type="button" data-root="metro" aria-pressed="false">🚇 捷運／輕軌</button><a class="choice national-link" href="./tra-stations.html" aria-label="開啟全臺臺鐵車站資料庫">🚉 全臺臺鐵車站 ↗</a><a class="choice national-link" href="./thsr-stations.html" aria-label="開啟台灣高鐵車站資料庫">🚄 高鐵全線12站 ↗</a><a class="choice national-link" href="./metro-central-south.html?city=taichung" aria-label="開啟臺中捷運資料庫">🚈 臺中綠線18站 ↗</a><a class="choice national-link" href="./metro-central-south.html?city=kaohsiung" aria-label="開啟高雄捷運與輕軌資料庫">🚇 高雄捷運輕軌 ↗</a></div></div>
+<div class="step"><div class="step-label">第一層｜交通類別</div><div class="choice-list"><button class="choice active" type="button" data-root="rail" aria-pressed="true">🚆 鐵路</button><button class="choice" type="button" data-root="tra" aria-pressed="false">🗃️ 台鐵資料</button><button class="choice" type="button" data-root="hsr" aria-pressed="false">🚄 高鐵</button><button class="choice" type="button" data-root="metro" aria-pressed="false">🚇 捷運／輕軌</button><button class="choice" type="button" data-root="road" aria-pressed="false">🛣️ 公路</button><a class="choice national-link" href="./tra-stations.html" aria-label="開啟全臺臺鐵車站資料庫">🚉 全臺臺鐵車站 ↗</a><a class="choice national-link" href="./thsr-stations.html" aria-label="開啟台灣高鐵車站資料庫">🚄 高鐵全線12站 ↗</a><a class="choice national-link" href="./metro-central-south.html?city=taichung" aria-label="開啟臺中捷運資料庫">🚈 臺中綠線18站 ↗</a><a class="choice national-link" href="./metro-central-south.html?city=kaohsiung" aria-label="開啟高雄捷運與輕軌資料庫">🚇 高雄捷運輕軌 ↗</a><a class="choice national-link" href="./highways.html">🛣️ 全臺高速／快速道路 ↗</a></div></div>
 <div class="step"><div class="step-label">第二層｜地區</div><div class="region-buttons" id="regionButtons"><button class="region-choice active" type="button" data-region="北部" aria-pressed="true">📍 北部</button><button class="region-choice" type="button" data-region="中部" aria-pressed="false">📍 中部</button><button class="region-choice" type="button" data-region="南部" aria-pressed="false">📍 南部</button><button class="region-choice" type="button" data-region="東部" aria-pressed="false">📍 東部</button></div><div class="region-summary" id="regionName">目前：北部</div></div>
-<div class="step"><div class="step-label">第三層｜路線</div><div id="routeFilter"><div class="group-filter" id="operatorChips"></div><div class="route-list" id="routeChips"><span class="count">路線資料讀取中…</span></div></div><div class="route-note" id="documentName" hidden>🗃️ 原始路網圖、列車動態及七堵時刻表保存於臺鐵資料分類</div><div class="path-value" id="highSpeedName" hidden>🚄 高鐵全線｜南港 → 左營</div><div class="regional-route-filter" id="regionalRouteFilter" hidden><div class="chips metro-route-tabs" id="regionalRouteTabs"></div></div><div class="regional-route-filter" id="hsrRouteFilter" hidden><span class="route-note">🚄 台灣高鐵｜南港 → 左營（依第二層地區顯示車站）</span></div><div class="regional-route-filter" id="traRouteFilter" hidden><div class="route-list" id="traRouteChips"></div></div><div class="route-note" id="eastRouteNote" hidden>🚉 東部臺鐵｜北迴線、花東線、南迴線</div></div>
+<div class="step"><div class="step-label">第三層｜路線</div><div id="routeFilter"><div class="group-filter" id="operatorChips"></div><div class="route-list" id="routeChips"><span class="count">路線資料讀取中…</span></div></div><div class="route-note" id="documentName" hidden>🗃️ 原始路網圖、列車動態及七堵時刻表保存於臺鐵資料分類</div><div class="path-value" id="highSpeedName" hidden>🚄 高鐵全線｜南港 → 左營</div><div class="regional-route-filter" id="regionalRouteFilter" hidden><div class="chips metro-route-tabs" id="regionalRouteTabs"></div></div><div class="regional-route-filter" id="hsrRouteFilter" hidden><span class="route-note">🚄 台灣高鐵｜南港 → 左營（依第二層地區顯示車站）</span></div><div class="regional-route-filter" id="traRouteFilter" hidden><div class="route-list" id="traRouteChips"></div></div><div class="regional-route-filter" id="roadRouteFilter" hidden><div id="roadTypeChips" class="chips metro-route-tabs"></div><div id="roadRouteChips" class="route-list"></div></div><div class="route-note" id="eastRouteNote" hidden>🚉 東部臺鐵｜北迴線、花東線、南迴線</div></div>
 </div></section>
 <div class="toolbar" id="searchTools"><input class="search" id="search" type="search" placeholder="搜尋捷運站碼（如 BL12）、站名、路線或景點…" aria-label="搜尋車站"><button type="button" class="soft" id="clearFilters">清除篩選</button></div>
-<section id="northSection" class="section">
+<section id="roadSection" class="section" hidden><div class="section-head"><h2 id="roadHeading">🛣️ 國道與快速道路交流道</h2><span class="count" id="roadCount"></span></div><a class="tra-national road-banner" id="roadFullLink" href="./highways.html"><div class="tra-national-icon">🛣️</div><div><strong>全臺國道／快速道路資料庫</strong><span>路線、交流道、里程、出口地圖與即時路況</span></div><b>完整公路資料庫 →</b></a><div class="links" style="margin:0 0 12px"><a class="primary" href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener">國道 1968 路況</a><a href="https://168.thb.gov.tw/" target="_blank" rel="noopener">省道 168 路況</a></div><div class="grid" id="roadGrid"><div class="empty">公路交流道資料讀取中…</div></div><div class="more" id="roadMoreWrap" hidden><button type="button" id="roadMore">顯示更多交流道</button></div></section><section id="northSection" class="section">
 <div class="section-head"><h2 id="listHeading">北部鐵路｜車站卡片</h2><span class="count" id="listCount"></span></div>
 <div class="links" style="margin-bottom:13px"><a class="primary" href="https://drive.google.com/file/d/15iy1g5mAhldz3mSBnNfcYS6UFAeMSBYS/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" data-doc-open="metro-map">🗺️ 查看原拍攝路網圖</a><a href="https://web.metro.taipei/pages2026/WebRouteMap" target="_blank" rel="noopener noreferrer">官方捷運路網</a><a href="https://www.railway.gov.tw/tra-tip-web/tip" target="_blank" rel="noopener noreferrer">臺鐵官方資訊</a></div>
 <div id="stationGroups"></div>
@@ -359,5 +360,79 @@ document.body.addEventListener("click",e=>{
 fetch("../data/transport-north-stations.json?v=20261031-verified115").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];if(activeNorth())refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
 renderMainInitial();
 function renderMainInitial(){$("documentGrid").innerHTML=documents.map(documentCard).join("");renderShelves()}
-</script><script src="../shared-nav.js" defer></script>
+</script><script src="../shared-nav.js" defer>
+/* Road mode is independent: leaves the existing rail/metro/high-speed filters intact. */
+let highwayDataset=null,highwayType="全部",highwayRoute="全部",highwayVisible=30;
+function highwayChoices(){
+ return(highwayDataset?.routes||[]).filter(r=>(highwayType==="全部"||r.category===highwayType)&&r.exits.some(x=>x.region===selectedRegion));
+}
+function highwayDraw(){
+ if(!highwayDataset)return;
+ const routes=highwayChoices();
+ if(highwayRoute!=="全部"&&!routes.some(x=>x.id===highwayRoute))highwayRoute="全部";
+ $("roadTypeChips").innerHTML='<button type="button" class="choice'+(highwayType==="全部"?" active":"")+'" data-road-type="全部">全部道路</button>'+
+ ['國道高速公路','省道快速道路'].map(t=>'<button type="button" class="choice'+(highwayType===t?" active":"")+'" data-road-type="'+esc(t)+'">'+esc(t)+'</button>').join("");
+ $("roadRouteChips").innerHTML='<button type="button" class="route'+(highwayRoute==="全部"?" active":"")+'" data-road-route="全部"><span class="dot"></span>全部路線 '+routes.length+' 條</button>'+
+ routes.map(r=>'<button type="button" class="route'+(highwayRoute===r.id?" active":"")+'" data-road-route="'+esc(r.id)+'"><span class="dot"></span>'+esc(r.no)+' '+esc(r.name)+' <small>'+r.exits.filter(ex=>ex.region===selectedRegion).length+'筆</small></button>').join("");
+ const term=$("search").value.toLowerCase().trim();
+ const list=routes.filter(r=>highwayRoute==="全部"||r.id===highwayRoute).flatMap(r=>r.exits.filter(ex=>ex.region===selectedRegion&&(!term||[r.no,r.name,ex.name,ex.km===null?"":ex.km+"K",ex.county||"",ex.connection].join(" ").toLowerCase().includes(term))).map(ex=>({r,ex})));
+ $("roadHeading").textContent="🛣️ "+selectedRegion+" · 高快速道路";
+ $("roadCount").textContent=list.length+" 筆交流道／端點";
+ $("stats").textContent=selectedRegion+" · "+highwayDataset.routes.reduce((n,r)=>n+r.exits.filter(x=>x.region===selectedRegion).length,0)+" 筆公路節點";
+ $("roadFullLink").href="./highways.html?region="+encodeURIComponent(selectedRegion)+(highwayType==="全部"?"":"&class="+encodeURIComponent(highwayType))+(highwayRoute==="全部"?"":"&route="+encodeURIComponent(highwayRoute));
+ $("roadGrid").innerHTML=list.slice(0,highwayVisible).map(({r,ex})=>{
+  const c=r.category==="國道高速公路"?"#2676a3":"#3b916d";
+  const review=ex.verified!=="exchangeTable"?'<div class="road-alert">⚠️ 候選交流道待核對，里程與匝道方向以官方為準</div>':ex.notes?'<div class="road-alert">'+esc(ex.notes)+'</div>':"";
+  return '<article class="card road-card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(r.no)+'</span><span class="id-chip">'+(ex.km===null?"待核對里程":esc(ex.km+"K"))+'</span></div><h3>'+esc(ex.name)+'</h3><div class="road-location">'+esc(ex.region)+' · '+esc(ex.type)+(ex.county?" · "+esc(ex.county):"")+'</div><p>'+esc(ex.connection)+'</p>'+review+'<div class="links"><a class="primary" href="./highways.html?route='+encodeURIComponent(r.id)+'&exit='+encodeURIComponent(ex.id)+'">交流道詳情</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(ex.mapQuery||r.no+" "+ex.name)+'" target="_blank" rel="noopener noreferrer">地圖</a><a href="'+esc(r.live)+'" target="_blank" rel="noopener noreferrer">路況</a></div></div></article>';
+ }).join("")||'<div class="empty">這個地區沒有符合條件的交流道。可以改選另一個地區或路線。</div>';
+ $("roadMoreWrap").hidden=highwayVisible>=list.length;
+ $("roadMore").textContent="顯示更多交流道（尚有 "+Math.max(0,list.length-highwayVisible)+" 筆）";
+}
+function highwayActivate(){
+ $("roadSection").hidden=false;
+ $("roadRouteFilter").hidden=false;
+ for(const id of ["northSection","regionalSection","traDirectorySection","traSection","hsrSection","routeFilter","regionalRouteFilter","traRouteFilter","hsrRouteFilter","documentName","eastRouteNote"])$(id).hidden=true;
+ $("regionName").textContent="目前："+selectedRegion+" · 高快速道路";
+ $("search").placeholder="搜尋國道、台61、交流道、65K、連接道路…";
+ document.querySelectorAll("[data-root]").forEach(b=>{b.classList.toggle("active",b.dataset.root==="road");b.setAttribute("aria-pressed",String(b.dataset.root==="road"))});
+ document.querySelectorAll("[data-region]").forEach(b=>{b.disabled=false;b.classList.toggle("active",b.dataset.region===selectedRegion);b.setAttribute("aria-pressed",String(b.dataset.region===selectedRegion))});
+ $("stats").textContent=selectedRegion+" · 公路資料讀取中…";
+ highwayDraw();
+}
+document.querySelector(".tree").addEventListener("click",e=>{
+ const root=e.target.closest("[data-root]");
+ if(root&&root.dataset.root==="road"){
+  e.stopImmediatePropagation();
+  selectedRoot="road";highwayType="全部";highwayRoute="全部";highwayVisible=30;
+  $("search").value="";
+  highwayActivate();
+  return;
+ }
+ if(root&&root.dataset.root!=="road"){
+  $("roadSection").hidden=true;
+  $("roadRouteFilter").hidden=true;
+  return;
+ }
+ const region=e.target.closest("[data-region]");
+ if(region&&selectedRoot==="road"){
+  e.stopImmediatePropagation();
+  selectedRegion=region.dataset.region;
+  highwayType="全部";highwayRoute="全部";highwayVisible=30;$("search").value="";
+  highwayActivate();
+ }
+},true);
+$("search").addEventListener("input",e=>{
+ if(selectedRoot!=="road")return;
+ e.stopImmediatePropagation();highwayVisible=30;highwayDraw();
+},true);
+$("clearFilters").addEventListener("click",e=>{
+ if(selectedRoot!=="road")return;
+ e.stopImmediatePropagation();highwayType="全部";highwayRoute="全部";highwayVisible=30;$("search").value="";highwayDraw();
+},true);
+$("roadTypeChips").addEventListener("click",e=>{const b=e.target.closest("[data-road-type]");if(b){highwayType=b.dataset.roadType;highwayRoute="全部";highwayVisible=30;highwayDraw()}});
+$("roadRouteChips").addEventListener("click",e=>{const b=e.target.closest("[data-road-route]");if(b){highwayRoute=b.dataset.roadRoute;highwayVisible=30;highwayDraw()}});
+$("roadMore").addEventListener("click",()=>{highwayVisible+=30;highwayDraw()});
+fetch("../data/taiwan-expressway-interchanges.json?v=20261031-2").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{highwayDataset=d;if(selectedRoot==="road")highwayDraw()}).catch(()=>{$("roadGrid").innerHTML='<div class="empty">資料暫時無法載入，請使用完整公路資料庫或官方路況入口。</div>'});
+
+</script>
 </body></html>
