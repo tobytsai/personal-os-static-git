@@ -381,8 +381,9 @@ function highwayDraw(){
  $("roadFullLink").href="./highways.html?region="+encodeURIComponent(selectedRegion)+(highwayType==="全部"?"":"&class="+encodeURIComponent(highwayType))+(highwayRoute==="全部"?"":"&route="+encodeURIComponent(highwayRoute));
  $("roadGrid").innerHTML=list.slice(0,highwayVisible).map(({r,ex})=>{
   const c=r.category==="國道高速公路"?"#2676a3":"#3b916d";
+  const linked=(ex.linkedRoadIds||[]).map(id=>{const target=highwayDataset.routes.find(x=>x.id===id);return target?'<a href="./highways.html?route='+encodeURIComponent(id)+'">🔁 '+esc(target.no)+'</a>':""}).join("");
   const review=ex.verified!=="exchangeTable"?'<div class="road-alert">⚠️ 候選交流道待核對，里程與匝道方向以官方為準</div>':ex.notes?'<div class="road-alert">'+esc(ex.notes)+'</div>':"";
-  return '<article class="card road-card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(r.no)+'</span><span class="id-chip">'+(ex.km===null?"待核對里程":esc(ex.km+"K"))+'</span></div><h3>'+esc(ex.name)+'</h3><div class="road-location">'+esc(ex.region)+' · '+esc(ex.type)+(ex.county?" · "+esc(ex.county):"")+'</div><p>'+esc(ex.connection)+'</p>'+review+'<div class="links"><a class="primary" href="./highways.html?route='+encodeURIComponent(r.id)+'&exit='+encodeURIComponent(ex.id)+'">交流道詳情</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(ex.mapQuery||r.no+" "+ex.name)+'" target="_blank" rel="noopener noreferrer">地圖</a><a href="'+esc(r.live)+'" target="_blank" rel="noopener noreferrer">路況</a></div></div></article>';
+  return '<article class="card road-card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="station-code">'+esc(r.no)+'</span><span class="id-chip">'+(ex.km===null?"待核對里程":esc(ex.km+"K"))+'</span></div><h3>'+esc(ex.name)+'</h3><div class="road-location">'+esc(ex.region)+' · '+esc(ex.type)+(ex.county?" · "+esc(ex.county):"")+'</div><p>'+esc(ex.connection)+'</p>'+review+'<div class="links">'+linked+'<a class="primary" href="./highways.html?route='+encodeURIComponent(r.id)+'&exit='+encodeURIComponent(ex.id)+'">交流道詳情</a><a href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(ex.mapQuery||r.no+" "+ex.name)+'" target="_blank" rel="noopener noreferrer">地圖</a><a href="'+esc(r.live)+'" target="_blank" rel="noopener noreferrer">路況</a></div></div></article>';
  }).join("")||'<div class="empty">這個地區沒有符合條件的交流道。可以改選另一個地區或路線。</div>';
  $("roadMoreWrap").hidden=highwayVisible>=list.length;
  $("roadMore").textContent="顯示更多交流道（尚有 "+Math.max(0,list.length-highwayVisible)+" 筆）";
@@ -431,7 +432,6 @@ $("clearFilters").addEventListener("click",e=>{
 $("roadTypeChips").addEventListener("click",e=>{const b=e.target.closest("[data-road-type]");if(b){highwayType=b.dataset.roadType;highwayRoute="全部";highwayVisible=30;highwayDraw()}});
 $("roadRouteChips").addEventListener("click",e=>{const b=e.target.closest("[data-road-route]");if(b){highwayRoute=b.dataset.roadRoute;highwayVisible=30;highwayDraw()}});
 $("roadMore").addEventListener("click",()=>{highwayVisible+=30;highwayDraw()});
-fetch("../data/taiwan-expressway-interchanges.json?v=20261031-2").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{highwayDataset=d;if(selectedRoot==="road")highwayDraw()}).catch(()=>{$("roadGrid").innerHTML='<div class="empty">資料暫時無法載入，請使用完整公路資料庫或官方路況入口。</div>'});
-</script><script src="../shared-nav.js" defer>
-</script>
+fetch("../data/taiwan-expressway-interchanges.json?v=20261031-3").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{highwayDataset=d;if(selectedRoot==="road")highwayDraw()}).catch(()=>{$("roadGrid").innerHTML='<div class="empty">資料暫時無法載入，請使用完整公路資料庫或官方路況入口。</div>'});
+</script><script src="../shared-nav.js" defer></script>
 </body></html>
