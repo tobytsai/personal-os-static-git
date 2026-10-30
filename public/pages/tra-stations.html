@@ -166,7 +166,7 @@ document.body.addEventListener("click",e=>{
  const link=e.target.closest("[data-open]");if(link){const id=link.dataset.open;recent=[id,...recent.filter(x=>x!==id)].slice(0,12);localStorage.setItem(recentKey,JSON.stringify(recent));renderShelves()}
 });
 fetch(dataUrl).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
- database=d;byCode=new Map(d.stations.map(st=>[st.code,st]));routes=new Map(d.routes.map(l=>[l.id,l]));const stationParam=new URLSearchParams(location.search).get("code");if(stationParam&&byCode.has(stationParam)){const target=byCode.get(stationParam);selectedRegion=target.region;selectedCounty=target.county;query=stationParam;$("search").value=stationParam;}
+ database=d;byCode=new Map(d.stations.map(st=>[st.code,st]));routes=new Map(d.routes.map(l=>[l.id,l]));const urlParams=new URLSearchParams(location.search);const requestedRegion=urlParams.get("region");if(groupOrder.includes(requestedRegion))selectedRegion=requestedRegion;const stationParam=urlParams.get("code");if(stationParam&&byCode.has(stationParam)){const target=byCode.get(stationParam);selectedRegion=target.region;selectedCounty=target.county;query=stationParam;$("search").value=stationParam;}
  $("statsStation").textContent=d.stations.length+" 個營運車站";
  $("statsRoutes").textContent=d.routes.length+" 組路線";
  $("statsCounties").textContent=new Set(d.stations.map(s=>s.county)).size+" 個縣市";
