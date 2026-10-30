@@ -59,6 +59,21 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 .doc .warn{margin:4px 0 12px;font-size:11px;color:#935a26;font-weight:750}
 .empty{border:1px dashed #b8cde1;background:#fff;border-radius:17px;padding:22px;color:var(--muted);font-size:13px}
 .more{text-align:center;margin:18px 0}.more button{background:#fff;border:1px solid #bdd5e9;border-radius:99px;padding:11px 22px;font-weight:850;color:#2b719e}
+.transfer-details{margin:0 0 12px;border:1px solid #d9e6f1;border-radius:13px;background:#f4f9fe;overflow:hidden}
+.transfer-details summary{cursor:pointer;padding:9px 10px;font-size:11px;line-height:1.55;font-weight:800;color:#266a98;list-style-position:inside}
+.transfer-details[open] summary{border-bottom:1px solid #d9e6f1;background:#e9f5fd}
+.transfer-expand{padding:9px 10px 11px;max-height:350px;overflow-y:auto}
+.transfer-title{display:block;font-size:11px;color:#3b627f;margin:5px 0 7px}
+.transfer-list{padding:0;margin:0 0 9px;list-style:none}
+.transfer-row{display:flex;align-items:flex-start;gap:7px;min-width:0;border-top:1px solid #e3eaf1;padding:9px 0;font-size:11px;line-height:1.55}
+.transfer-row>div{min-width:0;flex:1;overflow-wrap:anywhere}
+.transfer-row b{font-weight:850;color:#2d526e}
+.transfer-note{color:#698196;font-size:10px;line-height:1.5;margin-top:3px}
+.line-mini{flex:none;display:inline-flex;justify-content:center;align-items:center;min-width:37px;border-radius:7px;padding:3px 5px;background:var(--transfer-color);color:#fff;font-weight:850;font-size:10px;line-height:1.4;white-space:nowrap}
+.jump-station{flex:none;align-self:flex-start;border:1px solid #bdd5e6;color:#22638f;background:#fff;border-radius:8px;font-size:10px;font-weight:750;padding:5px 6px}
+.jump-station:hover{background:#e0f2ff}
+.transfer-foot{font-size:10px;color:#667f94;padding-top:5px;line-height:1.6}
+@media(max-width:570px){.transfer-row{flex-wrap:wrap}.transfer-row>div{flex:1 1 calc(100% - 60px)}.jump-station{margin-left:auto}.transfer-details summary{font-size:10px;padding:8px}}
 .mini .card-body{padding:12px}.mini .card p{font-size:11px}.mini .card h3{font-size:14px}
 .note{margin:24px 0 0;font-size:12px;color:#687f92;line-height:1.85}
 .note a{color:var(--blue)}
@@ -69,7 +84,7 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 <a class="back" href="../index.html">← 返回 Toby 首頁</a>
 <header class="hero"><div class="eyebrow">PERSONAL OS · RAIL NETWORK</div><h1>🚆 交通啟動器</h1>
 <p>大臺北鐵路及捷運路網逐站探索：鐵路 → 北部 → 路線 → 車站卡片。整合車站介紹、轉乘資訊、附近地標、列車動態與原始時刻表照片。</p>
-<div class="badges"><span>🗺️ 北部路網</span><span id="stats">讀取車站資料中…</span><span>🚉 官方捷運站碼</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div></header>
+<div class="badges"><span>🗺️ 北部路網</span><span id="stats">讀取車站資料中…</span><span>🚉 官方捷運站碼</span><span>🔁 轉乘提示</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div></header>
 <section class="tree" aria-label="交通三級分類">
 <div class="tree-head"><h2>🗂️ 三層分類導覽</h2><span class="tip">先選交通類別，再選地區與路線</span></div>
 <div class="path">
@@ -89,7 +104,7 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 </section>
 <section class="section" id="favoritesSection" hidden><div class="section-head"><h2>⭐ 我的收藏</h2><span class="count" id="favCount"></span></div><div class="grid mini" id="favoriteCards"></div></section>
 <section class="section" id="recentsSection" hidden><div class="section-head"><h2>🕘 最近開啟</h2><span class="count" id="recentCount"></span></div><div class="grid mini" id="recentCards"></div></section>
-<p class="note">資料整理日期：2026/10/30。捷運站碼依各營運單位資料核對；臺鐵站別不套用捷運編號。相片為現場拍攝紀錄；捷運及鐵路部分路線有支線，各車站卡片排序不等同所有班次的實際行經順序。七堵站時刻表照片分別標示 2026/10/02、2026/10/03 修訂，並非動態更新；實際車次、停靠、通車與營運資訊請依官方網站為準。地圖及車站周邊資訊為旅遊探索輔助，轉乘請以站內標示確認。收藏與最近開啟保存在此瀏覽器。</p>
+<p class="note">資料整理日期：2026/10/30。轉乘站數是路網靜態資料估算，支線請確認列車終點及實際營運；不同系統轉乘有時需出站步行。捷運站碼依各營運單位資料核對；臺鐵站別不套用捷運編號。相片為現場拍攝紀錄；捷運及鐵路部分路線有支線，各車站卡片排序不等同所有班次的實際行經順序。七堵站時刻表照片分別標示 2026/10/02、2026/10/03 修訂，並非動態更新；實際車次、停靠、通車與營運資訊請依官方網站為準。地圖及車站周邊資訊為旅遊探索輔助，轉乘請以站內標示確認。收藏與最近開啟保存在此瀏覽器。</p>
 </main>
 <script>
 const $=id=>document.getElementById(id);
@@ -108,16 +123,45 @@ function itemId(st){return "station-"+st.id}
 function findItem(id){if(documents.some(d=>d.id===id))return {kind:"doc",item:documents.find(d=>d.id===id)};for(const l of allLines){const s=l.stations.find(st=>itemId(st)===id);if(s)return{kind:"station",item:s,line:l}}return null}
 function favoriteBtn(id){const active=favs.includes(id);return '<button type="button" class="star'+(active?" on":"")+'" data-fav="'+esc(id)+'" aria-pressed="'+active+'" aria-label="'+(active?"取消收藏":"加入收藏")+'">'+(active?"★":"☆")+'</button>'}
 function mapLink(line,st){const q=(line.operator==="臺鐵"?"臺鐵":line.operator==="桃園捷運"?"機場捷運":"捷運")+st.name+"站"+((line.id==="TRA-E"||line.id==="TRA-N")?" "+line.name:"");return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q)}
+function transferLabel(type){
+ return ({inside:"站內轉乘",outdoor:"站外步行轉乘",walk:"步行連通",shared:"共構轉乘"})[type]||"依現場指標轉乘";
+}
+function transferCardHints(st,line){
+ const direct=Array.isArray(st.transferDirect)?st.transferDirect:[];
+ const nearby=Array.isArray(st.transferNearby)?st.transferNearby:[];
+ if(!direct.length&&!nearby.length)return "";
+ const directList=direct.map(t=>'<li class="transfer-row">'+
+  '<span class="line-mini" style="--transfer-color:'+esc((allLines.find(l=>l.id===t.toLine)||{}).color||"#588aac")+'">'+esc(t.toCode)+'</span>'+
+  '<div><b>'+esc(t.toName)+'</b> · '+esc(t.toStation)+'站<div class="transfer-note">'+esc(transferLabel(t.type))+
+  (t.note?' · '+esc(t.note):'')+'</div></div>'+
+  '<button type="button" class="jump-station" data-jump-line="'+esc(t.toLine)+'" data-jump-code="'+esc(t.toCode)+'" aria-label="查看 '+esc(t.toStation)+'站 '+esc(t.toCode)+'">查看站點</button></li>').join("");
+ const nearbyList=nearby.map(t=>'<li class="transfer-row">'+
+  '<span class="line-mini" style="--transfer-color:'+esc(line.color)+'">'+esc(t.viaCode)+'</span>'+
+  '<div><b>搭 '+t.stops+' 站到 '+esc(t.viaStation)+'站</b>，轉 '+esc(t.toName)+
+  '<div class="transfer-note">先經 '+esc(t.firstStation)+'（'+esc(t.firstCode)+'）方向的路段'+
+  (t.type==="outdoor"?" · 到站後需出站步行":t.type==="walk"?" · 到站後步行換線":"")+'</div></div>'+
+  '<button type="button" class="jump-station" data-jump-line="'+esc(line.id)+'" data-jump-code="'+esc(t.viaCode)+'" aria-label="查看 '+esc(t.viaStation)+'站 '+esc(t.viaCode)+'">查看換線站</button></li>').join("");
+ let summary="";
+ if(direct.length){
+  summary='🔁 本站可轉乘 '+direct.map(t=>t.toCode).join('、')+
+    (nearby.length?' · 另有附近換線建議':'');
+ }else{
+  const t=nearby[0];
+  summary='↪ 最近換線：'+t.viaStation+'（'+t.viaCode+'）· '+t.stops+' 站';
+ }
+ return '<details class="transfer-details"><summary>'+esc(summary)+'</summary>'+
+  '<div class="transfer-expand">'+
+  (direct.length?'<strong class="transfer-title">本站可轉乘的其他路線</strong><ul class="transfer-list">'+directList+'</ul>':'')+
+  (nearby.length?'<strong class="transfer-title">搭本線前往其他換線站</strong><ul class="transfer-list">'+nearbyList+'</ul>':'')+
+  '<div class="transfer-foot">站數僅計本線站點，非行車分鐘數；支線須確認列車目的地。車站出入口及票務轉乘依官方指示。</div>'+
+  '</div></details>';
+}
 function stationCard(st,line){
-  const id=itemId(st),c=esc(line.color);
-  const normalized=n=>n.replaceAll("臺","台").replaceAll("車站","");
-  let same=allLines.filter(x=>x.id!==line.id&&!(normalized(st.name)==="頂埔"&&x.operator!==line.operator)&&x.stations.some(s=>normalized(s.name)===normalized(st.name))).map(x=>x.name);
-  let relation=same.length?'<div class="meta">同名站／相關路線：'+esc(same.slice(0,4).join("、"))+(same.length>4?" 等":"")+'</div>':"";
-  const code=st.stationCode?'<span class="station-code" aria-label="捷運車站編號 '+esc(st.stationCode)+'">'+esc(st.stationCode)+'</span>':"";
-  const transferCodes=Array.isArray(st.transferCodes)?st.transferCodes:[];
-  const transfer=transferCodes.length?'<div class="meta transfer-codes">其他捷運／輕軌站碼：'+transferCodes.map(x=>'<span class="transfer-code">'+esc(x)+'</span>').join(" ")+'</div>':"";
-  const official=line.stationCodeSource||line.source;
-  return '<article class="card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="id-chip">'+esc(line.name)+'</span>'+favoriteBtn(id)+'</div><h3>'+code+esc(st.name)+'站</h3><p>'+esc(st.intro)+'</p>'+transfer+relation+'<div class="links"><a class="primary" target="_blank" rel="noopener noreferrer" href="'+esc(mapLink(line,st))+'" data-open="'+esc(id)+'">📍 地圖</a><a href="'+esc(official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">'+(st.stationCode?'站碼／官方資訊':'官方路線')+'</a></div></div></article>'
+ const id=itemId(st),c=esc(line.color);
+ const code=st.stationCode?'<span class="station-code" aria-label="捷運車站編號 '+esc(st.stationCode)+'">'+esc(st.stationCode)+'</span>':"";
+ const hints=transferCardHints(st,line);
+ const official=line.stationCodeSource||line.source;
+ return '<article class="card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="id-chip">'+esc(line.name)+'</span>'+favoriteBtn(id)+'</div><h3>'+code+esc(st.name)+'站</h3><p>'+esc(st.intro)+'</p>'+hints+'<div class="links"><a class="primary" target="_blank" rel="noopener noreferrer" href="'+esc(mapLink(line,st))+'" data-open="'+esc(id)+'">📍 地圖</a><a href="'+esc(official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">'+(st.stationCode?'站碼／官方資訊':'官方路線')+'</a></div></div></article>';
 }
 function documentCard(d){return '<article class="card doc"><div class="doc-icon" aria-hidden="true">'+esc(d.icon)+'</div><div class="heading"><div><h3>'+esc(d.name)+'</h3><div class="meta">'+esc(d.meta)+'</div></div>'+favoriteBtn(d.id)+'</div><p>'+esc(d.desc)+'</p><div class="warn">'+esc(d.date)+'</div><div class="links"><a class="primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(d.id)+'">'+esc(d.button)+' ↗</a></div></article>'}
 function refreshMain(){
@@ -145,8 +189,38 @@ document.querySelector(".tree").addEventListener("click",e=>{const root=e.target
 $("search").addEventListener("input",()=>{visibleCount=48;refreshMain()});
 $("clearFilters").addEventListener("click",()=>{selectedOperator="全部";selectedLine="全部";visibleCount=48;$("search").value="";renderFilters();refreshMain()});
 $("loadMore").addEventListener("click",()=>{visibleCount+=48;renderStations()});
-document.body.addEventListener("click",e=>{const star=e.target.closest("[data-fav]");if(star){const id=star.dataset.fav;favs=favs.includes(id)?favs.filter(x=>x!==id):[id,...favs];localStorage.setItem(favKey,JSON.stringify(favs));refreshMain();return}const link=e.target.closest("[data-open],[data-doc-open]");if(link){const id=link.dataset.open||link.dataset.docOpen;recents=[id,...recents.filter(x=>x!==id)].slice(0,10);localStorage.setItem(recentKey,JSON.stringify(recents));renderShelves()}});
-fetch("../data/transport-north-stations.json?v=20261030-stationcodes").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];$("stats").textContent=allLines.length+" 條路線 · "+allLines.reduce((n,x)=>n+x.stations.length,0)+" 筆車站卡片";renderFilters();refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
+document.body.addEventListener("click",e=>{
+ const jump=e.target.closest("[data-jump-line]");
+ if(jump){
+  const line=allLines.find(x=>x.id===jump.dataset.jumpLine);
+  if(!line)return;
+  selectedRoot="rail";
+  selectedOperator=line.operator;
+  selectedLine=line.id;
+  visibleCount=48;
+  $("search").value=jump.dataset.jumpCode;
+  renderFilters();
+  refreshMain();
+  $("northSection").scrollIntoView({behavior:"smooth",block:"start"});
+  return;
+ }
+ const star=e.target.closest("[data-fav]");
+ if(star){
+  const id=star.dataset.fav;
+  favs=favs.includes(id)?favs.filter(x=>x!==id):[id,...favs];
+  localStorage.setItem(favKey,JSON.stringify(favs));
+  refreshMain();
+  return;
+ }
+ const link=e.target.closest("[data-open],[data-doc-open]");
+ if(link){
+  const id=link.dataset.open||link.dataset.docOpen;
+  recents=[id,...recents.filter(x=>x!==id)].slice(0,10);
+  localStorage.setItem(recentKey,JSON.stringify(recents));
+  renderShelves();
+ }
+});
+fetch("../data/transport-north-stations.json?v=20261030-transferhints").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];$("stats").textContent=allLines.length+" 條路線 · "+allLines.reduce((n,x)=>n+x.stations.length,0)+" 筆車站卡片";renderFilters();refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
 renderMainInitial();
 function renderMainInitial(){$("documentGrid").innerHTML=documents.map(documentCard).join("");renderShelves()}
 </script><script src="../shared-nav.js" defer></script>
