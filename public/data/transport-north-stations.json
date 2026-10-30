@@ -9353,49 +9353,57 @@
           "id": "TRA-N-01",
           "name": "基隆",
           "intro": "基隆港、海洋廣場與廟口夜市，北部港都起點",
-          "index": 1
+          "index": 1,
+          "traCode": "0900"
         },
         {
           "id": "TRA-N-02",
           "name": "三坑",
           "intro": "基隆三坑社區及基隆河周邊通勤站",
-          "index": 2
+          "index": 2,
+          "traCode": "0910"
         },
         {
           "id": "TRA-N-03",
           "name": "八堵",
           "intro": "基隆、宜蘭方向的鐵路分歧與轉乘節點",
-          "index": 3
+          "index": 3,
+          "traCode": "0920"
         },
         {
           "id": "TRA-N-04",
           "name": "七堵",
           "intro": "重要列車始發終到站，鐵路生活聚落及臺鐵機廠周邊",
-          "index": 4
+          "index": 4,
+          "traCode": "0930"
         },
         {
           "id": "TRA-N-05",
           "name": "百福",
           "intro": "基隆七堵百福社區通勤站",
-          "index": 5
+          "index": 5,
+          "traCode": "0940"
         },
         {
           "id": "TRA-N-06",
           "name": "五堵",
           "intro": "新北汐止與基隆交界，基隆河沿線通勤車站",
-          "index": 6
+          "index": 6,
+          "traCode": "0950"
         },
         {
           "id": "TRA-N-07",
           "name": "汐止",
           "intro": "汐止老街、觀光夜市與汐止區交通節點",
-          "index": 7
+          "index": 7,
+          "traCode": "0960"
         },
         {
           "id": "TRA-N-08",
           "name": "汐科",
           "intro": "汐止科技園區、遠雄廣場與科技產業聚落",
-          "index": 8
+          "index": 8,
+          "traCode": "0970"
         },
         {
           "id": "TRA-N-09",
@@ -9411,7 +9419,8 @@
               "type": "walk",
               "note": "由臺鐵車站步行轉乘捷運；依站內導引與實際步行動線確認。"
             }
-          ]
+          ],
+          "traCode": "0980"
         },
         {
           "id": "TRA-N-10",
@@ -9427,7 +9436,8 @@
               "type": "walk",
               "note": "由臺鐵車站步行轉乘捷運；依站內導引與實際步行動線確認。"
             }
-          ]
+          ],
+          "traCode": "0990"
         },
         {
           "id": "TRA-N-11",
@@ -9459,13 +9469,15 @@
               "type": "walk",
               "note": "由臺鐵車站步行轉乘捷運；依站內導引與實際步行動線確認。"
             }
-          ]
+          ],
+          "traCode": "1000"
         },
         {
           "id": "TRA-N-12",
           "name": "萬華",
           "intro": "艋舺舊城、龍山寺與萬華街區",
-          "index": 12
+          "index": 12,
+          "traCode": "1010"
         },
         {
           "id": "TRA-N-13",
@@ -9489,61 +9501,71 @@
               "type": "walk",
               "note": "由臺鐵車站步行轉乘捷運；依站內導引與實際步行動線確認。"
             }
-          ]
+          ],
+          "traCode": "1020"
         },
         {
           "id": "TRA-N-14",
           "name": "浮洲",
           "intro": "板橋浮洲地區、臺灣藝術大學周邊",
-          "index": 14
+          "index": 14,
+          "traCode": "1030"
         },
         {
           "id": "TRA-N-15",
           "name": "樹林",
           "intro": "樹林市區及臺鐵列車調度據點",
-          "index": 15
+          "index": 15,
+          "traCode": "1040"
         },
         {
           "id": "TRA-N-16",
           "name": "南樹林",
           "intro": "樹林工業區與住宅通勤區",
-          "index": 16
+          "index": 16,
+          "traCode": "1050"
         },
         {
           "id": "TRA-N-17",
           "name": "山佳",
           "intro": "山佳老街與山佳車站古蹟，適合鐵道文化走讀",
-          "index": 17
+          "index": 17,
+          "traCode": "1060"
         },
         {
           "id": "TRA-N-18",
           "name": "鶯歌",
           "intro": "鶯歌陶瓷老街、陶瓷博物館",
-          "index": 18
+          "index": 18,
+          "traCode": "1070"
         },
         {
           "id": "TRA-N-19",
           "name": "鳳鳴",
           "intro": "鶯歌鳳鳴地區，桃園、新北交界新站",
-          "index": 19
+          "index": 19,
+          "traCode": "1075"
         },
         {
           "id": "TRA-N-20",
           "name": "桃園",
           "intro": "桃園市區商圈與中正路交通核心",
-          "index": 20
+          "index": 20,
+          "traCode": "1080"
         },
         {
           "id": "TRA-N-21",
           "name": "內壢",
           "intro": "中壢內壢商圈及工業生活區",
-          "index": 21
+          "index": 21,
+          "traCode": "1090"
         },
         {
           "id": "TRA-N-22",
           "name": "中壢",
           "intro": "中壢市區與中平商圈，轉乘公車前往各區",
-          "index": 22
+          "index": 22,
+          "traCode": "1100"
         }
       ]
     },
@@ -9558,163 +9580,190 @@
           "id": "TRA-E-01",
           "name": "八堵",
           "intro": "東西鐵路分岔點，從基隆走向瑞芳、宜蘭方向",
-          "index": 1
+          "index": 1,
+          "traCode": "0920"
         },
         {
           "id": "TRA-E-02",
           "name": "暖暖",
           "intro": "基隆暖暖老街、暖暖吊橋與暖東峽谷區域",
-          "index": 2
+          "index": 2,
+          "traCode": "7390"
         },
         {
           "id": "TRA-E-03",
           "name": "四腳亭",
           "intro": "瑞芳四腳亭地方聚落與基隆河谷景觀",
-          "index": 3
+          "index": 3,
+          "traCode": "7380"
         },
         {
           "id": "TRA-E-04",
           "name": "瑞芳",
           "intro": "九份、金瓜石、深澳、平溪線的重要鐵路門戶",
-          "index": 4
+          "index": 4,
+          "traCode": "7360"
         },
         {
           "id": "TRA-E-05",
           "name": "猴硐",
           "intro": "猴硐貓村、煤礦博物園區與礦業遺跡",
-          "index": 5
+          "index": 5,
+          "traCode": "7350"
         },
         {
           "id": "TRA-E-06",
           "name": "三貂嶺",
           "intro": "平溪線分岔點，鄰近三貂嶺瀑布與舊鐵道步道",
-          "index": 6
+          "index": 6,
+          "traCode": "7330"
         },
         {
           "id": "TRA-E-07",
           "name": "牡丹",
           "intro": "雙溪牡丹地區，鄰近牡丹老街及鐵道彎道景觀",
-          "index": 7
+          "index": 7,
+          "traCode": "7320"
         },
         {
           "id": "TRA-E-08",
           "name": "雙溪",
           "intro": "雙溪老街、三忠廟及東北角山線小鎮",
-          "index": 8
+          "index": 8,
+          "traCode": "7310"
         },
         {
           "id": "TRA-E-09",
           "name": "貢寮",
           "intro": "貢寮市區與山城田野環境",
-          "index": 9
+          "index": 9,
+          "traCode": "7300"
         },
         {
           "id": "TRA-E-10",
           "name": "福隆",
           "intro": "福隆海水浴場、舊草嶺隧道與草嶺自行車道",
-          "index": 10
+          "index": 10,
+          "traCode": "7290"
         },
         {
           "id": "TRA-E-11",
           "name": "石城",
           "intro": "東北角海岸鐵道景觀及海邊小站",
-          "index": 11
+          "index": 11,
+          "traCode": "7280"
         },
         {
           "id": "TRA-E-12",
           "name": "大里",
           "intro": "大里天公廟、草嶺古道登山入口",
-          "index": 12
+          "index": 12,
+          "traCode": "7270"
         },
         {
           "id": "TRA-E-13",
           "name": "大溪",
           "intro": "大溪漁港與龜山島海景方向",
-          "index": 13
+          "index": 13,
+          "traCode": "7260"
         },
         {
           "id": "TRA-E-14",
           "name": "龜山",
           "intro": "宜蘭東北角濱海聚落與海岸風光",
-          "index": 14
+          "index": 14,
+          "traCode": "7250"
         },
         {
           "id": "TRA-E-15",
           "name": "外澳",
           "intro": "外澳海灘、衝浪與龜山島海景",
-          "index": 15
+          "index": 15,
+          "traCode": "7240"
         },
         {
           "id": "TRA-E-16",
           "name": "頭城",
           "intro": "頭城老街、蘭陽博物館與烏石港接駁區",
-          "index": 16
+          "index": 16,
+          "traCode": "7230"
         },
         {
           "id": "TRA-E-17",
           "name": "頂埔",
           "intro": "宜蘭頭城頂埔田園聚落與通勤生活區",
-          "index": 17
+          "index": 17,
+          "traCode": "7220"
         },
         {
           "id": "TRA-E-18",
           "name": "礁溪",
           "intro": "礁溪溫泉、湯圍溝公園與溫泉旅宿商圈",
-          "index": 18
+          "index": 18,
+          "traCode": "7210"
         },
         {
           "id": "TRA-E-19",
           "name": "四城",
           "intro": "宜蘭四城生活圈與田園街區",
-          "index": 19
+          "index": 19,
+          "traCode": "7200"
         },
         {
           "id": "TRA-E-20",
           "name": "宜蘭",
           "intro": "宜蘭市中心、幾米公園與宜蘭文學館",
-          "index": 20
+          "index": 20,
+          "traCode": "7190"
         },
         {
           "id": "TRA-E-21",
           "name": "二結",
           "intro": "二結王公廟與二結文化生活圈",
-          "index": 21
+          "index": 21,
+          "traCode": "7180"
         },
         {
           "id": "TRA-E-22",
           "name": "中里",
           "intro": "宜蘭五結中里村及田園聚落",
-          "index": 22
+          "index": 22,
+          "traCode": "7170"
         },
         {
           "id": "TRA-E-23",
           "name": "羅東",
           "intro": "羅東夜市、羅東林業文化園區與轉運站",
-          "index": 23
+          "index": 23,
+          "traCode": "7160"
         },
         {
           "id": "TRA-E-24",
           "name": "冬山",
           "intro": "冬山河親水地景、冬山河鐵橋附近",
-          "index": 24
+          "index": 24,
+          "traCode": "7150"
         },
         {
           "id": "TRA-E-25",
           "name": "新馬",
           "intro": "蘇澳新馬地區與宜蘭東部鐵路聚落",
-          "index": 25
+          "index": 25,
+          "traCode": "7140"
         },
         {
           "id": "TRA-E-26",
           "name": "蘇澳新",
           "intro": "可轉乘北迴線列車，往花蓮方向的重要節點",
-          "index": 26
+          "index": 26,
+          "traCode": "7130"
         },
         {
           "id": "TRA-E-27",
           "name": "蘇澳",
           "intro": "蘇澳港、南方澳漁港與冷泉景點接駁",
-          "index": 27
+          "index": 27,
+          "traCode": "7120"
         }
       ]
     },
@@ -9729,43 +9778,50 @@
           "id": "TRA-P-01",
           "name": "三貂嶺",
           "intro": "平溪線與宜蘭線交會，鄰近鐵道山景及瀑布步道",
-          "index": 1
+          "index": 1,
+          "traCode": "7330"
         },
         {
           "id": "TRA-P-02",
           "name": "大華",
           "intro": "基隆河谷、鐵路與山林環境，周邊設施較少",
-          "index": 2
+          "index": 2,
+          "traCode": "7331"
         },
         {
           "id": "TRA-P-03",
           "name": "十分",
           "intro": "十分老街、十分瀑布與平溪天燈文化",
-          "index": 3
+          "index": 3,
+          "traCode": "7332"
         },
         {
           "id": "TRA-P-04",
           "name": "望古",
           "intro": "望古瀑布步道與山林溪谷景致",
-          "index": 4
+          "index": 4,
+          "traCode": "7333"
         },
         {
           "id": "TRA-P-05",
           "name": "嶺腳",
           "intro": "嶺腳老街、嶺腳瀑布及舊礦業聚落",
-          "index": 5
+          "index": 5,
+          "traCode": "7334"
         },
         {
           "id": "TRA-P-06",
           "name": "平溪",
           "intro": "平溪老街、天燈文化與古樸山城",
-          "index": 6
+          "index": 6,
+          "traCode": "7335"
         },
         {
           "id": "TRA-P-07",
           "name": "菁桐",
           "intro": "菁桐老街、礦業生活館與平溪線終點",
-          "index": 7
+          "index": 7,
+          "traCode": "7336"
         }
       ]
     },
@@ -9780,19 +9836,22 @@
           "id": "TRA-S-01",
           "name": "瑞芳",
           "intro": "深澳線起點，亦是九份、金瓜石旅遊轉運門戶",
-          "index": 1
+          "index": 1,
+          "traCode": "7360"
         },
         {
           "id": "TRA-S-02",
           "name": "海科館",
           "intro": "國立海洋科技博物館，適合親子科學及海洋教育",
-          "index": 2
+          "index": 2,
+          "traCode": "7361"
         },
         {
           "id": "TRA-S-03",
           "name": "八斗子",
           "intro": "八斗子海濱鐵道景觀，鄰近潮境公園及海岸步道",
-          "index": 3
+          "index": 3,
+          "traCode": "7362"
         }
       ]
     },
@@ -11225,5 +11284,7 @@
   "stationCodeUpdated": "2026-10-30",
   "stationCodeNote": "捷運及輕軌以營運單位所列站碼為準，臺鐵不套用捷運站碼；支線車站保留原代碼。",
   "transferHintsUpdated": "2026-10-30",
-  "transferHintsExplanation": "轉乘提示是依目前路網資料、同站交會及官方步行連通指引整理；搭乘站數按本線已營運站點與支線實際相連路段計算，非實時最佳路徑；車次營運與路線狀態依官方為準。"
+  "transferHintsExplanation": "轉乘提示是依目前路網資料、同站交會及官方步行連通指引整理；搭乘站數按本線已營運站點與支線實際相連路段計算，非實時最佳路徑；車次營運與路線狀態依官方為準。",
+  "traStationCodesUpdated": "2026-10-30",
+  "traStationCodeSource": "https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip111/view"
 }
