@@ -13,14 +13,120 @@ main{width:min(1100px,100%);margin:auto;padding:16px 20px 48px}.back{display:inl
 .section{margin-top:20px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:0 2px 11px}.section-head h2{margin:0;font-size:20px}.hint{color:var(--muted);font-size:11px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.tile{--tone:#f1b82a;position:relative;display:flex;min-width:0;min-height:137px;flex-direction:column;overflow:hidden;padding:14px;border:1px solid #fff;border-radius:20px;background:#fff;box-shadow:0 8px 20px #263a5110;transition:transform .18s,box-shadow .18s}.tile:before{position:absolute;inset:0 0 auto;height:6px;background:var(--tone);content:""}.tile:after{position:absolute;right:-28px;bottom:-48px;width:94px;height:94px;border-radius:50%;background:color-mix(in srgb,var(--tone) 13%,white);content:"";pointer-events:none}.tile:hover{transform:translateY(-3px);box-shadow:0 14px 28px #263a511b}.tiletop{position:relative;z-index:1;display:flex;align-items:center;gap:10px;min-width:0}.brand{display:grid;flex:none;width:42px;height:42px;place-items:center;border-radius:14px;background:color-mix(in srgb,var(--tone) 13%,white);color:var(--tone);font-size:18px;font-weight:950}.brand.word{font-size:13px}.titlelink{min-width:0;text-decoration:none}.name{margin:0;font-size:15px;font-weight:900;line-height:1.35;overflow-wrap:anywhere}.category{margin-top:3px;color:var(--muted);font-size:10px;font-weight:750}.desc{position:relative;z-index:1;margin:10px 0 8px;color:#6c7889;font-size:11px;line-height:1.5}.tilefoot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:7px;margin-top:auto}.help{border:0;border-radius:999px;background:#f0f4f4;color:#3d615d;padding:6px 9px;font:800 10px system-ui;cursor:pointer}.help:hover,.help:focus-visible{background:#dcf1e9;outline:2px solid #59aa9d;outline-offset:2px}.open{color:var(--tone);font-size:10px;font-weight:900;text-decoration:none}.star{border:0;background:transparent;color:#aeb5bf;font-size:20px;line-height:1;cursor:pointer}.star.on{color:#edaa14}.empty{display:none;padding:23px;border:1px dashed #c9d4df;border-radius:17px;background:#ffffffb7;color:var(--muted);text-align:center}.overlay{position:fixed;inset:0;z-index:10;display:none;place-items:center;padding:17px;background:#17263888}.overlay.show{display:grid}.dialog{width:min(440px,100%);padding:22px;border:1px solid white;border-radius:22px;background:white;box-shadow:0 20px 54px #101b2c55}.dialog h2{margin:0 0 8px;font-size:20px}.dialog p{margin:0;color:#657286;line-height:1.7}.close{display:block;margin:17px 0 0 auto;padding:9px 14px;border:0;border-radius:12px;background:#263c57;color:white;font:800 13px system-ui;cursor:pointer}.notice{margin-top:22px;padding:14px 16px;border:1px solid #f0dfab;border-radius:16px;background:#fff9e7;color:#756435;font-size:12px;line-height:1.7}.footnote{margin-top:18px;color:var(--muted);text-align:center;font-size:11px}
 @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:540px){main{padding:13px 12px 35px}.hero{border-radius:23px}.grid{gap:8px}.tile{min-height:137px;padding:12px;border-radius:17px}.name{font-size:13px}.brand{width:36px;height:36px;border-radius:12px}.desc{font-size:10px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
-</style></head><body><main>
+</style><link rel="stylesheet" href="../stock-workspace.css?v=20261030"></head><body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
-<header class="hero"><span class="eyebrow">📈 PERSONAL OS · MARKET DESK</span><br><h1>股票啟動器</h1><p>把市場資訊、台股觀察、公司資料和主題研究入口放在一頁。用分類與搜尋快速找到網站，星號收藏常用卡片，按「？」查看各入口用途。</p><div class="stats"><span>🔎 搜尋與分類</span><span>⭐ 收藏常用入口</span><span>🧩 個股與產業主題</span></div></header>
+<header class="hero"><span class="eyebrow">📈 PERSONAL OS · MARKET DESK</span><br><h1>股票啟動器</h1><p>每天開盤前整理資訊、盤中追蹤觀察股、收盤後留下復盤紀錄。保留原有市場研究網站、分類與收藏入口。</p><div class="stats"><span>🔎 搜尋與分類</span><span>⭐ 收藏常用入口</span><span>🧩 個股與產業主題</span></div></header>
+
+<div id="stkWorkspace" class="stk-workspace">
+ <nav class="stk-topnav" aria-label="股票工作台快速跳轉">
+  <a href="#stkPre">🌅 盤前準備</a><a href="#stkWatch">⭐ 觀察股</a><a href="#stkPost">🌇 盤後復盤</a><a href="#stkSources">🔗 資料來源</a><a href="#allGrid">🧰 原本常用網站</a>
+ </nav>
+ <section class="stk-panel" aria-label="市場概覽">
+  <div class="stk-row"><div><h2>📊 每日股票工作台</h2><p class="stk-sub">開盤前掌握重點，收盤後留下研究紀錄。價格採交易所最近公布的盤後資料。</p></div><button class="stk-btn" id="stkReload" type="button">↻ 更新官方盤後資料</button></div>
+  <div class="stk-badges">
+   <div class="stk-badge">台灣市場時鐘<strong id="stkMarketClock">—</strong></div>
+   <div class="stk-badge"><span id="stkMarketStateDesc">交易狀態</span><strong id="stkMarketState">—</strong></div>
+   <div class="stk-badge">加權指數（最近收盤）<strong id="stkIndex">—</strong><span id="stkIndexChange">—</span></div>
+   <div class="stk-badge">加權指數交易日<strong id="stkIndexDate">—</strong></div>
+   <div class="stk-badge">個股行情交易日<strong id="stkQuoteDate">—</strong></div>
+  </div>
+  <div class="stk-status" id="stkDataStatus" role="status" aria-live="polite">讀取官方盤後資料中…</div>
+  <p class="stk-mini" id="stkUpdated">資料來源：臺灣證券交易所 OpenAPI。資料更新時間以官方資料日為準。</p>
+ </section>
+ <section class="stk-panel" id="stkPre">
+  <div class="stk-row"><h2>🌅 開盤前研究</h2><span class="stk-mini">建議 08:00–09:00｜不預測個股漲跌</span></div>
+  <p class="stk-sub">先整理外部資訊，再決定今天要觀察什麼。以下勾選和筆記會依日期自動保存在本機。</p>
+  <div class="stk-tools">
+   <a href="https://finance.yahoo.com/markets/" target="_blank" rel="noopener noreferrer">🌍 海外市場</a>
+   <a href="https://www.google.com/finance/markets/indices" target="_blank" rel="noopener noreferrer">📉 全球主要指數</a>
+   <a href="https://www.twse.com.tw/zh/" target="_blank" rel="noopener noreferrer">🏛️ 證交所公告</a>
+   <a href="https://mops.twse.com.tw/" target="_blank" rel="noopener noreferrer">📄 公開資訊觀測站</a>
+  </div>
+  <div class="stk-divider"></div>
+  <div class="stk-checks">
+   <label><input type="checkbox" data-stk-journal="check-us"> 已看美股／全球指數與消息</label>
+   <label><input type="checkbox" data-stk-journal="check-tw"> 已看台股前一交易日強弱</label>
+   <label><input type="checkbox" data-stk-journal="check-news"> 已確認公司公告與事件</label>
+   <label><input type="checkbox" data-stk-journal="check-risk"> 已寫下今天的風險和觀察條件</label>
+  </div>
+  <div class="stk-formgrid">
+   <div class="stk-field"><label for="stkPreUs">國際市場／重要消息</label><textarea class="stk-textarea" id="stkPreUs" data-stk-journal="pre-us" placeholder="例：海外指數、匯率、產業新聞（記得註明來源）"></textarea></div>
+   <div class="stk-field"><label for="stkPreEvents">公司公告、財報與重要事件</label><textarea class="stk-textarea" id="stkPreEvents" data-stk-journal="pre-events" placeholder="例：法說會、財報、重大訊息、除權息日期"></textarea></div>
+   <div class="stk-field" style="grid-column:1/-1"><label for="stkPrePlan">今日觀察股、價位、量能與失效條件</label><textarea class="stk-textarea" id="stkPrePlan" data-stk-journal="pre-plan" placeholder="股票代號｜觀察價格｜需確認的成交量或訊號｜若判斷錯誤如何調整"></textarea></div>
+  </div>
+ </section>
+ <section class="stk-panel" id="stkWatch">
+  <div class="stk-row"><div><h2>⭐ 我的股票觀察清單</h2><p class="stk-sub">已從你提供的兩張截圖整理 15 檔不重複股票。按 ☆ 設為重點；按「筆記」寫下自己的研究理由。</p></div><span class="stk-mini" id="stkPriorityCount">0 檔重點觀察</span></div>
+  <div class="stk-today" id="stkSnapshotDate">行情資料日：尚未取得</div>
+  <div class="stk-controls">
+   <input type="search" class="stk-input" id="stkSearch" placeholder="搜尋代碼、名稱、分類或筆記" aria-label="搜尋觀察股">
+   <select id="stkSort" class="stk-select" aria-label="排序觀察股">
+    <option value="original">依原始截圖順序</option><option value="priority">重點優先</option>
+    <option value="change">漲跌幅排序（盤後）</option><option value="volume">成交量排序（盤後）</option><option value="code">股票代號排序</option>
+   </select>
+   <label style="display:flex;align-items:center;gap:7px;font-size:12px;color:#526578"><input id="stkPriorityOnly" type="checkbox">只看重點觀察股</label>
+  </div>
+  <div class="stk-chips" id="stkGroups" aria-label="觀察股產業分類"></div>
+  <div class="stk-tablewrap">
+   <table class="stk-table"><thead><tr><th>重點</th><th>股票／代碼</th><th>產業</th><th>收盤價</th><th>漲跌／漲跌幅</th><th>成交張數</th><th>研究</th><th>管理</th></tr></thead><tbody id="stkWatchRows"></tbody></table>
+  </div>
+  <p class="stk-mini" id="stkWatchCount"></p>
+  <div class="stk-warning">價格、漲跌幅、成交量只顯示交易所最近公布的盤後統計，並非盤中即時行情。點股票名稱可前往 Yahoo 股市查閱較新的個股報價；不同資料日不要當成同一天比較。觀察清單並不代表已持有這些股票。</div>
+  <div class="stk-divider"></div>
+  <div class="stk-row"><strong>＋ 加入其他觀察股</strong><span class="stk-mini">僅保存在本機；新增代碼如不在官方資料中，價格顯示「—」</span></div>
+  <div class="stk-add">
+   <input class="stk-input" id="stkAddCode" placeholder="代碼（例 0050）" aria-label="股票代碼">
+   <input class="stk-input" id="stkAddName" placeholder="股票名稱" aria-label="股票名稱">
+   <select class="stk-select" id="stkAddSector" aria-label="產業分類">
+    <option>AI伺服器／組裝</option><option>半導體</option><option>記憶體</option>
+    <option>電源／電力</option><option>電腦／品牌</option><option>航運</option>
+    <option>環保／循環</option><option>ETF／指數</option><option>其他</option>
+   </select>
+   <button id="stkAddButton" class="stk-btn" type="button">加入觀察</button>
+  </div>
+ </section>
+ <section class="stk-panel" id="stkPost">
+  <div class="stk-row"><h2>🌇 收盤後復盤</h2><span class="stk-mini">13:45 後查看；統計公布可能稍晚</span></div>
+  <p class="stk-sub">先看客觀數據，再記錄當天走勢的可能原因；隔日觀察不是買賣建議。</p>
+  <div class="stk-field"><label for="stkAutoReport">最近交易日自動盤後摘要（可複製、不可直接編輯）</label><textarea class="stk-textarea" id="stkAutoReport" rows="7" readonly></textarea></div>
+  <div class="stk-tools">
+   <a href="https://www.twse.com.tw/zh/trading/foreign/t86.html" target="_blank" rel="noopener noreferrer">🏛️ 三大法人買賣超</a>
+   <a href="https://www.twse.com.tw/zh/trading/historical/mi-index.html" target="_blank" rel="noopener noreferrer">📊 每日收盤行情</a>
+   <a href="https://mops.twse.com.tw/" target="_blank" rel="noopener noreferrer">📑 重大訊息／財報</a>
+   <a href="https://openapi.twse.com.tw/" target="_blank" rel="noopener noreferrer">🔎 證交所 OpenAPI</a>
+  </div>
+  <div class="stk-divider"></div>
+  <div class="stk-formgrid">
+   <div class="stk-field"><label for="stkPostIndex">大盤走勢與量價觀察</label><textarea class="stk-textarea" id="stkPostIndex" data-stk-journal="post-index" placeholder="大盤方向、類股輪動、成交量與關鍵價位"></textarea></div>
+   <div class="stk-field"><label for="stkPostFlows">法人籌碼與資金方向</label><textarea class="stk-textarea" id="stkPostFlows" data-stk-journal="post-flows" placeholder="附上資料日期、來源；可記錄三大法人買賣超"></textarea></div>
+   <div class="stk-field"><label for="stkPostReview">哪些觀察得到驗證？哪些與預期不同？</label><textarea class="stk-textarea" id="stkPostReview" data-stk-journal="post-review" placeholder="個股代碼｜觀察結果｜可能原因｜仍需核實的問題"></textarea></div>
+   <div class="stk-field"><label for="stkPostPlan">隔日觀察與風險條件</label><textarea class="stk-textarea" id="stkPostPlan" data-stk-journal="post-plan" placeholder="明日重點、資訊待確認事項、需要調整的假設"></textarea></div>
+  </div>
+  <div class="stk-row" style="margin-top:13px">
+   <div class="stk-actions"><button class="stk-btn" id="stkCopy" type="button">📋 複製今日整理</button><button class="stk-btn alt" id="stkBackup" type="button">⬇ 匯出備份 JSON</button><label class="stk-btn alt" for="stkImport" style="cursor:pointer">⬆ 匯入備份</label><input id="stkImport" type="file" accept="application/json,.json" class="stk-hidden"></div>
+   <span class="stk-mini" id="stkDate"></span>
+  </div>
+  <div id="stkSaveState" class="stk-status" role="status">筆記變動將自動保存在本機</div>
+  <div class="stk-warning">每日筆記、重點股、個股觀察內容皆只存在目前瀏覽器，不會自動同步到其他裝置。建議定期下載 JSON 備份。本站沒有連結券商帳戶，也不會辨認真實持倉與損益。</div>
+ </section>
+ <section class="stk-panel" id="stkSources">
+  <h2>🔗 資料來源與研究入口</h2>
+  <p class="stk-sub">台灣一般集中市場交易時間為 09:00–13:30；08:30 開始可委託。休市日請以交易所公告為準。</p>
+  <div class="stk-sourcelinks">
+   <a href="https://www.twse.com.tw/zh/" target="_blank" rel="noopener noreferrer">臺灣證券交易所</a>
+   <a href="https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL" target="_blank" rel="noopener noreferrer">官方個股日成交資料</a>
+   <a href="https://openapi.twse.com.tw/v1/exchangeReport/MI_INDEX" target="_blank" rel="noopener noreferrer">官方指數收盤資料</a>
+   <a href="https://www.tpex.org.tw/openapi/" target="_blank" rel="noopener noreferrer">櫃買中心 OpenAPI</a>
+   <a href="https://tw.stock.yahoo.com/" target="_blank" rel="noopener noreferrer">Yahoo 奇摩股市</a>
+   <a href="https://mops.twse.com.tw/" target="_blank" rel="noopener noreferrer">公開資訊觀測站</a>
+  </div>
+ </section>
+</div>
 <div class="searchbox"><input id="search" class="search" type="search" placeholder="搜尋 Yahoo、台積電、AI、追蹤清單…"></div><nav id="filters" class="filters" aria-label="股票資源分類"></nav>
 <section class="section"><div class="section-head"><h2>⭐ 我的收藏</h2><span class="hint">按卡片上的 ☆ 即可收藏</span></div><div class="grid" id="favoritesGrid"></div><div class="empty" id="favoritesEmpty">還沒有收藏。點卡片上的 ☆，常用入口就會出現在這裡。</div></section>
 <section class="section"><div class="section-head"><h2>🕘 最近開啟</h2><span class="hint">最多保留 8 個入口</span></div><div class="grid" id="recentGrid"></div><div class="empty" id="recentEmpty">開啟任一股票入口後，最近使用的卡片會顯示在這裡。</div></section>
 <section class="section"><div class="section-head"><h2 id="allTitle">✨ 全部股票入口</h2><span class="hint" id="count"></span></div><div class="grid" id="allGrid"></div><div class="empty" id="allEmpty">找不到符合的入口，換個關鍵字試試吧。</div></section>
-<aside class="notice">💡 <b>使用說明：</b>這裡提供市場資料與研究網站的快速連結，卡片上的「？」會介紹網站用途。個人觀察清單目前導向對應的 Yahoo 股市搜尋頁，請自行在服務內登入或建立清單。此頁不提供買賣建議，也不會讀取或儲存你的券商帳戶資料。</aside><p class="footnote">收藏只保存在目前瀏覽器。不同裝置或清除瀏覽資料後，收藏不會自動同步。</p>
+<aside class="notice">💡 <b>使用說明：</b>這裡提供市場資料與研究網站的快速連結，卡片上的「？」會介紹網站用途。上方新的股票觀察區使用臺灣證交所最近交易日盤後資料；下方既有「個人清單」入口仍連向 Yahoo 股市，請自行登入管理。此頁不提供買賣建議，也不會讀取或儲存你的券商帳戶資料。</aside><p class="footnote">收藏只保存在目前瀏覽器。不同裝置或清除瀏覽資料後，收藏不會自動同步。</p>
 </main><div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog"><h2 id="dialogTitle"></h2><p id="dialogBody"></p><button class="close" id="close">知道了</button></div></div>
 <script>
 const resources=[
@@ -61,4 +167,4 @@ function renderRecent(){renderGrid("recentGrid",recent.map(id=>resources.find(x=
 function renderAll(){const shown=resources.filter(x=>(active==="全部"||x.category===active)&&(!query||(x.name+" "+x.category+" "+x.description).toLowerCase().includes(query.toLowerCase())));renderGrid("allGrid",shown,"allEmpty");renderGrid("favoritesGrid",favorites.map(id=>resources.find(x=>x.id===id)).filter(Boolean),"favoritesEmpty");renderRecent();document.getElementById("count").textContent=shown.length+" / "+resources.length+" 個入口";document.getElementById("allTitle").textContent=active==="全部"?"✨ 全部股票入口":"📚 "+active}
 function showHelp(id){const x=resources.find(r=>r.id===id);if(!x)return;document.getElementById("dialogTitle").textContent="？ "+x.name;document.getElementById("dialogBody").textContent=x.description+" 分類依用途整理；點「開啟」可前往網站。";document.getElementById("overlay").classList.add("show");document.getElementById("close").focus()}
 document.getElementById("search").addEventListener("input",e=>{query=e.target.value;renderAll()});document.getElementById("close").onclick=()=>document.getElementById("overlay").classList.remove("show");document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("show")});document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("overlay").classList.remove("show")});renderFilters();renderAll();
-</script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
+</script><script src="../stock-workspace.js?v=20261030"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
