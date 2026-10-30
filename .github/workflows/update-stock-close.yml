@@ -10,6 +10,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/update-stock-close.yml'
+      - 'scripts/update-stock-close.cjs'
 
 permissions:
   contents: write
