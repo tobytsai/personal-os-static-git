@@ -51,7 +51,7 @@ const cloudNotify=()=>{try{cloudDirtyListener?.()}catch(e){console.warn('cloud s
 const stampNow=()=>Date.now();
 function saveMeta(){store.write(META_KEY,syncMeta)}
 
-let prices={},indexData=null,quoteDate='',indexDate='',loading=false;
+let prices={},indexData=null,quoteDate='',indexDate='',loading=false,publishedMeta=null;
 let filter='全部',search='',sort='original',priorityOnly=false;
 const today=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const dateKey=today();
@@ -95,8 +95,23 @@ function renderIndex(){
  diff.className=(p>0?'stk-positive':p<0?'stk-negative':'');
  $('stkQuoteDate').textContent=quoteDate||'尚未取得';
  $('stkIndexDate').textContent=indexDate||'尚未取得';
- $('stkUpdated').textContent='來源：證交所公開盤後資料（非即時）；最新可取得交易日 '+(quoteDate||'—');
+ $('stkUpdated').textContent='來源：官方公開盤後資料'+(publishedMeta?'／GitHub 已保存快照':'')+'（非即時）；最新可取得交易日 '+(quoteDate||'—');
  $('stkSnapshotDate').textContent='行情資料日：'+(quoteDate||'尚未取得')+'；非盤中即時報價';
+ const saved=$('stkPublishedStatus');
+ const institutions=$('stkInstitutionalSummary');
+ if(saved){
+  saved.textContent=publishedMeta
+   ?'✓ 已保存官方行情 '+publishedMeta.tradeDate+'：'+publishedMeta.quoteCount+'/'+publishedMeta.watchlistCount+' 檔，建立時間 '+new Date(publishedMeta.generatedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei'})+'。'
+   :'尚未載入 GitHub 每日行情備份；頁面仍會查詢交易所公開 API。';
+ }
+ if(institutions){
+  const f=publishedMeta?.institutional;
+  const money=n=>n==null?'—':signed(n/1e8)+' 億元';
+  const dealer=f?.dealerSelf!=null&&f?.dealerHedge!=null?f.dealerSelf+f.dealerHedge:null;
+  institutions.textContent=f&&f.date===publishedMeta.tradeDate
+   ?'三大法人（'+f.date+'，上市市場）：外資 '+money(f.foreign)+'｜投信 '+money(f.trust)+'｜自營商 '+money(dealer)+'｜合計 '+money(f.total)
+   :'三大法人：當日官方彙總資料尚未保存；勿將前一日數字當作今日數據。';
+ }
 }
 function getPrice(code){
  const x=prices[code];if(!x)return null;
@@ -144,6 +159,42 @@ function reportText(){
 function renderReport(){
  $('stkAutoReport').value=reportText();
 }
+
+async function loadPublishedSnapshot(){
+ const url='../data/stocks-latest.json?t='+Date.now();
+ const note=$('stkPublishedStatus');
+ try{
+  const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),10000);
+  let response;
+  try{response=await fetch(url,{cache:'no-store',signal:ctl.signal})}finally{clearTimeout(timer)}
+  if(!response.ok)throw Error('HTTP '+response.status);
+  const s=await response.json();
+  if(s?.version!==1||!/^20\d\d-\d\d-\d\d$/.test(s.tradeDate||'')||
+    !s.quotes||typeof s.quotes!=='object'||Array.isArray(s.quotes)||Object.keys(s.quotes).length<1)
+    throw Error('每日資料尚未建立或格式不符');
+  if(s.tradeDate>today())throw Error('官方資料日期在未來；已拒絕匯入');
+  const q=Object.entries(s.quotes).filter(([code,record])=>
+    record&&record.Code===code&&record.Date===s.tradeDate&&num(record.ClosingPrice)!==null
+  );
+  if(!q.length)throw Error('股票日期與資料不一致');
+  if(!quoteDate||s.tradeDate>=quoteDate){
+   prices=Object.fromEntries(q);quoteDate=s.tradeDate;
+  }
+  if(s.index&&s.index['日期']===s.tradeDate&&(!indexDate||s.tradeDate>=indexDate)){
+   indexData=s.index;indexDate=s.tradeDate;
+  }
+  publishedMeta={
+   tradeDate:s.tradeDate,quoteCount:q.length,
+   watchlistCount:Number(s.watchlistCount)||q.length,
+   institutional:s.institutional||null,
+   generatedAt:s.generatedAt||''
+  };
+  renderIndex();renderWatch();renderReport();
+ }catch(e){
+  publishedMeta=null;
+  if(note)note.textContent='未讀取到 GitHub 官方行情快照（'+(e?.message||'連線失敗')+'），仍可使用交易所公開 API 查詢。';
+ }
+}
 async function loadQuotes(){
  if(loading)return;loading=true;$('stkReload').disabled=true;$('stkReload').textContent='讀取中…';
  $('stkDataStatus').textContent='正在從臺灣證券交易所載入最近交易日的收盤資料…';
@@ -175,7 +226,7 @@ async function loadQuotes(){
   ok.push('加權指數');
  }
  }
- $('stkDataStatus').textContent=ok.length?'已更新：'+ok.join('、')+'。'+(bad.length?'部分資料讀取失敗，可使用外部行情連結。':'請注意這是盤後資料，不是即時價格。'):'官方行情無法讀取（可能為網路、瀏覽器跨網域限制或網站暫時無回應）。可點個股名稱查看外部行情。';
+ $('stkDataStatus').textContent=ok.length?'已檢查交易所最新公開資料：'+ok.join('、')+'。'+(bad.length?'部分來源讀取失敗。':'這是盤後資料，不是即時價格。'):(publishedMeta?'直接連線交易所受限；目前使用 GitHub 保存的 '+publishedMeta.tradeDate+' 盤後官方快照。':'官方行情無法讀取（網路或跨網域限制）。可點個股名稱查看外部行情。');
  renderIndex();renderWatch();renderReport();
  loading=false;$('stkReload').disabled=false;$('stkReload').textContent='↻ 更新官方盤後資料';
 }
@@ -415,7 +466,8 @@ window.TobyStockCloudBridge={
  onLocalChange:(callback)=>{cloudDirtyListener=callback}
 };
 $('stkQuoteDate').textContent='尚未載入';
-restoreJournal();status();renderWatch();renderIndex();renderReport();loadQuotes();
+restoreJournal();status();renderWatch();renderIndex();renderReport();
+loadPublishedSnapshot().finally(()=>loadQuotes());
 const taipeiHour=Number(new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',hour:'2-digit',hourCycle:'h23'}).format(new Date()));
 if(taipeiHour>=14){fetchTodayClose()}
 setInterval(status,60000);
