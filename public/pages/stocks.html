@@ -31,6 +31,14 @@ main{width:min(1100px,100%);margin:auto;padding:16px 20px 48px}.back{display:inl
    <div class="stk-badge">個股行情交易日<strong id="stkQuoteDate">—</strong></div>
   </div>
   <div class="stk-status" id="stkDataStatus" role="status" aria-live="polite">讀取官方盤後資料中…</div>
+  <div style="border-top:1px solid #e4ebef;margin-top:14px;padding-top:12px">
+   <div class="stk-row">
+    <div><strong>📆 今日（<span id="stkTodayDate"></span>）的資料</strong><p class="stk-sub">盤中請開啟官方即時行情；收盤後可試著取得指定日期的官方盤後報表。</p></div>
+    <div class="stk-actions"><a class="stk-btn alt" id="stkMisLink" href="https://mis.twse.com.tw/" target="_blank" rel="noopener noreferrer">📈 盤中即時行情 ↗</a><button class="stk-btn" id="stkFetchToday" type="button">📆 查詢今天官方盤後</button></div>
+   </div>
+   <div id="stkTodayStatus" class="stk-status" role="status" aria-live="polite">尚未查詢當日報表。</div>
+   <p class="stk-mini"><a id="stkTodayReportLink" target="_blank" rel="noopener noreferrer" href="https://www.twse.com.tw/zh/trading/historical/mi-index.html">直接開啟今天的官方盤後資料 ↗</a>　｜　官方報表若尚未更新，請保留先前交易日資料，勿混用日期。</p>
+  </div>
   <p class="stk-mini" id="stkUpdated">資料來源：臺灣證券交易所 OpenAPI。資料更新時間以官方資料日為準。</p>
  </section>
  <section class="stk-panel" id="stkPre">
@@ -187,4 +195,4 @@ function renderRecent(){renderGrid("recentGrid",recent.map(id=>resources.find(x=
 function renderAll(){const shown=resources.filter(x=>(active==="全部"||x.category===active)&&(!query||(x.name+" "+x.category+" "+x.description).toLowerCase().includes(query.toLowerCase())));renderGrid("allGrid",shown,"allEmpty");renderGrid("favoritesGrid",favorites.map(id=>resources.find(x=>x.id===id)).filter(Boolean),"favoritesEmpty");renderRecent();document.getElementById("count").textContent=shown.length+" / "+resources.length+" 個入口";document.getElementById("allTitle").textContent=active==="全部"?"✨ 全部股票入口":"📚 "+active}
 function showHelp(id){const x=resources.find(r=>r.id===id);if(!x)return;document.getElementById("dialogTitle").textContent="？ "+x.name;document.getElementById("dialogBody").textContent=x.description+" 分類依用途整理；點「開啟」可前往網站。";document.getElementById("overlay").classList.add("show");document.getElementById("close").focus()}
 document.getElementById("search").addEventListener("input",e=>{query=e.target.value;renderAll()});document.getElementById("close").onclick=()=>document.getElementById("overlay").classList.remove("show");document.getElementById("overlay").addEventListener("click",e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("show")});document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("overlay").classList.remove("show")});renderFilters();renderAll();
-</script><script src="../stock-workspace.js?v=20261030-2"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
+</script><script src="../stock-workspace.js?v=20261030-3"></script><script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
