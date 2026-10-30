@@ -202,7 +202,7 @@ async function fetchTodayClose({manual=false}={}){
  const button=$('stkFetchToday');
  button.disabled=true;button.textContent='讀取今日盤後…';
  status.textContent='查詢 '+day+' 證交所當日正式收盤報表（非即時）…';
- $('stkTodayReportLink').href=twseDayUrl(day);
+ $('stkTodayReportLink').href=twseDayUrl(day).replace('response=json','response=html');
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);
  try{
   const response=await fetch(twseDayUrl(day),{cache:'no-store',signal:controller.signal});
@@ -324,7 +324,7 @@ $('stkSort').addEventListener('change',e=>{sort=e.target.value;renderWatch()});
 $('stkPriorityOnly').addEventListener('change',e=>{priorityOnly=e.target.checked;renderWatch()});
 $('stkReload').addEventListener('click',()=>{loadQuotes()});
 $('stkFetchToday').addEventListener('click',()=>fetchTodayClose({manual:true}));
-$('stkTodayReportLink').href=twseDayUrl(today());
+$('stkTodayReportLink').href=twseDayUrl(today()).replace('response=json','response=html');
 $('stkTodayDate').textContent=today();
 $('stkMisLink').href='https://mis.twse.com.tw/';
 $('stkAddButton').addEventListener('click',()=>{
