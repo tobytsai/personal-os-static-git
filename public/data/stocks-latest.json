@@ -1,7 +1,7 @@
 {
   "version": 1,
   "tradeDate": "2026-10-30",
-  "generatedAt": "2026-10-30T11:31:11.905Z",
+  "generatedAt": "2026-10-30T11:33:23.881Z",
   "marketStatus": "closed",
   "quoteSourceDate": "2026-10-30",
   "watchlistCount": 16,
@@ -233,8 +233,24 @@
       "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261030&type=ALLBUT0999&response=json"
     }
   },
-  "index": null,
-  "institutional": null,
+  "index": {
+    "日期": "2026-10-30",
+    "指數": "發行量加權股價指數",
+    "收盤指數": 45211.83,
+    "漲跌百分比": -2.49,
+    "漲跌點數": -1156.5,
+    "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261030&type=ALLBUT0999&response=json"
+  },
+  "institutional": {
+    "date": "2026-10-30",
+    "unit": "TWD",
+    "foreign": -112467249894,
+    "trust": 23993218505,
+    "dealerSelf": -3840358646,
+    "dealerHedge": -47529721812,
+    "total": -139844111847,
+    "source": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?dayDate=20261030&type=day&response=json"
+  },
   "sources": {
     "stocks": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL",
     "index": "https://openapi.twse.com.tw/v1/exchangeReport/MI_INDEX",
