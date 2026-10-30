@@ -51,3 +51,12 @@
 .stk-divider{height:1px;background:#e9ecf0;margin:16px 0}
 .stk-hidden{display:none!important}
 @media(max-width:650px){.stk-panel{padding:14px;border-radius:18px}.stk-panel h2{font-size:19px}.stk-formgrid,.stk-checks{grid-template-columns:minmax(0,1fr)}.stk-controls{grid-template-columns:1fr 1fr}.stk-controls input{grid-column:1/-1}.stk-add{grid-template-columns:1fr 1fr}.stk-add button{grid-column:1/-1}.stk-badge{flex:1 1 135px}}
+
+/* Editing existing saved stocks: visible on both desktop and phone */
+.stk-sector-edit{margin-top:5px}
+.stk-edit-panel{margin:14px 0;padding:16px;border:1px solid #cbdad8;border-radius:16px;background:#f2f9f8}
+.stk-edit-panel[hidden]{display:none!important}
+.stk-edit-panel h3{margin:0;font-size:18px;color:#214c4a}
+.stk-edit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.stk-edit-grid .stk-field{min-width:0}
+@media(max-width:650px){.stk-edit-grid{grid-template-columns:minmax(0,1fr)}.stk-edit-panel{padding:13px}}
