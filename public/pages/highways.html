@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#235974"><meta name="description" content="臺灣國道高速公路、省道快速公路及交流道導覽。北中南東地區、路線、出口里程、系統交流道、搜尋、收藏、地圖與官方路況。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg"><title>🛣️ 高速公路・快速道路｜交通啟動器</title>
+<style>
+:root{--ink:#26364b;--muted:#728397;--line:#dce5eb;--accent:#286f93;--shadow:0 8px 25px #27445312}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font:14px/1.7 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;background:radial-gradient(circle at 96% 4%,#d2f0e4 0,transparent 28%),linear-gradient(145deg,#eef6fb,#f9fafc 60%,#f6f9f0);min-height:100vh}button,input{font:inherit}button{cursor:pointer}a{color:inherit}[hidden]{display:none!important}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #69c1d2;outline-offset:2px}
+.wrap{max-width:1250px;margin:auto;padding:20px 18px 65px}.back{display:inline-flex;padding:8px 14px;border-radius:100px;background:#fff;border:1px solid var(--line);text-decoration:none;font-size:12px;font-weight:850;margin-bottom:14px}
+.hero{position:relative;border-radius:27px;padding:clamp(24px,5vw,42px);background:linear-gradient(115deg,#1c4968,#2678a2 58%,#30a087);color:#fff;overflow:hidden;box-shadow:0 20px 42px #205d7830}
+.hero:after{position:absolute;content:"";width:330px;height:330px;border:2px solid #ffffff33;border-radius:50%;right:-100px;top:-180px}
+.eyebrow{font-size:11px;font-weight:850;letter-spacing:.2em;opacity:.9}h1{font-size:clamp(31px,5vw,49px);line-height:1.2;margin:9px 0 10px}.hero p{margin:0;line-height:1.85;max-width:800px;color:#e7f9ff}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.stats span{font-size:11px;border:1px solid #ffffff60;background:#ffffff1c;padding:7px 11px;border-radius:99px;font-weight:800}
+.shortcuts{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.shortcuts a{background:#fff;border:1px solid var(--line);padding:10px 13px;border-radius:13px;text-decoration:none;font-size:12px;font-weight:850;color:#286c88}
+.panel{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;box-shadow:var(--shadow);margin:16px 0}
+.panel h2{font-size:18px;margin:0 0 8px}.crumbs{display:flex;gap:8px;flex-wrap:wrap;color:#527b93;font-weight:850;margin:12px 0 0}.crumbs span{background:#edf7fc;padding:5px 9px;border-radius:8px;font-size:11px}
+.steps{display:grid;grid-template-columns:1fr 1fr 1.55fr;gap:10px}.step{border:1px solid var(--line);background:#f8fbfd;border-radius:15px;padding:12px;min-width:0}.step h3{font-size:12px;color:#6a8499;margin:0 0 10px}.chips{display:flex;gap:7px;flex-wrap:wrap;max-height:205px;overflow-y:auto}.chip{border:1px solid #caddeb;border-radius:11px;background:#fff;color:#4a6f89;padding:8px 11px;font-size:11px;font-weight:850}.chip.active{background:#2479a4;border-color:#2479a4;color:#fff}.chip .num{opacity:.7;margin-left:4px}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:17px 0}.search{min-width:0;flex:1 1 260px;padding:12px 14px;border:1px solid var(--line);background:#fff;border-radius:15px;outline:none;box-shadow:var(--shadow)}.toolbar button{background:#fff;border:1px solid var(--line);color:#426b85;border-radius:13px;padding:10px 12px;font-weight:850;font-size:12px}
+.section{margin-top:22px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:13px}.section h2{font-size:21px;margin:0}.count{font-size:12px;color:var(--muted)}
+.road-head{margin:19px 0 11px;display:flex;align-items:center;justify-content:space-between;gap:10px}.road-head h3{font-size:17px;margin:0}.road-head p{font-size:11px;color:var(--muted);margin:0}
+.road-head .dot{display:inline-block;width:11px;height:11px;background:var(--route-color,#2a829a);border-radius:50%;margin-right:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow);overflow:hidden;min-width:0;display:flex;flex-direction:column}.card:hover{box-shadow:0 13px 29px #214a6425}
+.stripe{height:5px;background:var(--line-color,#276f96)}.card-main{padding:15px;flex:1;display:flex;flex-direction:column}.top{display:flex;justify-content:space-between;align-items:center;gap:6px}.road-badge{font-size:11px;display:inline-block;color:#fff;font-weight:900;background:var(--line-color,#2a7199);border-radius:9px;padding:5px 8px}
+.star{width:33px;height:33px;border:1px solid var(--line);background:#f6fafc;border-radius:10px;color:#a6b6c1;font-size:19px}.star.active{color:#ce9c28;background:#fff3d2}
+.card h3{font-size:17px;line-height:1.45;margin:12px 0 5px}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}.tag{display:inline-flex;max-width:100%;border:1px solid #e4eaf0;border-radius:7px;background:#f4f8fb;color:#5d788d;font-size:10px;padding:3px 7px;font-weight:750}
+.card p{margin:0 0 12px;font-size:12px;color:#586e7e;line-height:1.75;flex:1}.quality{font-size:11px;color:#94692b;background:#fff8e8;padding:7px 9px;border-radius:10px;margin:3px 0 10px}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}.actions a,.actions button{border:1px solid #d0e0ea;border-radius:9px;background:#edf7fd;color:#2a7298;padding:7px 10px;font-size:11px;text-decoration:none;font-weight:800}.actions a.primary{background:#287da4;border-color:#287da4;color:#fff}
+.adjacent{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 10px}.adjacent button{padding:5px 8px;border:1px solid #d9e7ec;border-radius:9px;background:#f6fcfc;color:#477d88;font-size:10px;font-weight:750}
+.note{font-size:12px;line-height:1.85;color:#697e90;margin:20px 0}.warn{border:1px solid #ecd9ae;padding:13px 15px;background:#fff9e8;border-radius:15px;font-size:12px;color:#835f26;margin:12px 0}.empty{border:1px dashed #b9ccd9;padding:24px;border-radius:16px;background:#fff;color:var(--muted)}
+.more{display:flex;justify-content:center;margin:18px}.more button{border:1px solid #c5dce7;border-radius:99px;padding:10px 19px;background:#fff;color:#387994;font-weight:850}
+.mini .card-main{padding:12px}.mini .card h3{font-size:15px}.mini .card p{font-size:11px}.mini .quality{display:none}
+@media(max-width:820px){.steps{grid-template-columns:1fr 1fr}.step:last-child{grid-column:1/-1}}
+@media(max-width:570px){.wrap{padding:12px 11px 44px}.hero{padding:23px 18px}.panel{padding:11px}.steps{gap:7px}.step{padding:9px}.step h3{font-size:11px}.chip{font-size:10px;padding:7px 9px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card-main{padding:11px}.card h3{font-size:14px}.card p{font-size:11px}.actions a,.actions button{font-size:10px;padding:6px}.road-head h3{font-size:15px}}
+</style></head><body><main class="wrap">
+<a class="back" href="./transport.html">← 返回交通啟動器</a>
+<header class="hero"><div class="eyebrow">TAIWAN FREEWAYS & EXPRESSWAYS · ROAD DIRECTORY</div>
+<h1>🛣️ 臺灣高速公路及快速道路</h1>
+<p>按地區、道路種類與路線搜尋國道交流道、系統交流道、快速道路、端點與轉接道，查看里程、地圖、連接道路及官方路況。</p>
+<div class="stats"><span id="statsRoads">路線載入中…</span><span id="statsExits">交流道載入中…</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div></header>
+<nav class="shortcuts" aria-label="路況與道路資訊"><a href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener noreferrer">🚙 國道 1968 即時路況</a><a href="https://168.thb.gov.tw/" target="_blank" rel="noopener noreferrer">🛣️ 公路局 168 路況</a><a href="https://www.freeway.gov.tw/Publish.aspx?cnid=1906" target="_blank" rel="noopener noreferrer">📋 國道交流道里程表</a><a href="https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&amp;sms=13790" target="_blank" rel="noopener noreferrer">🚦 省道快速公路官方資料</a></nav>
+<section class="panel"><h2>🗂️ 三層公路分類</h2><div class="steps">
+<div class="step"><h3>第一層｜道路種類</h3><div class="chips" id="classFilter"></div></div>
+<div class="step"><h3>第二層｜地區</h3><div class="chips" id="regionFilter"></div></div>
+<div class="step"><h3>第三層｜路線</h3><div class="chips" id="routeFilter"></div></div></div>
+<div class="crumbs"><span id="crumbClass">全部道路</span><span>›</span><span id="crumbRegion">全臺</span><span>›</span><span id="crumbRoute">全部路線</span></div></section>
+<div class="toolbar"><input id="search" class="search" type="search" aria-label="搜尋交流道" placeholder="搜尋國道1、台74、楊梅交流道、65K、地區或連接道路…"><button id="clear" type="button">清除篩選</button></div>
+<section class="section"><div class="section-head"><h2 id="heading">所有公路交流道</h2><span id="count" class="count">讀取中…</span></div><div id="cards"></div><div class="more" id="moreWrap" hidden><button id="more" type="button">顯示更多交流道</button></div></section>
+<section class="section" id="favoritesSection" hidden><div class="section-head"><h2>⭐ 收藏交流道</h2><span id="favCount" class="count"></span></div><div class="grid mini" id="favGrid"></div></section>
+<section class="section" id="recentSection" hidden><div class="section-head"><h2>🕘 最近開啟</h2><span id="recentCount" class="count"></span></div><div class="grid mini" id="recentGrid"></div></section>
+<div class="warn">⚠️ 重要：國道卡片含交流道、系統交流道、端點及專用／轉接匝道；後三者不一定能直接出入地方道路。快速道路候選交流道尚未與官方逐筆完成核對，已分別標示「待逐筆核對」，不可當作導航、法定里程或匝道開放依據。</div>
+<p class="note">本頁靜態索引整理於 2026/10/31。里程、車道方向與施工、封閉資訊以高公局與公路局官方即時公告、路面標誌為準。國道里程顯示整數 K；快速道路未查證的里程一律留白，不以排序猜公里數。區域篩選是按交流道位置而非整條道路起點。臺灣東部目前尚無屬本分類的營運國道高速公路或省道快速公路，保留東部分類作為後續擴充入口。</p>
+</main>
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let db=null,roadClass="全部",region="全部",route="全部",query="",limit=48;
+const favKey="toby-highway-favorites",recentKey="toby-highway-recent";
+function saved(key){try{const x=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(x)?x:[]}catch(e){return []}}
+let favs=saved(favKey),recent=saved(recentKey),exitIndex=new Map();
+function filteredRoutes(){return(db?.routes||[]).filter(r=>(roadClass==="全部"||r.category===roadClass)&&r.exits.some(e=>region==="全部"||e.region===region))}
+function matching(){
+ if(!db)return [];
+ const q=query.toLowerCase().trim();
+ return filteredRoutes().filter(r=>route==="全部"||r.id===route).map(r=>({r,exits:r.exits.filter(ex=>(region==="全部"||ex.region===region)&&(!q||[r.no,r.name,ex.name,ex.km===null?"":ex.km+"K",ex.region,ex.county,ex.location,ex.connection,ex.notes].join(" ").toLowerCase().includes(q)))})).filter(g=>g.exits.length);
+}
+function mapUrl(r,e){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(e.mapQuery||r.no+" "+e.name)}
+function exitCard(e,r,compact=false){
+ const fav=favs.includes(e.id),quality=e.verified==="exchangeTable";
+ const c=r.category==="國道高速公路"?"#2677a8":"#368969";
+ const idx=r.exits.findIndex(x=>x.id===e.id);
+ const around=[idx>0?{ex:r.exits[idx-1],label:"上一個"}:null,idx<r.exits.length-1?{ex:r.exits[idx+1],label:"下一個"}:null].filter(Boolean);
+ const neighbours=around.map(x=>'<button type="button" data-jump="'+esc(x.ex.id)+'">'+x.label+'：'+esc(x.ex.name)+'</button>').join("");
+ const km=e.km!==null&&Number.isFinite(e.km)?e.km+"K":null;
+ return '<article class="card" style="--line-color:'+c+'"><div class="stripe"></div><div class="card-main"><div class="top"><span class="road-badge">'+esc(r.no)+'</span><button class="star'+(fav?" active":"")+'" aria-pressed="'+fav+'" aria-label="'+(fav?"取消收藏":"加入收藏")+'" data-fav="'+esc(e.id)+'" type="button">'+(fav?"★":"☆")+'</button></div><h3>'+esc(e.name)+'</h3><div class="tags"><span class="tag">'+esc(e.region)+'</span><span class="tag">'+esc(e.type)+'</span>'+(km?'<span class="tag">里程 '+esc(km)+'</span>':'')+(e.county?'<span class="tag">'+esc(e.county)+'</span>':'')+'</div><p>'+esc(e.connection)+'</p>'+(e.notes?'<div class="quality">⚠️ '+esc(e.notes)+'</div>':"")+
+ (!quality?'<div class="quality">⚠️ 候選交流道，尚未與公路局官方明細逐筆核對；請勿依此確認出口方向。</div>':"")+
+ (compact?"":'<div class="adjacent">'+neighbours+'</div>')+
+ '<div class="actions"><a class="primary" href="'+esc(mapUrl(r,e))+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">📍 查地圖</a><a href="'+esc(r.official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">官方資料</a><a href="'+esc(r.live)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(e.id)+'">即時路況</a></div></div></article>';
+}
+function selector(id,values,selected,key){
+ $(id).innerHTML=values.map(v=>'<button type="button" class="chip'+(selected===v[0]?" active":"")+'" data-'+key+'="'+esc(v[0])+'">'+esc(v[1])+(v[2]!==undefined?'<span class="num">'+v[2]+'</span>':'')+'</button>').join("");
+}
+function renderFilters(){
+ if(!db)return;
+ selector("classFilter",[["全部","全部道路"],["國道高速公路","🚙 國道高速公路"],["省道快速道路","🛣️ 省道快速道路"]],roadClass,"class");
+ selector("region",[["全部","全臺"],["北部","北部"],["中部","中部"],["南部","南部"],["東部","東部"]],region,"region");
+ const routes=filteredRoutes();
+ if(route!=="全部"&&!routes.some(r=>r.id===route))route="全部";
+ selector("routeFilter",[["全部","全部路線",routes.length],...routes.map(r=>[r.id,r.no,r.exits.filter(e=>region==="全部"||e.region===region).length])],route,"route");
+ $("crumbClass").textContent=roadClass==="全部"?"全部道路":roadClass;
+ $("crumbRegion").textContent=region==="全部"?"全臺":region;
+ $("crumbRoute").textContent=route==="全部"?"全部路線":db.routes.find(r=>r.id===route)?.no||"";
+}
+function renderShelves(){
+ for(const [ids,section,host,count] of [[favs,"favoritesSection","favGrid","favCount"],[recent,"recentSection","recentGrid","recentCount"]]){
+  const found=ids.map(x=>exitIndex.get(x)).filter(Boolean).slice(0,15);
+  $(section).hidden=!found.length;$(host).innerHTML=found.map(x=>exitCard(x.ex,x.r,true)).join("");$(count).textContent=found.length+" 筆";
+ }
+}
+function render(){
+ if(!db)return;
+ renderFilters();
+ const groups=matching(),count=groups.reduce((n,g)=>n+g.exits.length,0);
+ $("heading").textContent=route!=="全部"?db.routes.find(r=>r.id===route)?.no+" · 交流道":region==="全部"?"全臺國道與快速道路":region+" · 高快速道路";
+ $("count").textContent=count+" 筆交流道／節點";
+ let remaining=limit;
+ const html=groups.map(({r,exits})=>{const seen=exits.slice(0,Math.max(0,remaining));remaining-=seen.length;if(!seen.length)return "";return '<section><div class="road-head"><div><h3><span class="dot" style="--route-color:'+(r.category==="國道高速公路"?"#2677a8":"#368969")+'"></span>'+esc(r.no)+' · '+esc(r.name)+'</h3><p>'+esc(r.category)+' · 本地區 '+exits.length+' 筆</p></div><a href="'+esc(r.official)+'" target="_blank" rel="noopener noreferrer" class="count">官方路線資料</a></div><div class="grid">'+seen.map(ex=>exitCard(ex,r)).join("")+'</div></section>'}).join("");
+ $("cards").innerHTML=html||'<div class="empty">此分類暫無已整理的交流道資料，請更換地區或道路路線。</div>';
+ $("moreWrap").hidden=limit>=count;$("more").textContent="顯示更多（尚有 "+Math.max(0,count-limit)+" 筆）";
+ renderShelves();
+}
+$("classFilter").addEventListener("click",e=>{const b=e.target.closest("[data-class]");if(!b)return;roadClass=b.dataset.class;route="全部";limit=48;render()});
+$("region").addEventListener("click",e=>{const b=e.target.closest("[data-region]");if(!b)return;region=b.dataset.region;route="全部";limit=48;render()});
+$("routeFilter").addEventListener("click",e=>{const b=e.target.closest("[data-route]");if(!b)return;route=b.dataset.route;limit=48;render()});
+$("search").addEventListener("input",e=>{query=e.target.value;limit=48;render()});
+$("clear").addEventListener("click",()=>{roadClass="全部";region="全部";route="全部";query="";limit=48;$("search").value="";render()});
+$("more").addEventListener("click",()=>{limit+=48;render()});
+document.body.addEventListener("click",e=>{
+ const jump=e.target.closest("[data-jump]");if(jump){const ent=exitIndex.get(jump.dataset.jump);if(!ent)return;region=ent.ex.region;roadClass=ent.r.category;route=ent.r.id;query=ent.ex.name;$("search").value=query;limit=48;render();document.querySelector(".panel").scrollIntoView({behavior:"smooth"});return}
+ const star=e.target.closest("[data-fav]");if(star){const id=star.dataset.fav;favs=favs.includes(id)?favs.filter(x=>x!==id):[id,...favs];localStorage.setItem(favKey,JSON.stringify(favs));render();return}
+ const link=e.target.closest("[data-open]");if(link){const id=link.dataset.open;recent=[id,...recent.filter(x=>x!==id)].slice(0,12);localStorage.setItem(recentKey,JSON.stringify(recent));renderShelves()}
+});
+fetch("../data/taiwan-expressway-interchanges.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+ db=d;exitIndex=new Map(d.routes.flatMap(r=>r.exits.map(ex=>[ex.id,{r,ex}])));
+ $("statsRoads").textContent=d.routes.length+" 組公路路線";$("statsExits").textContent=exitIndex.size+" 筆交流道／節點";
+ const url=new URLSearchParams(location.search);
+ const qClass=url.get("class"),qRegion=url.get("region"),qRoute=url.get("route"),qExit=url.get("exit");
+ if(["國道高速公路","省道快速道路"].includes(qClass))roadClass=qClass;
+ if(["北部","中部","南部","東部"].includes(qRegion))region=qRegion;
+ if(qRoute&&d.routes.some(x=>x.id===qRoute)){route=qRoute;roadClass=d.routes.find(x=>x.id===qRoute).category;}
+ if(qExit&&exitIndex.has(qExit)){const e=exitIndex.get(qExit);route=e.r.id;roadClass=e.r.category;region=e.ex.region;query=e.ex.name;$("search").value=query}
+ render();
+}).catch(e=>{$("cards").innerHTML='<div class="empty">路網資料載入失敗，請重新整理或使用上方官方路況入口。'+esc(e.message)+'</div>'});
+</script><script src="../shared-nav.js" defer></script></body></html>
