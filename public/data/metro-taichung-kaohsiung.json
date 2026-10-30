@@ -1,0 +1,2421 @@
+{
+  "updated": "2026-10-31",
+  "scope": "臺中捷運綠線與高雄捷運紅線、橘線、環狀輕軌已營運車站",
+  "lines": [
+    {
+      "id": "TC-G",
+      "city": "臺中市",
+      "system": "臺中捷運",
+      "name": "綠線",
+      "color": "#338c63",
+      "official": "https://www.tmrt.com.tw/metro-life/station-information",
+      "stations": [
+        {
+          "id": "TC-G-103a",
+          "code": "103a",
+          "projectCode": "G0",
+          "name": "北屯總站",
+          "intro": "北屯機廠及敦富東街生活圈，綠線北端起站",
+          "seq": 1,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "103",
+              "name": "舊社",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-103",
+          "code": "103",
+          "projectCode": "G3",
+          "name": "舊社",
+          "intro": "北屯舊社公園及松竹路周邊住宅社區",
+          "seq": 2,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "103a",
+              "name": "北屯總站",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "104",
+              "name": "松竹",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-104",
+          "code": "104",
+          "projectCode": "G4",
+          "name": "松竹",
+          "intro": "可轉乘臺鐵松竹站，鄰近北屯路及舊社聚落",
+          "seq": 3,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "3270",
+              "name": "松竹站",
+              "type": "連通步行",
+              "note": "臺鐵松竹站與捷運松竹站轉乘，依通道指標",
+              "link": "./tra-stations.html?code=3270"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "103",
+              "name": "舊社",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "105",
+              "name": "四維國小",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-105",
+          "code": "105",
+          "projectCode": "G5",
+          "name": "四維國小",
+          "intro": "四維國小、興安路及北屯生活商圈",
+          "seq": 4,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "104",
+              "name": "松竹",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "106",
+              "name": "文心崇德",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-106",
+          "code": "106",
+          "projectCode": "G6",
+          "name": "文心崇德",
+          "intro": "崇德路商圈與臺中北屯、北區生活街區",
+          "seq": 5,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "105",
+              "name": "四維國小",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "107",
+              "name": "文心中清",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-107",
+          "code": "107",
+          "projectCode": "G7",
+          "name": "文心中清",
+          "intro": "中清路及天津商圈，鄰近北區住宅與市場",
+          "seq": 6,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "106",
+              "name": "文心崇德",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "108",
+              "name": "文華高中",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-108",
+          "code": "108",
+          "projectCode": "G8",
+          "name": "文華高中",
+          "intro": "文華高中、水湳周邊及文心路商圈",
+          "seq": 7,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "107",
+              "name": "文心中清",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "109",
+              "name": "文心櫻花",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-109",
+          "code": "109",
+          "projectCode": "G8a",
+          "name": "文心櫻花",
+          "intro": "西屯櫻花路生活圈，近逢甲與文心路接駁",
+          "seq": 8,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "108",
+              "name": "文華高中",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "110",
+              "name": "市政府",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-110",
+          "code": "110",
+          "projectCode": "G9",
+          "name": "市政府",
+          "intro": "臺中市政府、臺中國家歌劇院及百貨商圈",
+          "seq": 9,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "109",
+              "name": "文心櫻花",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "111",
+              "name": "水安宮",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-111",
+          "code": "111",
+          "projectCode": "G10",
+          "name": "水安宮",
+          "intro": "水安宮、精明商圈與臺灣大道周邊",
+          "seq": 10,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "110",
+              "name": "市政府",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "112",
+              "name": "文心森林公園",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-112",
+          "code": "112",
+          "projectCode": "G10a",
+          "name": "文心森林公園",
+          "intro": "文心森林公園、圓滿戶外劇場與綠地休憩",
+          "seq": 11,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "111",
+              "name": "水安宮",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "113",
+              "name": "南屯",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-113",
+          "code": "113",
+          "projectCode": "G11",
+          "name": "南屯",
+          "intro": "南屯老街、萬和宮及南屯生活圈",
+          "seq": 12,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "112",
+              "name": "文心森林公園",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "114",
+              "name": "豐樂公園",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-114",
+          "code": "114",
+          "projectCode": "G12",
+          "name": "豐樂公園",
+          "intro": "豐樂雕塑公園及南屯親子遊憩空間",
+          "seq": 13,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "113",
+              "name": "南屯",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "115",
+              "name": "大慶",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-115",
+          "code": "115",
+          "projectCode": "G13",
+          "name": "大慶",
+          "intro": "可轉乘臺鐵大慶站，鄰近中山醫學大學",
+          "seq": 14,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "3320",
+              "name": "大慶站",
+              "type": "連通步行",
+              "note": "臺鐵大慶站與捷運大慶站轉乘",
+              "link": "./tra-stations.html?code=3320"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "114",
+              "name": "豐樂公園",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "116",
+              "name": "九張犁",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-116",
+          "code": "116",
+          "projectCode": "G14",
+          "name": "九張犁",
+          "intro": "烏日九張犁社區與河岸農村景觀",
+          "seq": 15,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "115",
+              "name": "大慶",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "117",
+              "name": "九德",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-117",
+          "code": "117",
+          "projectCode": "G15",
+          "name": "九德",
+          "intro": "烏日九德聚落及建國路沿線",
+          "seq": 16,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "116",
+              "name": "九張犁",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "118",
+              "name": "烏日",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-118",
+          "code": "118",
+          "projectCode": "G16",
+          "name": "烏日",
+          "intro": "烏日市區與烏日地方生活圈，與高鐵站不同",
+          "seq": 17,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "117",
+              "name": "九德",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "119",
+              "name": "高鐵臺中站",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "TC-G-119",
+          "code": "119",
+          "projectCode": "G17",
+          "name": "高鐵臺中站",
+          "intro": "可步行轉乘高鐵台中站及臺鐵新烏日站，三鐵交通樞紐",
+          "seq": 18,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "3340",
+              "name": "新烏日站",
+              "type": "連通步行",
+              "note": "由捷運站連通道前往臺鐵新烏日",
+              "link": "./tra-stations.html?code=3340"
+            },
+            {
+              "system": "高鐵",
+              "code": "TAC",
+              "name": "台中站",
+              "type": "連通步行",
+              "note": "由捷運站出口1通道轉乘高鐵台中站",
+              "link": "./thsr-stations.html?code=TAC"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "118",
+              "name": "烏日",
+              "direction": "上一站",
+              "stops": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KH-R",
+      "city": "高雄市",
+      "system": "高雄捷運",
+      "name": "紅線",
+      "color": "#ce4b53",
+      "official": "https://www.krtc.com.tw/Guide/station_guide",
+      "stations": [
+        {
+          "id": "KH-R-R3",
+          "code": "R3",
+          "projectCode": null,
+          "name": "小港",
+          "intro": "小港老街生活圈與沿海產業區，紅線南端起站",
+          "seq": 1,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R4",
+              "name": "高雄國際機場",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R4",
+          "code": "R4",
+          "projectCode": null,
+          "name": "高雄國際機場",
+          "intro": "高雄國際機場航廈，航空與捷運重要交通樞紐",
+          "seq": 2,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R3",
+              "name": "小港",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R4A",
+              "name": "草衙",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R4A",
+          "code": "R4A",
+          "projectCode": null,
+          "name": "草衙",
+          "intro": "草衙道、SKM Park及前鎮購物娛樂空間",
+          "seq": 3,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R4",
+              "name": "高雄國際機場",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R5",
+              "name": "前鎮高中",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R5",
+          "code": "R5",
+          "projectCode": null,
+          "name": "前鎮高中",
+          "intro": "前鎮高中與瑞隆路、五甲周邊通勤生活圈",
+          "seq": 4,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R4A",
+              "name": "草衙",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R6",
+              "name": "凱旋",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R6",
+          "code": "R6",
+          "projectCode": null,
+          "name": "凱旋",
+          "intro": "可步行轉乘輕軌前鎮之星 C3，鄰近凱旋路",
+          "seq": 5,
+          "transfers": [
+            {
+              "line": "KH-C",
+              "code": "C3",
+              "name": "前鎮之星",
+              "system": "高雄環狀輕軌",
+              "type": "步行轉乘",
+              "note": "捷運凱旋站與輕軌前鎮之星步行換乘"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "R5",
+              "name": "前鎮高中",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R7",
+              "name": "獅甲",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R7",
+          "code": "R7",
+          "projectCode": null,
+          "name": "獅甲",
+          "intro": "勞工公園、中華五路及前鎮住宅商辦區",
+          "seq": 6,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R6",
+              "name": "凱旋",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R8",
+              "name": "三多商圈",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R8",
+          "code": "R8",
+          "projectCode": null,
+          "name": "三多商圈",
+          "intro": "三多商圈百貨、85大樓及高雄港景",
+          "seq": 7,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R7",
+              "name": "獅甲",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R9",
+              "name": "中央公園",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R9",
+          "code": "R9",
+          "projectCode": null,
+          "name": "中央公園",
+          "intro": "中央公園、新堀江商圈與城市綠地",
+          "seq": 8,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R8",
+              "name": "三多商圈",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R10",
+              "name": "美麗島",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R10",
+          "code": "R10",
+          "projectCode": null,
+          "name": "美麗島",
+          "intro": "紅橘線站內換乘，美麗島光之穹頂藝術地標",
+          "seq": 9,
+          "transfers": [
+            {
+              "line": "KH-O",
+              "code": "O5",
+              "name": "美麗島",
+              "system": "高雄捷運",
+              "type": "站內轉乘",
+              "note": "美麗島站兩條線交會，依站內指標換線"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "R9",
+              "name": "中央公園",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R11",
+              "name": "高雄車站",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R11",
+          "code": "R11",
+          "projectCode": null,
+          "name": "高雄車站",
+          "intro": "可轉乘臺鐵高雄站，城市中心與長途交通節點",
+          "seq": 10,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "4400",
+              "name": "高雄站",
+              "type": "站內連通",
+              "note": "高雄車站地下化站體，依指標轉乘臺鐵",
+              "link": "./tra-stations.html?code=4400"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "R10",
+              "name": "美麗島",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R12",
+              "name": "後驛",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R12",
+          "code": "R12",
+          "projectCode": null,
+          "name": "後驛",
+          "intro": "高雄醫學大學與後驛商圈、博愛路生活圈",
+          "seq": 11,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R11",
+              "name": "高雄車站",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R13",
+              "name": "凹子底",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R13",
+          "code": "R13",
+          "projectCode": null,
+          "name": "凹子底",
+          "intro": "鄰近愛河之心及輕軌 C24，往鼓山商圈便利",
+          "seq": 12,
+          "transfers": [
+            {
+              "line": "KH-C",
+              "code": "C24",
+              "name": "愛河之心",
+              "system": "高雄環狀輕軌",
+              "type": "步行轉乘",
+              "note": "凹子底捷運站與愛河之心輕軌站步行換乘"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "R12",
+              "name": "後驛",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R14",
+              "name": "巨蛋",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R14",
+          "code": "R14",
+          "projectCode": null,
+          "name": "巨蛋",
+          "intro": "漢神巨蛋百貨、瑞豐夜市及大型演出場地",
+          "seq": 13,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R13",
+              "name": "凹子底",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R15",
+              "name": "生態園區",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R15",
+          "code": "R15",
+          "projectCode": null,
+          "name": "生態園區",
+          "intro": "高雄原生植物園與北高雄住宅生活圈",
+          "seq": 14,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R14",
+              "name": "巨蛋",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R16",
+              "name": "左營",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R16",
+          "code": "R16",
+          "projectCode": null,
+          "name": "左營",
+          "intro": "高鐵左營站、臺鐵新左營站轉乘，鄰近蓮池潭",
+          "seq": 15,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "4340",
+              "name": "新左營站",
+              "type": "連通步行",
+              "note": "捷運左營站與臺鐵新左營站相接",
+              "link": "./tra-stations.html?code=4340"
+            },
+            {
+              "system": "高鐵",
+              "code": "ZUY",
+              "name": "左營站",
+              "type": "連通步行",
+              "note": "捷運左營與高鐵左營站連通，依標示步行",
+              "link": "./thsr-stations.html?code=ZUY"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "R15",
+              "name": "生態園區",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R17",
+              "name": "世運",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R17",
+          "code": "R17",
+          "projectCode": null,
+          "name": "世運",
+          "intro": "國家體育場、世運主場館與大型活動",
+          "seq": 16,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R16",
+              "name": "左營",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R18",
+              "name": "油廠國小",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R18",
+          "code": "R18",
+          "projectCode": null,
+          "name": "油廠國小",
+          "intro": "中油煉油廠歷史文化及楠梓生活圈",
+          "seq": 17,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R17",
+              "name": "世運",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R19",
+              "name": "楠梓科技園區",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R19",
+          "code": "R19",
+          "projectCode": null,
+          "name": "楠梓科技園區",
+          "intro": "楠梓科技產業與工業聚落通勤站",
+          "seq": 18,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R18",
+              "name": "油廠國小",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R20",
+              "name": "後勁",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R20",
+          "code": "R20",
+          "projectCode": null,
+          "name": "後勁",
+          "intro": "後勁老街、聖雲宮與社區歷史文化",
+          "seq": 19,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R19",
+              "name": "楠梓科技園區",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R21",
+              "name": "都會公園",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R21",
+          "code": "R21",
+          "projectCode": null,
+          "name": "都會公園",
+          "intro": "高雄都會公園及楠梓綠地休閒區",
+          "seq": 20,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R20",
+              "name": "後勁",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R22",
+              "name": "青埔",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R22",
+          "code": "R22",
+          "projectCode": null,
+          "name": "青埔",
+          "intro": "橋頭青埔生活圈與高雄新市鎮",
+          "seq": 21,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R21",
+              "name": "都會公園",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R22A",
+              "name": "橋頭糖廠",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R22A",
+          "code": "R22A",
+          "projectCode": null,
+          "name": "橋頭糖廠",
+          "intro": "橋頭糖廠文創與台糖歷史園區",
+          "seq": 22,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R22",
+              "name": "青埔",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R23",
+              "name": "橋頭火車站",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R23",
+          "code": "R23",
+          "projectCode": null,
+          "name": "橋頭火車站",
+          "intro": "可轉乘臺鐵橋頭站，岡山與楠梓交通節點",
+          "seq": 23,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "4320",
+              "name": "橋頭站",
+              "type": "連通步行",
+              "note": "捷運橋頭火車站與臺鐵橋頭站轉乘",
+              "link": "./tra-stations.html?code=4320"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "R22A",
+              "name": "橋頭糖廠",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "R24",
+              "name": "岡山高醫",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-R24",
+          "code": "R24",
+          "projectCode": null,
+          "name": "岡山高醫",
+          "intro": "高醫岡山醫院周邊及岡山北部生活圈",
+          "seq": 24,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "R23",
+              "name": "橋頭火車站",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "RK1",
+              "name": "岡山車站",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-R-RK1",
+          "code": "RK1",
+          "projectCode": null,
+          "name": "岡山車站",
+          "intro": "可轉乘臺鐵岡山站，岡山老街及羊肉美食商圈",
+          "seq": 25,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "4310",
+              "name": "岡山站",
+              "type": "連通步行",
+              "note": "捷運岡山車站與臺鐵岡山站接續轉乘",
+              "link": "./tra-stations.html?code=4310"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "R24",
+              "name": "岡山高醫",
+              "direction": "上一站",
+              "stops": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KH-O",
+      "city": "高雄市",
+      "system": "高雄捷運",
+      "name": "橘線",
+      "color": "#db9a36",
+      "official": "https://www.krtc.com.tw/Guide/station_guide",
+      "stations": [
+        {
+          "id": "KH-O-O1",
+          "code": "O1",
+          "projectCode": null,
+          "name": "哈瑪星",
+          "intro": "可步行轉乘輕軌 C14，鄰近駁二、哈瑪星與西子灣",
+          "seq": 1,
+          "transfers": [
+            {
+              "line": "KH-C",
+              "code": "C14",
+              "name": "哈瑪星",
+              "system": "高雄環狀輕軌",
+              "type": "步行轉乘",
+              "note": "哈瑪星捷運與輕軌站，依出入口轉乘指標步行"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "O2",
+              "name": "鹽埕埔",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O2",
+          "code": "O2",
+          "projectCode": null,
+          "name": "鹽埕埔",
+          "intro": "鹽埕舊城、駁二藝術特區與在地小吃",
+          "seq": 2,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O1",
+              "name": "哈瑪星",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O4",
+              "name": "前金",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O4",
+          "code": "O4",
+          "projectCode": null,
+          "name": "前金",
+          "intro": "愛河、前金市場與高雄市立歷史博物館方向",
+          "seq": 3,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O2",
+              "name": "鹽埕埔",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O5",
+              "name": "美麗島",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O5",
+          "code": "O5",
+          "projectCode": null,
+          "name": "美麗島",
+          "intro": "可轉乘捷運紅線 R10，光之穹頂公共藝術",
+          "seq": 4,
+          "transfers": [
+            {
+              "line": "KH-R",
+              "code": "R10",
+              "name": "美麗島",
+              "system": "高雄捷運",
+              "type": "站內轉乘",
+              "note": "美麗島站兩條線交會，依站內指標換線"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "O4",
+              "name": "前金",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O6",
+              "name": "信義國小",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O6",
+          "code": "O6",
+          "projectCode": null,
+          "name": "信義國小",
+          "intro": "新興區信義國小及中正路商圈",
+          "seq": 5,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O5",
+              "name": "美麗島",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O7",
+              "name": "文化中心",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O7",
+          "code": "O7",
+          "projectCode": null,
+          "name": "文化中心",
+          "intro": "高雄文化中心、綠地與藝文展演",
+          "seq": 6,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O6",
+              "name": "信義國小",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O8",
+              "name": "五塊厝",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O8",
+          "code": "O8",
+          "projectCode": null,
+          "name": "五塊厝",
+          "intro": "苓雅五塊厝生活圈，步行接駁輕軌凱旋公園",
+          "seq": 7,
+          "transfers": [
+            {
+              "line": "KH-C",
+              "code": "C32",
+              "name": "凱旋公園",
+              "system": "高雄環狀輕軌",
+              "type": "站外步行",
+              "note": "五塊厝至凱旋公園輕軌站需步行，官方約7～8分鐘"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "O7",
+              "name": "文化中心",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O9",
+              "name": "苓雅運動園區",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O9",
+          "code": "O9",
+          "projectCode": null,
+          "name": "苓雅運動園區",
+          "intro": "苓雅運動園區與中正技擊館運動設施",
+          "seq": 8,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O8",
+              "name": "五塊厝",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O10",
+              "name": "衛武營",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O10",
+          "code": "O10",
+          "projectCode": null,
+          "name": "衛武營",
+          "intro": "衛武營國家藝術文化中心、都會公園與展演",
+          "seq": 9,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O9",
+              "name": "苓雅運動園區",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O11",
+              "name": "鳳山西站(高雄市議會)",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O11",
+          "code": "O11",
+          "projectCode": null,
+          "name": "鳳山西站(高雄市議會)",
+          "intro": "鳳山西側與高雄市議會周邊商圈",
+          "seq": 10,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O10",
+              "name": "衛武營",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O12",
+              "name": "鳳山",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O12",
+          "code": "O12",
+          "projectCode": null,
+          "name": "鳳山",
+          "intro": "鳳山城、鳳山第一市場及在地古蹟",
+          "seq": 11,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O11",
+              "name": "鳳山西站(高雄市議會)",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O13",
+              "name": "大東",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O13",
+          "code": "O13",
+          "projectCode": null,
+          "name": "大東",
+          "intro": "大東文化藝術中心及鳳山溪周邊藝術生活",
+          "seq": 12,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O12",
+              "name": "鳳山",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "O14",
+              "name": "鳳山國中",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-O14",
+          "code": "O14",
+          "projectCode": null,
+          "name": "鳳山國中",
+          "intro": "鳳山國中與中山東路沿線生活圈",
+          "seq": 13,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O13",
+              "name": "大東",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "OT1",
+              "name": "大寮",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-O-OT1",
+          "code": "OT1",
+          "projectCode": null,
+          "name": "大寮",
+          "intro": "大寮主要捷運端點與在地社區及產業區",
+          "seq": 14,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "O14",
+              "name": "鳳山國中",
+              "direction": "上一站",
+              "stops": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "KH-C",
+      "city": "高雄市",
+      "system": "高雄環狀輕軌",
+      "name": "環狀輕軌",
+      "color": "#65ab72",
+      "official": "https://www.krtc.com.tw/KLRT/station_guide",
+      "stations": [
+        {
+          "id": "KH-C-C1",
+          "code": "C1",
+          "projectCode": null,
+          "name": "籬仔內",
+          "intro": "前鎮籬仔內社區，輕軌環狀路線起點參考",
+          "seq": 1,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C37",
+              "name": "輕軌機廠",
+              "direction": "環線相鄰",
+              "stops": 1
+            },
+            {
+              "code": "C2",
+              "name": "凱旋瑞田",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C2",
+          "code": "C2",
+          "projectCode": null,
+          "name": "凱旋瑞田",
+          "intro": "前鎮凱旋路、瑞田街交會的生活圈",
+          "seq": 2,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C1",
+              "name": "籬仔內",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C3",
+              "name": "前鎮之星",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C3",
+          "code": "C3",
+          "projectCode": null,
+          "name": "前鎮之星",
+          "intro": "可步行轉乘紅線 R6 凱旋站，鄰近前鎮之星廣場",
+          "seq": 3,
+          "transfers": [
+            {
+              "line": "KH-R",
+              "code": "R6",
+              "name": "凱旋",
+              "system": "高雄捷運",
+              "type": "步行轉乘",
+              "note": "捷運凱旋站與輕軌前鎮之星步行換乘"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "C2",
+              "name": "凱旋瑞田",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C4",
+              "name": "凱旋中華",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C4",
+          "code": "C4",
+          "projectCode": null,
+          "name": "凱旋中華",
+          "intro": "凱旋中華路口與前鎮日常生活圈",
+          "seq": 4,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C3",
+              "name": "前鎮之星",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C5",
+              "name": "夢時代",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C5",
+          "code": "C5",
+          "projectCode": null,
+          "name": "夢時代",
+          "intro": "統一夢時代購物中心與大型展演活動",
+          "seq": 5,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C4",
+              "name": "凱旋中華",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C6",
+              "name": "經貿園區",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C6",
+          "code": "C6",
+          "projectCode": null,
+          "name": "經貿園區",
+          "intro": "亞洲新灣區與經貿園區商辦生活圈",
+          "seq": 6,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C5",
+              "name": "夢時代",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C7",
+              "name": "軟體園區",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C7",
+          "code": "C7",
+          "projectCode": null,
+          "name": "軟體園區",
+          "intro": "高雄軟體科技園區及亞灣創新產業",
+          "seq": 7,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C6",
+              "name": "經貿園區",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C8",
+              "name": "高雄展覽館",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C8",
+          "code": "C8",
+          "projectCode": null,
+          "name": "高雄展覽館",
+          "intro": "高雄展覽館、港灣商務與大型展覽",
+          "seq": 8,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C7",
+              "name": "軟體園區",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C9",
+              "name": "旅運中心",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C9",
+          "code": "C9",
+          "projectCode": null,
+          "name": "旅運中心",
+          "intro": "高雄港旅運中心及亞洲新灣區港景",
+          "seq": 9,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C8",
+              "name": "高雄展覽館",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C10",
+              "name": "光榮碼頭",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C10",
+          "code": "C10",
+          "projectCode": null,
+          "name": "光榮碼頭",
+          "intro": "光榮碼頭及愛河灣水岸散步路線",
+          "seq": 10,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C9",
+              "name": "旅運中心",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C11",
+              "name": "真愛碼頭",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C11",
+          "code": "C11",
+          "projectCode": null,
+          "name": "真愛碼頭",
+          "intro": "真愛碼頭、愛河灣及流行音樂中心周邊",
+          "seq": 11,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C10",
+              "name": "光榮碼頭",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C12",
+              "name": "駁二大義",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C12",
+          "code": "C12",
+          "projectCode": null,
+          "name": "駁二大義",
+          "intro": "駁二藝術特區大義倉庫及藝術展覽",
+          "seq": 12,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C11",
+              "name": "真愛碼頭",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C13",
+              "name": "駁二蓬萊",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C13",
+          "code": "C13",
+          "projectCode": null,
+          "name": "駁二蓬萊",
+          "intro": "駁二蓬萊倉庫群、哈瑪星鐵道文化園區",
+          "seq": 13,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C12",
+              "name": "駁二大義",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C14",
+              "name": "哈瑪星",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C14",
+          "code": "C14",
+          "projectCode": null,
+          "name": "哈瑪星",
+          "intro": "可轉乘橘線 O1，串連哈瑪星與駁二文化景點",
+          "seq": 14,
+          "transfers": [
+            {
+              "line": "KH-O",
+              "code": "O1",
+              "name": "哈瑪星",
+              "system": "高雄捷運",
+              "type": "步行轉乘",
+              "note": "哈瑪星捷運與輕軌站，依出入口轉乘指標步行"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "C13",
+              "name": "駁二蓬萊",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C15",
+              "name": "壽山公園(金馬賓館當代美術館)",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C15",
+          "code": "C15",
+          "projectCode": null,
+          "name": "壽山公園(金馬賓館當代美術館)",
+          "intro": "壽山公園與金馬賓館當代美術館展演",
+          "seq": 15,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C14",
+              "name": "哈瑪星",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C16",
+              "name": "文武聖殿",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C16",
+          "code": "C16",
+          "projectCode": null,
+          "name": "文武聖殿",
+          "intro": "鼓山文武聖殿與舊城文化聚落",
+          "seq": 16,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C15",
+              "name": "壽山公園(金馬賓館當代美術館)",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C17",
+              "name": "鼓山區公所",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C17",
+          "code": "C17",
+          "projectCode": null,
+          "name": "鼓山區公所",
+          "intro": "鼓山區公所、哈瑪星周邊老街",
+          "seq": 17,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C16",
+              "name": "文武聖殿",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C18",
+              "name": "鼓山",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C18",
+          "code": "C18",
+          "projectCode": null,
+          "name": "鼓山",
+          "intro": "可轉乘臺鐵鼓山站，鄰近鼓山與鐵路生活圈",
+          "seq": 18,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "4380",
+              "name": "鼓山站",
+              "type": "步行轉乘",
+              "note": "鼓山輕軌與臺鐵鼓山站轉乘，依沿途指標",
+              "link": "./tra-stations.html?code=4380"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "C17",
+              "name": "鼓山區公所",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C19",
+              "name": "馬卡道",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C19",
+          "code": "C19",
+          "projectCode": null,
+          "name": "馬卡道",
+          "intro": "馬卡道與內惟生活圈，舊鐵道綠廊",
+          "seq": 19,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C18",
+              "name": "鼓山",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C20",
+              "name": "臺鐵美術館",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C20",
+          "code": "C20",
+          "projectCode": null,
+          "name": "臺鐵美術館",
+          "intro": "臺鐵美術館周邊及內惟藝術聚落",
+          "seq": 20,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C19",
+              "name": "馬卡道",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C21A",
+              "name": "內惟藝術中心",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C21A",
+          "code": "C21A",
+          "projectCode": null,
+          "name": "內惟藝術中心",
+          "intro": "內惟藝術中心與藝術公園景觀",
+          "seq": 21,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C20",
+              "name": "臺鐵美術館",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C21",
+              "name": "美術館",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C21",
+          "code": "C21",
+          "projectCode": null,
+          "name": "美術館",
+          "intro": "可步行轉乘臺鐵美術館站，市立美術館綠地",
+          "seq": 22,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "4370",
+              "name": "美術館站",
+              "type": "步行轉乘",
+              "note": "高雄輕軌美術館站與臺鐵美術館站接續",
+              "link": "./tra-stations.html?code=4370"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "C21A",
+              "name": "內惟藝術中心",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C22",
+              "name": "聯合醫院",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C22",
+          "code": "C22",
+          "projectCode": null,
+          "name": "聯合醫院",
+          "intro": "高雄聯合醫院及美術館周邊",
+          "seq": 23,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C21",
+              "name": "美術館",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C23",
+              "name": "龍華國小",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C23",
+          "code": "C23",
+          "projectCode": null,
+          "name": "龍華國小",
+          "intro": "龍華國小與大順路沿線住宅生活圈",
+          "seq": 24,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C22",
+              "name": "聯合醫院",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C24",
+              "name": "愛河之心",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C24",
+          "code": "C24",
+          "projectCode": null,
+          "name": "愛河之心",
+          "intro": "可轉乘紅線 R13 凹子底站，愛河之心景觀",
+          "seq": 25,
+          "transfers": [
+            {
+              "line": "KH-R",
+              "code": "R13",
+              "name": "凹子底",
+              "system": "高雄捷運",
+              "type": "步行轉乘",
+              "note": "凹子底捷運站與愛河之心輕軌站步行換乘"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "C23",
+              "name": "龍華國小",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C25",
+              "name": "新上國小",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C25",
+          "code": "C25",
+          "projectCode": null,
+          "name": "新上國小",
+          "intro": "新上國小與博愛路、自由路生活街區",
+          "seq": 26,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C24",
+              "name": "愛河之心",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C26",
+              "name": "大順民族",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C26",
+          "code": "C26",
+          "projectCode": null,
+          "name": "大順民族",
+          "intro": "大順路與民族路交會，三民交通生活圈",
+          "seq": 27,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C25",
+              "name": "新上國小",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C27",
+              "name": "灣仔內(大順鼎山)",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C27",
+          "code": "C27",
+          "projectCode": null,
+          "name": "灣仔內(大順鼎山)",
+          "intro": "鼎山街商圈、大順路與灣仔內聚落",
+          "seq": 28,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C26",
+              "name": "大順民族",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C28",
+              "name": "高雄高工",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C28",
+          "code": "C28",
+          "projectCode": null,
+          "name": "高雄高工",
+          "intro": "高雄高工、建工路生活圈與學校周邊",
+          "seq": 29,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C27",
+              "name": "灣仔內(大順鼎山)",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C29",
+              "name": "樹德家商",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C29",
+          "code": "C29",
+          "projectCode": null,
+          "name": "樹德家商",
+          "intro": "樹德家商及建興路商圈",
+          "seq": 30,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C28",
+              "name": "高雄高工",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C30",
+              "name": "科工館",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C30",
+          "code": "C30",
+          "projectCode": null,
+          "name": "科工館",
+          "intro": "國立科學工藝博物館與親子科學探索",
+          "seq": 31,
+          "transfers": [
+            {
+              "system": "臺鐵",
+              "code": "4420",
+              "name": "科工館站",
+              "type": "站外步行",
+              "note": "輕軌科工館站與臺鐵科工館站不同位置，先確認步行路線",
+              "link": "./tra-stations.html?code=4420"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "C29",
+              "name": "樹德家商",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C31",
+              "name": "聖功醫院(道明中學)",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C31",
+          "code": "C31",
+          "projectCode": null,
+          "name": "聖功醫院(道明中學)",
+          "intro": "聖功醫院與道明中學周邊生活圈",
+          "seq": 32,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C30",
+              "name": "科工館",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C32",
+              "name": "凱旋公園",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C32",
+          "code": "C32",
+          "projectCode": null,
+          "name": "凱旋公園",
+          "intro": "凱旋公園，步行可接橘線 O8 五塊厝站",
+          "seq": 33,
+          "transfers": [
+            {
+              "line": "KH-O",
+              "code": "O8",
+              "name": "五塊厝",
+              "system": "高雄捷運",
+              "type": "站外步行",
+              "note": "五塊厝至凱旋公園輕軌站需步行，官方約7～8分鐘"
+            }
+          ],
+          "nearby": [
+            {
+              "code": "C31",
+              "name": "聖功醫院(道明中學)",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C33",
+              "name": "衛生局",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C33",
+          "code": "C33",
+          "projectCode": null,
+          "name": "衛生局",
+          "intro": "高雄市政府衛生局與苓雅周邊生活圈",
+          "seq": 34,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C32",
+              "name": "凱旋公園",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C34",
+              "name": "五權國小",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C34",
+          "code": "C34",
+          "projectCode": null,
+          "name": "五權國小",
+          "intro": "五權國小與三多路沿線住宅區",
+          "seq": 35,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C33",
+              "name": "衛生局",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C35",
+              "name": "凱旋武昌",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C35",
+          "code": "C35",
+          "projectCode": null,
+          "name": "凱旋武昌",
+          "intro": "武昌路與凱旋三路生活街區",
+          "seq": 36,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C34",
+              "name": "五權國小",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C36",
+              "name": "凱旋二聖",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C36",
+          "code": "C36",
+          "projectCode": null,
+          "name": "凱旋二聖",
+          "intro": "二聖路與凱旋三路沿線生活圈",
+          "seq": 37,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C35",
+              "name": "凱旋武昌",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C37",
+              "name": "輕軌機廠",
+              "direction": "下一站",
+              "stops": 1
+            }
+          ]
+        },
+        {
+          "id": "KH-C-C37",
+          "code": "C37",
+          "projectCode": null,
+          "name": "輕軌機廠",
+          "intro": "輕軌機廠周邊，環線回到籬仔內區段",
+          "seq": 38,
+          "transfers": [],
+          "nearby": [
+            {
+              "code": "C36",
+              "name": "凱旋二聖",
+              "direction": "上一站",
+              "stops": 1
+            },
+            {
+              "code": "C1",
+              "name": "籬仔內",
+              "direction": "環線相鄰",
+              "stops": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "planned": [
+    {
+      "city": "臺中市",
+      "name": "臺中捷運藍線",
+      "status": "建設中／尚未營運"
+    },
+    {
+      "city": "高雄市",
+      "name": "高雄捷運黃線",
+      "status": "興建中／尚未營運"
+    },
+    {
+      "city": "高雄市",
+      "name": "岡山路竹延伸線 RK2 起後續路段",
+      "status": "尚未通車"
+    }
+  ],
+  "sources": [
+    "https://www.tmrt.com.tw/metro-life/station-information",
+    "https://www.tmrt.com.tw/metro-life/first-last-train",
+    "https://www.krtc.com.tw/Guide/guide_map",
+    "https://www.krtc.com.tw/Guide/station_guide",
+    "https://www.krtc.com.tw/KLRT/station_guide"
+  ],
+  "notes": [
+    "臺中捷運以營運代碼 103a、103～119 為主，另存工程代號 G0、G3～G17 供搜尋。",
+    "高雄紅線 RK1 岡山車站已通車，後續 RK2 等未通車路段不計入。",
+    "高雄環狀輕軌為閉合環線，C37 後接回 C1。",
+    "轉乘分為站內、連通步行、站外步行及其他運具，並非所有名稱相近的站都能站內轉乘。"
+  ]
+}
