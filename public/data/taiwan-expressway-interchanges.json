@@ -78,9 +78,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台62線（萬里瑞濱快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 大華系統"
+          "mapQuery": "國道1號 大華系統",
+          "linkedRoadIds": [
+            "T62"
+          ]
         },
         {
           "id": "N1-4",
@@ -117,9 +120,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 汐止系統"
+          "mapQuery": "國道1號 汐止系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "N1-7",
@@ -273,9 +279,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道2號（桃園機場環線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 機場系統"
+          "mapQuery": "國道1號 機場系統",
+          "linkedRoadIds": [
+            "N2"
+          ]
         },
         {
           "id": "N1-19",
@@ -325,9 +334,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台66線（觀音大溪快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 平鎮系統"
+          "mapQuery": "國道1號 平鎮系統",
+          "linkedRoadIds": [
+            "T66"
+          ]
         },
         {
           "id": "N1-23",
@@ -416,9 +428,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 新竹系統"
+          "mapQuery": "國道1號 新竹系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "N1-30",
@@ -507,9 +522,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道4號（臺中環線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 臺中系統"
+          "mapQuery": "國道1號 臺中系統",
+          "linkedRoadIds": [
+            "N4"
+          ]
         },
         {
           "id": "N1-37",
@@ -585,9 +603,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 彰化系統"
+          "mapQuery": "國道1號 彰化系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "N1-43",
@@ -611,9 +632,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台76線（芳苑草屯快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 埔鹽系統"
+          "mapQuery": "國道1號 埔鹽系統",
+          "linkedRoadIds": [
+            "T76"
+          ]
         },
         {
           "id": "N1-45",
@@ -689,9 +713,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台78線（臺西古坑快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 雲林系統"
+          "mapQuery": "國道1號 雲林系統",
+          "linkedRoadIds": [
+            "T78"
+          ]
         },
         {
           "id": "N1-51",
@@ -754,9 +781,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台82線（東石嘉義快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 嘉義系統"
+          "mapQuery": "國道1號 嘉義系統",
+          "linkedRoadIds": [
+            "T82"
+          ]
         },
         {
           "id": "N1-56",
@@ -780,9 +810,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台84線（北門玉井快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 下營系統"
+          "mapQuery": "國道1號 下營系統",
+          "linkedRoadIds": [
+            "T84"
+          ]
         },
         {
           "id": "N1-58",
@@ -819,9 +852,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道8號（臺南支線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 臺南系統"
+          "mapQuery": "國道1號 臺南系統",
+          "linkedRoadIds": [
+            "N8"
+          ]
         },
         {
           "id": "N1-61",
@@ -871,9 +907,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台86線（臺南關廟快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 仁德系統"
+          "mapQuery": "國道1號 仁德系統",
+          "linkedRoadIds": [
+            "T86"
+          ]
         },
         {
           "id": "N1-65",
@@ -936,9 +975,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道10號（高雄支線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 鼎金系統"
+          "mapQuery": "國道1號 鼎金系統",
+          "linkedRoadIds": [
+            "N10"
+          ]
         },
         {
           "id": "N1-70",
@@ -975,9 +1017,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台88線（高雄潮州快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道1號 五甲系統"
+          "mapQuery": "國道1號 五甲系統",
+          "linkedRoadIds": [
+            "T88"
+          ]
         },
         {
           "id": "N1-73",
@@ -1224,9 +1269,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道2號 機場系統"
+          "mapQuery": "國道2號 機場系統",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "N2-4",
@@ -1263,9 +1311,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道2號 鶯歌系統"
+          "mapQuery": "國道2號 鶯歌系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         }
       ],
       "official": "https://www.freeway.gov.tw/Publish.aspx?cnid=1906",
@@ -1345,9 +1396,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台62線（萬里瑞濱快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 瑪東系統"
+          "mapQuery": "國道3號 瑪東系統",
+          "linkedRoadIds": [
+            "T62"
+          ]
         },
         {
           "id": "N3-2",
@@ -1358,9 +1412,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 汐止系統"
+          "mapQuery": "國道3號 汐止系統",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "N3-3",
@@ -1397,9 +1454,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道5號（蔣渭水高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 南港系統"
+          "mapQuery": "國道3號 南港系統",
+          "linkedRoadIds": [
+            "N5"
+          ]
         },
         {
           "id": "N3-6",
@@ -1423,9 +1483,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "出口通往鄰近城鎮或地方道路，請依出口方向牌示",
+          "connection": "銜接 國道3甲（臺北聯絡線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 木柵交流道"
+          "mapQuery": "國道3號 木柵交流道",
+          "linkedRoadIds": [
+            "N3A"
+          ]
         },
         {
           "id": "N3-8",
@@ -1462,9 +1525,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "出口通往鄰近城鎮或地方道路，請依出口方向牌示",
+          "connection": "銜接 台64線（八里新店快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 中和交流道"
+          "mapQuery": "國道3號 中和交流道",
+          "linkedRoadIds": [
+            "T64"
+          ]
         },
         {
           "id": "N3-11",
@@ -1475,9 +1541,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "出口通往鄰近城鎮或地方道路，請依出口方向牌示",
+          "connection": "銜接 台65線（五股土城快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 土城交流道"
+          "mapQuery": "國道3號 土城交流道",
+          "linkedRoadIds": [
+            "T65"
+          ]
         },
         {
           "id": "N3-12",
@@ -1514,9 +1583,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道2號（桃園機場環線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 鶯歌系統"
+          "mapQuery": "國道3號 鶯歌系統",
+          "linkedRoadIds": [
+            "N2"
+          ]
         },
         {
           "id": "N3-15",
@@ -1527,9 +1599,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "出口通往鄰近城鎮或地方道路，請依出口方向牌示",
+          "connection": "銜接 台66線（觀音大溪快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 大溪交流道"
+          "mapQuery": "國道3號 大溪交流道",
+          "linkedRoadIds": [
+            "T66"
+          ]
         },
         {
           "id": "N3-16",
@@ -1605,9 +1680,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 新竹系統"
+          "mapQuery": "國道3號 新竹系統",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "N3-22",
@@ -1644,9 +1722,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "出口通往鄰近城鎮或地方道路，請依出口方向牌示",
+          "connection": "銜接 台61線（西部濱海快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 西濱交流道"
+          "mapQuery": "國道3號 西濱交流道",
+          "linkedRoadIds": [
+            "T61"
+          ]
         },
         {
           "id": "N3-25",
@@ -1735,9 +1816,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道4號（臺中環線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 中港系統"
+          "mapQuery": "國道3號 中港系統",
+          "linkedRoadIds": [
+            "N4"
+          ]
         },
         {
           "id": "N3-32",
@@ -1787,9 +1871,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 彰化系統"
+          "mapQuery": "國道3號 彰化系統",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "N3-36",
@@ -1800,9 +1887,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "出口通往鄰近城鎮或地方道路，請依出口方向牌示",
+          "connection": "銜接 台74線（快官霧峰快速公路（臺中環線））；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 快官交流道"
+          "mapQuery": "國道3號 快官交流道",
+          "linkedRoadIds": [
+            "T74"
+          ]
         },
         {
           "id": "N3-37",
@@ -1852,9 +1942,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道6號（水沙連高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 霧峰系統"
+          "mapQuery": "國道3號 霧峰系統",
+          "linkedRoadIds": [
+            "N6"
+          ]
         },
         {
           "id": "N3-41",
@@ -1878,9 +1971,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台76線（芳苑草屯快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 中興系統"
+          "mapQuery": "國道3號 中興系統",
+          "linkedRoadIds": [
+            "T76"
+          ]
         },
         {
           "id": "N3-43",
@@ -1969,9 +2065,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台78線（臺西古坑快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 古坑系統"
+          "mapQuery": "國道3號 古坑系統",
+          "linkedRoadIds": [
+            "T78"
+          ]
         },
         {
           "id": "N3-50",
@@ -2034,9 +2133,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台82線（東石嘉義快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 水上系統"
+          "mapQuery": "國道3號 水上系統",
+          "linkedRoadIds": [
+            "T82"
+          ]
         },
         {
           "id": "N3-55",
@@ -2086,9 +2188,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台84線（北門玉井快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 官田系統"
+          "mapQuery": "國道3號 官田系統",
+          "linkedRoadIds": [
+            "T84"
+          ]
         },
         {
           "id": "N3-59",
@@ -2112,9 +2217,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道8號（臺南支線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 新化系統"
+          "mapQuery": "國道3號 新化系統",
+          "linkedRoadIds": [
+            "N8"
+          ]
         },
         {
           "id": "N3-61",
@@ -2125,9 +2233,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "出口通往鄰近城鎮或地方道路，請依出口方向牌示",
+          "connection": "銜接 台86線（臺南關廟快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 關廟交流道"
+          "mapQuery": "國道3號 關廟交流道",
+          "linkedRoadIds": [
+            "T86"
+          ]
         },
         {
           "id": "N3-62",
@@ -2151,9 +2262,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道10號（高雄支線）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 燕巢系統"
+          "mapQuery": "國道3號 燕巢系統",
+          "linkedRoadIds": [
+            "N10"
+          ]
         },
         {
           "id": "N3-64",
@@ -2216,9 +2330,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台88線（高雄潮州快速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道3號 竹田系統"
+          "mapQuery": "國道3號 竹田系統",
+          "linkedRoadIds": [
+            "T88"
+          ]
         },
         {
           "id": "N3-69",
@@ -2374,9 +2491,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道4號 中港系統"
+          "mapQuery": "國道4號 中港系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "N4-2",
@@ -2400,9 +2520,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道4號 臺中系統"
+          "mapQuery": "國道4號 臺中系統",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "N4-4",
@@ -2452,9 +2575,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 台74線（快官霧峰快速公路（臺中環線））；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道4號 潭子系統"
+          "mapQuery": "國道4號 潭子系統",
+          "linkedRoadIds": [
+            "T74"
+          ]
         }
       ],
       "official": "https://www.freeway.gov.tw/Publish.aspx?cnid=1906",
@@ -2479,9 +2605,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道5號 南港系統"
+          "mapQuery": "國道5號 南港系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "N5-1",
@@ -2584,9 +2713,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道6號 霧峰系統"
+          "mapQuery": "國道6號 霧峰系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "N6-1",
@@ -2728,9 +2860,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道8號 臺南系統"
+          "mapQuery": "國道8號 臺南系統",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "N8-3",
@@ -2754,9 +2889,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道8號 新化系統"
+          "mapQuery": "國道8號 新化系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "N8-5",
@@ -2807,9 +2945,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道10號 鼎金系統"
+          "mapQuery": "國道10號 鼎金系統",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "N10-2",
@@ -2846,9 +2987,12 @@
           "status": "營運資料",
           "verified": "exchangeTable",
           "location": "",
-          "connection": "連接其他國道或快速公路，依實際匝道方向轉乘",
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
           "notes": "",
-          "mapQuery": "國道10號 燕巢系統"
+          "mapQuery": "國道10號 燕巢系統",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "N10-5",
@@ -3384,8 +3528,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "基隆市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台62線 大華系統 基隆市"
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台62線 大華系統 基隆市",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "T62-4",
@@ -3843,8 +3990,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "桃園市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台66線 大溪端 桃園市"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台66線 大溪端 桃園市",
+          "linkedRoadIds": [
+            "N3"
+          ]
         }
       ],
       "official": "https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&sms=13790",
@@ -4120,8 +4270,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "彰化縣",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台74線 快官交流道 彰化縣"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台74線 快官交流道 彰化縣",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "T74-1",
@@ -4263,8 +4416,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "臺中市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台74線 潭子交流道 臺中市"
+          "connection": "銜接 國道4號（臺中環線）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台74線 潭子交流道 臺中市",
+          "linkedRoadIds": [
+            "N4"
+          ]
         },
         {
           "id": "T74-12",
@@ -4354,8 +4510,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "臺中市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台74線 霧峰交流道 臺中市"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台74線 霧峰交流道 臺中市",
+          "linkedRoadIds": [
+            "N3"
+          ]
         }
       ],
       "official": "https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&sms=13790",
@@ -4407,8 +4566,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "彰化縣",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台76線 埔鹽系統 彰化縣"
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台76線 埔鹽系統 彰化縣",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "T76-3",
@@ -4446,8 +4608,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "南投縣",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台76線 中興系統 南投縣"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台76線 中興系統 南投縣",
+          "linkedRoadIds": [
+            "N3"
+          ]
         }
       ],
       "official": "https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&sms=13790",
@@ -4564,8 +4729,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "雲林縣",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台78線 古坑系統 雲林縣"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台78線 古坑系統 雲林縣",
+          "linkedRoadIds": [
+            "N3"
+          ]
         }
       ],
       "official": "https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&sms=13790",
@@ -4656,8 +4824,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "嘉義縣",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台82線 水上系統 嘉義縣"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台82線 水上系統 嘉義縣",
+          "linkedRoadIds": [
+            "N3"
+          ]
         }
       ],
       "official": "https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&sms=13790",
@@ -4709,8 +4880,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "臺南市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台84線 下營系統 臺南市"
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台84線 下營系統 臺南市",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "T84-3",
@@ -4735,8 +4909,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "臺南市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台84線 官田系統 臺南市"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台84線 官田系統 臺南市",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "T84-5",
@@ -4840,8 +5017,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "臺南市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台86線 仁德系統 臺南市"
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台86線 仁德系統 臺南市",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "T86-5",
@@ -4866,8 +5046,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "臺南市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台86線 關廟交流道 臺南市"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台86線 關廟交流道 臺南市",
+          "linkedRoadIds": [
+            "N3"
+          ]
         }
       ],
       "official": "https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&sms=13790",
@@ -4893,8 +5076,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "高雄市",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台88線 五甲系統 高雄市"
+          "connection": "銜接 國道1號（中山高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台88線 五甲系統 高雄市",
+          "linkedRoadIds": [
+            "N1"
+          ]
         },
         {
           "id": "T88-1",
@@ -4945,8 +5131,11 @@
           "status": "待逐筆核對",
           "verified": "routeGuide",
           "location": "屏東縣",
-          "connection": "可查鄰近路段與連接道路；實際匝道方向須依官方及現場標誌確認",
-          "mapQuery": "台88線 竹田系統 屏東縣"
+          "connection": "銜接 國道3號（福爾摩沙高速公路）；實際匝道去向與開放方向請以現場標誌為準",
+          "mapQuery": "台88線 竹田系統 屏東縣",
+          "linkedRoadIds": [
+            "N3"
+          ]
         },
         {
           "id": "T88-5",
