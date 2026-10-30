@@ -1,0 +1,334 @@
+{
+  "updated": "2026-10-31",
+  "name": "台灣高鐵全線車站",
+  "operator": "台灣高速鐵路",
+  "stations": [
+    {
+      "seq": 1,
+      "code": "NAG",
+      "name": "南港",
+      "region": "北部",
+      "county": "臺北市",
+      "district": "南港區",
+      "english": "Nangang",
+      "intro": "高鐵北端起站，接軌南港車站商圈、南港展覽館與臺北東區門戶。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "南港站",
+          "code": "0980",
+          "type": "共構",
+          "note": "臺鐵南港站，同站依指標換乘"
+        },
+        {
+          "mode": "捷運",
+          "name": "板南線南港站",
+          "code": "BL22",
+          "type": "共構",
+          "note": "轉乘板南線往市中心及南港展覽館"
+        }
+      ],
+      "notice": "請依現場標示前往臺鐵、捷運月台。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/2f940836-cedc-41ef-8e28-c2336ac8fe68"
+    },
+    {
+      "seq": 2,
+      "code": "TPE",
+      "name": "台北",
+      "region": "北部",
+      "county": "臺北市",
+      "district": "中正區",
+      "english": "Taipei",
+      "intro": "臺北車站複合轉運樞紐，適合接駁高鐵、臺鐵、臺北捷運及桃園機場捷運。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "臺北站",
+          "code": "1000",
+          "type": "共構",
+          "note": "與臺鐵臺北站共構"
+        },
+        {
+          "mode": "捷運",
+          "name": "淡水信義線／板南線",
+          "code": "R10／BL12",
+          "type": "共構",
+          "note": "臺北車站內依指標前往捷運月台"
+        },
+        {
+          "mode": "機場捷運",
+          "name": "台北車站",
+          "code": "A1",
+          "type": "地下通道步行",
+          "note": "機場捷運 A1 需由地下通道步行，非同一個月台"
+        }
+      ],
+      "notice": "機場捷運 A1 轉乘需預留步行時間。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/977abb69-413a-4ccf-a109-0272c24fd490"
+    },
+    {
+      "seq": 3,
+      "code": "BAQ",
+      "name": "板橋",
+      "region": "北部",
+      "county": "新北市",
+      "district": "板橋區",
+      "english": "Banqiao",
+      "intro": "新北市中心的高鐵樞紐，鄰近新北市政府、板橋商圈、府中舊城。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "板橋站",
+          "code": "1020",
+          "type": "共構",
+          "note": "臺鐵、高鐵與板南線於板橋車站轉乘"
+        },
+        {
+          "mode": "捷運",
+          "name": "板南線板橋站",
+          "code": "BL07",
+          "type": "共構",
+          "note": "依站內標誌前往捷運月台"
+        },
+        {
+          "mode": "捷運",
+          "name": "環狀線板橋站",
+          "code": "Y16",
+          "type": "出站步行",
+          "note": "環狀線轉乘須沿指標步行，不在同一月台"
+        }
+      ],
+      "notice": "高鐵板橋站與環狀線 Y16 需預留步行轉乘時間。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/e6e26e66-7dc1-458f-b2f3-71ce65fdc95f"
+    },
+    {
+      "seq": 4,
+      "code": "TAY",
+      "name": "桃園",
+      "region": "北部",
+      "county": "桃園市",
+      "district": "中壢區",
+      "english": "Taoyuan",
+      "intro": "位於青埔特區，鄰近 Xpark、華泰名品城、桃園體育園區與桃園國際棒球場。",
+      "transfer": [
+        {
+          "mode": "機場捷運",
+          "name": "高鐵桃園站",
+          "code": "A18",
+          "type": "站內連通",
+          "note": "可轉機場捷運往桃園機場或 A21 環北方向"
+        },
+        {
+          "mode": "臺鐵",
+          "name": "桃園站",
+          "code": "1080",
+          "type": "非同站，需其他交通工具",
+          "note": "臺鐵桃園站位在桃園市中心，與高鐵青埔站不同地點"
+        }
+      ],
+      "notice": "高鐵桃園站≠臺鐵桃園站；切勿當作站內換乘。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/fbd828d8-b1da-4b06-a3bd-680cdca4d2cd"
+    },
+    {
+      "seq": 5,
+      "code": "HSC",
+      "name": "新竹",
+      "region": "北部",
+      "county": "新竹縣",
+      "district": "竹北市",
+      "english": "Hsinchu",
+      "intro": "位於竹北六家，鄰近客家文化保存區與新竹生醫園區，也是竹科及新竹市旅客常用轉運站。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "六家站",
+          "code": "1194",
+          "type": "連通步行",
+          "note": "可步行轉乘臺鐵六家線，銜接竹中、北新竹、新竹方向"
+        }
+      ],
+      "notice": "高鐵新竹站與臺鐵新竹站（1210）不同；轉乘臺鐵請前往六家站。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/a7a04c89-900b-4798-95a3-c01c455622f4"
+    },
+    {
+      "seq": 6,
+      "code": "MIL",
+      "name": "苗栗",
+      "region": "中部",
+      "county": "苗栗縣",
+      "district": "後龍鎮",
+      "english": "Miaoli",
+      "intro": "後龍地區的高鐵門戶，可延伸探索苗栗客家文化、後龍海岸與銅鑼觀光景點。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "豐富站",
+          "code": "3150",
+          "type": "連通步行",
+          "note": "可由高鐵苗栗站 5 號出口步行至臺鐵豐富站，轉往竹南、苗栗等方向"
+        }
+      ],
+      "notice": "轉臺鐵使用「豐富站」，不是臺鐵苗栗站。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/e8fc2123-2aaf-46ff-ad79-51d4002a1ef3"
+    },
+    {
+      "seq": 7,
+      "code": "TAC",
+      "name": "台中",
+      "region": "中部",
+      "county": "臺中市",
+      "district": "烏日區",
+      "english": "Taichung",
+      "intro": "中臺灣重要三鐵轉乘樞紐，鄰近烏日商圈與臺中市區觀光路線。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "新烏日站",
+          "code": "3340",
+          "type": "連通步行",
+          "note": "臺鐵新烏日站與高鐵台中站由通道相接"
+        },
+        {
+          "mode": "捷運",
+          "name": "高鐵臺中站",
+          "code": "G17",
+          "type": "連通步行",
+          "note": "臺中捷運綠線 G17 可前往大慶、松竹等站"
+        }
+      ],
+      "notice": "高鐵台中站不等於臺鐵臺中站（3300），請轉新烏日站。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/3301e395-46b8-47aa-aa37-139e15708779"
+    },
+    {
+      "seq": 8,
+      "code": "CHA",
+      "name": "彰化",
+      "region": "中部",
+      "county": "彰化縣",
+      "district": "田中鎮",
+      "english": "Changhua",
+      "intro": "位於彰化田中，適合連結彰南農村、八堡圳與南投周邊旅遊。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "田中站",
+          "code": "3420",
+          "type": "需公車或其他交通工具",
+          "note": "高鐵彰化站與臺鐵田中站尚無營運中鐵路直接連通，請查詢地面接駁"
+        }
+      ],
+      "notice": "規劃中的臺鐵田中支線尚未營運，勿當作現有鐵路轉乘。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/38b8c40b-aef0-4d66-b257-da96ec51620e"
+    },
+    {
+      "seq": 9,
+      "code": "YUL",
+      "name": "雲林",
+      "region": "中部",
+      "county": "雲林縣",
+      "district": "虎尾鎮",
+      "english": "Yunlin",
+      "intro": "位於虎尾，鄰近虎尾糖廠、雲林布袋戲館及農業文化生活圈。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "斗六站",
+          "code": "3470",
+          "type": "需公車或其他交通工具",
+          "note": "與臺鐵斗六站非同站，需搭公車或其他交通工具接駁"
+        }
+      ],
+      "notice": "高鐵雲林站≠臺鐵斗六站。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/5f4c7bb0-c676-4e39-8d3c-f12fc188ee5f"
+    },
+    {
+      "seq": 10,
+      "code": "CHY",
+      "name": "嘉義",
+      "region": "南部",
+      "county": "嘉義縣",
+      "district": "太保市",
+      "english": "Chiayi",
+      "intro": "嘉義縣太保交通門戶，鄰近故宮南院與蒜頭糖廠，往嘉義市區可搭 BRT。",
+      "transfer": [
+        {
+          "mode": "公車",
+          "name": "嘉義 BRT 7211／7212",
+          "code": "BRT",
+          "type": "公車接駁",
+          "note": "往嘉義市轉運中心（臺鐵嘉義站後站）；2026/11/1 起特定時段增班"
+        },
+        {
+          "mode": "臺鐵",
+          "name": "嘉義站",
+          "code": "4080",
+          "type": "非同站，需 BRT／公車",
+          "note": "高鐵嘉義站位於太保，臺鐵嘉義站位於嘉義市"
+        }
+      ],
+      "notice": "2026/11/1 起 BRT 部分班次增班，請以當日公車時刻為準。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/60831846-f0e4-47f6-9b5b-46323ebdcef7"
+    },
+    {
+      "seq": 11,
+      "code": "TNN",
+      "name": "台南",
+      "region": "南部",
+      "county": "臺南市",
+      "district": "歸仁區",
+      "english": "Tainan",
+      "intro": "位於歸仁沙崙生活圈，鄰近沙崙綠能科學城與奇美博物館方向。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "沙崙站",
+          "code": "4272",
+          "type": "連通步行",
+          "note": "步行轉臺鐵沙崙線，經中洲往臺南市區"
+        }
+      ],
+      "notice": "高鐵台南站≠臺鐵臺南站（4220）；應轉沙崙線前往市區。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/9c5ac6ca-ec89-48f8-aab0-41b738cb1814"
+    },
+    {
+      "seq": 12,
+      "code": "ZUY",
+      "name": "左營",
+      "region": "南部",
+      "county": "高雄市",
+      "district": "左營區",
+      "english": "Zuoying",
+      "intro": "高鐵南端終點，鄰近蓮池潭、左營舊城與高雄巨蛋方向，是南臺灣重要鐵路與捷運轉運中心。",
+      "transfer": [
+        {
+          "mode": "臺鐵",
+          "name": "新左營站",
+          "code": "4340",
+          "type": "連通步行",
+          "note": "可步行轉乘臺鐵新左營站"
+        },
+        {
+          "mode": "捷運",
+          "name": "高雄捷運左營站",
+          "code": "R16",
+          "type": "連通步行",
+          "note": "高雄捷運紅線可往巨蛋、美麗島、中央公園等站"
+        }
+      ],
+      "notice": "高鐵左營站連接臺鐵「新左營站」，不是臺鐵「左營站」（4350）。",
+      "url": "https://www.thsrc.com.tw/ArticleContent/f2519629-5973-4d08-913b-479cce78a356"
+    }
+  ],
+  "notes": [
+    "目前營運共12站，南港至左營；序號01–12僅表示本頁北往南的順序，非高鐵官方車站代碼。",
+    "英文簡碼參考高鐵公司歷史企業文件，與臺鐵四位數站碼、捷運站碼分別管理。",
+    "高鐵與臺鐵部分同名站不在同一位置，已依轉乘方式明確區分。",
+    "接駁與優惠資格以實際日期及官方公告為準。"
+  ],
+  "sources": [
+    "https://www.thsrc.com.tw/index.html",
+    "https://www.thsrc.com.tw/ArticleContent/99e64de4-a5eb-4081-ad3c-c3596b4f307f",
+    "https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip117/queryThsrTransferTra",
+    "https://www.rb.gov.tw/zh-TW/main/main_28/20250505_152320/20251104_134001/20250505_180533/"
+  ]
+}
