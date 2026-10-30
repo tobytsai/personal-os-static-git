@@ -68,6 +68,7 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 .doc .warn{margin:4px 0 12px;font-size:11px;color:#935a26;font-weight:750}
 .empty{border:1px dashed #b8cde1;background:#fff;border-radius:17px;padding:22px;color:var(--muted);font-size:13px}
 .more{text-align:center;margin:18px 0}.more button{background:#fff;border:1px solid #bdd5e9;border-radius:99px;padding:11px 22px;font-weight:850;color:#2b719e}
+.tra-station-code{background:#355d75;letter-spacing:.055em;font-variant-numeric:tabular-nums}
 .transfer-details{margin:0 0 12px;border:1px solid #d9e6f1;border-radius:13px;background:#f4f9fe;overflow:hidden}
 .transfer-details summary{cursor:pointer;padding:9px 10px;font-size:11px;line-height:1.55;font-weight:800;color:#266a98;list-style-position:inside}
 .transfer-details[open] summary{border-bottom:1px solid #d9e6f1;background:#e9f5fd}
@@ -167,10 +168,10 @@ function transferCardHints(st,line){
 }
 function stationCard(st,line){
  const id=itemId(st),c=esc(line.color);
- const code=st.stationCode?'<span class="station-code" aria-label="捷運車站編號 '+esc(st.stationCode)+'">'+esc(st.stationCode)+'</span>':"";
+ const code=st.stationCode?'<span class="station-code" aria-label="捷運車站編號 '+esc(st.stationCode)+'">'+esc(st.stationCode)+'</span>':st.traCode?'<span class="station-code tra-station-code" aria-label="臺鐵車站代碼 '+esc(st.traCode)+'">'+esc(st.traCode)+'</span>':"";
  const hints=transferCardHints(st,line);
- const official=line.stationCodeSource||line.source;
- return '<article class="card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="id-chip">'+esc(line.name)+'</span>'+favoriteBtn(id)+'</div><h3>'+code+esc(st.name)+'站</h3><p>'+esc(st.intro)+'</p>'+hints+'<div class="links"><a class="primary" target="_blank" rel="noopener noreferrer" href="'+esc(mapLink(line,st))+'" data-open="'+esc(id)+'">📍 地圖</a><a href="'+esc(official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">'+(st.stationCode?'站碼／官方資訊':'官方路線')+'</a></div></div></article>';
+ const official=st.traCode?'https://www.railway.gov.tw/tra-tip-web/tip/tip00H/tipH41/viewStaInfo/'+encodeURIComponent(st.traCode):(line.stationCodeSource||line.source);
+ return '<article class="card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="id-chip">'+esc(line.name)+'</span>'+favoriteBtn(id)+'</div><h3>'+code+esc(st.name)+'站</h3><p>'+esc(st.intro)+'</p>'+hints+'<div class="links"><a class="primary" target="_blank" rel="noopener noreferrer" href="'+esc(mapLink(line,st))+'" data-open="'+esc(id)+'">📍 地圖</a><a href="'+esc(official)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">'+(st.traCode?'官方站務資料':st.stationCode?'站碼／官方資訊':'官方路線')+'</a></div></div></article>';
 }
 function documentCard(d){return '<article class="card doc"><div class="doc-icon" aria-hidden="true">'+esc(d.icon)+'</div><div class="heading"><div><h3>'+esc(d.name)+'</h3><div class="meta">'+esc(d.meta)+'</div></div>'+favoriteBtn(d.id)+'</div><p>'+esc(d.desc)+'</p><div class="warn">'+esc(d.date)+'</div><div class="links"><a class="primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(d.id)+'">'+esc(d.button)+' ↗</a></div></article>'}
 function refreshMain(){
@@ -187,7 +188,7 @@ $("routeChips").innerHTML='<button type="button" class="route'+(selectedLine==="
 }
 function filteredLines(){return allLines.filter(l=>(selectedOperator==="全部"||l.operator===selectedOperator)&&(selectedLine==="全部"||l.id===selectedLine))}
 function renderStations(){
-const q=$("search").value.trim().toLowerCase();const lines=filteredLines().map(line=>({line,stations:line.stations.filter(st=>!q||(st.name+" "+(st.stationCode||"")+" "+(st.transferCodes||[]).join(" ")+" "+st.intro+" "+line.name+" "+line.operator).toLowerCase().includes(q))})).filter(x=>x.stations.length);
+const q=$("search").value.trim().toLowerCase();const lines=filteredLines().map(line=>({line,stations:line.stations.filter(st=>!q||(st.name+" "+(st.stationCode||"")+" "+(st.traCode||"")+" "+(st.transferCodes||[]).join(" ")+" "+st.intro+" "+line.name+" "+line.operator).toLowerCase().includes(q))})).filter(x=>x.stations.length);
 const total=lines.reduce((n,x)=>n+x.stations.length,0);$("listCount").textContent=total+" 筆路線車站卡片";$("listHeading").textContent=selectedLine==="全部"?"鐵路 → 北部 → 全部路線":(allLines.find(x=>x.id===selectedLine)?.name||"北部車站");
 let n=visibleCount;
 $("stationGroups").innerHTML=lines.length?lines.map(({line,stations})=>{const show=stations.slice(0,Math.max(n,0));n-=show.length;if(!show.length)return"";return '<section><div class="subgroup"><h3><span style="color:'+esc(line.color)+'">●</span> '+esc(line.name)+'</h3><span>'+esc(line.operator)+' · 共 '+stations.length+' 站</span></div><div class="grid">'+show.map(st=>stationCard(st,line)).join("")+'</div></section>'}).join(""):'<div class="empty">找不到符合條件的車站，試試搜尋其他站名或清除路線篩選。</div>';
@@ -229,7 +230,7 @@ document.body.addEventListener("click",e=>{
   renderShelves();
  }
 });
-fetch("../data/transport-north-stations.json?v=20261030-transferhints").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];$("stats").textContent=allLines.length+" 條路線 · "+allLines.reduce((n,x)=>n+x.stations.length,0)+" 筆車站卡片";renderFilters();refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
+fetch("../data/transport-north-stations.json?v=20261030-tracodes").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];$("stats").textContent=allLines.length+" 條路線 · "+allLines.reduce((n,x)=>n+x.stations.length,0)+" 筆車站卡片";renderFilters();refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
 renderMainInitial();
 function renderMainInitial(){$("documentGrid").innerHTML=documents.map(documentCard).join("");renderShelves()}
 </script><script src="../shared-nav.js" defer></script>
