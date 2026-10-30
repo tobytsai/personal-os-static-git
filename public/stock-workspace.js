@@ -127,10 +127,18 @@ async function loadQuotes(){
  const r=res[i];if(r.status==='rejected'){bad.push(targets[i][0]);continue}
  const {k,rows}=r.value;if(k==='stocks'){
   const p={};for(const row of rows){if(row&&row.Code)p[String(row.Code)]=row}
-  prices=p;quoteDate=prettyDate(rows.find(x=>x&&x.Date)?.Date)||'—';ok.push('個股');
+  const incomingDate=prettyDate(rows.find(x=>x&&x.Date)?.Date)||'';
+  if(incomingDate&&(!quoteDate||incomingDate>=quoteDate)){
+   prices=p;quoteDate=incomingDate;
+  }
+  ok.push('個股');
  }else{
-  indexData=rows.find(x=>x['指數']==='發行量加權股價指數')||null;
-  indexDate=prettyDate(indexData?.['日期'])||'—';ok.push('加權指數');
+  const incomingIndex=rows.find(x=>x['指數']==='發行量加權股價指數')||null;
+  const incomingIndexDate=prettyDate(incomingIndex?.['日期'])||'';
+  if(incomingIndexDate&&(!indexDate||incomingIndexDate>=indexDate)){
+   indexData=incomingIndex;indexDate=incomingIndexDate;
+  }
+  ok.push('加權指數');
  }
  }
  $('stkDataStatus').textContent=ok.length?'已更新：'+ok.join('、')+'。'+(bad.length?'部分資料讀取失敗，可使用外部行情連結。':'請注意這是盤後資料，不是即時價格。'):'官方行情無法讀取（可能為網路、瀏覽器跨網域限制或網站暫時無回應）。可點個股名稱查看外部行情。';
@@ -149,6 +157,21 @@ function parseTwseChange(sign,value){
  if(/[-−]/.test(mark)||/▼|跌/.test(mark))return -Math.abs(n);
  if(/\+/.test(mark)||/▲|漲/.test(mark))return Math.abs(n);
  return n;
+}
+function parseDailyIndex(data,day){
+ const tables=Array.isArray(data.tables)?data.tables:[];
+ for(const t of tables){
+  if(!Array.isArray(t.fields)||!Array.isArray(t.data))continue;
+  const code=t.fields.indexOf('指數'),value=t.fields.indexOf('收盤指數');
+  const change=t.fields.indexOf('漲跌百分比');
+  if(code<0||value<0||change<0)continue;
+  const row=t.data.find(r=>Array.isArray(r)&&sanitizeTwseText(r[code])==='發行量加權股價指數');
+  if(!row)continue;
+  return {'日期':day.slice(0,4)+'-'+day.slice(4,6)+'-'+day.slice(6,8),
+   '指數':'發行量加權股價指數','收盤指數':sanitizeTwseText(row[value]),
+   '漲跌百分比':sanitizeTwseText(row[change])};
+ }
+ return null;
 }
 function parseTwseDaily(data,day){
  if(data?.stat!=='OK'||!Array.isArray(data.tables))return null;
@@ -192,6 +215,8 @@ async function fetchTodayClose({manual=false}={}){
   const rows=parseTwseDaily(payload,date);
   if(!rows)throw Error(payload.stat&&payload.stat!=='OK'?'當日報表尚未公布：'+payload.stat:'目前沒有可辨識的當日個股資料');
   prices=rows;quoteDate=day;
+  const dailyIndex=parseDailyIndex(payload,date);
+  if(dailyIndex){indexData=dailyIndex;indexDate=day}
   renderIndex();renderWatch();renderReport();
   status.textContent='✓ 已取得 '+day+' 官方個股收盤行情，共 '+Object.keys(rows).length+' 檔。這是盤後數據，不是盤中即時報價。';
  }catch(e){
