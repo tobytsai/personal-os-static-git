@@ -15,147 +15,204 @@
           "id": "BR-01",
           "name": "動物園",
           "intro": "臺北市立動物園與貓空纜車入口，適合親子與自然主題旅遊",
-          "index": 1
+          "index": 1,
+          "stationCode": "BR01",
+          "transferCodes": []
         },
         {
           "id": "BR-02",
           "name": "木柵",
           "intro": "木柵老街生活圈與木柵路沿線，可接駁文山區各社區",
-          "index": 2
+          "index": 2,
+          "stationCode": "BR02",
+          "transferCodes": []
         },
         {
           "id": "BR-03",
           "name": "萬芳社區",
           "intro": "文山區萬芳社區生活圈，周邊以住宅與社區設施為主",
-          "index": 3
+          "index": 3,
+          "stationCode": "BR03",
+          "transferCodes": []
         },
         {
           "id": "BR-04",
           "name": "萬芳醫院",
           "intro": "萬芳醫院與文山區興隆路生活圈，方便就醫",
-          "index": 4
+          "index": 4,
+          "stationCode": "BR04",
+          "transferCodes": []
         },
         {
           "id": "BR-05",
           "name": "辛亥",
           "intro": "辛亥路住宅區與文山區山坡地街區",
-          "index": 5
+          "index": 5,
+          "stationCode": "BR05",
+          "transferCodes": []
         },
         {
           "id": "BR-06",
           "name": "麟光",
           "intro": "富陽自然生態公園與臥龍街一帶，可安排生態散步",
-          "index": 6
+          "index": 6,
+          "stationCode": "BR06",
+          "transferCodes": []
         },
         {
           "id": "BR-07",
           "name": "六張犁",
           "intro": "和平東路商圈與臨江街周邊，往信義區、臺北醫學大學方向便利",
-          "index": 7
+          "index": 7,
+          "stationCode": "BR07",
+          "transferCodes": []
         },
         {
           "id": "BR-08",
           "name": "科技大樓",
           "intro": "臺北科技大樓與復興南路商圈，鄰近大安區學校與住宅區",
-          "index": 8
+          "index": 8,
+          "stationCode": "BR08",
+          "transferCodes": []
         },
         {
           "id": "BR-09",
           "name": "大安",
           "intro": "可轉乘淡水信義線，沿復興南路通往信義路商圈",
-          "index": 9
+          "index": 9,
+          "stationCode": "BR09",
+          "transferCodes": [
+            "R05"
+          ]
         },
         {
           "id": "BR-10",
           "name": "忠孝復興",
           "intro": "可轉乘板南線，鄰近東區百貨、SOGO 與忠孝商圈",
-          "index": 10
+          "index": 10,
+          "stationCode": "BR10",
+          "transferCodes": [
+            "BL15"
+          ]
         },
         {
           "id": "BR-11",
           "name": "南京復興",
           "intro": "可轉乘松山新店線，南京東路與復興北路商辦生活圈",
-          "index": 11
+          "index": 11,
+          "stationCode": "BR11",
+          "transferCodes": [
+            "G16"
+          ]
         },
         {
           "id": "BR-12",
           "name": "中山國中",
           "intro": "民生東路、復興北路商圈與中山國中周邊",
-          "index": 12
+          "index": 12,
+          "stationCode": "BR12",
+          "transferCodes": []
         },
         {
           "id": "BR-13",
           "name": "松山機場",
           "intro": "臺北松山機場航廈旁，方便國內線與國際航班轉乘",
-          "index": 13
+          "index": 13,
+          "stationCode": "BR13",
+          "transferCodes": []
         },
         {
           "id": "BR-14",
           "name": "大直",
           "intro": "大直商圈及北安路生活圈，鄰近實踐大學",
-          "index": 14
+          "index": 14,
+          "stationCode": "BR14",
+          "transferCodes": []
         },
         {
           "id": "BR-15",
           "name": "劍南路",
           "intro": "美麗華百樂園與大直娛樂商圈，鄰近劍潭山步道",
-          "index": 15
+          "index": 15,
+          "stationCode": "BR15",
+          "transferCodes": []
         },
         {
           "id": "BR-16",
           "name": "西湖",
           "intro": "內湖科學園區與西湖市場，周邊有洲子街商辦",
-          "index": 16
+          "index": 16,
+          "stationCode": "BR16",
+          "transferCodes": []
         },
         {
           "id": "BR-17",
           "name": "港墘",
           "intro": "內湖科學園區、瑞光路商圈與港墘路生活圈",
-          "index": 17
+          "index": 17,
+          "stationCode": "BR17",
+          "transferCodes": []
         },
         {
           "id": "BR-18",
           "name": "文德",
           "intro": "碧湖公園與文德路住宅商圈，可安排湖畔散步",
-          "index": 18
+          "index": 18,
+          "stationCode": "BR18",
+          "transferCodes": []
         },
         {
           "id": "BR-19",
           "name": "內湖",
           "intro": "內湖老街、內湖運動中心與成功路商圈",
-          "index": 19
+          "index": 19,
+          "stationCode": "BR19",
+          "transferCodes": []
         },
         {
           "id": "BR-20",
           "name": "大湖公園",
           "intro": "大湖公園、白鷺鷥山步道，適合湖景與親子休閒",
-          "index": 20
+          "index": 20,
+          "stationCode": "BR20",
+          "transferCodes": []
         },
         {
           "id": "BR-21",
           "name": "葫洲",
           "intro": "康寧大學與內湖康寧路住宅區",
-          "index": 21
+          "index": 21,
+          "stationCode": "BR21",
+          "transferCodes": []
         },
         {
           "id": "BR-22",
           "name": "東湖",
           "intro": "東湖市場、東湖商圈與南湖高中周邊",
-          "index": 22
+          "index": 22,
+          "stationCode": "BR22",
+          "transferCodes": []
         },
         {
           "id": "BR-23",
           "name": "南港軟體園區",
           "intro": "南港軟體園區與商辦聚落，鄰近南港展覽館",
-          "index": 23
+          "index": 23,
+          "stationCode": "BR23",
+          "transferCodes": []
         },
         {
           "id": "BR-24",
           "name": "南港展覽館",
           "intro": "可轉乘板南線，臺北南港展覽館及展覽商務活動",
-          "index": 24
+          "index": 24,
+          "stationCode": "BR24",
+          "transferCodes": [
+            "BL23"
+          ]
         }
-      ]
+      ],
+      "stationCodeSource": "https://web.metro.taipei/pages2026/WebStation/104/8"
     },
     {
       "id": "R",
@@ -168,177 +225,251 @@
           "id": "R-01",
           "name": "淡水",
           "intro": "淡水老街、河岸碼頭與紅毛城一帶，適合河岸及歷史文化走讀",
-          "index": 1
+          "index": 1,
+          "stationCode": "R28",
+          "transferCodes": []
         },
         {
           "id": "R-02",
           "name": "紅樹林",
           "intro": "淡水河紅樹林自然保留區；可轉乘淡海輕軌",
-          "index": 2
+          "index": 2,
+          "stationCode": "R27",
+          "transferCodes": [
+            "V01"
+          ]
         },
         {
           "id": "R-03",
           "name": "竹圍",
           "intro": "竹圍生活圈與淡水河岸自行車道",
-          "index": 3
+          "index": 3,
+          "stationCode": "R26",
+          "transferCodes": []
         },
         {
           "id": "R-04",
           "name": "關渡",
           "intro": "關渡宮、關渡自然公園及臺北藝術大學周邊",
-          "index": 4
+          "index": 4,
+          "stationCode": "R25",
+          "transferCodes": []
         },
         {
           "id": "R-05",
           "name": "忠義",
           "intro": "北投區忠義站周邊住宅聚落與關渡平原",
-          "index": 5
+          "index": 5,
+          "stationCode": "R24",
+          "transferCodes": []
         },
         {
           "id": "R-06",
           "name": "復興崗",
           "intro": "復興崗地區及北投軍事院校周邊",
-          "index": 6
+          "index": 6,
+          "stationCode": "R23",
+          "transferCodes": []
         },
         {
           "id": "R-07",
           "name": "北投",
           "intro": "北投市場與北投老街；可轉乘新北投支線前往溫泉區",
-          "index": 7
+          "index": 7,
+          "stationCode": "R22",
+          "transferCodes": []
         },
         {
           "id": "R-08",
           "name": "新北投",
           "intro": "北投溫泉博物館、北投圖書館、地熱谷與溫泉老街",
-          "index": 8
+          "index": 8,
+          "stationCode": "R22A",
+          "transferCodes": []
         },
         {
           "id": "R-09",
           "name": "奇岩",
           "intro": "奇岩重劃區與磺港溪生活圈",
-          "index": 9
+          "index": 9,
+          "stationCode": "R21",
+          "transferCodes": []
         },
         {
           "id": "R-10",
           "name": "唭哩岸",
           "intro": "唭哩岸石文化、奇岩山與北投石牌生活圈",
-          "index": 10
+          "index": 10,
+          "stationCode": "R20",
+          "transferCodes": []
         },
         {
           "id": "R-11",
           "name": "石牌",
           "intro": "石牌商圈與臺北榮民總醫院接駁",
-          "index": 11
+          "index": 11,
+          "stationCode": "R19",
+          "transferCodes": []
         },
         {
           "id": "R-12",
           "name": "明德",
           "intro": "明德路住宅商圈，鄰近天母南側生活區",
-          "index": 12
+          "index": 12,
+          "stationCode": "R18",
+          "transferCodes": []
         },
         {
           "id": "R-13",
           "name": "芝山",
           "intro": "士林芝山岩文化史蹟與天母生活圈",
-          "index": 13
+          "index": 13,
+          "stationCode": "R17",
+          "transferCodes": []
         },
         {
           "id": "R-14",
           "name": "士林",
           "intro": "士林官邸、士林市場及中正路生活圈",
-          "index": 14
+          "index": 14,
+          "stationCode": "R16",
+          "transferCodes": []
         },
         {
           "id": "R-15",
           "name": "劍潭",
           "intro": "士林夜市主要捷運入口，鄰近圓山大飯店方向",
-          "index": 15
+          "index": 15,
+          "stationCode": "R15",
+          "transferCodes": []
         },
         {
           "id": "R-16",
           "name": "圓山",
           "intro": "花博公園、臺北市立美術館與保安宮文化圈",
-          "index": 16
+          "index": 16,
+          "stationCode": "R14",
+          "transferCodes": []
         },
         {
           "id": "R-17",
           "name": "民權西路",
           "intro": "可轉乘中和新蘆線，雙連與大同區交通節點",
-          "index": 17
+          "index": 17,
+          "stationCode": "R13",
+          "transferCodes": [
+            "O11"
+          ]
         },
         {
           "id": "R-18",
           "name": "雙連",
           "intro": "雙連市場、馬偕紀念醫院與中山北路生活圈",
-          "index": 18
+          "index": 18,
+          "stationCode": "R12",
+          "transferCodes": []
         },
         {
           "id": "R-19",
           "name": "中山",
           "intro": "可轉乘松山新店線，中山地下街、赤峰街與百貨商圈",
-          "index": 19
+          "index": 19,
+          "stationCode": "R11",
+          "transferCodes": [
+            "G14"
+          ]
         },
         {
           "id": "R-20",
           "name": "臺北車站",
           "intro": "臺鐵、高鐵、機場捷運及板南線的主要轉乘樞紐",
-          "index": 20
+          "index": 20,
+          "stationCode": "R10",
+          "transferCodes": [
+            "BL12",
+            "A1"
+          ]
         },
         {
           "id": "R-21",
           "name": "臺大醫院",
           "intro": "二二八和平紀念公園、臺灣博物館與臺大醫院",
-          "index": 21
+          "index": 21,
+          "stationCode": "R09",
+          "transferCodes": []
         },
         {
           "id": "R-22",
           "name": "中正紀念堂",
           "intro": "中正紀念堂及兩廳院，轉乘松山新店線",
-          "index": 22
+          "index": 22,
+          "stationCode": "R08",
+          "transferCodes": [
+            "G10"
+          ]
         },
         {
           "id": "R-23",
           "name": "東門",
           "intro": "永康街商圈、金華街美食與大安森林公園北側",
-          "index": 23
+          "index": 23,
+          "stationCode": "R07",
+          "transferCodes": [
+            "O06"
+          ]
         },
         {
           "id": "R-24",
           "name": "大安森林公園",
           "intro": "大安森林公園與建國花市周邊，適合綠地散步",
-          "index": 24
+          "index": 24,
+          "stationCode": "R06",
+          "transferCodes": []
         },
         {
           "id": "R-25",
           "name": "大安",
           "intro": "轉乘文湖線，復興南路、信義路商辦生活圈",
-          "index": 25
+          "index": 25,
+          "stationCode": "R05",
+          "transferCodes": [
+            "BR09"
+          ]
         },
         {
           "id": "R-26",
           "name": "信義安和",
           "intro": "通化夜市、臨江街與信義路餐飲商圈",
-          "index": 26
+          "index": 26,
+          "stationCode": "R04",
+          "transferCodes": []
         },
         {
           "id": "R-27",
           "name": "臺北101/世貿",
           "intro": "臺北101、信義商圈及世貿展覽場館",
-          "index": 27
+          "index": 27,
+          "stationCode": "R03",
+          "transferCodes": []
         },
         {
           "id": "R-28",
           "name": "象山",
           "intro": "象山步道、信義商圈夜景與吳興街生活圈",
-          "index": 28
+          "index": 28,
+          "stationCode": "R02",
+          "transferCodes": []
         },
         {
           "id": "R-29",
           "name": "廣慈/奉天宮",
           "intro": "2026年8月30日啟用的信義東延段終點站，鄰近廣慈博愛園區",
-          "index": 29
+          "index": 29,
+          "stationCode": "R01",
+          "transferCodes": []
         }
-      ]
+      ],
+      "stationCodeSource": "https://web.metro.taipei/pages2026/WebStation/104/8"
     },
     {
       "id": "G",
@@ -351,123 +482,178 @@
           "id": "G-01",
           "name": "松山",
           "intro": "饒河街夜市、松山慈祐宮及臺鐵松山站",
-          "index": 1
+          "index": 1,
+          "stationCode": "G19",
+          "transferCodes": []
         },
         {
           "id": "G-02",
           "name": "南京三民",
           "intro": "南京東路五段商圈與松山區住宅街區",
-          "index": 2
+          "index": 2,
+          "stationCode": "G18",
+          "transferCodes": []
         },
         {
           "id": "G-03",
           "name": "臺北小巨蛋",
           "intro": "臺北小巨蛋大型表演與體育活動場館",
-          "index": 3
+          "index": 3,
+          "stationCode": "G17",
+          "transferCodes": []
         },
         {
           "id": "G-04",
           "name": "南京復興",
           "intro": "轉乘文湖線，南京東路商辦及復興北路生活圈",
-          "index": 4
+          "index": 4,
+          "stationCode": "G16",
+          "transferCodes": [
+            "BR11"
+          ]
         },
         {
           "id": "G-05",
           "name": "松江南京",
           "intro": "轉乘中和新蘆線，四平商圈與松江路辦公街區",
-          "index": 5
+          "index": 5,
+          "stationCode": "G15",
+          "transferCodes": [
+            "O08"
+          ]
         },
         {
           "id": "G-06",
           "name": "中山",
           "intro": "轉乘淡水信義線，中山商圈、赤峰街與當代藝術館",
-          "index": 6
+          "index": 6,
+          "stationCode": "G14",
+          "transferCodes": [
+            "R11"
+          ]
         },
         {
           "id": "G-07",
           "name": "北門",
           "intro": "臺北北門、臺北郵局及迪化街大稻埕入口",
-          "index": 7
+          "index": 7,
+          "stationCode": "G13",
+          "transferCodes": []
         },
         {
           "id": "G-08",
           "name": "西門",
           "intro": "轉乘板南線，西門町、紅樓與電影街",
-          "index": 8
+          "index": 8,
+          "stationCode": "G12",
+          "transferCodes": [
+            "BL11"
+          ]
         },
         {
           "id": "G-09",
           "name": "小南門",
           "intro": "植物園、臺北市立歷史博物館及中正區行政區",
-          "index": 9
+          "index": 9,
+          "stationCode": "G11",
+          "transferCodes": []
         },
         {
           "id": "G-10",
           "name": "中正紀念堂",
           "intro": "轉乘淡水信義線，兩廳院與中正紀念堂",
-          "index": 10
+          "index": 10,
+          "stationCode": "G10",
+          "transferCodes": [
+            "R08"
+          ]
         },
         {
           "id": "G-11",
           "name": "古亭",
           "intro": "轉乘中和新蘆線，師大生活圈與同安街商圈",
-          "index": 11
+          "index": 11,
+          "stationCode": "G09",
+          "transferCodes": [
+            "O05"
+          ]
         },
         {
           "id": "G-12",
           "name": "台電大樓",
           "intro": "師大夜市、臺灣師範大學與汀州路商圈",
-          "index": 12
+          "index": 12,
+          "stationCode": "G08",
+          "transferCodes": []
         },
         {
           "id": "G-13",
           "name": "公館",
           "intro": "臺灣大學、公館商圈與自來水園區",
-          "index": 13
+          "index": 13,
+          "stationCode": "G07",
+          "transferCodes": []
         },
         {
           "id": "G-14",
           "name": "萬隆",
           "intro": "景美溪周邊社區與萬隆街生活圈",
-          "index": 14
+          "index": 14,
+          "stationCode": "G06",
+          "transferCodes": []
         },
         {
           "id": "G-15",
           "name": "景美",
           "intro": "景美夜市、景美集應廟與景美河岸散步",
-          "index": 15
+          "index": 15,
+          "stationCode": "G05",
+          "transferCodes": []
         },
         {
           "id": "G-16",
           "name": "大坪林",
           "intro": "轉乘環狀線，新店民權路、北新路商圈",
-          "index": 16
+          "index": 16,
+          "stationCode": "G04",
+          "transferCodes": [
+            "Y07"
+          ]
         },
         {
           "id": "G-17",
           "name": "七張",
           "intro": "新店七張商圈，往裕隆城及家樂福周邊便利",
-          "index": 17
+          "index": 17,
+          "stationCode": "G03",
+          "transferCodes": []
         },
         {
           "id": "G-18",
           "name": "小碧潭",
           "intro": "小碧潭支線站點，鄰近新店中央新村與河岸",
-          "index": 18
+          "index": 18,
+          "stationCode": "G03A",
+          "transferCodes": []
         },
         {
           "id": "G-19",
           "name": "新店區公所",
           "intro": "新店行政中心與北新路生活商圈",
-          "index": 19
+          "index": 19,
+          "stationCode": "G02",
+          "transferCodes": []
         },
         {
           "id": "G-20",
           "name": "新店",
           "intro": "碧潭風景區與吊橋，適合河畔踏青",
-          "index": 20
+          "index": 20,
+          "stationCode": "G01",
+          "transferCodes": []
         }
-      ]
+      ],
+      "stationCodeSource": "https://web.metro.taipei/pages2026/WebStation/065/8"
     },
     {
       "id": "O",
@@ -480,159 +666,228 @@
           "id": "O-01",
           "name": "南勢角",
           "intro": "中和興南夜市及華新街緬甸街美食文化圈",
-          "index": 1
+          "index": 1,
+          "stationCode": "O01",
+          "transferCodes": []
         },
         {
           "id": "O-02",
           "name": "景安",
           "intro": "可轉乘環狀線，景安路與南山路生活圈",
-          "index": 2
+          "index": 2,
+          "stationCode": "O02",
+          "transferCodes": [
+            "Y11"
+          ]
         },
         {
           "id": "O-03",
           "name": "永安市場",
           "intro": "四號公園與國立臺灣圖書館，中永和居民常用站",
-          "index": 3
+          "index": 3,
+          "stationCode": "O03",
+          "transferCodes": []
         },
         {
           "id": "O-04",
           "name": "頂溪",
           "intro": "永和樂華夜市、頂溪商圈與楊三郎美術館",
-          "index": 4
+          "index": 4,
+          "stationCode": "O04",
+          "transferCodes": []
         },
         {
           "id": "O-05",
           "name": "古亭",
           "intro": "轉乘松山新店線，古亭商圈與中正河堤",
-          "index": 5
+          "index": 5,
+          "stationCode": "O05",
+          "transferCodes": [
+            "G09"
+          ]
         },
         {
           "id": "O-06",
           "name": "東門",
           "intro": "永康商圈與金華街歷史生活街區",
-          "index": 6
+          "index": 6,
+          "stationCode": "O06",
+          "transferCodes": [
+            "R07"
+          ]
         },
         {
           "id": "O-07",
           "name": "忠孝新生",
           "intro": "轉乘板南線，華山1914文創園區及三創周邊",
-          "index": 7
+          "index": 7,
+          "stationCode": "O07",
+          "transferCodes": [
+            "BL14"
+          ]
         },
         {
           "id": "O-08",
           "name": "松江南京",
           "intro": "轉乘松山新店線，四平街商圈與金融辦公區",
-          "index": 8
+          "index": 8,
+          "stationCode": "O08",
+          "transferCodes": [
+            "G15"
+          ]
         },
         {
           "id": "O-09",
           "name": "行天宮",
           "intro": "行天宮與松江市場，鄰近民權東路商圈",
-          "index": 9
+          "index": 9,
+          "stationCode": "O09",
+          "transferCodes": []
         },
         {
           "id": "O-10",
           "name": "中山國小",
           "intro": "晴光市場、雙城街夜市與中山國小",
-          "index": 10
+          "index": 10,
+          "stationCode": "O10",
+          "transferCodes": []
         },
         {
           "id": "O-11",
           "name": "民權西路",
           "intro": "轉乘淡水信義線，大同區重要轉乘站",
-          "index": 11
+          "index": 11,
+          "stationCode": "O11",
+          "transferCodes": [
+            "R13"
+          ]
         },
         {
           "id": "O-12",
           "name": "大橋頭",
           "intro": "大稻埕與延三夜市，通往迪化街歷史街區",
-          "index": 12
+          "index": 12,
+          "stationCode": "O12",
+          "transferCodes": []
         },
         {
           "id": "O-13",
           "name": "三重國小",
           "intro": "三重國小與三重長元商圈",
-          "index": 13
+          "index": 13,
+          "stationCode": "O50",
+          "transferCodes": []
         },
         {
           "id": "O-14",
           "name": "三和國中",
           "intro": "三重三和路沿線與三和夜市周邊",
-          "index": 14
+          "index": 14,
+          "stationCode": "O51",
+          "transferCodes": []
         },
         {
           "id": "O-15",
           "name": "徐匯中學",
           "intro": "蘆洲集賢路商圈與徐匯中學",
-          "index": 15
+          "index": 15,
+          "stationCode": "O52",
+          "transferCodes": []
         },
         {
           "id": "O-16",
           "name": "三民高中",
           "intro": "蘆洲三民路與三民高中周邊",
-          "index": 16
+          "index": 16,
+          "stationCode": "O53",
+          "transferCodes": []
         },
         {
           "id": "O-17",
           "name": "蘆洲",
           "intro": "蘆洲李宅古蹟、湧蓮寺及蘆洲老街地區",
-          "index": 17
+          "index": 17,
+          "stationCode": "O54",
+          "transferCodes": []
         },
         {
           "id": "O-18",
           "name": "臺北橋",
           "intro": "三重天台商圈與臺北橋歷史交通節點",
-          "index": 18
+          "index": 18,
+          "stationCode": "O13",
+          "transferCodes": []
         },
         {
           "id": "O-19",
           "name": "菜寮",
           "intro": "新北市立醫院三重院區與重新路生活圈",
-          "index": 19
+          "index": 19,
+          "stationCode": "O14",
+          "transferCodes": []
         },
         {
           "id": "O-20",
           "name": "三重",
           "intro": "轉乘機場捷運，鄰近大臺北都會公園",
-          "index": 20
+          "index": 20,
+          "stationCode": "O15",
+          "transferCodes": [
+            "A2"
+          ]
         },
         {
           "id": "O-21",
           "name": "先嗇宮",
           "intro": "先嗇宮與新北產業聚落，鄰近重新路五段",
-          "index": 21
+          "index": 21,
+          "stationCode": "O16",
+          "transferCodes": []
         },
         {
           "id": "O-22",
           "name": "頭前庄",
           "intro": "轉乘環狀線，新莊頭前重劃區與思源路",
-          "index": 22
+          "index": 22,
+          "stationCode": "O17",
+          "transferCodes": [
+            "Y18"
+          ]
         },
         {
           "id": "O-23",
           "name": "新莊",
           "intro": "新莊老街、慈祐宮與新莊廟街",
-          "index": 23
+          "index": 23,
+          "stationCode": "O18",
+          "transferCodes": []
         },
         {
           "id": "O-24",
           "name": "輔大",
           "intro": "天主教輔仁大學與新莊中正路商圈",
-          "index": 24
+          "index": 24,
+          "stationCode": "O19",
+          "transferCodes": []
         },
         {
           "id": "O-25",
           "name": "丹鳳",
           "intro": "丹鳳生活圈與新莊中正路沿線",
-          "index": 25
+          "index": 25,
+          "stationCode": "O20",
+          "transferCodes": []
         },
         {
           "id": "O-26",
           "name": "迴龍",
           "intro": "新莊與桃園龜山交界的交通節點，鄰近樂生療養院",
-          "index": 26
+          "index": 26,
+          "stationCode": "O21",
+          "transferCodes": []
         }
-      ]
+      ],
+      "stationCodeSource": "https://web.metro.taipei/pages2026/WebStation/031/8"
     },
     {
       "id": "BL",
@@ -645,141 +900,201 @@
           "id": "BL-01",
           "name": "頂埔",
           "intro": "土城科技園區與頂埔住宅生活圈",
-          "index": 1
+          "index": 1,
+          "stationCode": "BL01",
+          "transferCodes": []
         },
         {
           "id": "BL-02",
           "name": "永寧",
           "intro": "土城承天禪寺及桐花步道接駁入口",
-          "index": 2
+          "index": 2,
+          "stationCode": "BL02",
+          "transferCodes": []
         },
         {
           "id": "BL-03",
           "name": "土城",
           "intro": "土城行政中心與金城路生活商圈",
-          "index": 3
+          "index": 3,
+          "stationCode": "BL03",
+          "transferCodes": []
         },
         {
           "id": "BL-04",
           "name": "海山",
           "intro": "海山高工與土城裕民路商圈",
-          "index": 4
+          "index": 4,
+          "stationCode": "BL04",
+          "transferCodes": []
         },
         {
           "id": "BL-05",
           "name": "亞東醫院",
           "intro": "亞東紀念醫院、遠東通訊園區周邊",
-          "index": 5
+          "index": 5,
+          "stationCode": "BL05",
+          "transferCodes": []
         },
         {
           "id": "BL-06",
           "name": "府中",
           "intro": "林本源園邸、府中商圈與板橋舊城文化街區",
-          "index": 6
+          "index": 6,
+          "stationCode": "BL06",
+          "transferCodes": []
         },
         {
           "id": "BL-07",
           "name": "板橋",
           "intro": "轉乘臺鐵、高鐵及環狀線，新北市政府與板橋車站商圈",
-          "index": 7
+          "index": 7,
+          "stationCode": "BL07",
+          "transferCodes": [
+            "Y16"
+          ]
         },
         {
           "id": "BL-08",
           "name": "新埔",
           "intro": "新埔市場、文化路商圈與新埔民生轉乘區域",
-          "index": 8
+          "index": 8,
+          "stationCode": "BL08",
+          "transferCodes": []
         },
         {
           "id": "BL-09",
           "name": "江子翠",
           "intro": "板橋江子翠生活圈與華江河濱公園",
-          "index": 9
+          "index": 9,
+          "stationCode": "BL09",
+          "transferCodes": []
         },
         {
           "id": "BL-10",
           "name": "龍山寺",
           "intro": "艋舺龍山寺、剝皮寮及華西街夜市",
-          "index": 10
+          "index": 10,
+          "stationCode": "BL10",
+          "transferCodes": []
         },
         {
           "id": "BL-11",
           "name": "西門",
           "intro": "西門町電影街、紅樓及徒步商圈",
-          "index": 11
+          "index": 11,
+          "stationCode": "BL11",
+          "transferCodes": [
+            "G12"
+          ]
         },
         {
           "id": "BL-12",
           "name": "臺北車站",
           "intro": "臺鐵、高鐵、機捷與淡水信義線轉乘",
-          "index": 12
+          "index": 12,
+          "stationCode": "BL12",
+          "transferCodes": [
+            "R10",
+            "A1"
+          ]
         },
         {
           "id": "BL-13",
           "name": "善導寺",
           "intro": "華山文創園區、善導寺及行政院周邊",
-          "index": 13
+          "index": 13,
+          "stationCode": "BL13",
+          "transferCodes": []
         },
         {
           "id": "BL-14",
           "name": "忠孝新生",
           "intro": "轉乘中和新蘆線，光華商場與三創生活園區",
-          "index": 14
+          "index": 14,
+          "stationCode": "BL14",
+          "transferCodes": [
+            "O07"
+          ]
         },
         {
           "id": "BL-15",
           "name": "忠孝復興",
           "intro": "轉乘文湖線，東區百貨、忠孝商圈",
-          "index": 15
+          "index": 15,
+          "stationCode": "BL15",
+          "transferCodes": [
+            "BR10"
+          ]
         },
         {
           "id": "BL-16",
           "name": "忠孝敦化",
           "intro": "敦化南路林蔭大道、東區商圈",
-          "index": 16
+          "index": 16,
+          "stationCode": "BL16",
+          "transferCodes": []
         },
         {
           "id": "BL-17",
           "name": "國父紀念館",
           "intro": "國父紀念館及松菸文創園區周邊",
-          "index": 17
+          "index": 17,
+          "stationCode": "BL17",
+          "transferCodes": []
         },
         {
           "id": "BL-18",
           "name": "市政府",
           "intro": "臺北市政府與信義商圈百貨、松菸入口",
-          "index": 18
+          "index": 18,
+          "stationCode": "BL18",
+          "transferCodes": []
         },
         {
           "id": "BL-19",
           "name": "永春",
           "intro": "永春市場與信義區虎林街生活商圈",
-          "index": 19
+          "index": 19,
+          "stationCode": "BL19",
+          "transferCodes": []
         },
         {
           "id": "BL-20",
           "name": "後山埤",
           "intro": "五分埔商圈、永吉路服飾街",
-          "index": 20
+          "index": 20,
+          "stationCode": "BL20",
+          "transferCodes": []
         },
         {
           "id": "BL-21",
           "name": "昆陽",
           "intro": "昆陽街、忠孝東路六段及南港生活圈",
-          "index": 21
+          "index": 21,
+          "stationCode": "BL21",
+          "transferCodes": []
         },
         {
           "id": "BL-22",
           "name": "南港",
           "intro": "臺鐵、高鐵及南港商圈轉乘樞紐",
-          "index": 22
+          "index": 22,
+          "stationCode": "BL22",
+          "transferCodes": []
         },
         {
           "id": "BL-23",
           "name": "南港展覽館",
           "intro": "轉乘文湖線，南港展覽館與商辦區",
-          "index": 23
+          "index": 23,
+          "stationCode": "BL23",
+          "transferCodes": [
+            "BR24"
+          ]
         }
-      ]
+      ],
+      "stationCodeSource": "https://web.metro.taipei/pages2026/WebStation/031/8"
     },
     {
       "id": "Y",
@@ -792,87 +1107,128 @@
           "id": "Y-01",
           "name": "大坪林",
           "intro": "新店大坪林交通節點，轉乘松山新店線",
-          "index": 1
+          "index": 1,
+          "stationCode": "Y07",
+          "transferCodes": [
+            "G04"
+          ]
         },
         {
           "id": "Y-02",
           "name": "十四張",
           "intro": "轉乘安坑輕軌，鄰近新店十四張重劃區",
-          "index": 2
+          "index": 2,
+          "stationCode": "Y08",
+          "transferCodes": [
+            "K09"
+          ]
         },
         {
           "id": "Y-03",
           "name": "秀朗橋",
           "intro": "秀朗橋與景平路沿線，鄰近新店溪河濱",
-          "index": 3
+          "index": 3,
+          "stationCode": "Y09",
+          "transferCodes": []
         },
         {
           "id": "Y-04",
           "name": "景平",
           "intro": "景平路住宅商圈，鄰近中和保警總隊",
-          "index": 4
+          "index": 4,
+          "stationCode": "Y10",
+          "transferCodes": []
         },
         {
           "id": "Y-05",
           "name": "景安",
           "intro": "轉乘中和新蘆線，中和景安路商圈",
-          "index": 5
+          "index": 5,
+          "stationCode": "Y11",
+          "transferCodes": [
+            "O02"
+          ]
         },
         {
           "id": "Y-06",
           "name": "中和",
           "intro": "中和中山路、景平路交通交會點",
-          "index": 6
+          "index": 6,
+          "stationCode": "Y12",
+          "transferCodes": []
         },
         {
           "id": "Y-07",
           "name": "橋和",
           "intro": "中和工業區、板南路與橋和路產業區",
-          "index": 7
+          "index": 7,
+          "stationCode": "Y13",
+          "transferCodes": []
         },
         {
           "id": "Y-08",
           "name": "中原",
           "intro": "中和板南路、中正路商辦與工業區",
-          "index": 8
+          "index": 8,
+          "stationCode": "Y14",
+          "transferCodes": []
         },
         {
           "id": "Y-09",
           "name": "板新",
           "intro": "板橋板新路與中山路商圈",
-          "index": 9
+          "index": 9,
+          "stationCode": "Y15",
+          "transferCodes": []
         },
         {
           "id": "Y-10",
           "name": "板橋",
           "intro": "可轉乘板南線、臺鐵與高鐵，鄰近新北市政府",
-          "index": 10
+          "index": 10,
+          "stationCode": "Y16",
+          "transferCodes": [
+            "BL07"
+          ]
         },
         {
           "id": "Y-11",
           "name": "新埔民生",
           "intro": "板橋民生路，步行接續新埔站及文化路商圈",
-          "index": 11
+          "index": 11,
+          "stationCode": "Y17",
+          "transferCodes": []
         },
         {
           "id": "Y-12",
           "name": "頭前庄",
           "intro": "轉乘中和新蘆線，新莊思源路與中正路",
-          "index": 12
+          "index": 12,
+          "stationCode": "Y18",
+          "transferCodes": [
+            "O17"
+          ]
         },
         {
           "id": "Y-13",
           "name": "幸福",
           "intro": "新莊幸福路與頭前重劃區生活圈",
-          "index": 13
+          "index": 13,
+          "stationCode": "Y19",
+          "transferCodes": []
         },
         {
           "id": "Y-14",
           "name": "新北產業園區",
           "intro": "轉乘機場捷運，新北產業園區及五股工業區周邊",
-          "index": 14
+          "index": 14,
+          "stationCode": "Y20",
+          "transferCodes": [
+            "A3"
+          ]
         }
-      ]
+      ],
+      "stationCodeSource": "https://www.dorts.gov.taipei/cp.aspx?n=86E55BE3A390F789"
     },
     {
       "id": "V",
@@ -885,87 +1241,118 @@
           "id": "V-01",
           "name": "紅樹林",
           "intro": "可轉乘淡水信義線，紅樹林保留區的自然生態入口",
-          "index": 1
+          "index": 1,
+          "stationCode": "V01",
+          "transferCodes": [
+            "R27"
+          ]
         },
         {
           "id": "V-02",
           "name": "竿蓁林",
           "intro": "淡水竿蓁林社區與淡金路生活圈",
-          "index": 2
+          "index": 2,
+          "stationCode": "V02",
+          "transferCodes": []
         },
         {
           "id": "V-03",
           "name": "淡金鄧公",
           "intro": "淡金路與鄧公路附近，串連淡水住宅區",
-          "index": 3
+          "index": 3,
+          "stationCode": "V03",
+          "transferCodes": []
         },
         {
           "id": "V-04",
           "name": "淡江大學",
           "intro": "淡江大學淡水校園周邊，學生通學站",
-          "index": 4
+          "index": 4,
+          "stationCode": "V04",
+          "transferCodes": []
         },
         {
           "id": "V-05",
           "name": "淡金北新",
           "intro": "淡金路與北新路周邊，鄰近住宅及學校",
-          "index": 5
+          "index": 5,
+          "stationCode": "V05",
+          "transferCodes": []
         },
         {
           "id": "V-06",
           "name": "新市一路",
           "intro": "淡海新市鎮新市一路生活區",
-          "index": 6
+          "index": 6,
+          "stationCode": "V06",
+          "transferCodes": []
         },
         {
           "id": "V-07",
           "name": "淡水行政中心",
           "intro": "淡水區公所與淡海行政服務區",
-          "index": 7
+          "index": 7,
+          "stationCode": "V07",
+          "transferCodes": []
         },
         {
           "id": "V-08",
           "name": "濱海義山",
           "intro": "濱海路與義山地區，往淡海居住區",
-          "index": 8
+          "index": 8,
+          "stationCode": "V08",
+          "transferCodes": []
         },
         {
           "id": "V-09",
           "name": "濱海沙崙",
           "intro": "淡海新市鎮濱海路、沙崙住宅區",
-          "index": 9
+          "index": 9,
+          "stationCode": "V09",
+          "transferCodes": []
         },
         {
           "id": "V-10",
           "name": "淡海新市鎮",
           "intro": "淡海新市鎮生活圈，鄰近新建住宅聚落",
-          "index": 10
+          "index": 10,
+          "stationCode": "V10",
+          "transferCodes": []
         },
         {
           "id": "V-11",
           "name": "崁頂",
           "intro": "淡海輕軌綠山線端點，鄰近崁頂地區",
-          "index": 11
+          "index": 11,
+          "stationCode": "V11",
+          "transferCodes": []
         },
         {
           "id": "V-12",
           "name": "台北海洋大學",
           "intro": "臺北海洋科技大學淡水校區與沙崙路周邊",
-          "index": 12
+          "index": 12,
+          "stationCode": "V28",
+          "transferCodes": []
         },
         {
           "id": "V-13",
           "name": "沙崙",
           "intro": "沙崙海岸與淡水海邊生活圈",
-          "index": 13
+          "index": 13,
+          "stationCode": "V27",
+          "transferCodes": []
         },
         {
           "id": "V-14",
           "name": "淡水漁人碼頭",
           "intro": "淡水漁人碼頭、情人橋與河海景觀步道",
-          "index": 14
+          "index": 14,
+          "stationCode": "V26",
+          "transferCodes": []
         }
-      ]
+      ],
+      "stationCodeSource": "https://www.ntmetro.com.tw/basic/?mode=detail&node=450"
     },
     {
       "id": "K",
@@ -978,57 +1365,78 @@
           "id": "K-01",
           "name": "雙城",
           "intro": "新店安坑雙城社區與安一路沿線",
-          "index": 1
+          "index": 1,
+          "stationCode": "K01",
+          "transferCodes": []
         },
         {
           "id": "K-02",
           "name": "玫瑰中國城",
           "intro": "安坑玫瑰中國城社區及玫瑰路路口",
-          "index": 2
+          "index": 2,
+          "stationCode": "K02",
+          "transferCodes": []
         },
         {
           "id": "K-03",
           "name": "台北小城",
           "intro": "安坑台北小城社區與安一路一帶",
-          "index": 3
+          "index": 3,
+          "stationCode": "K03",
+          "transferCodes": []
         },
         {
           "id": "K-04",
           "name": "耕莘安康院區",
           "intro": "耕莘醫院安康院區與車子路生活區",
-          "index": 4
+          "index": 4,
+          "stationCode": "K04",
+          "transferCodes": []
         },
         {
           "id": "K-05",
           "name": "景文科大",
           "intro": "景文科技大學與安忠路周邊",
-          "index": 5
+          "index": 5,
+          "stationCode": "K05",
+          "transferCodes": []
         },
         {
           "id": "K-06",
           "name": "安康",
           "intro": "安康路與安和路路口生活圈",
-          "index": 6
+          "index": 6,
+          "stationCode": "K06",
+          "transferCodes": []
         },
         {
           "id": "K-07",
           "name": "陽光運動公園",
           "intro": "新店陽光運動公園，適合河濱休憩活動",
-          "index": 7
+          "index": 7,
+          "stationCode": "K07",
+          "transferCodes": []
         },
         {
           "id": "K-08",
           "name": "新和國小",
           "intro": "新店新和國小及安和路住宅區",
-          "index": 8
+          "index": 8,
+          "stationCode": "K08",
+          "transferCodes": []
         },
         {
           "id": "K-09",
           "name": "十四張",
           "intro": "可轉乘環狀線，新店十四張交通節點",
-          "index": 9
+          "index": 9,
+          "stationCode": "K09",
+          "transferCodes": [
+            "Y08"
+          ]
         }
-      ]
+      ],
+      "stationCodeSource": "https://www.ntmetro.com.tw/basic/?node=10137"
     },
     {
       "id": "TRA-N",
@@ -1431,135 +1839,189 @@
           "id": "A-01",
           "name": "台北車站",
           "intro": "機場捷運台北站，鄰近臺北車站與臺北地下街",
-          "index": 1
+          "index": 1,
+          "stationCode": "A1",
+          "transferCodes": [
+            "R10",
+            "BL12"
+          ]
         },
         {
           "id": "A-02",
           "name": "三重",
           "intro": "轉乘臺北捷運中和新蘆線，連通大臺北都會公園",
-          "index": 2
+          "index": 2,
+          "stationCode": "A2",
+          "transferCodes": [
+            "O15"
+          ]
         },
         {
           "id": "A-03",
           "name": "新北產業園區",
           "intro": "轉乘環狀線，鄰近新北產業園區",
-          "index": 3
+          "index": 3,
+          "stationCode": "A3",
+          "transferCodes": [
+            "Y20"
+          ]
         },
         {
           "id": "A-04",
           "name": "新莊副都心",
           "intro": "新莊副都心商辦與住宅聚落",
-          "index": 4
+          "index": 4,
+          "stationCode": "A4",
+          "transferCodes": []
         },
         {
           "id": "A-05",
           "name": "泰山",
           "intro": "泰山區明志路、泰山高中生活區",
-          "index": 5
+          "index": 5,
+          "stationCode": "A5",
+          "transferCodes": []
         },
         {
           "id": "A-06",
           "name": "泰山貴和",
           "intro": "輔仁大學周邊及泰山貴和住宅區",
-          "index": 6
+          "index": 6,
+          "stationCode": "A6",
+          "transferCodes": []
         },
         {
           "id": "A-07",
           "name": "體育大學",
           "intro": "國立體育大學、長庚大學與龜山生活圈",
-          "index": 7
+          "index": 7,
+          "stationCode": "A7",
+          "transferCodes": []
         },
         {
           "id": "A-08",
           "name": "長庚醫院",
           "intro": "林口長庚紀念醫院與周邊商業聚落",
-          "index": 8
+          "index": 8,
+          "stationCode": "A8",
+          "transferCodes": []
         },
         {
           "id": "A-09",
           "name": "林口",
           "intro": "林口新市鎮、林口三井 Outlet 商圈",
-          "index": 9
+          "index": 9,
+          "stationCode": "A9",
+          "transferCodes": []
         },
         {
           "id": "A-10",
           "name": "山鼻",
           "intro": "蘆竹山鼻與坑子溪周邊聚落",
-          "index": 10
+          "index": 10,
+          "stationCode": "A10",
+          "transferCodes": []
         },
         {
           "id": "A-11",
           "name": "坑口",
           "intro": "桃園機場北側坑口生活圈",
-          "index": 11
+          "index": 11,
+          "stationCode": "A11",
+          "transferCodes": []
         },
         {
           "id": "A-12",
           "name": "機場第一航廈",
           "intro": "桃園國際機場第一航廈，銜接航空旅客動線",
-          "index": 12
+          "index": 12,
+          "stationCode": "A12",
+          "transferCodes": []
         },
         {
           "id": "A-13",
           "name": "機場第二航廈",
           "intro": "桃園國際機場第二航廈與機場公共設施",
-          "index": 13
+          "index": 13,
+          "stationCode": "A13",
+          "transferCodes": []
         },
         {
           "id": "A-14",
           "name": "機場旅館",
           "intro": "機場旅館與航空城周邊交通服務站",
-          "index": 14
+          "index": 14,
+          "stationCode": "A14a",
+          "transferCodes": []
         },
         {
           "id": "A-15",
           "name": "大園",
           "intro": "桃園大園市區與航空城生活圈",
-          "index": 15
+          "index": 15,
+          "stationCode": "A15",
+          "transferCodes": []
         },
         {
           "id": "A-16",
           "name": "橫山",
           "intro": "大園橫山地區與大園產業、農業聚落",
-          "index": 16
+          "index": 16,
+          "stationCode": "A16",
+          "transferCodes": []
         },
         {
           "id": "A-17",
           "name": "領航",
           "intro": "青埔新興住宅區與領航路生活圈",
-          "index": 17
+          "index": 17,
+          "stationCode": "A17",
+          "transferCodes": []
         },
         {
           "id": "A-18",
           "name": "高鐵桃園站",
           "intro": "高鐵桃園站、華泰名品城與 Xpark",
-          "index": 18
+          "index": 18,
+          "stationCode": "A18",
+          "transferCodes": []
         },
         {
           "id": "A-19",
           "name": "桃園體育園區",
           "intro": "樂天桃園棒球場與青埔運動休閒區",
-          "index": 19
+          "index": 19,
+          "stationCode": "A19",
+          "transferCodes": []
         },
         {
           "id": "A-20",
           "name": "興南",
           "intro": "中壢興南地區及青埔、內壢接駁",
-          "index": 20
+          "index": 20,
+          "stationCode": "A20",
+          "transferCodes": []
         },
         {
           "id": "A-21",
           "name": "環北",
           "intro": "中壢環北路商圈與市區生活區",
-          "index": 21
+          "index": 21,
+          "stationCode": "A21",
+          "transferCodes": []
         },
         {
           "id": "A-22",
           "name": "老街溪",
           "intro": "中壢老街溪河川與中壢市區步行圈",
-          "index": 22
+          "index": 22,
+          "stationCode": "A22",
+          "transferCodes": []
         }
-      ]
+      ],
+      "stationCodeSource": "https://www.tymetro.com.tw/tymetro-new/tw/_pages/travel-guide/road.php"
     }
-  ]
+  ],
+  "stationCodeUpdated": "2026-10-30",
+  "stationCodeNote": "捷運及輕軌以營運單位所列站碼為準，臺鐵不套用捷運站碼；支線車站保留原代碼。"
 }
