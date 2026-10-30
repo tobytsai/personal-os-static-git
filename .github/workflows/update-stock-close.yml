@@ -1,0 +1,47 @@
+name: Stock launcher — official TWSE/TPEx daily close
+
+on:
+  schedule:
+    # 19:25 and 20:10 Taiwan time, Mon–Fri; the second check catches late reports.
+    - cron: '25 11 * * 1-5'
+    - cron: '10 12 * * 1-5'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-stock-close.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: official-stock-close
+  cancel-in-progress: false
+
+jobs:
+  update-close:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Collect only source-verified official market data
+        run: node scripts/update-stock-close.cjs
+      - name: Commit dated public snapshot and immutable history
+        run: |
+          if [ ! -f public/data/stocks-latest.json ]; then
+            echo "Official same-day prices not yet available; no changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- public/data/stocks-latest.json public/data/stocks-history
+          if git diff --cached --quiet; then
+            echo "No new verified data to commit."
+            exit 0
+          fi
+          git commit -m "Refresh official stock close for $(date -u +%F)"
+          git pull --rebase origin main
+          git push origin HEAD:main
