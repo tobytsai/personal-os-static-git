@@ -1,95 +1,141 @@
 <!doctype html>
-<html lang="zh-Hant">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#256da9">
-<meta name="description" content="交通啟動器：集中管理臺鐵及其他交通資訊連結，支援分類、搜尋、收藏與最近開啟。">
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#286da9">
+<meta name="description" content="交通啟動器｜北部鐵路捷運路網、逐站介紹、路網圖、臺鐵時刻表照片、列車動態與常用收藏。">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <title>交通啟動器｜Toby Personal OS</title>
 <style>
-:root{--ink:#243249;--muted:#6c7b8f;--line:#dce6f2;--blue:#2472ab;--deep:#143d68;--paper:#fff;--shadow:0 9px 26px #193c6313}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(circle at 92% 0%,#caebff 0%,transparent 34%),linear-gradient(145deg,#edf6fc,#f7f9fc 65%,#eaf7f3);color:var(--ink);font:14px/1.65 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif}
-a{color:inherit}button,input{font:inherit}button{cursor:pointer}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #64b1f2;outline-offset:3px}
-.wrap{width:min(1100px,100%);margin:auto;padding:22px 18px 70px}
-.back{display:inline-flex;padding:8px 16px;background:#fff;border:1px solid var(--line);border-radius:99px;text-decoration:none;font-weight:800;margin-bottom:15px}
-.hero{background:linear-gradient(115deg,#183c68,#236da3 60%,#39a5ae);border-radius:28px;color:#fff;padding:clamp(25px,5vw,42px);box-shadow:0 20px 42px #21538b32;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;width:220px;height:220px;border:2px solid #ffffff3d;border-radius:50%;right:-80px;bottom:-145px}
-.eyebrow{font-size:11px;font-weight:850;letter-spacing:.16em;opacity:.88}
-h1{font-size:clamp(32px,6vw,49px);margin:9px 0 7px;line-height:1.22}
-.hero p{max-width:720px;margin:0;color:#e8f7ff;line-height:1.85}
-.hero-info{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-.hero-info span{font-size:12px;padding:7px 11px;border:1px solid #ffffff50;background:#ffffff19;border-radius:999px;font-weight:750}
-.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:21px 0 14px}
-.search{flex:1 1 240px;min-width:0;padding:12px 15px;border:1px solid var(--line);border-radius:15px;outline:none;background:#fff;box-shadow:var(--shadow);color:var(--ink)}
-.chips{display:flex;gap:8px;flex-wrap:wrap}
-.chip{border:1px solid var(--line);background:#fff;padding:9px 15px;border-radius:99px;color:#4f6780;font-weight:850}
-.chip.active{color:#fff;background:var(--blue);border-color:var(--blue)}
-.section{margin-top:25px}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:9px;margin-bottom:12px}
-.section-head h2{font-size:20px;margin:0}
-.count{font-size:12px;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
-.card{position:relative;min-width:0;padding:21px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s}
-.card:hover{transform:translateY(-3px);box-shadow:0 13px 30px #193c6320}
-.card .symbol{width:65px;height:65px;background:linear-gradient(135deg,#d9eaff,#dff7f3);border-radius:18px;display:grid;place-items:center;font-size:36px;margin-bottom:13px}
-.card h3{font-size:19px;line-height:1.45;margin:0 36px 6px 0}
-.card .meta{font-size:11px;color:#2472ab;font-weight:850;margin-bottom:9px}
-.card p{font-size:13px;color:var(--muted);line-height:1.7;min-height:45px;margin:0 0 15px}
-.card .action{display:inline-flex;align-items:center;gap:6px;padding:9px 13px;color:#fff;background:var(--blue);border-radius:11px;text-decoration:none;font-weight:850}
-.card .action:hover{background:var(--deep)}
-.card .fav{position:absolute;top:17px;right:17px;background:#f5f9fd;border:1px solid var(--line);border-radius:12px;width:37px;height:37px;font-size:21px;color:#9eacb9}
-.card .fav[aria-pressed="true"]{color:#dfab26;background:#fff8e4}
-.empty{padding:20px;background:#ffffffb8;border:1px dashed #aec7dc;color:var(--muted);border-radius:16px}
-.small-cards .card{padding:14px}
-.small-cards .card .symbol{width:43px;height:43px;font-size:24px;margin-bottom:8px}
-.small-cards .card h3{font-size:15px}
-.small-cards .card p{min-height:0}
-.note{font-size:12px;color:var(--muted);margin-top:25px}
-[hidden]{display:none!important}
-@media(max-width:600px){.wrap{padding:13px 12px 45px}.hero{padding:24px 20px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:14px}.card h3{font-size:15px;margin-right:25px}.card .fav{right:9px;top:9px;width:31px;height:31px;font-size:18px}.card .symbol{width:52px;height:52px;font-size:29px}.card p{font-size:12px;min-height:0}.card .action{padding:7px 9px;font-size:12px}.section-head h2{font-size:18px}}
-</style>
-</head>
-<body>
-<main class="wrap">
+:root{--blue:#2874ad;--ink:#27354b;--muted:#6f7e91;--line:#dfe7f2;--shadow:0 8px 24px #1a456a14}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font:14px/1.65 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;background:radial-gradient(circle at 90% 1%,#d1edff 0,transparent 29%),linear-gradient(145deg,#eff7ff,#f8fafc 60%,#f0f9f5);min-height:100vh}
+button,input{font:inherit}button{cursor:pointer}a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #57b5e8;outline-offset:3px}
+[hidden]{display:none!important}.wrap{max-width:1250px;margin:auto;padding:20px 18px 65px}
+.back{display:inline-flex;border:1px solid var(--line);border-radius:99px;background:#fff;padding:8px 14px;text-decoration:none;font-size:12px;font-weight:800;margin-bottom:15px}
+.hero{overflow:hidden;position:relative;border-radius:28px;background:linear-gradient(115deg,#1b426a,#286ead 60%,#2fa49e);color:#fff;padding:clamp(24px,5vw,42px);box-shadow:0 18px 38px #1f527b2d}
+.hero:after{content:"";position:absolute;width:240px;height:240px;border:2px solid #ffffff3c;border-radius:50%;right:-75px;bottom:-180px;pointer-events:none}
+.eyebrow{font-size:11px;font-weight:850;letter-spacing:.18em;color:#dbf2ff}
+h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margin:0;max-width:760px;line-height:1.75;color:#e6f6ff}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.badges span{font-size:11px;padding:7px 10px;border:1px solid #ffffff65;border-radius:99px;background:#ffffff16;font-weight:750}
+.tree{margin:20px 0 12px;background:#fff;border:1px solid var(--line);padding:17px;border-radius:21px;box-shadow:var(--shadow)}
+.tree-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.tree h2{font-size:17px;margin:0}.tree .tip{color:var(--muted);font-size:11px}
+.path{display:grid;grid-template-columns:1fr 1fr 2fr;gap:10px;margin-top:13px}
+.step{min-width:0;border:1px solid var(--line);border-radius:16px;padding:13px;background:#f8fbff}
+.step-label{font-size:11px;color:#6d869e;font-weight:900;margin-bottom:9px}.path-value{font-size:17px;font-weight:900;color:#285c82}
+.choice-list{display:flex;flex-wrap:wrap;gap:7px}.choice{border:1px solid #ccdcea;border-radius:12px;background:#fff;padding:7px 12px;font-size:12px;color:#3d5f7d;font-weight:850}
+.choice.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.group-filter{display:flex;gap:7px;overflow-x:auto;padding:7px 2px 2px;scrollbar-width:thin;white-space:nowrap}
+.route-list{display:flex;flex-wrap:wrap;gap:7px;max-height:210px;overflow:auto}
+.route{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:13px;background:#fff;padding:9px 12px;line-height:1.4;font-size:12px;color:#4a6179;font-weight:750;text-align:left}
+.route .dot{width:10px;height:10px;border-radius:50%;display:inline-block;background:var(--route-color,#7c93ab);flex:none}
+.route small{font-weight:650;opacity:.75}.route.active{border-color:#6d9dc3;background:#eaf4fd;color:#15588a;box-shadow:inset 0 0 0 1px #6d9dc3}
+.toolbar{display:flex;gap:9px;align-items:center;margin:16px 0;flex-wrap:wrap}.search{flex:1 1 255px;padding:13px 15px;border:1px solid var(--line);border-radius:15px;background:#fff;box-shadow:var(--shadow);outline:none;min-width:0}
+.soft{border:1px solid var(--line);padding:10px 13px;background:#fff;border-radius:13px;color:#496783;font-weight:850;font-size:12px}
+.section{margin:20px 0 0}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}.section h2{margin:0;font-size:21px}.count{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:13px}
+.card{position:relative;min-width:0;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.card:hover{box-shadow:0 11px 31px #1a456a20}
+.accent{height:5px;background:var(--line-color,#2d7fb1)}.card-body{padding:16px;flex:1;display:flex;flex-direction:column}
+.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px}
+.id-chip{font-size:11px;border:1px solid #dbe6f1;background:#f4f9fc;border-radius:9px;padding:4px 7px;color:#4c7295;font-weight:850}
+.star{width:34px;height:34px;border:1px solid var(--line);border-radius:11px;background:#f8fbfd;color:#a6b3c1;font-size:20px;flex:none}
+.star.on{background:#fff5d9;color:#e0a52b}
+.card h3{font-size:17px;line-height:1.4;margin:0 0 6px;word-break:break-word}
+.card p{font-size:12px;color:#596b7c;line-height:1.75;margin:0 0 13px;flex:1}
+.card .meta{font-size:11px;font-weight:850;color:#7490a5;margin:0 0 8px}
+.links{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
+.links a{display:inline-flex;align-items:center;text-decoration:none;border-radius:10px;background:#edf5fc;color:#216d9d;padding:7px 10px;font-size:11px;font-weight:850}
+.links a.primary{background:var(--blue);color:#fff}
+.subgroup{margin:22px 0 11px;display:flex;align-items:center;justify-content:space-between;gap:9px}
+.subgroup h3{margin:0;font-size:17px}
+.subgroup span{font-size:11px;color:var(--muted)}
+.doc{padding:16px}
+.doc-icon{width:57px;height:57px;display:grid;place-items:center;font-size:31px;border-radius:16px;background:linear-gradient(135deg,#e1edff,#d7f5ed);margin-bottom:12px}
+.doc h3{font-size:17px;margin:0 0 4px}
+.doc .meta{margin:0 0 8px}
+.doc p{min-height:48px;margin:0 0 13px}
+.doc .warn{margin:4px 0 12px;font-size:11px;color:#935a26;font-weight:750}
+.empty{border:1px dashed #b8cde1;background:#fff;border-radius:17px;padding:22px;color:var(--muted);font-size:13px}
+.more{text-align:center;margin:18px 0}.more button{background:#fff;border:1px solid #bdd5e9;border-radius:99px;padding:11px 22px;font-weight:850;color:#2b719e}
+.mini .card-body{padding:12px}.mini .card p{font-size:11px}.mini .card h3{font-size:14px}
+.note{margin:24px 0 0;font-size:12px;color:#687f92;line-height:1.85}
+.note a{color:var(--blue)}
+@media(max-width:850px){.path{grid-template-columns:1fr 1fr}.path .step:last-child{grid-column:1/-1}}
+@media(max-width:570px){.wrap{padding:12px 12px 44px}.hero{padding:23px 18px}.tree{padding:12px}.step{padding:10px}.path{gap:7px}.path-value{font-size:15px}.section h2{font-size:18px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card-body,.doc{padding:12px}.card h3,.doc h3{font-size:14px}.card p,.doc p{font-size:11px}.heading{gap:3px}.star{width:28px;height:28px;font-size:17px}.id-chip{font-size:9px}.links a{font-size:10px;padding:6px 8px}.doc-icon{height:46px;width:46px;font-size:25px}.path .step:last-child{grid-column:1/-1}}
+</style></head>
+<body><main class="wrap">
 <a class="back" href="../index.html">← 返回 Toby 首頁</a>
-<header class="hero">
-<div class="eyebrow">PERSONAL OS · TRANSPORT</div>
-<h1>🚆 交通啟動器</h1>
-<p>整理交通工具的資訊與查詢入口。從台鐵分類快速前往列車動態，常用連結也能加入收藏。</p>
-<div class="hero-info"><span>🗂️ 分類：台鐵</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div>
-</header>
-<div class="toolbar">
-<input id="search" class="search" type="search" placeholder="搜尋交通工具或網站名稱…" aria-label="搜尋交通卡片">
-<nav class="chips" aria-label="交通分類"><button type="button" class="chip active" data-cat="全部">全部</button><button type="button" class="chip" data-cat="台鐵">台鐵</button></nav>
-</div>
-<section class="section" id="mainSection">
-<div class="section-head"><h2 id="listTitle">台鐵及其他交通資訊</h2><span class="count" id="itemCount">1 張卡片</span></div>
-<div class="cards" id="cards">
-<article class="card"><div class="symbol" aria-hidden="true">🚆</div><h3>臺鐵列車動態</h3><div class="meta">台鐵 · 第三方即時查詢</div><p>查詢車站、車次、列車動態及列車位置地圖。</p><a class="action" href="https://railway.chienwen.net/taiwan/" target="_blank" rel="noopener noreferrer">開啟列車動態 ↗</a></article>
-</div>
+<header class="hero"><div class="eyebrow">PERSONAL OS · RAIL NETWORK</div><h1>🚆 交通啟動器</h1>
+<p>大臺北鐵路及捷運路網逐站探索：鐵路 → 北部 → 路線 → 車站卡片。整合車站介紹、轉乘資訊、附近地標、列車動態與原始時刻表照片。</p>
+<div class="badges"><span>🗺️ 北部路網</span><span id="stats">讀取車站資料中…</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div></header>
+<section class="tree" aria-label="交通三級分類">
+<div class="tree-head"><h2>🗂️ 三層分類導覽</h2><span class="tip">先選交通類別，再選地區與路線</span></div>
+<div class="path">
+<div class="step"><div class="step-label">第一層｜交通類別</div><div class="choice-list"><button class="choice active" type="button" data-root="rail" aria-pressed="true">🚆 鐵路</button><button class="choice" type="button" data-root="tra" aria-pressed="false">🗃️ 台鐵資料</button></div></div>
+<div class="step"><div class="step-label">第二層｜地區</div><div class="path-value" id="regionName">📍 北部</div></div>
+<div class="step"><div class="step-label">第三層｜路線</div><div id="routeFilter"><div class="group-filter" id="operatorChips"></div><div class="route-list" id="routeChips"><span class="count">路線資料讀取中…</span></div></div><div class="path-value" id="documentName" hidden>🚉 列車動態・路線照片・時刻表</div></div>
+</div></section>
+<div class="toolbar" id="searchTools"><input class="search" id="search" type="search" placeholder="搜尋站名、路線、景點或轉乘資訊…" aria-label="搜尋車站"><button type="button" class="soft" id="clearFilters">清除篩選</button></div>
+<section id="northSection" class="section">
+<div class="section-head"><h2 id="listHeading">北部鐵路｜車站卡片</h2><span class="count" id="listCount"></span></div>
+<div class="links" style="margin-bottom:13px"><a class="primary" href="https://drive.google.com/file/d/15iy1g5mAhldz3mSBnNfcYS6UFAeMSBYS/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" data-doc-open="metro-map">🗺️ 查看原拍攝路網圖</a><a href="https://web.metro.taipei/pages2026/WebRouteMap" target="_blank" rel="noopener noreferrer">官方捷運路網</a><a href="https://www.railway.gov.tw/tra-tip-web/tip" target="_blank" rel="noopener noreferrer">臺鐵官方資訊</a></div>
+<div id="stationGroups"></div>
+<div class="more" id="loadMoreWrap" hidden><button type="button" id="loadMore">顯示更多車站</button></div>
 </section>
-<section class="section" id="favoritesSection" hidden><div class="section-head"><h2>⭐ 我的收藏</h2><span class="count" id="favoriteCount"></span></div><div class="cards small-cards" id="favorites"></div></section>
-<section class="section" id="recentSection" hidden><div class="section-head"><h2>🕘 最近開啟</h2><span class="count" id="recentCount"></span></div><div class="cards small-cards" id="recent"></div></section>
-<p class="note">本頁的收藏與最近開啟紀錄只保存在目前瀏覽器。臺鐵列車動態由第三方網站提供，實際行車與營運公告請以臺鐵官方資訊為準。</p>
+<section id="traSection" class="section" hidden>
+<div class="section-head"><h2>台鐵｜資料與照片卡片</h2><span class="count">4 張資料卡片</span></div><div class="grid" id="documentGrid"></div>
+</section>
+<section class="section" id="favoritesSection" hidden><div class="section-head"><h2>⭐ 我的收藏</h2><span class="count" id="favCount"></span></div><div class="grid mini" id="favoriteCards"></div></section>
+<section class="section" id="recentsSection" hidden><div class="section-head"><h2>🕘 最近開啟</h2><span class="count" id="recentCount"></span></div><div class="grid mini" id="recentCards"></div></section>
+<p class="note">資料整理日期：2026/10/30。相片為現場拍攝紀錄，七堵站時刻表照片分別標示 2026/10/02、2026/10/03 修訂，並非動態更新；實際車次、停靠、通車與營運資訊請依官方網站為準。地圖及車站周邊資訊為旅遊探索輔助，轉乘請以站內標示確認。收藏與最近開啟保存在此瀏覽器。</p>
 </main>
 <script>
-const items=[{id:"tra-live",category:"台鐵",name:"臺鐵列車動態",url:"https://railway.chienwen.net/taiwan/",symbol:"🚆",desc:"查詢車站、車次、列車即時狀態與位置地圖。",source:"第三方列車動態查詢"}];
-const favKey="toby-transport-favorites",recentKey="toby-transport-recent";
-function load(key){try{const a=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(a)?a:[]}catch(e){return []}}
-let favorites=load(favKey),recent=load(recentKey),category="全部";
 const $=id=>document.getElementById(id);
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function card(item){return '<article class="card"><div class="symbol" aria-hidden="true">'+esc(item.symbol)+'</div><button class="fav" type="button" data-fav="'+esc(item.id)+'" aria-label="'+(favorites.includes(item.id)?"取消收藏":"加入收藏")+'" aria-pressed="'+favorites.includes(item.id)+'">'+(favorites.includes(item.id)?"★":"☆")+'</button><h3>'+esc(item.name)+'</h3><div class="meta">'+esc(item.category)+' · '+esc(item.source)+'</div><p>'+esc(item.desc)+'</p><a class="action" href="'+esc(item.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(item.id)+'">開啟網站 ↗</a></article>'}
-function subset(ids){return ids.map(id=>items.find(x=>x.id===id)).filter(Boolean)}
-function render(){let q=$("search").value.trim().toLowerCase();const filtered=items.filter(i=>(category==="全部"||i.category===category)&&(!q||(i.name+" "+i.category+" "+i.desc).toLowerCase().includes(q)));$("listTitle").textContent=category==="全部"?"全部交通資訊":category;$("itemCount").textContent=filtered.length+" 張卡片";$("cards").innerHTML=filtered.length?filtered.map(card).join(""):'<div class="empty">找不到符合條件的卡片。</div>';const f=subset(favorites),r=subset(recent);$("favoritesSection").hidden=!f.length;$("recentSection").hidden=!r.length;$("favorites").innerHTML=f.map(card).join("");$("recent").innerHTML=r.map(card).join("");$("favoriteCount").textContent=f.length+" 張";$("recentCount").textContent=r.length+" 張"}
-document.querySelector(".chips").addEventListener("click",e=>{const b=e.target.closest("button[data-cat]");if(!b)return;category=b.dataset.cat;document.querySelectorAll("[data-cat]").forEach(x=>x.classList.toggle("active",x.dataset.cat===category));render()});
-$("search").addEventListener("input",render);
-document.body.addEventListener("click",e=>{const b=e.target.closest("[data-fav]");if(b){const id=b.dataset.fav;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[id,...favorites];localStorage.setItem(favKey,JSON.stringify(favorites));render();return}const a=e.target.closest("a[data-open]");if(a){recent=[a.dataset.open,...recent.filter(x=>x!==a.dataset.open)].slice(0,10);localStorage.setItem(recentKey,JSON.stringify(recent));render()}});
-render();
-</script>
-<script src="../shared-nav.js" defer></script>
-</body>
-</html>
+const documents=[
+{id:"tra-live",name:"臺鐵列車動態",icon:"🚆",meta:"台鐵｜第三方查詢網站",desc:"查詢車次、即時運行狀態與列車位置地圖；行車資訊仍以臺鐵官方公告為準。",url:"https://railway.chienwen.net/taiwan/",date:"即時查詢",button:"開啟列車動態"},
+{id:"metro-map",name:"大臺北鐵路及捷運路網示意圖",icon:"🗺️",meta:"台鐵｜現場路網圖照片",desc:"臺北捷運路網、北部鐵路及平溪線、東部幹線整體關係示意。為示意圖，未按真實距離與比例繪製。",url:"https://drive.google.com/file/d/15iy1g5mAhldz3mSBnNfcYS6UFAeMSBYS/view?usp=drivesdk",date:"現場照片",button:"查看路網原圖"},
+{id:"tra-qidu-stops",name:"七堵站｜各列車停靠站對照表",icon:"🛤️",meta:"台鐵｜七堵站現場停靠站表",desc:"往基隆及東行宜蘭、花蓮、臺東等方向之列車與停靠車站對照，適合核對不同車種停站差異。",url:"https://drive.google.com/file/d/1qMWwOPehHfn_iRv_wtMns42CuTp0Uioq/view?usp=drivesdk",date:"照片標示：2026/10/03 修訂",button:"查看停靠站原圖"},
+{id:"tra-qidu-timetable",name:"七堵站｜東行列車時刻表",icon:"🕒",meta:"台鐵｜七堵站現場發車時刻",desc:"往宜蘭、蘇澳、花蓮等東部方向的班次分鐘與車種索引，依照片逐小時排列。",url:"https://drive.google.com/file/d/1b2NXHnyNZc68v9e1VuPAKz1MZOhqw9Ad/view?usp=drivesdk",date:"照片標示：2026/10/02 修訂",button:"查看時刻表原圖"}
+];
+let allLines=[],selectedRoot="rail",selectedOperator="全部",selectedLine="全部",visibleCount=48;
+const favKey="toby-transport-favorites",recentKey="toby-transport-recent";
+function getStored(key){try{const a=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(a)?a:[]}catch(e){return []}}
+let favs=getStored(favKey),recents=getStored(recentKey);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function itemId(st){return "station-"+st.id}
+function findItem(id){if(documents.some(d=>d.id===id))return {kind:"doc",item:documents.find(d=>d.id===id)};for(const l of allLines){const s=l.stations.find(st=>itemId(st)===id);if(s)return{kind:"station",item:s,line:l}}return null}
+function favoriteBtn(id){const active=favs.includes(id);return '<button type="button" class="star'+(active?" on":"")+'" data-fav="'+esc(id)+'" aria-pressed="'+active+'" aria-label="'+(active?"取消收藏":"加入收藏")+'">'+(active?"★":"☆")+'</button>'}
+function mapLink(line,st){const q=(line.operator==="臺鐵"?"臺鐵":line.operator==="桃園捷運"?"機場捷運":"捷運")+st.name+"站"+((line.id==="TRA-E"||line.id==="TRA-N")?" "+line.name:"");return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q)}
+function stationCard(st,line){const id=itemId(st),c=esc(line.color);let same=allLines.filter(x=>x.id!==line.id&&x.stations.some(s=>s.name===st.name)).map(x=>x.name);let relation=same.length?'<div class="meta">同名站／相關路線：'+esc(same.slice(0,4).join("、"))+(same.length>4?" 等":"")+'</div>':"";return '<article class="card" style="--line-color:'+c+'"><div class="accent"></div><div class="card-body"><div class="heading"><span class="id-chip">'+esc(line.name)+' · 第 '+st.index+' 站</span>'+favoriteBtn(id)+'</div><h3>'+esc(st.name)+'站</h3><p>'+esc(st.intro)+'</p>'+relation+'<div class="links"><a class="primary" target="_blank" rel="noopener noreferrer" href="'+esc(mapLink(line,st))+'" data-open="'+esc(id)+'">📍 地圖</a><a href="'+esc(line.source)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(id)+'">官方路線</a></div></div></article>'}
+function documentCard(d){return '<article class="card doc"><div class="doc-icon" aria-hidden="true">'+esc(d.icon)+'</div><div class="heading"><div><h3>'+esc(d.name)+'</h3><div class="meta">'+esc(d.meta)+'</div></div>'+favoriteBtn(d.id)+'</div><p>'+esc(d.desc)+'</p><div class="warn">'+esc(d.date)+'</div><div class="links"><a class="primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(d.id)+'">'+esc(d.button)+' ↗</a></div></article>'}
+function refreshMain(){
+$("northSection").hidden=selectedRoot!=="rail";$("traSection").hidden=selectedRoot!=="tra";$("routeFilter").hidden=selectedRoot!=="rail";$("documentName").hidden=selectedRoot!=="tra";$("regionName").textContent=selectedRoot==="rail"?"📍 北部":"📍 台鐵資料";$("search").placeholder=selectedRoot==="rail"?"搜尋站名、路線、景點或轉乘資訊…":"搜尋台鐵列車動態與照片…";document.querySelectorAll("[data-root]").forEach(b=>{b.classList.toggle("active",b.dataset.root===selectedRoot);b.setAttribute("aria-pressed",b.dataset.root===selectedRoot)});
+if(selectedRoot==="tra"){const q=$("search").value.trim().toLowerCase();$("documentGrid").innerHTML=documents.filter(d=>(d.name+" "+d.meta+" "+d.desc).toLowerCase().includes(q)).map(documentCard).join("")||'<div class="empty">沒有符合條件的台鐵資料。</div>'}
+else renderStations();
+renderShelves();
+}
+function renderFilters(){
+const operators=["全部",...new Set(allLines.map(l=>l.operator))];
+$("operatorChips").innerHTML=operators.map(op=>'<button type="button" class="choice'+(selectedOperator===op?" active":"")+'" data-operator="'+esc(op)+'">'+esc(op)+'</button>').join("");
+const lines=allLines.filter(l=>selectedOperator==="全部"||l.operator===selectedOperator);
+$("routeChips").innerHTML='<button type="button" class="route'+(selectedLine==="全部"?" active":"")+'" data-line="全部" style="--route-color:#6388a3"><span class="dot"></span>全部路線 <small>'+lines.length+' 條</small></button>'+lines.map(l=>'<button type="button" class="route'+(selectedLine===l.id?" active":"")+'" data-line="'+esc(l.id)+'" style="--route-color:'+esc(l.color)+'"><span class="dot"></span>'+esc(l.name)+' <small>'+l.stations.length+' 站</small></button>').join("");
+}
+function filteredLines(){return allLines.filter(l=>(selectedOperator==="全部"||l.operator===selectedOperator)&&(selectedLine==="全部"||l.id===selectedLine))}
+function renderStations(){
+const q=$("search").value.trim().toLowerCase();const lines=filteredLines().map(line=>({line,stations:line.stations.filter(st=>!q||(st.name+" "+st.intro+" "+line.name+" "+line.operator).toLowerCase().includes(q))})).filter(x=>x.stations.length);
+const total=lines.reduce((n,x)=>n+x.stations.length,0);$("listCount").textContent=total+" 筆路線車站卡片";$("listHeading").textContent=selectedLine==="全部"?"鐵路 → 北部 → 全部路線":(allLines.find(x=>x.id===selectedLine)?.name||"北部車站");
+let n=visibleCount;
+$("stationGroups").innerHTML=lines.length?lines.map(({line,stations})=>{const show=stations.slice(0,Math.max(n,0));n-=show.length;if(!show.length)return"";return '<section><div class="subgroup"><h3><span style="color:'+esc(line.color)+'">●</span> '+esc(line.name)+'</h3><span>'+esc(line.operator)+' · 共 '+stations.length+' 站</span></div><div class="grid">'+show.map(st=>stationCard(st,line)).join("")+'</div></section>'}).join(""):'<div class="empty">找不到符合條件的車站，試試搜尋其他站名或清除路線篩選。</div>';
+$("loadMoreWrap").hidden=visibleCount>=total;$("loadMore").textContent="顯示更多車站（剩餘 "+Math.max(0,total-visibleCount)+" 筆）";
+}
+function renderShelves(){const render=(ids,section,host,count)=>{const list=ids.map(findItem).filter(Boolean);$(section).hidden=!list.length;$(count).textContent=list.length+" 筆";$(host).innerHTML=list.map(entry=>entry.kind==="station"?stationCard(entry.item,entry.line):documentCard(entry.item)).join("")};render(favs,"favoritesSection","favoriteCards","favCount");render(recents,"recentsSection","recentCards","recentCount")}
+document.querySelector(".tree").addEventListener("click",e=>{const root=e.target.closest("[data-root]");if(root){selectedRoot=root.dataset.root;$("search").value="";refreshMain();return}const op=e.target.closest("[data-operator]");if(op){selectedOperator=op.dataset.operator;selectedLine="全部";visibleCount=48;renderFilters();renderStations();return}const line=e.target.closest("[data-line]");if(line){selectedLine=line.dataset.line;visibleCount=48;renderFilters();renderStations()}});
+$("search").addEventListener("input",()=>{visibleCount=48;refreshMain()});
+$("clearFilters").addEventListener("click",()=>{selectedOperator="全部";selectedLine="全部";visibleCount=48;$("search").value="";renderFilters();refreshMain()});
+$("loadMore").addEventListener("click",()=>{visibleCount+=48;renderStations()});
+document.body.addEventListener("click",e=>{const star=e.target.closest("[data-fav]");if(star){const id=star.dataset.fav;favs=favs.includes(id)?favs.filter(x=>x!==id):[id,...favs];localStorage.setItem(favKey,JSON.stringify(favs));refreshMain();return}const link=e.target.closest("[data-open],[data-doc-open]");if(link){const id=link.dataset.open||link.dataset.docOpen;recents=[id,...recents.filter(x=>x!==id)].slice(0,10);localStorage.setItem(recentKey,JSON.stringify(recents));renderShelves()}});
+fetch("../data/transport-north-stations.json?v=20261030").then(r=>{if(!r.ok)throw Error("無法載入車站資料");return r.json()}).then(d=>{allLines=d.lines||[];$("stats").textContent=allLines.length+" 條路線 · "+allLines.reduce((n,x)=>n+x.stations.length,0)+" 筆車站卡片";renderFilters();refreshMain()}).catch(e=>{$("stationGroups").innerHTML='<div class="empty">車站資料載入失敗，請重新整理頁面；亦可先查看路網原圖與臺鐵官方網站。</div>';$("stats").textContent="車站資料暫時無法載入";renderFilters();refreshMain()});
+renderMainInitial();
+function renderMainInitial(){$("documentGrid").innerHTML=documents.map(documentCard).join("");renderShelves()}
+</script><script src="../shared-nav.js" defer></script>
+</body></html>
