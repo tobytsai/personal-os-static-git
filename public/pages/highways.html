@@ -10,6 +10,35 @@
 .hero:after{position:absolute;content:"";width:330px;height:330px;border:2px solid #ffffff33;border-radius:50%;right:-100px;top:-180px}
 .eyebrow{font-size:11px;font-weight:850;letter-spacing:.2em;opacity:.9}h1{font-size:clamp(31px,5vw,49px);line-height:1.2;margin:9px 0 10px}.hero p{margin:0;line-height:1.85;max-width:800px;color:#e7f9ff}.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.stats span{font-size:11px;border:1px solid #ffffff60;background:#ffffff1c;padding:7px 11px;border-radius:99px;font-weight:800}
 .shortcuts{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.shortcuts a{background:#fff;border:1px solid var(--line);padding:10px 13px;border-radius:13px;text-decoration:none;font-size:12px;font-weight:850;color:#286c88}
+.network-nav-link{background:#185f89!important;color:#fff!important;border-color:#185f89!important}
+.network-home{background:#fff;border:1px solid #bfd6e7;border-radius:22px;padding:20px 21px;margin:16px 0 22px;box-shadow:0 12px 32px #173c5812;scroll-margin-top:85px}
+.network-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.network-eyebrow{font-size:10px;font-weight:900;letter-spacing:.13em;color:#23789a}
+.network-heading h2{font-size:clamp(21px,3.5vw,27px);margin:5px 0 6px;line-height:1.25}
+.network-heading p{margin:0;color:#64788b;font-size:12px;line-height:1.7;max-width:760px}
+.network-total{font-size:12px;font-weight:850;color:#266e90;padding:7px 10px;background:#eaf5fb;border-radius:99px}
+.network-map-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 20px}
+.network-map-links>a{display:flex;align-items:center;gap:13px;border:1px solid #d5e6f1;border-radius:16px;padding:13px 15px;text-decoration:none;background:linear-gradient(115deg,#eff8ff,#f5fbf8);color:#205d80}
+.network-map-links>a>span:first-child{font-size:28px;flex:none}
+.network-map-links strong{display:block;font-size:14px;font-weight:900}
+.network-map-links small{display:block;font-size:11px;color:#627e8e;font-weight:650;margin-top:3px}
+.network-route-section{margin:0 0 19px}.network-route-section:last-child{margin-bottom:0}
+.network-route-heading{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+.network-route-heading h3{font-size:16px;margin:0}
+.network-route-heading span{font-size:11px;color:#7990a1}
+.network-route-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px}
+.network-road{appearance:none;display:flex;align-items:center;gap:10px;min-width:0;padding:11px 12px;border:1px solid #d7e4ef;border-radius:14px;text-align:left;background:#f9fcff;color:#315674;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.network-road:hover,.network-road:focus-visible{background:#e9f6ff;border-color:#61a5ce;transform:translateY(-1px)}
+.network-road.current{background:#e2f4fc;border-color:#3a88ac;box-shadow:inset 0 0 0 1px #3a88ac}
+.network-road.no-exits{opacity:.65}
+.network-code{display:inline-flex;align-items:center;justify-content:center;min-width:55px;padding:6px 8px;background:#286f99;color:#fff;border-radius:9px;font-size:13px;font-weight:900;white-space:nowrap}
+.network-road.express .network-code{background:#36846f}
+.network-road-name{display:block;min-width:0;flex:1}
+.network-road-name strong{display:block;font-size:12px;font-weight:800;line-height:1.4}
+.network-road-name small{display:block;font-size:10px;color:#7690a0;margin-top:2px}
+.network-caveat{margin:12px 0 0;font-size:11px;color:#7e6f58;line-height:1.7}
+@media(max-width:600px){.network-home{padding:14px 12px;scroll-margin-top:72px}.network-map-links{grid-template-columns:1fr}.network-route-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.network-road{padding:9px;gap:6px}.network-code{font-size:10px;min-width:47px;padding:5px}.network-road-name strong{font-size:11px}.network-route-heading h3{font-size:15px}}
+
 .panel{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;box-shadow:var(--shadow);margin:16px 0}
 .panel h2{font-size:18px;margin:0 0 8px}.crumbs{display:flex;gap:8px;flex-wrap:wrap;color:#527b93;font-weight:850;margin:12px 0 0}.crumbs span{background:#edf7fc;padding:5px 9px;border-radius:8px;font-size:11px}
 .steps{display:grid;grid-template-columns:1fr 1fr 1.55fr;gap:10px}.step{border:1px solid var(--line);background:#f8fbfd;border-radius:15px;padding:12px;min-width:0}.step h3{font-size:12px;color:#6a8499;margin:0 0 10px}.chips{display:flex;gap:7px;flex-wrap:wrap;max-height:205px;overflow-y:auto}.chip{border:1px solid #caddeb;border-radius:11px;background:#fff;color:#4a6f89;padding:8px 11px;font-size:11px;font-weight:850}.chip.active{background:#2479a4;border-color:#2479a4;color:#fff}.chip .num{opacity:.7;margin-left:4px}
@@ -35,8 +64,14 @@
 <h1>🛣️ 臺灣高速公路及快速道路</h1>
 <p>按地區、道路種類與路線搜尋國道交流道、系統交流道、快速道路、端點與轉接道，查看里程、地圖、連接道路及官方路況。</p>
 <div class="stats"><span id="statsRoads">路線載入中…</span><span id="statsExits">交流道載入中…</span><span>⭐ 收藏</span><span>🕘 最近開啟</span></div></header>
-<nav class="shortcuts" aria-label="路況與道路資訊"><a href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener noreferrer">🚙 國道 1968 即時路況</a><a href="https://168.thb.gov.tw/" target="_blank" rel="noopener noreferrer">🛣️ 公路局 168 路況</a><a href="https://www.freeway.gov.tw/Publish.aspx?cnid=1906" target="_blank" rel="noopener noreferrer">📋 國道交流道里程表</a><a href="https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&amp;sms=13790" target="_blank" rel="noopener noreferrer">🚦 省道快速公路官方資料</a></nav>
-<section class="panel"><h2>🗂️ 三層公路分類</h2><div class="steps">
+<nav class="shortcuts" aria-label="路況與道路資訊"><a href="#road-network" class="network-nav-link">🗺️ 點選路網總覽</a><a href="https://www.freeway.gov.tw/way_net.aspx?cnid=476" target="_blank" rel="noopener noreferrer">🗺️ 官方國道路網圖</a><a href="https://www.thb.gov.tw/News_Download.aspx?n=195&amp;sms=12823" target="_blank" rel="noopener noreferrer">🗺️ 官方省道路網圖</a><a href="https://1968.freeway.gov.tw/" target="_blank" rel="noopener noreferrer">🚙 國道 1968 即時路況</a><a href="https://168.thb.gov.tw/" target="_blank" rel="noopener noreferrer">🛣️ 公路局 168 路況</a><a href="https://www.freeway.gov.tw/Publish.aspx?cnid=1906" target="_blank" rel="noopener noreferrer">📋 國道交流道里程表</a><a href="https://www.thb.gov.tw/News_ExpresswaySection.aspx?n=151&amp;sms=13790" target="_blank" rel="noopener noreferrer">🚦 省道快速公路官方資料</a></nav>
+<section class="network-home" id="road-network" aria-label="公路路網總覽">
+<div class="network-heading"><div><span class="network-eyebrow">ROAD NETWORK · 選路線直達</span><h2>🗺️ 全臺高速公路／快速道路路網</h2><p>選擇下方任一條道路，就會直接切換到該路線的交流道清單。需要真正的地圖，可以開啟交通部官方路網圖。</p></div><span class="network-total" id="networkCount">路線讀取中…</span></div>
+<div class="network-map-links"><a href="https://www.freeway.gov.tw/way_net.aspx?cnid=476" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🗺️</span><span><strong>查看官方國道路網圖</strong><small>高速公路局・全臺與北中南路網示意</small></span></a><a href="https://www.thb.gov.tw/News_Download.aspx?n=195&amp;sms=12823" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🧭</span><span><strong>查看官方快速公路網圖</strong><small>公路局・路網圖及下載資料</small></span></a></div>
+<div class="network-groups" id="networkGroups"><p class="empty">正在讀取國道與快速道路路線…</p></div>
+<p class="network-caveat">路線索引為可點選的清單，不是依實際地理比例繪製的地圖；省道快速道路的候選交流道尚待官方明細逐筆核對。</p>
+</section>
+<section class="panel" id="road-filters"><h2>🗂️ 三層公路分類</h2><div class="steps">
 <div class="step"><h3>第一層｜道路種類</h3><div class="chips" id="classFilter"></div></div>
 <div class="step"><h3>第二層｜地區</h3><div class="chips" id="regionFilter"></div></div>
 <div class="step"><h3>第三層｜路線</h3><div class="chips" id="routeFilter"></div></div></div>
@@ -77,6 +112,30 @@ function exitCard(e,r,compact=false){
 function selector(id,values,selected,key){
  $(id).innerHTML=values.map(v=>'<button type="button" class="chip'+(selected===v[0]?" active":"")+'" data-'+key+'="'+esc(v[0])+'">'+esc(v[1])+(v[2]!==undefined?'<span class="num">'+v[2]+'</span>':'')+'</button>').join("");
 }
+
+function renderRoadNetwork(){
+ if(!db)return;
+ $("networkCount").textContent=db.routes.length+" 組路線・點選即可進入";
+ const groups=[["國道高速公路","🚙 國道高速公路"],["省道快速道路","🛣️ 省道快速道路"]];
+ $("networkGroups").innerHTML=groups.map(([kind,label])=>{
+  const roads=db.routes.filter(r=>r.category===kind);
+  return '<section class="network-route-section"><div class="network-route-heading"><h3>'+label+'</h3><span>'+roads.length+' 組路線</span></div><div class="network-route-grid">'+
+    roads.map(r=>'<button class="network-road'+(kind==="省道快速道路"?" express":"")+(route===r.id?" current":"")+'" type="button" data-network-route="'+esc(r.id)+'" aria-label="查看 '+esc(r.no)+' '+esc(r.name)+' 的交流道"><span class="network-code">'+esc(r.no)+'</span><span class="network-road-name"><strong>'+esc(r.name)+'</strong><small>'+r.exits.length+' 筆道路節點</small></span></button>').join("")+
+  '</div></section>';
+ }).join("");
+}
+$("networkGroups").addEventListener("click",e=>{
+ const chosen=e.target.closest("[data-network-route]");
+ if(!chosen||!db)return;
+ const target=db.routes.find(r=>r.id===chosen.dataset.networkRoute);
+ if(!target)return;
+ roadClass=target.category;region="全部";route=target.id;query="";limit=48;
+ $("search").value="";
+ render();
+ renderRoadNetwork();
+ $("road-filters").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
 function renderFilters(){
  if(!db)return;
  selector("classFilter",[["全部","全部道路"],["國道高速公路","🚙 國道高速公路"],["省道快速道路","🛣️ 省道快速道路"]],roadClass,"class");
@@ -118,7 +177,7 @@ document.body.addEventListener("click",e=>{
  const link=e.target.closest("[data-open]");if(link){const id=link.dataset.open;recent=[id,...recent.filter(x=>x!==id)].slice(0,12);localStorage.setItem(recentKey,JSON.stringify(recent));renderShelves()}
 });
 fetch("../data/taiwan-expressway-interchanges.json?v=20261031-3").then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
- db=d;exitIndex=new Map(d.routes.flatMap(r=>r.exits.map(ex=>[ex.id,{r,ex}])));
+ db=d;exitIndex=new Map(d.routes.flatMap(r=>r.exits.map(ex=>[ex.id,{r,ex}])));renderRoadNetwork();
  $("statsRoads").textContent=d.routes.length+" 組公路路線";$("statsExits").textContent=exitIndex.size+" 筆交流道／節點";
  const url=new URLSearchParams(location.search);
  const qClass=url.get("class"),qRegion=url.get("region"),qRoute=url.get("route"),qExit=url.get("exit");
