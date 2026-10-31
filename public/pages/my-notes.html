@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#307e94"><title>我的記事｜Toby Personal OS</title><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#eaf6fc,#fffdf4 60%,#e9f6ee);color:#243a4b;font:14px/1.7 system-ui,"Noto Sans TC",sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}[hidden]{display:none!important}
+.wrap{max-width:1100px;margin:auto;padding:20px 16px 60px}.back{display:inline-block;padding:9px 15px;background:#fff;border-radius:99px;text-decoration:none;border:1px solid #d9e5ed;font-weight:800;margin-bottom:13px}
+.hero{padding:26px;border-radius:24px;background:linear-gradient(115deg,#235674,#328f92);color:#fff}.hero h1{font-size:37px;margin:6px 0}.hero p{margin:0;color:#e4f8fb;max-width:750px}.stats{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.stats span{padding:6px 10px;border-radius:99px;border:1px solid #ffffff64;font-size:12px}
+.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}.btn{padding:9px 13px;border:1px solid #d6e3eb;border-radius:11px;background:#fff;color:#346882;font-weight:800;font-size:12px;text-decoration:none}.btn.primary{background:#277da0;color:#fff}.search{flex:1 1 240px;min-width:0;padding:11px;border:1px solid #d9e4ec;border-radius:12px;background:#fff}
+.layout{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(0,1.3fr);gap:15px}.panel{min-width:0;background:#fff;border:1px solid #dce6ed;border-radius:19px;overflow:hidden}.panel h2{font-size:18px;margin:0;padding:14px 16px;border-bottom:1px solid #e1e8ee}.list{padding:12px;max-height:70vh;overflow:auto}
+.note{width:100%;text-align:left;border:1px solid #dce6eb;border-radius:12px;padding:12px;margin-bottom:8px;background:#fbfdfe;color:#263d4e}.note.active{background:#e8f5fc;border-color:#6aa0c0}.note strong{display:block;font-size:14px}.note p{white-space:pre-wrap;font-size:11px;color:#61788a;max-height:45px;overflow:hidden;margin:5px 0}.note small{color:#8295a3}
+.editor{padding:17px}.field{margin-bottom:12px}.field label{display:block;color:#567589;font-size:12px;font-weight:850;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;border:1px solid #d6e3eb;background:#fff;color:#273a4b;border-radius:11px;padding:10px}.field textarea{min-height:250px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.status{font-size:12px;color:#35836b}.source{display:block;font-size:12px;color:#5b8091;background:#eef9f7;padding:9px 11px;border-radius:10px;margin-bottom:12px}
+.warning{border-radius:14px;padding:13px;margin:17px 0;font-size:12px;color:#876329;background:#fff6e2;border:1px solid #ecdfbe}
+@media(max-width:730px){.layout{grid-template-columns:1fr}.list{max-height:310px}.wrap{padding:11px}.hero h1{font-size:30px}.two{grid-template-columns:1fr}.editor{padding:12px}}
+</style></head><body><main class="wrap">
+<a href="../index.html" class="back">← 返回啟動器</a><header class="hero"><small>PERSONAL OS · JOURNAL</small><h1>📝 我的記事</h1><p>從任何啟動器快速記錄，像股票啟動器一樣自動儲存。支援標題、分類、內容、標籤、置頂、完成勾選、來源頁面及備份。</p><div class="stats"><span id="total">0 則記事</span><span id="todo">0 則未完成待辦</span><span>☑ 本機自動儲存</span></div></header>
+<div class="toolbar"><button id="new" class="btn primary" type="button">＋ 新增記事</button><input id="search" class="search" type="search" placeholder="搜尋標題、內容或標籤…"><select id="filter" class="btn"><option value="全部">全部分類</option></select><button id="export" class="btn" type="button">↓ 備份 JSON</button><button id="import" class="btn" type="button">↑ 匯入 JSON</button><input type="file" id="file" accept=".json,application/json" hidden></div>
+<div class="layout"><section class="panel"><h2>📚 近期記事</h2><div id="list" class="list"></div></section><section class="panel"><h2 id="editTitle">✎ 編輯記事</h2><div class="editor">
+<div class="source" id="source">從啟動器的「📝 記事」入口進入時，會自動記錄來源頁面。</div>
+<div class="field"><label for="title">記事標題</label><input id="title" maxlength="180" placeholder="例如：台61線待確認的交流道"></div>
+<div class="two"><div class="field"><label for="category">分類</label><select id="category"></select></div><div class="field"><label for="tags">標籤（逗號分隔）</label><input id="tags" placeholder="例如：交通, 工作"></div></div>
+<div class="field"><label for="body">記事內容</label><textarea id="body" placeholder="記錄重要資訊、心得、待辦事項…"></textarea></div>
+<div class="toolbar"><label><input type="checkbox" id="pin"> 📌 置頂</label><label><input type="checkbox" id="done"> ☑ 已完成</label><a class="btn" id="sourceLink" href="#" hidden>回來源頁</a><button id="delete" class="btn" type="button">刪除記事</button></div>
+<p class="status" id="status">請先新增或選擇一則記事。</p></div></section></div>
+<p class="warning">⚠️ 目前筆記只存於這個瀏覽器，不會寫入公開 GitHub，也還沒有 Google Drive 雲端同步。換裝置或清除瀏覽器資料前，請先下載 JSON 備份，再於新裝置匯入。</p></main>
+<script>
+"use strict";
+const KEY="tobyPersonalOsNotesV1",CATS=["隨手記","待辦","工作","藝術創作","交通","旅遊","生活","學習","其他"];
+const $=id=>document.getElementById(id),time=()=>new Date().toISOString();
+const escapeHtml=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function read(){try{const a=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(a)?a.filter(n=>n&&typeof n.id==="string"):[]}catch(e){return[]}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(notes));$("status").textContent="✓ 已自動儲存在此瀏覽器";return true}catch(e){$("status").textContent="⚠️ 儲存失敗，請確認瀏覽器空間";return false}}
+function validSource(text){try{const url=new URL(String(text||""),location.origin);return url.origin===location.origin&&url.pathname.startsWith("/personal-os-static-git/")?url.pathname+url.search:""}catch(e){return""}}
+let notes=read(),currentId="",from=validSource(new URLSearchParams(location.search).get("from"));
+$("category").innerHTML=CATS.map(x=>'<option>'+escapeHtml(x)+'</option>').join("");
+$("filter").innerHTML+=CATS.map(x=>'<option>'+escapeHtml(x)+'</option>').join("");
+function currentNote(){return notes.find(n=>n.id===currentId)}
+function draw(){
+ const q=$("search").value.toLowerCase(),f=$("filter").value;
+ const ordered=[...notes].sort((a,b)=>Number(!!b.pinned)-Number(!!a.pinned)||String(b.updatedAt||"").localeCompare(String(a.updatedAt||"")));
+ const found=ordered.filter(n=>(f==="全部"||n.category===f)&&(!q||[n.title,n.body,n.page,n.category,...(n.tags||[])].join(" ").toLowerCase().includes(q)));
+ $("list").innerHTML=found.map(n=>'<button class="note'+(currentId===n.id?" active":"")+'" type="button" data-id="'+escapeHtml(n.id)+'"><strong>'+(n.pinned?"📌 ":"")+(n.done?"☑ ":"")+escapeHtml(n.title||"未命名記事")+'</strong><p>'+escapeHtml(n.body||"尚未填寫內容")+'</p><small>'+escapeHtml(n.category||"隨手記")+' · '+escapeHtml(n.page||"我的記事")+'</small></button>').join("")||'<p style="color:#8499a9">尚無記事，點「新增記事」開始。</p>';
+ $("total").textContent=notes.length+" 則記事";$("todo").textContent=notes.filter(n=>n.category==="待辦"&&!n.done).length+" 則未完成待辦";
+ const n=currentNote(),editing=!!n;
+ ["title","body","category","tags","pin","done","delete"].forEach(id=>$(id).disabled=!editing);
+ $("sourceLink").hidden=true;
+ if(!n){$("title").value="";$("body").value="";$("tags").value="";$("source").textContent=from?"新增記事將保留來源："+from:"尚未選取記事，請按「＋ 新增記事」。";return}
+ $("title").value=n.title||"";$("body").value=n.body||"";$("category").value=CATS.includes(n.category)?n.category:"其他";$("tags").value=(n.tags||[]).join(", ");$("pin").checked=!!n.pinned;$("done").checked=!!n.done;
+ $("source").textContent="來源："+(n.page||"我的記事")+" · 建立於 "+new Date(n.createdAt).toLocaleString("zh-TW");
+ const src=validSource(n.source);if(src){$("sourceLink").href=src;$("sourceLink").hidden=false}
+ $("status").textContent="✓ 自動儲存至本機";
+}
+function add(){
+ const n={id:crypto.randomUUID?crypto.randomUUID():"note-"+Date.now(),title:"",body:"",category:"隨手記",tags:[],pinned:false,done:false,source:from||"",page:from?from.split("?")[0].split("/").pop():"我的記事",createdAt:time(),updatedAt:time()};
+ notes.unshift(n);currentId=n.id;from="";if(save())draw();
+}
+function change(){
+ const n=currentNote();if(!n)return;
+ n.title=$("title").value.slice(0,180);n.body=$("body").value.slice(0,40000);n.category=$("category").value;n.tags=$("tags").value.split(/[,，]/).map(x=>x.trim()).filter(Boolean).slice(0,12);n.pinned=$("pin").checked;n.done=$("done").checked;n.updatedAt=time();
+ if(save()){$("total").textContent=notes.length+" 則記事";$("todo").textContent=notes.filter(x=>x.category==="待辦"&&!x.done).length+" 則未完成待辦";}
+}
+$("new").addEventListener("click",add);
+$("list").addEventListener("click",e=>{const n=e.target.closest("[data-id]");if(n){currentId=n.dataset.id;draw()}});
+["title","body","tags","category","pin","done"].forEach(id=>$(id).addEventListener("input",change));
+$("search").addEventListener("input",draw);$("filter").addEventListener("change",draw);
+$("delete").addEventListener("click",()=>{if(currentId&&confirm("確定刪除這則記事？")){notes=notes.filter(n=>n.id!==currentId);currentId="";save();draw()}});
+$("export").addEventListener("click",()=>{const blob=new Blob([JSON.stringify({schema:"toby-personal-os-notes",version:1,exportedAt:time(),notes},null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="Personal-OS-記事-"+time().slice(0,10)+".json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200)});
+$("import").addEventListener("click",()=>$("file").click());
+$("file").addEventListener("change",async e=>{try{const f=e.target.files[0];if(!f)return;const obj=JSON.parse(await f.text());if(obj.schema!=="toby-personal-os-notes"||!Array.isArray(obj.notes)||obj.notes.length>10000)throw Error("檔案格式不符");const map=new Map(notes.map(n=>[n.id,n]));let added=0;for(const n of obj.notes){if(!n||typeof n.id!=="string")continue;const old=map.get(n.id);if(!old){added++;map.set(n.id,n)}else if(String(n.updatedAt)>String(old.updatedAt))map.set(n.id,n)}notes=[...map.values()];save();draw();alert("匯入成功，新增 "+added+" 則記事。")}catch(err){alert("無法匯入："+err.message)}finally{e.target.value=""}});
+window.addEventListener("storage",e=>{if(e.key===KEY){notes=read();draw()}});
+draw();
+</script><script src="../shared-nav.js" defer></script></body></html>
