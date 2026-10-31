@@ -1,0 +1,696 @@
+{
+  "version": "2026-10-31",
+  "title": "侯燁四年級自學",
+  "schoolYear": "115學年度（2026年9月—2027年6月）",
+  "basis": "臺灣108課綱第二學習階段（三至四年級）＋ IXL 四年級練習架構＋既有自學申請計畫書之115學年度主題",
+  "sourceDocTitle": "114-三年紀國小申請計畫書(含附件)修改.docx",
+  "sourceDocCaveat": "原計畫書為較早的三年級申請文件，也附四年級IXL進度和115學年主題。此頁為重新整理之四年級自學規劃，不是教育部核定課程表。",
+  "resources": {
+    "moe": "https://www.naer.edu.tw/PageSyllabus?fid=52",
+    "moemath": "https://edu.law.moe.gov.tw/LawContent.aspx?id=GL001788",
+    "edu": "https://market.cloud.edu.tw/",
+    "ixlMath": "https://www.ixl.com/math/grade-4",
+    "ixlEla": "https://www.ixl.com/ela/grade-4",
+    "ixlScience": "https://www.ixl.com/science/grade-4",
+    "ixlSocial": "https://www.ixl.com/social-studies/grade-4",
+    "phet": "https://phet.colorado.edu/zh_TW/",
+    "trello": "https://trello.com/b/fiwZNg41/%E8%87%AA%E5%AD%B8%E8%A8%98%E9%8C%84",
+    "plan": "https://docs.google.com/document/d/1CC9kotAhkpGtnJF5oDiHGLKXGPTdMcZt/edit?usp=drivesdk&ouid=109811689831592519931&rtpof=true&sd=true",
+    "venues": "./self-study-venues.html",
+    "books": "https://trello.com/b/UHIhmAfK/%E8%87%AA%E5%AD%B8%E7%9B%B8%E9%97%9C%E7%9A%84%E6%9B%B8",
+    "nature": "https://trello.com/b/yVthk0wk/%E5%B0%8F%E5%AD%B8%E8%87%AA%E7%84%B6",
+    "mathTrello": "https://trello.com/b/laHlK3ma/%E5%B0%8F%E5%AD%B8%E8%87%AA%E5%AD%B8%E7%9A%84%E6%95%B8%E5%AD%B8"
+  },
+  "domains": [
+    {
+      "id": "math",
+      "icon": "🔢",
+      "name": "數學",
+      "short": "臺灣四年級數學 × IXL",
+      "color": "#3e84bf",
+      "goal": "從位值與運算走向分數、小數、幾何與資料推理，依能力調整難度。",
+      "links": [
+        [
+          "IXL 四年級數學",
+          "ixlMath"
+        ],
+        [
+          "教育部數學領綱",
+          "moemath"
+        ],
+        [
+          "小學自學的數學 Trello",
+          "mathTrello"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "math-large",
+          "title": "一億以內的數與位值",
+          "target": "讀寫比較大數、位值與展開式；比較臺灣縣市人口或圖書館館藏數。",
+          "level": "核心"
+        },
+        {
+          "id": "math-muldiv",
+          "title": "整數乘除與多步驟解題",
+          "target": "練習多位數乘法與除數二位數除法，說明不同解法。",
+          "level": "核心"
+        },
+        {
+          "id": "math-estimate",
+          "title": "概數、四捨五入與估算",
+          "target": "估算旅行距離、購物總額、活動人數，檢查計算合理性。",
+          "level": "核心"
+        },
+        {
+          "id": "math-fraction",
+          "title": "等值分數、帶分數與分數運算",
+          "target": "用紙條、積木或食譜研究等值分數、分數加減與整數倍。",
+          "level": "核心"
+        },
+        {
+          "id": "math-decimal",
+          "title": "二位小數與生活金額",
+          "target": "用商品單價、長度或重量理解小數位值、比較與加減。",
+          "level": "核心"
+        },
+        {
+          "id": "math-angles",
+          "title": "角度、平行與垂直",
+          "target": "用量角器測量積木結構、街道與船體設計的角。",
+          "level": "核心"
+        },
+        {
+          "id": "math-area",
+          "title": "周長、面積及圖形",
+          "target": "為 Minecraft 建築畫平面圖，計算房間周長與面積。",
+          "level": "核心"
+        },
+        {
+          "id": "math-timeunits",
+          "title": "時間與單位換算",
+          "target": "規劃交通行程表，換算時、分，並估計路程和時間。",
+          "level": "核心"
+        },
+        {
+          "id": "math-charts",
+          "title": "資料整理與圖表",
+          "target": "記錄風速、閱讀時間或植物生長資料，繪製統計圖。",
+          "level": "核心"
+        },
+        {
+          "id": "math-patterns",
+          "title": "規律、倍數與因數",
+          "target": "找出積木排列或機械齒輪數量的規律與倍數關係。",
+          "level": "延伸"
+        }
+      ]
+    },
+    {
+      "id": "chinese",
+      "icon": "📖",
+      "name": "國語文",
+      "short": "閱讀理解・寫作・表達",
+      "color": "#a17ac7",
+      "goal": "用閱讀、提問、持續創作與自我表達建立國語文能力，保留故事寫作興趣。",
+      "links": [
+        [
+          "教育部課綱",
+          "moe"
+        ],
+        [
+          "教育雲教材",
+          "edu"
+        ],
+        [
+          "閱讀書單",
+          "books"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "chinese-read",
+          "title": "閱讀主旨與段落重點",
+          "target": "閱讀文章後用自己的話整理主旨與三個關鍵訊息。",
+          "level": "核心"
+        },
+        {
+          "id": "chinese-infer",
+          "title": "找證據與推論",
+          "target": "分辨事實與推論；引用文本內容說明判斷依據。",
+          "level": "核心"
+        },
+        {
+          "id": "chinese-vocab",
+          "title": "字詞、成語與語意",
+          "target": "每週自選五個有趣的詞語，用於故事或對話。",
+          "level": "核心"
+        },
+        {
+          "id": "chinese-write",
+          "title": "連載故事與結構",
+          "target": "延續每月小說創作，嘗試開頭、轉折、對話和結尾。",
+          "level": "核心"
+        },
+        {
+          "id": "chinese-report",
+          "title": "說明文與觀察紀錄",
+          "target": "描述一個科學實驗或戶外觀察，區分方法、現象與結論。",
+          "level": "核心"
+        },
+        {
+          "id": "chinese-speak",
+          "title": "口語分享與提問",
+          "target": "錄一段兩分鐘的導覽或 Podcast，練習清楚表達與回應問題。",
+          "level": "延伸"
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "icon": "🔤",
+      "name": "英語",
+      "short": "IXL Language Arts × 生活表達",
+      "color": "#df9b3b",
+      "goal": "把 IXL 英語閱讀與句子練習接到故事、日常生活及 Minecraft 專題，不以美國語文標準取代臺灣國語文。",
+      "links": [
+        [
+          "IXL 四年級英文語文",
+          "ixlEla"
+        ],
+        [
+          "教育部領綱",
+          "moe"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "english-reading",
+          "title": "閱讀主旨與細節",
+          "target": "閱讀短文，圈出主旨、人物與支持細節。",
+          "level": "核心"
+        },
+        {
+          "id": "english-vocabulary",
+          "title": "字根、前後綴與單字",
+          "target": "從科技、自然、船舶等主題建立自己的字詞表。",
+          "level": "核心"
+        },
+        {
+          "id": "english-grammar",
+          "title": "完整句與句型",
+          "target": "練習主詞、動詞、問句及不同句型，自己造句。",
+          "level": "核心"
+        },
+        {
+          "id": "english-story",
+          "title": "故事重述與順序",
+          "target": "以英文 4～6 句描述故事的開頭、過程、結果。",
+          "level": "核心"
+        },
+        {
+          "id": "english-write",
+          "title": "短文與觀察日記",
+          "target": "每週寫一則英文短文，題目可用遊戲或實驗經驗。",
+          "level": "核心"
+        },
+        {
+          "id": "english-talk",
+          "title": "口說解說與展示",
+          "target": "以英文介紹一個自己設計的 Minecraft 機械或模型。",
+          "level": "延伸"
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "icon": "🔬",
+      "name": "自然科學",
+      "short": "現象觀察・動手實驗",
+      "color": "#328e80",
+      "goal": "以提出問題、改變變因、觀察記錄、解釋現象的方式進行科學探究。",
+      "links": [
+        [
+          "IXL 四年級科學",
+          "ixlScience"
+        ],
+        [
+          "PhET 互動模擬",
+          "phet"
+        ],
+        [
+          "小學自然 Trello",
+          "nature"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "science-body",
+          "title": "身體構造與健康觀察",
+          "target": "畫身體系統示意，記錄運動前後呼吸或心跳的變化。",
+          "level": "核心"
+        },
+        {
+          "id": "science-air",
+          "title": "風、空氣與力",
+          "target": "設計紙風車，比較葉片形狀對轉動的影響。",
+          "level": "核心"
+        },
+        {
+          "id": "science-light",
+          "title": "光與影子",
+          "target": "用手電筒、鏡子探究光的方向與影子的變化。",
+          "level": "核心"
+        },
+        {
+          "id": "science-sound",
+          "title": "聲音與振動",
+          "target": "用橡皮筋、容器做不同音高或音量的實驗。",
+          "level": "核心"
+        },
+        {
+          "id": "science-life",
+          "title": "昆蟲與生態關係",
+          "target": "到戶外記錄昆蟲身體特徵、棲地與食物鏈。",
+          "level": "核心"
+        },
+        {
+          "id": "science-matter",
+          "title": "物質與材料的性質",
+          "target": "比較土、石、布、木與水的性質，記下分類方式。",
+          "level": "核心"
+        },
+        {
+          "id": "science-weather",
+          "title": "天氣、水與環境",
+          "target": "連續觀測數日天氣，整理資料並提出推測。",
+          "level": "核心"
+        }
+      ]
+    },
+    {
+      "id": "social",
+      "icon": "🗺️",
+      "name": "社會",
+      "short": "臺灣地方・地圖・人文",
+      "color": "#4b9caf",
+      "goal": "以臺灣地方生活、地景、地圖與文化為主；IXL 社會科僅選通用技能，不照搬美國歷史題庫。",
+      "links": [
+        [
+          "教育部課綱",
+          "moe"
+        ],
+        [
+          "教育雲",
+          "edu"
+        ],
+        [
+          "場館學習",
+          "venues"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "social-map",
+          "title": "方位、比例與地圖閱讀",
+          "target": "用紙地圖規劃桃園到臺北的場館路線並計算距離。",
+          "level": "核心"
+        },
+        {
+          "id": "social-local",
+          "title": "家鄉地理與地景",
+          "target": "比較楊梅、新屋與光復鄉的河流、土地和聚落。",
+          "level": "核心"
+        },
+        {
+          "id": "social-history",
+          "title": "地方故事與時間線",
+          "target": "採訪長輩或閱讀地方史，畫出三段時間的變化。",
+          "level": "核心"
+        },
+        {
+          "id": "social-community",
+          "title": "社區與公共生活",
+          "target": "觀察公共設施與居民如何合作，記錄一次社區參與。",
+          "level": "核心"
+        },
+        {
+          "id": "social-economy",
+          "title": "消費、資源與選擇",
+          "target": "設計小旅行預算，思考金錢、交通與資源的取捨。",
+          "level": "核心"
+        }
+      ]
+    },
+    {
+      "id": "arts",
+      "icon": "🎨",
+      "name": "藝術與創作",
+      "short": "膠彩・土繪具・設計與策展",
+      "color": "#c57f9c",
+      "goal": "將觀察與實作轉化為繪畫、裝置、聲音與公開分享。",
+      "links": [
+        [
+          "場館學習",
+          "venues"
+        ],
+        [
+          "自學記錄 Trello",
+          "trello"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "arts-drawing",
+          "title": "色彩與媒材實驗",
+          "target": "用水彩、膠彩或台灣原土色做透明度、顆粒及混色對照。",
+          "level": "核心"
+        },
+        {
+          "id": "arts-structure",
+          "title": "平衡裝置與造形",
+          "target": "用紙板和木條做可動平衡雕塑，解釋重心與受力。",
+          "level": "核心"
+        },
+        {
+          "id": "arts-craft",
+          "title": "工藝與材料研究",
+          "target": "在博物館觀察文物的材料與製程，設計自己的器物。",
+          "level": "核心"
+        },
+        {
+          "id": "arts-curate",
+          "title": "作品卡與小策展",
+          "target": "為一件作品命名、拍照、撰寫作品卡並布置展示區。",
+          "level": "核心"
+        },
+        {
+          "id": "arts-audio",
+          "title": "聲音、影像與創作",
+          "target": "製作聲音日記、影像剪輯或短 Podcast。",
+          "level": "延伸"
+        }
+      ]
+    },
+    {
+      "id": "maker",
+      "icon": "⚙️",
+      "name": "科技與 Minecraft",
+      "short": "紅石・工程・機械・程式",
+      "color": "#667ed2",
+      "goal": "讓遊戲成為建模、計算、測試和解決問題的實驗室。",
+      "links": [
+        [
+          "IXL 四年級數學",
+          "ixlMath"
+        ],
+        [
+          "PhET 互動模擬",
+          "phet"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "maker-build",
+          "title": "Minecraft 建築專題",
+          "target": "先畫比例圖，再於遊戲中建造並計算用料、面積。",
+          "level": "核心"
+        },
+        {
+          "id": "maker-redstone",
+          "title": "紅石邏輯與自動化",
+          "target": "設計開關或自動門，畫出輸入、過程與輸出。",
+          "level": "核心"
+        },
+        {
+          "id": "maker-boat",
+          "title": "船舶、浮力與模型",
+          "target": "比較船體形狀，製作能載重的小船並記錄結果。",
+          "level": "核心"
+        },
+        {
+          "id": "maker-machine",
+          "title": "機械結構與測試",
+          "target": "用積木設計機械，記錄失敗原因和改良版本。",
+          "level": "核心"
+        },
+        {
+          "id": "maker-robot",
+          "title": "機器人與未來城市",
+          "target": "設計一座有能源、交通和公共設施的未來城市。",
+          "level": "延伸"
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "icon": "🏃",
+      "name": "健康體育",
+      "short": "運動・身體・情緒・安全",
+      "color": "#d08058",
+      "goal": "把規律運動、身體照護與自我感受納入自學紀錄，不把活動量當成成績。",
+      "links": [
+        [
+          "教育部課綱",
+          "moe"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "health-movement",
+          "title": "每日運動與協調",
+          "target": "自選跑跳、球類、騎車或戶外活動，記錄體力與感受。",
+          "level": "核心"
+        },
+        {
+          "id": "health-safety",
+          "title": "外出安全與風險",
+          "target": "練習場館與道路安全、緊急求助和風險判斷。",
+          "level": "核心"
+        },
+        {
+          "id": "health-bodycare",
+          "title": "睡眠、飲食與身體",
+          "target": "觀察作息、飲食與運動對精神的影響。",
+          "level": "核心"
+        },
+        {
+          "id": "health-feelings",
+          "title": "情緒與合作",
+          "target": "寫下自己遇到困難如何處理、向誰求助與如何合作。",
+          "level": "核心"
+        }
+      ]
+    },
+    {
+      "id": "field",
+      "icon": "🧭",
+      "name": "探索與作品集",
+      "short": "場館・旅學・專題成果",
+      "color": "#6b9b62",
+      "goal": "把生活學習、戶外場館、專題作品和每週反思串成可回顧的紀錄。",
+      "links": [
+        [
+          "場館學習",
+          "venues"
+        ],
+        [
+          "自學記錄 Trello",
+          "trello"
+        ],
+        [
+          "原申請計畫書",
+          "plan"
+        ]
+      ],
+      "skills": [
+        {
+          "id": "field-visit",
+          "title": "場館探索與走讀",
+          "target": "依主題挑一間博物館或圖書館，出發前提出三個問題。",
+          "level": "核心"
+        },
+        {
+          "id": "field-observe",
+          "title": "研究筆記與資料來源",
+          "target": "記錄觀察、照片、來源與值得追問的問題。",
+          "level": "核心"
+        },
+        {
+          "id": "field-portfolio",
+          "title": "每月作品整理",
+          "target": "每月選一份作品、紀錄或實驗，留下版本與學到的事。",
+          "level": "核心"
+        },
+        {
+          "id": "field-reflection",
+          "title": "每週回顧與下次選題",
+          "target": "本週最喜歡什麼、困難在哪、下週自己想研究什麼？",
+          "level": "核心"
+        }
+      ]
+    }
+  ],
+  "monthly": [
+    {
+      "id": "115-09",
+      "period": "2026 年 9 月",
+      "title": "身體大冒險",
+      "focus": "觀察身體與生活作息",
+      "product": "繪製身體系統圖，測量運動前後心跳，製作健康小報",
+      "domains": [
+        "health",
+        "science"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    },
+    {
+      "id": "115-10",
+      "period": "2026 年 10 月",
+      "title": "風的力量",
+      "focus": "空氣、力、測量與設計",
+      "product": "紙風車／小船實驗，紀錄角度與轉速並畫比較圖",
+      "domains": [
+        "science",
+        "math"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    },
+    {
+      "id": "115-11",
+      "period": "2026 年 11 月",
+      "title": "鏡子與影子的祕密",
+      "focus": "光的路徑與對稱幾何",
+      "product": "設計影子實驗室，測量角度、拍攝光影作品",
+      "domains": [
+        "science",
+        "arts"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    },
+    {
+      "id": "115-12",
+      "period": "2026 年 12 月",
+      "title": "聲音的旅行",
+      "focus": "振動、聲音與表達",
+      "product": "製作橡皮筋樂器，記錄聲音差異並錄製短節目",
+      "domains": [
+        "science",
+        "chinese"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    },
+    {
+      "id": "116-01",
+      "period": "2027 年 1 月",
+      "title": "時間的腳步聲",
+      "focus": "時間、歷史與資料表達",
+      "product": "完成家族或地方時間線，規劃一趟交通小旅行",
+      "domains": [
+        "social",
+        "math"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    },
+    {
+      "id": "116-03",
+      "period": "2027 年 3 月",
+      "title": "昆蟲特攻隊",
+      "focus": "生物觀察與棲地",
+      "product": "戶外昆蟲觀察，製作圖鑑與棲地統計圖",
+      "domains": [
+        "science",
+        "field"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    },
+    {
+      "id": "116-04",
+      "period": "2027 年 4 月",
+      "title": "色彩的魔法屋",
+      "focus": "媒材、光色與原土色",
+      "product": "製作天然土色卡，比較材料與混色，完成小展覽",
+      "domains": [
+        "arts",
+        "science"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    },
+    {
+      "id": "116-05",
+      "period": "2027 年 5 月",
+      "title": "機器人與未來城市",
+      "focus": "程式、工程與數學規劃",
+      "product": "用 Minecraft 與積木設計一座可運作的未來城市",
+      "domains": [
+        "maker",
+        "math"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    },
+    {
+      "id": "116-06",
+      "period": "2027 年 6 月",
+      "title": "島嶼求生任務",
+      "focus": "臺灣地理與合作挑戰",
+      "product": "設計島嶼地圖、資源分配與船舶／庇護所模型",
+      "domains": [
+        "social",
+        "maker"
+      ],
+      "weeks": [
+        "提出問題／查資料",
+        "實驗與探索",
+        "創作與測試",
+        "整理成果與分享"
+      ]
+    }
+  ],
+  "principles": [
+    "用孩子好奇心與生活探索決定專題，再對照學科能力，而非每天照表操課。",
+    "學科練習短而有彈性；IXL 以英文版美國四年級為練習參考，非臺灣課綱一對一認證對應。",
+    "自然、社會與國語文優先根據臺灣在地內容與正式領綱，避免照搬 IXL 美國歷史文化內容。",
+    "進度採未開始／探索中／已完成，反思與作品比完成題數更重要。",
+    "學習記錄保存在當前瀏覽器；可匯出JSON備份，但不會自動寫入Trello或Google Drive。"
+  ]
+}
