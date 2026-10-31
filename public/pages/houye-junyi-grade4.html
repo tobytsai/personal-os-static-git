@@ -129,12 +129,12 @@ function renderDetail(){
  detailItem=Math.max(0,Math.min(detailItem,(section.items?.length||1)-1));
  $("detailTitle").textContent=g.title;
  $("detailCaption").textContent=(db.subjects.find(x=>x.id===g.subject)?.name||"")+" · "+(curated?"小節、影片、暖身與練習":"已有課程卡片與章節入口");
- $("detailHint").textContent=curated?"已整理本章較細的教材目錄。標示「已核對直達」的影片／練習可直接開啟；其他項目需進入該章官方頁面選課。":"此章目前只有已建檔的單元索引，並非均一完整逐支教材清單；可選下列項目查看其連結與來源。";
+ $("detailHint").textContent=curated?"本章已整理小節、影片與練習；部分直達教材來自均一「類翰林版」同題型，與均一版的章節編排可能不同。尚無個別網址者需至官方章節選課。":"此章目前只有已建檔的單元索引，並非均一完整逐支教材清單；可選下列項目查看其連結與來源。";
  $("detailSections").innerHTML=sections.map((s,i)=>'<button type="button" class="detail-section'+(i===detailSection?" on":"")+'" data-detail-section="'+i+'">'+esc(s.title)+'</button>').join("");
  const items=section.items||[];
  $("detailItems").innerHTML=items.length?items.map((x,i)=>'<button type="button" class="detail-item'+(i===detailItem?" on":"")+'" data-detail-item="'+i+'"><span class="detail-type">'+itemIcon(x.kind)+'</span><span style="flex:1"><strong>'+esc(x.title)+'</strong><small>'+esc(x.kind)+" · "+(x.linkStatus==="direct"?"已核對直達入口":"從官方章節選課")+'</small></span><span style="font-size:16px;color:#509083">›</span></button>').join(""):'<div class="empty">本節尚未建檔個別教材。</div>';
  const selected=items[detailItem];
- $("detailInfo").innerHTML=selected?'<h3>'+esc(selected.title)+'</h3><p>'+ (selected.linkStatus==="direct"?"這張教材有原始影片或練習連結，可直接前往均一。":"此項尚未取得個別教材的核對網址。按下方按鈕會前往此章的均一教材頁，再依名稱選擇內容。")+'</p><a href="'+esc(selected.url||g.url)+'" target="_blank" rel="noopener noreferrer">'+(selected.linkStatus==="direct"?"開啟這個教材":"到官方章節找這一題")+' ↗</a>':'<p>請先選擇左側的小節。</p>';
+ $("detailInfo").innerHTML=selected?'<h3>'+esc(selected.title)+'</h3><p>'+ (selected.linkStatus==="direct"?"這張教材有原始影片或練習連結，可直接前往均一。":"此項尚未取得個別教材的核對網址。按下方按鈕會前往此章的均一教材頁，再依名稱選擇內容。")+'</p>'+(selected.sourceVersion?'<p>教材來源：'+esc(selected.sourceVersion)+'</p>':'')+'<a href="'+esc(selected.url||g.url)+'" target="_blank" rel="noopener noreferrer">'+(selected.linkStatus==="direct"?"開啟這個教材":"到官方章節找這一題")+' ↗</a>':'<p>請先選擇左側的小節。</p>';
  $("detailOfficial").href=g.url;
  $("detailOfficial").textContent="📖 前往「"+g.title+"」官方章節 ↗";
 }
@@ -145,7 +145,7 @@ async function openDetail(gid,lessonId){
  $("detailShade").hidden=false;$("detailPanel").hidden=false;document.body.classList.add("detail-open");
  $("detailHint").textContent="正在載入章節細節…";
  if(!detailData){
-   try{const response=await fetch("../data/houye-junyi-details.json?v=20261031-2");
+   try{const response=await fetch("../data/houye-junyi-details.json?v="+Date.now());
        if(!response.ok)throw Error("HTTP "+response.status);
        detailData=await response.json();
    }catch(e){detailData={groups:[]};}
