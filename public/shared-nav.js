@@ -6,7 +6,7 @@
     ["▦","工具",base+"index.html#tools"],
     ["★","收藏",base+"index.html#favorites"],
     ["📅","行事曆",base+"pages/calendar.html"],
-    ["📝","記事",base+"pages/my-notes.html?from="+encodeURIComponent(location.pathname+location.search)],
+    ["📝","記事",base+"pages/my-notes.html?from="+encodeURIComponent(location.pathname+location.search)+"&label="+encodeURIComponent(document.title.split("｜")[0])],
     ["T","Trello","https://trello.com/"],
     ["✉","Gmail","https://mail.google.com/"],
     ["▣","Drive","https://drive.google.com/"]
@@ -76,7 +76,7 @@
   if(!location.pathname.endsWith("/my-notes.html")){
     const quick=document.createElement("a");
     quick.id="os-quick-note";
-    quick.href=base+"pages/my-notes.html?from="+encodeURIComponent(location.pathname+location.search);
+    quick.href=base+"pages/my-notes.html?from="+encodeURIComponent(location.pathname+location.search)+"&label="+encodeURIComponent(document.title.split("｜")[0]);
     quick.textContent="📝 記事";
     quick.setAttribute("aria-label","記錄來自目前啟動器的記事");
     document.body.appendChild(quick);
