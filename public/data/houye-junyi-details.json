@@ -1,6 +1,6 @@
 {
   "updated": "2026-10-31",
-  "sourceDescription": "2-1、2-2 小節依使用者提供的均一頁面截圖整理；個別影片與部分練習網址依均一公開檢索核對。未核對的個別教材保留官方章節入口，不標記為直達。",
+  "sourceDescription": "2-1、2-2 節名依使用者均一版截圖；17 個影片／練習直達 href 取自均一官方『類翰林版四上第二單元 乘法』課程頁，屬同概念跨版本教材。",
   "groups": [
     {
       "id": "math-ch02",
@@ -27,20 +27,23 @@
             {
               "title": "【素養動畫】【解題】四位數乘以一位數的乘法",
               "kind": "影片",
-              "url": "https://www.junyiacademy.org/videos/0cwC1nDIxko?topic=course-compare%2Fmath-elem%2Fmath-4%2Fk-m4a%2Fk-m4a-c02",
-              "linkStatus": "direct"
+              "url": "https://www.junyiacademy.org/videos/0cwC1nDIxko?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             },
             {
               "title": "【基礎】四位數乘以一位數 1",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
-              "linkStatus": "chapter-navigation"
+              "url": "https://www.junyiacademy.org/exercises/jnc-4-02-1-1a?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             },
             {
               "title": "【基礎】四位數乘以一位數 2",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
-              "linkStatus": "chapter-navigation"
+              "url": "https://www.junyiacademy.org/exercises/menzs4bc?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             }
           ]
         },
@@ -64,32 +67,37 @@
             {
               "title": "【素養動畫】【解題】乘數是二位數的乘法",
               "kind": "影片",
-              "url": "https://www.junyiacademy.org/video/jydiWPCKDC4?parent-topic-id=h-m4a-c02",
-              "linkStatus": "direct"
+              "url": "https://www.junyiacademy.org/videos/jydiWPCKDC4?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             },
             {
               "title": "【基礎】一、二位數乘以二位數 1",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
-              "linkStatus": "chapter-navigation"
+              "url": "https://www.junyiacademy.org/exercises/jnc-4-02-1-2a?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             },
             {
               "title": "【基礎】一、二位數乘以二位數 2",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/exercise/menzs4bd?parent-topic-id=rmd_4-nc-03-1",
-              "linkStatus": "direct"
+              "url": "https://www.junyiacademy.org/exercises/menzs4bd?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             },
             {
               "title": "【基礎】三位數乘以二位數",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/exercise/menzs4be?parent-topic-id=v108_n-4-02__ta",
-              "linkStatus": "direct"
+              "url": "https://www.junyiacademy.org/exercises/menzs4be?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             },
             {
               "title": "【基礎】三、四位數 × 二位數",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
-              "linkStatus": "chapter-navigation"
+              "url": "https://www.junyiacademy.org/exercises/jnc-4-02-1-3a?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             }
           ]
         },
@@ -99,22 +107,74 @@
           "summary": "相關練習可由本章官方課程進入，個別直接連結待核對。",
           "items": [
             {
+              "title": "【基礎】一、二位數乘以三位數 1",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/exercises/jnc-4-02-1-4a?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
+            },
+            {
               "title": "【基礎】一、二位數乘以三位數",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
-              "linkStatus": "chapter-navigation"
+              "url": "https://www.junyiacademy.org/exercises/menzs4ba?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
+            },
+            {
+              "title": "【素養動畫】【解題】乘數是三位數的乘法",
+              "kind": "影片",
+              "url": "https://www.junyiacademy.org/videos/g8zOft0VFM4?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             },
             {
               "title": "【基礎】三、四位數乘以三位數",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
-              "linkStatus": "chapter-navigation"
+              "url": "https://www.junyiacademy.org/exercises/jnc-4-02-1-5a?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
+            },
+            {
+              "title": "【基礎】四位數乘以三位數",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/exercises/n-m5ach1-1a?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             },
             {
               "title": "【基礎】乘數是三位數且有缺位的直式乘法",
               "kind": "練習",
-              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
-              "linkStatus": "chapter-navigation"
+              "url": "https://www.junyiacademy.org/exercises/n-m5ach1-1b?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
+            }
+          ]
+        },
+        {
+          "id": "2-4",
+          "title": "延伸｜乘法算式的規律",
+          "summary": "均一同年級類翰林版的乘法延伸課程，與原章節編排未必完全相同。",
+          "items": [
+            {
+              "title": "【素養動畫】【解題】末位是 0 的乘法",
+              "kind": "影片",
+              "url": "https://www.junyiacademy.org/videos/xVzfTzc3Upg?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
+            },
+            {
+              "title": "【基礎】末幾位為 0 的乘法",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/exercises/jnc-4-02-1-6a?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
+            },
+            {
+              "title": "【一般】末幾位為 0 的乘法",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/exercises/menzs5ab?topic=course-compare%2Fmath-elem%2Fmath-4%2Fh-m4a%2Fh-m4a-c02",
+              "linkStatus": "direct",
+              "sourceVersion": "均一・類翰林版四上第二單元（同題型教材）"
             }
           ]
         }
@@ -122,8 +182,9 @@
     }
   ],
   "notes": [
-    "此 JSON 為網站靜態整理的章節細節快照；點『查看細節』時由 GitHub Pages 載入資料，非直接跨站即時爬取均一頁面。",
-    "已找到個別影片、練習 href 的項目會顯示『直達』；其他只提供章節內查找。",
-    "其他章節可由同一右側細節欄瀏覽本庫現有單元清單；尚無影片逐項索引的章節不虛構練習。"
+    "此章細節的分類名稱與編碼以均一版四年級原本小節為基礎；具體影片及練習 href 取自均一公開的類翰林版四上乘法教材，不代表完全相同的課本編排。",
+    "點『查看章節細節』會載入本站靜態快照，並非瀏覽器直接即時爬取均一頁面。",
+    "直達項目使用官方章節檢索到的原始 href；個別影片／練習可能需要登入。",
+    "未取得獨立教材網址的暖身與小節說明，仍保留原章節選課入口。"
   ]
 }
