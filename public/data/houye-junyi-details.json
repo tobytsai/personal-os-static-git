@@ -1,0 +1,129 @@
+{
+  "updated": "2026-10-31",
+  "sourceDescription": "2-1、2-2 小節依使用者提供的均一頁面截圖整理；個別影片與部分練習網址依均一公開檢索核對。未核對的個別教材保留官方章節入口，不標記為直達。",
+  "groups": [
+    {
+      "id": "math-ch02",
+      "title": "第二章 整數的乘法",
+      "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+      "sections": [
+        {
+          "id": "2-1",
+          "title": "2-1 四位數 × 一位數的直式計算",
+          "summary": "對照你提供的均一章節畫面：四位數乘以一位數、影片講解與基礎練習。",
+          "items": [
+            {
+              "title": "1. 四位數 × 一位數",
+              "kind": "小節",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            },
+            {
+              "title": "【暖身】整數的乘法",
+              "kind": "暖身",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            },
+            {
+              "title": "【素養動畫】【解題】四位數乘以一位數的乘法",
+              "kind": "影片",
+              "url": "https://www.junyiacademy.org/videos/0cwC1nDIxko?topic=course-compare%2Fmath-elem%2Fmath-4%2Fk-m4a%2Fk-m4a-c02",
+              "linkStatus": "direct"
+            },
+            {
+              "title": "【基礎】四位數乘以一位數 1",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            },
+            {
+              "title": "【基礎】四位數乘以一位數 2",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            }
+          ]
+        },
+        {
+          "id": "2-2",
+          "title": "2-2 乘數是二位數的直式計算",
+          "summary": "一、二位數乘二位數，以及三、四位數乘二位數。",
+          "items": [
+            {
+              "title": "1. 一、二位數 × 二位數",
+              "kind": "小節",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            },
+            {
+              "title": "2. 三、四位數 × 二位數",
+              "kind": "小節",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            },
+            {
+              "title": "【素養動畫】【解題】乘數是二位數的乘法",
+              "kind": "影片",
+              "url": "https://www.junyiacademy.org/video/jydiWPCKDC4?parent-topic-id=h-m4a-c02",
+              "linkStatus": "direct"
+            },
+            {
+              "title": "【基礎】一、二位數乘以二位數 1",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            },
+            {
+              "title": "【基礎】一、二位數乘以二位數 2",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/exercise/menzs4bd?parent-topic-id=rmd_4-nc-03-1",
+              "linkStatus": "direct"
+            },
+            {
+              "title": "【基礎】三位數乘以二位數",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/exercise/menzs4be?parent-topic-id=v108_n-4-02__ta",
+              "linkStatus": "direct"
+            },
+            {
+              "title": "【基礎】三、四位數 × 二位數",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            }
+          ]
+        },
+        {
+          "id": "2-3",
+          "title": "2-3 乘數是三位數的直式計算",
+          "summary": "相關練習可由本章官方課程進入，個別直接連結待核對。",
+          "items": [
+            {
+              "title": "【基礎】一、二位數乘以三位數",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            },
+            {
+              "title": "【基礎】三、四位數乘以三位數",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            },
+            {
+              "title": "【基礎】乘數是三位數且有缺位的直式乘法",
+              "kind": "練習",
+              "url": "https://www.junyiacademy.org/topics/j-m4a-c02",
+              "linkStatus": "chapter-navigation"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "此 JSON 為網站靜態整理的章節細節快照；點『查看細節』時由 GitHub Pages 載入資料，非直接跨站即時爬取均一頁面。",
+    "已找到個別影片、練習 href 的項目會顯示『直達』；其他只提供章節內查找。",
+    "其他章節可由同一右側細節欄瀏覽本庫現有單元清單；尚無影片逐項索引的章節不虛構練習。"
+  ]
+}
