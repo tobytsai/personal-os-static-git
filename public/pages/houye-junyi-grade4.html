@@ -27,6 +27,36 @@
 .empty{padding:25px;border:1px dashed #bcd4ce;border-radius:15px;background:#fff;color:#79938c}
 .source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}.source{border:1px solid #dbe9e4;background:#f9fcfb;border-radius:13px;padding:14px}.source strong{display:block;font-size:13px}.source p{font-size:11px;line-height:1.65;color:#70877b;margin:6px 0 12px}.source a{font-size:11px;color:#298176;text-decoration:none;font-weight:900}
 .foot{font-size:12px;color:#6a8584;margin:25px 0;line-height:1.85}
+
+body.detail-open{overflow:hidden}
+.detail-shade{position:fixed;inset:0;background:#172b3b94;z-index:90}
+.detail-panel{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(570px,100%);background:linear-gradient(180deg,#f4fbf7,#fff);box-shadow:-15px 0 50px #153e4860;z-index:91;display:flex;flex-direction:column;border-left:1px solid #d6e7df}
+.detail-heading{background:linear-gradient(112deg,#1e756f,#3aa895);padding:21px 21px 18px;color:white;flex:none}
+.detail-heading-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.detail-heading small{font-size:10px;letter-spacing:.12em;font-weight:850;opacity:.84}
+.detail-heading h2{font-size:21px;line-height:1.45;margin:11px 0 5px}
+.detail-heading p{font-size:12px;line-height:1.65;margin:0;color:#e2f9ef}
+.detail-close{border:1px solid #ffffff95;border-radius:11px;color:#fff;background:#ffffff20;font-size:21px;font-weight:850;width:40px;height:40px}
+.detail-scroll{overflow-y:auto;padding:15px 18px 32px;flex:1;overscroll-behavior:contain}
+.detail-hint{color:#698679;background:#eaf7ef;border:1px solid #cce9d9;border-radius:13px;padding:11px;font-size:11px;line-height:1.75;margin-bottom:14px}
+.detail-subhead{font-size:12px;font-weight:900;color:#497971;margin:14px 0 8px}
+.detail-sections{display:flex;gap:7px;flex-wrap:wrap}
+.detail-section{font-size:11px;text-align:left;background:#fff;border:1px solid #d6e7df;border-radius:11px;color:#3c7467;padding:8px 10px;font-weight:800}
+.detail-section.on{background:#278879;color:#fff;border-color:#278879}
+.detail-items{display:grid;gap:8px;margin-top:9px}
+.detail-item{display:flex;align-items:center;gap:10px;border:1px solid #dce9e2;border-radius:13px;background:white;text-align:left;padding:11px 12px;color:#405c61;width:100%}
+.detail-item.on{border-color:#3aa18c;box-shadow:0 0 0 2px #6bc6a33b;background:#f5fcf8}
+.detail-item strong{display:block;font-size:12px;line-height:1.55}
+.detail-item small{display:block;font-size:10px;color:#728b87;margin-top:3px}
+.detail-item .detail-type{flex:none;font-size:17px;width:25px;text-align:center}
+.detail-info{background:#fff;border:1px solid #d3e5db;border-radius:16px;margin:14px 0;padding:15px}
+.detail-info h3{font-size:17px;line-height:1.45;margin:0 0 8px}
+.detail-info p{font-size:11px;color:#6e8783;margin:0 0 12px;line-height:1.7}
+.detail-info a,.detail-source{display:inline-flex;justify-content:center;align-items:center;border-radius:11px;padding:9px 12px;text-decoration:none;font-size:12px;font-weight:850;background:#278b7f;color:#fff;border:1px solid #278b7f}
+.detail-source{background:white;color:#277f78;border-color:#c7e4db;margin-top:7px}
+.detail-card-button{background:#f1f8fa!important;color:#2a737b!important;border-color:#cce5e7!important}
+@media(max-width:700px){.detail-heading{padding:17px 16px 14px}.detail-heading h2{font-size:18px}.detail-scroll{padding:12px 14px 38px}.detail-panel{width:100%;border-left:0}}
+
 @media(max-width:760px){.wrap{padding:12px 11px 45px}.hero{padding:23px 19px}.steps{grid-template-columns:1fr}.panel{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card-body{padding:11px}.card h3{font-size:15px}.card p{font-size:11px}.sectionhead h2{font-size:18px}}
 @media(max-width:430px){.grid{grid-template-columns:1fr}.card-body{padding:15px}}
 </style></head>
@@ -41,6 +71,17 @@
 <div class="sectionhead"><h2>第三層｜中文課程卡片</h2><span class="count" id="resultCount">讀取中…</span></div>
 <div id="cards" class="grid"><div class="empty">正在讀取均一與酷課雲課程資料…</div></div><div id="moreWrap" class="more" hidden><button id="more" type="button">顯示更多課程</button></div>
 <section class="panel"><h2>▶ 官方 YouTube 與酷課雲延伸入口</h2><div id="sources" class="source-grid"></div></section>
+<div class="detail-shade" id="detailShade" hidden></div>
+<aside class="detail-panel" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailTitle" hidden>
+ <header class="detail-heading"><div class="detail-heading-top"><small>JUNYI · COURSE DETAIL</small><button type="button" class="detail-close" id="detailClose" aria-label="關閉章節細節">×</button></div>
+ <h2 id="detailTitle">章節細節</h2><p id="detailCaption"></p></header>
+ <div class="detail-scroll">
+ <div class="detail-hint" id="detailHint">正在讀取章節內容…</div>
+ <div class="detail-subhead">小節目錄 · 點選後顯示教材</div><div id="detailSections" class="detail-sections"></div>
+ <div class="detail-subhead">本節影片與練習</div><div id="detailItems" class="detail-items"></div>
+ <div id="detailInfo" class="detail-info"></div>
+ <a id="detailOfficial" class="detail-source" target="_blank" rel="noopener noreferrer">📖 前往均一原始章節 ↗</a>
+ </div></aside>
 <p class="foot">這是個人自學索引，不複製均一及酷課雲的影片內容。連結指向原始官方網站；若是單元目錄而非個別影片，卡片會有明確標示。進度與文字紀錄僅保存於此瀏覽器，與均一原平台進度、答題結果及影片觀看紀錄分開。更換裝置前請匯出備份。</p></main>
 <script>
 "use strict";
@@ -48,6 +89,7 @@ const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,
 const KEY="tobyHouyeJunyiGrade4ProgressV1";
 function stored(){try{const o=JSON.parse(localStorage.getItem(KEY)||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch{return{}}}
 let progress=stored(),db=null,subject="全部",group="全部",q="",favoriteOnly=false,unfinished=false,visible=48;
+let detailData=null,detailGroup=null,detailSection=0,detailItem=0,detailOrigin=null;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(progress));return true}catch{return false}}
 function keyFor(id){const x=progress[id];return x&&typeof x==="object"?x:{status:"未開始",star:false,note:""}}
 function count(){return db?db.lessons.filter(x=>keyFor(x.id).status==="已完成").length:0}
@@ -62,8 +104,71 @@ function card(x){
  const isVideo=x.url.includes("/videos/")&&!x.linkIsParent;
  const linkLabel=isVideo?"播放本課官方影片":x.kind==="chapter"?"進入此章節教材":x.linkIsParent?"進入對應章節並選課":"開啟本單元教材";
  const info=x.description||(x.localAdaptation?"本課程可與桃園地方生活主題進行比較與延伸。":"可挑選自己有興趣的主題，先看影片再做練習或實際操作。");
- return '<article class="card" style="--tone:'+esc(sub.color)+'"><div class="accent"></div><div class="card-body"><div class="card-top"><span class="badge">'+esc(sub.icon+" "+sub.name)+'</span><button type="button" class="star'+(state.star?" on":"")+'" data-star="'+esc(x.id)+'" aria-label="'+(state.star?"取消收藏":"加入收藏")+'" aria-pressed="'+!!state.star+'">'+(state.star?"★":"☆")+'</button></div><h3><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">'+esc(x.title)+'</a></h3><div class="meta">'+esc(groupItem?.title||"")+'</div><p>'+esc(info)+'</p><div class="link-note">'+(isVideo?"▶ 官方影片原始入口":x.kind==="chapter"?"📖 官方章節內容頁":x.linkIsParent?"📂 官方所屬章節（請在章節內再點選教材）":"🔗 官方對應單元")+'</div><div class="links"><a class="primary" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(linkLabel)+' ↗</a><a href="'+esc(sub.entry)+'" target="_blank" rel="noopener noreferrer">返回此科目課程目錄</a></div><label class="progress-label" for="st-'+esc(x.id)+'">手動學習進度</label><select class="progress-select" id="st-'+esc(x.id)+'" data-status="'+esc(x.id)+'">'+options(state.status||"未開始")+'</select><details class="notes"><summary>📝 學習心得／作品紀錄</summary><textarea data-note="'+esc(x.id)+'" maxlength="3000" placeholder="今天發現什麼？有沒有相關作品或問題？">'+esc(state.note||"")+'</textarea></details></div></article>';
+ return '<article class="card" style="--tone:'+esc(sub.color)+'"><div class="accent"></div><div class="card-body"><div class="card-top"><span class="badge">'+esc(sub.icon+" "+sub.name)+'</span><button type="button" class="star'+(state.star?" on":"")+'" data-star="'+esc(x.id)+'" aria-label="'+(state.star?"取消收藏":"加入收藏")+'" aria-pressed="'+!!state.star+'">'+(state.star?"★":"☆")+'</button></div><h3><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">'+esc(x.title)+'</a></h3><div class="meta">'+esc(groupItem?.title||"")+'</div><p>'+esc(info)+'</p><div class="link-note">'+(isVideo?"▶ 官方影片原始入口":x.kind==="chapter"?"📖 官方章節內容頁":x.linkIsParent?"📂 官方所屬章節（請在章節內再點選教材）":"🔗 官方對應單元")+'</div><div class="links"><a class="primary" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(linkLabel)+' ↗</a><button type="button" class="detail-card-button" data-detail-group="'+esc(x.group)+'" data-detail-lesson="'+esc(x.id)+'">查看章節細節 ›</button></div><label class="progress-label" for="st-'+esc(x.id)+'">手動學習進度</label><select class="progress-select" id="st-'+esc(x.id)+'" data-status="'+esc(x.id)+'">'+options(state.status||"未開始")+'</select><details class="notes"><summary>📝 學習心得／作品紀錄</summary><textarea data-note="'+esc(x.id)+'" maxlength="3000" placeholder="今天發現什麼？有沒有相關作品或問題？">'+esc(state.note||"")+'</textarea></details></div></article>';
 }
+
+function detailFallback(g){
+ const lessons=db.lessons.filter(x=>x.group===g.id);
+ return [{id:"available",title:g.title,summary:"本章已整理的課程卡片；有獨立連結者可直接開啟教材。",items:lessons.map(x=>({
+   title:x.title,kind:x.url.includes("/videos/")?"影片":x.kind==="chapter"?"章節":"課程",
+   url:x.url,linkStatus:x.linkIsParent?"chapter-navigation":"direct"
+ }))}];
+}
+function currentDetail(){
+ const g=db?.groups.find(x=>x.id===detailGroup);
+ if(!g)return null;
+ const curated=detailData?.groups?.find(x=>x.id===detailGroup);
+ return {group:g,sections:curated?.sections?.length?curated.sections:detailFallback(g),curated:!!curated};
+}
+function itemIcon(kind){return kind==="影片"?"▶":kind==="練習"?"✎":kind==="暖身"?"☀":"📖"}
+function renderDetail(){
+ const detail=currentDetail();if(!detail)return;
+ const {group:g,sections,curated}=detail;
+ detailSection=Math.max(0,Math.min(detailSection,sections.length-1));
+ const section=sections[detailSection];
+ detailItem=Math.max(0,Math.min(detailItem,(section.items?.length||1)-1));
+ $("detailTitle").textContent=g.title;
+ $("detailCaption").textContent=(db.subjects.find(x=>x.id===g.subject)?.name||"")+" · "+(curated?"小節、影片、暖身與練習":"已有課程卡片與章節入口");
+ $("detailHint").textContent=curated?"已整理本章較細的教材目錄。標示「已核對直達」的影片／練習可直接開啟；其他項目需進入該章官方頁面選課。":"此章目前只有已建檔的單元索引，並非均一完整逐支教材清單；可選下列項目查看其連結與來源。";
+ $("detailSections").innerHTML=sections.map((s,i)=>'<button type="button" class="detail-section'+(i===detailSection?" on":"")+'" data-detail-section="'+i+'">'+esc(s.title)+'</button>').join("");
+ const items=section.items||[];
+ $("detailItems").innerHTML=items.length?items.map((x,i)=>'<button type="button" class="detail-item'+(i===detailItem?" on":"")+'" data-detail-item="'+i+'"><span class="detail-type">'+itemIcon(x.kind)+'</span><span style="flex:1"><strong>'+esc(x.title)+'</strong><small>'+esc(x.kind)+" · "+(x.linkStatus==="direct"?"已核對直達入口":"從官方章節選課")+'</small></span><span style="font-size:16px;color:#509083">›</span></button>').join(""):'<div class="empty">本節尚未建檔個別教材。</div>';
+ const selected=items[detailItem];
+ $("detailInfo").innerHTML=selected?'<h3>'+esc(selected.title)+'</h3><p>'+ (selected.linkStatus==="direct"?"這張教材有原始影片或練習連結，可直接前往均一。":"此項尚未取得個別教材的核對網址。按下方按鈕會前往此章的均一教材頁，再依名稱選擇內容。")+'</p><a href="'+esc(selected.url||g.url)+'" target="_blank" rel="noopener noreferrer">'+(selected.linkStatus==="direct"?"開啟這個教材":"到官方章節找這一題")+' ↗</a>':'<p>請先選擇左側的小節。</p>';
+ $("detailOfficial").href=g.url;
+ $("detailOfficial").textContent="📖 前往「"+g.title+"」官方章節 ↗";
+}
+async function openDetail(gid,lessonId){
+ if(!db||!db.groups.some(g=>g.id===gid))return;
+ detailOrigin=document.activeElement;
+ detailGroup=gid;detailSection=0;detailItem=0;
+ $("detailShade").hidden=false;$("detailPanel").hidden=false;document.body.classList.add("detail-open");
+ $("detailHint").textContent="正在載入章節細節…";
+ if(!detailData){
+   try{const response=await fetch("../data/houye-junyi-details.json?v=20261031-2");
+       if(!response.ok)throw Error("HTTP "+response.status);
+       detailData=await response.json();
+   }catch(e){detailData={groups:[]};}
+ }
+ const detail=currentDetail();
+ if(detail&&lessonId){
+   const selected=db.lessons.find(l=>l.id===lessonId);
+   const code=selected?.title.match(/^(\d+-\d+)/)?.[1];
+   if(code){const matchIndex=detail.sections.findIndex(s=>s.id===code||s.title.startsWith(code+" "));if(matchIndex>=0)detailSection=matchIndex;}
+   else if(!detail.curated){const found=detail.sections[0].items.findIndex(x=>x.title===selected?.title);if(found>=0)detailItem=found;}
+ }
+ renderDetail();$("detailClose").focus();
+}
+function closeDetail(){
+ $("detailShade").hidden=true;$("detailPanel").hidden=true;document.body.classList.remove("detail-open");
+ detailOrigin?.focus?.();detailGroup=null;
+}
+$("detailClose").addEventListener("click",closeDetail);
+$("detailShade").addEventListener("click",closeDetail);
+$("detailSections").addEventListener("click",e=>{const b=e.target.closest("[data-detail-section]");if(b){detailSection=Number(b.dataset.detailSection);detailItem=0;renderDetail()}});
+$("detailItems").addEventListener("click",e=>{const b=e.target.closest("[data-detail-item]");if(b){detailItem=Number(b.dataset.detailItem);renderDetail()}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("detailPanel").hidden)closeDetail()});
+
 function render(){
  if(!db)return;
  if(subject!=="全部"&&!db.subjects.some(s=>s.id===subject))subject="全部";
@@ -88,7 +193,10 @@ $("clear").addEventListener("click",()=>{subject="全部";group="全部";q="";un
 $("favorites").addEventListener("click",()=>{favoriteOnly=!favoriteOnly;visible=48;render()});
 $("unfinished").addEventListener("click",()=>{unfinished=!unfinished;visible=48;render()});
 $("more").addEventListener("click",()=>{visible+=48;render()});
-$("cards").addEventListener("click",e=>{const star=e.target.closest("[data-star]");if(star){const id=star.dataset.star;update(id,{star:!keyFor(id).star});render()}});
+$("cards").addEventListener("click",e=>{
+ const detail=e.target.closest("[data-detail-group]");if(detail){openDetail(detail.dataset.detailGroup,detail.dataset.detailLesson);return}
+ const star=e.target.closest("[data-star]");if(star){const id=star.dataset.star;update(id,{star:!keyFor(id).star});render()}
+});
 $("cards").addEventListener("change",e=>{const s=e.target.closest("[data-status]");if(s){update(s.dataset.status,{status:s.value});render()}});
 $("cards").addEventListener("input",e=>{const note=e.target.closest("[data-note]");if(note)update(note.dataset.note,{note:note.value.slice(0,3000)})});
 $("export").addEventListener("click",()=>{
