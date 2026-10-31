@@ -104,6 +104,6 @@ $("file").addEventListener("change",async e=>{
  progress=a.progress;persist();render();
  }catch(err){alert("匯入失敗："+err.message)}finally{e.target.value=""}
 });
-fetch("../data/houye-ixl-grade4.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("課程資料讀取失敗");return r.json()}).then(d=>{db=d;const p=new URLSearchParams(location.search);if(db.subjects.some(x=>x.id===p.get("subject")))subject=p.get("subject");render()}).catch(e=>{$("cards").innerHTML='<div class="empty">資料載入失敗：'+esc(e.message)+'</div>'});
+fetch("../data/houye-ixl-grade4.json?v="+Date.now()).then(r=>{if(!r.ok)throw Error("課程資料讀取失敗");return r.json()}).then(d=>{db=d;const p=new URLSearchParams(location.search);if(db.subjects.some(x=>x.id===p.get("subject")))subject=p.get("subject");render()}).catch(e=>{$("cards").innerHTML='<div class="empty">資料載入失敗：'+esc(e.message)+'</div>'});
 window.addEventListener("storage",e=>{if(e.key===KEY){progress=saved();render()}});
 </script><script src="../shared-nav.js" defer></script></body></html>
