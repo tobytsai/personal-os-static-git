@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#37698e"><meta name="description" content="侯燁的 IXL 四年級中文課程庫：數學、英語語文、科學、社會，單元與逐項中文技能卡片、英文原題、原始練習連結、搜尋與進度。"><title>IXL 四年級中文課程庫｜侯燁自學</title><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#2a3c52;--muted:#6d8194;--line:#dce7ef;--accent:#347ea4;--shadow:0 10px 28px #23445c12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 93% 4%,#d7edea 0,transparent 30%),linear-gradient(140deg,#ecf5ff,#fafbfd 60%,#faf6e8);color:var(--ink);font:14px/1.65 system-ui,"Noto Sans TC",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #75b9d4;outline-offset:2px}
+.wrap{max-width:1300px;margin:0 auto;padding:19px 16px 65px}
+.back{display:inline-flex;padding:8px 14px;border-radius:99px;background:#fff;border:1px solid var(--line);text-decoration:none;font-size:12px;font-weight:850;margin-bottom:14px}
+.hero{border-radius:27px;background:linear-gradient(110deg,#234a75,#457daa 60%,#52a2a0);padding:clamp(24px,5vw,42px);color:white;box-shadow:0 18px 40px #1b4b7629}
+.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:850;color:#d6f5ff}.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.22;margin:9px 0}.hero p{margin:0;line-height:1.8;max-width:840px;color:#e6f9ff}.metrics{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.metrics span{font-size:12px;border:1px solid #ffffff6d;background:#ffffff1f;border-radius:100px;padding:7px 11px;font-weight:750}
+.shortcut{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.shortcut a,.shortcut button{display:inline-flex;text-decoration:none;border-radius:12px;background:#fff;border:1px solid var(--line);padding:9px 12px;color:#3b7594;font-weight:850;font-size:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:15px;margin:15px 0;box-shadow:var(--shadow)}
+.panel h2{font-size:18px;margin:0 0 11px}.steps{display:grid;grid-template-columns:1.05fr 1.35fr;gap:12px}.step{border:1px solid #e1eaf0;padding:12px;background:#f8fbfd;border-radius:14px}
+.step strong{display:block;color:#597c97;font-size:12px;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;max-height:230px;overflow:auto}.chip{border:1px solid #cfe2ef;border-radius:11px;background:#fff;color:#46728f;font-weight:850;font-size:11px;padding:8px 10px}.chip.active{background:#317da4;color:white;border-color:#317da4}.chip small{font-size:10px;opacity:.75}
+.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}.search{flex:1 1 230px;min-width:0;border:1px solid var(--line);background:white;border-radius:14px;padding:12px 15px;outline:none;box-shadow:var(--shadow)}.tool{border:1px solid var(--line);border-radius:13px;padding:10px 13px;background:#fff;font-weight:800;font-size:12px;color:#466a81}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:17px 0 12px}.sectionhead h2{margin:0;font-size:21px}.count{color:var(--muted);font-size:12px}
+.subject-intro{font-size:12px;background:#f0f8fc;border:1px solid #d6e8f2;border-radius:13px;color:#4a738a;padding:11px 12px;line-height:1.7;margin-bottom:14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:12px}
+.card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+.bar{height:5px;background:var(--tone,#357ea5)}.body{padding:16px;display:flex;flex-direction:column;flex:1}
+.top{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-bottom:9px}.code{font-size:11px;color:#fff;background:var(--tone,#337ea4);padding:5px 9px;border-radius:9px;font-weight:900;white-space:nowrap}.note{color:#6c8498;background:#f2f8fc;border:1px solid #e1ecf2;border-radius:9px;padding:4px 7px;font-size:10px;font-weight:800}
+.card h3{font-size:17px;line-height:1.42;margin:0 0 6px}.english{font-size:11px;color:#78899d;line-height:1.55;margin:0 0 12px;min-height:31px;overflow-wrap:anywhere}
+.tag{font-size:10px;color:#557e91;background:#f2f8fa;border-radius:8px;padding:4px 7px;align-self:start;margin-bottom:12px}
+.cardfooter{margin-top:auto;display:flex;flex-direction:column;gap:9px}.cardfooter a{background:#267b9f;color:#fff;padding:9px 11px;border-radius:11px;text-decoration:none;font-size:12px;font-weight:850;text-align:center}
+.cardfooter a.unverified{background:#f5fbff;border:1px solid #bdd8e8;color:#2b7394}
+.progress{width:100%;padding:9px;border:1px solid #d5e5ee;background:#f9fcff;border-radius:10px;color:#3a617b;font-size:12px}
+.caveat{color:#805f2c;background:#fff8e9;border:1px solid #eadfc3;padding:12px 15px;border-radius:15px;font-size:12px;line-height:1.8}
+.empty{border:1px dashed #bcd6e4;border-radius:16px;background:#fff;padding:25px;color:#7e91a1}
+.more{text-align:center;margin:19px 0}.more button{border:1px solid #bdd8e9;border-radius:99px;background:#fff;padding:11px 22px;color:#337b9e;font-weight:850}
+.small{font-size:12px;color:#74889a;line-height:1.8;margin:22px 0}
+@media(max-width:760px){.wrap{padding:12px 11px 48px}.hero{padding:24px 19px}.steps{grid-template-columns:1fr}.step{padding:9px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.body{padding:11px}.card h3{font-size:15px}.english{font-size:10px}.sectionhead h2{font-size:18px}}
+@media(max-width:435px){.cards{grid-template-columns:1fr}.body{padding:15px}}
+</style></head><body><main class="wrap">
+<a class="back" href="./houye-grade4.html">← 返回侯燁四年級自學</a>
+<header class="hero"><div class="eyebrow">HOUYE · IXL GRADE 4 · ZH-TW</div><h1>📚 IXL 四年級中文課程庫</h1><p>數學、英語語文、科學、社會，依科目 → IXL 單元 → 練習技能分層。中文標題方便侯燁自主挑選，保留英文原題與原始 IXL 網址，練習進度由家長或孩子自行標記。</p>
+<div class="metrics"><span id="skillTotal">載入中…</span><span id="groupTotal">單元讀取中…</span><span id="doneTotal">0 項已完成</span><span>🔗 保留 IXL 英文原題</span></div></header>
+<nav class="shortcut"><a href="https://www.ixl.com/math/grade-4" target="_blank" rel="noopener">IXL 四年級數學原始清單</a><a href="https://www.ixl.com/ela/grade-4" target="_blank" rel="noopener">IXL 四年級英語原始清單</a><a href="https://www.ixl.com/science/grade-4" target="_blank" rel="noopener">IXL 四年級科學原始清單</a><a href="https://www.ixl.com/social-studies/grade-4" target="_blank" rel="noopener">IXL 四年級社會原始清單</a></nav>
+<div class="caveat" id="catalogNotice">目前已整理的技能先顯示於下方。各科完整清單及技能數請以 IXL 官方網站為準；中文標題是自學用途翻譯，不是 IXL 官方中文版。若個別練習網址尚未核對，會提供該科目原始清單入口。</div>
+<div class="panel"><h2>🗂️ 三層分類</h2><div class="steps"><div class="step"><strong>第一層｜學習科目</strong><div class="chips" id="subjects"></div></div><div class="step"><strong>第二層｜IXL 英文單元及中文主題</strong><div class="chips" id="categories"></div></div></div></div>
+<div class="toolbar"><input id="search" class="search" aria-label="搜尋課程" type="search" placeholder="搜尋中文題目、英文題目、IXL 編號、單元…"><button class="tool" id="clear" type="button">清除條件</button><button class="tool" id="unfinished" type="button">○ 未完成</button><button class="tool" id="export" type="button">↓ 匯出進度</button><button class="tool" id="import" type="button">↑ 匯入進度</button><input type="file" id="file" accept=".json,application/json" hidden></div>
+<div class="sectionhead"><h2>第三層｜逐項技能卡片</h2><span id="resultCount" class="count"></span></div>
+<div class="subject-intro" id="subjectIntro">從上方選擇一個科目或 IXL 單元；點卡片的原始練習連結進入 IXL。</div>
+<div id="cards" class="cards"></div><div class="more" id="moreWrap" hidden><button type="button" id="more">顯示更多課程</button></div>
+<p class="small">進度是本網站的手動學習標記，並非 IXL SmartScore；不會自動同步到 IXL 帳號、Trello 或 Google Drive。資料存在此瀏覽器，請利用匯出 JSON 備份。IXL 各科內容、標題與連結可能依官方更新。</p>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id),esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const KEY="tobyHouyeIxlGrade4ProgressV1";
+let db=null,subject="全部",category="全部",search="",unfinished=false,limit=48;
+function saved(){try{const x=JSON.parse(localStorage.getItem(KEY)||"{}");return x&&typeof x==="object"?x:{}}catch{return {}}}
+let progress=saved();
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(progress));return true}catch(e){$("catalogNotice").textContent="⚠️ 無法保存進度，請檢查瀏覽器儲存設定";return false}}
+function subjectColor(id){return ({math:"#3b80bc",ela:"#a277bb",science:"#338e79","social-studies":"#c78d46"})[id]||"#4e849e"}
+function displayList(){
+ if(!db)return[];
+ const term=search.trim().toLowerCase();
+ return db.skills.filter(s=>(subject==="全部"||s.subject===subject)&&(category==="全部"||s.category===category)&&(!unfinished||progress[s.id]!=="已完成")&&(!term||[s.title,s.english,s.code,s.category,(db.categories.find(c=>c.id===s.category)?.titleZh||"")].join(" ").toLowerCase().includes(term)));
+}
+function listSubject(){
+ if(!db)return;
+ $("subjects").innerHTML='<button class="chip'+(subject==="全部"?" active":"")+'" type="button" data-subject="全部">全部課程 <small>'+db.skills.length+'</small></button>'+db.subjects.map(sub=>'<button class="chip'+(subject===sub.id?" active":"")+'" type="button" data-subject="'+esc(sub.id)+'">'+esc(sub.name)+' <small>'+db.skills.filter(x=>x.subject===sub.id).length+'</small></button>').join("");
+ const cat=db.categories.filter(x=>subject==="全部"||x.subject===subject);
+ $("categories").innerHTML='<button class="chip'+(category==="全部"?" active":"")+'" type="button" data-category="全部">全部單元</button>'+cat.map(c=>'<button class="chip'+(category===c.id?" active":"")+'" type="button" data-category="'+esc(c.id)+'">'+esc(c.code)+'. '+esc(c.titleZh)+' <small>'+db.skills.filter(s=>s.category===c.id).length+'</small></button>').join("");
+}
+function card(s){
+ const current=progress[s.id]||"未開始",color=subjectColor(s.subject),topic=db.categories.find(c=>c.id===s.category);
+ const linked=s.linkStatus==="verified";
+ const source=db.subjects.find(x=>x.id===s.subject)?.url||"#";
+ const url=linked?s.url:source;
+ return '<article class="card" style="--tone:'+color+'"><div class="bar"></div><div class="body"><div class="top"><span class="code">'+esc(s.code)+'</span><span class="note">'+esc(db.subjects.find(x=>x.id===s.subject)?.name||"")+'</span></div><h3>'+esc(s.title)+'</h3><div class="english">'+esc(s.english)+'</div><span class="tag">'+esc(topic?.titleZh||"")+'</span><div class="cardfooter">'+
+  '<a class="'+(linked?"":"unverified")+'" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+(linked?"開啟 IXL 原始練習 ↗":"前往 IXL 官方科目查找 ↗")+'</a>'+
+  '<label for="p-'+esc(s.id)+'" class="count">手動學習進度</label><select class="progress" id="p-'+esc(s.id)+'" data-progress="'+esc(s.id)+'">'+["未開始","探索中","已完成"].map(x=>'<option'+(x===current?" selected":"")+'>'+x+'</option>').join("")+'</select></div></div></article>';
+}
+function render(){
+ if(!db)return;listSubject();
+ const total=db.skills.length,done=db.skills.filter(x=>progress[x.id]==="已完成").length,filtered=displayList();
+ $("skillTotal").textContent=total+" 項已整理中文技能";$("groupTotal").textContent=db.categories.length+" 個單元";$("doneTotal").textContent=done+" 項已完成";
+ $("resultCount").textContent=filtered.length+" / "+total+" 項";$("unfinished").textContent=unfinished?"✓ 顯示未完成":"○ 未完成";
+ $("cards").innerHTML=filtered.slice(0,limit).map(card).join("")||'<div class="empty">沒有符合條件的技能卡片。請清除篩選或改選其他單元。</div>';
+ $("moreWrap").hidden=limit>=filtered.length;$("more").textContent="顯示更多（尚有 "+Math.max(0,filtered.length-limit)+" 項）";
+ $("subjectIntro").textContent=subject==="全部"?"全部 IXL 四年級學科（已收錄部分技能）":(db.subjects.find(x=>x.id===subject)?.name||"")+"："+
+ (subject==="social-studies"?"其中美國史、政府制度等屬延伸內容，不視為臺灣四年級社會科必修。":"可依 IXL 技能分類挑選，不必依清單順序完成。");
+ const verified=db.skills.filter(x=>x.linkStatus==="verified").length;
+ $("catalogNotice").textContent=db.coverage+" 其中 "+verified+" 項已核對原始技能連結；其餘提供科目原始清單，避免誤導為已確認的直達網址。中文題名是自學用翻譯，保留英文原題核對。";
+}
+$("subjects").addEventListener("click",e=>{const b=e.target.closest("[data-subject]");if(b){subject=b.dataset.subject;category="全部";limit=48;render()}});
+$("categories").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(b){category=b.dataset.category;limit=48;render()}});
+$("search").addEventListener("input",e=>{search=e.target.value;limit=48;render()});
+$("clear").addEventListener("click",()=>{subject="全部";category="全部";search="";unfinished=false;limit=48;$("search").value="";render()});
+$("unfinished").addEventListener("click",()=>{unfinished=!unfinished;limit=48;render()});
+$("more").addEventListener("click",()=>{limit+=48;render()});
+$("cards").addEventListener("change",e=>{const b=e.target.closest("[data-progress]");if(b){progress[b.dataset.progress]=b.value;persist();render()}});
+$("export").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify({schema:"toby-ixl-fourth-grade-progress",version:1,exportedAt:new Date().toISOString(),progress},null,2)],{type:"application/json"});
+ const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download="侯燁-IXL四年級進度-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1100);
+});
+$("import").addEventListener("click",()=>$("file").click());
+$("file").addEventListener("change",async e=>{
+ const f=e.target.files?.[0];if(!f)return;
+ try{const a=JSON.parse(await f.text());if(a.schema!=="toby-ixl-fourth-grade-progress"||a.version!==1||typeof a.progress!=="object"||!a.progress||Array.isArray(a.progress))throw Error("格式不正確");
+ if(!confirm("匯入會取代這個瀏覽器目前的 IXL 手動進度，確定繼續？"))return;
+ progress=a.progress;persist();render();
+ }catch(err){alert("匯入失敗："+err.message)}finally{e.target.value=""}
+});
+fetch("../data/houye-ixl-grade4.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("課程資料讀取失敗");return r.json()}).then(d=>{db=d;const p=new URLSearchParams(location.search);if(db.subjects.some(x=>x.id===p.get("subject")))subject=p.get("subject");render()}).catch(e=>{$("cards").innerHTML='<div class="empty">資料載入失敗：'+esc(e.message)+'</div>'});
+window.addEventListener("storage",e=>{if(e.key===KEY){progress=saved();render()}});
+</script><script src="../shared-nav.js" defer></script></body></html>
