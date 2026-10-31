@@ -9,19 +9,21 @@ on:
 
 concurrency:
   group: ixl-fourth-grade-catalog
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
   import-ixl-grade4:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -39,8 +41,8 @@ jobs:
           counts={s:sum(1 for x in skills if x["subject"]==s) for s in ("math","ela","science","social-studies")}
           assert len({x["id"] for x in skills})==len(skills)
           assert all(x["linkStatus"]=="verified" for x in skills)
-          assert counts["math"] >= 330 and counts["ela"] >= 190
-          assert counts["science"] >= 90 and counts["social-studies"] >= 75
+          assert counts["math"] >= 402 and counts["ela"] >= 261
+          assert counts["science"] >= 126 and counts["social-studies"] >= 124
           print("Skills indexed:",counts)
           PY
       - name: Publish complete official-linked index
@@ -50,7 +52,25 @@ jobs:
           git add public/data/houye-ixl-grade4.json
           if ! git diff --staged --quiet; then
             git commit -m "data: import complete verified IXL grade 4 skill listings [skip ci]"
-            git push
+            for attempt in 1 2 3 4 5; do
+              echo "Synchronizing with main (attempt $attempt/5)"
+              git fetch origin main
+              if ! git rebase origin/main; then
+                git rebase --abort || true
+                echo "::error::Could not safely rebase the catalog update; resolve the conflict manually."
+                exit 1
+              fi
+              if git push origin HEAD:main; then
+                echo "Catalog published successfully"
+                exit 0
+              fi
+              if [ "$attempt" -lt 5 ]; then
+                echo "Push failed; fetching the latest main before retrying."
+                sleep "$((attempt * 2))"
+              fi
+            done
+            echo "::error::Unable to publish after 5 attempts."
+            exit 1
           else
             echo "IXL catalog has not changed"
           fi
