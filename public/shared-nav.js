@@ -6,6 +6,7 @@
     ["▦","工具",base+"index.html#tools"],
     ["★","收藏",base+"index.html#favorites"],
     ["📅","行事曆",base+"pages/calendar.html"],
+    ["📝","記事",base+"pages/my-notes.html?from="+encodeURIComponent(location.pathname+location.search)],
     ["T","Trello","https://trello.com/"],
     ["✉","Gmail","https://mail.google.com/"],
     ["▣","Drive","https://drive.google.com/"]
