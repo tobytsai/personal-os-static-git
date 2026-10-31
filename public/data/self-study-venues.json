@@ -1,0 +1,339 @@
+{
+  "updated": "2026-10-31",
+  "title": "自學場館學習資料庫",
+  "cities": [
+    "臺北市",
+    "新北市",
+    "桃園市"
+  ],
+  "types": [
+    "歷史文化／博物館",
+    "科學／自然",
+    "藝術／工藝",
+    "圖書館／閱讀"
+  ],
+  "summary": "三市場館，提供探索主題、觀察任務、地圖與官網，臺中科博館獨立列為跨區延伸。",
+  "venues": [
+    {
+      "id": "tp-npm",
+      "name": "國立故宮博物院（北部院區）",
+      "city": "臺北市",
+      "district": "士林區",
+      "type": "歷史文化／博物館",
+      "address": "臺北市士林區至善路二段221號",
+      "url": "https://www.npm.edu.tw/",
+      "description": "觀察歷代器物、書畫與紋飾，探索不同時代的材料、藝術及生活。",
+      "mission": "選一件文物，畫下它的紋樣，說明材質、用途與你想知道的問題。",
+      "keywords": [
+        "故宮",
+        "文物",
+        "書法",
+        "古畫"
+      ],
+      "icon": "🏺"
+    },
+    {
+      "id": "tp-science",
+      "name": "國立臺灣科學教育館",
+      "city": "臺北市",
+      "district": "士林區",
+      "type": "科學／自然",
+      "address": "臺北市士林區士商路189號",
+      "url": "https://www.ntsec.gov.tw/",
+      "description": "科學互動展、實驗課程與主題特展，適合從操作中探索科學。",
+      "mission": "挑一個互動裝置，先猜測結果，再操作、記錄與比較。",
+      "keywords": [
+        "科教館",
+        "科博",
+        "物理",
+        "科學實驗"
+      ],
+      "icon": "🔬"
+    },
+    {
+      "id": "tp-astronomy",
+      "name": "臺北市立天文科學教育館",
+      "city": "臺北市",
+      "district": "士林區",
+      "type": "科學／自然",
+      "address": "臺北市士林區基河路363號",
+      "url": "https://tam.gov.taipei/",
+      "description": "從星體、太陽系與天文互動展覽認識宇宙與觀測方法。",
+      "mission": "畫一張太陽系示意圖，記錄一個自己最想進一步查證的天文問題。",
+      "keywords": [
+        "天文館",
+        "星星",
+        "行星"
+      ],
+      "icon": "🪐"
+    },
+    {
+      "id": "tp-art",
+      "name": "臺北市立美術館",
+      "city": "臺北市",
+      "district": "中山區",
+      "type": "藝術／工藝",
+      "address": "臺北市中山區中山北路三段181號",
+      "url": "https://www.tfam.museum/",
+      "description": "近現代美術與當代藝術展覽，館內設有兒童藝術教育相關空間。",
+      "mission": "比較兩件作品的構圖、媒材與情緒，完成一張小策展卡。",
+      "keywords": [
+        "北美館",
+        "展覽",
+        "美術館"
+      ],
+      "icon": "🎨"
+    },
+    {
+      "id": "tp-library",
+      "name": "臺北市立圖書館總館",
+      "city": "臺北市",
+      "district": "大安區",
+      "type": "圖書館／閱讀",
+      "address": "臺北市大安區建國南路二段125號",
+      "url": "https://tpml.gov.taipei/",
+      "description": "豐富館藏與閱讀空間，可用館藏搜尋支持主題自學。",
+      "mission": "選定一個研究題目，找到三本不同書籍，寫下各自可以回答什麼問題。",
+      "keywords": [
+        "北市圖",
+        "閱讀",
+        "書籍"
+      ],
+      "icon": "📚"
+    },
+    {
+      "id": "tp-beitou-library",
+      "name": "臺北市立圖書館北投分館",
+      "city": "臺北市",
+      "district": "北投區",
+      "type": "圖書館／閱讀",
+      "address": "臺北市北投區光明路251號",
+      "url": "https://tpml.gov.taipei/",
+      "description": "北投公園綠建築圖書館，可結合節能、水資源與建築觀察。",
+      "mission": "尋找建築節能的三個設計，畫出圖書館如何利用自然光或雨水。",
+      "keywords": [
+        "綠建築",
+        "北投",
+        "環境教育"
+      ],
+      "icon": "🌳"
+    },
+    {
+      "id": "nt-shihsanhang",
+      "name": "新北市立十三行博物館",
+      "city": "新北市",
+      "district": "八里區",
+      "type": "歷史文化／博物館",
+      "address": "新北市八里區博物館路200號",
+      "url": "https://www.sshm.ntpc.gov.tw/",
+      "description": "認識十三行文化、考古方法與古代人類生活。",
+      "mission": "當一日考古研究員，觀察三件展示品，推測古人如何生活與製作工具。",
+      "keywords": [
+        "考古",
+        "史前文化",
+        "八里"
+      ],
+      "icon": "🏺"
+    },
+    {
+      "id": "nt-ceramics",
+      "name": "新北市立鶯歌陶瓷博物館",
+      "city": "新北市",
+      "district": "鶯歌區",
+      "type": "藝術／工藝",
+      "address": "新北市鶯歌區文化路200號",
+      "url": "https://www.ceramics.ntpc.gov.tw/",
+      "description": "從陶瓷歷史、工法與當代陶藝探索土、火與材料的變化。",
+      "mission": "比較不同陶土與釉色，畫下從原土到陶器的製作流程。",
+      "keywords": [
+        "鶯歌",
+        "陶藝",
+        "土",
+        "陶瓷"
+      ],
+      "icon": "🏺"
+    },
+    {
+      "id": "nt-art",
+      "name": "新北市美術館",
+      "city": "新北市",
+      "district": "鶯歌區",
+      "type": "藝術／工藝",
+      "address": "新北市鶯歌區館前路300號",
+      "url": "https://newtaipei.travel/zh-tw/Attractions/Detail/403560/",
+      "linkLabel": "市府場館介紹",
+      "description": "當代美術館結合河岸環境與公共藝術，可研究建築、藝術與地景。",
+      "mission": "選一件戶外公共藝術，觀察它與周圍自然環境的關係，做一張作品說明。",
+      "keywords": [
+        "新美館",
+        "公共藝術",
+        "美術"
+      ],
+      "icon": "🎨"
+    },
+    {
+      "id": "nt-gold",
+      "name": "新北市立黃金博物館",
+      "city": "新北市",
+      "district": "瑞芳區",
+      "type": "歷史文化／博物館",
+      "address": "新北市瑞芳區金光路8號",
+      "url": "https://www.gep.ntpc.gov.tw/",
+      "description": "金瓜石礦業史、地質資源與礦山社區的生活文化。",
+      "mission": "繪製礦業資源小地圖，記錄礦物、地形及人們的生活如何互相影響。",
+      "keywords": [
+        "黃金",
+        "金瓜石",
+        "礦石",
+        "地質"
+      ],
+      "icon": "⛏️"
+    },
+    {
+      "id": "nt-tamsui",
+      "name": "新北市立淡水古蹟博物館（紅毛城）",
+      "city": "新北市",
+      "district": "淡水區",
+      "type": "歷史文化／博物館",
+      "address": "新北市淡水區中正路28巷1號",
+      "url": "https://www.tshs.ntpc.gov.tw/",
+      "description": "走進古蹟與港口歷史，認識淡水的多元文化與建築。",
+      "mission": "尋找兩種不同時代的建築元素，畫成比較圖並記錄它們的用途。",
+      "keywords": [
+        "紅毛城",
+        "古蹟",
+        "淡水"
+      ],
+      "icon": "🏰"
+    },
+    {
+      "id": "nt-library",
+      "name": "新北市立圖書館總館",
+      "city": "新北市",
+      "district": "板橋區",
+      "type": "圖書館／閱讀",
+      "address": "新北市板橋區貴興路139號",
+      "url": "https://www.library.ntpc.gov.tw/",
+      "description": "綜合館藏、數位資源與兒童閱讀空間，可進行書目搜尋與研究。",
+      "mission": "為一個自學主題找三種不同資料來源，製作一張資料整理卡。",
+      "keywords": [
+        "新北市圖",
+        "借書",
+        "閱讀"
+      ],
+      "icon": "📚"
+    },
+    {
+      "id": "ty-child-art",
+      "name": "桃園市兒童美術館",
+      "city": "桃園市",
+      "district": "中壢區",
+      "type": "藝術／工藝",
+      "address": "桃園市中壢區高鐵南路二段90號",
+      "url": "https://tmofa.tycg.gov.tw/",
+      "description": "以兒童參與為核心的美術館，提供展覽、工作坊及藝術閱讀空間。",
+      "mission": "挑一件最想參與的作品，寫下它如何邀請觀眾觀察、想像或動手做。",
+      "keywords": [
+        "兒美館",
+        "青埔",
+        "美術"
+      ],
+      "icon": "🖼️"
+    },
+    {
+      "id": "ty-hengshan",
+      "name": "橫山書法藝術館",
+      "city": "桃園市",
+      "district": "大園區",
+      "type": "藝術／工藝",
+      "address": "桃園市大園區大仁路100號",
+      "url": "https://tmofa.tycg.gov.tw/ch/visit/information/hengshan?fid=9898",
+      "description": "現當代書法藝術與建築水景，適合觀察書寫、線條與空間設計。",
+      "mission": "選一個書法作品，記錄字形的粗細、節奏與布局，再用不同工具創作線條。",
+      "keywords": [
+        "書法",
+        "A17",
+        "水景",
+        "青埔"
+      ],
+      "icon": "🖌️"
+    },
+    {
+      "id": "ty-library",
+      "name": "桃園市立圖書館總館",
+      "city": "桃園市",
+      "district": "桃園區",
+      "type": "圖書館／閱讀",
+      "address": "桃園市桃園區南平路303號",
+      "url": "https://www.typl.gov.tw/zh-tw/About/Introduce/024",
+      "description": "大型公共圖書館，設有親子閱讀、青少年及創客學習相關空間。",
+      "mission": "找到一份主題資料，利用書籍或資料庫完成一頁小型研究筆記。",
+      "keywords": [
+        "桃市圖",
+        "MakerSpace",
+        "閱讀"
+      ],
+      "icon": "📚"
+    },
+    {
+      "id": "ty-wood",
+      "name": "桃園市立大溪木藝生態博物館",
+      "city": "桃園市",
+      "district": "大溪區",
+      "type": "歷史文化／博物館",
+      "address": "桃園市大溪區普濟路11號",
+      "url": "https://wem.tycg.gov.tw/",
+      "description": "結合大溪老城、木工藝、歷史建築與地方文化的街區式博物館。",
+      "mission": "觀察一種木作接合或家具設計，畫出結構並訪問它與地方生活的關係。",
+      "keywords": [
+        "大溪",
+        "木藝",
+        "地方文化",
+        "木工"
+      ],
+      "icon": "🪵"
+    },
+    {
+      "id": "ty-landgod",
+      "name": "桃園市土地公文化館",
+      "city": "桃園市",
+      "district": "桃園區",
+      "type": "歷史文化／博物館",
+      "address": "桃園市桃園區三民路一段100號",
+      "url": "https://www.taoyuantudigong.org.tw/",
+      "description": "認識臺灣土地公信仰、民俗節慶、社區生活與藝術工藝。",
+      "mission": "觀察一個民俗物件或符號，記錄其故事，思考地方信仰與居民生活的關係。",
+      "keywords": [
+        "民俗",
+        "土地公",
+        "社區文化"
+      ],
+      "icon": "🏮"
+    }
+  ],
+  "extras": [
+    {
+      "id": "tc-science-museum",
+      "name": "國立自然科學博物館（科博館）",
+      "city": "臺中市",
+      "district": "北區",
+      "type": "科學／自然",
+      "address": "臺中市北區館前路1號",
+      "url": "https://www.nmns.edu.tw/",
+      "description": "自然史、地球環境、生物多樣性及人類文化；不在北北桃三市，列為跨區延伸參考。",
+      "mission": "選一個生態或地質主題，記錄標本、環境及人類活動之間的關係。",
+      "keywords": [
+        "科博館",
+        "臺中"
+      ],
+      "icon": "🦖",
+      "extra": true
+    }
+  ],
+  "notes": [
+    "本資料為自學用場館導覽，不保證特展或活動即時有名額；出發前請確認開放時間、展覽、票價與預約規定。",
+    "學習任務為自學延伸建議，並非場館官方教案。",
+    "國立自然科學博物館（科博館）位於臺中市；臺北市的國立臺灣科學教育館（科教館）是不同機構。",
+    "桃園市立美術館母館仍興建中，本期收錄已開放的桃園兒童美術館與橫山書法藝術館。"
+  ]
+}
