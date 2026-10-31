@@ -26,6 +26,9 @@
     #os-global-menu .os-menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     #os-global-menu .os-link{display:flex;align-items:center;gap:9px;padding:12px 10px;border-radius:13px;background:#f5f6f8;color:#30343a;text-decoration:none;font:600 14px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC",sans-serif}
     #os-global-menu .os-icon{font-size:19px;min-width:22px;text-align:center}
+    #os-quick-note{position:fixed;right:15px;bottom:16px;z-index:10003;display:inline-flex;align-items:center;gap:6px;padding:11px 15px;border-radius:999px;background:#287c95;color:#fff;text-decoration:none;box-shadow:0 9px 26px #1947675c;border:1px solid #ffffff70;font:850 13px system-ui,-apple-system,"Noto Sans TC",sans-serif;white-space:nowrap}
+    #os-quick-note:hover{background:#1d6080}
+    @media(max-width:600px){#os-quick-note{right:9px;bottom:12px;padding:10px 13px;font-size:12px}}
     body.os-subpage{padding-top:76px!important}
     @media(max-width:600px){#os-global-nav{height:64px;padding:6px 10px;gap:9px}#os-global-nav .os-brand{flex-basis:48px;width:48px;height:48px;border-radius:15px}#os-global-nav .os-link{padding:9px 11px;font-size:13px}#os-global-menu{top:72px}body.os-subpage{padding-top:70px!important}}
   `;
@@ -70,6 +73,15 @@
   }
   items.forEach(item=>grid.appendChild(makeLink(item)));
   document.body.appendChild(menu);
+  if(!location.pathname.endsWith("/my-notes.html")){
+    const quick=document.createElement("a");
+    quick.id="os-quick-note";
+    quick.href=base+"pages/my-notes.html?from="+encodeURIComponent(location.pathname+location.search);
+    quick.textContent="📝 記事";
+    quick.setAttribute("aria-label","記錄來自目前啟動器的記事");
+    document.body.appendChild(quick);
+  }
+
   function closeMenu(){
     menu.classList.remove("is-open");
     const brand=homePage?document.querySelector(".rail .logo"):nav.querySelector(".os-brand");
