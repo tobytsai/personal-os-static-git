@@ -205,7 +205,7 @@ $("export").addEventListener("click",()=>{
 $("import").addEventListener("click",()=>$("file").click());
 $("file").addEventListener("change",async e=>{const file=e.target.files?.[0];if(!file)return;try{const payload=JSON.parse(await file.text());if(payload.schema!=="toby-houye-junyi-grade4-progress"||payload.version!==1||typeof payload.progress!=="object"||!payload.progress||Array.isArray(payload.progress))throw Error("檔案格式不正確");if(!confirm("這次匯入會覆蓋本機均一課程進度，確定繼續？"))return;progress=payload.progress;if(!save())throw Error("本機儲存失敗");render()}catch(err){alert("匯入失敗："+err.message)}finally{e.target.value=""}});
 fetch("../data/houye-junyi-grade4.json?v="+Date.now()).then(r=>{if(!r.ok)throw Error("課程資料讀取失敗");return r.json()}).then(d=>{
- db=d;const p=new URLSearchParams(location.search),s=p.get("subject");if(db.subjects.some(x=>x.id===s))subject=s;const g=p.get("group");if(db.groups.some(x=>x.id===g))group=g;render();
+ db=d;const p=new URLSearchParams(location.search),s=p.get("subject");if(db.subjects.some(x=>x.id===s))subject=s;const g=p.get("group");if(db.groups.some(x=>x.id===g))group=g;render();if(p.get("detail")==="1"&&group!=="全部")openDetail(group,p.get("lesson"));
 }).catch(e=>$("cards").innerHTML='<div class="empty">課程資料載入失敗，請重新整理：'+esc(e.message)+'</div>');
 window.addEventListener("storage",e=>{if(e.key===KEY){progress=stored();render()}});
 </script><script src="../shared-nav.js" defer></script></body></html>
