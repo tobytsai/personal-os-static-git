@@ -78,7 +78,7 @@ def topic_for(anchor, code: str):
     while tag is not None:
         title = clean_title(tag.get_text(" ", strip=True))
         if title and len(title) < 130 and not re.match(r"(?i)^(?:fifth grade|grade 4|skills|learning|recommendations|all grades)", title):
-            found = re.match(r"^([A-Z])[\.\s]+(.+)$", title)
+            found = re.match(r"^([A-Z]+)[\.\s]+(.+)$", title)
             return (found.group(1), found.group(2)) if found else ("", title)
         tag = tag.find_previous(re.compile("^h[2-5]$"))
     return ("", "Other fifth grade skills")
@@ -177,7 +177,9 @@ def main():
     old = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {"skills": []}
     preset = {(s["subject"], s["english"].lower().strip()): s
               for s in old.get("skills", []) if s.get("title") and not s["title"].startswith("待翻譯")}
+    old_categories = {(c["subject"], c["english"].lower().strip()): c["titleZh"] for c in old.get("categories", []) if c.get("titleZh")}
     allskills, categories, subjects = [], [], []
+    skill_counters = {}
     for subject, label, url, min_count in SUBJECTS:
         skills = collect(subject, url, min_count)
         subjects.append({"id": subject, "name": label, "url": url.replace("/skills", "")})
@@ -190,14 +192,15 @@ def main():
                 group_index[key] = len(group_index) + 1
             g_id = f"{subject}-{letter}-{group_index[key]}"
             if not any(c["id"] == g_id for c in categories):
-                group_zh = ZH_GROUPS.get(group_en.lower().strip(), None)
+                group_zh = old_categories.get((subject, group_en.lower().strip())) or ZH_GROUPS.get(group_en.lower().strip(), None)
                 categories.append({"id":g_id, "subject":subject, "code":letter,
                                    "titleZh":group_zh or ("單元："+group_en), "english":group_en})
             found = preset.get((subject, entry["english"].lower().strip()))
+            skill_counters[g_id] = skill_counters.get(g_id, 0) + 1
             item = {
                 "id": f"{subject}-{entry['slug']}",
                 "subject":subject,
-                "category":g_id, "code":f"{letter}.{i}",
+                "category":g_id, "code":f"{letter}.{skill_counters[g_id]}",
                 "title":(found or {}).get("title"),
                 "english":entry["english"],
                 "url":entry["url"],
