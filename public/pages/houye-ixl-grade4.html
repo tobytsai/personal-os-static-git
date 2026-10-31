@@ -68,9 +68,9 @@ function card(s){
  const current=progress[s.id]||"未開始",color=subjectColor(s.subject),topic=db.categories.find(c=>c.id===s.category);
  const linked=s.linkStatus==="verified";
  const source=db.subjects.find(x=>x.id===s.subject)?.url||"#";
- const url=linked?s.url:source;
+ const url=s.url;
  return '<article class="card" style="--tone:'+color+'"><div class="bar"></div><div class="body"><div class="top"><span class="code">'+esc(s.code)+'</span><span class="note">'+esc(db.subjects.find(x=>x.id===s.subject)?.name||"")+'</span></div><h3>'+esc(s.title)+'</h3><div class="english">'+esc(s.english)+'</div><span class="tag">'+esc(topic?.titleZh||"")+'</span><div class="cardfooter">'+
-  '<a class="'+(linked?"":"unverified")+'" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+(linked?"開啟 IXL 原始練習 ↗":"前往 IXL 官方科目查找 ↗")+'</a>'+
+  '<a class="'+(linked?"":"unverified")+'" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+(linked?"開啟 IXL 原始練習 ↗":"試開該技能連結（未核對）↗")+'</a>'+(!linked?'<a class="unverified" href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">官方四年級完整清單 ↗</a>':"")+
   '<label for="p-'+esc(s.id)+'" class="count">手動學習進度</label><select class="progress" id="p-'+esc(s.id)+'" data-progress="'+esc(s.id)+'">'+["未開始","探索中","已完成"].map(x=>'<option'+(x===current?" selected":"")+'>'+x+'</option>').join("")+'</select></div></div></article>';
 }
 function render(){
@@ -83,7 +83,7 @@ function render(){
  $("subjectIntro").textContent=subject==="全部"?"全部 IXL 四年級學科（已收錄部分技能）":(db.subjects.find(x=>x.id===subject)?.name||"")+"："+
  (subject==="social-studies"?"其中美國史、政府制度等屬延伸內容，不視為臺灣四年級社會科必修。":"可依 IXL 技能分類挑選，不必依清單順序完成。");
  const verified=db.skills.filter(x=>x.linkStatus==="verified").length;
- $("catalogNotice").textContent=db.coverage+" 其中 "+verified+" 項已核對原始技能連結；其餘提供科目原始清單，避免誤導為已確認的直達網址。中文題名是自學用翻譯，保留英文原題核對。";
+ $("catalogNotice").textContent=db.coverage+" 其中 "+verified+" 項已核對原始技能連結。未核對的卡片可試開依題名組成的技能網址，並提供官方四年級清單作為備用入口；不能保證推導網址全部有效。中文標題是自學用翻譯，原始英文題名保留供對照。";
 }
 $("subjects").addEventListener("click",e=>{const b=e.target.closest("[data-subject]");if(b){subject=b.dataset.subject;category="全部";limit=48;render()}});
 $("categories").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(b){category=b.dataset.category;limit=48;render()}});
