@@ -31,7 +31,7 @@ const escapeHtml=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;"
 function read(){try{const a=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(a)?a.filter(n=>n&&typeof n.id==="string"):[]}catch(e){return[]}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(notes));$("status").textContent="✓ 已自動儲存在此瀏覽器";return true}catch(e){$("status").textContent="⚠️ 儲存失敗，請確認瀏覽器空間";return false}}
 function validSource(text){try{const url=new URL(String(text||""),location.origin);return url.origin===location.origin&&url.pathname.startsWith("/personal-os-static-git/")?url.pathname+url.search:""}catch(e){return""}}
-let notes=read(),currentId="",from=validSource(new URLSearchParams(location.search).get("from"));
+const queryParams=new URLSearchParams(location.search);let notes=read(),currentId="",from=validSource(queryParams.get("from")),fromLabel=String(queryParams.get("label")||"").slice(0,160);
 $("category").innerHTML=CATS.map(x=>'<option>'+escapeHtml(x)+'</option>').join("");
 $("filter").innerHTML+=CATS.map(x=>'<option>'+escapeHtml(x)+'</option>').join("");
 function currentNote(){return notes.find(n=>n.id===currentId)}
@@ -51,7 +51,7 @@ function draw(){
  $("status").textContent="✓ 自動儲存至本機";
 }
 function add(){
- const n={id:crypto.randomUUID?crypto.randomUUID():"note-"+Date.now(),title:"",body:"",category:"隨手記",tags:[],pinned:false,done:false,source:from||"",page:from?from.split("?")[0].split("/").pop():"我的記事",createdAt:time(),updatedAt:time()};
+ const n={id:crypto.randomUUID?crypto.randomUUID():"note-"+Date.now(),title:"",body:"",category:"隨手記",tags:[],pinned:false,done:false,source:from||"",page:from?(fromLabel||from.split("?")[0].split("/").pop()):"我的記事",createdAt:time(),updatedAt:time()};
  notes.unshift(n);currentId=n.id;from="";if(save())draw();
 }
 function change(){
