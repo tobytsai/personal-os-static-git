@@ -8,7 +8,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: tianxia-images
+  group: main-write-queue
   cancel-in-progress: false
 jobs:
   import:
@@ -33,6 +33,5 @@ jobs:
             echo "No image changes"
           else
             git commit -m "Persist 天下畫博 Airtable artwork preview images"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            bash scripts/git-safe-push.sh
           fi

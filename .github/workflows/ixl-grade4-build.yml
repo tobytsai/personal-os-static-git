@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ixl-fourth-grade-catalog
+  group: main-write-queue
   cancel-in-progress: false
 
 permissions:
@@ -52,25 +52,7 @@ jobs:
           git add public/data/houye-ixl-grade4.json
           if ! git diff --staged --quiet; then
             git commit -m "data: import complete verified IXL grade 4 skill listings [skip ci]"
-            for attempt in 1 2 3 4 5; do
-              echo "Synchronizing with main (attempt $attempt/5)"
-              git fetch origin main
-              if ! git rebase origin/main; then
-                git rebase --abort || true
-                echo "::error::Could not safely rebase the catalog update; resolve the conflict manually."
-                exit 1
-              fi
-              if git push origin HEAD:main; then
-                echo "Catalog published successfully"
-                exit 0
-              fi
-              if [ "$attempt" -lt 5 ]; then
-                echo "Push failed; fetching the latest main before retrying."
-                sleep "$((attempt * 2))"
-              fi
-            done
-            echo "::error::Unable to publish after 5 attempts."
-            exit 1
+            bash scripts/git-safe-push.sh
           else
             echo "IXL catalog has not changed"
           fi

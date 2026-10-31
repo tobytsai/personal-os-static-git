@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: azhu-photo-import
+  group: main-write-queue
   cancel-in-progress: false
 
 jobs:
@@ -35,6 +35,5 @@ jobs:
             echo "No new photo changes"
           else
             git commit -m "Import 阿竹 Airtable artwork photos as durable WebP gallery"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            bash scripts/git-safe-push.sh
           fi

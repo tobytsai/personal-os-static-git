@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: tayuan-airtable-image-import
+  group: main-write-queue
   cancel-in-progress: false
 
 jobs:
@@ -45,6 +45,5 @@ jobs:
             echo "Images already up-to-date."
           else
             git commit -m "Sync Tayuan product pictures from user-owned Airtable"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            bash scripts/git-safe-push.sh
           fi

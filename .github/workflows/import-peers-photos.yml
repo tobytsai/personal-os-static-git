@@ -7,6 +7,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: main-write-queue
+  cancel-in-progress: false
 jobs:
   import-images:
     runs-on: ubuntu-latest
@@ -25,6 +28,5 @@ jobs:
           git add -A public/images/peers public/pages/peers.html public/data/peers-photo-import-report.json scripts/peers-photo-import-input.json
           if ! git diff --cached --quiet; then
             git commit -m "Save Airtable peers images locally"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            bash scripts/git-safe-push.sh
           fi

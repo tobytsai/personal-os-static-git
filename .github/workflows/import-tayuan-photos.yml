@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: tayuan-photo-import
+  group: main-write-queue
   cancel-in-progress: false
 
 jobs:
@@ -35,6 +35,5 @@ jobs:
             echo "No photo changes"
           else
             git commit -m "Import Tayuan product photos from approved Airtable attachments"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            bash scripts/git-safe-push.sh
           fi

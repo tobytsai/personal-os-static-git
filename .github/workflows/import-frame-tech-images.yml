@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: frame-tech-images-import
+  group: main-write-queue
   cancel-in-progress: false
 
 jobs:
@@ -37,6 +37,5 @@ jobs:
             echo "No new photos to commit"
           else
             git commit -m "Persist Airtable framing technique photos for 仕事 cards"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            bash scripts/git-safe-push.sh
           fi

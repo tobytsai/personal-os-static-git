@@ -61,6 +61,24 @@ jobs:
       - name: Collect Song Feng Ge brocade products and official photos
         run: |
           python3 scripts/build_songfeng_brocade_fabrics.py
+      - name: Validate Junyi catalog and chapter-detail files
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          page = Path("public/pages/houye-junyi-grade4.html")
+          catalog = json.loads(Path("public/data/houye-junyi-grade4.json").read_text(encoding="utf-8"))
+          details = json.loads(Path("public/data/houye-junyi-details.json").read_text(encoding="utf-8"))
+          html = page.read_text(encoding="utf-8")
+          assert 'id="detailPanel"' in html and '查看章節細節' in html
+          assert len(catalog["lessons"]) >= 211 and len(catalog["groups"]) >= 63
+          chapter = next(x for x in details["groups"] if x["id"] == "math-ch02")
+          assert len(chapter["sections"]) >= 4
+          assert sum(item.get("linkStatus") == "direct" for sec in chapter["sections"] for item in sec["items"]) >= 17
+          print("Junyi course catalog and drawer detail verified in Pages artifact")
+          PY
+      - name: Stamp the exact source commit in Pages artifact
+        run: printf '%s\n' "$GITHUB_SHA" > public/data/deploy-commit.txt
       - name: Upload public directory
         uses: actions/upload-pages-artifact@v3
         with:
@@ -68,3 +86,52 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify published Pages content and revision
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import time
+          from urllib.parse import urljoin
+          from urllib.request import Request, urlopen
+          root = (os.getenv("PAGE_URL") or "").rstrip("/") + "/"
+          expected = os.getenv("GITHUB_SHA")
+          if not root.startswith("https://") or not expected:
+              raise SystemExit("Missing GitHub Pages URL or revision SHA")
+          paths = (
+              "data/deploy-commit.txt",
+              "pages/houye-junyi-grade4.html",
+              "data/houye-junyi-grade4.json",
+              "data/houye-junyi-details.json",
+          )
+          for attempt in range(1, 9):
+              try:
+                  contents = {}
+                  for path in paths:
+                      url = urljoin(root, path) + f"?deployment={expected[:12]}"
+                      req = Request(url, headers={"Cache-Control": "no-cache", "User-Agent": "Pages-verify/1.0"})
+                      with urlopen(req, timeout=20) as response:
+                          if response.status != 200:
+                              raise RuntimeError(f"{path}: HTTP {response.status}")
+                          contents[path] = response.read().decode("utf-8")
+                  live_sha = contents[paths[0]].strip()
+                  if live_sha != expected:
+                      raise RuntimeError(f"Pages revision mismatch (expected {expected[:12]}, got {live_sha[:12]})")
+                  html = contents[paths[1]]
+                  catalog = json.loads(contents[paths[2]])
+                  detail = json.loads(contents[paths[3]])
+                  assert 'id="detailPanel"' in html and '查看章節細節' in html
+                  assert len(catalog["lessons"]) >= 211
+                  assert any(g["id"] == "math-ch02" and len(g["sections"]) >= 4 for g in detail["groups"])
+                  print("Live GitHub Pages verified:", root, "revision", live_sha)
+                  break
+              except Exception as exc:
+                  print(f"Pages smoke check {attempt}/8: {exc}", flush=True)
+                  if attempt == 8:
+                      raise
+                  time.sleep(8)
+          PY
+
