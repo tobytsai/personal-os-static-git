@@ -49,14 +49,14 @@
       "id": "math-C-3",
       "subject": "math",
       "code": "C",
-      "titleZh": "除整數",
+      "titleZh": "整數除法",
       "english": "Divide whole numbers"
     },
     {
       "id": "math-D-4",
       "subject": "math",
       "code": "D",
-      "titleZh": "指數",
+      "titleZh": "指數與次方",
       "english": "Exponents"
     },
     {
@@ -70,7 +70,7 @@
       "id": "math-F-6",
       "subject": "math",
       "code": "F",
-      "titleZh": "因數和倍數",
+      "titleZh": "因數與倍數",
       "english": "Factors and multiples"
     },
     {
@@ -119,7 +119,7 @@
       "id": "math-M-13",
       "subject": "math",
       "code": "M",
-      "titleZh": "除分數",
+      "titleZh": "分數除法",
       "english": "Divide fractions"
     },
     {
@@ -161,7 +161,7 @@
       "id": "math-S-19",
       "subject": "math",
       "code": "S",
-      "titleZh": "比率和費率",
+      "titleZh": "比與比率",
       "english": "Ratios and rates"
     },
     {
@@ -196,7 +196,7 @@
       "id": "math-X-24",
       "subject": "math",
       "code": "X",
-      "titleZh": "消費者數學",
+      "titleZh": "消費與數學",
       "english": "Consumer math"
     },
     {
@@ -224,35 +224,35 @@
       "id": "math-BB-28",
       "subject": "math",
       "code": "BB",
-      "titleZh": "一變量不等式",
+      "titleZh": "一元不等式",
       "english": "One-variable inequalities"
     },
     {
       "id": "math-CC-29",
       "subject": "math",
       "code": "CC",
-      "titleZh": "二變量方程",
+      "titleZh": "二元方程式",
       "english": "Two-variable equations"
     },
     {
       "id": "math-DD-30",
       "subject": "math",
       "code": "DD",
-      "titleZh": "線條和角度",
+      "titleZh": "直線與角度",
       "english": "Lines and angles"
     },
     {
       "id": "math-EE-31",
       "subject": "math",
       "code": "EE",
-      "titleZh": "QR 圖圖形",
+      "titleZh": "平面圖形",
       "english": "Two-dimensional figures"
     },
     {
       "id": "math-FF-32",
       "subject": "math",
       "code": "FF",
-      "titleZh": "三維人物",
+      "titleZh": "立體圖形",
       "english": "Three-dimensional figures"
     },
     {
@@ -343,7 +343,7 @@
       "id": "ela-G-7",
       "subject": "ela",
       "code": "G",
-      "titleZh": "分析文獻",
+      "titleZh": "分析文學作品",
       "english": "Analyzing literature"
     },
     {
@@ -357,7 +357,7 @@
       "id": "ela-I-9",
       "subject": "ela",
       "code": "I",
-      "titleZh": "分析資訊文本",
+      "titleZh": "分析資訊類文本",
       "english": "Analyzing informational texts"
     },
     {
@@ -385,7 +385,7 @@
       "id": "ela-M-13",
       "subject": "ela",
       "code": "M",
-      "titleZh": "比較文字",
+      "titleZh": "比較文本",
       "english": "Comparing texts"
     },
     {
@@ -413,7 +413,7 @@
       "id": "ela-Q-17",
       "subject": "ela",
       "code": "Q",
-      "titleZh": "工藝與風格",
+      "titleZh": "寫作技巧與風格",
       "english": "Craft and style"
     },
     {
@@ -469,7 +469,7 @@
       "id": "ela-Y-25",
       "subject": "ela",
       "code": "Y",
-      "titleZh": "共音字",
+      "titleZh": "同音異字",
       "english": "Homophones"
     },
     {
@@ -588,7 +588,7 @@
       "id": "ela-PP-42",
       "subject": "ela",
       "code": "PP",
-      "titleZh": "直接和間接對象",
+      "titleZh": "直接受詞與間接受詞",
       "english": "Direct and indirect objects"
     },
     {
@@ -721,14 +721,14 @@
       "id": "science-N-14",
       "subject": "science",
       "code": "N",
-      "titleZh": "波浪",
+      "titleZh": "波",
       "english": "Waves"
     },
     {
       "id": "science-O-15",
       "subject": "science",
       "code": "O",
-      "titleZh": "解決方案",
+      "titleZh": "溶液",
       "english": "Solutions"
     },
     {
@@ -812,7 +812,7 @@
       "id": "science-AA-27",
       "subject": "science",
       "code": "AA",
-      "titleZh": "保護",
+      "titleZh": "保育",
       "english": "Conservation"
     },
     {
@@ -861,7 +861,7 @@
       "id": "science-HH-34",
       "subject": "science",
       "code": "HH",
-      "titleZh": "氣氛",
+      "titleZh": "大氣層",
       "english": "The atmosphere"
     },
     {
@@ -1015,7 +1015,7 @@
       "id": "social-studies-R-18",
       "subject": "social-studies",
       "code": "R",
-      "titleZh": "探索時代",
+      "titleZh": "大航海時代",
       "english": "Age of exploration"
     },
     {
@@ -1113,21 +1113,21 @@
       "id": "social-studies-FF-32",
       "subject": "social-studies",
       "code": "FF",
-      "titleZh": "憲法",
+      "titleZh": "美國憲法",
       "english": "The Constitution"
     },
     {
       "id": "social-studies-GG-33",
       "subject": "social-studies",
       "code": "GG",
-      "titleZh": "法律體系",
+      "titleZh": "美國法律體系",
       "english": "The legal system"
     },
     {
       "id": "social-studies-HH-34",
       "subject": "social-studies",
       "code": "HH",
-      "titleZh": "公民身份",
+      "titleZh": "公民身分",
       "english": "Citizenship"
     },
     {
@@ -1292,7 +1292,7 @@
       "subject": "math",
       "category": "math-C-3",
       "code": "C.4",
-      "title": "估計商數",
+      "title": "估算商",
       "english": "Estimate quotients",
       "url": "https://www.ixl.com/math/grade-6/estimate-quotients",
       "linkStatus": "verified",
@@ -5984,12 +5984,12 @@
       "subject": "ela",
       "category": "ela-C-3",
       "code": "C.1",
-      "title": "明確作者的目的",
+      "title": "辨識作者的寫作目的",
       "english": "Identify the author's purpose",
       "url": "https://www.ixl.com/ela/grade-6/identify-the-authors-purpose",
       "linkStatus": "verified",
       "type": "練習",
-      "translationStatus": "machine"
+      "translationStatus": "curated"
     },
     {
       "id": "ela-determine-the-authors-point-of-view",
