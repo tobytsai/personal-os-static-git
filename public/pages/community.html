@@ -172,6 +172,15 @@ const pageSize=24;
 let visibleCount=pageSize,matchingCards=[];
 const cats=document.querySelector("#filters"),grid=document.querySelector("#grid"),query=document.querySelector("#q");
 const resourceEl=document.querySelector('#resourceFilters');
+let linkedCard=new URLSearchParams(location.search).get('card');
+if(linkedCard&&!/^[A-Za-z0-9]{8}$/.test(linkedCard))linkedCard=null;
+if(linkedCard){
+ const notice=document.createElement('div');notice.className='shelf';notice.id='linkedCardNotice';
+ const message=document.createElement('span');message.textContent='目前顯示連結指定的卡片。 ';
+ const button=document.createElement('button');button.className='control secondary';button.type='button';button.textContent='顯示全部卡片';
+ button.addEventListener('click',()=>{linkedCard=null;notice.remove();const url=new URL(location.href);url.searchParams.delete('card');history.replaceState(null,'',url);visibleCount=pageSize;render()});
+ notice.append(message,button);document.querySelector('#cards').before(notice);
+}
 function renderResources(){const eligible=cards.filter(c=>matchTax(c)&&(active==='全部'||c.category===active));resourceEl.innerHTML=['全部',...resources].map(v=>'<button class="filter" type="button" data-resource="'+esc(v)+'" aria-pressed="'+(activeResource===v)+'">'+esc(v)+' <small>'+(v==='全部'?eligible.length:eligible.filter(c=>resourceTypes(c).includes(v)).length)+'</small></button>').join('')}
 resourceEl.addEventListener('click',e=>{const b=e.target.closest('[data-resource]');if(!b)return;activeResource=b.dataset.resource;visibleCount=pageSize;renderTax();render()});
 const showFav=document.querySelector("#showFav");
@@ -232,7 +241,7 @@ function cardMarkup(c){
 }
 function render(){
  const q=query.value.trim().toLocaleLowerCase();
- matchingCards=cards.filter(c=>matchTax(c)&&(activeResource==="全部"||resourceTypes(c).includes(activeResource))&&(active==="全部"||c.category===active)&&(!onlyFav||favs.includes(c.url))&&
+ matchingCards=cards.filter(c=>(!linkedCard||(c.url.match(/trello\.com\/c\/([^/]+)/)||[])[1]===linkedCard)&&matchTax(c)&&(activeResource==="全部"||resourceTypes(c).includes(activeResource))&&(active==="全部"||c.category===active)&&(!onlyFav||favs.includes(c.url))&&
   (!q||(c.name+" "+(c.desc||"")+" "+c.category).toLocaleLowerCase().includes(q)));
  const shown=matchingCards.slice(0,visibleCount);
  grid.innerHTML=shown.length?shown.map(cardMarkup).join(""):
