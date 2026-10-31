@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "category": "天下畫博｜油畫",
   "meaning": "Original JPEG files copied from existing Google Drive source galleries; filename/size/code matched to GitHub catalog. Image visual identity not independently established.",
-  "total": 1046,
+  "total": 1052,
   "byRecord": {
     "recSPypw7Uwk09Ab1": {
       "recordId": "recSPypw7Uwk09Ab1",
@@ -12259,6 +12259,72 @@
       "githubImagePath": "../../images/oil/tianxia/recbQvXA8jM8SqL9O-01.webp",
       "sizeBytes": 245360,
       "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
+    },
+    "recLjpZr3rGJroB5D": {
+      "recordId": "recLjpZr3rGJroB5D",
+      "code": "A344-6090",
+      "category": "60×90",
+      "sourceFilename": "A344-6090.jpg",
+      "driveFilename": "A344-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1VH7W9K0593gIy7-VHNFbDbu4pRuGnSox/view?usp=drivesdk",
+      "githubImagePath": "../../images/oil/tianxia/recLjpZr3rGJroB5D-01.webp",
+      "sizeBytes": 216591,
+      "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
+    },
+    "recnBZt8FG7T0sbt2": {
+      "recordId": "recnBZt8FG7T0sbt2",
+      "code": "A346-6090",
+      "category": "60×90",
+      "sourceFilename": "A346-6090.jpg",
+      "driveFilename": "A346-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1staY_v-inyPWYtIlA-s8BKV8xl_XI7IU/view?usp=drivesdk",
+      "githubImagePath": "../../images/oil/tianxia/recnBZt8FG7T0sbt2-01.webp",
+      "sizeBytes": 238729,
+      "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
+    },
+    "recjbbHu8JfvinwoN": {
+      "recordId": "recjbbHu8JfvinwoN",
+      "code": "A347-6090",
+      "category": "60×90",
+      "sourceFilename": "A347-6090.jpg",
+      "driveFilename": "A347-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1OlxaBu-ll_At1Lzhdt6hFefWkKCr05QM/view?usp=drivesdk",
+      "githubImagePath": "../../images/oil/tianxia/recjbbHu8JfvinwoN-01.webp",
+      "sizeBytes": 202601,
+      "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
+    },
+    "recisfE0QpzzMoWtv": {
+      "recordId": "recisfE0QpzzMoWtv",
+      "code": "A349-6090",
+      "category": "60×90",
+      "sourceFilename": "A349-6090.jpg",
+      "driveFilename": "A349-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1aYlIad0LJJNqG0EAOvttLXEND_xbI-nf/view?usp=drivesdk",
+      "githubImagePath": "../../images/oil/tianxia/recisfE0QpzzMoWtv-01.webp",
+      "sizeBytes": 216652,
+      "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
+    },
+    "recjkxOxAQVkwIPB3": {
+      "recordId": "recjkxOxAQVkwIPB3",
+      "code": "A350-6090",
+      "category": "60×90",
+      "sourceFilename": "A350-6090.jpg",
+      "driveFilename": "A350-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1M8GHl2HE1kgNCSQ8Ad1pXxn9NCAyNnI7/view?usp=drivesdk",
+      "githubImagePath": "../../images/oil/tianxia/recjkxOxAQVkwIPB3-01.webp",
+      "sizeBytes": 217639,
+      "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
+    },
+    "recFKRnl1GnnMgfVd": {
+      "recordId": "recFKRnl1GnnMgfVd",
+      "code": "A351-6090",
+      "category": "60×90",
+      "sourceFilename": "A351-6090.jpg",
+      "driveFilename": "A351-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1AecpN0NrIyopJxBpoTxhlhW00Lk_oeDQ/view?usp=drivesdk",
+      "githubImagePath": "../../images/oil/tianxia/recFKRnl1GnnMgfVd-01.webp",
+      "sizeBytes": 202247,
+      "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
     }
   },
   "batchFolders": [
@@ -12277,20 +12343,20 @@
   ],
   "lastBatch": {
     "date": "2026-10-31",
-    "added": 42,
+    "added": 48,
     "range": [
       1005,
-      1046
+      1052
     ],
     "method": "60×90 original JPGs Drive copy + live Airtable metadata verification",
     "failedCopies": 0,
     "segments": [
       {
         "category": "60×90",
-        "added": 42,
+        "added": 48,
         "range": [
           1005,
-          1046
+          1052
         ]
       }
     ]
@@ -18859,16 +18925,118 @@
       "sizeBytes": 245360,
       "mimeType": "image/jpeg",
       "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
+    },
+    "attcu4p9SQkN8Rx0k": {
+      "recordId": "recLjpZr3rGJroB5D",
+      "attachmentId": "attcu4p9SQkN8Rx0k",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "code": "A344-6090",
+      "category": "60×90",
+      "filename": "A344-6090.jpg",
+      "sourceFilename": "A344-6090.jpg",
+      "driveFilename": "A344-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1VH7W9K0593gIy7-VHNFbDbu4pRuGnSox/view?usp=drivesdk",
+      "sourceDriveFileId": "1mP86MyPrceA25R6TYUby0CxyNnqf2QEt",
+      "destinationDriveFileId": "1VH7W9K0593gIy7-VHNFbDbu4pRuGnSox",
+      "sizeBytes": 216591,
+      "mimeType": "image/jpeg",
+      "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
+    },
+    "att0ev7T6pZVmOMce": {
+      "recordId": "recnBZt8FG7T0sbt2",
+      "attachmentId": "att0ev7T6pZVmOMce",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "code": "A346-6090",
+      "category": "60×90",
+      "filename": "A346-6090.jpg",
+      "sourceFilename": "A346-6090.jpg",
+      "driveFilename": "A346-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1staY_v-inyPWYtIlA-s8BKV8xl_XI7IU/view?usp=drivesdk",
+      "sourceDriveFileId": "1fR91Z3DDWTJO9B2Eh_DtZaamtn2E--8k",
+      "destinationDriveFileId": "1staY_v-inyPWYtIlA-s8BKV8xl_XI7IU",
+      "sizeBytes": 238729,
+      "mimeType": "image/jpeg",
+      "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
+    },
+    "attWDKzzWgqUrPU0o": {
+      "recordId": "recjbbHu8JfvinwoN",
+      "attachmentId": "attWDKzzWgqUrPU0o",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "code": "A347-6090",
+      "category": "60×90",
+      "filename": "A347-6090.jpg",
+      "sourceFilename": "A347-6090.jpg",
+      "driveFilename": "A347-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1OlxaBu-ll_At1Lzhdt6hFefWkKCr05QM/view?usp=drivesdk",
+      "sourceDriveFileId": "1_HpLk2zZm4TsJ-BazCNTuuareGKwcYyS",
+      "destinationDriveFileId": "1OlxaBu-ll_At1Lzhdt6hFefWkKCr05QM",
+      "sizeBytes": 202601,
+      "mimeType": "image/jpeg",
+      "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
+    },
+    "attSEjUPCUAHD9P4X": {
+      "recordId": "recisfE0QpzzMoWtv",
+      "attachmentId": "attSEjUPCUAHD9P4X",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "code": "A349-6090",
+      "category": "60×90",
+      "filename": "A349-6090.jpg",
+      "sourceFilename": "A349-6090.jpg",
+      "driveFilename": "A349-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1aYlIad0LJJNqG0EAOvttLXEND_xbI-nf/view?usp=drivesdk",
+      "sourceDriveFileId": "1jFKd7IZ-V9nKJXC2fthd50-ZpDELcQoQ",
+      "destinationDriveFileId": "1aYlIad0LJJNqG0EAOvttLXEND_xbI-nf",
+      "sizeBytes": 216652,
+      "mimeType": "image/jpeg",
+      "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
+    },
+    "attkTNtUU9RvgseDJ": {
+      "recordId": "recjkxOxAQVkwIPB3",
+      "attachmentId": "attkTNtUU9RvgseDJ",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "code": "A350-6090",
+      "category": "60×90",
+      "filename": "A350-6090.jpg",
+      "sourceFilename": "A350-6090.jpg",
+      "driveFilename": "A350-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1M8GHl2HE1kgNCSQ8Ad1pXxn9NCAyNnI7/view?usp=drivesdk",
+      "sourceDriveFileId": "1Q2-E-0UQU5tBJc49iSkXcDZD-N39Rfj2",
+      "destinationDriveFileId": "1M8GHl2HE1kgNCSQ8Ad1pXxn9NCAyNnI7",
+      "sizeBytes": 217639,
+      "mimeType": "image/jpeg",
+      "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
+    },
+    "att3g8W9peW6uLuj1": {
+      "recordId": "recFKRnl1GnnMgfVd",
+      "attachmentId": "att3g8W9peW6uLuj1",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "code": "A351-6090",
+      "category": "60×90",
+      "filename": "A351-6090.jpg",
+      "sourceFilename": "A351-6090.jpg",
+      "driveFilename": "A351-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1AecpN0NrIyopJxBpoTxhlhW00Lk_oeDQ/view?usp=drivesdk",
+      "sourceDriveFileId": "1wxei4E_X8Z7bjmF_JiJLLxK-WYI8kCc_",
+      "destinationDriveFileId": "1AecpN0NrIyopJxBpoTxhlhW00Lk_oeDQ",
+      "sizeBytes": 202247,
+      "mimeType": "image/jpeg",
+      "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
     }
   },
   "lastAutomationRun": {
     "date": "2026-10-31",
     "startTotal": 1004,
-    "added": 42,
-    "endTotal": 1046,
-    "success": 42,
+    "added": 48,
+    "endTotal": 1052,
+    "success": 48,
     "failed": 0,
-    "remainingEstimate": 4001
+    "remainingEstimate": 3995
   },
   "pendingBatch": null
 }
