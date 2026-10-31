@@ -2,7 +2,7 @@
   "date": "2026-10-31",
   "category": "天下畫博｜油畫",
   "meaning": "Original JPEG files copied from existing Google Drive source galleries; filename/size/code matched to GitHub catalog. Image visual identity not independently established.",
-  "total": 1052,
+  "total": 1054,
   "byRecord": {
     "recSPypw7Uwk09Ab1": {
       "recordId": "recSPypw7Uwk09Ab1",
@@ -12325,6 +12325,28 @@
       "githubImagePath": "../../images/oil/tianxia/recFKRnl1GnnMgfVd-01.webp",
       "sizeBytes": 202247,
       "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
+    },
+    "recKHhIfnAQPCaS9i": {
+      "recordId": "recKHhIfnAQPCaS9i",
+      "code": "A353-6090",
+      "category": "60×90",
+      "sourceFilename": "A353-6090.jpg",
+      "driveFilename": "A353-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/16t7ucKHxP_4Obcdo_i_Y933wG6NQYV4v/view?usp=drivesdk",
+      "githubImagePath": "../../images/oil/tianxia/recKHhIfnAQPCaS9i-01.webp",
+      "sizeBytes": 197947,
+      "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
+    },
+    "rect8ZDbZySmIrh4T": {
+      "recordId": "rect8ZDbZySmIrh4T",
+      "code": "A354-6090",
+      "category": "60×90",
+      "sourceFilename": "A354-6090.jpg",
+      "driveFilename": "A354-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1Izw3VjcSbXCJ6_kLkl23K-YcySWuPc6z/view?usp=drivesdk",
+      "githubImagePath": "../../images/oil/tianxia/rect8ZDbZySmIrh4T-01.webp",
+      "sizeBytes": 342247,
+      "check": "Live Airtable attachment name/ID/MIME/bytes/size 60×90 matched original Drive JPEG; destination filename, size, parent, private checked. No pixel comparison."
     }
   },
   "batchFolders": [
@@ -12343,20 +12365,35 @@
   ],
   "lastBatch": {
     "date": "2026-10-31",
-    "added": 48,
+    "added": 50,
     "range": [
       1005,
-      1052
+      1054
     ],
-    "method": "60×90 original JPGs Drive copy + live Airtable metadata verification",
+    "folderStats": [
+      {
+        "category": "30×40",
+        "destinationCount": 462
+      },
+      {
+        "category": "50×60",
+        "destinationCount": 367
+      },
+      {
+        "category": "60×90",
+        "destinationCount": 225
+      }
+    ],
+    "method": "50 original 60×90 JPGs matched Airtable live attachment ID/name/bytes/dimensions to Drive source; cloud copied and fresh Drive destination verified filename/MIME/size/folder/not shared. No independent pixel comparison.",
     "failedCopies": 0,
+    "airtableVerified": 50,
     "segments": [
       {
         "category": "60×90",
-        "added": 48,
+        "added": 50,
         "range": [
           1005,
-          1052
+          1054
         ]
       }
     ]
@@ -19027,16 +19064,52 @@
       "sizeBytes": 202247,
       "mimeType": "image/jpeg",
       "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
+    },
+    "attKw8mSIifU04Pxf": {
+      "recordId": "recKHhIfnAQPCaS9i",
+      "attachmentId": "attKw8mSIifU04Pxf",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "code": "A353-6090",
+      "category": "60×90",
+      "filename": "A353-6090.jpg",
+      "sourceFilename": "A353-6090.jpg",
+      "driveFilename": "A353-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/16t7ucKHxP_4Obcdo_i_Y933wG6NQYV4v/view?usp=drivesdk",
+      "sourceDriveFileId": "1VMyMm0tDwO9fIenO7Fny4GVvMLhFitW7",
+      "destinationDriveFileId": "16t7ucKHxP_4Obcdo_i_Y933wG6NQYV4v",
+      "sizeBytes": 197947,
+      "mimeType": "image/jpeg",
+      "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
+    },
+    "att3UxamrftULc4Vu": {
+      "recordId": "rect8ZDbZySmIrh4T",
+      "attachmentId": "att3UxamrftULc4Vu",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "code": "A354-6090",
+      "category": "60×90",
+      "filename": "A354-6090.jpg",
+      "sourceFilename": "A354-6090.jpg",
+      "driveFilename": "A354-6090.jpg",
+      "driveUrl": "https://drive.google.com/file/d/1Izw3VjcSbXCJ6_kLkl23K-YcySWuPc6z/view?usp=drivesdk",
+      "sourceDriveFileId": "1o0K_jR6X-j7q7VYWPAw_p7x-9RIqaxTp",
+      "destinationDriveFileId": "1Izw3VjcSbXCJ6_kLkl23K-YcySWuPc6z",
+      "sizeBytes": 342247,
+      "mimeType": "image/jpeg",
+      "verification": "Airtable original JPG matched existing source Drive; copied destination checked JPEG, name, size, folder, not shared; no pixel comparison."
     }
   },
   "lastAutomationRun": {
     "date": "2026-10-31",
     "startTotal": 1004,
-    "added": 48,
-    "endTotal": 1052,
-    "success": 48,
+    "added": 50,
+    "endTotal": 1054,
+    "success": 50,
     "failed": 0,
-    "remainingEstimate": 3995
+    "source": "Live Airtable matching Drive original cloud copy",
+    "note": "Airtable unmodified; existing WebP not altered; prior source discrepancies B18/B21/B26/B27 untouched; no pixel comparison.",
+    "remainingEstimate": 3993
   },
   "pendingBatch": null
 }
