@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#267f83"><meta name="description" content="臺北、新北、桃園場館自學資料庫：故宮、科教館、美術館、圖書館。城市、類型分類，附官網、地圖、學習任務、收藏與已走訪紀錄。"><title>場館學習｜自學啟動器</title><link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--ink:#283a4b;--sub:#6d8391;--line:#dce7eb;--green:#278879;--shadow:0 9px 25px #163e5115}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font:14px/1.65 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;background:radial-gradient(circle at 92% 0,#cdeee8 0,transparent 29%),linear-gradient(145deg,#f4faf6,#f8fafc 67%,#fef9ed)}button,input{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #5ac5a1;outline-offset:3px}[hidden]{display:none!important}
+.wrap{width:min(1190px,100%);margin:auto;padding:19px 16px 65px}
+.back{display:inline-flex;align-items:center;padding:8px 15px;background:white;border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:850;text-decoration:none;margin-bottom:14px}
+.hero{border-radius:27px;background:linear-gradient(120deg,#175368,#278f83 59%,#a8b05e);color:#fff;padding:clamp(25px,5vw,44px);box-shadow:0 21px 42px #1b606127}
+.eyebrow{font-size:11px;font-weight:850;letter-spacing:.15em;opacity:.88}h1{font-size:clamp(32px,5vw,50px);line-height:1.2;margin:10px 0} .hero p{max-width:720px;line-height:1.85;margin:0;color:#edfbf4}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.stats span{border:1px solid #ffffff65;background:#ffffff24;padding:7px 11px;border-radius:99px;font-size:11px;font-weight:800}
+.starter{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.starter a{display:inline-flex;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:13px;padding:9px 13px;font-size:12px;font-weight:850;color:#2c796f}
+.panel{background:#fff;border:1px solid var(--line);border-radius:21px;padding:18px;margin:17px 0;box-shadow:var(--shadow)}
+.panelhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:11px}.panelhead h2{font-size:19px;margin:0}.panelhead small{font-size:11px;color:var(--sub)}
+.filters{display:grid;grid-template-columns:1fr 1.45fr;gap:13px}.filterpane{min-width:0;padding:12px;background:#f7fbfa;border:1px solid #e1eee9;border-radius:15px}
+.filterpane label{display:block;color:#618980;font-size:11px;font-weight:850;margin-bottom:8px}
+.chips{display:flex;gap:7px;flex-wrap:wrap}.chip{border:1px solid #d4e7df;border-radius:12px;padding:8px 11px;background:#fff;color:#42776c;font-size:12px;font-weight:800}.chip.active{background:#267e74;color:#fff;border-color:#267e74}
+.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}.search{flex:1 1 250px;min-width:0;padding:13px 15px;border:1px solid var(--line);background:#fff;border-radius:14px;outline:none;box-shadow:var(--shadow)}.soft{border:1px solid var(--line);border-radius:13px;background:#fff;color:#427a72;padding:10px 13px;font-weight:850;font-size:12px}
+.section{margin:22px 0}.sectiontop{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.sectiontop h2{font-size:20px;margin:0}.count{font-size:12px;color:var(--sub)}
+.cityhead{display:flex;align-items:center;gap:8px;margin:23px 0 11px}.cityhead h3{font-size:18px;margin:0}.cityhead small{font-size:11px;color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:13px}
+.card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.card:hover{box-shadow:0 13px 30px #1b546221}.accent{height:5px;background:var(--tone,#278d80)}
+.cardbody{padding:15px;display:flex;flex-direction:column;flex:1}
+.cardtop{display:flex;align-items:flex-start;justify-content:space-between;gap:9px}
+.symbol{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;font-size:25px;background:color-mix(in srgb,var(--tone,#278d80) 13%,white)}
+.star{background:#f8fbfa;border:1px solid #dce7e6;border-radius:11px;width:36px;height:36px;font-size:21px;color:#a3b3b0}.star.on{background:#fff5dc;color:#dbac28}
+.card h3{font-size:18px;line-height:1.4;margin:12px 0 6px}.meta{font-size:11px;color:#5c8279;font-weight:850;margin-bottom:9px}.intro{font-size:12px;color:#64788b;line-height:1.7;margin:0 0 11px}
+.task{font-size:11px;background:#eff9f6;border:1px solid #d7eee4;color:#376c5e;border-radius:12px;padding:10px 11px;line-height:1.65;margin:0 0 11px}
+.address{font-size:11px;color:#7b8a9b;margin:0 0 10px}
+.links{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}.links a{font-size:11px;text-decoration:none;font-weight:850;background:#f0f8fc;color:#286f91;border:1px solid #d8e9ed;border-radius:10px;padding:8px 10px}.links .main{color:#fff;background:#278d81;border-color:#278d81}
+.visit{display:flex;align-items:center;gap:5px;margin:11px 0 0;font-size:11px;color:#678078;font-weight:850}.visit input{accent-color:#26876f;width:17px;height:17px}
+.empty{padding:20px;border:1px dashed #bad7d0;border-radius:14px;background:#fff;color:#78918b}
+.extra{border:1px solid #ead8ac;background:#fffdf3;border-radius:16px;padding:16px;display:flex;gap:13px;flex-wrap:wrap;align-items:center}.extra>span{font-size:30px}.extra>div{flex:1;min-width:180px}.extra strong{display:block}.extra p{font-size:12px;color:#866d46;margin:4px 0}.extra a{font-size:12px;color:#397d82;font-weight:900}
+.note{color:#75858b;font-size:12px;line-height:1.85}
+@media(max-width:760px){.filters{grid-template-columns:1fr}.panel{padding:13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cardbody{padding:12px}.card h3{font-size:15px}.intro,.task,.address{font-size:11px}.links a{padding:6px 8px;font-size:10px}.cityhead h3{font-size:16px}.symbol{width:43px;height:43px}.wrap{padding:12px 11px 45px}}
+@media(max-width:410px){.grid{grid-template-columns:1fr}.cardbody{padding:15px}}
+</style></head><body><main class="wrap">
+<a class="back" href="./self-study.html">← 返回自學啟動器</a>
+<header class="hero"><div class="eyebrow">HOMESCHOOL · LEARNING VENUES</div><h1>🏛️ 場館學習</h1><p>把博物館、科學場館、美術館及圖書館變成孩子的自主學習教室。依城市與學習主題挑場館，出發前想一個問題、現場觀察、回家整理作品或筆記。</p><div class="stats"><span id="venueCount">17 座場館</span><span>📍 臺北市・新北市・桃園市</span><span>⭐ 收藏場館</span><span>☑ 已走訪</span><span>📝 自學觀察紀錄</span></div></header>
+<div class="starter"><a href="./my-notes.html?from=%2Fpersonal-os-static-git%2Fpages%2Fself-study-venues.html&amp;label=%E5%A0%B4%E9%A4%A8%E5%AD%B8%E7%BF%92">📝 記錄場館學習心得</a><a href="https://www.museum.gov.tw/" target="_blank" rel="noopener noreferrer">🏛️ 博物館資源入口</a><a href="./self-study.html">📚 返回自學資源</a></div>
+<section class="panel"><div class="panelhead"><h2>🗂️ 三層分類導覽</h2><small>場館學習 → 城市 → 類型 → 場館</small></div><div class="filters"><div class="filterpane"><label>第二層｜城市</label><div class="chips" id="cities"></div></div><div class="filterpane"><label>第三層｜場館類型</label><div class="chips" id="types"></div></div></div></section>
+<div class="toolbar"><input id="search" class="search" type="search" aria-label="搜尋場館" placeholder="搜尋故宮、科教館、圖書館、陶藝、書法、地點…"><button id="reset" class="soft" type="button">清除篩選</button><button id="onlyFav" class="soft" type="button">☆ 只看收藏</button><button id="onlyNew" class="soft" type="button">□ 尚未走訪</button></div>
+<section class="section"><div class="sectiontop"><h2 id="sectionHeading">全部場館</h2><span class="count" id="resultsCount">資料讀取中…</span></div><div id="groups"><div class="empty">載入場館資料中…</div></div></section>
+<section class="panel"><div class="panelhead"><h2>🔭 跨區延伸學習</h2><small>臺中市，與北北桃分開</small></div><div id="extra"></div></section>
+<p class="note">本頁提供教育探索用途的靜態場館資訊；學習任務為自學活動建議，非各館官方教案。參觀前請至官方網站核對最新展覽、休館日、預約、票價、教育課程及場館公告。收藏與走訪標記僅保存在這個瀏覽器，跨裝置尚未自動同步。</p>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const favKey="tobyStudyVenueFavV1",visitKey="tobyStudyVenueVisitsV1";
+function stored(key){try{const x=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(x)?x:[]}catch{return[]}}
+let favorites=stored(favKey),visited=stored(visitKey),db=null,city="全部",type="全部",search="",favOnly=false,newOnly=false;
+function mapUrl(v){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(v.name+" "+v.address)}
+function noteUrl(v){return "./my-notes.html?from="+encodeURIComponent("/personal-os-static-git/pages/self-study-venues.html?venue="+v.id)+"&label="+encodeURIComponent(v.name)}
+function card(v){
+ const isFav=favorites.includes(v.id),isVisited=visited.includes(v.id);
+ const tone=v.type==="科學／自然"?"#3784ba":v.type==="藝術／工藝"?"#c78c49":v.type==="圖書館／閱讀"?"#6d88c7":"#309981";
+ return '<article class="card" style="--tone:'+tone+'"><div class="accent"></div><div class="cardbody"><div class="cardtop"><div class="symbol" aria-hidden="true">'+esc(v.icon)+'</div><button type="button" class="star'+(isFav?" on":"")+'" data-fav="'+esc(v.id)+'" aria-pressed="'+isFav+'" aria-label="'+(isFav?"取消收藏":"加入收藏")+'">'+(isFav?"★":"☆")+'</button></div><h3>'+esc(v.name)+'</h3><div class="meta">'+esc(v.city)+' · '+esc(v.district)+' · '+esc(v.type)+'</div><p class="intro">'+esc(v.description)+'</p><div class="task"><strong>💡 自學觀察任務</strong><div>'+esc(v.mission)+'</div></div><div class="address">📍 '+esc(v.address)+'</div><div class="links"><a href="'+esc(v.url)+'" class="main" target="_blank" rel="noopener noreferrer">'+esc(v.linkLabel||"官方網站")+'</a><a href="'+esc(mapUrl(v))+'" target="_blank" rel="noopener noreferrer">地圖</a><a href="'+esc(noteUrl(v))+'">學習筆記</a></div><label class="visit"><input type="checkbox" data-visit="'+esc(v.id)+'" '+(isVisited?"checked":"")+' aria-label="已走訪'+esc(v.name)+'"> 已走訪／完成探索</label></div></article>';
+}
+function chips(id,values,selected,attr){$(id).innerHTML=values.map(v=>'<button class="chip'+(selected===v?" active":"")+'" type="button" data-'+attr+'="'+esc(v)+'">'+esc(v)+'</button>').join("")}
+function matches(v){return (city==="全部"||v.city===city)&&(type==="全部"||v.type===type)&&(!favOnly||favorites.includes(v.id))&&(!newOnly||!visited.includes(v.id))&&(!search||[v.name,v.city,v.district,v.type,v.description,v.mission,...v.keywords].join(" ").toLowerCase().includes(search.toLowerCase()))}
+function render(){
+ if(!db)return;
+ chips("cities",["全部",...db.cities],city,"city");
+ chips("types",["全部",...db.types],type,"type");
+ const filtered=db.venues.filter(matches);
+ $("venueCount").textContent=db.venues.length+" 座場館";
+ $("sectionHeading").textContent=city==="全部"?"全部場館":city+" · 場館學習";
+ $("resultsCount").textContent=filtered.length+" / "+db.venues.length+" 座";
+ $("onlyFav").textContent=favOnly?"★ 顯示收藏中":"☆ 只看收藏";$("onlyNew").textContent=newOnly?"☐ 尚未走訪中":"□ 尚未走訪";
+ $("groups").innerHTML=db.cities.map(c=>{const arr=filtered.filter(v=>v.city===c);return arr.length?'<section><div class="cityhead"><h3>📍 '+esc(c)+'</h3><small>'+arr.length+' 座場館</small></div><div class="grid">'+arr.map(card).join("")+'</div></section>':""}).join("")||'<div class="empty">沒有符合的場館。可以換一個縣市、場館類型，或清除搜尋。</div>';
+ $("extra").innerHTML=db.extras.map(v=>'<div class="extra"><span>'+esc(v.icon)+'</span><div><strong>'+esc(v.name)+'</strong><p>'+esc(v.description)+'</p><p>📍 '+esc(v.address)+'</p></div><a href="'+esc(v.url)+'" target="_blank" rel="noopener noreferrer">開啟科博館官網 ↗</a></div>').join("");
+}
+$("cities").addEventListener("click",e=>{const b=e.target.closest("[data-city]");if(b){city=b.dataset.city;render()}});
+$("types").addEventListener("click",e=>{const b=e.target.closest("[data-type]");if(b){type=b.dataset.type;render()}});
+$("search").addEventListener("input",e=>{search=e.target.value.trim();render()});
+$("reset").addEventListener("click",()=>{city="全部";type="全部";search="";favOnly=false;newOnly=false;$("search").value="";render()});
+$("onlyFav").addEventListener("click",()=>{favOnly=!favOnly;render()});
+$("onlyNew").addEventListener("click",()=>{newOnly=!newOnly;render()});
+$("groups").addEventListener("click",e=>{const b=e.target.closest("[data-fav]");if(b){const id=b.dataset.fav;favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[id,...favorites];localStorage.setItem(favKey,JSON.stringify(favorites));render()}});
+$("groups").addEventListener("change",e=>{const box=e.target.closest("[data-visit]");if(box){const id=box.dataset.visit;visited=box.checked?[...new Set([...visited,id])]:visited.filter(x=>x!==id);localStorage.setItem(visitKey,JSON.stringify(visited));render()}});
+fetch("../data/self-study-venues.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("無法載入場館資料");return r.json()}).then(d=>{db=d;const p=new URLSearchParams(location.search);if(db.cities.includes(p.get("city")))city=p.get("city");if(db.types.includes(p.get("type")))type=p.get("type");const venue=p.get("venue");if(venue){const item=db.venues.find(v=>v.id===venue);if(item){city=item.city;search=item.name;$("search").value=search}}render()}).catch(err=>$("groups").innerHTML='<div class="empty">場館資料暫時無法載入：'+esc(err.message)+'</div>');
+</script><script src="../shared-nav.js" defer></script></body></html>
