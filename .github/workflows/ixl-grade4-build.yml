@@ -4,7 +4,12 @@ on:
   push:
     paths:
       - .github/workflows/ixl-grade4-build.yml
+      - scripts/build_ixl_grade4.py
   workflow_dispatch:
+
+concurrency:
+  group: ixl-fourth-grade-catalog
+  cancel-in-progress: true
 
 permissions:
   contents: write
