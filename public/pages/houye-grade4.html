@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#5a77aa"><meta name="description" content="侯燁的國小四年級自學專屬頁：108課綱與 IXL、九大學習領域、月主題、52個能力任務、每週紀錄、成果與備份。"><title>侯燁四年級自學｜Toby Personal OS</title><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#2b374a;--muted:#718093;--line:#dfe7ee;--blue:#397ca4;--shadow:0 8px 26px #223e6414}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 92% 2%,#d0e9e9 0,transparent 28%),linear-gradient(140deg,#eef5fe,#fafbf6 57%,#fff6e8);color:var(--ink);font:14px/1.7 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #6aace4;outline-offset:2px}[hidden]{display:none!important}
+.wrap{max-width:1230px;margin:0 auto;padding:19px 16px 75px}.back{display:inline-flex;text-decoration:none;border:1px solid var(--line);border-radius:99px;background:#fff;padding:8px 14px;font-weight:850;font-size:12px;margin-bottom:15px}
+.hero{padding:clamp(25px,5vw,44px);border-radius:28px;background:linear-gradient(114deg,#2a416d,#507db4 55%,#4fa39c);color:#fff;box-shadow:0 18px 38px #1d41672c;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:310px;height:310px;border:2px solid #ffffff33;border-radius:50%;right:-110px;top:-210px;pointer-events:none}
+.eyebrow{font-size:11px;letter-spacing:.17em;font-weight:900;color:#ddf2ff}.hero h1{margin:9px 0 10px;font-size:clamp(31px,5vw,48px);line-height:1.2}.hero p{color:#ecf7ff;max-width:790px;line-height:1.8;margin:0}
+.metrics{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.metrics span{border:1px solid #ffffff6b;border-radius:999px;background:#ffffff20;padding:7px 11px;font-size:11px;font-weight:800}
+.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin:17px 0}.metric{border-radius:16px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);padding:14px}.metric strong{display:block;font-size:26px;line-height:1.2}.metric span{font-size:11px;color:#6d8297}.track{height:7px;background:#e6eef4;border-radius:99px;margin:9px 0 0;overflow:hidden}.fill{height:100%;background:linear-gradient(90deg,#4887bb,#42a590);width:0}
+.quick{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.quick a,.quick button{border:1px solid #d4e4ec;border-radius:12px;background:#fff;text-decoration:none;color:#426782;padding:9px 12px;font-size:12px;font-weight:850}
+.navtabs{display:flex;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:18px;padding:9px;margin:16px 0 20px;box-shadow:var(--shadow)}.tab{flex:1 1 155px;padding:10px 13px;border-radius:12px;border:1px solid transparent;background:#f6f9fc;color:#56738b;font-size:13px;font-weight:900}.tab.active{background:#366d99;color:#fff;border-color:#366d99}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;margin:18px 0 12px}.section-title h2{margin:0;font-size:21px}.muted{color:var(--muted);font-size:12px}
+.banner{border:1px solid #e8dfc5;background:#fffaf0;border-radius:14px;padding:12px 14px;color:#786845;font-size:12px;line-height:1.8;margin-bottom:14px}
+.domains{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 17px}.domain{padding:9px 12px;border:1px solid #d9e6ef;border-radius:11px;background:#fff;color:#53708c;font-weight:850;font-size:12px}.domain.active{background:#326f98;color:#fff;border-color:#326f98}
+.domain-intro{padding:18px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--domain,#4f8bc1);border-radius:16px;margin-bottom:14px}.domain-intro h3{font-size:20px;margin:0 0 5px}.domain-intro p{font-size:13px;color:#65798d;margin:0 0 12px}
+.chips{display:flex;gap:7px;flex-wrap:wrap}.chips a{font-size:11px;color:#28739d;text-decoration:none;background:#eef7fd;border:1px solid #d6e7ee;border-radius:99px;padding:6px 10px;font-weight:850}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}.card{min-width:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow);display:flex;flex-direction:column}.card h3{font-size:17px;line-height:1.4;margin:0 0 8px}.card p{color:#61768a;font-size:12px;line-height:1.75;margin:0 0 13px;flex:1}.meta{font-size:10px;color:#68829a;margin-bottom:7px;font-weight:850}
+.badge{display:inline-flex;border-radius:8px;padding:4px 8px;background:#edf5fa;color:#3f7292;font-size:10px;font-weight:900}
+.status-label{font-size:11px;color:#587589;font-weight:850;display:block;margin:0 0 5px}.status-select{width:100%;border:1px solid #d7e5ed;background:#f8fbfd;border-radius:10px;padding:9px;color:#375773;font-size:12px}
+.reflection{border-top:1px solid #e7edf3;margin:10px 0 0;padding-top:9px}.reflection summary{font-weight:850;color:#3b7195;font-size:11px;cursor:pointer}.reflection textarea{width:100%;padding:9px;border:1px solid #dce7ef;border-radius:9px;min-height:75px;resize:vertical;color:#2d4557;margin-top:8px;font-size:12px}
+.period{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 15px}.month-card .periodlabel{font-size:11px;color:#35758b;font-weight:850}.month-card h3{margin:7px 0}.month-card strong{font-size:11px;color:#476f86}.month-card .product{background:#edf8f4;padding:10px;border-radius:10px;color:#426d62;font-size:11px;margin-bottom:13px}.jump{border:1px solid #c6e0ed;background:#eff8ff;color:#30779b;border-radius:10px;padding:8px;font-weight:850;font-size:11px;margin:10px 0 0}
+.week{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:12px;color:#53758c;font-weight:850}.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid #dbe6ef;border-radius:11px;background:#fff;color:#2d445c}.field textarea{min-height:126px;resize:vertical}.field.full{grid-column:1/-1}
+.panel{background:#fff;border:1px solid var(--line);border-radius:19px;padding:19px;box-shadow:var(--shadow)}.saved{font-size:12px;color:#268770;font-weight:850;margin-top:12px}.empty{padding:25px;color:#7e95a6;background:#fff;border:1px dashed #b7cedc;border-radius:15px}.note{font-size:12px;color:#708495;line-height:1.85;margin:25px 0}
+@media(max-width:700px){.wrap{padding:12px 11px 45px}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.metric strong{font-size:23px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:12px}.card h3{font-size:15px}.card p{font-size:11px}.week{grid-template-columns:1fr}.field.full{grid-column:auto}.hero{padding:25px 19px}.domain-intro{padding:14px}}
+@media(max-width:430px){.grid{grid-template-columns:1fr}.tab{flex:1 1 auto;font-size:11px;padding:8px 6px}}
+</style></head><body><main class="wrap">
+<a href="./self-study.html" class="back">← 返回自學啟動器</a>
+<header class="hero"><div class="eyebrow">HOUYE · GRADE 4 · HOMESCHOOL</div><h1>🌱 侯燁四年級自學</h1><p>以臺灣 108 課綱第二學習階段作學力參考、IXL 四年級作練習選擇，延續原自學計畫的自然探究、故事、Minecraft、積木、藝術創作與戶外學習。可以自由選題，不需要把每個學習目標都變成每日作業。</p>
+<div class="metrics"><span>115學年｜2026.09—2027.06</span><span>9 個學習領域</span><span>52 個學習目標</span><span>9 個月主題</span></div></header>
+<div class="summary"><div class="metric"><strong id="doneNum">0</strong><span>已完成能力目標</span><div class="track"><div id="progressBar" class="fill"></div></div></div>
+<div class="metric"><strong id="doingNum">0</strong><span>探索中的目標</span></div><div class="metric"><strong id="monthNum">0</strong><span>已完成月主題</span></div><div class="metric"><strong id="weekNum">0</strong><span>已保存每週紀錄</span></div></div>
+<nav class="quick" aria-label="快速學習資源"><a href="https://www.ixl.com/math/grade-4" target="_blank" rel="noopener">🔢 IXL 四年級數學</a><a href="https://www.ixl.com/ela/grade-4" target="_blank" rel="noopener">🔤 IXL 四年級英語</a><a href="https://www.naer.edu.tw/PageSyllabus?fid=52" target="_blank" rel="noopener">📘 國教院十二年課綱</a><a href="https://trello.com/b/fiwZNg41/%E8%87%AA%E5%AD%B8%E8%A8%98%E9%8C%84" target="_blank" rel="noopener">📋 Trello 自學記錄</a><a href="https://docs.google.com/document/d/1CC9kotAhkpGtnJF5oDiHGLKXGPTdMcZt/edit" target="_blank" rel="noopener">📄 原自學計畫書</a></nav>
+<div class="navtabs" role="tablist" aria-label="四年級自學頁面"><button class="tab active" id="tabSkills" type="button" data-view="skills" role="tab" aria-selected="true">📚 學習領域</button><button class="tab" type="button" data-view="months" role="tab" aria-selected="false">🗓️ 主題學習</button><button class="tab" type="button" data-view="journal" role="tab" aria-selected="false">📝 每週紀錄</button><button class="tab" type="button" data-view="references" role="tab" aria-selected="false">🔗 參考與備份</button></div>
+<section id="skillsView">
+<div class="section-title"><h2>學習領域與能力目標</h2><span class="muted">自行挑選、試做、回顧</span></div>
+<div class="banner">學習目標依四年級能力參考整理，不是官方逐項核定表；「核心／延伸」為自學規劃優先順序。完成不一定指題庫滿分，可以是能解釋、操作或完成作品。</div>
+<div id="domainNav" class="domains" aria-label="選擇學習領域"></div><div id="domainIntro" class="domain-intro"></div><div id="skillsGrid" class="grid"></div>
+</section>
+<section id="monthsView" hidden><div class="section-title"><h2>115 學年度跨領域主題</h2><span class="muted">沿用既有自學計畫，四週探索循環</span></div>
+<div class="banner">每月可依實際節奏調整，不強制按照日期完成。四週建議：提出問題 → 實驗探索 → 創作改良 → 整理與分享。寒暑假不預設必須學習。</div><div class="period"><button class="domain active" data-term="全部" type="button">全部</button><button class="domain" data-term="上學期" type="button">上學期（9月—1月）</button><button class="domain" data-term="下學期" type="button">下學期（3月—6月）</button></div><div id="monthsGrid" class="grid"></div></section>
+<section id="journalView" hidden><div class="section-title"><h2>每週學習紀錄</h2><span class="muted">生活中發現、做過什麼，比打卡更重要</span></div>
+<div class="panel"><div class="week"><div class="field"><label for="weekDate">這週的日期（選任一天）</label><input id="weekDate" type="date"></div><div class="field"><label for="weekTheme">本週主題</label><input id="weekTheme" maxlength="160" placeholder="例如：風的力量"></div>
+<div class="field full"><label for="weekInterest">這週我最想研究什麼？</label><textarea id="weekInterest" placeholder="問題、好奇心、想探索的事情…"></textarea></div>
+<div class="field full"><label for="weekAction">我做了什麼、觀察到什麼？</label><textarea id="weekAction" placeholder="IXL、實驗、讀書、戶外、Minecraft 或作品…"></textarea></div>
+<div class="field full"><label for="weekLearning">學到了什麼？還有哪些疑問？</label><textarea id="weekLearning" placeholder="用自己的語言記錄發現，不必寫很長。"></textarea></div>
+<div class="field full"><label for="weekNext">下次我想繼續什麼？（可留白）</label><textarea id="weekNext" placeholder="下次研究的方向…"></textarea></div>
+<div class="field full"><label for="weekEvidence">作品、照片、影片或 Trello 連結</label><input id="weekEvidence" type="text" placeholder="貼入連結或簡單說明，附件仍放在原始平台"></div></div>
+<p class="saved" id="weekSave">輸入時自動保存在本機瀏覽器。</p><div class="quick"><a href="https://trello.com/b/fiwZNg41/%E8%87%AA%E5%AD%B8%E8%A8%98%E9%8C%84" target="_blank" rel="noopener">開啟 Trello 自學記錄</a><button id="weekCopy" type="button">複製本週紀錄文字</button></div></div>
+</section>
+<section id="referencesView" hidden><div class="section-title"><h2>學習資源與備份</h2></div><div class="panel"><div class="chips" id="resources"></div>
+<p class="note">來源包括國教院課綱、教育部數學領綱、IXL 四年級科目，以及先前的自學申請計畫書。原文件是較早的三年級計畫、含四年級 IXL 附件，本頁為重新整理的四年級規劃；美國 IXL 社會科有美國歷史主題，不直接等同臺灣社會課綱。</p>
+<div class="quick"><button id="export" type="button">↓ 下載進度與筆記 JSON</button><button id="import" type="button">↑ 匯入進度 JSON</button><input type="file" id="importFile" accept=".json,application/json" hidden><button id="resetProgress" type="button">重設本機進度</button></div><p class="saved" id="backupStatus">進度只存於此裝置的瀏覽器，並未同步 IXL、Trello 或 Google Drive。</p></div></section>
+<p class="note">學習進度、反思、每週紀錄目前僅保存在此瀏覽器（localStorage）。它不會自動讀取 IXL 的實際作答成績，也不會把孩子的資料上傳到公開 GitHub。更換手機、清除瀏覽器或使用其他裝置前，請先匯出 JSON 備份。</p>
+</main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const KEY="tobyHouyeGrade4ProgressV1",STATUSES=["未開始","探索中","已完成"];
+let db=null,domainId="math",view="skills",term="全部";
+function blank(){return {schema:"toby-houye-grade4-progress",version:1,skills:{},months:{},weeks:{},updatedAt:null}}
+function saved(){try{const x=JSON.parse(localStorage.getItem(KEY)||"null");return x&&x.schema==="toby-houye-grade4-progress"&&typeof x.skills==="object"&&typeof x.months==="object"&&typeof x.weeks==="object"?x:blank()}catch{return blank()}}
+let state=saved();
+function persist(){state.updatedAt=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(state));return true}catch(e){$("backupStatus").textContent="⚠️ 儲存失敗，請檢查瀏覽器空間";return false}}
+function resourceLinks(keys){return keys.map(pair=>{const [title,key]=pair,url=db.resources[key];return url?'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(title)+' ↗</a>':""}).join("")}
+function options(value){return STATUSES.map(s=>'<option value="'+s+'"'+(value===s?" selected":"")+'>'+s+'</option>').join("")}
+function tally(){
+ if(!db)return;
+ const all=db.domains.flatMap(d=>d.skills),done=all.filter(s=>state.skills[s.id]?.status==="已完成").length,doing=all.filter(s=>state.skills[s.id]?.status==="探索中").length;
+ $("doneNum").textContent=done;$("doingNum").textContent=doing;$("monthNum").textContent=db.monthly.filter(m=>state.months[m.id]?.status==="已完成").length;
+ $("weekNum").textContent=Object.values(state.weeks).filter(w=>w&&Object.values(w).some(v=>typeof v==="string"&&v.trim())).length;
+ $("progressBar").style.width=Math.round(100*done/all.length)+"%";
+}
+function renderDomain(){
+ if(!db)return;
+ const current=db.domains.find(d=>d.id===domainId)||db.domains[0];domainId=current.id;
+ $("domainNav").innerHTML=db.domains.map(d=>'<button type="button" class="domain'+(domainId===d.id?" active":"")+'" data-domain="'+esc(d.id)+'">'+esc(d.icon+" "+d.name)+'</button>').join("");
+ $("domainIntro").style.setProperty("--domain",current.color);
+ $("domainIntro").innerHTML='<h3>'+esc(current.icon+" "+current.name)+'</h3><p>'+esc(current.goal)+'</p><div class="chips">'+resourceLinks(current.links)+'</div>';
+ $("skillsGrid").innerHTML=current.skills.map(s=>{
+ const old=state.skills[s.id]||{};
+ return '<article class="card"><div class="meta"><span class="badge">'+esc(s.level)+'</span></div><h3>'+esc(s.title)+'</h3><p>'+esc(s.target)+'</p><label class="status-label" for="s-'+esc(s.id)+'">探索進度</label><select class="status-select" id="s-'+esc(s.id)+'" data-skill="'+esc(s.id)+'">'+options(old.status||"未開始")+'</select><details class="reflection"><summary>📝 這項能力的作品與想法</summary><textarea data-reflect="'+esc(s.id)+'" maxlength="3000" placeholder="寫下學到什麼、作品位置或下一步…">'+esc(old.reflection||"")+'</textarea></details></article>';
+ }).join("");
+}
+function renderMonths(){
+ if(!db)return;
+ document.querySelectorAll("[data-term]").forEach(b=>b.classList.toggle("active",b.dataset.term===term));
+ const months=db.monthly.filter(m=>term==="全部"||(term==="上學期"?m.id<"116-02":m.id>="116-02"));
+ $("monthsGrid").innerHTML=months.map(m=>{
+ const old=state.months[m.id]||{};
+ return '<article class="card month-card"><div class="periodlabel">'+esc(m.period)+'</div><h3>'+esc(m.title)+'</h3><p>'+esc(m.focus)+'</p><strong>本月探索作品</strong><div class="product">'+esc(m.product)+'</div><strong>四週探索流程</strong><p>'+m.weeks.map((w,i)=>"第"+(i+1)+"週："+esc(w)).join(" → ")+'</p><label class="status-label" for="m-'+esc(m.id)+'">本月進度</label><select id="m-'+esc(m.id)+'" class="status-select" data-month="'+esc(m.id)+'">'+options(old.status||"未開始")+'</select><button type="button" class="jump" data-jump-domain="'+esc(m.domains[0])+'">查看相關能力目標 →</button></article>';
+ }).join("");
+}
+function weekKey(date){const d=new Date(date+"T12:00:00");if(!Number.isFinite(d.getTime()))return"";d.setDate(d.getDate()-((d.getDay()+6)%7));return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")}
+const weekIds=["weekTheme","weekInterest","weekAction","weekLearning","weekNext","weekEvidence"];
+function fillWeek(){
+ const k=weekKey($("weekDate").value),w=state.weeks[k]||{};
+ for(const id of weekIds)$(id).value=w[id]||"";
+ $("weekSave").textContent="日期："+(k||"請選擇日期")+" · 輸入後自動儲存在本機";
+}
+function saveWeek(){
+ const k=weekKey($("weekDate").value);if(!k)return;
+ const data={};for(const id of weekIds)data[id]=$(id).value.slice(0,12000);
+ state.weeks[k]=data;const ok=persist();$("weekSave").textContent=ok?"✓ "+k+" 這週的紀錄已儲存在本機":"⚠️ 儲存失敗";tally();
+}
+function renderResources(){
+ $("resources").innerHTML=Object.entries(db.resources).map(([key,url])=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(({moe:"國教院課綱",moemath:"教育部數學課綱",edu:"教育雲",ixlMath:"IXL 四年級數學",ixlEla:"IXL 四年級英語",ixlScience:"IXL 四年級科學",ixlSocial:"IXL 四年級社會（選用通用能力）",phet:"PhET 模擬",trello:"自學記錄 Trello",plan:"原自學申請計畫書",venues:"場館學習",books:"閱讀書單",nature:"小學自然",mathTrello:"小學自學的數學"})[key]||key)+' ↗</a>').join("");
+}
+function showView(newView){
+ view=newView;
+ document.querySelectorAll("[data-view]").forEach(b=>{const active=b.dataset.view===view;b.classList.toggle("active",active);b.setAttribute("aria-selected",String(active))});
+ for(const v of ["skills","months","journal","references"])$(v+"View").hidden=v!==view;
+ if(view==="skills")renderDomain();else if(view==="months")renderMonths();else if(view==="journal")fillWeek();else renderResources();
+}
+document.querySelector(".navtabs").addEventListener("click",e=>{const b=e.target.closest("[data-view]");if(b)showView(b.dataset.view)});
+$("domainNav").addEventListener("click",e=>{const b=e.target.closest("[data-domain]");if(b){domainId=b.dataset.domain;renderDomain()}});
+$("skillsGrid").addEventListener("change",e=>{const b=e.target.closest("[data-skill]");if(b){const id=b.dataset.skill;state.skills[id]={...(state.skills[id]||{}),status:b.value,updatedAt:new Date().toISOString()};persist();tally()}});
+$("skillsGrid").addEventListener("input",e=>{const b=e.target.closest("[data-reflect]");if(b){const id=b.dataset.reflect;state.skills[id]={...(state.skills[id]||{}),reflection:b.value.slice(0,3000),updatedAt:new Date().toISOString()};persist()}});
+document.querySelector(".period").addEventListener("click",e=>{const b=e.target.closest("[data-term]");if(b){term=b.dataset.term;renderMonths()}});
+$("monthsGrid").addEventListener("change",e=>{const b=e.target.closest("[data-month]");if(b){state.months[b.dataset.month]={status:b.value,updatedAt:new Date().toISOString()};persist();tally()}});
+$("monthsGrid").addEventListener("click",e=>{const b=e.target.closest("[data-jump-domain]");if(b){domainId=b.dataset.jumpDomain;showView("skills");$("domainNav").scrollIntoView({behavior:"smooth",block:"start"})}});
+$("weekDate").addEventListener("change",fillWeek);
+for(const id of weekIds)$(id).addEventListener("input",saveWeek);
+$("weekCopy").addEventListener("click",async()=>{
+ const k=weekKey($("weekDate").value),body=["侯燁四年級自學｜"+k,...weekIds.map(id=>({weekTheme:"主題",weekInterest:"最想研究",weekAction:"做了什麼",weekLearning:"學到什麼",weekNext:"下次想做",weekEvidence:"作品與連結"})[id]+"："+$(id).value)].join("\n");
+ try{await navigator.clipboard.writeText(body);$("weekSave").textContent="✓ 本週紀錄已複製"}catch(e){$("weekSave").textContent="無法複製，請直接選取文字"}
+});
+$("export").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="侯燁四年級自學進度-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$("backupStatus").textContent="✓ 已匯出本機資料備份";
+});
+$("import").addEventListener("click",()=>$("importFile").click());
+$("importFile").addEventListener("change",async e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ try{const x=JSON.parse(await file.text());if(!x||x.schema!=="toby-houye-grade4-progress"||x.version!==1||typeof x.skills!=="object"||typeof x.months!=="object"||typeof x.weeks!=="object")throw Error("檔案格式不符");
+ if(!confirm("匯入會取代此瀏覽器中的四年級自學進度。請確認已備份目前內容。"))return;
+ state={...blank(),skills:x.skills||{},months:x.months||{},weeks:x.weeks||{}};persist();tally();showView(view);$("backupStatus").textContent="✓ 匯入成功";
+ }catch(err){$("backupStatus").textContent="⚠️ 匯入失敗："+err.message}finally{e.target.value=""}
+});
+$("resetProgress").addEventListener("click",()=>{if(confirm("確定清除本裝置的四年級學習進度與週記？此操作無法復原，請先備份。")){state=blank();persist();tally();showView(view);$("backupStatus").textContent="已重設本機進度"}});
+fetch("../data/houye-grade4.json?v=20261031-1").then(r=>{if(!r.ok)throw Error("資料載入失敗");return r.json()}).then(d=>{
+ db=d;const date=new Date(),today=[date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-");$("weekDate").value=today;
+ const p=new URLSearchParams(location.search),domain=p.get("domain");if(db.domains.some(d=>d.id===domain))domainId=domain;
+ tally();showView(["skills","months","journal","references"].includes(p.get("view"))?p.get("view"):"skills");
+}).catch(e=>{$("domainIntro").innerHTML='<div class="empty">學習資料暫時無法載入，請重新整理頁面：'+esc(e.message)+'</div>'});
+window.addEventListener("storage",e=>{if(e.key===KEY){state=saved();tally();showView(view)}});
+</script><script src="../shared-nav.js" defer></script></body></html>
