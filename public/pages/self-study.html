@@ -27,18 +27,18 @@ const resources=[
 {"id":"elementary-science","name":"小學自然","category":"校務與學習紀錄","icon":"▰","url":"https://trello.com/b/yVthk0wk/%E5%B0%8F%E5%AD%B8%E8%87%AA%E7%84%B6","description":"開啟 Trello「小學自然」看板，整理國小自然科學、自主探索與觀察紀錄。","tone":"#f3b51b"},
 {"id":"douyin-homeschool","name":"抖音拚自學","category":"校務與學習紀錄","icon":"▰","url":"https://trello.com/b/dNhRUV0q/%E6%8A%96%E9%9F%B3%E6%8B%9A%E8%87%AA%E5%AD%B8","description":"開啟 Trello「抖音拚自學」看板，集中整理相關短影音素材與自學參考。","tone":"#f3b51b"},
 {"id":"homeschool-collectors-podcast","name":"自學收集小隊 podcast","category":"校務與學習紀錄","icon":"▰","url":"https://trello.com/b/1LokY2XW/%E8%87%AA%E5%AD%B8%E6%94%B6%E9%9B%86%E5%B0%8F%E9%9A%8A-podcast","description":"開啟 Trello「自學收集小隊 podcast」看板，整理自學主題 Podcast 節目與聆聽紀錄。","tone":"#f3b51b"},
-{id:"unit-learning",name:"學習單元",category:"台灣數位學習",icon:"▥",url:"https://cloud.edu.tw/",description:"前往教育雲數位學習入口，依領域探索教材與學習單元。",tone:"#26a7cf"},
+{id:"unit-learning",name:"學習單元",category:"數位學習",icon:"▥",url:"https://cloud.edu.tw/",description:"前往教育雲數位學習入口，依領域探索教材與學習單元。",tone:"#26a7cf"},
 {id:"codespark",name:"codeSpark",category:"程式與數學",icon:"CS",url:"https://code-spark.org/",description:"以遊戲方式接觸程式邏輯，適合孩子探索程式設計。",tone:"#f28b35"},
 {id:"funexpected",name:"Funexpected Apps",category:"程式與數學",icon:"✦",url:"https://www.funexpectedapps.com/",description:"以互動遊戲帶孩子探索數學概念與解題思考。",tone:"#8064dc"},
-{id:"cooc",name:"酷課雲",category:"台灣數位學習",icon:"雲",url:"https://cooc.tp.edu.tw/",description:"臺北市政府教育局的數位學習入口，包含影音課程與多元學習資源。",tone:"#2877d8"},
+{id:"cooc",name:"酷課雲",category:"數位學習",icon:"雲",url:"https://cooc.tp.edu.tw/",description:"臺北市政府教育局的數位學習入口，包含影音課程與多元學習資源。",tone:"#2877d8"},
 {id:"classdojo",name:"ClassDojo",category:"親師協作",icon:"D",url:"https://www.classdojo.com/",description:"協助家庭與教師分享孩子的學習歷程、作品與訊息。",tone:"#7e69d8"},
 {id:"kahoot",name:"Kahoot!",category:"互動學習",icon:"K",url:"https://kahoot.com/",description:"用遊戲化問答進行練習、複習與互動學習。",tone:"#7137df"},
 {id:"quizlet",name:"Quizlet",category:"互動學習",icon:"Q",url:"https://quizlet.com/",description:"製作或使用單字卡、測驗與記憶練習，支援多種學習模式。",tone:"#4058d8"},
-{id:"learnmode",name:"學習吧",category:"台灣數位學習",icon:"吧",url:"https://www.learnmode.net/",description:"臺灣數位學習平台，提供課程、教材與互動學習工具。",tone:"#45aa8b"},
+{id:"learnmode",name:"學習吧",category:"數位學習",icon:"吧",url:"https://www.learnmode.net/",description:"臺灣數位學習平台，提供課程、教材與互動學習工具。",tone:"#45aa8b"},
 {id:"junyi",name:"均一教育平台",category:"程式與數學",icon:"均",url:"https://www.junyiacademy.org/",description:"以影片、練習與學習路徑支援數學及多領域自主學習。",tone:"#29a777"},
 {id:"mail",name:"雲端郵件",category:"日常工具",icon:"✉",url:"https://mail.google.com/",description:"開啟 Gmail，查看學校、課程與學習活動相關郵件。",tone:"#e95145"},
 {id:"ixl",name:"IXL 學習",category:"程式與數學",icon:"IXL",url:"https://www.ixl.com/",description:"提供數學、語文等科目的互動練習與學習診斷。",tone:"#38a3d5"},
-{id:"edu-platform",name:"教育平台",category:"台灣數位學習",icon:"教",url:"https://www.edu.tw/",description:"前往教育部全球資訊網，查找教育政策、公告與官方資訊。",tone:"#3277b8"},
+{id:"edu-platform",name:"教育平台",category:"數位學習",icon:"教",url:"https://www.edu.tw/",description:"前往教育部全球資訊網，查找教育政策、公告與官方資訊。",tone:"#3277b8"},
 {id:"cw-sdg",name:"天下兒童永續",category:"閱讀與永續",icon:"天",url:"https://sdgreading.cw.com.tw/",description:"閱讀 SDGs 兒童永續書房內容，從故事認識永續議題。",tone:"#e6a62e"}
 ];
 const categories=["全部",...new Set(resources.map(x=>x.category))];let active="全部",query="";
