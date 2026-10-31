@@ -9,6 +9,7 @@ permissions:
   contents: write
 concurrency:
   group: main-write-queue
+  queue: max
   cancel-in-progress: false
 jobs:
   probe-browser:

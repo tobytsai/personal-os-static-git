@@ -9,6 +9,7 @@ on:
 
 concurrency:
   group: main-write-queue
+  queue: max
   cancel-in-progress: false
 
 permissions:
