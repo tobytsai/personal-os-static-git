@@ -1,0 +1,51 @@
+name: Build IXL Grade 4 Chinese course catalog
+
+on:
+  push:
+    paths:
+      - .github/workflows/ixl-grade4-build.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-ixl-grade4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install public index parsing dependencies
+        run: python -m pip install --disable-pip-version-check requests beautifulsoup4
+      - name: Fetch and translate public IXL skill index titles
+        run: python scripts/build_ixl_grade4.py
+      - name: Validate output and counts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          doc=json.loads(Path("public/data/houye-ixl-grade4.json").read_text())
+          skills=doc["skills"]
+          counts={s:sum(1 for x in skills if x["subject"]==s) for s in ("math","ela","science","social-studies")}
+          assert len({x["id"] for x in skills})==len(skills)
+          assert all(x["linkStatus"]=="verified" for x in skills)
+          assert counts["math"] >= 330 and counts["ela"] >= 190
+          assert counts["science"] >= 90 and counts["social-studies"] >= 75
+          print("Skills indexed:",counts)
+          PY
+      - name: Publish complete official-linked index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/houye-ixl-grade4.json
+          if ! git diff --staged --quiet; then
+            git commit -m "data: import complete verified IXL grade 4 skill listings [skip ci]"
+            git push
+          else
+            echo "IXL catalog has not changed"
+          fi
