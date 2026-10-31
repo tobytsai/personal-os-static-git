@@ -22,6 +22,19 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 @media(max-width:620px){.wrap{padding:14px 12px 38px}.hero{padding:26px 21px;border-radius:22px}.resource-groups{grid-template-columns:1fr}}
 .card[hidden],.feature[hidden]{display:none!important}
 .place-card{min-width:0}.place-card h3{overflow-wrap:anywhere}.place-card .venue-summary{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}.place-address{margin:0;color:var(--muted);font-size:13px;overflow-wrap:anywhere}.place-tags{display:flex;gap:5px;flex-wrap:wrap}.place-tag{font-size:11px;line-height:1.4;border-radius:999px;padding:4px 8px;background:#f1eafc;color:#5e4682}.place-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}.place-actions a{font-size:13px;font-weight:750;color:var(--sea);text-decoration:underline;text-underline-offset:3px}.place-pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 1px 6px}.place-pagination[hidden]{display:none}.place-pagination span{color:var(--muted);font-size:13px}.place-pagination button{border:1px solid var(--sea);background:#eef9f6;color:var(--sea);padding:10px 14px;border-radius:999px;font:750 13px system-ui;cursor:pointer}.place-pagination button[hidden]{display:none}.place-status{color:var(--muted);padding:17px;background:#fff;border:1px dashed var(--line);border-radius:14px;line-height:1.7}
+
+/* 花蓮 Taiwan PASS 限期旅遊優惠：保留日期與資格說明，避免誤認無條件免費 */
+.travel-offer{margin:0 0 18px;padding:20px 22px;border:1px solid #b8dfd5;border-radius:19px;background:#f0faf6}
+.travel-offer-kicker{display:inline-block;padding:5px 10px;border-radius:999px;background:#d9f1e9;color:#126c64;font-size:12px;font-weight:800}
+.travel-offer h3{margin:12px 0 9px;font-size:21px;line-height:1.45}
+.travel-offer p{color:var(--muted);line-height:1.65;margin:8px 0}
+.travel-offer ul{margin:10px 0 15px;padding-left:22px;line-height:1.8;font-size:14px}
+.travel-offer li+li{margin-top:4px}
+.travel-offer-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.travel-offer-actions a{border:1px solid #9ccfc4;border-radius:12px;padding:10px 13px;background:white;color:var(--sea);text-decoration:none;font-weight:750;font-size:14px}
+.travel-offer-actions a:first-child{background:var(--sea);color:white;border-color:var(--sea)}
+.travel-offer .travel-offer-note{font-size:12px;margin-top:12px}
+@media(max-width:620px){.travel-offer{padding:17px}.travel-offer-actions a{flex:1 1 100%;text-align:center}}
 </style>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 </head>
@@ -713,8 +726,28 @@ h2{font-size:22px;margin:25px 0 12px}.sub{color:var(--muted);margin:-5px 0 15px;
 
 <section class="feature" data-region="taiwan" data-area="east" data-city="hualien" data-city-exclusive>
 <div class="feature-intro"><h2>花蓮縣旅遊資源</h2><p>依花蓮旅遊網的導覽架構，整理精彩活動、目的地、行程體驗、交通服務、旅遊指南與影音資訊。選擇花蓮縣時顯示此區塊。</p></div>
+<article class="travel-offer" id="hualien-taiwan-pass-2026" aria-labelledby="hualien-pass-title">
+<span class="travel-offer-kicker">2026 花蓮限時優惠｜10/31–11/15</span>
+<h3 id="hualien-pass-title">Taiwan PASS｜免費預約台灣好行「縱谷花蓮線」</h3>
+<p>交通部觀光署配合 11 月 6–8 日於鯉魚潭舉行的「2026 花蓮太平洋國際龍舟節」，推出已開通 Taiwan PASS 旅客限定的郵輪式公車優惠。可從半日遊、1 日遊、2 日遊擇一預約，每組 Taiwan PASS 票券序號限免費使用 1 次。</p>
+<ul>
+<li><strong>適用資格：</strong>已開通 Taiwan PASS，並持有票券序號的旅客；不是所有旅客都可無條件免費搭乘。</li>
+<li><strong>優惠出發日：</strong>2026/10/31–11/15。2 日遊最晚 11/15 出發、11/16 返程；依各遊程座位情況，額滿為止。</li>
+<li><strong>預約期限：</strong>搭乘日前一天中午 12:00 前，在縱谷花蓮線訂位網站輸入序號、選擇遊程與日期並填寫聯絡資料。</li>
+<li><strong>搭乘取票：</strong>發車前至少 10 分鐘至<strong>花蓮轉運站 8 號月台</strong>，出示 Taiwan PASS APP 票券畫面供核對，領取紙本車票；遺失不補發。</li>
+<li><strong>龍舟節：</strong>2026/11/6–11/8，鯉魚潭風景區；台灣好行 303B、303C 路線行經鯉魚潭，活動期間部分水域有限制。</li>
+</ul>
+<div class="travel-offer-actions">
+<a href="https://www.dihoway.com/tw/cchoice-shift.php" target="_blank" rel="noopener">縱谷花蓮線｜線上訂位 ↗</a>
+<a href="https://admin.taiwan.net.tw/News/News?a=35&amp;id=36664" target="_blank" rel="noopener">觀光署｜官方活動公告 ↗</a>
+<a href="https://twpass.tw/" target="_blank" rel="noopener">Taiwan PASS｜官網 ↗</a>
+</div>
+<p class="travel-offer-note">資料來源：交通部觀光署 2026/10/30 公告。優惠與實際班次、座位及訂位異動，以官方網站最新資訊為準。</p>
+</article>
 <div class="resource-groups">
 <div class="resource-group"><h3>精彩活動</h3><div class="resource-cards">
+<a class="resource-card" href="#hualien-taiwan-pass-2026">Taiwan PASS｜免費搭縱谷花蓮線<small>2026/10/31–11/15｜需已開通 Taiwan PASS；每組序號限一次，點此看訂位規則</small></a>
+<a class="resource-card" href="https://www.erv-nsa.gov.tw/zh-tw/event/news/7283" target="_blank" rel="noopener">2026 花蓮太平洋國際龍舟節<small>11/6–11/8｜鯉魚潭潭北水域；留意活動水域管制</small></a>
 <a class="resource-card" href="https://hualien.travel/zh-tw/events/2026/" target="_blank" rel="noopener">活動年曆<small>依月份查找花蓮節慶與觀光活動</small></a>
 <a class="resource-card" href="https://hualien.travel/zh-tw/news/" target="_blank" rel="noopener">最新消息<small>掌握花蓮旅遊公告與最新情報</small></a>
 <a class="resource-card" href="https://hualien.travel/zh-tw/social-medias/" target="_blank" rel="noopener">打卡話題<small>瀏覽旅客分享與花蓮社群靈感</small></a>
@@ -994,6 +1027,16 @@ const researchSubFilters=document.querySelector("#researchSubFilters");
 const researchTopics=new Set(["rail","taiwantrip","flight","forest"]);
 const taiwanAreas=new Set(["north","central","south","east","island"]);
 let region="all",quick="all",city="all",venue="all",adminArea="all";
+/* 支援分享指定縣市連結，例如 ?city=hualien */
+const requestedTravelCity=new URLSearchParams(window.location.search).get("city");
+if(requestedTravelCity&&adminAreas[requestedTravelCity]){
+  const selectedCityButton=cityButtons.find(b=>b.dataset.cityFilter===requestedTravelCity);
+  if(selectedCityButton){
+    region="taiwan";
+    quick=selectedCityButton.closest("[data-city-group]").dataset.cityGroup;
+    city=requestedTravelCity;
+  }
+}
 
 function syncFilters(){
   regionButtons.forEach(b=>{
@@ -1093,6 +1136,9 @@ venueButtons.forEach(b=>b.addEventListener("click",()=>{
 }));
 syncFilters();
 update();
+if(window.location.hash==="#hualien-taiwan-pass-2026"&&city==="hualien"){
+  requestAnimationFrame(()=>document.getElementById("hualien-taiwan-pass-2026")?.scrollIntoView({block:"start"}));
+}
 </script>
 <script src="../data/taipei-attractions-ui.js?v=20261026-344" defer></script>
 <script src="../shared-nav.js?v=20261025-2" defer></script></body></html>
