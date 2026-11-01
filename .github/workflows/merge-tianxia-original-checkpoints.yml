@@ -1,0 +1,36 @@
+name: Merge 天下畫博 verified original checkpoints
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/data/oil/tianxia/backup-checkpoints/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: main-write-queue
+  cancel-in-progress: false
+jobs:
+  merge-originals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Read latest main without losing concurrent work
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Merge only verified Drive originals into compatible original index
+        run: python3 scripts/merge_tianxia_backup_checkpoints.py
+      - name: Safely commit and verify original link index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/oil/tianxia/drive-original-links.json
+          if git diff --cached --quiet; then
+            echo "No new original links"
+            exit 0
+          fi
+          git commit -m "Merge verified 天下畫博 Drive original backups"
+          bash scripts/git-safe-push.sh
