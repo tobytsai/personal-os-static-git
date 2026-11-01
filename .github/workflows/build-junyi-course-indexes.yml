@@ -1,0 +1,33 @@
+name: Build Junyi course indexes
+on:
+  push:
+    paths:
+      - '.github/workflows/build-junyi-course-indexes.yml'
+      - 'scripts/build-houye-junyi.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: main-write-queue
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests beautifulsoup4
+      - run: python scripts/build-houye-junyi.py
+      - name: Commit generated course indexes
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add public/data/houye-junyi-grade{5,6,7,8,9,10,11,12}*.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Build Junyi course cards for grades 5 to 12"
+          bash scripts/git-safe-push.sh
