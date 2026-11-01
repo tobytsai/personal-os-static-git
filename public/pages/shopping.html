@@ -143,7 +143,7 @@ render();
  };
  const $=id=>document.getElementById(id);
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const formatPrice=n=>'NT</body></html>+new Intl.NumberFormat('zh-TW').format(n);
+ const formatPrice=n=>'NT$'+new Intl.NumberFormat('zh-TW').format(n);
  let items=[],active='all',search='',editing=null;
  try{const raw=localStorage.getItem(STORAGE_KEY);const parsed=raw?JSON.parse(raw):[];items=Array.isArray(parsed)?parsed:[]}catch{items=[]}
  // 首次開啟保留 GitHub 預設商品；若原首頁待辦曾標記完成，轉成已購狀態。
