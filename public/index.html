@@ -76,8 +76,7 @@ renderTools();
 (()=>{
  const key='tobyHomeRemindersV1';
  const milkReminder={id:'milk-linfengying-20261201',title:'林鳳營高品質鮮乳｜分批領取（購買5瓶、剩餘3瓶；全脂／低脂任選）',date:'2026-12-01',phone:'',done:false};
- const beetleReminder={id:'shopping-beetle-soil-55l-20261102',title:'🪲 購買甲蟲專用土 5.5L（獨角仙／雞母蟲／大兜土）｜蝦皮參考 NT$89／包，結帳前比較運費',date:'',phone:'',url:'https://shopee.tw/product/187780133/3791057414',done:false};
- const defaults=[{id:'vehicle-ba6950',title:'BA-6950 機車定期排氣檢驗',date:'2026-12-31',phone:'03-332-4414',done:false},{id:'vehicle-kt3720',title:'KT-3720 機車定期排氣檢驗',date:'2027-01-31',phone:'03-332-4414',done:false},milkReminder,beetleReminder];
+ const defaults=[{id:'vehicle-ba6950',title:'BA-6950 機車定期排氣檢驗',date:'2026-12-31',phone:'03-332-4414',done:false},{id:'vehicle-kt3720',title:'KT-3720 機車定期排氣檢驗',date:'2027-01-31',phone:'03-332-4414',done:false},milkReminder];
  let entries; try{const raw=localStorage.getItem(key);const data=raw===null?null:JSON.parse(raw);entries=Array.isArray(data)?data:defaults.map(x=>({...x}));}catch{entries=defaults.map(x=>({...x}));}
  // Once per browser, add the new pickup reminder without replacing existing reminders.
  const milkSeedKey='tobyHomeRemindersSeedMilk20261201';
@@ -88,15 +87,33 @@ renderTools();
    }
    localStorage.setItem(milkSeedKey,'1');
  }}catch{if(!entries.some(x=>x.id===milkReminder.id))entries.push({...milkReminder})}
- // Seed the shopping reminder once per browser, preserving existing edited reminders.
- const beetleSeedKey='tobyHomeRemindersSeedBeetleSoil20261102';
- try{if(localStorage.getItem(beetleSeedKey)!=='1'){
-   if(!entries.some(x=>x.id===beetleReminder.id)){
-     const updated=[...entries,{...beetleReminder}];
-     localStorage.setItem(key,JSON.stringify(updated));entries=updated;
+
+ // 將舊版首頁的甲蟲土購物提醒轉入「購物啟動器」，保留已完成狀態。
+ // 只搬一次：如果購買卡片已被使用者刪除，不重新加入。
+ const beetleOldId='shopping-beetle-soil-55l-20261102';
+ const beetleOld=entries.find(x=>x.id===beetleOldId);
+ if(beetleOld){
+  try{
+   const purchaseKey='tobyShoppingPurchaseListV1',purchaseSeedKey='tobyShoppingSeedBeetle20261102';
+   const rawPurchase=localStorage.getItem(purchaseKey);
+   const parsedPurchase=rawPurchase?JSON.parse(rawPurchase):[];
+   const purchases=Array.isArray(parsedPurchase)?parsedPurchase:[];
+   if(!purchases.some(x=>x.id==='beetle-soil-55l-20261102')&&localStorage.getItem(purchaseSeedKey)!=='1'){
+    purchases.unshift({
+     id:'beetle-soil-55l-20261102',platform:'shopee',
+     title:'甲蟲專用土／IM 大兜土（獨角仙、雞母蟲）',
+     spec:'5.5L／包',shop:'安心水族寵物',price:89,quantity:1,
+     url:'https://shopee.tw/product/187780133/3791057414',
+     note:'2026-11-02 蝦皮查詢參考價 NT$89／包。結帳前確認 5.5L 規格、運費、折價券與實付總價。',
+     done:Boolean(beetleOld.done)
+    });
+    localStorage.setItem(purchaseKey,JSON.stringify(purchases));
+    localStorage.setItem(purchaseSeedKey,'1');
    }
-   localStorage.setItem(beetleSeedKey,'1');
- }}catch{if(!entries.some(x=>x.id===beetleReminder.id))entries.push({...beetleReminder})}
+   const remaining=entries.filter(x=>x.id!==beetleOldId);
+   localStorage.setItem(key,JSON.stringify(remaining));entries=remaining;
+  }catch{entries=entries.filter(x=>x.id!==beetleOldId)}
+ }
  const list=document.getElementById('reminder-list'),form=document.getElementById('reminder-form'),err=document.getElementById('reminder-error');
  let editing=null;
  function save(){try{localStorage.setItem(key,JSON.stringify(entries));return true}catch{err.textContent='無法儲存至瀏覽器，請檢查瀏覽器的儲存空間或隱私設定。';err.hidden=false;return false}}
