@@ -51,6 +51,13 @@ const intros={
 };
 const nav=document.getElementById("districts"),grid=document.getElementById("areaGrid"),selected=document.getElementById("selected"),selectedContent=document.getElementById("selectedContent");
 function renderDistrictContent(name){
+ if(name==="士林區"){
+  selectedContent.innerHTML='<h4 class="subcategory-title">士林區次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="scienceCategory" type="button">🔬 科教館</button></div><div id="storeResults"></div>';
+  document.getElementById("scienceCategory").addEventListener("click",()=>{
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>國立臺灣科學教育館</h4><p>🔬 展區與展覽內容 · 侯燁的場館學習卡片</p><p>📍 士林區</p><a class="map-link" href="science-museum.html">開啟科教館頁面 →</a> <a class="map-link" href="https://www.ntsec.gov.tw/" target="_blank" rel="noopener noreferrer">科教館官網 ↗</a></article>';
+  });
+  return;
+ }
  if(name==="大同區"){
   selectedContent.innerHTML='<h4 class="subcategory-title">大同區次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="historyCategory" type="button">🏛️ 歷史文化</button></div><div id="storeResults"></div>';
   document.getElementById("historyCategory").addEventListener("click",()=>{
@@ -73,7 +80,7 @@ let lifeState=readLifeState();
 lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
-const initialNewest=["臺灣新文化運動紀念館"];
+const initialNewest=["國立臺灣科學教育館","臺灣新文化運動紀念館"];
 function lifeKey(district,name){return district+"｜"+name}
 function saveLifeState(){try{localStorage.setItem(lifeStoreKey,JSON.stringify(lifeState))}catch(e){}}
 function collectLifeCards(){
