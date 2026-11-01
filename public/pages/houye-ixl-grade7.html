@@ -76,14 +76,14 @@ function card(s){
 function render(){
  if(!db)return;listSubject();
  const total=db.skills.length,done=db.skills.filter(x=>progress[x.id]==="已完成").length,filtered=displayList();
- $("skillTotal").textContent=total+" 項已整理中文技能";$("groupTotal").textContent=db.categories.length+" 個單元";$("doneTotal").textContent=done+" 項已完成";
+ $("skillTotal").textContent=total+" 項技能";$("groupTotal").textContent=db.categories.length+" 個單元";$("doneTotal").textContent=done+" 項已完成";
  $("resultCount").textContent=filtered.length+" / "+total+" 項";$("unfinished").textContent=unfinished?"✓ 顯示未完成":"○ 未完成";
  $("cards").innerHTML=filtered.slice(0,limit).map(card).join("")||'<div class="empty">沒有符合條件的技能卡片。請清除篩選或改選其他單元。</div>';
  $("moreWrap").hidden=limit>=filtered.length;$("more").textContent="顯示更多（尚有 "+Math.max(0,filtered.length-limit)+" 項）";
  $("subjectIntro").textContent=subject==="全部"?"全部 IXL 七年級學科":(db.subjects.find(x=>x.id===subject)?.name||"")+"："+
  (subject==="social-studies"?"其中美國史、政府制度等屬延伸內容，不視為臺灣七年級社會科必修。":"可依 IXL 技能分類挑選，不必依清單順序完成。");
  const verified=db.skills.filter(x=>x.linkStatus==="verified").length;
- $("catalogNotice").textContent=db.coverage+" 其中 "+verified+" 項已核對原始技能連結。未核對的卡片可試開依題名組成的技能網址，並提供官方七年級清單作為備用入口；不能保證推導網址全部有效。中文標題是自學用翻譯，原始英文題名保留供對照。";
+ $("catalogNotice").textContent=db.coverage+" 尚有 "+db.skills.filter(x=>x.translationStatus==="pending").length+" 項標題待翻譯；保留英文原題。 其中 "+verified+" 項已核對原始技能連結。未核對的卡片可試開依題名組成的技能網址，並提供官方七年級清單作為備用入口；不能保證推導網址全部有效。中文標題是自學用翻譯，原始英文題名保留供對照。";
 }
 $("subjects").addEventListener("click",e=>{const b=e.target.closest("[data-subject]");if(b){subject=b.dataset.subject;category="全部";limit=48;render()}});
 $("categories").addEventListener("click",e=>{const b=e.target.closest("[data-category]");if(b){category=b.dataset.category;limit=48;render()}});
