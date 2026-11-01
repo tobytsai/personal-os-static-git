@@ -112,7 +112,10 @@ cards.push(...[{"name":"超圖解地方創生：U型集體創新歷程","categor
 const borrowedBookCovers={"hXgBocZn":"../assets/community-book-covers/hXgBocZn.webp","TLwRm6ec":"../assets/community-book-covers/TLwRm6ec.webp","NMMbQWKa":"../assets/community-book-covers/NMMbQWKa.webp","nUkFx8Cc":"../assets/community-book-covers/nUkFx8Cc.webp","OrjqJdNh":"../assets/community-book-covers/OrjqJdNh.webp","Y7N2HyPY":"../assets/community-book-covers/Y7N2HyPY.webp","MzRTHlRi":"../assets/community-book-covers/MzRTHlRi.webp","9SUdIhcb":"../assets/community-book-covers/9SUdIhcb.webp","jtnq4Ln0":"../assets/community-book-covers/jtnq4Ln0.webp","iPi43AkW":"https://s2.eslite.com/unsafe/fit-in/x900/s.eslite.com/b2b/newItem/2026/01/15/148_164804658_21_mainCoverImage1.jpg","PRVwaPFe":"https://s.eslite.com/upload/product/o/2682160563007/20220503060002958274.jpg","I49bsv2g":"https://taiwanebook.ncl.edu.tw/cover/eyJpdiI6Ikl4UzB2WEdiSjNQVzRDTUVkUHFFSUE9PSIsInZhbHVlIjoiREhSWjR2OUdqSTlUVW5WUnNDcCtrb0Z3UjlkVlpQS3NGZmx4YldNREorZz0iLCJtYWMiOiJlYjkxMmRhNGIzYzY0NGViZjc5YThmOTA5ZTg3NDM0YzNlMmEzZjljMzJiOTRlNWY1NzYxNTQ2MDdlYmYyZWZkIiwidGFnIjoiIn0=","Qu0Ivp5D":"../assets/community-book-covers/Qu0Ivp5D.webp","FHIt1eLe":"../assets/community-book-covers/FHIt1eLe.webp","sE7lzao2":"../assets/community-book-covers/sE7lzao2.webp"};
 cards.forEach(c=>{const key=(c.url.match(/trello\.com\/c\/([^/]+)/)||[])[1];if(borrowedBookCovers[key])c.images=[borrowedBookCovers[key]];});
 cards.forEach(c=>{const key=(c.url.match(/trello\.com\/c\/([^/]+)/)||[])[1];c.driveImages=communityImageMap[key]||[]});
-const categories=["地方創生影響力案例","可投計畫","收集","影片","補助計畫","相關單位","社造博覽會","成果報告","認識及了解過","書單","風土經濟學：地方創生的21堂風土設計課","數位專題","相關連結","意識覺醒社群","野力再生：翻轉社區營造DNA"];
+/* community course 2026-10-28: quick review and three speakers */
+const socialCourseCards=[{"id":"L2810Q01","name":"📚 中壢社造培力｜學長姐練習曲分享會（2026/10/28）","category":"社造課程","url":"community-course-q-20261028.html","lesson":true,"desc":"【課程總覽｜2026-10-28 09:00–12:00】中壢舊城願景交流基地（桃園市中壢區中平路144號1樓）。三位講者：鄭瑋萱｜熱映像：餐桌、廟宇與防空洞；盧韻如｜石刃：現實與理想衝突時；巫秀千｜社造種子師資：Q的總和交流活動。快速回憶：田野要從生活進入；文化轉譯要尊重受訪者；工藝要守住品質；社造要留下居民可以延續的關係。點開可閱讀完整重點、案例、30題回憶問答與延伸連結。","tax":{"region":["桃園市"],"topic":["文化與地方記憶","青年與教育","社區參與與治理","地方創生與產業"],"org":["政府機關"]}},{"id":"L2810Q02","name":"🎥 鄭瑋萱｜熱映像・餐桌、廟宇與防空洞","category":"社造課程","url":"community-course-q-20261028.html#zheng","lesson":true,"desc":"【第1場｜09:00–10:00】從馬祖女性的料理與移民生命史，延伸到家族書信、防空洞、《野暖：龍岡馬祖廟宇誌》和擺暝文化。回憶關鍵：餐桌是田野入口；觀眾分家族、馬祖社群與陌生大眾；受訪者應參與成果校對與授權。內附10題田野與轉譯練習。","tax":{"region":["桃園市"],"topic":["文化與地方記憶","多元文化","青年與教育"],"org":["社會企業與民間團隊"]}},{"id":"L2810Q03","name":"🔨 盧韻如｜石刃・現實與理想衝突時","category":"社造課程","url":"community-course-q-20261028.html#lu","lesson":true,"desc":"【第2場｜10:00–11:00】永利刀具第三代與石刃品牌：從傳統製刀到工藝設計、客製化、DIY體驗及飲食記憶課程。回憶關鍵：產品品質不能被故事取代；把日常產品、工藝訂製、體驗與維修分層經營；區分收入和利潤。內附10題工藝與商業營運練習。","tax":{"region":["桃園市"],"topic":["文化與地方記憶","地方創生與產業","青年與教育"],"org":["社會企業與民間團隊"]}},{"id":"L2810Q04","name":"🌱 巫秀千｜社造種子師資・Q的總和","category":"社造課程","url":"community-course-q-20261028.html#wu","lesson":true,"desc":"【第3場｜11:00–12:00】交流活動與課後社造方法提問：地方田調、居民協作、跨代動能、KPI之外的影響與成果返還。回憶關鍵：不只完成活動，而要問誰受益、誰持續參與、什麼留在社區。附10題社造方法延伸題；題目與建議回答為課後整理，非講者逐字稿。","tax":{"region":["桃園市"],"topic":["社區參與與治理","文化與地方記憶","青年與教育"],"org":["組織待確認"]}}];
+cards.unshift(...socialCourseCards);
+const categories=["社造課程","地方創生影響力案例","可投計畫","收集","影片","補助計畫","相關單位","社造博覽會","成果報告","認識及了解過","書單","風土經濟學：地方創生的21堂風土設計課","數位專題","相關連結","意識覺醒社群","野力再生：翻轉社區營造DNA"];
 
 // 初步分類依卡片標題與內容；組織類型不等同申請資格。
 const areas=[['台北市',/臺北市|台北市|臺北|台北|萬華|蟾蜍山/],['新北市',/新北市|新北|汐止|樟樹灣/],['桃園市',/桃園|中壢|平鎮|八德|大園|龍潭|蘆竹|大溪|新屋|楊梅|觀音區|龜山|南崁|青埔/],['基隆市',/基隆/],['新竹市',/新竹市/],['新竹縣',/新竹縣/],['苗栗縣',/苗栗|苑裡|獅潭/],['台中市',/台中|臺中/],['彰化縣',/彰化/],['南投縣',/南投|埔里/],['雲林縣',/雲林/],['嘉義市',/嘉義市/],['嘉義縣',/嘉義縣|溪口鄉/],['台南市',/台南|臺南|左鎮/],['高雄市',/高雄/],['屏東縣',/屏東/],['宜蘭縣',/宜蘭|員山/],['花蓮縣',/花蓮/],['台東縣',/台東|臺東|長濱/],['澎湖縣',/澎湖/],['金門縣',/金門/],['連江縣',/連江縣|馬祖芹壁|馬祖西尾/]];
@@ -157,9 +160,10 @@ levels.forEach(([key,selector])=>document.querySelector(selector).addEventListen
 document.querySelector('#resetTax').addEventListener('click',()=>{Object.keys(selections).forEach(k=>selections[k]='全部');visibleCount=pageSize;renderTax();render()});
 
 const resourceMap={
+ '社造課程':['社造課程'],
  '可投計畫':['補助計畫'],'補助計畫':['補助計畫'],'社造博覽會':['案例分享'],'成果報告':['成果報告'],'數位專題':['數位專題'],'影片':['影音'],'相關連結':['友站連結'],'相關單位':['相關單位'],'地方創生影響力案例':['案例分享'],'書單':['書籍與閱讀'],'風土經濟學：地方創生的21堂風土設計課':['書籍與閱讀'],'野力再生：翻轉社區營造DNA':['案例分享','書籍與閱讀']
 };
-const resources=['補助計畫','培力課程','活動情報','關於社造','案例分享','村落藝文','社造地圖','數位專題','成果報告','課程教材','友站連結','众聲雜誌','影音','書籍與閱讀','相關單位','其他與待確認'];
+const resources=['補助計畫','培力課程','社造課程','活動情報','關於社造','案例分享','村落藝文','社造地圖','數位專題','成果報告','課程教材','友站連結','众聲雜誌','影音','書籍與閱讀','相關單位','其他與待確認'];
 function resourceTypes(c){let r=[...(resourceMap[c.category]||[])];const n=c.name||'';if(/培力課程|培訓課程|研習課程/.test(n))r.push('培力課程');if(/活動情報|活動公告/.test(n))r.push('活動情報');if(/社造地圖|社區地圖/.test(n))r.push('社造地圖');if(/村落藝文/.test(n))r.push('村落藝文');if(/課程教材|教學教材/.test(n))r.push('課程教材');if(/众聲雜誌/.test(n))r.push('众聲雜誌');if(/認識社造|關於社造/.test(n))r.push('關於社造');return r.length?[...new Set(r)]:['其他與待確認']}
 let activeResource='全部';
 const favKey="communityLauncherFavorites",recentKey="communityLauncherRecent";
@@ -220,7 +224,7 @@ function renderRecent(){
  document.querySelector("#recentCount").textContent=items.length+" / 10";
  el.innerHTML=items.length?items.map(c=>
   '<a href="'+esc(c.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(c.url)+'" title="'+esc(c.name)+'">'+esc(c.name)+'</a>'
- ).join(""):'<p class="empty">目前沒有紀錄；點開任一 Trello 卡片後就會出現在這裡。</p>';
+ ).join(""):'<p class="empty">目前沒有紀錄；點開任一卡片後就會出現在這裡。</p>';
 }
 function rememberOpen(url){
  if(!cardByUrl.has(url))return;
@@ -249,11 +253,11 @@ function cardMarkup(c){
   '<p class="detail">'+esc(description)+'</p>'+readingMarkup(c)+
   (booksComLinks[bookKey]?'<div class="actions"><a href="'+esc(booksComLinks[bookKey].url||('https://search.books.com.tw/search/query/cat/all/v/1/key/'+encodeURIComponent(booksComLinks[bookKey].term)))+'" target="_blank" rel="noopener noreferrer">'+(booksComLinks[bookKey].direct?'📚 博客來書籍頁 ↗':'🔎 博客來搜尋書名 ↗')+'</a></div>':'')+
   (hasMore?'<button type="button" class="expand" aria-expanded="false" data-expand>展開說明 ↓</button>':"")+
-  (c.internalCase?'<p class="case-source">📌 依提供的貼文整理；原文連結未提供。</p>':'<div class="actions"><a href="'+esc(c.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(c.url)+'">'+(c.url.startsWith("https://trello.com/")?"🔗 開啟 Trello 卡片":"🌐 開啟資源網站") +'</a></div>')+'</article>';
+  (c.internalCase?'<p class="case-source">📌 依提供的貼文整理；原文連結未提供。</p>':'<div class="actions"><a href="'+esc(c.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(c.url)+'">'+(c.lesson?"📚 開啟課程複習筆記":c.url.startsWith("https://trello.com/")?"🔗 開啟 Trello 卡片":"🌐 開啟資源網站") +'</a></div>')+'</article>';
 }
 function render(){
  const q=query.value.trim().toLocaleLowerCase();
- matchingCards=cards.filter(c=>(!linkedCard||(c.url.match(/trello\.com\/c\/([^/]+)/)||[])[1]===linkedCard)&&matchTax(c)&&(activeResource==="全部"||resourceTypes(c).includes(activeResource))&&(active==="全部"||c.category===active)&&(!onlyFav||favs.includes(c.url))&&
+ matchingCards=cards.filter(c=>(!linkedCard||(c.id||(c.url.match(/trello\.com\/c\/([^/]+)/)||[])[1])===linkedCard)&&matchTax(c)&&(activeResource==="全部"||resourceTypes(c).includes(activeResource))&&(active==="全部"||c.category===active)&&(!onlyFav||favs.includes(c.url))&&
   (!q||(c.name+" "+(c.desc||"")+" "+c.category).toLocaleLowerCase().includes(q)));
  const shown=matchingCards.slice(0,visibleCount);
  grid.innerHTML=shown.length?shown.map(cardMarkup).join(""):
