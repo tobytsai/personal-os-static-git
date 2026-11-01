@@ -10,21 +10,12 @@ jobs:
       - run: pip install requests beautifulsoup4
       - run: |
           python - <<'PY'
-          import requests,collections
+          import requests
           from bs4 import BeautifulSoup
-          for url in ['https://www.junyiacademy.org/topics/es-5th-grade','https://www.junyiacademy.org/topics/j-m5a','https://www.junyiacademy.org/topics/j-m5a-c01','https://www.junyiacademy.org/topics/coocele-c5','https://www.junyiacademy.org/topics/math-10']:
+          for url in ['https://www.junyiacademy.org/topics/coocele-c5','https://www.junyiacademy.org/topics/jnc-5-03-1a','https://www.junyiacademy.org/topics/es-10th-grade','https://www.junyiacademy.org/topics/j-m10a']:
               soup=BeautifulSoup(requests.get(url,timeout=40).text,'html.parser')
               for st in soup(['style','script']):st.decompose()
               print('URL',url)
-              print('TESTIDS',collections.Counter(x.get('data-testid') for x in soup.select('[data-testid]')))
-              for x in soup.select('[data-testid]')[:24]:
-                  print('ITEM',x.name,x.get('data-testid'),x.get('href'),x.get_text(' ',strip=True)[:120])
-              links=[a for a in soup.select('a[href]') if '查看課程內容' in a.get_text(' ',strip=True)]
-              for a in links[:2]:
-                  print('ANCESTORS')
-                  for par in list(a.parents)[:5]:print(str(par)[:2300])
-              for x in soup.select('a[href]'):
-                  if '/videos/' in x.get('href','') or '/exercises/' in x.get('href',''):
-                      print('EXERCISE',str(x)[:1000])
-                      break
+              c=soup.select_one('[data-testid="section-card"]') or soup.select_one('[data-testid="topic-card"]')
+              print('CARD',str(c)[:13000])
           PY
