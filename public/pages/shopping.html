@@ -32,6 +32,10 @@
 .purchase-status{background:#fff2c4;color:#73581e}
 .purchase-card.purchased .purchase-status{background:#e0efdf;color:#346536}
 .purchase-card h3{font-size:1.1rem;line-height:1.45;margin:0;overflow-wrap:anywhere}
+.purchase-name-wrap{display:flex;align-items:flex-start;gap:11px;min-width:0}
+.purchase-name-wrap h3{flex:1;min-width:0}
+.purchase-thumb{display:block;flex:0 0 91px;width:91px;height:91px;border:1px solid #ecdfdd;border-radius:11px;background-color:#fff;background-size:300% 200%;background-repeat:no-repeat}
+@media(max-width:560px){.purchase-name-wrap{gap:8px}.purchase-thumb{width:70px;height:70px;flex-basis:70px}}
 .purchase-card.purchased h3{text-decoration:line-through;color:#738077}
 .purchase-detail{margin:0;color:var(--muted);font-size:.85rem;line-height:1.65;overflow-wrap:anywhere}
 .purchase-price{font-size:1.16rem;font-weight:900;color:#a51e62}
@@ -140,7 +144,7 @@ $("cards").addEventListener("click",e=>{const b=e.target.closest("[data-star]");
 document.addEventListener("click",e=>{const a=e.target.closest("[data-open]");if(!a)return;const id=a.dataset.open;recent=[id].concat(recent.filter(x=>x!==id)).slice(0,8);save(REC,recent);drawShelf("recent",recent,"開啟網站後，最近使用項目會列在這裡。")});
 $("helpButton").addEventListener("click",()=>$("help").showModal());$("closeHelp").addEventListener("click",()=>$("help").close());$("help").addEventListener("click",e=>{if(e.target===$("help"))$("help").close()});
 render();
-</script><script src="../data/shopee-order-history-20261102.js"></script><script>
+</script><script src="../data/shopee-order-history-20261102.js"></script><script src="../data/shopee-order-thumbnails-20261102.js"></script><script>
 
 (()=>{
  const STORAGE_KEY='tobyShoppingPurchaseListV1';
@@ -190,6 +194,25 @@ render();
    items=[...items,...HISTORY_ROWS.filter(x=>!existing.has(x.id))];
   }
  }
+
+ // 2026-11-02 第二批五件訂單：即使舊的24件已匯入，也只需將這次新增的五件匯入一次。
+ const EXTRA_SEED_KEY='tobyShoppingSeedShopeeOrders20261102Add5V1';
+ const EXTRA_IDS=new Set([
+  'shorder-20261102-clip-phone-holder',
+  'shorder-20261102-rich-teabags-50',
+  'shorder-20261102-bullhead-sacha-127g',
+  'shorder-20261102-coloko-hot-315g',
+  'shorder-20261102-orangehouse-cleaner-1700'
+ ]);
+ if(HISTORY_ROWS.length&&localStorage.getItem(EXTRA_SEED_KEY)!=='1'){
+  const already=new Set(items.map(x=>x.id));
+  const extra=HISTORY_ROWS.filter(x=>EXTRA_IDS.has(x.id)&&!already.has(x.id));
+  if(extra.length){
+   try{const merged=[...items,...extra];localStorage.setItem(STORAGE_KEY,JSON.stringify(merged));items=merged}
+   catch{items=[...items,...extra]}
+  }
+  try{localStorage.setItem(EXTRA_SEED_KEY,'1')}catch{}
+ }
  const platformName=x=>x==='shopee'?'蝦皮購買清單':'其他購買清單';
  const cleanUrl=value=>{try{const url=new URL(String(value||''));return ['http:','https:'].includes(url.protocol)?url.href:''}catch{return''}};
  function commit(next){
@@ -206,10 +229,15 @@ render();
   const url=cleanUrl(item.url);
   const searchUrl=item.platform==='shopee'?'https://shopee.tw/search?keyword='+encodeURIComponent([item.title,item.spec].filter(Boolean).join(' ')):'';
   const info=[item.spec?'規格：'+item.spec:'',item.shop?'賣場：'+item.shop:''].filter(Boolean);
+  const sprite=window.TOBY_SHOPEE_20261102_THUMB_SPRITE||'';
+  const spriteIndex=Number(item.spriteIndex);
+  const hasThumb=typeof sprite==='string'&&sprite.startsWith('data:image/webp;base64,')&&Number.isInteger(spriteIndex)&&spriteIndex>=0&&spriteIndex<=4;
+  const imagePosition=hasThumb?(spriteIndex%3*50)+'% '+(Math.floor(spriteIndex/3)*100)+'%':'';
+  const thumb=hasThumb?'<span class="purchase-thumb" role="img" aria-label="已購商品截圖縮圖" style="background-image:url('+sprite+');background-position:'+imagePosition+'"></span>':'';
   const orderTotal=Number(item.orderTotal),hasOrderTotal=item.orderTotal!==null&&item.orderTotal!==undefined&&item.orderTotal!==''&&Number.isFinite(orderTotal);
   return '<article class="purchase-card'+(item.done?' purchased':'')+(refunded?' refunded':'')+'">'
     +'<div class="purchase-card-top"><span class="purchase-platform">'+esc(platformName(item.platform))+'</span><span class="purchase-status">'+status+'</span></div>'
-    +'<h3>'+(item.emoji?'<span class="purchase-icon" aria-hidden="true">'+esc(item.emoji)+'</span>':'')+esc(item.title)+'</h3>'
+    +'<div class="purchase-name-wrap">'+thumb+'<h3>'+(item.emoji?'<span class="purchase-icon" aria-hidden="true">'+esc(item.emoji)+'</span>':'')+esc(item.title)+'</h3></div>'
     +(item.category?'<div><span class="purchase-category">'+esc(item.category)+'</span></div>':'')
     +'<p class="purchase-detail">'+esc(info.join('｜'))+'</p>'
     +'<div class="purchase-price">'+(hasCost?formatPrice(cost):'價格待確認')+' <small>'+(isHistory?'／截圖單價':'／參考單價')+' × '+esc(qty)+(hasCost&&qty>1&&!isHistory?'（小計 '+formatPrice(cost*qty)+'）':'')+'</small></div>'
