@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "source_file": "public/data/shopee-order-history-20261102.js",
+  "source_field": "price",
+  "baseline_type": "historical displayed per-item price, not verified actual amount paid",
+  "currency": "TWD",
+  "watch_filter": "done===true && orderStatus!=='refunded' && price>0",
+  "last_checked_at": null,
+  "last_checked_count": 0,
+  "last_notified": {},
+  "notes": "Updated by Shopee price-watch automation only after verified comparable listings. Keep all historic user product data in source_file; no private account/order identifiers. Alerts must not claim to beat the actual paid price unless that baseline was independently verified."
+}
