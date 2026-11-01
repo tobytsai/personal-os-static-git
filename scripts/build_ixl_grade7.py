@@ -161,7 +161,7 @@ def translate_titles(values, preset):
         except Exception:
             return [(item, translate_one(item["english"])) for item in batch]
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
         for pairs in pool.map(worker, batches):
             for item, zh in pairs:
                 if zh:
@@ -177,7 +177,7 @@ def main():
     old = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else json.loads(Path("public/data/houye-ixl-grade6.json").read_text(encoding="utf-8"))
     preset = {(s["subject"], s["english"].lower().strip()): s
               for s in old.get("skills", []) if s.get("title") and not s["title"].startswith("待翻譯")}
-    old_categories = {(c["subject"], c["english"].lower().strip()): c["titleZh"] for c in old.get("categories", []) if c.get("titleZh")}
+    old_categories = {(c["subject"], c["english"].lower().strip()): c["titleZh"] for c in old.get("categories", []) if c.get("titleZh") and not c["titleZh"].startswith("待翻譯")}
     allskills, categories, subjects = [], [], []
     skill_counters = {}
     for subject, label, url, min_count in SUBJECTS:
