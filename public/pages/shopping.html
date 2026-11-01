@@ -12,6 +12,18 @@
 .purchase-tab{padding:8px 12px;border:1px solid #e4c1d2;border-radius:999px;background:white;color:#763954;font:inherit;font-size:.84rem;font-weight:800;cursor:pointer}
 .purchase-tab[aria-pressed="true"]{background:#8c2558;border-color:#8c2558;color:#fff}
 .purchase-search{flex:1 1 175px;max-width:260px;padding:9px 12px;border:1px solid #e2cad4;border-radius:12px;font:inherit;background:#fff}
+.purchase-order-filter{padding:9px 12px;border:1px solid #e2cad4;border-radius:12px;font:inherit;background:#fff;max-width:160px}
+.purchase-category{font-size:.76rem;color:#7b4860;background:#f9e6f0;padding:4px 8px;border-radius:7px;font-weight:750}
+.purchase-card.refunded{border-color:#f0bbad;background:#fff9f7}
+.purchase-card.refunded .purchase-status{background:#ffdfd9;color:#9e3329}
+.purchase-card.refunded h3{text-decoration:none;color:var(--ink)}
+.purchase-card .purchase-icon{font-size:1.45rem;vertical-align:middle;margin-right:6px}
+.purchase-history-total{font-size:.78rem;color:#725668;font-weight:700;margin-top:-6px}
+.purchase-detail{white-space:normal}
+.purchase-extra{margin:0;border-top:1px dashed #eedde5;padding-top:7px;font-size:.78rem;color:var(--muted)}
+.purchase-extra summary{font-weight:800;cursor:pointer;color:#834763}
+.purchase-extra p{margin:6px 0 0;line-height:1.6;white-space:pre-line}
+@media(max-width:560px){.purchase-order-filter{max-width:100%;flex:1 1 130px}}
 .purchase-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:12px}
 .purchase-card{background:#fff;border:1px solid #e9d2dd;border-radius:17px;padding:16px;box-shadow:0 5px 16px #5c294111;display:flex;flex-direction:column;gap:9px;min-width:0}
 .purchase-card.purchased{background:#f7f8f7;border-color:#dae2d9}
@@ -48,9 +60,9 @@
 
 <section class="shelf purchase-shelf" id="purchase-lists" aria-labelledby="purchase-list-heading">
  <div class="shelf-head"><div><h2 id="purchase-list-heading">🧾 購買清單</h2><p class="section-intro">依購物平台分類管理想買的商品，先比價、再購買；可編輯商品資訊及標記已購。</p></div><button type="button" class="help" id="purchase-new">＋ 新增商品</button></div>
- <div class="purchase-controls"><nav class="purchase-tabs" id="purchase-tabs" aria-label="購買清單分類"></nav><input type="search" class="purchase-search" id="purchase-search" placeholder="搜尋清單商品…" aria-label="搜尋購買清單商品"></div>
+ <div class="purchase-controls"><nav class="purchase-tabs" id="purchase-tabs" aria-label="購買清單分類"></nav><input type="search" class="purchase-search" id="purchase-search" placeholder="搜尋清單商品…" aria-label="搜尋購買清單商品"><select class="purchase-order-filter" id="purchase-order-filter" aria-label="依購買狀態篩選"><option value="all">全部狀態</option><option value="pending">待購買</option><option value="purchased">已購買</option><option value="refunded">退貨退款</option></select></div>
  <div class="purchase-grid" id="purchase-cards" aria-live="polite"></div>
- <p class="purchase-note">價格為當時查詢的參考價，請依賣場實際結帳金額（含運費與優惠）為準。新增、編輯、已購狀態保存在目前瀏覽器，不會自動跨裝置同步。</p>
+ <p class="purchase-note">截圖中的商品標價及整筆訂單金額分開記錄，兩者不一定相等；這些是歷史價格，不代表目前售價。截圖沒有原始商品網址，因此僅提供蝦皮「搜尋同款」，不保證相同賣場。清單修改狀態儲存在目前瀏覽器，不會自動跨裝置同步。</p>
 </section>
 <div class="section-head"><div><h2 class="section-title">購物網站分類</h2><p>依照購物情境分類；卡片同時標示地區與網站標誌。</p></div><span class="hint" id="resultCount"></span></div><nav class="filters" id="filters" aria-label="購物網站分類"></nav><section class="grid" id="cards" aria-live="polite"></section>
 <footer>收藏與最近開啟記錄保存在目前瀏覽器。各購物網站會在新分頁開啟，登入與付款仍由各網站自行處理。網站標誌以各站公開 favicon 顯示。</footer></main>
@@ -128,7 +140,7 @@ $("cards").addEventListener("click",e=>{const b=e.target.closest("[data-star]");
 document.addEventListener("click",e=>{const a=e.target.closest("[data-open]");if(!a)return;const id=a.dataset.open;recent=[id].concat(recent.filter(x=>x!==id)).slice(0,8);save(REC,recent);drawShelf("recent",recent,"開啟網站後，最近使用項目會列在這裡。")});
 $("helpButton").addEventListener("click",()=>$("help").showModal());$("closeHelp").addEventListener("click",()=>$("help").close());$("help").addEventListener("click",e=>{if(e.target===$("help"))$("help").close()});
 render();
-</script><script>
+</script><script src="../data/shopee-order-history-20261102.js"></script><script>
 
 (()=>{
  const STORAGE_KEY='tobyShoppingPurchaseListV1';
@@ -144,7 +156,7 @@ render();
  const $=id=>document.getElementById(id);
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const formatPrice=n=>'NT$'+new Intl.NumberFormat('zh-TW').format(n);
- let items=[],active='all',search='',editing=null;
+ let items=[],active='all',search='',editing=null,orderFilter='all';
  try{const raw=localStorage.getItem(STORAGE_KEY);const parsed=raw?JSON.parse(raw):[];items=Array.isArray(parsed)?parsed:[]}catch{items=[]}
  // 首次開啟保留 GitHub 預設商品；若原首頁待辦曾標記完成，轉成已購狀態。
  try{
@@ -161,32 +173,61 @@ render();
    localStorage.setItem(SEED_KEY,'1');
   }
  }catch{if(!items.some(x=>x.id===SEED.id))items.unshift({...SEED})}
+
+ // 圖片內的已完成訂單：每個商品僅匯入一次，不覆蓋已編輯或已刪除的卡片。
+ const HISTORY_SEED_KEY='tobyShoppingSeedShopeeOrders20261102V1';
+ const HISTORY_ROWS=Array.isArray(window.TOBY_SHOPEE_ORDER_HISTORY_20261102)?window.TOBY_SHOPEE_ORDER_HISTORY_20261102:[];
+ if(HISTORY_ROWS.length){
+  try{
+   if(localStorage.getItem(HISTORY_SEED_KEY)!=='1'){
+    const existing=new Set(items.map(x=>x.id));
+    const added=HISTORY_ROWS.filter(x=>!existing.has(x.id));
+    if(added.length){const next=[...items,...added];localStorage.setItem(STORAGE_KEY,JSON.stringify(next));items=next}
+    localStorage.setItem(HISTORY_SEED_KEY,'1');
+   }
+  }catch(error){
+   const existing=new Set(items.map(x=>x.id));
+   items=[...items,...HISTORY_ROWS.filter(x=>!existing.has(x.id))];
+  }
+ }
  const platformName=x=>x==='shopee'?'蝦皮購買清單':'其他購買清單';
  const cleanUrl=value=>{try{const url=new URL(String(value||''));return ['http:','https:'].includes(url.protocol)?url.href:''}catch{return''}};
  function commit(next){
   try{localStorage.setItem(STORAGE_KEY,JSON.stringify(next));items=next;render();return true}
   catch{alert('無法儲存購買清單，請檢查瀏覽器儲存設定。');return false}
  }
+
  function productCard(item){
   const cost=Number(item.price),qty=Math.max(1,Number(item.quantity)||1);
   const hasCost=item.price!==null&&item.price!==''&&item.price!==undefined&&Number.isFinite(cost)&&cost>=0;
+  const refunded=Boolean(item.done&&item.orderStatus==='refunded');
+  const isHistory=String(item.id).startsWith('shorder-20261102-');
+  const status=refunded?'↩ 退款完成':item.done?'✓ 已購買':'待購買';
   const url=cleanUrl(item.url);
-  const info=[item.spec?'規格：'+item.spec:'',item.shop?'賣場：'+item.shop:'',item.note||''].filter(Boolean);
-  return '<article class="purchase-card'+(item.done?' purchased':'')+'">'
-    +'<div class="purchase-card-top"><span class="purchase-platform">'+esc(platformName(item.platform))+'</span><span class="purchase-status">'+(item.done?'✓ 已購買':'待購買')+'</span></div>'
-    +'<h3>'+esc(item.title)+'</h3>'
+  const searchUrl=item.platform==='shopee'?'https://shopee.tw/search?keyword='+encodeURIComponent([item.title,item.spec].filter(Boolean).join(' ')):'';
+  const info=[item.spec?'規格：'+item.spec:'',item.shop?'賣場：'+item.shop:''].filter(Boolean);
+  const orderTotal=Number(item.orderTotal),hasOrderTotal=item.orderTotal!==null&&item.orderTotal!==undefined&&item.orderTotal!==''&&Number.isFinite(orderTotal);
+  return '<article class="purchase-card'+(item.done?' purchased':'')+(refunded?' refunded':'')+'">'
+    +'<div class="purchase-card-top"><span class="purchase-platform">'+esc(platformName(item.platform))+'</span><span class="purchase-status">'+status+'</span></div>'
+    +'<h3>'+(item.emoji?'<span class="purchase-icon" aria-hidden="true">'+esc(item.emoji)+'</span>':'')+esc(item.title)+'</h3>'
+    +(item.category?'<div><span class="purchase-category">'+esc(item.category)+'</span></div>':'')
     +'<p class="purchase-detail">'+esc(info.join('｜'))+'</p>'
-    +'<div class="purchase-price">'+(hasCost?formatPrice(cost):'價格待確認')+' <small>／單位 × '+esc(qty)+(hasCost&&qty>1?'（小計 '+formatPrice(cost*qty)+'）':'')+'</small></div>'
-    +'<div class="purchase-actions">'+(url?'<a class="purchase-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">開啟商品 ↗</a>':'')
-    +'<button type="button" data-purchase-action="toggle" data-item-id="'+esc(item.id)+'">'+(item.done?'恢復待購':'標記已購')+'</button>'
+    +'<div class="purchase-price">'+(hasCost?formatPrice(cost):'價格待確認')+' <small>'+(isHistory?'／截圖單價':'／參考單價')+' × '+esc(qty)+(hasCost&&qty>1&&!isHistory?'（小計 '+formatPrice(cost*qty)+'）':'')+'</small></div>'
+    +(hasOrderTotal?'<div class="purchase-history-total">截圖整筆訂單金額：'+formatPrice(orderTotal)+'</div>':'')
+    +(item.note?'<details class="purchase-extra"><summary>查看購買紀錄與備註</summary><p>'+esc(item.note)+'</p></details>':'')
+    +'<div class="purchase-actions">'
+    +(url?'<a class="purchase-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">開啟商品 ↗</a>':searchUrl?'<a class="purchase-link" href="'+esc(searchUrl)+'" target="_blank" rel="noopener noreferrer">蝦皮搜尋同款 ↗</a>':'')
+    +(isHistory?'<button type="button" data-purchase-action="rebuy" data-item-id="'+esc(item.id)+'">＋ 再買一次</button>':'<button type="button" data-purchase-action="toggle" data-item-id="'+esc(item.id)+'">'+(item.done?'恢復待購':'標記已購')+'</button>')
     +'<button type="button" data-purchase-action="edit" data-item-id="'+esc(item.id)+'">編輯</button>'
     +'<button type="button" class="purchase-delete" data-purchase-action="delete" data-item-id="'+esc(item.id)+'">刪除</button></div></article>';
  }
  function render(){
   const tabs=[['all','全部'],['shopee','蝦皮購買清單'],['other','其他購買清單']];
   $('purchase-tabs').innerHTML=tabs.map(([value,name])=>'<button type="button" class="purchase-tab" data-purchase-tab="'+value+'" aria-pressed="'+(value===active)+'">'+name+' · '+(value==='all'?items.length:items.filter(x=>x.platform===value).length)+'</button>').join('');
-  const visible=items.filter(x=>(active==='all'||x.platform===active)&&[x.title,x.spec,x.shop,x.note].join(' ').toLowerCase().includes(search.toLowerCase())).sort((a,b)=>Number(a.done)-Number(b.done));
-  $('purchase-cards').innerHTML=visible.length?visible.map(productCard).join(''):'<p class="purchase-empty">這個分類目前沒有商品。按「＋ 新增商品」即可建立購買卡片。</p>';
+  const matchStatus=x=>orderFilter==='all'||(orderFilter==='pending'?!x.done:orderFilter==='refunded'?(x.done&&x.orderStatus==='refunded'):(x.done&&x.orderStatus!=='refunded'));
+  const visible=items.filter(x=>(active==='all'||x.platform===active)&&matchStatus(x)&&[x.title,x.spec,x.shop,x.note,x.category].join(' ').toLowerCase().includes(search.toLowerCase()))
+     .sort((a,b)=>Number(a.done)-Number(b.done)||Number(a.orderStatus==='refunded')-Number(b.orderStatus==='refunded'));
+  $('purchase-cards').innerHTML=visible.length?visible.map(productCard).join(''):'<p class="purchase-empty">沒有符合這個分類或狀態的商品。可調整篩選或新增商品。</p>';
  }
  const dialog=$('purchase-dialog'),form=$('purchase-form'),error=$('purchase-form-error');
  function close(){dialog.close();editing=null;form.reset();error.hidden=true}
@@ -210,11 +251,18 @@ render();
  dialog.addEventListener('close',()=>{editing=null});
  $('purchase-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-purchase-tab]');if(!b)return;active=b.dataset.purchaseTab;render()});
  $('purchase-search').addEventListener('input',e=>{search=e.target.value.trim();render()});
+ $('purchase-order-filter').addEventListener('change',e=>{orderFilter=e.target.value;render()});
  $('purchase-cards').addEventListener('click',e=>{
   const button=e.target.closest('[data-purchase-action]');if(!button)return;
   const id=button.dataset.itemId,item=items.find(x=>x.id===id);if(!item)return;
   const action=button.dataset.purchaseAction;
   if(action==='edit')open(item);
+  else if(action==='rebuy'){
+   const pending={...item,id:'rebuy-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),
+    done:false,orderStatus:'',orderTotal:null,source:'從歷史購買紀錄建立的待購商品',
+    note:'依已購買紀錄回購；顯示價格為舊價，請重新核對目前售價、規格、運費和優惠。'};
+   if(commit([pending,...items])){active=item.platform;orderFilter='pending';$('purchase-order-filter').value='pending';render();document.getElementById('purchase-lists').scrollIntoView({behavior:'smooth',block:'start'})}
+  }
   else if(action==='toggle')commit(items.map(x=>x.id===id?{...x,done:!x.done}:x));
   else if(action==='delete'&&confirm('確定刪除「'+item.title+'」購買卡片？'))commit(items.filter(x=>x.id!==id));
  });
@@ -227,7 +275,7 @@ render();
    error.textContent='請檢查商品名稱、數量、價格或連結格式。';error.hidden=false;return;
   }
   const prev=editing?items.find(x=>x.id===editing):null;
-  const record={id:prev?.id||'buy-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),
+  const record={...(prev||{}),id:prev?.id||'buy-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),
    platform,title,spec:form.elements.spec.value.trim(),shop:form.elements.shop.value.trim(),
    price,quantity,url:cleanUrl(url),note:form.elements.note.value.trim(),done:prev?.done||false};
   if(commit(prev?items.map(x=>x.id===prev.id?record:x):[record,...items]))close();
