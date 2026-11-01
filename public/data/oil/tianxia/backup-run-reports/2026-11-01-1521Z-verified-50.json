@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "collection": "tianxia",
+  "runStartedAt": "2026-11-01T15:21:27Z",
+  "runDate": "2026-11-01",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "indexPath": "public/data/oil/tianxia/drive-original-links.json",
+    "driveOriginalFolderId": "1KtlfJRWJq5nMSQSQlUyzTkQ_dXwpYvyn"
+  },
+  "liveReference": {
+    "records": 4673,
+    "attachmentReferences": 5047,
+    "primaryField": "Attachments",
+    "secondaryField": "圖檔2"
+  },
+  "result": {
+    "startingVerifiedOriginals": 2974,
+    "addedVerifiedOriginals": 50,
+    "endingVerifiedOriginals": 3024,
+    "remainingReferenceEstimate": 2023,
+    "failedCopies": 0,
+    "categoryAdditions": {
+      "50×60": 50
+    },
+    "drive50x60FileCount": 561,
+    "uniqueNewDriveFileIds": 50,
+    "unmappedNewAttachments": 0,
+    "missingOrMismatchedNewDriveFiles": 0,
+    "byRecord": 3024,
+    "byAttachment": 2420,
+    "byRecordAttachments": 825,
+    "pendingBatch": 0
+  },
+  "verification": {
+    "source": "Live Airtable ID, filename, size, MIME and Drive original source folder",
+    "destination": "Drive copy completed and reread each file metadata for name, exact bytes, JPEG MIME, destination folder and nonpublic visibility",
+    "independentVisualVerification": false,
+    "independentHashVerification": false,
+    "checkpoints": 9
+  },
+  "publication": {
+    "indexCommit": "45b1671f91875b8f1af056072c6eacaf0f52d114",
+    "indexBlobSha": "0379f72e156beed8542851a2c80b7a609d0504bf",
+    "commitVerified": true,
+    "workflowRun": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41322422291",
+    "method": "Immutable small verified checkpoints merged by GitHub Actions with safe push/retry"
+  },
+  "notes": [
+    "The original index's lastBatch is the final checkpoint of three; this report records the complete fifty-original automation execution.",
+    "Remaining is estimated because older records lack full attachment-ID-level mappings.",
+    "Airtable, WebP previews and Drive sharing permissions were left unchanged. No original source files were deleted."
+  ]
+}
