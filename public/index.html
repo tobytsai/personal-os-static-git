@@ -67,8 +67,18 @@ renderTools();
 </script><script src="./shared-nav.js?v=20261025-2" defer></script><script>
 (()=>{
  const key='tobyHomeRemindersV1';
- const defaults=[{id:'vehicle-ba6950',title:'BA-6950 機車定期排氣檢驗',date:'2026-12-31',phone:'03-332-4414',done:false},{id:'vehicle-kt3720',title:'KT-3720 機車定期排氣檢驗',date:'2027-01-31',phone:'03-332-4414',done:false}];
+ const milkReminder={id:'milk-linfengying-20261201',title:'林鳳營高品質鮮乳｜分批領取（購買5瓶、剩餘3瓶；全脂／低脂任選）',date:'2026-12-01',phone:'',done:false};
+ const defaults=[{id:'vehicle-ba6950',title:'BA-6950 機車定期排氣檢驗',date:'2026-12-31',phone:'03-332-4414',done:false},{id:'vehicle-kt3720',title:'KT-3720 機車定期排氣檢驗',date:'2027-01-31',phone:'03-332-4414',done:false},milkReminder];
  let entries; try{const raw=localStorage.getItem(key);const data=raw===null?null:JSON.parse(raw);entries=Array.isArray(data)?data:defaults.map(x=>({...x}));}catch{entries=defaults.map(x=>({...x}));}
+ // Once per browser, add the new pickup reminder without replacing existing reminders.
+ const milkSeedKey='tobyHomeRemindersSeedMilk20261201';
+ try{if(localStorage.getItem(milkSeedKey)!=='1'){
+   if(!entries.some(x=>x.id===milkReminder.id)){
+     const updated=[...entries,{...milkReminder}];
+     localStorage.setItem(key,JSON.stringify(updated));entries=updated;
+   }
+   localStorage.setItem(milkSeedKey,'1');
+ }}catch{if(!entries.some(x=>x.id===milkReminder.id))entries.push({...milkReminder})}
  const list=document.getElementById('reminder-list'),form=document.getElementById('reminder-form'),err=document.getElementById('reminder-error');
  let editing=null;
  function save(){try{localStorage.setItem(key,JSON.stringify(entries));return true}catch{err.textContent='無法儲存至瀏覽器，請檢查瀏覽器的儲存空間或隱私設定。';err.hidden=false;return false}}
