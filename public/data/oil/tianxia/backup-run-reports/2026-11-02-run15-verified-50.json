@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "collection": "tianxia",
+  "run": "2026-11-01-2020-run15",
+  "reportStatus": "completed-post-commit-reverified",
+  "completedAtUTC": "2026-11-01T20:43:40.679Z",
+  "runDateLocal": "2026-11-02",
+  "sources": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveAirtableRecords": 4673,
+    "liveAttachmentReferences": 5047,
+    "attachmentsField": 5033,
+    "secondaryField": 14,
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "originalIndexPath": "public/data/oil/tianxia/drive-original-links.json",
+    "driveRootFolderId": "17-H63qSdB98i-sqNUbrBGutw4l43ljIb"
+  },
+  "result": {
+    "previousByRecord": 3223,
+    "newlyVerifiedAttachments": 50,
+    "finalByRecord": 3273,
+    "byAttachment": 2669,
+    "byRecordAttachments": 1074,
+    "existingDriveRecoveredWithoutRecopy": 2,
+    "newDriveCloudCopies": 48,
+    "failed": 0,
+    "pendingBatch": 0,
+    "categoryAdditions": {
+      "90×120": 50
+    },
+    "roughRemainingAttachmentReferences": 1774,
+    "remainingNotExactBecauseLegacy604Mappings": true,
+    "fullyCompleted": false
+  },
+  "destinationAudit": {
+    "folder": "1yj3mlBgWqJPuEvAe12GOAtstPW4Tu4SR",
+    "category": "90×120",
+    "postCopyJPEGCount": 419,
+    "unlinkedDestinations": 0,
+    "all50DestinationMetadataRechecked": true,
+    "uniqueFileIDs": 50,
+    "verifiedFilenameSizeMimeFolder": true,
+    "verifiedNotBroadlyShared": true,
+    "independentVisualVerification": false,
+    "independentHashVerification": false
+  },
+  "github": {
+    "mergeCommit": "521251f5a4f6cfc4b80adeb441c643a7dda9a94e",
+    "mergedIndexBlobSha": "618840a637ac804f7d12bbd326dae9d0c1c0390d",
+    "all50MainLinksVerified": true,
+    "all50AttachmentIDsVerified": true,
+    "all50RecordAttachmentLinksVerified": true,
+    "checkpoints": [
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b01.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b02.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b03.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b04.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b05.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b06.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b07.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b08.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b09.json",
+      "public/data/oil/tianxia/backup-checkpoints/2026-11-01-2020-run15-b10.json"
+    ],
+    "planningManifest": "public/data/oil/tianxia/backup-run-reports/2026-11-01-2020-run15-manifest.json"
+  },
+  "legacyOutstandingReview": {
+    "otherSizePreviouslyUnlinked": [
+      "B83-5060",
+      "B85-5060",
+      "B89-5060"
+    ],
+    "note": "These older 50×60 source JPEGs have not been reverified this run; no copies or associations were made."
+  },
+  "safety": "Did not modify Airtable, existing GitHub WebP thumbnails, original sources or Google Drive sharing. Aliased original JPEG filename was verified by exact byte size, artwork code and dimensions. Independent image and cryptographic hash comparison not performed."
+}
