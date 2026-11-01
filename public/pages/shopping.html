@@ -63,10 +63,10 @@
 <section class="shelf"><div class="shelf-head"><h2>↻ 最近開啟</h2><span class="hint">點開網站後自動記錄</span></div><div class="shelf-list" id="recent"></div></section>
 
 <section class="shelf purchase-shelf" id="purchase-lists" aria-labelledby="purchase-list-heading">
- <div class="shelf-head"><div><h2 id="purchase-list-heading">🧾 購買清單</h2><p class="section-intro">依購物平台分類管理想買的商品，先比價、再購買；可編輯商品資訊及標記已購。</p></div><button type="button" class="help" id="purchase-new">＋ 新增商品</button></div>
- <div class="purchase-controls"><nav class="purchase-tabs" id="purchase-tabs" aria-label="購買清單分類"></nav><input type="search" class="purchase-search" id="purchase-search" placeholder="搜尋清單商品…" aria-label="搜尋購買清單商品"><select class="purchase-order-filter" id="purchase-order-filter" aria-label="依購買狀態篩選"><option value="all">全部狀態</option><option value="pending">待購買</option><option value="purchased">已購買</option><option value="refunded">退貨退款</option></select></div>
+ <div class="shelf-head"><div><h2 id="purchase-list-heading">🧾 購買清單</h2><p class="section-intro">依購物平台分類管理想買的商品，先比價、再購買；可編輯商品資訊及標記已購。</p></div><div><button type="button" class="help" id="purchase-export">匯出備份</button> <button type="button" class="help" id="purchase-import">合併匯入</button> <input id="purchase-import-file" type="file" accept=".json,application/json" hidden> <button type="button" class="help" id="purchase-new">＋ 新增商品</button></div></div>
+ <div class="purchase-controls"><nav class="purchase-tabs" id="purchase-tabs" aria-label="購買清單分類"></nav><input type="search" class="purchase-search" id="purchase-search" placeholder="搜尋清單商品…" aria-label="搜尋購買清單商品"><select class="purchase-order-filter" id="purchase-order-filter" aria-label="依購買狀態篩選"><option value="all">全部狀態</option><option value="pending">待購買</option><option value="purchased">已購買</option><option value="paid">已付款</option><option value="shipped">已出貨</option><option value="arrived">已到店</option><option value="collected">已取貨</option><option value="refunded">退貨退款</option></select></div>
  <div class="purchase-grid" id="purchase-cards" aria-live="polite"></div>
- <p class="purchase-note">截圖中的商品標價及整筆訂單金額分開記錄，兩者不一定相等；這些是歷史價格，不代表目前售價。截圖沒有原始商品網址，因此僅提供蝦皮「搜尋同款」，不保證相同賣場。清單修改狀態儲存在目前瀏覽器，不會自動跨裝置同步。</p>
+ <p class="purchase-note">截圖中的商品標價及整筆訂單金額分開記錄，兩者不一定相等；這些是歷史價格，不代表目前售價。截圖沒有原始商品網址，因此僅提供蝦皮「搜尋同款」，不保證相同賣場。清單保存在目前瀏覽器，不會自動跨裝置同步。請匯出備份並在其他裝置合併匯入；匯入遇到相同識別碼時保留當前資料。備份含私人資料，請妥善保管。</p>
 </section>
 <div class="section-head"><div><h2 class="section-title">購物網站分類</h2><p>依照購物情境分類；卡片同時標示地區與網站標誌。</p></div><span class="hint" id="resultCount"></span></div><nav class="filters" id="filters" aria-label="購物網站分類"></nav><section class="grid" id="cards" aria-live="polite"></section>
 <footer>收藏與最近開啟記錄保存在目前瀏覽器。各購物網站會在新分頁開啟，登入與付款仍由各網站自行處理。網站標誌以各站公開 favicon 顯示。</footer></main>
@@ -79,6 +79,9 @@
   <label>商品名稱<input name="title" maxlength="140" required placeholder="想買的商品"></label>
   <div class="purchase-form-row"><label>規格／容量<input name="spec" maxlength="100" placeholder="例如：5.5L／包"></label><label>店家／賣場<input name="shop" maxlength="100" placeholder="例如：安心水族寵物"></label></div>
   <div class="purchase-form-row"><label>參考單價 NT$<input name="price" type="number" min="0" step="1" placeholder="例如：89"></label><label>數量<input name="quantity" type="number" min="1" step="1" value="1" required></label></div>
+  <div class="purchase-form-row"><label>商品小計 NT$<input name="subtotal" type="number" min="0" step="1"></label><label>實付總額 NT$<input name="paidTotal" type="number" min="0" step="1"></label></div>
+  <div class="purchase-form-row"><label>購買日期<input name="purchaseDate" type="date"></label><label>付款日期<input name="paymentDate" type="date"></label></div>
+  <label>訂單進度<select name="fulfillment"><option value="">未設定</option><option value="paid">已付款，等待出貨</option><option value="shipped">已出貨</option><option value="arrived">已到店，待取貨</option><option value="collected">已取貨</option></select></label>
   <label>商品連結<input name="url" type="url" maxlength="2000" placeholder="https://shopee.tw/…"></label>
   <label>備註<textarea name="note" rows="3" maxlength="700" placeholder="運費、折價券、比較價格、選購重點…"></textarea></label>
   <p class="purchase-form-error" id="purchase-form-error" hidden></p>
@@ -225,7 +228,8 @@ render();
   const hasCost=item.price!==null&&item.price!==''&&item.price!==undefined&&Number.isFinite(cost)&&cost>=0;
   const refunded=Boolean(item.done&&item.orderStatus==='refunded');
   const isHistory=String(item.id).startsWith('shorder-20261102-');
-  const status=refunded?'↩ 退款完成':item.done?'✓ 已購買':'待購買';
+  const progress={paid:'已付款，等待出貨',shipped:'已出貨',arrived:'已到店，待取貨',collected:'已取貨'};
+  const status=refunded?'↩ 退款完成':progress[item.fulfillment]||(item.done?'✓ 已購買':'待購買');
   const url=cleanUrl(item.url);
   const searchUrl=item.platform==='shopee'?'https://shopee.tw/search?keyword='+encodeURIComponent([item.title,item.spec].filter(Boolean).join(' ')):'';
   const info=[item.spec?'規格：'+item.spec:'',item.shop?'賣場：'+item.shop:''].filter(Boolean);
@@ -242,6 +246,9 @@ render();
     +'<p class="purchase-detail">'+esc(info.join('｜'))+'</p>'
     +'<div class="purchase-price">'+(hasCost?formatPrice(cost):'價格待確認')+' <small>'+(isHistory?'／截圖單價':'／參考單價')+' × '+esc(qty)+(hasCost&&qty>1&&!isHistory?'（小計 '+formatPrice(cost*qty)+'）':'')+'</small></div>'
     +(hasOrderTotal?'<div class="purchase-history-total">截圖整筆訂單金額：'+formatPrice(orderTotal)+'</div>':'')
+    +((item.subtotal!==undefined&&item.subtotal!==null)?'<div class="purchase-history-total">商品小計：'+formatPrice(Number(item.subtotal))+'</div>':'')
+    +((item.paidTotal!==undefined&&item.paidTotal!==null)?'<div class="purchase-history-total">實付金額：'+formatPrice(Number(item.paidTotal))+'</div>':'')
+    +((item.purchaseDate||item.paymentDate)?'<div class="purchase-history-total">'+esc([item.purchaseDate?'購買：'+item.purchaseDate:'',item.paymentDate?'付款：'+item.paymentDate:''].filter(Boolean).join('｜'))+'</div>':'')
     +(item.note?'<details class="purchase-extra"><summary>查看購買紀錄與備註</summary><p>'+esc(item.note)+'</p></details>':'')
     +'<div class="purchase-actions">'
     +(url?'<a class="purchase-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">開啟商品 ↗</a>':searchUrl?'<a class="purchase-link" href="'+esc(searchUrl)+'" target="_blank" rel="noopener noreferrer">蝦皮搜尋同款 ↗</a>':'')
@@ -252,7 +259,7 @@ render();
  function render(){
   const tabs=[['all','全部'],['shopee','蝦皮購買清單'],['other','其他購買清單']];
   $('purchase-tabs').innerHTML=tabs.map(([value,name])=>'<button type="button" class="purchase-tab" data-purchase-tab="'+value+'" aria-pressed="'+(value===active)+'">'+name+' · '+(value==='all'?items.length:items.filter(x=>x.platform===value).length)+'</button>').join('');
-  const matchStatus=x=>orderFilter==='all'||(orderFilter==='pending'?!x.done:orderFilter==='refunded'?(x.done&&x.orderStatus==='refunded'):(x.done&&x.orderStatus!=='refunded'));
+  const matchStatus=x=>orderFilter==='all'||(orderFilter==='pending'?!x.done:orderFilter==='refunded'?(x.done&&x.orderStatus==='refunded'):orderFilter==='purchased'?(x.done&&x.orderStatus!=='refunded'):x.fulfillment===orderFilter);
   const visible=items.filter(x=>(active==='all'||x.platform===active)&&matchStatus(x)&&[x.title,x.spec,x.shop,x.note,x.category].join(' ').toLowerCase().includes(search.toLowerCase()))
      .sort((a,b)=>Number(a.done)-Number(b.done)||Number(a.orderStatus==='refunded')-Number(b.orderStatus==='refunded'));
   $('purchase-cards').innerHTML=visible.length?visible.map(productCard).join(''):'<p class="purchase-empty">沒有符合這個分類或狀態的商品。可調整篩選或新增商品。</p>';
@@ -268,10 +275,32 @@ render();
   form.elements.shop.value=item?.shop||'';
   form.elements.price.value=item?.price??'';
   form.elements.quantity.value=item?.quantity||1;
+  form.elements.subtotal.value=item?.subtotal??'';
+  form.elements.paidTotal.value=item?.paidTotal??'';
+  form.elements.purchaseDate.value=item?.purchaseDate||'';
+  form.elements.paymentDate.value=item?.paymentDate||'';
+  form.elements.fulfillment.value=item?.fulfillment||'';
   form.elements.url.value=item?.url||'';
   form.elements.note.value=item?.note||'';
   dialog.showModal();form.elements.title.focus();
  }
+ $('purchase-export').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({format:'toby-purchase-list-v1',items},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='購買清單備份.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+ $('purchase-import').addEventListener('click',()=>$('purchase-import-file').click());
+ $('purchase-import-file').addEventListener('change',async e=>{
+  const input=e.target,file=input.files[0];if(!file)return;
+  try{
+   if(file.size>5*1024*1024)throw Error('檔案過大');
+   const data=JSON.parse(await file.text());
+   if(data.format!=='toby-purchase-list-v1'||!Array.isArray(data.items)||data.items.length>5000)throw Error('格式不正確');
+   const ids=new Set(items.map(x=>x.id)), added=[];let skipped=0;
+   for(const item of data.items){
+    if(!item||typeof item!=='object'||Array.isArray(item)||typeof item.id!=='string'||!item.id||item.id.length>160||typeof item.title!=='string'||!item.title.trim()||!['shopee','other'].includes(item.platform))throw Error('資料不完整');
+    if(ids.has(item.id)){skipped++;continue} ids.add(item.id);added.push(item);
+   }
+   if(!confirm('將新增 '+added.length+' 筆，保留 '+skipped+' 筆相同識別碼的現有紀錄。繼續匯入？'))return;
+   if(commit([...items,...added]))alert('匯入完成：新增 '+added.length+' 筆；保留 '+skipped+' 筆既有紀錄。');
+  }catch(err){alert('未匯入任何資料：'+err.message)}finally{input.value=''}
+ });
  $('purchase-new').addEventListener('click',()=>open());
  $('purchase-dialog-close').addEventListener('click',close);
  $('purchase-form-cancel').addEventListener('click',close);
@@ -305,7 +334,7 @@ render();
   const prev=editing?items.find(x=>x.id===editing):null;
   const record={...(prev||{}),id:prev?.id||'buy-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),
    platform,title,spec:form.elements.spec.value.trim(),shop:form.elements.shop.value.trim(),
-   price,quantity,url:cleanUrl(url),note:form.elements.note.value.trim(),done:prev?.done||false};
+   price,quantity,url:cleanUrl(url),note:form.elements.note.value.trim(),subtotal:form.elements.subtotal.value===''?null:Number(form.elements.subtotal.value),paidTotal:form.elements.paidTotal.value===''?null:Number(form.elements.paidTotal.value),purchaseDate:form.elements.purchaseDate.value,paymentDate:form.elements.paymentDate.value,fulfillment:form.elements.fulfillment.value,done:form.elements.fulfillment.value?true:(prev?.done||false)};
   if(commit(prev?items.map(x=>x.id===prev.id?record:x):[record,...items]))close();
  });
  render();
