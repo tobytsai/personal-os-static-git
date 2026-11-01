@@ -153,9 +153,8 @@ async function openDetail(gid,lessonId){
  const detail=currentDetail();
  if(detail&&lessonId){
    const selected=db.lessons.find(l=>l.id===lessonId);
-   const code=selected?.title.match(/^(\d+-\d+)/)?.[1];
-   if(code){const matchIndex=detail.sections.findIndex(s=>s.id===code||s.title.startsWith(code+" "));if(matchIndex>=0)detailSection=matchIndex;}
-   else if(!detail.curated){const found=detail.sections[0].items.findIndex(x=>x.title===selected?.title);if(found>=0)detailItem=found;}
+   const sectionIndex=detail.sections.findIndex(s=>s.title===selected?.title || s.items?.some(item=>item.url===selected?.url && item.title===selected?.title));
+   if(sectionIndex>=0){detailSection=sectionIndex;const found=detail.sections[sectionIndex].items.findIndex(item=>item.url===selected?.url && item.title===selected?.title);if(found>=0)detailItem=found;}
  }
  renderDetail();$("detailClose").focus();
 }
