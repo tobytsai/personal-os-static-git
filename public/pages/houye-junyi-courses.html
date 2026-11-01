@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#328b80"><meta name="description" content="依科目、單元與中文課程卡片探索均一教材，並記錄學習進度。"><title>均一中文課程庫｜侯燁自學</title><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#273b4b;--muted:#718797;--line:#dbe7eb;--accent:#278d83;--shadow:0 9px 27px #1c536214}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 92% 0%,#cdf0df 0,transparent 32%),linear-gradient(145deg,#eaf9f5,#f9fbff 55%,#fff9e9);font:14px/1.65 system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #67b6b0;outline-offset:2px}[hidden]{display:none!important}
+.wrap{max-width:1300px;margin:auto;padding:19px 16px 65px}.back{display:inline-flex;padding:8px 14px;text-decoration:none;border:1px solid var(--line);border-radius:99px;background:#fff;font-size:12px;font-weight:850;margin-bottom:14px}
+.hero{position:relative;border-radius:28px;color:#fff;background:linear-gradient(118deg,#1a576b,#27988e 60%,#94bc72);padding:clamp(25px,5vw,43px);overflow:hidden;box-shadow:0 20px 40px #245b6730}
+.hero:after{content:"";position:absolute;border:2px solid #ffffff35;border-radius:50%;width:270px;height:270px;right:-100px;top:-180px;pointer-events:none}
+.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:900;color:#dcfef7}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.25;margin:9px 0}.hero p{color:#e9fff8;line-height:1.82;max-width:850px;margin:0}
+.metrics{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}.metrics span{border:1px solid #ffffff64;border-radius:99px;padding:7px 11px;background:#ffffff24;font-size:11px;font-weight:850}
+.quick{display:flex;gap:9px;flex-wrap:wrap;margin:17px 0}.quick a{border:1px solid #d3e6df;border-radius:12px;background:#fff;text-decoration:none;color:#297769;padding:10px 13px;font-size:12px;font-weight:850}
+.panel{background:#fff;border:1px solid var(--line);border-radius:21px;padding:17px;margin:15px 0;box-shadow:var(--shadow)}
+.panel h2{font-size:19px;margin:0 0 11px}.steps{display:grid;grid-template-columns:1.05fr 1.45fr;gap:13px}.step{min-width:0;border:1px solid #dfece8;border-radius:14px;background:#f8fbfa;padding:12px}.step h3{font-size:12px;color:#658a84;font-weight:850;margin:0 0 9px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;max-height:220px;overflow:auto}.chip{padding:8px 11px;background:#fff;color:#397b72;border:1px solid #cfe7df;border-radius:11px;font-size:12px;font-weight:850}.chip.active{background:#247e74;border-color:#247e74;color:#fff}.chip small{font-size:10px;opacity:.75}
+.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:17px 0}.search{flex:1 1 250px;min-width:0;padding:12px 15px;border:1px solid var(--line);border-radius:14px;background:#fff;outline:none;box-shadow:var(--shadow)}.tool{border:1px solid #d9e7e4;border-radius:12px;background:#fff;color:#448174;padding:10px 12px;font-weight:800;font-size:12px}
+.banner{border:1px solid #f0dec1;background:#fffaf0;padding:11px 14px;border-radius:13px;color:#866b44;font-size:12px;line-height:1.75;margin:11px 0}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:9px;margin:20px 0 12px}.sectionhead h2{font-size:21px;margin:0}.count{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(253px,1fr));gap:13px}.card{min-width:0;background:#fff;border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.card:hover{box-shadow:0 12px 30px #2a62581e}.accent{height:5px;background:var(--tone,#29897d)}.card-body{padding:15px;display:flex;flex-direction:column;flex:1}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:11px}.badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:850;background:#f0f8f7;color:#4a7b73;border-radius:8px;padding:5px 8px}.star{width:34px;height:34px;border:1px solid #dce8e6;border-radius:11px;color:#b0bcb9;background:#f7faf9;font-size:21px}.star.on{background:#fff4d8;color:#dca628}
+.card h3{font-size:17px;line-height:1.43;margin:0 0 8px;overflow-wrap:anywhere}.meta{font-size:11px;color:#678493;font-weight:850;margin:0 0 10px}.card p{font-size:12px;color:#5f7783;line-height:1.7;margin:0 0 13px;flex:1}
+.link-note{font-size:10px;color:#7a8d99;background:#f4f8fa;padding:7px 9px;border-radius:9px;margin:0 0 10px}
+.links{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}.links a,.links button{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;text-decoration:none;padding:8px 10px;font-size:11px;font-weight:850;border:1px solid #d3e9df;background:#effaf5;color:#297764}.links .primary{color:#fff;background:#278777;border-color:#278777}
+.progress-label{display:block;color:#4c7d75;font-size:11px;font-weight:850;margin:12px 0 5px}.progress-select{width:100%;padding:9px 10px;background:#f7fbfa;color:#2b665b;border:1px solid #d9e9e2;border-radius:10px;font-size:12px}
+.notes{border-top:1px solid #e4eeeb;margin-top:10px;padding-top:9px}.notes summary{cursor:pointer;color:#348073;font-size:11px;font-weight:800}.notes textarea{width:100%;margin-top:8px;border:1px solid #dceae4;border-radius:10px;min-height:80px;resize:vertical;padding:10px;font-size:12px;color:#2a463e}
+.more{text-align:center;margin:18px 0}.more button{padding:11px 22px;border:1px solid #c6e0d9;border-radius:99px;background:#fff;font-weight:850;color:#347b72}
+.empty{padding:25px;border:1px dashed #bcd4ce;border-radius:15px;background:#fff;color:#79938c}
+.source-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}.source{border:1px solid #dbe9e4;background:#f9fcfb;border-radius:13px;padding:14px}.source strong{display:block;font-size:13px}.source p{font-size:11px;line-height:1.65;color:#70877b;margin:6px 0 12px}.source a{font-size:11px;color:#298176;text-decoration:none;font-weight:900}
+.foot{font-size:12px;color:#6a8584;margin:25px 0;line-height:1.85}
+
+body.detail-open{overflow:hidden}
+.detail-shade{position:fixed;inset:0;background:#172b3b94;z-index:90}
+.detail-panel{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(570px,100%);background:linear-gradient(180deg,#f4fbf7,#fff);box-shadow:-15px 0 50px #153e4860;z-index:91;display:flex;flex-direction:column;border-left:1px solid #d6e7df}
+.detail-heading{background:linear-gradient(112deg,#1e756f,#3aa895);padding:21px 21px 18px;color:white;flex:none}
+.detail-heading-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.detail-heading small{font-size:10px;letter-spacing:.12em;font-weight:850;opacity:.84}
+.detail-heading h2{font-size:21px;line-height:1.45;margin:11px 0 5px}
+.detail-heading p{font-size:12px;line-height:1.65;margin:0;color:#e2f9ef}
+.detail-close{border:1px solid #ffffff95;border-radius:11px;color:#fff;background:#ffffff20;font-size:21px;font-weight:850;width:40px;height:40px}
+.detail-scroll{overflow-y:auto;padding:15px 18px 32px;flex:1;overscroll-behavior:contain}
+.detail-hint{color:#698679;background:#eaf7ef;border:1px solid #cce9d9;border-radius:13px;padding:11px;font-size:11px;line-height:1.75;margin-bottom:14px}
+.detail-subhead{font-size:12px;font-weight:900;color:#497971;margin:14px 0 8px}
+.detail-sections{display:flex;gap:7px;flex-wrap:wrap}
+.detail-section{font-size:11px;text-align:left;background:#fff;border:1px solid #d6e7df;border-radius:11px;color:#3c7467;padding:8px 10px;font-weight:800}
+.detail-section.on{background:#278879;color:#fff;border-color:#278879}
+.detail-items{display:grid;gap:8px;margin-top:9px}
+.detail-item{display:flex;align-items:center;gap:10px;border:1px solid #dce9e2;border-radius:13px;background:white;text-align:left;padding:11px 12px;color:#405c61;width:100%}
+.detail-item.on{border-color:#3aa18c;box-shadow:0 0 0 2px #6bc6a33b;background:#f5fcf8}
+.detail-item strong{display:block;font-size:12px;line-height:1.55}
+.detail-item small{display:block;font-size:10px;color:#728b87;margin-top:3px}
+.detail-item .detail-type{flex:none;font-size:17px;width:25px;text-align:center}
+.detail-info{background:#fff;border:1px solid #d3e5db;border-radius:16px;margin:14px 0;padding:15px}
+.detail-info h3{font-size:17px;line-height:1.45;margin:0 0 8px}
+.detail-info p{font-size:11px;color:#6e8783;margin:0 0 12px;line-height:1.7}
+.detail-info a,.detail-source{display:inline-flex;justify-content:center;align-items:center;border-radius:11px;padding:9px 12px;text-decoration:none;font-size:12px;font-weight:850;background:#278b7f;color:#fff;border:1px solid #278b7f}
+.detail-source{background:white;color:#277f78;border-color:#c7e4db;margin-top:7px}
+.detail-card-button{background:#f1f8fa!important;color:#2a737b!important;border-color:#cce5e7!important}
+@media(max-width:700px){.detail-heading{padding:17px 16px 14px}.detail-heading h2{font-size:18px}.detail-scroll{padding:12px 14px 38px}.detail-panel{width:100%;border-left:0}}
+
+@media(max-width:760px){.wrap{padding:12px 11px 45px}.hero{padding:23px 19px}.steps{grid-template-columns:1fr}.panel{padding:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card-body{padding:11px}.card h3{font-size:15px}.card p{font-size:11px}.sectionhead h2{font-size:18px}}
+@media(max-width:430px){.grid{grid-template-columns:1fr}.card-body{padding:15px}}
+</style></head>
+<body><main class="wrap"><a href="./houye-learning-path.html" class="back" id="mapLink">← 返回侯燁自學地圖</a>
+<header class="hero"><div class="eyebrow">HOUYE · JUNYI · COURSE LIBRARY</div><h1>🦊 均一中文課程庫</h1>
+<p>以均一教育平台為主，結合官方 YouTube 與臺北酷課雲合作教材。依科目 → 單元 → 中文課程卡片查找，清楚標示官方影片專頁或課程目錄，也能記錄探索進度與學習心得。</p>
+<div class="metrics"><span id="nLessons">讀取課程中…</span><span id="nGroups">讀取單元中…</span><span id="nCompleted">0 項已完成</span><span>📘 108 課綱教材參考</span></div></header>
+<nav class="quick"><a id="gradeOfficial" href="https://www.junyiacademy.org/topics/grade" target="_blank" rel="noopener">📚 均一年級課程</a><a href="https://www.youtube.com/@JunyiAcademy" target="_blank" rel="noopener">▶ 均一官方 YouTube</a><a href="https://www.junyiacademy.org/topics/cooc" target="_blank" rel="noopener">🦊 均一 × 酷課雲</a></nav>
+<div class="banner">依均一官方年級與科目索引整理。部分課程為跨年級共用；可從章節細節查看公開的影片、練習或官方單元入口。</div>
+<section class="panel"><h2>🗂️ 三層學習分類</h2><div class="steps"><div class="step"><h3>第一層｜學習科目／教材來源</h3><div class="chips" id="subjects"></div></div><div class="step"><h3>第二層｜均一／酷課雲課程單元</h3><div class="chips" id="groups"></div></div></div></section>
+<div class="toolbar"><input class="search" id="search" type="search" aria-label="搜尋中文課程" placeholder="搜尋章節名稱、國語、數學、課程內容或影片…"><button id="clear" class="tool" type="button">清除篩選</button><button id="favorites" class="tool" type="button">☆ 只看收藏</button><button id="unfinished" class="tool" type="button">○ 未完成</button><button id="export" class="tool" type="button">↓ 備份進度</button><button id="import" class="tool" type="button">↑ 匯入進度</button><input type="file" id="file" accept=".json,application/json" hidden></div>
+<div class="sectionhead"><h2>第三層｜中文課程卡片</h2><span class="count" id="resultCount">讀取中…</span></div>
+<div id="cards" class="grid"><div class="empty">正在讀取均一與酷課雲課程資料…</div></div><div id="moreWrap" class="more" hidden><button id="more" type="button">顯示更多課程</button></div>
+<section class="panel"><h2>▶ 官方 YouTube 與酷課雲延伸入口</h2><div id="sources" class="source-grid"></div></section>
+<div class="detail-shade" id="detailShade" hidden></div>
+<aside class="detail-panel" id="detailPanel" role="dialog" aria-modal="true" aria-labelledby="detailTitle" hidden>
+ <header class="detail-heading"><div class="detail-heading-top"><small>JUNYI · COURSE DETAIL</small><button type="button" class="detail-close" id="detailClose" aria-label="關閉章節細節">×</button></div>
+ <h2 id="detailTitle">章節細節</h2><p id="detailCaption"></p></header>
+ <div class="detail-scroll">
+ <div class="detail-hint" id="detailHint">正在讀取章節內容…</div>
+ <div class="detail-subhead">小節目錄 · 點選後顯示教材</div><div id="detailSections" class="detail-sections"></div>
+ <div class="detail-subhead">本節影片與練習</div><div id="detailItems" class="detail-items"></div>
+ <div id="detailInfo" class="detail-info"></div>
+ <a id="detailOfficial" class="detail-source" target="_blank" rel="noopener noreferrer">📖 前往均一原始章節 ↗</a>
+ </div></aside>
+<p class="foot">這是個人自學索引，不複製均一及酷課雲的影片內容。連結指向原始官方網站；若是單元目錄而非個別影片，卡片會有明確標示。進度與文字紀錄僅保存於此瀏覽器，與均一原平台進度、答題結果及影片觀看紀錄分開。更換裝置前請匯出備份。</p></main>
+<script>
+"use strict";
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const requested=Number(new URLSearchParams(location.search).get("grade"));const GRADE=Number.isInteger(requested)&&requested>=5&&requested<=12?requested:5;const NAME=({5:"五",6:"六",7:"七",8:"八",9:"九",10:"十",11:"十一",12:"十二"})[GRADE]+"年級";const SCHEMA=`toby-houye-junyi-grade${GRADE}-progress`;const KEY=`tobyHouyeJunyiGrade${GRADE}ProgressV1`;document.title=`均一${NAME}中文課程庫｜侯燁自學`;document.querySelector("h1").textContent=`🦊 均一${NAME}中文課程庫`;document.getElementById("gradeOfficial").href=`https://www.junyiacademy.org/topics/es-${GRADE}th-grade`;document.getElementById("mapLink").href=`./houye-learning-path.html?grade=${GRADE}`;
+function stored(){try{const o=JSON.parse(localStorage.getItem(KEY)||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch{return{}}}
+let progress=stored(),db=null,subject="全部",group="全部",q="",favoriteOnly=false,unfinished=false,visible=48;
+let detailData=null,detailGroup=null,detailSection=0,detailItem=0,detailOrigin=null;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(progress));return true}catch{return false}}
+function keyFor(id){const x=progress[id];return x&&typeof x==="object"?x:{status:"未開始",star:false,note:""}}
+function count(){return db?db.lessons.filter(x=>keyFor(x.id).status==="已完成").length:0}
+function selectedLessons(){
+ if(!db)return[];
+ const ql=q.toLowerCase().trim();
+ return db.lessons.filter(x=>(subject==="全部"||x.subject===subject)&&(group==="全部"||x.group===group)&&(!favoriteOnly||keyFor(x.id).star)&&(!unfinished||keyFor(x.id).status!=="已完成")&&(!ql||[x.title,x.linkType,db.groups.find(g=>g.id===x.group)?.title,db.subjects.find(s=>s.id===x.subject)?.name,x.localAdaptation,x.description].join(" ").toLowerCase().includes(ql)));
+}
+function options(current){return["未開始","探索中","已完成"].map(x=>'<option'+(x===current?" selected":"")+'>'+x+'</option>').join("")}
+function card(x){
+ const sub=db.subjects.find(s=>s.id===x.subject)||{name:"",color:"#298e84"},groupItem=db.groups.find(g=>g.id===x.group),state=keyFor(x.id);
+ const isVideo=(/\/videos?\//.test(x.url))&&!x.linkIsParent;
+ const linkLabel=isVideo?"播放本課官方影片":x.kind==="chapter"?"進入此章節教材":x.linkIsParent?"進入對應章節並選課":"開啟本單元教材";
+ const info=x.description||(x.localAdaptation?"本課程可與桃園地方生活主題進行比較與延伸。":"可挑選自己有興趣的主題，先看影片再做練習或實際操作。");
+ return '<article class="card" style="--tone:'+esc(sub.color)+'"><div class="accent"></div><div class="card-body"><div class="card-top"><span class="badge">'+esc(sub.icon+" "+sub.name)+'</span><button type="button" class="star'+(state.star?" on":"")+'" data-star="'+esc(x.id)+'" aria-label="'+(state.star?"取消收藏":"加入收藏")+'" aria-pressed="'+!!state.star+'">'+(state.star?"★":"☆")+'</button></div><h3><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">'+esc(x.title)+'</a></h3><div class="meta">'+esc(groupItem?.title||"")+'</div><p>'+esc(info)+'</p><div class="link-note">'+(isVideo?"▶ 官方影片原始入口":x.kind==="chapter"?"📖 官方章節內容頁":x.linkIsParent?"📂 官方所屬章節（請在章節內再點選教材）":"🔗 官方對應單元")+'</div><div class="links"><a class="primary" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(linkLabel)+' ↗</a><button type="button" class="detail-card-button" data-detail-group="'+esc(x.group)+'" data-detail-lesson="'+esc(x.id)+'">查看章節細節 ›</button></div><label class="progress-label" for="st-'+esc(x.id)+'">手動學習進度</label><select class="progress-select" id="st-'+esc(x.id)+'" data-status="'+esc(x.id)+'">'+options(state.status||"未開始")+'</select><details class="notes"><summary>📝 學習心得／作品紀錄</summary><textarea data-note="'+esc(x.id)+'" maxlength="3000" placeholder="今天發現什麼？有沒有相關作品或問題？">'+esc(state.note||"")+'</textarea></details></div></article>';
+}
+
+function detailFallback(g){
+ const lessons=db.lessons.filter(x=>x.group===g.id);
+ return [{id:"available",title:g.title,summary:"本章已整理的課程卡片；有獨立連結者可直接開啟教材。",items:lessons.map(x=>({
+   title:x.title,kind:(/\/videos?\//.test(x.url))?"影片":x.kind==="chapter"?"章節":"課程",
+   url:x.url,linkStatus:x.linkIsParent?"chapter-navigation":"direct"
+ }))}];
+}
+function currentDetail(){
+ const g=db?.groups.find(x=>x.id===detailGroup);
+ if(!g)return null;
+ const curated=detailData?.groups?.find(x=>x.id===detailGroup);
+ return {group:g,sections:curated?.sections?.length?curated.sections:detailFallback(g),curated:!!curated};
+}
+function itemIcon(kind){return kind==="影片"?"▶":kind==="練習"?"✎":kind==="暖身"?"☀":"📖"}
+function renderDetail(){
+ const detail=currentDetail();if(!detail)return;
+ const {group:g,sections,curated}=detail;
+ detailSection=Math.max(0,Math.min(detailSection,sections.length-1));
+ const section=sections[detailSection];
+ detailItem=Math.max(0,Math.min(detailItem,(section.items?.length||1)-1));
+ $("detailTitle").textContent=g.title;
+ $("detailCaption").textContent=(db.subjects.find(x=>x.id===g.subject)?.name||"")+" · "+(curated?"小節、影片、暖身與練習":"已有課程卡片與章節入口");
+ $("detailHint").textContent=curated?"本章依均一官方索引整理小節與教材；如僅有單元入口，請進入官方頁面選課。":"此章目前只有已建檔的單元索引，並非均一完整逐支教材清單；可選下列項目查看其連結與來源。";
+ $("detailSections").innerHTML=sections.map((s,i)=>'<button type="button" class="detail-section'+(i===detailSection?" on":"")+'" data-detail-section="'+i+'">'+esc(s.title)+'</button>').join("");
+ const items=section.items||[];
+ $("detailItems").innerHTML=items.length?items.map((x,i)=>'<button type="button" class="detail-item'+(i===detailItem?" on":"")+'" data-detail-item="'+i+'"><span class="detail-type">'+itemIcon(x.kind)+'</span><span style="flex:1"><strong>'+esc(x.title)+'</strong><small>'+esc(x.kind)+" · "+(x.linkStatus==="direct"?"已核對直達入口":"從官方章節選課")+'</small></span><span style="font-size:16px;color:#509083">›</span></button>').join(""):'<div class="empty">本節尚未建檔個別教材。</div>';
+ const selected=items[detailItem];
+ $("detailInfo").innerHTML=selected?'<h3>'+esc(selected.title)+'</h3><p>'+ (selected.linkStatus==="direct"?"這張教材有原始影片或練習連結，可直接前往均一。":"此項尚未取得個別教材的核對網址。按下方按鈕會前往此章的均一教材頁，再依名稱選擇內容。")+'</p>'+(selected.sourceVersion?'<p>教材來源：'+esc(selected.sourceVersion)+'</p>':'')+'<a href="'+esc(selected.url||g.url)+'" target="_blank" rel="noopener noreferrer">'+(selected.linkStatus==="direct"?"開啟這個教材":"到官方章節找這一題")+' ↗</a>':'<p>請先選擇左側的小節。</p>';
+ $("detailOfficial").href=g.url;
+ $("detailOfficial").textContent="📖 前往「"+g.title+"」官方章節 ↗";
+}
+async function openDetail(gid,lessonId){
+ if(!db||!db.groups.some(g=>g.id===gid))return;
+ detailOrigin=document.activeElement;
+ detailGroup=gid;detailSection=0;detailItem=0;
+ $("detailShade").hidden=false;$("detailPanel").hidden=false;document.body.classList.add("detail-open");
+ $("detailHint").textContent="正在載入章節細節…";
+ if(!detailData){
+   try{const response=await fetch(`../data/houye-junyi-grade${GRADE}-details.json?v=`+Date.now());
+       if(!response.ok)throw Error("HTTP "+response.status);
+       detailData=await response.json();
+   }catch(e){detailData={groups:[]};}
+ }
+ const detail=currentDetail();
+ if(detail&&lessonId){
+   const selected=db.lessons.find(l=>l.id===lessonId);
+   const code=selected?.title.match(/^(\d+-\d+)/)?.[1];
+   if(code){const matchIndex=detail.sections.findIndex(s=>s.id===code||s.title.startsWith(code+" "));if(matchIndex>=0)detailSection=matchIndex;}
+   else if(!detail.curated){const found=detail.sections[0].items.findIndex(x=>x.title===selected?.title);if(found>=0)detailItem=found;}
+ }
+ renderDetail();$("detailClose").focus();
+}
+function closeDetail(){
+ $("detailShade").hidden=true;$("detailPanel").hidden=true;document.body.classList.remove("detail-open");
+ detailOrigin?.focus?.();detailGroup=null;
+}
+$("detailClose").addEventListener("click",closeDetail);
+$("detailShade").addEventListener("click",closeDetail);
+$("detailSections").addEventListener("click",e=>{const b=e.target.closest("[data-detail-section]");if(b){detailSection=Number(b.dataset.detailSection);detailItem=0;renderDetail()}});
+$("detailItems").addEventListener("click",e=>{const b=e.target.closest("[data-detail-item]");if(b){detailItem=Number(b.dataset.detailItem);renderDetail()}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("detailPanel").hidden)closeDetail()});
+
+function render(){
+ if(!db)return;
+ if(subject!=="全部"&&!db.subjects.some(s=>s.id===subject))subject="全部";
+ const subs=db.subjects;
+ $("subjects").innerHTML='<button class="chip'+(subject==="全部"?" active":"")+'" data-subject="全部" type="button">全部 <small>'+db.lessons.length+'</small></button>'+subs.map(s=>'<button class="chip'+(subject===s.id?" active":"")+'" type="button" data-subject="'+esc(s.id)+'">'+esc(s.icon+" "+s.name)+' <small>'+db.lessons.filter(l=>l.subject===s.id).length+'</small></button>').join("");
+ const groups=db.groups.filter(g=>subject==="全部"||g.subject===subject);
+ if(group!=="全部"&&!groups.some(g=>g.id===group))group="全部";
+ $("groups").innerHTML='<button class="chip'+(group==="全部"?" active":"")+'" data-group="全部" type="button">全部單元</button>'+groups.map(g=>'<button class="chip'+(group===g.id?" active":"")+'" data-group="'+esc(g.id)+'" type="button">'+esc(g.title)+' <small>'+db.lessons.filter(x=>x.group===g.id).length+'</small></button>').join("");
+ const list=selectedLessons();
+ $("nLessons").textContent=db.lessons.length+" 張課程卡片";$("nGroups").textContent=db.groups.length+" 個單元";$("nCompleted").textContent=count()+" 項已完成";
+ $("resultCount").textContent=list.length+" / "+db.lessons.length+" 張";
+ $("favorites").textContent=favoriteOnly?"★ 只看收藏中":"☆ 只看收藏";$("unfinished").textContent=unfinished?"✓ 未完成篩選中":"○ 未完成";
+ $("cards").innerHTML=list.slice(0,visible).map(card).join("")||'<div class="empty">沒有符合的課程。可以清除條件或切換科目。</div>';
+ $("moreWrap").hidden=list.length<=visible;$("more").textContent="顯示更多（剩餘 "+Math.max(0,list.length-visible)+" 張）";
+ $("sources").innerHTML=db.extras.map(x=>'<div class="source"><strong>'+esc(x.title)+'</strong><p>'+esc(x.detail)+'</p><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">前往官方來源 ↗</a></div>').join("");
+}
+function update(id,patch){const data={...keyFor(id),...patch};progress[id]=data;save()}
+$("subjects").addEventListener("click",e=>{const b=e.target.closest("[data-subject]");if(b){subject=b.dataset.subject;group="全部";visible=48;render()}});
+$("groups").addEventListener("click",e=>{const b=e.target.closest("[data-group]");if(b){group=b.dataset.group;visible=48;render()}});
+$("search").addEventListener("input",e=>{q=e.target.value;visible=48;render()});
+$("clear").addEventListener("click",()=>{subject="全部";group="全部";q="";unfinished=false;favoriteOnly=false;visible=48;$("search").value="";render()});
+$("favorites").addEventListener("click",()=>{favoriteOnly=!favoriteOnly;visible=48;render()});
+$("unfinished").addEventListener("click",()=>{unfinished=!unfinished;visible=48;render()});
+$("more").addEventListener("click",()=>{visible+=48;render()});
+$("cards").addEventListener("click",e=>{
+ const detail=e.target.closest("[data-detail-group]");if(detail){openDetail(detail.dataset.detailGroup,detail.dataset.detailLesson);return}
+ const star=e.target.closest("[data-star]");if(star){const id=star.dataset.star;update(id,{star:!keyFor(id).star});render()}
+});
+$("cards").addEventListener("change",e=>{const s=e.target.closest("[data-status]");if(s){update(s.dataset.status,{status:s.value});render()}});
+$("cards").addEventListener("input",e=>{const note=e.target.closest("[data-note]");if(note)update(note.dataset.note,{note:note.value.slice(0,3000)})});
+$("export").addEventListener("click",()=>{
+ const data={schema:SCHEMA,version:1,exportedAt:new Date().toISOString(),progress};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),link=URL.createObjectURL(blob),a=document.createElement("a");a.href=link;a.download=`侯燁-均一${NAME}進度-`+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(link),1500);
+});
+$("import").addEventListener("click",()=>$("file").click());
+$("file").addEventListener("change",async e=>{const file=e.target.files?.[0];if(!file)return;try{const payload=JSON.parse(await file.text());if(payload.schema!==SCHEMA||payload.version!==1||typeof payload.progress!=="object"||!payload.progress||Array.isArray(payload.progress))throw Error("檔案格式不正確");if(!confirm("這次匯入會覆蓋本機均一課程進度，確定繼續？"))return;progress=payload.progress;if(!save())throw Error("本機儲存失敗");render()}catch(err){alert("匯入失敗："+err.message)}finally{e.target.value=""}});
+fetch(`../data/houye-junyi-grade${GRADE}.json?v=`+Date.now()).then(r=>{if(!r.ok)throw Error("課程資料讀取失敗");return r.json()}).then(d=>{
+ db=d;const p=new URLSearchParams(location.search),s=p.get("subject");if(db.subjects.some(x=>x.id===s))subject=s;const g=p.get("group");if(db.groups.some(x=>x.id===g))group=g;render();if(p.get("detail")==="1"&&group!=="全部")openDetail(group,p.get("lesson"));
+}).catch(e=>$("cards").innerHTML='<div class="empty">課程資料載入失敗，請重新整理：'+esc(e.message)+'</div>');
+window.addEventListener("storage",e=>{if(e.key===KEY){progress=stored();render()}});
+</script><script src="../shared-nav.js" defer></script></body></html>
