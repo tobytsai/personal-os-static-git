@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "collection": "tianxia",
+  "runStartedAt": "2026-11-01T16:20:58Z",
+  "runDateLocal": "2026-11-02",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "originalIndexPath": "public/data/oil/tianxia/drive-original-links.json",
+    "sourceDriveFolderId": "12edwjys4y24wO9axdZznbO0dWwKQilVS",
+    "destinationDriveFolderId": "1KtlfJRWJq5nMSQSQlUyzTkQ_dXwpYvyn"
+  },
+  "liveReference": {
+    "records": 4673,
+    "attachmentReferences": 5047,
+    "primaryField": "Attachments",
+    "secondaryField": "圖檔2"
+  },
+  "result": {
+    "startingVerifiedOriginals": 3024,
+    "addedVerifiedOriginals": 49,
+    "newDriveCloudCopies": 46,
+    "recoveredAlreadyCopiedUnindexed": 3,
+    "endingVerifiedOriginals": 3073,
+    "remainingReferenceEstimate": 1974,
+    "failedCopies": 0,
+    "categoryAdditions": {
+      "50×60": 49
+    },
+    "byRecord": 3073,
+    "byAttachment": 2469,
+    "byRecordAttachments": 874,
+    "pendingBatch": 0,
+    "categoryDriveFileCount": 610,
+    "categoryDriveUniqueFileIds": 610,
+    "unmappedPreexistingDestinationFiles": 3
+  },
+  "verification": {
+    "checkpointFiles": [
+      "2026-11-01-1629-run11-b01.json",
+      "2026-11-01-1632-run11-b02.json",
+      "2026-11-01-1634-run11-b03.json",
+      "2026-11-01-1636-run11-b04.json",
+      "2026-11-01-1638-run11-b05.json",
+      "2026-11-01-1640-run11-b06.json",
+      "2026-11-01-1642-run11-b07.json",
+      "2026-11-01-1644-run11-b08.json",
+      "2026-11-01-1646-run11-b09.json",
+      "2026-11-01-1648-run11-b10.json"
+    ],
+    "checkpointEntries": 49,
+    "uniqueAttachmentIdentities": 49,
+    "uniqueNewDestinationFileIds": 49,
+    "githubMappedVerified": true,
+    "driveSearchMetadataMatchesVerified": true,
+    "errors": [],
+    "visualVerification": false,
+    "hashVerification": false,
+    "privacyCheck": "destination Drive shared=false and no anyone/domain permissions during per-file metadata reread"
+  },
+  "exceptions": {
+    "unmappedPreexistingDestinationFiles": [
+      {
+        "fileId": "1cgShUD5yRbaU9B1XAWTomedV07RB7ZZC",
+        "filename": "B85-5060__recv3O34k1vfDBj3W_attAxCWpCjVJxuRtm.jpg",
+        "size": 680371,
+        "shared": false
+      },
+      {
+        "fileId": "1FL4QGVKJO8mJ8nAQ6dSxaU5DjBoIFLhq",
+        "filename": "B89-5060__recue2ZMFnYpmYmlu_attxEBPJWDWczlkPG.jpg",
+        "size": 925460,
+        "shared": false
+      },
+      {
+        "fileId": "1giuOAQ3m0zYsqA2DrQbtG9wJ9o0MaaLM",
+        "filename": "B83-5060__recslJDaTeaXhBvVo_attOo6KEMnHXGYyum.jpg",
+        "size": 690727,
+        "shared": false
+      }
+    ],
+    "notes": [
+      "Three pre-existing, unindexed 50×60 files were detected; not duplicated or marked as verified without establishing their source provenance.",
+      "Remaining total is an estimate because older byRecord mappings lack attachment-level IDs."
+    ]
+  },
+  "publication": {
+    "indexBlobSha": "a8a06f629d06200411896d75aa60a62f4fae7b13",
+    "indexMergeCommit": "41ad911b0f32a0e0b01fc78c9aa16a51bed19d61",
+    "indexMergeCommitUrl": "https://github.com/tobytsai/personal-os-static-git/commit/41ad911b0f32a0e0b01fc78c9aa16a51bed19d61",
+    "checkpointCommitsCount": 10,
+    "commitVerified": true
+  },
+  "unchanged": [
+    "Airtable original records",
+    "Existing preview WebP",
+    "Drive sharing permissions",
+    "Original source files"
+  ]
+}
