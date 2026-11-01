@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "collection": "tianxia",
+  "run": "2026-11-01-1917-run14",
+  "runDateLocal": "2026-11-02",
+  "completedAtUTC": "2026-11-01T19:40:32.958Z",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "githubRepository": "tobytsai/personal-os-static-git",
+    "githubBranch": "main",
+    "originalLinkIndexPath": "public/data/oil/tianxia/drive-original-links.json",
+    "driveParentFolderId": "17-H63qSdB98i-sqNUbrBGutw4l43ljIb"
+  },
+  "reference": {
+    "liveAirtableRecords": 4673,
+    "liveAttachmentReferences": 5047,
+    "attachmentsFieldCount": 5033,
+    "secondaryImageFieldCount": 14
+  },
+  "result": {
+    "previousIndexedOriginals": 3173,
+    "newVerifiedOriginals": 50,
+    "finalIndexedOriginals": 3223,
+    "failedCopies": 0,
+    "verifiedExistingAfterToolInterruptions": 10,
+    "freshCloudCopies": 40,
+    "categoryAdditions": {
+      "60×90": 27,
+      "60×120": 23
+    },
+    "byAttachment": 2619,
+    "byRecordAttachments": 1024,
+    "pendingBatch": 0,
+    "roughRemainingAttachmentReferences": 1824,
+    "roughRemainingNotExactBecauseLegacyMappings": true
+  },
+  "driveAudit": {
+    "originalCategoryFolders": 18,
+    "originalJpegFiles": 3228,
+    "githubLinkedOriginals": 3223,
+    "existingDriveJpegsWithoutIndex": 5,
+    "unlinkedPriorCodes": [
+      "X26-90120",
+      "C2-90120",
+      "B83-5060",
+      "B85-5060",
+      "B89-5060"
+    ],
+    "newDriveIdsUnique": 50,
+    "noObservedPubliclySharedFiles": true,
+    "nonJPEGFiles": 0,
+    "notes": "Full scan of existing 18 target folders; separate prior duplicate-review folder and unrelated parent files excluded. Shared metadata flag false; new copies also checked for broad permissions."
+  },
+  "verification": {
+    "liveAttachmentIdsAndExactBytes": true,
+    "sourceAndDestinationJPEG": true,
+    "postCopyFileNameMimeSizeParent": true,
+    "privateNotBroadened": true,
+    "independentVisualComparison": false,
+    "independentCryptographicHashComparison": false,
+    "githubIndexBlobSha": "b47aee22509665679782946851f6b8a34695c559",
+    "githubIndexMergeCommit": "ece79a4b7dbef66a072bdeaf66b51991803fb7cd",
+    "allStagedAttachmentIDsPresentInMergedIndex": true
+  },
+  "checkpoints": [
+    {
+      "file": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1917-run14-recovered-03.json",
+      "verified": 3
+    },
+    {
+      "file": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1917-run14-b01.json",
+      "verified": 7
+    },
+    {
+      "file": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1917-run14-b02.json",
+      "verified": 10
+    },
+    {
+      "file": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1917-run14-b03.json",
+      "verified": 10
+    },
+    {
+      "file": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1917-run14-b04.json",
+      "verified": 10
+    },
+    {
+      "file": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1917-run14-b05.json",
+      "verified": 10
+    }
+  ],
+  "notes": [
+    "The two in-run orchestration call limits occurred after Drive copies; 10 previously copied originals were recovered by reading Drive metadata and committed without duplicate copies.",
+    "The run did not modify Airtable, preview WebP files, any original source, or Drive sharing.",
+    "Remaining figure compares total attachment references with primary work links; older byRecord-only mapping means exact attachment-level coverage needs reconciliation.",
+    "Five preexisting files without final index mappings were not counted or recopied."
+  ]
+}
