@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "collection": "tianxia",
+  "run": "2026-11-01-1823-run13",
+  "runDateLocal": "2026-11-02",
+  "runStartedAt": "2026-11-01T18:23:00Z",
+  "runType": "Drive-original-JPEG-copy-and-checkpointed-GitHub-merge",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "fields": [
+      "Attachments",
+      "圖檔2"
+    ],
+    "githubRepository": "tobytsai/personal-os-static-git",
+    "githubBranch": "main",
+    "githubOriginalLinksPath": "public/data/oil/tianxia/drive-original-links.json",
+    "driveParentFolderId": "17-H63qSdB98i-sqNUbrBGutw4l43ljIb"
+  },
+  "reference": {
+    "liveAirtableRecords": 4673,
+    "liveAirtableAttachmentReferences": 5047
+  },
+  "result": {
+    "previousVerifiedRecords": 3123,
+    "newVerifiedOriginals": 50,
+    "finalVerifiedRecords": 3173,
+    "failedOriginalCopies": 0,
+    "categoryAdditions": {
+      "50×150": 49,
+      "60×90": 1
+    },
+    "roughRemainingAttachmentReferences": 1874,
+    "roughRemainingNotExactBecauseLegacyMappings": true,
+    "olderByRecordWithoutByAttachmentLayer": 604,
+    "originalLinkIndexByAttachment": 2569,
+    "originalLinkIndexByRecordAttachments": 974
+  },
+  "verification": {
+    "manifestFile": "public/data/oil/tianxia/backup-run-reports/2026-11-01-1823-run13-manifest.json",
+    "checkpointFiles": [
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1823-run13-50150-b00.json",
+        "verifiedEntries": 1
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1824-run13-50150-b01.json",
+        "verifiedEntries": 5
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1827-run13-50150-b02.json",
+        "verifiedEntries": 5
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1830-run13-50150-b03.json",
+        "verifiedEntries": 5
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1832-run13-50150-b04.json",
+        "verifiedEntries": 7
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1834-run13-50150-b05.json",
+        "verifiedEntries": 7
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1836-run13-50150-b06.json",
+        "verifiedEntries": 7
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1838-run13-50150-b07.json",
+        "verifiedEntries": 7
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1840-run13-50150-b08.json",
+        "verifiedEntries": 5
+      },
+      {
+        "path": "public/data/oil/tianxia/backup-checkpoints/2026-11-01-1841-run13-6090-b09.json",
+        "verifiedEntries": 1
+      }
+    ],
+    "checkpointEntries": 50,
+    "manifestRecordAttachmentIdentityMatches": 50,
+    "manifestUniqueDestinationDriveIds": 50,
+    "gitHubIndexBlobSha": "941793c6fe3f1d325b3f0a23c0bb64b422e17b33",
+    "lastVerifiedMergeCommit": "da44336ab100e8a5d700f21557982ad0f036fba5",
+    "postMergeByRecord": 3173,
+    "postMergeByAttachment": 2569,
+    "postMergeByRecordAttachments": 974,
+    "pendingBatch": 0,
+    "destinationOriginalJPEGFolders": 18,
+    "destinationOriginalJPEGFiles": 3178,
+    "destinationUniqueFileIds": 3178,
+    "destinationPublicSharedFiles": 0,
+    "destinationNonJPEGFiles": 0,
+    "destinationOriginalFileLinksPresentInByRecord": 3173,
+    "destinationOriginalFileLinksMissingInDrive": 0,
+    "destinationOriginalFilesNotPresentInByRecord": 5,
+    "verifiedPrivateOriginalFolder50x150": "1hIT-hVEAl9GMSgF4uCC-oLD03us3RXrA",
+    "sizeMimeFilenameCategoryPrivateMetadataVerifiedForNewCopies": 50,
+    "independentVisualComparison": false,
+    "independentCryptographicHashComparison": false
+  },
+  "existingUnmappedDriveOriginals": [
+    {
+      "code": "X26-90120",
+      "recordId": "rec4ZXOTXNtsYygRo",
+      "attachmentId": "attF5uZGNerl2Ley6",
+      "driveFileId": "1CCF4HaF4lLirF449fdbem9sADXdX3BfY"
+    },
+    {
+      "code": "C2-90120",
+      "recordId": "rec3woByLvm1u73RF",
+      "attachmentId": "attoj47A6YJ4zmZD4",
+      "driveFileId": "1qSm9wBR9ogf1CnuM-qmq10YEQaWyA5SP"
+    },
+    {
+      "code": "B85-5060",
+      "recordId": "recv3O34k1vfDBj3W",
+      "attachmentId": "attAxCWpCjVJxuRtm",
+      "driveFileId": "1cgShUD5yRbaU9B1XAWTomedV07RB7ZZC"
+    },
+    {
+      "code": "B89-5060",
+      "recordId": "recue2ZMFnYpmYmlu",
+      "attachmentId": "attxEBPJWDWczlkPG",
+      "driveFileId": "1FL4QGVKJO8mJ8nAQ6dSxaU5DjBoIFLhq"
+    },
+    {
+      "code": "B83-5060",
+      "recordId": "recslJDaTeaXhBvVo",
+      "attachmentId": "attOo6KEMnHXGYyum",
+      "driveFileId": "1giuOAQ3m0zYsqA2DrQbtG9wJ9o0MaaLM"
+    }
+  ],
+  "notes": [
+    "Existing 5 unmatched Drive files were not counted as new successful backups and were not modified, recopied, deleted or shared.",
+    "Source original JPEG filename aliases matched live Airtable original attachment ID/code/type/exact byte size; independent image visual/hash comparison was not performed.",
+    "Airtable data and GitHub WebP previews were left unchanged; no Google Drive file was made public.",
+    "After a mid-run tool orchestration interruption, five existing destination copies were reread and safely checkpointed, without duplicate copies.",
+    "Do not conclude entire 5,047-attachment library is complete; retain active automation."
+  ]
+}
