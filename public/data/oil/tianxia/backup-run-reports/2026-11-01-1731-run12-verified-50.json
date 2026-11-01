@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "collection": "tianxia",
+  "runDateLocal": "2026-11-02",
+  "runStartedAt": "2026-11-01T17:31:00Z",
+  "runType": "private-drive-originals-cloud-copy-and-github-verified-merge",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "fields": [
+      "Attachments",
+      "圖檔2"
+    ],
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "catalogIndex": "public/data/oil/tianxia/index.json",
+    "originalLinksIndex": "public/data/oil/tianxia/drive-original-links.json",
+    "sourceDriveFolderId": "1OxwbseVLZk9J8UAr8r7yDW-lJlGbGIQo",
+    "destinationDriveFolderId": "1PGVAwmIc6ATytexX1t82rfVmRNDy8afi"
+  },
+  "reference": {
+    "liveAirtableRecords": 4673,
+    "liveAttachments": 5033,
+    "liveOtherImageAttachments": 14,
+    "liveAttachmentReferences": 5047,
+    "recordsWithNoImage": 1,
+    "liveAirtablePageCount": 6,
+    "livePaginationComplete": true
+  },
+  "result": {
+    "startingVerifiedRecords": 3073,
+    "addedVerifiedOriginals": 50,
+    "endingVerifiedRecords": 3123,
+    "failedCopies": 0,
+    "actualDriveOriginalCopies": 50,
+    "interruptedCopiesRecoveredToCheckpoint": 5,
+    "categoryAdditions": {
+      "60×90": 50
+    },
+    "roughRemainingReferences": 1924,
+    "roughEstimateNotExactDueToLegacyMappings": true
+  },
+  "verification": {
+    "checkpointFiles": [
+      "2026-11-01-1731-run12-6090-b00.json",
+      "2026-11-01-1731-run12-6090-b01.json",
+      "2026-11-01-1731-run12-6090-b02.json",
+      "2026-11-01-1731-run12-6090-b03.json",
+      "2026-11-01-1731-run12-6090-b04.json",
+      "2026-11-01-1731-run12-6090-b05.json",
+      "2026-11-01-1731-run12-6090-b06.json",
+      "2026-11-01-1731-run12-6090-b07.json",
+      "2026-11-01-1731-run12-6090-b08.json",
+      "2026-11-01-1731-run12-6090-b09.json"
+    ],
+    "checkpointCount": 10,
+    "checkpointEntries": 50,
+    "uniqueAttachmentIdentities": 50,
+    "uniqueDriveFileIds": 50,
+    "postmergeAttachmentIndexMatches": 50,
+    "postmergeRecordAttachmentIndexMatches": 50,
+    "destinationDriveMetadataMatched": 50,
+    "destinationDriveCategoryJPEGCount": 480,
+    "destinationJPEGUniqueFileIds": 480,
+    "postmergeGithubOriginalLinksBlobSha": "3059076f04714d453676ec1217b2f40facabfcdf",
+    "postmergeByRecord": 3123,
+    "postmergeByAttachment": 2519,
+    "postmergeByRecordAttachments": 924,
+    "pendingBatch": 0,
+    "drivePermissions": "50 individual destinations had shared=false and no anyone/domain permissions; checked exact byte size, image/jpeg, destination folder and stable filename",
+    "visualComparison": false,
+    "cryptographicHashComparison": false
+  },
+  "excludedCandidates": {
+    "quantity": 12,
+    "reason": "During source candidate selection skipped ambiguous catalog naming, duplicate/variant file identity or mismatch in live attachment byte sizes; not copied or counted. Other missing items remain for future runs."
+  },
+  "pendingLegacyIssues": [
+    "Legacy primary record links with missing attachment-level identities require separate reconciliation.",
+    "Preexisting unmapped 50x60 destination files B83/B85/B89 reported previously remain unresolved unless separately verified."
+  ],
+  "unchanged": [
+    "Airtable records",
+    "WebP previews",
+    "Drive sharing permissions",
+    "Source originals"
+  ],
+  "conclusion": "Batch originals verified and indexed, full gallery not yet complete; automation remains active."
+}
