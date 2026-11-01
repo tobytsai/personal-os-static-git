@@ -1,0 +1,48 @@
+name: Merge verified Tianxia Drive originals
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "public/data/oil/tianxia/verified-original-staging/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tianxia-original-links-merge
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Merge verified original links with safe push retries
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git checkout -B main origin/main
+            python3 scripts/merge_tianxia_drive_originals.py
+            git add public/data/oil/tianxia/drive-original-links.json
+            if git diff --cached --quiet; then
+              echo "All staged attachments already present"
+              exit 0
+            fi
+            git commit -m "Merge verified Tianxia original Drive links"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep "$((attempt * 3))"
+          done
+          echo "Failed to push after five rebase-free retries"
+          exit 1
