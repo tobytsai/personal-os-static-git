@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: pages
-  queue: max
+  queue: single
   cancel-in-progress: false
 
 jobs:
