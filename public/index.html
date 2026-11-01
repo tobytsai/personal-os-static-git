@@ -28,7 +28,7 @@
 </nav><header class="top"><div><h1>Toby 啟動器</h1><p>每天打開一次，把工作、創作、學習與生活放回同一個畫面。</p></div><div class="clock"><strong id="clock">--:--</strong><span id="date"></span></div></header>
 <div class="statusbar"><span class="status ok">● 靜態網站</span><span class="status">次頁建置中</span><span class="status">不連接私人資料</span></div>
 <div class="search"><input id="q" placeholder="搜尋 ChatGPT、Trello、膠彩、旅行、Google……"></div>
-<section class="card reminders" aria-labelledby="reminder-heading"><div class="reminders-head"><h2 id="reminder-heading">🔔 提醒事項</h2><button type="button" class="reminder-add" id="reminder-add">＋ 新增提醒</button></div><div class="reminder-list" id="reminder-list" aria-live="polite"></div><form class="reminder-form" id="reminder-form" hidden><label>提醒內容<input name="title" required maxlength="120" placeholder="例如：機車定期排氣檢驗"></label><label>期限<input type="date" name="date" required></label><label>聯絡電話（選填）<input name="phone" type="tel" maxlength="40" placeholder="例如：03-332-4414"></label><p class="reminder-error" id="reminder-error" hidden></p><div class="form-actions"><button type="submit">儲存提醒</button><button type="button" id="reminder-cancel">取消</button></div></form><p class="reminder-note">提醒與完成狀態儲存在目前的瀏覽器；開啟首頁時查看，不會自動推播或跨裝置同步。</p></section>
+<section class="card reminders" aria-labelledby="reminder-heading"><div class="reminders-head"><h2 id="reminder-heading">🔔 提醒事項</h2><button type="button" class="reminder-add" id="reminder-add">＋ 新增提醒</button></div><div class="reminder-list" id="reminder-list" aria-live="polite"></div><form class="reminder-form" id="reminder-form" hidden><label>提醒內容<input name="title" required maxlength="120" placeholder="例如：機車定期排氣檢驗"></label><label>期限（選填）<input type="date" name="date"></label><label>聯絡電話（選填）<input name="phone" type="tel" maxlength="40" placeholder="例如：03-332-4414"></label><p class="reminder-error" id="reminder-error" hidden></p><div class="form-actions"><button type="submit">儲存提醒</button><button type="button" id="reminder-cancel">取消</button></div></form><p class="reminder-note">提醒與完成狀態儲存在目前的瀏覽器；開啟首頁時查看，不會自動推播或跨裝置同步。</p></section>
 <section class="hero">
 <article class="card weather"><div class="head"><h3>🌤 桃園即時天氣</h3><a class="link" href="https://www.cwa.gov.tw/" target="_blank" rel="noopener">中央氣象署 ↗</a></div><div class="weather-big"><div><div class="temp" id="weatherTemp" style="font-size:37px">載入中</div><div id="weatherCondition">正在取得最新資料…</div></div><div class="wxicon" id="weatherIcon">🌤</div></div><div class="weather-details"><div class="weather-detail"><b id="weatherFeels">—</b><span>體感溫度</span></div><div class="weather-detail"><b id="weatherRain">—</b><span>目前降雨</span></div><div class="weather-detail"><b id="weatherHighLow">—</b><span>今日高 / 低</span></div></div><div class="weather-actions"><span class="small" id="weatherUpdated">等待更新</span><button class="weather-refresh" id="weatherRefresh" type="button" onclick="loadWeather(true)">↻ 更新天氣</button></div><div class="small" style="margin-top:6px">資料來源：<a href="https://open-meteo.com/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Open-Meteo</a></div></article>
 <article class="card recent"><div class="head"><h3>↻ 最近使用</h3><span class="link">本機記錄</span></div><div class="chips" id="recent"></div></article></section>
@@ -68,7 +68,8 @@ renderTools();
 (()=>{
  const key='tobyHomeRemindersV1';
  const milkReminder={id:'milk-linfengying-20261201',title:'林鳳營高品質鮮乳｜分批領取（購買5瓶、剩餘3瓶；全脂／低脂任選）',date:'2026-12-01',phone:'',done:false};
- const defaults=[{id:'vehicle-ba6950',title:'BA-6950 機車定期排氣檢驗',date:'2026-12-31',phone:'03-332-4414',done:false},{id:'vehicle-kt3720',title:'KT-3720 機車定期排氣檢驗',date:'2027-01-31',phone:'03-332-4414',done:false},milkReminder];
+ const beetleReminder={id:'shopping-beetle-soil-55l-20261102',title:'🪲 購買甲蟲專用土 5.5L（獨角仙／雞母蟲／大兜土）｜蝦皮參考 NT$89／包，結帳前比較運費',date:'',phone:'',url:'https://shopee.tw/product/187780133/3791057414',done:false};
+ const defaults=[{id:'vehicle-ba6950',title:'BA-6950 機車定期排氣檢驗',date:'2026-12-31',phone:'03-332-4414',done:false},{id:'vehicle-kt3720',title:'KT-3720 機車定期排氣檢驗',date:'2027-01-31',phone:'03-332-4414',done:false},milkReminder,beetleReminder];
  let entries; try{const raw=localStorage.getItem(key);const data=raw===null?null:JSON.parse(raw);entries=Array.isArray(data)?data:defaults.map(x=>({...x}));}catch{entries=defaults.map(x=>({...x}));}
  // Once per browser, add the new pickup reminder without replacing existing reminders.
  const milkSeedKey='tobyHomeRemindersSeedMilk20261201';
@@ -79,6 +80,15 @@ renderTools();
    }
    localStorage.setItem(milkSeedKey,'1');
  }}catch{if(!entries.some(x=>x.id===milkReminder.id))entries.push({...milkReminder})}
+ // Seed the shopping reminder once per browser, preserving existing edited reminders.
+ const beetleSeedKey='tobyHomeRemindersSeedBeetleSoil20261102';
+ try{if(localStorage.getItem(beetleSeedKey)!=='1'){
+   if(!entries.some(x=>x.id===beetleReminder.id)){
+     const updated=[...entries,{...beetleReminder}];
+     localStorage.setItem(key,JSON.stringify(updated));entries=updated;
+   }
+   localStorage.setItem(beetleSeedKey,'1');
+ }}catch{if(!entries.some(x=>x.id===beetleReminder.id))entries.push({...beetleReminder})}
  const list=document.getElementById('reminder-list'),form=document.getElementById('reminder-form'),err=document.getElementById('reminder-error');
  let editing=null;
  function save(){try{localStorage.setItem(key,JSON.stringify(entries));return true}catch{err.textContent='無法儲存至瀏覽器，請檢查瀏覽器的儲存空間或隱私設定。';err.hidden=false;return false}}
@@ -94,16 +104,17 @@ renderTools();
    const row=document.createElement('article');row.className='reminder-item'+(item.done?' done':'');
    const info=document.createElement('div'),title=document.createElement('div'),meta=document.createElement('div');
    title.className='reminder-title';title.textContent=item.title;meta.className='reminder-meta';
-   const diff=days(item.date),status=item.done?'已完成':diff<0?'已逾期 '+Math.abs(diff)+' 天':diff===0?'今天到期':'剩餘 '+diff+' 天';
-   meta.append(document.createTextNode('期限：'+item.date+'｜'+status));
+   const diff=item.date?days(item.date):null,status=item.done?'已完成':diff===null?'未設定期限':diff<0?'已逾期 '+Math.abs(diff)+' 天':diff===0?'今天到期':'剩餘 '+diff+' 天';
+   meta.append(document.createTextNode(item.date?'期限：'+item.date+'｜'+status:'待辦｜'+status));
    if(item.phone){meta.append(document.createTextNode('｜定檢專線：'));const link=document.createElement('a');link.href='tel:'+item.phone.replace(/[^+0-9]/g,'');link.textContent=item.phone;meta.append(link)}
+   if(item.url){const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='蝦皮商品連結';meta.append(document.createTextNode('｜'),link)}
    info.append(title,meta);const actions=document.createElement('div');actions.className='reminder-actions';
    actions.append(button(item.done?'恢復未完成':'標記完成',()=>{item.done=!item.done;if(save())render();else item.done=!item.done}),button('編輯',()=>showForm(item)),button('刪除',()=>{if(!confirm('確定刪除這則提醒？'))return;const previous=entries;entries=entries.filter(x=>x.id!==item.id);if(save())render();else entries=previous}));
    row.append(info,actions);list.append(row)
   })
  }
  document.getElementById('reminder-add').addEventListener('click',()=>showForm(null));document.getElementById('reminder-cancel').addEventListener('click',closeForm);
- form.addEventListener('submit',e=>{e.preventDefault();err.hidden=true;const title=form.elements.title.value.trim(),date=form.elements.date.value,phone=form.elements.phone.value.trim();if(!title||!/^\d{4}-\d{2}-\d{2}$/.test(date)){err.textContent='請填寫提醒內容與期限。';err.hidden=false;return}const previous=entries.map(x=>({...x}));if(editing){const target=entries.find(x=>x.id===editing);if(!target)return;Object.assign(target,{title,date,phone})}else entries.push({id:'r-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),title,date,phone,done:false});if(save()){closeForm();render()}else entries=previous});
+ form.addEventListener('submit',e=>{e.preventDefault();err.hidden=true;const title=form.elements.title.value.trim(),date=form.elements.date.value,phone=form.elements.phone.value.trim();if(!title||(date&&!/^\d{4}-\d{2}-\d{2}$/.test(date))){err.textContent='請填寫提醒內容，並確認期限格式。';err.hidden=false;return}const previous=entries.map(x=>({...x}));if(editing){const target=entries.find(x=>x.id===editing);if(!target)return;Object.assign(target,{title,date,phone})}else entries.push({id:'r-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),title,date,phone,done:false});if(save()){closeForm();render()}else entries=previous});
  render();
 })();
 </script>
