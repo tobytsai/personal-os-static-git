@@ -4,6 +4,24 @@
 "use strict";
 const url="../data/appsumo-confirmed-purchases.json";
 const account="https://appsumo.com/account/products/";
+const verifiedSites={
+ "Buildin": "https://buildin.ai/",
+ "BrowserAct": "https://www.browseract.com/",
+ "VoiSpark": "https://voispark.com/",
+ "Albato": "https://albato.com/",
+ "Video To Blog": "https://videotoblog.ai/",
+ "OnlineCourseHost.com": "https://onlinecoursehost.com/",
+ "Brilliant Directories": "https://www.brilliantdirectories.com/",
+ "ClickRank": "https://www.clickrank.ai/",
+ "JoggAI": "https://www.jogg.ai/",
+ "CopyClipper": "https://copyclipper.com/",
+ "Letterly": "https://letterly.app/",
+ "SellerPic": "https://sellerpic.ai/",
+ "TaskMagic": "https://taskmagic.com/",
+ "SheetMagic": "https://sheetmagic.ai/",
+ "Swipe One": "https://www.swipeone.com/",
+ "PlanPros.ai": "https://planpros.ai/"
+};
 const storage="toby-appsumo-official-csv-v1";
 const confirmed=new Set();
 const csv=new Map();
@@ -24,7 +42,8 @@ function add(name){
  if(!name)return;
  if(products.some(p=>normalize(p[0])===normalize(name)))return;
  const symbol=name.replace(/[^a-z0-9]/gi,"").slice(0,2).toUpperCase()||"★";
- products.push([name,category(name),symbol,account,"#786ace","歷史訂單已核實；前往 AppSumo Products 查詢授權、啟用狀態與服務連結。"]);
+ const homepage=verifiedSites[name]||account;
+ products.push([name,category(name),symbol,homepage,"#786ace",homepage===account?"歷史訂單已核實；前往 AppSumo Products 查詢授權、啟用狀態與服務連結。":"已核實歷史訂單，點卡片開啟軟體官網；授權現況請至 AppSumo Products 核對。"]);
 }
 function iconFor(p){
  try{const u=new URL(p[3]);if(!/^https?:$/.test(u.protocol))return null;if(u.hostname==="appsumo.com"&&u.pathname.startsWith("/account/"))return null;
