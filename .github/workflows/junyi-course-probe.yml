@@ -1,0 +1,26 @@
+name: Inspect Junyi public course structure
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/junyi-course-probe.yml']
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - run: pip install requests beautifulsoup4
+      - run: |
+          python - <<'PY'
+          import requests
+          from bs4 import BeautifulSoup
+          for url in ['https://www.junyiacademy.org/topics/es-5th-grade','https://www.junyiacademy.org/topics/j-m5a','https://www.junyiacademy.org/topics/coocele-c5']:
+              r=requests.get(url,timeout=40);print('URL',url,r.status_code,len(r.content))
+              soup=BeautifulSoup(r.text,'html.parser')
+              for a in soup.select('a[href]'):
+                  t=' '.join(a.get_text(' ',strip=True).split())
+                  if t=='查看課程內容':
+                      print('PARENT',str(a.parent.parent)[:2200])
+                      break
+              for a in soup.select('a[href]'):
+                  if '/videos/' in a.get('href',''):
+                      print('VIDEO',str(a.parent.parent)[:1600]);break
+          PY
