@@ -1,0 +1,50 @@
+name: Personal OS LINE watch bridges
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/data/shopee-price-watch-state.json'
+      - 'public/data/gakubuti-weekly.js'
+      - '.github/workflows/line-watch-bridges.yml'
+      - 'scripts/line_watch_bridge.py'
+  schedule:
+    # 10:15 & 20:15 Asia/Taipei; fallback for writes that do not emit push events.
+    - cron: '15 2 * * *'
+    - cron: '15 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: personal-os-line-watch
+  queue: max
+  cancel-in-progress: false
+
+jobs:
+  send-verified-changes:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out full history for safely recording sent alerts
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Synchronize with the latest main revision
+        run: |
+          git fetch --no-tags origin main
+          git checkout -B main origin/main
+      - name: Verify notifier syntax and deduplication tests
+        run: |
+          python3 -m py_compile scripts/line_watch_bridge.py
+          python3 -m unittest discover -s tests -p test_line_watch_bridge.py -v
+      - name: Check source files and existing alert ledger
+        run: python3 scripts/line_watch_bridge.py --dry-run
+      - name: Send only newly verified alerts to LINE
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TO_USER_ID: ${{ secrets.LINE_TO_USER_ID }}
+        run: python3 scripts/line_watch_bridge.py
