@@ -1,0 +1,77 @@
+{
+  "reportDate": "2026-11-03",
+  "timezone": "Asia/Taipei",
+  "runId": "2026-11-03-0217-run37",
+  "status": "completed_50_previously_backed_up_private_original_JPEG_identity_links_merged_and_read_back",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecordCount": 4673,
+    "liveImageAttachmentCount": 5047,
+    "airtableAttachmentsFieldCount": 5033,
+    "airtableImage2FieldCount": 14,
+    "githubRepo": "tobytsai/personal-os-static-git",
+    "branch": "main"
+  },
+  "before": {
+    "byRecord": 3949,
+    "byAttachment": 3398,
+    "byRecordAttachments": 1803
+  },
+  "afterVerifiedOnMain": {
+    "byRecord": 3949,
+    "byAttachment": 3448,
+    "byRecordAttachments": 1853,
+    "pendingBatch": 0,
+    "originalLinksBlobSha": "7fa0a6fbcde923438f155b82849dad6abe65a5eb",
+    "mergeCommit": "7a1086c5e3beedf53bbc893fc86de1900e84b65a"
+  },
+  "batch": {
+    "limit": 50,
+    "existingPrivateOriginalsMetadataReverified": 50,
+    "newCopiesOrUploads": 0,
+    "newPrimaryRecords": 0,
+    "newAttachmentIdentityMappings": 50,
+    "newRecordAttachmentIdentityMappings": 50,
+    "uniqueRecordIds": 50,
+    "uniqueAttachmentIds": 50,
+    "uniqueDriveFileIds": 50,
+    "categoryBreakdown": {
+      "30×40": 50
+    },
+    "totalExactBytes": 4447642,
+    "validJpegMimeAndExactByteSize": true,
+    "liveAirtableAttachmentFilenameMatchingExistingDriveFile": true,
+    "productCodeAndCatalogIndexCrossChecked": true,
+    "driveParentAndPrivatePermissionsReadBack": true,
+    "independentVisualComparison": false,
+    "independentHashComparison": false,
+    "unresolvedVerificationErrors": 0
+  },
+  "remaining": {
+    "primaryRecordsWithoutByRecordMapping": 724,
+    "primaryRecordsWithImageWithoutByRecordMapping": 723,
+    "unmappedAttachmentIdentities": 1599,
+    "alreadyMappedPrimaryRecordsMissingHistoricalAttachmentIdentity": 501,
+    "roughAttachmentReferencesNotCoveredByPrimaryRecordCount": 1098,
+    "roughCountsAreNotConfirmedPhysicalMissingOriginalFiles": true
+  },
+  "checkpointPaths": [
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0217-run37-b01-existing-private-original-identities.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0217-run37-b02-existing-private-original-identities.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0217-run37-b03-existing-private-original-identities.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0217-run37-b04-existing-private-original-identities.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0217-run37-b05-existing-private-original-identities.json"
+  ],
+  "reconciliation": {
+    "mergeScriptSafetyCommit": "70b3b8e0198d5b14cf6174116981bc4f55d3c00d",
+    "legacyCompatibilityFixCommit": "7c4ae647e5912aa7bde7a3e89482887ce3061bf6",
+    "temporaryWorkflowFailureResolved": true,
+    "rerunWorkflowId": 41500886951,
+    "rerunAttempt": 2,
+    "rerunConcluded": "success",
+    "postCommitReadbackVerified": 50,
+    "postCommitReadbackFailures": 0
+  },
+  "safety": "Existing original JPEGs already privately backed up in 30×40 Google Drive folder were not duplicated. No edits to Airtable, WebP previews, original source files, or sharing permissions. No deletions. Original byRecord frontend index preserved. Independent visual/hash comparison not performed."
+}
