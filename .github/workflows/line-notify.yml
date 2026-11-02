@@ -1,0 +1,38 @@
+name: Personal OS LINE notifications
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Optional note for the LINE connection test'
+        required: false
+        type: string
+        default: 'Personal OS 通知中心已完成連線測試。'
+  workflow_run:
+    workflows:
+      - 'Deploy static site to GitHub Pages'
+      - 'Daily trend radar'
+      - 'Taiwan YouTube popular daily'
+      - 'Stock launcher — official TWSE/TPEx daily close'
+      - 'Build IXL Grade 4 Chinese course catalog'
+    types: [completed]
+    branches: [main]
+
+# This workflow only reads trusted code on the default branch; it never
+# executes or downloads artifacts from the triggering workflow.
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check out trusted notifier source
+        uses: actions/checkout@v4
+      - name: Push a LINE notification
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TO_USER_ID: ${{ secrets.LINE_TO_USER_ID }}
+        run: python3 scripts/send_line_notification.py
