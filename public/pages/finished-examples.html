@@ -137,7 +137,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <div><span class="badge">🖼 畫廊工作 · 成品圖庫</span><h1>額緣高橋啟動器</h1><p class="lead">以成品示範圖片探索裱框形式，整合商品編號、繁體中文說明、原始商品圖片，以及 Google Drive 的實例與說明圖。</p></div>
 <div class="actions"><a class="action" href="../index.html">← 首頁</a><a class="action" href="./takahashi-glossary.html">📖 日中裱框術語表</a><button class="action" id="helpBtn" type="button">？使用說明</button></div>
 </header>
-<aside class="catalogsource" id="catalogsource" aria-label="額緣總表完整商品資料">
+<section class="sourcepanel"><strong>✏️ 商品中文編輯</strong><p>每張商品卡片可修改中文名稱與說明並對照日文原文。修改儲存在目前瀏覽器，不會自動同步，請定期匯出備份。</p><div class="actions"><button class="action" id="trExport">匯出中文備份</button><button class="action" id="trImport">匯入中文備份</button><input type="file" id="trFile" accept=".json,application/json" hidden></div><p id="trStatus" role="status" aria-live="polite"></p></section><aside class="catalogsource" id="catalogsource" aria-label="額緣總表完整商品資料">
   <span class="catalogicon" aria-hidden="true">📊</span>
   <div class="catalogtext"><strong>額緣總表｜4,159 筆完整商品</strong><p>原始 Excel 商品總表（2026/08/30）：商品 ID、日文／繁體中文說明、日圓價格、商品圖片及官網詳情。可對照下方「相框結構」分類。</p></div>
   <a class="action" href="https://docs.google.com/spreadsheets/d/16VnaDpdwOQBt1YhfCUp8q3ufaJ0PL6vn/edit" target="_blank" rel="noopener noreferrer">📋 開啟額緣總表 ↗</a>
@@ -244,7 +244,9 @@ document.getElementById("gbWeeklyCards").innerHTML=wk.length?wk.map(card).join("
 document.getElementById("gbBaselineCards").innerHTML=(Array.isArray(d.recentBaseline)?d.recentBaseline:[]).map(card).join("");
 })();
 </script>
+<dialog id="trDialog"><form id="trForm" style="padding:20px;display:grid;gap:12px"><h2 style="margin:0">編輯商品中文</h2><p id="trId" style="margin:0"></p><label>日文原名<input id="trJaName" readonly style="display:block;width:100%;padding:9px"></label><label>日文原說明<textarea id="trJaDesc" readonly rows="4" style="display:block;width:100%;padding:9px"></textarea></label><label>中文名稱<input id="trName" maxlength="300" placeholder="請輸入中文名稱" style="display:block;width:100%;padding:9px"></label><label>中文說明<textarea id="trDesc" rows="4" maxlength="5000" style="display:block;width:100%;padding:9px"></textarea></label><p style="font-size:12px">原有中文說明是自動翻譯，請對照日文檢查；名稱空白時顯示日文。</p><div class="actions"><button class="action" type="submit">儲存中文</button><button class="action" id="trCancel" type="button">取消</button><button class="action" id="trClear" type="button">清除此筆修改</button></div></form></dialog>
 <script src="../data/gakubuti-casebook-structures.js"></script>
+<script src="../data/takahashi-original-descriptions.js"></script>
 <script src="../data/finished-products-0.js"></script>
 <script src="../data/finished-products-1.js"></script>
 <script src="../data/finished-products-2.js"></script>
@@ -376,7 +378,7 @@ function passesMode(p){
  if(mode==="recent")return recent.includes(p.id);
  return true;
 }
-function passesSearch(p){return !term||(p.id+" "+p.name+" "+p.desc+" "+p.category+" "+p.methods.map(x=>x.title).join(" ")).toLocaleLowerCase().includes(term)}
+function passesSearch(p){return !term||(p.id+" "+p.name+" "+p.desc+" "+zhName(p)+" "+zhDesc(p)+" "+(window.TAKAHASHI_JA_DESCRIPTIONS?.[p.id]||"")+" "+p.category+" "+p.methods.map(x=>x.title).join(" ")).toLocaleLowerCase().includes(term)}
 
 function showHierarchy(){
  const structural=mode==="structure";
@@ -416,6 +418,9 @@ function showHierarchy(){
  renderOfficialCasebook();
 }
 
+const trKey="takahashiProductTranslationsV1";let tr={};try{let x=JSON.parse(localStorage.getItem(trKey)||"{}");if(x&&typeof x==="object"&&!Array.isArray(x))tr=x}catch(e){}
+const zhName=p=>tr[p.id]?.name||"";const zhDesc=p=>tr[p.id]?.desc??p.desc;
+function trSave(x){try{localStorage.setItem(trKey,JSON.stringify(x));tr=x;return true}catch(e){document.getElementById("trStatus").textContent="儲存失敗，請檢查瀏覽器儲存空間。";return false}}
 const $=id=>document.getElementById(id);
 const escapeHtml=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const saved=(key,def)=>{try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:def}catch(e){return def}};
@@ -490,11 +495,11 @@ function render(){
    photoButton(p,group==="methods"?p.methods[0]:p.examples[0],group,group==="methods"?"額緣框作法 "+p.methods.length+" 張":p.examples.length?"成品示範 "+p.examples.length+" 張":"供應商商品圖");
   return '<article class="card" id="product-'+escapeHtml(p.id)+'">'+preview+
    '<div class="cardbody"><div class="cardtop"><span class="pcode"># '+escapeHtml(p.id)+'</span><button class="fav" type="button" data-fav="'+escapeHtml(p.id)+'" aria-label="'+(isFav?"取消收藏":"加入收藏")+'">'+(isFav?"★":"☆")+'</button></div>'+
-   '<h3>'+escapeHtml(p.name)+'</h3><p class="desc">'+escapeHtml(p.desc||"暫無商品說明")+'</p><div class="info"><span class="price">'+escapeHtml(p.price||"價格請洽官網")+'</span><span class="tag">'+escapeHtml(mode==="structure"?p.structure.sub:p.category)+'</span></div>'+
+   '<h3>'+escapeHtml(zhName(p)||p.name)+'</h3>'+(zhName(p)?'<p class="small" lang="ja">日文原名：'+escapeHtml(p.name)+'</p>':'<p class="small">中文名稱待編輯</p>')+'<p class="desc">'+escapeHtml(zhDesc(p)||"暫無商品說明")+'</p><div class="info"><span class="price">'+escapeHtml(p.price||"價格請洽官網")+'</span><span class="tag">'+escapeHtml(mode==="structure"?p.structure.sub:p.category)+'</span></div>'+
    '<div class="modejump">'+
    (p.examples.length?'<button type="button" data-open="'+escapeHtml(p.id)+'" data-group="examples">🖼 成品 '+p.examples.length+' 張</button>':'<button type="button" disabled>尚無成品圖</button>')+
    (p.methods.length?'<button type="button" data-open="'+escapeHtml(p.id)+'" data-group="methods">🛠 作法 '+p.methods.length+' 張</button>':'<button type="button" disabled>尚無作法圖</button>')+
-   '</div><div class="cardlinks"><a href="'+escapeHtml(detailUrl(p,p.examples.length||p.image?"examples":"methods"))+'" target="_blank" rel="noopener">專屬對照連結 ↗</a><a href="'+escapeHtml(p.link)+'" target="_blank" rel="noopener" data-visit="'+escapeHtml(p.id)+'">商品詳情 ↗</a></div></div></article>';
+   '</div><div class="cardlinks"><button type="button" data-edit-translation="'+escapeHtml(p.id)+'">✏️ 編輯中文</button></div><div class="cardlinks"><a href="'+escapeHtml(detailUrl(p,p.examples.length||p.image?"examples":"methods"))+'" target="_blank" rel="noopener">專屬對照連結 ↗</a><a href="'+escapeHtml(p.link)+'" target="_blank" rel="noopener" data-visit="'+escapeHtml(p.id)+'">商品詳情 ↗</a></div></div></article>';
  }).join(""):'<div class="empty">目前沒有符合條件的商品。可切換其他分類或清除搜尋條件。</div>';
  grid.querySelectorAll("img[data-fallback]").forEach(img=>{img.addEventListener("error",()=>{const fallback=img.dataset.fallback;if(fallback&&img.src!==fallback){img.removeAttribute("data-fallback");img.src=fallback}else{img.style.display="none";img.parentElement.style.background="#e9ecf1"}})});
  const more=$("more");more.hidden=limit>=list.length;more.textContent="顯示更多（尚有 "+Math.max(0,list.length-limit)+" 項）";
@@ -507,8 +512,8 @@ function openViewer(id,group){
  currentImages=picList(p,currentGroup);
  remember(p.id);
  $("viewerTitle").textContent="成品／作法對照 · 編號 "+p.id;
- $("productTitle").textContent=p.name;
- $("productDesc").textContent=p.desc||"";
+ $("productTitle").textContent=zhName(p)||p.name;
+ $("productDesc").textContent=zhDesc(p)||"";
  $("productPrice").textContent=p.price||"";
  $("productOriginal").href=p.link||"#";
  renderViewerImage();
@@ -561,7 +566,7 @@ $("minorTabs").addEventListener("click",e=>{const b=e.target.closest("[data-mino
 function changeMode(next){mode=next;major="全部大類";category="全部分類";cbAll=false;cbSelected=null;limit=48;render()}
 $("modeTabs").addEventListener("click",e=>{const b=e.target.closest("[data-mode]");if(b)changeMode(b.dataset.mode)});
 $("utilityModes").addEventListener("click",e=>{const b=e.target.closest("[data-mode]");if(b)changeMode(b.dataset.mode)});
-$("cards").addEventListener("click",e=>{const fav=e.target.closest("[data-fav]");if(fav){toggleFavorite(fav.dataset.fav);return}const view=e.target.closest("[data-open]");if(view){openViewer(view.dataset.open,view.dataset.group);return}const visit=e.target.closest("[data-visit]");if(visit)remember(visit.dataset.visit)});
+$("cards").addEventListener("click",e=>{const ed=e.target.closest("[data-edit-translation]");if(ed){trOpen(ed.dataset.editTranslation);return}const fav=e.target.closest("[data-fav]");if(fav){toggleFavorite(fav.dataset.fav);return}const view=e.target.closest("[data-open]");if(view){openViewer(view.dataset.open,view.dataset.group);return}const visit=e.target.closest("[data-visit]");if(visit)remember(visit.dataset.visit)});
 $("more").addEventListener("click",()=>{limit+=48;render()});
 $("closeViewer").addEventListener("click",()=>$("viewer").close());
 $("viewer").addEventListener("click",e=>{if(e.target===$("viewer"))$("viewer").close()});
@@ -574,6 +579,16 @@ $("helpBtn").addEventListener("click",()=>$("helpDialog").showModal());
 $("helpClose").addEventListener("click",()=>$("helpDialog").close());
 $("cbChoices").addEventListener("click",e=>{const btn=e.target.closest("[data-case-id]");if(!btn)return;cbSelected=Number(btn.dataset.caseId);renderOfficialCasebook()});
 $("cbShowAll").addEventListener("click",()=>{cbAll=!cbAll;cbSelected=null;renderOfficialCasebook()});
+
+let trProduct=null;
+function trOpen(id){const p=byId.get(String(id));if(!p)return;trProduct=p;$("trId").textContent="商品編號："+p.id;$("trJaName").value=p.name;$("trJaDesc").value=window.TAKAHASHI_JA_DESCRIPTIONS?.[p.id]||"原始日文說明未提供";$("trName").value=zhName(p);$("trDesc").value=zhDesc(p)||"";$("trDialog").showModal()}
+$("trCancel").onclick=()=>$("trDialog").close();
+$("trForm").onsubmit=e=>{e.preventDefault();if(!trProduct)return;let next={...tr,[trProduct.id]:{name:$("trName").value.trim(),desc:$("trDesc").value.trim()}};if(trSave(next)){$("trDialog").close();$("trStatus").textContent="已儲存商品 "+trProduct.id+"。";render()}};
+$("trClear").onclick=()=>{if(!trProduct||!confirm("清除此商品的中文修改？"))return;let next={...tr};delete next[trProduct.id];if(trSave(next)){$("trDialog").close();$("trStatus").textContent="已清除本筆修改。";render()}};
+$("trExport").onclick=()=>{let blob=new Blob([JSON.stringify({format:"takahashi-product-translations",version:1,translations:tr},null,2)],{type:"application/json"}),u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download="takahashi-product-translations.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};
+$("trImport").onclick=()=>$("trFile").click();
+$("trFile").onchange=async e=>{let file=e.target.files[0];if(!file)return;try{if(file.size>10000000)throw Error();let d=JSON.parse(await file.text()),t=d.translations;if(d.format!=="takahashi-product-translations"||d.version!==1||!t||typeof t!=="object"||Array.isArray(t)||Object.keys(t).length>10000||Object.entries(t).some(([k,v])=>!/^\d+$/.test(k)||!v||typeof v.name!=="string"||typeof v.desc!=="string"||v.name.length>300||v.desc.length>5000))throw Error();if(confirm("匯入會取代目前 "+Object.keys(tr).length+" 筆中文修改，建議先匯出備份。確定匯入 "+Object.keys(t).length+" 筆？")&&trSave(t)){$("trStatus").textContent="已匯入中文修改。";render()}}catch(err){$("trStatus").textContent="備份格式錯誤或檔案過大，目前資料未變更。"}finally{e.target.value=""}};
+
 const init=new URLSearchParams(location.search);
 if(init.get("mode")==="structure"){mode="structure";const id=Number(init.get("casebook"));if(cbData.some(x=>x.id===id))cbSelected=id;}
 render();
