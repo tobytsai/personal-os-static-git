@@ -69,7 +69,7 @@ function render(){
  $("resultsCount").textContent=filtered.length+" / "+db.venues.length+" 座";
  $("onlyFav").textContent=favOnly?"★ 顯示收藏中":"☆ 只看收藏";$("onlyNew").textContent=newOnly?"☐ 尚未走訪中":"□ 尚未走訪";
  $("groups").innerHTML=db.cities.map(c=>{const arr=filtered.filter(v=>v.city===c);return arr.length?'<section><div class="cityhead"><h3>📍 '+esc(c)+'</h3><small>'+arr.length+' 座場館</small></div><div class="grid">'+arr.map(card).join("")+'</div></section>':""}).join("")||'<div class="empty">沒有符合的場館。可以換一個縣市、場館類型，或清除搜尋。</div>';
- $("extra").innerHTML=db.extras.map(v=>'<div class="extra"><span>'+esc(v.icon)+'</span><div><strong>'+esc(v.name)+'</strong><p>'+esc(v.description)+'</p><p>📍 '+esc(v.address)+'</p></div><a href="'+esc(v.url)+'" target="_blank" rel="noopener noreferrer">開啟科博館官網 ↗</a></div>').join("");
+ $("extra").innerHTML=db.extras.map(v=>'<div class="extra"><span>'+esc(v.icon)+'</span><div><strong>'+esc(v.name)+'</strong><p>'+esc(v.description)+'</p><p>📍 '+esc(v.address)+'</p></div><a href="'+esc(v.url)+'" target="_blank" rel="noopener noreferrer">開啟科博館官網 ↗</a> '+(v.id==="tc-science-museum"?'<a href="./natural-museum.html">🦖 展覽探索卡片 →</a>':"")+'</div>').join("");
 }
 $("cities").addEventListener("click",e=>{const b=e.target.closest("[data-city]");if(b){city=b.dataset.city;render()}});
 $("types").addEventListener("click",e=>{const b=e.target.closest("[data-type]");if(b){type=b.dataset.type;render()}});
