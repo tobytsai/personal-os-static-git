@@ -75,6 +75,41 @@ select{padding:10px 12px;max-width:240px;border:1px solid #d9e5ec;background:whi
 footer{text-align:center;padding:24px 10px;color:#82909b;font-size:15px}
 @media(max-width:800px){.spotlight{grid-template-columns:1fr}.rank-grid{grid-template-columns:1fr}}
 @media(max-width:600px){main{padding:12px 12px 50px}.hero{border-radius:23px;padding:29px 22px}.summary{gap:8px}.summary-card{padding:12px}.summary-card strong{font-size:29px}.summary-card span{font-size:15px}.item{padding:15px}.item-title{font-size:19px}.toolbar{padding:12px}.search{flex-basis:100%}.section-label{align-items:flex-start;flex-direction:column}}
+
+/* DailyView 官方分類入口；不複製第三方排名或其數據 */
+.dv-panel{margin:24px 0 0;padding:clamp(16px,3vw,27px);border:1px solid #cddde7;border-radius:25px;background:linear-gradient(155deg,#f8fbff,#ffffff 53%,#f3fcf9);box-shadow:0 9px 28px #1438540c}
+.dv-head{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.dv-head-copy{flex:1 1 520px;min-width:0}
+.dv-kicker{display:block;font-size:15px;letter-spacing:.06em;font-weight:900;color:#177d7c}
+.dv-head h2{margin:5px 0 9px;font-size:clamp(26px,3vw,33px);line-height:1.3}
+.dv-head p{margin:0;color:#50677b;font-size:17px;line-height:1.7;max-width:880px}
+.dv-official{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 19px;background:#184f61;border-radius:14px;color:#fff;font-weight:850;font-size:17px;text-align:center;min-height:50px}
+.dv-official:hover{background:#0a7b7b;color:white}
+.dv-facts{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.dv-facts span{padding:7px 11px;border-radius:999px;background:#eaf1f7;color:#315c71;font-size:15px;font-weight:750}
+.dv-topics-title{font-size:19px;font-weight:900;color:#20475b;margin:18px 2px 8px}
+.dv-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dv-search{flex:1 1 220px;min-width:0;border:1px solid #cbdce5;border-radius:13px;background:white;color:#223044;padding:12px 15px;font-size:18px;outline:none}
+.dv-search:focus{border-color:#36a49f;box-shadow:0 0 0 3px #36a49f1f}
+.dv-total{color:#687c8b;font-size:15px;font-weight:750}
+.dv-tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin;margin-top:12px;padding:3px 0 12px}
+.dv-tab{border:1px solid #d6e3e8;border-radius:999px;background:white;color:#315366;white-space:nowrap;padding:9px 12px;font-size:16px;font-weight:800;flex:none}
+.dv-tab[aria-pressed="true"]{background:#1b4d5c;color:#fff;border-color:#1b4d5c}
+.dv-area-link{display:inline-flex;font-size:16px;color:#196883;font-weight:800;margin:2px 0 14px;text-decoration:underline;text-underline-offset:4px}
+.dv-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.dv-card{display:flex;align-items:center;gap:10px;min-width:0;padding:15px 13px;background:#fff;border:1px solid #dce8ed;border-radius:17px;box-shadow:0 3px 12px #24456008;transition:transform .16s,border-color .16s}
+.dv-card:hover{transform:translateY(-2px);border-color:#5ba5a3}
+.dv-symbol{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:12px;background:#e5f6f2;font-size:23px}
+.dv-card-copy{min-width:0;flex:1}
+.dv-card-name{display:block;font-size:18px;font-weight:900;line-height:1.35;overflow-wrap:anywhere}
+.dv-card-group{display:block;font-size:14px;color:#6c7d8b;margin-top:3px}
+.dv-go{font-size:19px;font-weight:900;color:#299080}
+.dv-empty{grid-column:1/-1;padding:22px;border:1px dashed #b9cbd2;border-radius:15px;color:#667a85;text-align:center;font-size:17px}
+.dv-policy{font-size:15px;color:#607584;margin:15px 1px 0;line-height:1.7}
+.dv-policy a{color:#216880;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1030px){.dv-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:750px){.dv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dv-head p{font-size:16px}.dv-official{width:100%}}
+@media(max-width:420px){.dv-grid{grid-template-columns:1fr}.dv-head h2{font-size:25px}.dv-search{flex-basis:100%}.dv-card{padding:13px}}
 </style>
 </head>
 <body>
@@ -87,7 +122,7 @@ footer{text-align:center;padding:24px 10px;color:#82909b;font-size:15px}
 <div class="hero-bottom">
 <span class="hero-chip" id="lastUpdate">資料載入中</span>
 <span class="hero-chip" id="freshness">檢查更新狀態…</span>
-<span class="hero-chip">⏰ 每日台灣時間 08:20 預定更新</span>
+<span class="hero-chip">⏰ 每日台灣時間 08:20 預定更新</span><a class="hero-chip" href="#dailyview">🌡 DailyView 口碑排行榜 ↓</a>
 </div>
 </div>
 </header>
@@ -98,6 +133,32 @@ footer{text-align:center;padding:24px 10px;color:#82909b;font-size:15px}
 </div>
 <div class="section-label"><h2>今日值得留意</h2><p>從台灣熱搜、AI 科技、藝文設計，各取一個最新觀察入口</p></div>
 <div class="spotlight" id="spotlight"><div class="blank">正在讀取最新資料…</div></div>
+
+<section id="dailyview" class="dv-panel" aria-labelledby="dvTitle">
+  <div class="dv-head">
+    <div class="dv-head-copy">
+      <span class="dv-kicker">DAILYVIEW · KEYPO 口碑聲量</span>
+      <h2 id="dvTitle">🌡 網路溫度計｜口碑排行</h2>
+      <p>想知道誰正在被討論、哪些品牌或作品擁有話題？從 DailyView 官方排行榜直接查看「網路聲量」與「好評影響力」。這裡提供經核對的分類入口，不把不同平台的分數混成單一排名。</p>
+    </div>
+    <a class="dv-official" href="https://dailyview.tw/top100" target="_blank" rel="noopener noreferrer">查看官方 Top 100 ↗</a>
+  </div>
+  <div class="dv-facts" aria-label="榜單說明">
+    <span>8 大領域</span>
+    <span>61 個官方分類入口</span>
+    <span>3 日／週／月榜依原站提供</span>
+    <span>近一段期間的口碑觀測</span>
+  </div>
+  <div class="dv-topics-title">依興趣探索官方排行榜</div>
+  <div class="dv-controls">
+    <input id="dvSearch" class="dv-search" type="search" placeholder="🔎 搜尋分類，例如 圖文畫家、咖啡、書籍、觀光工廠…" aria-label="搜尋 DailyView 排行類別" autocomplete="off">
+    <span id="dvTotal" class="dv-total" aria-live="polite"></span>
+  </div>
+  <nav class="dv-tabs" id="dvTabs" aria-label="DailyView 排行領域"></nav>
+  <a id="dvAreaLink" class="dv-area-link" href="https://dailyview.tw/top100" target="_blank" rel="noopener noreferrer">全部官方排行 ↗</a>
+  <div class="dv-grid" id="dvCards" aria-label="DailyView 官方排行連結"></div>
+  <p class="dv-policy">資料來源：<a href="https://dailyview.tw/top100" target="_blank" rel="noopener noreferrer">網路溫度計 DailyView</a>。這一區是<strong>官方即時榜單的分類連結</strong>，不是本站每日自動匯入的排名數據；最新名次、聲量筆數及觀測期間請以官方頁面顯示為準。本啟動器沒有重製第三方排行內容，亦不聲稱與 DailyView 合作或獲得官方授權。</p>
+</section>
 <section class="toolbar" aria-label="排行榜搜尋及篩選">
 <div class="toolbar-top">
 <input id="search" class="search" type="search" placeholder="🔎 搜尋人物、事件、主題、新聞…" aria-label="搜尋排行">
@@ -336,6 +397,107 @@ async function start() {
   await loadHistory("");
 }
 start();
+})();
+</script>
+
+<script>
+/* DailyView 官方分類連結。僅提供來源與導航，不抓取、鏡像或重製排行榜。 */
+(function () {
+  "use strict";
+  const root = "https://dailyview.tw/top100";
+  const categories = [
+    {id:"people",name:"人物",icon:"👤",path:"/2",topics:[
+      ["政治人物",9],["地方首長",46],["卓揆內閣",162],["立法委員",12],["台北市議員",116],["高雄市議員",117],
+      ["人氣歌手",8],["新生代女星",53],["新生代男星",33],["人氣樂團",168],["人氣團體",126],["日韓團",171],["通告藝人",11],
+      ["YouTuber",36],["時尚網紅",112],["圖文畫家",39],["職業賽事啦啦隊",160]
+    ]},
+    {id:"food",name:"美食",icon:"🍜",path:"/1",topics:[
+      ["米其林星級",102],["新來台名店",6],["鍋物連鎖",127],["日式拉麵",89],["燒烤連鎖",132],
+      ["中式連鎖",3],["西式連鎖",166],["韓式連鎖",131],["日式連鎖",130],["東南亞連鎖",167],["手搖飲料",35],["咖啡連鎖",68]
+    ]},
+    {id:"entertainment",name:"娛樂",icon:"🎬",path:"/5",topics:[
+      ["台劇",47],["韓劇",48],["陸劇",49],["歐美劇",56],["日劇",50],["華語片",69],["外語片",169],
+      ["動畫電影",45],["台灣綜藝",172],["益智實境",158],["人氣動漫",85],["熱門手遊",51],["PC 線上遊戲",77]
+    ]},
+    {id:"digital",name:"數位生活",icon:"📱",path:"/9",topics:[["行動支付",136],["數位帳戶",133],["數位證券",128]]},
+    {id:"sustainability",name:"永續",icon:"🌿",path:"/13",topics:[["上市公司市值前50",164],["上櫃公司市值前50",165]]},
+    {id:"culture",name:"教育藝文",icon:"🎨",path:"/3",topics:[
+      ["大學校系",145],["科大科系",44],["就業出路",59],["暢銷好書",157],["人氣桌遊",95]
+    ]},
+    {id:"travel",name:"旅遊",icon:"🧳",path:"/4",topics:[
+      ["主題樂園",21],["觀光工廠",31],["休閒農場",66],["全台商圈",170],["度假飯店",129],["星級飯店",153],["親子飯店",173]
+    ]},
+    {id:"health",name:"健康",icon:"💊",path:"/11",topics:[["連鎖醫美",143],["連鎖藥局",137]]}
+  ];
+  const picks = new Set([
+    39,157,95,31,66,170,36,51,35,68,136,145,173,47,85,6,102,164
+  ]);
+  const full = categories.flatMap(group => group.topics.map(([name,id]) => ({
+    id, name, group:group.name, groupId:group.id, icon:group.icon,
+    href:root + "/topic/" + id
+  })));
+  if (full.length !== 61 || new Set(full.map(item => item.id)).size !== 61) {
+    const count = document.getElementById("dvTotal");
+    if (count) count.textContent = "分類資料待核對";
+    return;
+  }
+  const el = id => document.getElementById(id);
+  let group = "picks", term = "";
+  const clear = node => { while (node.firstChild) node.removeChild(node.firstChild); };
+  const text = (tag, className, value) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    node.textContent = value;
+    return node;
+  };
+  function renderTabs() {
+    const host = el("dvTabs");
+    clear(host);
+    const groups = [{id:"picks",name:"⭐ 精選"},{id:"all",name:"全部"}].concat(categories.map(x => ({id:x.id,name:x.icon + " " + x.name})));
+    groups.forEach(item => {
+      const btn = text("button","dv-tab",item.name);
+      btn.type = "button";
+      btn.setAttribute("aria-pressed", String(item.id === group));
+      btn.addEventListener("click", () => { group = item.id; renderTabs(); renderCards(); });
+      host.appendChild(btn);
+    });
+  }
+  function renderCards() {
+    const selectedGroup = categories.find(x => x.id === group);
+    let rows = full.filter(item => group === "all" || group === "picks" && picks.has(item.id) || item.groupId === group);
+    if (term) rows = rows.filter(item => (item.name + " " + item.group).toLocaleLowerCase().includes(term));
+    el("dvTotal").textContent = "顯示 " + rows.length + "／" + full.length + " 類";
+    const more = el("dvAreaLink");
+    more.href = selectedGroup ? root + selectedGroup.path : root;
+    more.textContent = selectedGroup ? "在 DailyView 查看「" + selectedGroup.name + "」全部排行 ↗" : "在 DailyView 查看全部分類 ↗";
+    const host = el("dvCards");
+    clear(host);
+    if (!rows.length) {
+      host.appendChild(text("div","dv-empty","找不到符合條件的官方排行分類；可選「全部」或修改搜尋文字。"));
+      return;
+    }
+    rows.forEach(item => {
+      const a = document.createElement("a");
+      a.className = "dv-card";
+      a.href = item.href;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("aria-label", "在網路溫度計開啟" + item.name + "排行榜（新分頁）");
+      a.appendChild(text("span","dv-symbol",item.icon));
+      const detail = text("span","dv-card-copy","");
+      detail.appendChild(text("strong","dv-card-name",item.name));
+      detail.appendChild(text("span","dv-card-group",item.group + " · 官方排行"));
+      a.appendChild(detail);
+      a.appendChild(text("span","dv-go","↗"));
+      host.appendChild(a);
+    });
+  }
+  el("dvSearch").addEventListener("input", e => {
+    term = e.target.value.trim().toLocaleLowerCase();
+    if (term && group === "picks") group = "all";
+    renderTabs(); renderCards();
+  });
+  renderTabs(); renderCards();
 })();
 </script>
 <script src="../shared-nav.js" defer></script>
