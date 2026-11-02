@@ -1,0 +1,81 @@
+{
+  "reportDate": "2026-11-02",
+  "run": "run24-2026-11-02-1224",
+  "status": "drive_originals_verified_and_github_main_post_commit_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecordCount": 4673,
+    "imageAttachmentReferenceCountFromSnapshot": 5047,
+    "snapshot": "2026-10-30",
+    "attachmentCountCaveat": "Attachment reference count is from latest GitHub catalog snapshot, not a full fresh re-enumeration of live Airtable attachments."
+  },
+  "counts": {
+    "beforeByRecord": 3573,
+    "afterByRecord": 3582,
+    "newlyMapped": 9,
+    "newPhysicalDriveCopies": 6,
+    "preExistingPrivateDriveCopiesReused": 3,
+    "postRunByAttachment": 2978,
+    "postRunByRecordAttachments": 1383,
+    "postRunPendingBatch": 0,
+    "remainingEstimateByPrimary": 1465,
+    "remainingEstimateIsNotExact": true,
+    "historicalPrimaryEntriesWithoutByAttachmentMapping": 604,
+    "failedAttemptedCopyOrMetadataVerifications": 0,
+    "notAllMatchingFilenameCandidatesPassedExactBytes": true
+  },
+  "bySize": {
+    "90×120": 2,
+    "60×80": 3,
+    "30×40": 1,
+    "50×60": 3
+  },
+  "github": {
+    "repo": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "mappingPath": "public/data/oil/tianxia/drive-original-links.json",
+    "mappingBlobSha": "17be4ffcccdb507e395c4d56a4a70bf78df32e4c",
+    "verifiedMappingCommit": "1322fb12be67acaa8324e16e89e90c5ada9ea29e",
+    "checkpointCommits": [
+      "8869a309b097d0a3bd6b7760b74f08e328644852",
+      "58017fb147ecd11ced1cfb59eef6600a6a338cb2"
+    ],
+    "checkpoints": [
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1224-run24-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1224-run24c-verified-4.json"
+    ],
+    "mergerRuns": [
+      {
+        "id": 41389360828,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 41389657117,
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "commitPostReadVerifiedAllNineIdentities": true
+  },
+  "verification": {
+    "liveAirtableAttachmentIdFilenameBytesAndJpeg": true,
+    "sourceDriveOriginalJpegExactBytesAndCategory": true,
+    "destinationDriveMetadataReRead": true,
+    "destinationNoBroadPermissions": true,
+    "independentVisualComparison": false,
+    "independentCryptographicHashComparison": false,
+    "airtableThumbnailOrGithubWebpUsedAsOriginal": false,
+    "airtableBytesDownloaded": false
+  },
+  "safety": {
+    "airtableModified": false,
+    "webpModified": false,
+    "driveOriginalsDeleted": false,
+    "drivePrivacyMadePublic": false,
+    "duplicateOriginalsCreated": false,
+    "githubForcePushed": false
+  },
+  "notes": "Searched multiple existing original galleries; rejected filename/category-only candidates when original byte sizes differed. Resolved three previously copied B83/B85/B89 files without recopies and published identities via repository-side idempotent GitHub Actions merge. Other unmatched items require exact original galleries or supported Airtable binary-file bridge."
+}
