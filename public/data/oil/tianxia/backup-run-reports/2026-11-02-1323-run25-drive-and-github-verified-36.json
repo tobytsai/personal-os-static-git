@@ -21,11 +21,17 @@
     "pendingBatch": 0,
     "verifiedUniqueDestinationFiles": 36,
     "unmappedReferencesWithLegacyPrimaryAssumedCovered": 1429,
-    "legacyPrimaryRecordsLackingAttachmentIdentity": 1796,
+    "legacyPrimaryRecordsLackingAttachmentIdentity": 601,
     "pendingNonJpegAttachments": 419,
     "remainingByPrimaryApprox": 1432,
     "metadataOrCloudCopyFailure": 0,
-    "postCommitIdentityMismatch": 0
+    "postCommitIdentityMismatch": 0,
+    "legacyAttachmentKeyFormats": {
+      "recordAndAttachmentKey": 1769,
+      "attachmentIdOnlyKey": 1245,
+      "unexpected": 0
+    },
+    "unmappedReferencesWithLegacyPrimaryAssumedCoveredIsApproximate": true
   },
   "bySize": {
     "50×150": 30,
@@ -312,5 +318,6 @@
     "rec4raap8juzSbvks:attd3oX9pEUIhff2B",
     "recXxtpu6Un2RjJKc:attsTQQu31AsPuEYw",
     "recrR2JV8z6GghlVJ:attpbiGupyzlr4VTp"
-  ]
+  ],
+  "notes": "Corrected historical key-format audit: 1245 valid byAttachment entries are keyed by the bare Airtable attachment ID (not record:attachment); only 601 primary byRecord entries have no byAttachment record. Both styles are valid legacy data. Pending 1429 assumes these historic byRecord links still represent current originals."
 }
