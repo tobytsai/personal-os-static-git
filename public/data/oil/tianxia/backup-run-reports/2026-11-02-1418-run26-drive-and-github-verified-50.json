@@ -1,0 +1,81 @@
+{
+  "reportDate": "2026-11-02",
+  "runId": "2026-11-02-1418-run26",
+  "status": "completed_50_cloud_copies_destination_verified_and_github_main_readback",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecordCount": 4673,
+    "liveAttachmentReferenceCount": 5047,
+    "fields": [
+      "Attachments",
+      "圖檔2"
+    ]
+  },
+  "results": {
+    "priorPrimaryCount": 3615,
+    "afterPrimaryCount": 3665,
+    "newPrimaryCount": 50,
+    "cloudCopyCount": 50,
+    "uniqueOriginalsVerified": 50,
+    "verifiedCheckpoints": 10,
+    "checkpointTotal": 50,
+    "byAttachment": 3064,
+    "byRecordAttachments": 1469,
+    "pendingBatch": 0,
+    "copyFailure": 0,
+    "metadataFailure": 0,
+    "githubMappingMismatch": 0,
+    "remainingByPrimaryApprox": 1382,
+    "remainingByHistoricalPrimaryAssumedCompleteApprox": 1379,
+    "exactMissingAttachmentCountKnown": false,
+    "historicalPrimaryRecordsWithIncompleteAttachmentIdMappingApprox": 601
+  },
+  "bySize": {
+    "60×120": 12,
+    "80×80": 13,
+    "90×120": 25
+  },
+  "verification": {
+    "source": "Live Airtable attachment record and attachment identities, original Drive JPEG filename alias, type and exact byte size compared",
+    "destination": "Google Drive metadata reread: stable identity filename, image/jpeg, exact byte size, parent folder, not publicly shared",
+    "all50MappingIdentitiesReadBack": true,
+    "distinctRecordIds": 50,
+    "distinctAttachmentIds": 50,
+    "distinctDestinationDriveIds": 50,
+    "visualComparisonPerformed": false,
+    "hashComparisonPerformed": false,
+    "sourceGalleryVariantLabelsRequireManualVisualReview": true,
+    "thumbnailsUsedAsOriginals": false,
+    "permissionsMadePublic": false
+  },
+  "git": {
+    "repo": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "mapPath": "public/data/oil/tianxia/drive-original-links.json",
+    "mapBlobSha": "8873577266ca6a53bf799e67b65c2f8266c65998",
+    "lastMappingCommit": "f124909f2526842f8d8a634aed111200b4c735e1",
+    "mainHeadAtAuditStart": "f124909f2526842f8d8a634aed111200b4c735e1",
+    "safeMergeWorkflow": ".github/workflows/merge-tianxia-original-links.yml",
+    "checkpointPrefix": "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1418-run26-",
+    "checkpointParts": [
+      "a:7",
+      "b:5",
+      "c:5",
+      "d:5",
+      "e:5",
+      "f:5",
+      "g:5",
+      "h:5",
+      "i:5",
+      "j:3"
+    ]
+  },
+  "safety": {
+    "airtableModified": false,
+    "sourceDriveFilesDeleted": false,
+    "existingWebPModified": false,
+    "drivePermissionChanged": false
+  },
+  "nextRunGuidance": "Read latest index, map, Airtable and Drive; skip these 50 identities, process up to 50 remaining originals; maintain idempotent identity filenames."
+}
