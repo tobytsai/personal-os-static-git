@@ -1,6 +1,6 @@
 # Personal OS LINE 通知中心
 
-將此 repository 的重要 GitHub Actions 失敗警示及手動測試訊息送到自己的 LINE。使用 LINE 官方 Messaging API（Push message），不使用已停用的 LINE Notify，也不需要 Webhook。
+將此 repository 的重要 GitHub Actions 失敗警示、真正更新的排行/股票資料，以及手動測試訊息送到自己的 LINE。使用 LINE 官方 Messaging API（Push message），不使用已停用的 LINE Notify，也不需要 Webhook。
 
 ## 1. LINE 官方帳號
 
@@ -42,9 +42,16 @@ GitHub → 此倉庫 → Settings → Secrets and variables → Actions → New 
 * 股票收盤更新
 * 四年級 IXL 資料更新
 
-僅當以上流程在 `main` 分支失敗時發 LINE；成功時不通知，也不會自動讀取私人資料。
+僅當以上流程在 `main` 分支失敗時發 **失敗警示**；成功時不發失敗警示，也不會自動讀取私人資料。
 
-## 5. 日後整合「有更新才通知」
+此外，以下三個追蹤工作流程也已接入 **內容確實有變更才通知**：
+* Daily trend radar：聲量排行資料被更新且成功推送
+* Taiwan YouTube popular daily：台灣 YouTube 排行資料被更新且成功推送
+* Stock launcher — official TWSE/TPEx daily close：官方股票收盤資料被更新且成功推送
+
+若資料未變更，不會傳送這三種更新通知。推播單一步驟即使故障，也不會讓已成功更新的資料誤判為失敗。
+
+## 5. 日後整合其他追蹤的「有更新才通知」
 
 現有的其他 GitHub Actions 可以在 **已驗證內容改變** 的步驟後，再加入以下步驟：
 
