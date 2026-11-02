@@ -29,8 +29,7 @@ def write_json(path,obj):
 def main():
     secret=os.getenv("YOUTUBE_API_KEY","").strip()
     if not secret:
-        print("::notice::YOUTUBE_API_KEY is not configured; ranking snapshot unchanged.")
-        return
+        raise RuntimeError("YOUTUBE_API_KEY is not configured; set the GitHub Actions secret. Ranking snapshot unchanged.")
     now=datetime.now(timezone.utc)
     day=now.astimezone(LOCAL).date()
     prev_date=(day-timedelta(days=1)).isoformat()
@@ -85,7 +84,6 @@ def main():
     }
     write_json(LATEST,output)
     write_json(HISTORY/(day.isoformat()+".json"),output)
-    for old in sorted(HISTORY.glob("????-??-??.json"),reverse=True)[30:]: old.unlink()
     print("Saved",len(items),"Taiwan YouTube chart rows for",day.isoformat())
 
 if __name__=="__main__":
