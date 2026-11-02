@@ -1,0 +1,102 @@
+{
+  "reportDate": "2026-11-02",
+  "runId": "2026-11-02-1723-run28",
+  "status": "completed_50_verified_original_links_31_recovered_19_new_drive_copies",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "liveImageAttachments": 5047,
+    "attachmentsFieldCount": 5033,
+    "secondImageFieldCount": 14,
+    "attachmentMimeCounts": {
+      "image/jpeg": 4628,
+      "image/webp": 393,
+      "image/png": 26
+    }
+  },
+  "results": {
+    "primaryMappedBefore": 3665,
+    "primaryMappedAfter": 3715,
+    "incrementalMapped": 50,
+    "oldDriveCopiedButUnmergedRecovered": 31,
+    "newDriveOriginalCloudCopies": 19,
+    "duplicateAlternateDriveCopiesIdentifiedAndPreserved": 17,
+    "newMappingConflicts": 0,
+    "copyFailures": 0,
+    "metadataFailures": 0,
+    "githubReadbackMismatches": 0,
+    "byAttachmentBefore": 3064,
+    "byAttachmentAfter": 3114,
+    "byRecordAttachmentsBefore": 1469,
+    "byRecordAttachmentsAfter": 1519,
+    "pendingBatch": 0,
+    "remainingApproxUsingPrimaryCount": 1332,
+    "olderRecordsWithoutCompleteAttachmentIdentityApprox": 601,
+    "exactMissingCountKnown": false
+  },
+  "bySize": {
+    "80×80": 12,
+    "45×160": 6,
+    "60×60": 7,
+    "60×90": 25
+  },
+  "audit": {
+    "all50AirtableRecordAttachmentIdentitiesDistinct": true,
+    "all50DestinationDriveIdsDistinct": true,
+    "all50MappedOnGitHubMain": true,
+    "all50CorrectThreeMapStructures": true,
+    "all50DestinationDriveMetadataReread": true,
+    "driveFilenameExact": true,
+    "driveExactBytes": true,
+    "mimeType": "image/jpeg",
+    "correctDriveParentFolder": true,
+    "noAnyoneOrDomainPermissions": true,
+    "visualComparisonPerformed": false,
+    "hashComparisonPerformed": false,
+    "manualVisualReviewSuggested": true,
+    "priorDuplicateCopiesNotDeleted": true,
+    "sourceThumbnailsNeverTreatedAsOriginals": true
+  },
+  "github": {
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "mapPath": "public/data/oil/tianxia/drive-original-links.json",
+    "mapBlobShaAtAudit": "390edcbdb7789d2a2edcc2fa03cd48cd40008f03",
+    "finalMappingCommit": "e5ec81a9e39c71f73b7f477603c3e43c3fabd749",
+    "scriptFixCommit": "5c38de70171898fa8ba78298a31c4da7ea4c5c6f",
+    "successfulRecoveryWorkflowRunId": 41408466100,
+    "successfulNewPatchWorkflowRunIds": [
+      41421600030,
+      41421706716,
+      41421912319,
+      41422069604
+    ],
+    "checkpointFiles": [
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b01-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b02-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b03-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b04-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b05-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b06-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b07-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b08-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b09-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b10-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b11-verified-4.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1525-run27-b12-verified-3.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1723-run28-a-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1723-run28-b-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1723-run28-c-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1723-run28-d-verified-4.json"
+    ]
+  },
+  "safety": {
+    "airtableModified": false,
+    "sourceDriveFilesDeleted": false,
+    "webpPreviewsModified": false,
+    "driveSharingPermissionsChanged": false,
+    "credentialDisclosed": false
+  },
+  "nextRunGuidance": "Always re-read live Airtable, GitHub main mapping and Drive folders; do not redo these 50 identities or 17 redundant pre-existing copies. Continue with up to 50 new unmatched original attachments, prefer each work's main image, verify original bytes/type/identity and destination privacy, then write immutable checkpoint and confirm safe GitHub merger."
+}
