@@ -1,0 +1,82 @@
+{
+  "reportDate": "2026-11-03",
+  "timezone": "Asia/Taipei",
+  "runId": "2026-11-03-0016-run35",
+  "status": "completed_existing_private_Drive_original_identities_verified_and_GitHub_main_merged_read_back",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "liveAttachments": 5047,
+    "attachmentFields": {
+      "Attachments": 5033,
+      "圖檔2": 14
+    },
+    "githubRepo": "tobytsai/personal-os-static-git",
+    "githubBranch": "main",
+    "indexSnapshot": "2026-10-30"
+  },
+  "before": {
+    "byRecord": 3917,
+    "byAttachment": 3316,
+    "byRecordAttachments": 1721,
+    "legacyRecordsWithoutAttachmentIdentity": 601
+  },
+  "afterVerifiedOnMain": {
+    "byRecord": 3917,
+    "byAttachment": 3366,
+    "byRecordAttachments": 1771,
+    "pendingBatch": 0,
+    "blobSha": "0ac34de081818fdc6d7611a7bc26ff35d029871c",
+    "mergeCommit": "f1ff4528365a49b8ba8b62c5edf5263ec58f18d0"
+  },
+  "batch": {
+    "limit": 50,
+    "existingPrivateOriginalsVerifiedAndIdentityBackfilled": 50,
+    "newDriveOriginalCopies": 0,
+    "newPrimaryRecords": 0,
+    "newAttachmentIdentityMappings": 50,
+    "newRecordAttachmentMappings": 50,
+    "distinctRecordIds": 50,
+    "distinctAttachmentIds": 50,
+    "distinctDriveOriginalFileIds": 50,
+    "verifiedOriginalMetadataFailures": 0,
+    "finalMappingReadbackFailures": 0,
+    "exactFilenameAndAirtableByteAndMimeAndRecordCodeCompared": true,
+    "driveParentAndPrivatePermissionsReadBack": true,
+    "independentVisualComparison": false,
+    "independentHashComparison": false,
+    "sizeBreakdown": {
+      "50×60": 35,
+      "30×40": 15
+    }
+  },
+  "remaining": {
+    "approximateAttachmentsWithoutCurrentIdentityMapping": 1681,
+    "legacyBackupMainRecordsStillWithoutAttachmentIdentity": 551,
+    "remainingRoughEstimateByPrimaryMap": 1130,
+    "roughEstimateNotEqualToConfirmedMissingDriveOriginals": true
+  },
+  "finding": {
+    "sampledDriveGalleryExactNameCandidatesRejectedForByteMismatch": 118,
+    "unsafeCopiesCreated": 0,
+    "githubActionsTransientFailureCountBeforeMergeScriptRepair": 5,
+    "repairCommit": "214ffd38eda04d21e111219ac5229699d1020a53",
+    "successfulWorkflowRun": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41482238920"
+  },
+  "checkpoints": [
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0016-run35-verified-existing-original-identity-b01.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0016-run35-verified-existing-original-identity-b02.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0016-run35-verified-existing-original-identity-b03.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0016-run35-verified-existing-original-identity-b04.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0016-run35-verified-existing-original-identity-b05.json"
+  ],
+  "checkpointCommits": [
+    "6bfa971b62a1a6341a73a36cfea0cc56dd0149ca",
+    "0d93cb2a79e18fbc03be03343fe5c338e9c9d406",
+    "0cf64abb179c107ef24e0d780f9bfbb96f45e0a4",
+    "7ae622a132d3a505ba79783ec16f66d05c79785c",
+    "b273d96f84fd5c046e88f3f6c8dd64ecd1ce5671"
+  ],
+  "safety": "No Airtable edits, new Drive originals, source deletion, thumbnail/WebP modifications, or changes to Drive sharing. Kept old byRecord structure unchanged, added only verified legacy attachment identities. Visual or cryptographic hash comparison remains pending."
+}
