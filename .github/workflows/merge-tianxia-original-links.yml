@@ -1,0 +1,51 @@
+name: Merge Tianxia verified Drive original checkpoints
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/data/oil/tianxia/backup-sync-patches/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: main-write-queue
+  cancel-in-progress: false
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Merge against latest main, reject races and conflicting identities
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5 6 7 8; do
+            git fetch --no-tags origin main
+            git checkout -B tianxia-merge origin/main
+            python scripts/merge-tianxia-original-links.py
+            git add public/data/oil/tianxia/drive-original-links.json
+            if git diff --cached --quiet; then
+              echo "No new verified mappings to publish."
+              exit 0
+            fi
+            git commit -m "backup(tianxia): reconcile verified Drive originals"
+            if git push origin HEAD:refs/heads/main; then
+              git fetch --no-tags origin main
+              test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" || exit 1
+              python scripts/merge-tianxia-original-links.py
+              test -z "$(git status --porcelain public/data/oil/tianxia/drive-original-links.json)"
+              echo "Verified published GitHub main commit $(git rev-parse HEAD)."
+              exit 0
+            fi
+            sleep $((attempt*2))
+          done
+          echo "::error::Push retries exhausted without changing or force-overwriting main." >&2
+          exit 1
