@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "purpose": "LINE delivery deduplication: seeded from existing verified monitoring results; entries here are NOT new alerts",
+  "seeded_at_taipei": "2026-11-02",
+  "shopee_last_sent": {
+    "shorder-20261102-nutella-biscuits": {
+      "price": 130,
+      "shopid": 50662979,
+      "itemid": 41761473809,
+      "modelid": 275963284986,
+      "url": "https://shopee.tw/product/50662979/41761473809",
+      "verified_at": "2026-11-02T00:56:19.906Z"
+    },
+    "shorder-20261102-rich-teabags-50": {
+      "price": 89,
+      "shopid": 4031525,
+      "itemid": 55057562284,
+      "modelid": 390673805647,
+      "url": "https://shopee.tw/product/4031525/55057562284",
+      "verified_at": "2026-11-02T00:56:19.906Z"
+    },
+    "shorder-20261102-chaokoh-coconut-milk": {
+      "price": 133,
+      "shopid": 1597107840,
+      "itemid": 41168723037,
+      "modelid": 405101879649,
+      "url": "https://shopee.tw/product/1597107840/41168723037",
+      "verified_at": "2026-11-02T00:56:19.906Z"
+    }
+  },
+  "gakubuti_seen_keys": [
+    "2026-09-29|建設業の許可票専用額bh-210f",
+    "2026-10-06|一般額アルダー11",
+    "2026-10-09|アクリルブロック専用額"
+  ],
+  "gakubuti_seen_news_urls": [
+    "https://www.gakubuti.net/news/11340",
+    "https://www.gakubuti.net/news/11342"
+  ]
+}
