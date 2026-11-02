@@ -1,0 +1,74 @@
+{
+  "reportDate": "2026-11-03",
+  "timezone": "Asia/Taipei",
+  "runId": "2026-11-03-0317-run38",
+  "status": "verified_50_preexisting_private_drive_original_JPEG_identity_links_merged_into_GitHub_main_and_read_back",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "liveAttachments": 5047,
+    "attachmentsFieldCount": 5033,
+    "image2FieldCount": 14,
+    "indexSnapshot": "2026-10-30",
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main"
+  },
+  "before": {
+    "byRecord": 3949,
+    "byAttachment": 3448,
+    "byRecordAttachments": 1853
+  },
+  "afterVerifiedOnMain": {
+    "byRecord": 3949,
+    "byAttachment": 3498,
+    "byRecordAttachments": 1903,
+    "pendingBatch": 0,
+    "mergeCommit": "d7623218aa614446c5ff17b7f9bcb0fe26420ce7",
+    "originalLinksBlobSha": "7fa0a6fbcde923438f155b82849dad6abe65a5eb"
+  },
+  "batch": {
+    "maxAttachments": 50,
+    "existingPrivateOriginalsMetadataVerified": 50,
+    "physicalDriveCopiesCreated": 0,
+    "physicalOriginalUploads": 0,
+    "newPrimaryRecords": 0,
+    "newAttachmentIdentityMappings": 50,
+    "newRecordAttachmentIdentityMappings": 50,
+    "uniqueRecordIds": 50,
+    "uniqueAttachmentIds": 50,
+    "uniqueDriveFileIds": 50,
+    "totalBytes": 5804566,
+    "categoryBreakdown": {
+      "50×60": 31,
+      "30×40": 19
+    },
+    "sourceAirtableFilenameAndExactSizeMatched": true,
+    "destinationMimeJpegAndExactByteSizeMatched": true,
+    "destinationFolderAndNonPublicPermissionsReadBack": true,
+    "independentVisualVerification": false,
+    "independentHashVerification": false,
+    "metadataFailures": 0,
+    "githubReadbackFailures": 0,
+    "duplicateFileCreations": 0
+  },
+  "remaining": {
+    "primaryRecordsWithoutMainOriginal": 724,
+    "attachmentIdentitiesWithoutMapping": 1549,
+    "roughAttachmentsNotCoveredByMainCount": 1098,
+    "missingAttachmentIdentitiesNotNecessarilyPhysicallyMissing": true
+  },
+  "checkpointPaths": [
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0317-run38-b01-existing-private-original-identities.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0317-run38-b02-existing-private-original-identities.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0317-run38-b03-existing-private-original-identities.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0317-run38-b04-existing-private-original-identities.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0317-run38-b05-existing-private-original-identities.json"
+  ],
+  "notes": [
+    "All 50 originals were already in the designated private Drive original folders. No new duplicate copies were created.",
+    "5 checkpoint files reconciled idempotently through GitHub Actions using latest main; all 50 composite attachment keys and Drive IDs verified after merge.",
+    "No changes to Airtable, existing WebP previews, source original image files or Drive sharing permissions.",
+    "Original byRecord frontend structure preserved; attachment-level mapping added without visually or cryptographically comparing pixels."
+  ]
+}
