@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "collection": "tianxia",
+  "recordedAt": "2026-11-02T00:22:58Z",
+  "run": "2026-11-02-0822-run19",
+  "batch": 7,
+  "verifiedOriginals": 2,
+  "entries": [
+    {
+      "recordId": "recOggTX6aCe3abJ8",
+      "attachmentId": "att3cOGuh4krAo8Bq",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "record": {
+        "recordId": "recOggTX6aCe3abJ8",
+        "code": "B25-100100",
+        "category": "100×100",
+        "sourceFilename": "B25.jpg",
+        "driveFilename": "B25-100100__recOggTX6aCe3abJ8_att3cOGuh4krAo8Bq.jpg",
+        "driveUrl": "https://drive.google.com/file/d/1u-hIGJ_kGz4wpPKWh6Fa0HxbBTvOpx1X/view",
+        "githubImagePath": "../../images/oil/tianxia/recOggTX6aCe3abJ8-01.webp",
+        "sizeBytes": 394213,
+        "check": "Live Airtable attachment ID, record, code and index matched to original category-gallery JPEG with exact filename key, MIME and bytes; verified new Drive destination name, size, MIME, parent and private status. Visual/hash not independently checked."
+      },
+      "attachment": {
+        "recordId": "recOggTX6aCe3abJ8",
+        "attachmentId": "att3cOGuh4krAo8Bq",
+        "attachmentIndex": 1,
+        "attachmentField": "Attachments",
+        "catalogIndex": 1859,
+        "code": "B25-100100",
+        "category": "100×100",
+        "filename": "B25-100100.jpg",
+        "sourceFilename": "B25.jpg",
+        "driveFilename": "B25-100100__recOggTX6aCe3abJ8_att3cOGuh4krAo8Bq.jpg",
+        "driveUrl": "https://drive.google.com/file/d/1u-hIGJ_kGz4wpPKWh6Fa0HxbBTvOpx1X/view",
+        "sourceDriveFileId": "1dPs1EkgpZQx-G09CaSXX6yvAnqvV-nNh",
+        "sourceDriveFolderId": "1I1bYg6LbCs_lUr7lxVIUNqg5tu5ohiuk",
+        "destinationDriveFileId": "1u-hIGJ_kGz4wpPKWh6Fa0HxbBTvOpx1X",
+        "sizeBytes": 394213,
+        "mimeType": "image/jpeg",
+        "verification": "Live Airtable attachment ID, record, code and index matched to original category-gallery JPEG with exact filename key, MIME and bytes; verified new Drive destination name, size, MIME, parent and private status. Visual/hash not independently checked.",
+        "backupMethod": "drive-cloud-copy"
+      }
+    },
+    {
+      "recordId": "recoRWz5LunsEFKYJ",
+      "attachmentId": "attaQGxFRkgxEX1pD",
+      "attachmentIndex": 1,
+      "attachmentField": "Attachments",
+      "record": {
+        "recordId": "recoRWz5LunsEFKYJ",
+        "code": "B20-100100",
+        "category": "100×100",
+        "sourceFilename": "B20.jpg",
+        "driveFilename": "B20-100100__recoRWz5LunsEFKYJ_attaQGxFRkgxEX1pD.jpg",
+        "driveUrl": "https://drive.google.com/file/d/1qqyQAPS6u0G0XBLI9SNvZjTvpe9_j_Yw/view",
+        "githubImagePath": "../../images/oil/tianxia/recoRWz5LunsEFKYJ-01.webp",
+        "sizeBytes": 392156,
+        "check": "Live Airtable attachment ID, record, code and index matched to original category-gallery JPEG with exact filename key, MIME and bytes; verified new Drive destination name, size, MIME, parent and private status. Visual/hash not independently checked."
+      },
+      "attachment": {
+        "recordId": "recoRWz5LunsEFKYJ",
+        "attachmentId": "attaQGxFRkgxEX1pD",
+        "attachmentIndex": 1,
+        "attachmentField": "Attachments",
+        "catalogIndex": 3807,
+        "code": "B20-100100",
+        "category": "100×100",
+        "filename": "B20-100100.jpg",
+        "sourceFilename": "B20.jpg",
+        "driveFilename": "B20-100100__recoRWz5LunsEFKYJ_attaQGxFRkgxEX1pD.jpg",
+        "driveUrl": "https://drive.google.com/file/d/1qqyQAPS6u0G0XBLI9SNvZjTvpe9_j_Yw/view",
+        "sourceDriveFileId": "1CGIJFkEDpIVYdgZD9MR0O1IZXi_S61W3",
+        "sourceDriveFolderId": "1I1bYg6LbCs_lUr7lxVIUNqg5tu5ohiuk",
+        "destinationDriveFileId": "1qqyQAPS6u0G0XBLI9SNvZjTvpe9_j_Yw",
+        "sizeBytes": 392156,
+        "mimeType": "image/jpeg",
+        "verification": "Live Airtable attachment ID, record, code and index matched to original category-gallery JPEG with exact filename key, MIME and bytes; verified new Drive destination name, size, MIME, parent and private status. Visual/hash not independently checked.",
+        "backupMethod": "drive-cloud-copy"
+      }
+    }
+  ]
+}
