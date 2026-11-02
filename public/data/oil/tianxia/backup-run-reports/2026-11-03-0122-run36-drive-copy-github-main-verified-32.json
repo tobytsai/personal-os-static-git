@@ -1,0 +1,94 @@
+{
+  "reportDate": "2026-11-03",
+  "timezone": "Asia/Taipei",
+  "runId": "2026-11-03-0122-run36",
+  "status": "complete_32_original_JPEG_private_Drive_cloud_copies_GitHub_main_mappings_postcommit_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecordCount": 4673,
+    "liveImageAttachmentCount": 5047,
+    "indexSnapshotDate": "2026-10-30",
+    "repo": "tobytsai/personal-os-static-git",
+    "branch": "main"
+  },
+  "before": {
+    "byRecord": 3917,
+    "byAttachment": 3366,
+    "byRecordAttachments": 1771
+  },
+  "afterVerifiedOnMain": {
+    "byRecord": 3949,
+    "byAttachment": 3398,
+    "byRecordAttachments": 1803,
+    "pendingBatch": 0,
+    "blobSha": "9fb63d4a19a59636126b09daf69c4b6b273d0909",
+    "latestReconciliationCommit": "4c55f66d3d35ed9fdcea1a79fc6fe8524bd7b912"
+  },
+  "batch": {
+    "limit": 50,
+    "privateOriginalsCopied": 32,
+    "newPrimaryRecords": 32,
+    "newAttachmentMappings": 32,
+    "newRecordAttachmentMappings": 32,
+    "uniqueRecords": 32,
+    "uniqueAttachmentIds": 32,
+    "uniqueDriveFileIds": 32,
+    "totalBytes": 12786330,
+    "sizeBreakdown": {
+      "60×90": 31,
+      "70×180": 1
+    },
+    "recoveredAfterToolQuotaInterruptionWithoutDuplicateCopy": 5,
+    "failedCopy": 0,
+    "failedMetadataValidation": 0,
+    "failedGitHubMappingReadback": 0,
+    "duplicateCopy": 0,
+    "sourceGalleryOriginalJpegFileNameSizeCategoryMatched": true,
+    "destinationMetadataAndPrivatePermissionsReadBack": true,
+    "independentVisualComparison": false,
+    "independentHashComparison": false
+  },
+  "remaining": {
+    "roughImageAttachmentReferencesNotCoveredByPrimaryRecords": 1098,
+    "attachmentIdentitiesWithoutCurrentMapping": 1649,
+    "legacyPrimaryRecordsWithoutAttachmentIdentityApproximately": 551,
+    "roughEstimateNotEqualConfirmedMissingOriginalFiles": true
+  },
+  "checkpointPaths": [
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0122-run36-b01-verified-existing-copy-5.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0122-run36-b02-verified-private-originals-5.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0122-run36-b03-verified-private-originals-5.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0122-run36-b04-verified-private-originals-5.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0122-run36-b05-verified-private-originals-5.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0122-run36-b06-verified-private-originals-5.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0122-run36-b07-verified-private-originals-2.json"
+  ],
+  "checkpointCount": 7,
+  "sourceDriveFolders": [
+    {
+      "name": "60 X 90",
+      "id": "1LnhxGQdPoBWMGzNuSS1S4OEiIFjaWk9z"
+    },
+    {
+      "name": "70 X 180",
+      "id": "1YFv6CXFr5zuZhLoumy4OsoeKBzC8Vr_S"
+    }
+  ],
+  "destinationPrivateFolders": [
+    {
+      "category": "60×90",
+      "id": "1PGVAwmIc6ATytexX1t82rfVmRNDy8afi"
+    },
+    {
+      "category": "70×180",
+      "id": "1s8qNUHCM3e0WbaTGgQeY3QHky7_PCvpt"
+    }
+  ],
+  "caveats": [
+    "All 32 source and destination MIME types were image/jpeg, exact file sizes and product codes matched Airtable metadata; independent visual and cryptographic hash comparison was not performed.",
+    "Existing Drive copies were not duplicated on recovery; 5 were located after a tool budget interruption and metadata-verified.",
+    "The 5,047 count is image attachment references, not confirmed number of original Drive files still missing."
+  ],
+  "safety": "No changes to Airtable, existing WebP preview files, original source Drive files, or Drive sharing permissions. No source deletion. Preserve original byRecord frontend structure. Seven idempotent checkpoint files merged into main and checked by attachment ID, record ID, unique destination Drive IDs."
+}
