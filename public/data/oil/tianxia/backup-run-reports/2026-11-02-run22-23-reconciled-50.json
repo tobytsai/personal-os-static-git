@@ -1,0 +1,90 @@
+{
+  "reportDate": "2026-11-02",
+  "run": "run22-23-reconciled-50",
+  "status": "drive_originals_verified_and_github_main_post_commit_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "totalRecords": 4673,
+    "attachmentRefs": 5047,
+    "attachmentFields": [
+      "Attachments",
+      "圖檔2"
+    ],
+    "sourceSnapshot": "2026-10-30"
+  },
+  "github": {
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "mappingPath": "public/data/oil/tianxia/drive-original-links.json",
+    "verifiedMappingCommit": "7b9ee8f78768c323e5d8045deaec64522b04d808",
+    "verifiedMappingBlobSha": "c421cb0d54c90c4cde4770038b8de5c7e03fe909",
+    "reconcilerWorkflow": "merge-tianxia-original-links.yml",
+    "actionRunIds": [
+      41383007446,
+      41383808542,
+      41384156335
+    ],
+    "allCompletedSuccessfully": true
+  },
+  "counts": {
+    "beforeByRecord": 3523,
+    "afterByRecord": 3573,
+    "newlyMappedThisRun": 50,
+    "physicalDriveCopiesCreatedThisRun": 42,
+    "previousRunVerifiedDriveCopiesReconciledNow": 8,
+    "postRunByAttachment": 2969,
+    "postRunByRecordAttachments": 1374,
+    "postRunPendingBatch": 0,
+    "remainingEstimateByRecord": 1474,
+    "remainingIsNotExact": true,
+    "knownLegacyByRecordMissingFullAttachmentMapping": 604,
+    "failures": 0,
+    "verifiedUniqueDriveDestinationIds": 50
+  },
+  "bySize": {
+    "100×100": 5,
+    "60×60": 6,
+    "45×160": 12,
+    "70×180": 19,
+    "90×120": 8
+  },
+  "verification": {
+    "airtableLiveAttachmentIdsNamesBytesMime": true,
+    "sourceDriveOriginalJPEGIdentityAndExactBytes": true,
+    "destinationMetadataReread": true,
+    "destinationFolderAndNonPublicStatus": true,
+    "independentVisualComparison": false,
+    "independentCryptographicHashComparison": false,
+    "sourceDownloadFromAirtable": false,
+    "webpUsedAsOriginal": false
+  },
+  "checkpoints": [
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-02-run21-recovered-8.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-02-run22-verified-34.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-02-run23-verified-8.json"
+  ],
+  "safety": {
+    "modifiedAirtable": false,
+    "modifiedExistingWebp": false,
+    "deletedDriveOriginals": false,
+    "madeDriveOriginalsPublic": false,
+    "forcePushedGitHub": false,
+    "destinationCopiesDeduplicatedByRecordAndAttachmentIdentity": true
+  },
+  "incidents": [
+    {
+      "type": "git_large_json_transport",
+      "resolution": "Created repository-side GitHub Actions safe merger to handle >5MB mapping; previous h2 upload failure resolved; reloaded main and verified 50 identity mappings."
+    },
+    {
+      "type": "tool_call_limit_during_copy",
+      "resolution": "Recovered partial Drive copies by stable file IDs/name, postcopy metadata and privacy checks; avoided duplicate copies and committed recoverable checkpoints."
+    }
+  ],
+  "completion": {
+    "all5047OriginalsVerified": false,
+    "automationShouldRemainEnabled": true,
+    "notes": "Old records may lack byAttachment despite a valid byRecord original; remainingEstimate is not an exact count of missing files. Several historical records require separate identity-level audit."
+  }
+}
