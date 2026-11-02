@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#132839">
+<meta name="robots" content="noindex,follow">
+<meta name="description" content="追蹤台灣與國際熱搜、新聞、科技、藝文、社造、教育及商業趨勢，每天自動更新並保留歷史排行榜。">
+<title>聲量啟動器｜Personal OS</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--ink:#223044;--muted:#617084;--line:#e2eaf1;--bg:#f1f6f9;--card:#fff;--teal:#00b89b;--blue:#3059dc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 95% 0%,#d3f4eb 0,transparent 37%),linear-gradient(155deg,#eef4fa,#f7f9fc);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Noto Sans TC",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+main{max-width:1200px;margin:auto;padding:20px 19px 72px}
+.hero{position:relative;overflow:hidden;padding:clamp(25px,5vw,48px);border-radius:29px;background:linear-gradient(117deg,#122c42,#1c4a59 54%,#227b75);color:white;box-shadow:0 17px 40px #18354724}
+.hero:before{content:"";position:absolute;width:270px;height:270px;border:1px solid #ffffff27;border-radius:50%;right:-67px;top:-123px;box-shadow:0 0 0 55px #ffffff08,0 0 0 112px #ffffff05}
+.hero-content{position:relative;z-index:1}
+.eyebrow{font-weight:800;letter-spacing:.13em;color:#9cf6d8;font-size:12px}
+h1{font-size:clamp(34px,5.6vw,57px);line-height:1.12;margin:13px 0 10px}
+.lead{font-size:clamp(14px,1.9vw,17px);max-width:725px;color:#d2e9ed;margin:0}
+.hero-bottom{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.hero-chip{border:1px solid #ffffff3b;background:#ffffff14;padding:6px 11px;border-radius:999px;font-size:12px}
+.hero-chip.good{color:#bdfbe6}.hero-chip.bad{color:#ffe9a5}
+.summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:17px 0}
+.summary-card{padding:16px 18px;border:1px solid var(--line);background:white;border-radius:18px;box-shadow:0 5px 15px #1a385709}
+.summary-card strong{font-size:29px;line-height:1.2;display:block;color:#17485b;font-variant-numeric:tabular-nums}.summary-card span{font-size:12px;color:var(--muted);font-weight:700}
+.section-label{display:flex;justify-content:space-between;gap:12px;align-items:end;margin:22px 2px 11px}.section-label h2{margin:0;font-size:21px}.section-label p{margin:0;color:var(--muted);font-size:12px}
+.spotlight{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.focus{display:flex;min-width:0;gap:10px;align-items:center;text-align:left;padding:15px 16px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 6px 20px #2444600a;transition:.16s}
+.focus:hover{transform:translateY(-2px);border-color:#8dbbb4}
+.focus .symbol{height:44px;min-width:44px;border-radius:14px;display:grid;place-items:center;background:#e9f7f3;font-size:24px}
+.focus .mini{color:var(--muted);font-size:11px;font-weight:800}.focus .focus-title{display:block;font-size:14px;font-weight:900;line-height:1.4;overflow-wrap:anywhere}
+.toolbar{margin-top:25px;padding:17px;border:1px solid var(--line);border-radius:23px;background:#ffffffeb;box-shadow:0 7px 20px #2444600a}
+.toolbar-top{display:flex;gap:11px;align-items:center;flex-wrap:wrap}
+.search{min-width:180px;flex:1;padding:11px 14px;border:1px solid #d9e5ec;border-radius:13px;background:#f8fafc;outline:none}
+.search:focus{border-color:#43bba9;box-shadow:0 0 0 3px #43bba921}
+select{padding:10px 12px;max-width:240px;border:1px solid #d9e5ec;background:white;border-radius:13px;color:var(--ink)}
+.toggle{display:flex;gap:6px;align-items:center;font-size:12px;font-weight:750;color:#42566a;white-space:nowrap}
+.toggle input{accent-color:#0e9984;min-width:16px;height:16px}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin-top:15px;padding-bottom:6px;scrollbar-width:thin}
+.tab{flex:0 0 auto;padding:8px 13px;border:1px solid #dfe8ec;background:#fff;border-radius:999px;color:#40566a;font-size:12px;font-weight:800}
+.tab.active{background:#183c4d;color:white;border-color:#183c4d}
+.ranking-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px;margin:20px 2px 12px}
+.ranking-head h2{font-size:23px;margin:0}.ranking-head .detail{font-size:12px;color:var(--muted)}
+.source-note{border-left:3px solid #33b49f;margin:0 2px 16px;padding:8px 12px;background:#eaf8f5;border-radius:0 10px 10px 0;font-size:12px;color:#33635f}
+.rank-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.item{position:relative;padding:18px;border-radius:19px;border:1px solid var(--line);background:white;box-shadow:0 4px 18px #1945670a;min-width:0}
+.item-top{display:flex;align-items:center;gap:11px}
+.rank-no{font-weight:950;font-size:23px;min-width:36px;line-height:1;text-align:center;color:#6b8793}
+.item:nth-child(-n+3) .rank-no{color:#168d7e}
+.item-title{font-size:17px;font-weight:900;line-height:1.4;overflow-wrap:anywhere;flex:1}
+.bookmark{border:1px solid #e8eef1;background:#f8fbfc;color:#9aaab3;border-radius:12px;width:38px;height:38px;font-size:19px;flex:none}
+.bookmark.saved{color:#d38a06;background:#fff7e3}
+.item-info{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:12px 0 0}
+.metric{padding:5px 9px;border-radius:9px;background:#e8f7f2;color:#167a65;font-weight:800;font-size:12px}
+.movement{font-size:11px;font-weight:800;padding:5px 8px;background:#f0f3f7;border-radius:9px;color:#647487}
+.movement.up{color:#067459;background:#e2faf1}.movement.down{color:#b25537;background:#fff1e9}.movement.new{color:#7751bb;background:#f5eaff}
+.publisher{font-size:12px;color:var(--muted)}
+.bar-track{height:5px;border-radius:50px;background:#edf2f6;margin-top:12px;overflow:hidden}
+.bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,#48d6a9,#267eba)}
+.item-meta{color:var(--muted);font-size:11px;margin:10px 0 0}
+.item-actions{display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid #edf1f5;margin-top:12px;padding-top:12px}
+.item-actions a{font-size:12px;color:#286882;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.related{margin-top:12px;padding:10px 12px;border-radius:11px;background:#f5f8fa}
+.related small{display:block;margin-bottom:4px;color:#708092;font-weight:800}
+.related a{display:block;padding:4px 0;font-size:12px;color:#40586d;overflow-wrap:anywhere}.related a:hover{text-decoration:underline}
+.blank{grid-column:1/-1;background:#fff;border:1px dashed #b8cbd2;border-radius:19px;text-align:center;padding:36px 22px;color:var(--muted)}
+.warning{margin:15px 0;padding:14px 17px;border:1px solid #f5dfaa;border-radius:13px;background:#fff9ed;color:#82622f;font-size:12px;display:none}
+.warning.visible{display:block}
+.method{padding:20px 24px;margin-top:27px;background:#fff;border:1px solid var(--line);border-radius:20px;color:#4d5e6c}
+.method h2{font-size:19px;margin:0 0 7px}.method p{margin:7px 0;font-size:12px}
+.method a{color:#167c8b;text-decoration:underline}
+footer{text-align:center;padding:24px 10px;color:#82909b;font-size:11px}
+@media(max-width:800px){.spotlight{grid-template-columns:1fr}.rank-grid{grid-template-columns:1fr}}
+@media(max-width:600px){main{padding:12px 12px 50px}.hero{border-radius:23px;padding:29px 22px}.summary{gap:8px}.summary-card{padding:12px}.summary-card strong{font-size:23px}.summary-card span{font-size:11px}.item{padding:15px}.item-title{font-size:15px}.toolbar{padding:12px}.search{flex-basis:100%}.section-label{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="hero-content">
+<div class="eyebrow">◉ TREND RADAR · DAILY SIGNALS</div>
+<h1>🔥 聲量啟動器</h1>
+<p class="lead">台灣熱搜、國際話題、AI 科技、藝文設計、地方創生與教育。每天留下快照，用不同平台的真實指標看出正在升溫的方向。</p>
+<div class="hero-bottom">
+<span class="hero-chip" id="lastUpdate">資料載入中</span>
+<span class="hero-chip" id="freshness">檢查更新狀態…</span>
+<span class="hero-chip">⏰ 每日台灣時間 08:20 預定更新</span>
+</div>
+</div>
+</header>
+<div class="summary" aria-label="排行榜統計">
+<div class="summary-card"><strong id="totalCount">—</strong><span>今日收錄項目</span></div>
+<div class="summary-card"><strong id="newCount">—</strong><span>較昨日新入榜</span></div>
+<div class="summary-card"><strong id="historyCount">—</strong><span>已保存日期</span></div>
+</div>
+<div class="section-label"><h2>今日值得留意</h2><p>從台灣熱搜、AI 科技、藝文設計，各取一個最新觀察入口</p></div>
+<div class="spotlight" id="spotlight"><div class="blank">正在讀取最新資料…</div></div>
+<section class="toolbar" aria-label="排行榜搜尋及篩選">
+<div class="toolbar-top">
+<input id="search" class="search" type="search" placeholder="🔎 搜尋人物、事件、主題、新聞…" aria-label="搜尋排行">
+<label class="toggle"><input id="onlyNew" type="checkbox"> 只看新上榜</label>
+<label class="toggle"><input id="onlySaved" type="checkbox"> 我的收藏</label>
+<label class="toggle" for="historySelect">📅 日期</label>
+<select id="historySelect" aria-label="選擇歷史排行榜"><option value="">最新一期</option></select>
+</div>
+<nav class="tabs" id="tabs" aria-label="排行榜分類"></nav>
+</section>
+<div class="ranking-head">
+<h2 id="rankingTitle">台灣熱搜榜</h2>
+<div class="detail" id="resultCount">載入中…</div>
+</div>
+<div class="source-note" id="sourceNote">每個榜單使用不同量測方式，不做跨平台加總。</div>
+<div id="warning" class="warning" role="status"></div>
+<section class="rank-grid" id="cards" aria-live="polite"><div class="blank">正在取得資料，稍後會顯示排名。</div></section>
+<section class="method">
+<h2>📖 這份排行榜怎麼讀？</h2>
+<p><b>Google Trends：</b>台灣、美國、日本的公開 RSS 熱搜資料，按「估算搜尋量級下限」排序。RSS 僅提供一批新近熱門字詞，不代表全國完整搜尋總榜，也不提供精確成長率。</p>
+<p><b>Google News：</b>台灣主要新聞及五組主題關鍵字在來源中的排序，代表近期報導觀察，<b>不是</b>文章聲量、瀏覽人次或社群提及數。</p>
+<p><b>GitHub Trending／Hacker News：</b>分別觀察熱門開源專案的當日新增 stars，以及國際技術社群討論的 points。數字只在同一榜內比較。</p>
+<p><b>動態箭頭：</b>和前一個連續日期的同來源榜單相比；沒有可比較的昨日資料就不顯示虛構漲跌。「新」只表示首次出現在昨日與今日這兩次採集的比較中。</p>
+<p><b>更新與保存：</b>GitHub Actions 每日台灣時間 08:20 預定抓取，實際時間可能延遲；保留最近 45 天快照，失敗來源會顯示警示。收藏存在此瀏覽器，尚未跨裝置同步。</p>
+<p>來源：<a href="https://trends.google.com/trending?geo=TW&amp;hl=zh-TW" target="_blank" rel="noopener noreferrer">Google Trends 台灣</a> · <a href="https://news.google.com/?hl=zh-TW&amp;gl=TW&amp;ceid=TW:zh-Hant" target="_blank" rel="noopener noreferrer">Google News</a> · <a href="https://github.com/trending?since=daily" target="_blank" rel="noopener noreferrer">GitHub Trending</a> · <a href="https://news.ycombinator.com/" target="_blank" rel="noopener noreferrer">Hacker News</a></p>
+<p>Threads、Instagram、TikTok、YouTube 等平台未接入官方分析資料前，不會宣稱這裡是全網社群聲量排名。</p>
+</section>
+<footer>PERSONAL OS · 聲量啟動器｜所有數據標註來源，僅供趨勢觀察</footer>
+</main>
+<script>
+(function () {
+"use strict";
+const groups = [
+ ["tw","🔥 台灣熱搜","Google Trends 台灣","公開熱搜依估算搜尋量級排序；並非完整的全網聲量總榜。","🔥"],
+ ["us","🌎 美國熱搜","Google Trends 美國","美國公開熱搜，估算搜尋量級只可在美國榜內比較。","🌎"],
+ ["jp","🇯🇵 日本熱搜","Google Trends 日本","日本公開熱搜，估算搜尋量級只可在日本榜內比較。","🇯🇵"],
+ ["news","📰 新聞焦點","台灣新聞焦點","Google News 台灣版的新聞排序，非報導總篇數或閱讀量。","📰"],
+ ["ai","🤖 AI／科技","AI 與科技","依 AI、科技等主題關鍵字訂閱的近期新聞，並非全平台聲量。","🤖"],
+ ["art","🎨 藝文設計","藝文與設計","關注畫廊、藝術展覽、工藝與設計的近期報導。","🎨"],
+ ["community","🌱 地方社造","地方創生與社區營造","關注社區營造、地方創生、文化保存與客家文化。","🌱"],
+ ["education","📚 教育自學","自學與教育","關注自學、實驗教育、親子教育與教育科技。","📚"],
+ ["business","💡 商業行銷","商業與行銷","關注品牌、零售、電商與消費新話題。","💡"],
+ ["github","⌘ 開源熱門","GitHub Trending","GitHub 每日熱門專案，顯示可取得的當日新增 stars。","⌘"],
+ ["hn","💬 科技討論","Hacker News 熱門討論","國際技術討論的 points 排序，不等同搜尋量或社群貼文數。","💬"]
+];
+const el = id => document.getElementById(id);
+let data = null, active = "tw", search = "", showNew = false, showSaved = false;
+let stored = {};
+try { stored = JSON.parse(localStorage.getItem("toby-trend-saved-v1") || "{}") || {}; } catch (_) { stored = {}; }
+const statusFor = id => (data && (data.source_status || []).find(s => s.group === id)) || null;
+const cfgFor = id => groups.find(g => g[0] === id) || groups[0];
+const fmtTime = value => {
+  if (!value) return "尚未取得時間";
+  const date = new Date(value);
+  if (isNaN(date.getTime())) return "時間未提供";
+  return new Intl.DateTimeFormat("zh-TW", {timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}).format(date);
+};
+const safeUrl = raw => {
+  try { const url = new URL(raw); return url.protocol === "https:" || url.protocol === "http:" ? url.href : ""; } catch (_) { return ""; }
+};
+function node(tag, klass, content) {
+  const n = document.createElement(tag);
+  if (klass) n.className = klass;
+  if (content !== undefined) n.textContent = String(content);
+  return n;
+}
+function clear(container) { while (container.firstChild) container.removeChild(container.firstChild); }
+function link(label, href) {
+  const url = safeUrl(href);
+  if (!url) return null;
+  const a = node("a", "", label);
+  a.href = url; a.target = "_blank"; a.rel = "noopener noreferrer";
+  return a;
+}
+function metricFor(group, row) {
+  if (["tw","us","jp"].includes(group)) return row.value ? "約 " + row.value + " 搜尋" : "Google 熱搜";
+  if (group === "github") return row.value || "熱門開源專案";
+  if (group === "hn") return row.value || "技術討論";
+  return "新聞來源排序";
+}
+function movementFor(row) {
+  const value = row.movement;
+  if (value === "new") return ["NEW 新上榜", "new"];
+  if (value === "up") return ["↑ " + row.rank_change + " 名", "up"];
+  if (value === "down") return ["↓ " + Math.abs(row.rank_change) + " 名", "down"];
+  if (value === "same") return ["— 持平", ""];
+  return ["尚無前日比較", ""];
+}
+function save(id, item) {
+  if (stored[id]) delete stored[id];
+  else stored[id] = {title:item.title, savedAt:new Date().toISOString()};
+  try { localStorage.setItem("toby-trend-saved-v1", JSON.stringify(stored)); } catch (_) {}
+  renderCards();
+}
+function renderTabs() {
+  const tabs = el("tabs"); clear(tabs);
+  groups.forEach(g => {
+    const b = node("button", "tab" + (active === g[0] ? " active" : ""), g[1]);
+    b.type = "button"; b.setAttribute("aria-pressed", active === g[0] ? "true" : "false");
+    b.addEventListener("click", () => {active = g[0]; renderTabs(); renderCards();});
+    tabs.appendChild(b);
+  });
+}
+function renderSpotlight() {
+  const host = el("spotlight"); clear(host);
+  for (const id of ["tw", "ai", "art"]) {
+    const g = cfgFor(id), top = ((data && data.rankings || {})[id] || [])[0];
+    const b = node("button", "focus"); b.type = "button";
+    const icon = node("span", "symbol", g[4]);
+    const text = node("span");
+    text.appendChild(node("span", "mini", g[2]));
+    text.appendChild(node("strong", "focus-title", top ? top.title : "尚無可用資料"));
+    b.appendChild(icon); b.appendChild(text);
+    b.addEventListener("click", () => {active = id; renderTabs(); renderCards(); el("tabs").scrollIntoView({behavior:"smooth",block:"start"});});
+    host.appendChild(b);
+  }
+}
+function renderSummary() {
+  const rankings = data && data.rankings || {};
+  const all = Object.values(rankings).flat();
+  el("totalCount").textContent = String(all.length);
+  el("newCount").textContent = data && data.comparison_date ? String(all.filter(x => x.movement === "new").length) : "—";
+}
+function renderWarnings() {
+  const failed = (data && data.source_status || []).filter(s => !s.ok);
+  const warning = el("warning");
+  if (failed.length) {
+    warning.classList.add("visible");
+    warning.textContent = "⚠️ " + failed.length + " 個來源在本次採集中失敗，以下缺少的榜單不是零聲量：" + failed.map(s => s.source).join("、");
+  } else {
+    warning.classList.remove("visible"); warning.textContent = "";
+  }
+}
+function renderCards() {
+  const c = cfgFor(active);
+  el("rankingTitle").textContent = c[2];
+  el("sourceNote").textContent = c[3];
+  const status = statusFor(active);
+  const rows = (data && data.rankings && data.rankings[active] || []).filter(item =>
+    (!search || [item.title, item.publisher, ...((item.related || []).map(r => r.title))].join(" ").toLocaleLowerCase().includes(search)) &&
+    (!showNew || item.movement === "new") &&
+    (!showSaved || !!stored[item.id])
+  );
+  el("resultCount").textContent = rows.length + " 筆" + (status && !status.ok ? " · 本次更新失敗" : "");
+  const host = el("cards"); clear(host);
+  if (!rows.length) {
+    const message = !data || !data.date_taipei ? "尚未有第一期資料。每日採集工作會在首次執行成功後建立排行榜。"
+      : status && !status.ok ? "此來源本次更新失敗，請查看其他榜單或選擇歷史日期。"
+      : showNew ? "這個條件下沒有確認的新上榜項目。"
+      : showSaved ? "目前沒有符合條件的收藏。可按每張卡片右上角的 ☆ 收藏。"
+      : "此分類或搜尋條件下暫無項目。";
+    host.appendChild(node("div", "blank", message)); return;
+  }
+  const max = Math.max(1, ...rows.map(row => Number(row.value_number) || 0));
+  rows.forEach(item => {
+    const article = node("article", "item");
+    const row = node("div", "item-top");
+    row.appendChild(node("span", "rank-no", "#" + item.rank));
+    row.appendChild(node("div", "item-title", item.title));
+    const starred = !!stored[item.id];
+    const star = node("button", "bookmark" + (starred ? " saved" : ""), starred ? "★" : "☆");
+    star.type = "button"; star.setAttribute("aria-label", starred ? "取消收藏" : "收藏此主題");
+    star.addEventListener("click", () => save(item.id, item));
+    row.appendChild(star); article.appendChild(row);
+    const info = node("div", "item-info");
+    info.appendChild(node("span", "metric", metricFor(active, item)));
+    const m = movementFor(item);
+    info.appendChild(node("span", "movement " + m[1], m[0]));
+    if (item.publisher) info.appendChild(node("span", "publisher", item.publisher));
+    article.appendChild(info);
+    if (Number(item.value_number) > 0) {
+      const track = node("div", "bar-track");
+      const fill = node("div", "bar-fill"); fill.style.width = Math.max(4, Math.round((Number(item.value_number) / max) * 100)) + "%";
+      track.appendChild(fill); article.appendChild(track);
+    }
+    if (item.published_at) article.appendChild(node("div", "item-meta", "發布／開始趨勢：" + fmtTime(item.published_at)));
+    const actions = node("div", "item-actions");
+    const original = link(["tw","us","jp"].includes(active) ? "🔎 搜尋這個話題" : "↗ 查看原始來源", item.url);
+    if (original) actions.appendChild(original);
+    const trend = link("↗ Google 搜尋", "https://www.google.com/search?q=" + encodeURIComponent(item.title));
+    if (trend && !["tw","us","jp"].includes(active)) actions.appendChild(trend);
+    article.appendChild(actions);
+    if ((item.related || []).length) {
+      const related = node("div", "related");
+      related.appendChild(node("small", "", "相關報導與討論"));
+      item.related.slice(0,3).forEach(r => {
+        const a = link(r.title + (r.publisher ? " · " + r.publisher : ""), r.url);
+        if (a) related.appendChild(a);
+      });
+      article.appendChild(related);
+    }
+    host.appendChild(article);
+  });
+}
+function render() {
+  el("lastUpdate").textContent = data && data.generated_at ? "📡 更新於 " + fmtTime(data.generated_at) : "📡 等待首次採集";
+  const today = new Intl.DateTimeFormat("en-CA", {timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+  const stale = !data || !data.date_taipei || data.date_taipei !== today;
+  el("freshness").textContent = stale ? "⚠️ 不是台灣今日快照" : "● 今日快照";
+  el("freshness").className = "hero-chip " + (stale ? "bad" : "good");
+  renderSummary(); renderSpotlight(); renderWarnings(); renderTabs(); renderCards();
+}
+async function getJson(url) {
+  const response = await fetch(url + (url.includes("?") ? "&" : "?") + "v=" + Date.now(), {cache:"no-store"});
+  if (!response.ok) throw Error("HTTP " + response.status);
+  return response.json();
+}
+async function loadHistory(day) {
+  try {
+    el("resultCount").textContent = "切換日期…";
+    data = await getJson(day ? "../data/trends-history/" + encodeURIComponent(day) + ".json" : "../data/trends-latest.json");
+    if (!data || data.schema_version !== 1) throw Error("資料格式不相容");
+    render();
+  } catch (error) {
+    el("cards").replaceChildren(node("div", "blank", "無法讀取排行資料（" + error.message + "）。首次執行成功後才會發布排行榜，請稍後再試。"));
+    el("resultCount").textContent = "載入失敗";
+    el("lastUpdate").textContent = "📡 尚未取得資料";
+    el("freshness").textContent = "⚠️ 無法核實更新";
+  }
+}
+async function start() {
+  el("search").addEventListener("input", e => {search = e.target.value.trim().toLocaleLowerCase(); renderCards();});
+  el("onlyNew").addEventListener("change", e => {showNew = e.target.checked; renderCards();});
+  el("onlySaved").addEventListener("change", e => {showSaved = e.target.checked; renderCards();});
+  el("historySelect").addEventListener("change", e => loadHistory(e.target.value));
+  renderTabs();
+  try {
+    const index = await getJson("../data/trends-history-index.json");
+    const days = (index.days || []).filter(v => /^\d{4}-\d{2}-\d{2}$/.test(v));
+    el("historyCount").textContent = String(days.length);
+    for (const day of days) {
+      const opt = node("option", "", day);
+      opt.value = day; el("historySelect").appendChild(opt);
+    }
+  } catch (_) { el("historyCount").textContent = "0"; }
+  await loadHistory("");
+}
+start();
+})();
+</script>
+<script src="../shared-nav.js" defer></script>
+</body>
+</html>
