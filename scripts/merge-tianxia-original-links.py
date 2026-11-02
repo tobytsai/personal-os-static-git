@@ -43,7 +43,7 @@ def main():
         # Strict reconciliation of historical originals whose Drive copies predate
         # the attachment-ID index. No new image is created in this branch.
         if patch.get("status") == "verified-existing-private-Drive-originals-no-new-copy":
-            if (patch.get("runId") != "2026-11-03-0016-run35"
+            if (not re.fullmatch(r"2026-\d{2}-\d{2}-\d{4}-run\d+", str(patch.get("runId", "")))
                     or patch.get("errors")
                     or patch.get("count") != len(patch.get("entries", []))):
                 raise ValueError(f"Invalid historical verification checkpoint: {f}")
@@ -66,10 +66,12 @@ def main():
                         or e.get("mimeType") != "image/jpeg"
                         or not isinstance(e.get("catalogIndex"), int)
                         or not 1 <= e["catalogIndex"] <= 4673
+                        or e.get("verifiedDestinationMetadata") is not True
+                        or e.get("publiclyShared") is not False
                         or e.get("backupMethod") != "previously-backed-up-drive-original-identity-verified"
                         or e.get("manualVisualReviewSuggested") is not True
                         or not e.get("verification", "").startswith("Live Airtable attachment identity")
-                        or e.get("filename") != e.get("sourceFilename")
+                        or e.get("filename") not in (e.get("sourceFilename"), e.get("driveFilename"))
                         or e.get("category") not in category_folders
                         or e.get("destinationDriveFolderId") != category_folders[e["category"]]
                         or legacy.get("recordId") != rid
