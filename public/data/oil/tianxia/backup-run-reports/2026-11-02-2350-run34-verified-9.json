@@ -1,0 +1,195 @@
+{
+  "reportDate": "2026-11-02",
+  "timezone": "Asia/Taipei",
+  "runId": "2026-11-02-2350-run34",
+  "status": "completed_private_Drive_original_cloud_copies_GitHub_main_mapping_read_back",
+  "source": {
+    "baseId": "apptj1UgL0uVrNypY",
+    "tableId": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "liveAttachmentRefs": 5047,
+    "liveAttachmentRefsByField": {
+      "Attachments": 5033,
+      "圖檔2": 14
+    },
+    "snapshotDate": "2026-10-30",
+    "githubRepo": "tobytsai/personal-os-static-git",
+    "githubBranch": "main"
+  },
+  "before": {
+    "byRecord": 3908,
+    "byAttachment": 3307,
+    "byRecordAttachments": 1712
+  },
+  "afterVerifiedOnMain": {
+    "byRecord": 3917,
+    "byAttachment": 3316,
+    "byRecordAttachments": 1721,
+    "pendingBatch": 0,
+    "blobSha": "980be9ae7eb4e4291826b4536b678b81af331144",
+    "mergeCommits": [
+      "eb68c9f4b900382ac37d2b1b5cbb459c9b079931",
+      "fbc17a96a8ced936abfd632124f616a4c43e3bb0"
+    ]
+  },
+  "batch": {
+    "newOriginalCopies": 9,
+    "newVerifiedPrimaryRecords": 9,
+    "newAttachmentMappings": 9,
+    "failedCopies": 0,
+    "failedVerifications": 0,
+    "duplicateCopies": 0,
+    "distinctRecordIds": 9,
+    "distinctAttachmentIds": 9,
+    "distinctDriveFileIds": 9,
+    "sizeBreakdown": {
+      "70×180": 1,
+      "80×80": 3,
+      "60×120": 2,
+      "50×60": 1,
+      "60×60": 2
+    },
+    "remainingRoughEstimate": 1130,
+    "remainingNotExactlyConfirmed": true,
+    "legacyMainWithoutCompleteIdentityApproximately": 601,
+    "sourceFolderAndExactOriginalFilenameOrCodeMatched": true,
+    "sourceExactBytesAndMimeMatched": true,
+    "destinationMetadataReread": true,
+    "destinationNonPublicConfirmed": true,
+    "visualComparisonPerformed": false,
+    "hashComparisonPerformed": false
+  },
+  "checkpointPaths": [
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2350-run34-private-originals-verified-7.json",
+    "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2350-run34-b02-private-originals-verified-2.json"
+  ],
+  "entries": [
+    {
+      "code": "A5-70180",
+      "category": "70×180",
+      "catalogIndex": 4434,
+      "recordId": "recwjKZes2CelW0dI",
+      "attachmentId": "attNQpTlLlVkyOhUS",
+      "originalBytes": 368802,
+      "sourceDriveFileId": "1gtiLknOC5rCd6VyK6ovX6JyNrpiY6Pot",
+      "destinationDriveFileId": "1g_fj_V7YPNX94qZtFT9Z3VF0S_j6L-30",
+      "driveUrl": "https://drive.google.com/file/d/1g_fj_V7YPNX94qZtFT9Z3VF0S_j6L-30/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    },
+    {
+      "code": "G6-80X80",
+      "category": "80×80",
+      "catalogIndex": 4437,
+      "recordId": "recwjfQeEQoAOmRFf",
+      "attachmentId": "att8bx8W6fEGDkKW6",
+      "originalBytes": 413267,
+      "sourceDriveFileId": "1KIzmi2ulMlrKvTJDwnfqoAM0y8p8ZYdm",
+      "destinationDriveFileId": "1vFXJYyoqYEdy1SISRvx401jM-sqjma1h",
+      "driveUrl": "https://drive.google.com/file/d/1vFXJYyoqYEdy1SISRvx401jM-sqjma1h/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    },
+    {
+      "code": "B10-60120",
+      "category": "60×120",
+      "catalogIndex": 4492,
+      "recordId": "recxXGZVI2CdyT0X0",
+      "attachmentId": "attNx7eihvVxrGxBb",
+      "originalBytes": 342683,
+      "sourceDriveFileId": "1PDxtuMwNPnNO6Jk26BfJ5ymKqojo1PiX",
+      "destinationDriveFileId": "1yvpHwdB3LCfI-PErnL3GWMYQkHBJQ-mR",
+      "driveUrl": "https://drive.google.com/file/d/1yvpHwdB3LCfI-PErnL3GWMYQkHBJQ-mR/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    },
+    {
+      "code": "D8-80X80",
+      "category": "80×80",
+      "catalogIndex": 4545,
+      "recordId": "recyEgUrJytu7TYLV",
+      "attachmentId": "attd0R04WlDPkc0PB",
+      "originalBytes": 385658,
+      "sourceDriveFileId": "1q1rG0EzQWZjL0IiFCWqL-6Zm1pgfTdq1",
+      "destinationDriveFileId": "1BM0WkEAsIaHchfLku3c6WinDuXLMNOsh",
+      "driveUrl": "https://drive.google.com/file/d/1BM0WkEAsIaHchfLku3c6WinDuXLMNOsh/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    },
+    {
+      "code": "C23-80X80",
+      "category": "80×80",
+      "catalogIndex": 4601,
+      "recordId": "recz7BrvtYh8kDvNq",
+      "attachmentId": "attW3vI6o7kVQaSsr",
+      "originalBytes": 332410,
+      "sourceDriveFileId": "1dJU95VlJ7b8_5Z7kOk88eRnXfMm-1Bz7",
+      "destinationDriveFileId": "1wckLIpsRRwDTS2jA6lp53jxLVIpUaKU7",
+      "driveUrl": "https://drive.google.com/file/d/1wckLIpsRRwDTS2jA6lp53jxLVIpUaKU7/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    },
+    {
+      "code": "D50-60120",
+      "category": "60×120",
+      "catalogIndex": 4610,
+      "recordId": "reczEqZYTLIm2ZeRl",
+      "attachmentId": "attS0wJbWNeY71Vrp",
+      "originalBytes": 704161,
+      "sourceDriveFileId": "1zlNgNDqqfyXDbrcuC8yUgVOBc34k2T_D",
+      "destinationDriveFileId": "1wvpc3RYsDAYDMyWsI-WuuDUG5G8PNglr",
+      "driveUrl": "https://drive.google.com/file/d/1wvpc3RYsDAYDMyWsI-WuuDUG5G8PNglr/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    },
+    {
+      "code": "E9-5060",
+      "category": "50×60",
+      "catalogIndex": 4667,
+      "recordId": "reczsvglc8xCwf46z",
+      "attachmentId": "att2DA3yoieknvs2G",
+      "originalBytes": 416413,
+      "sourceDriveFileId": "1kwzBuSFWVDB5O7T7u6at8RrkYC-X_JeE",
+      "destinationDriveFileId": "1a16r2na2ve-IIeARiZeEcDJt2oycNlOR",
+      "driveUrl": "https://drive.google.com/file/d/1a16r2na2ve-IIeARiZeEcDJt2oycNlOR/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    },
+    {
+      "code": "B20-60X60",
+      "category": "60×60",
+      "catalogIndex": 4441,
+      "recordId": "recwnPWqB605op08h",
+      "attachmentId": "attIGXZA5JvQo07A1",
+      "originalBytes": 398831,
+      "sourceDriveFileId": "1kzLDDZcvuQ2hAGnwNmXKAXqyndo62jXm",
+      "destinationDriveFileId": "17iIr_Q1D__ByaC_U-MW7xS2ACHIhKdo3",
+      "driveUrl": "https://drive.google.com/file/d/17iIr_Q1D__ByaC_U-MW7xS2ACHIhKdo3/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    },
+    {
+      "code": "B18-60X60",
+      "category": "60×60",
+      "catalogIndex": 4570,
+      "recordId": "recydHHTltmqcWgW9",
+      "attachmentId": "att7SvtkWcqkUUO6E",
+      "originalBytes": 457220,
+      "sourceDriveFileId": "1OdkWFlXTp3t9zrQj7EIAyhKKVKAecI-3",
+      "destinationDriveFileId": "1ZuxMiJqYEKzL2nnMnu-4cAn85ozKDos2",
+      "driveUrl": "https://drive.google.com/file/d/1ZuxMiJqYEKzL2nnMnu-4cAn85ozKDos2/view?usp=drivesdk",
+      "metadataVerified": true,
+      "privateVerified": true,
+      "visualOrHashVerified": false
+    }
+  ],
+  "safety": "No Airtable mutation, source deletion, existing WebP change, or Drive sharing change. Existing byRecord compatibility retained; distinct image identities recorded in byAttachment and byRecordAttachments."
+}
