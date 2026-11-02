@@ -1,0 +1,80 @@
+{
+  "reportDate": "2026-11-02",
+  "runId": "2026-11-02-2021-run31",
+  "status": "completed_drive_copies_and_github_mapping_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "liveAttachmentReferences": 5047,
+    "indexSnapshotDate": "2026-10-30",
+    "mainOriginalsBefore": 3758
+  },
+  "results": {
+    "verifiedOriginalJpegs": 50,
+    "newDriveCloudCopies": 50,
+    "recoveredExisting": 0,
+    "copyFailures": 0,
+    "metadataVerificationFailures": 0,
+    "githubMergeFailures": 0,
+    "uniqueRecordIds": 50,
+    "uniqueAttachmentIds": 50,
+    "uniqueDriveDestinationIds": 50,
+    "mappedMainAfter": 3808,
+    "byAttachmentAfter": 3207,
+    "byRecordAttachmentsAfter": 1612,
+    "pendingBatchAfter": 0,
+    "remainingEstimateBasedOnPrimaryCount": 1239,
+    "exactMissingCountKnown": false,
+    "historicalMainRecordsWithoutFullAttachmentMappingApprox": 601
+  },
+  "byCategory": {
+    "45×160": 17,
+    "90×120": 8,
+    "60×90": 2,
+    "80×80": 3,
+    "50×60": 6,
+    "70×180": 6,
+    "60×120": 8
+  },
+  "verification": {
+    "liveAirtableRecordAndAttachmentIdentity": true,
+    "originalGalleryFilenameProductCodeAndExactBytes": true,
+    "driveDestinationMetadataRereadForAll50": true,
+    "driveDestinationNonPublicPermissionsChecked": true,
+    "unique50AttachmentIdentityAndDriveId": true,
+    "githubMainSafeMergeReadBackVerified": true,
+    "githubMainMappingBlobSha": "663d6268fd4de2134494b5ac01c297be8ac69be2",
+    "allTenGitHubCheckpointPatchesMerged": true,
+    "visualComparisonPerformed": false,
+    "hashComparisonPerformed": false,
+    "manualVisualReviewSuggested": true
+  },
+  "github": {
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "workPlan": "public/data/oil/tianxia/backup-work-plans/2026-11-02-2021-run31.json",
+    "patchPaths": [
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b01-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b02-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b03-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b04-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b05-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b06-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b07-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b08-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b09-verified-5.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-2021-run31-b10-verified-5.json"
+    ],
+    "latestMappingCommit": "1078ba10ae81dcb21b3ea96920c541f0a28da160",
+    "mappingFile": "public/data/oil/tianxia/drive-original-links.json"
+  },
+  "safety": {
+    "airtableModified": false,
+    "existingWebpPreviewsModified": false,
+    "sourceOriginalsDeleted": false,
+    "driveSharingMadePublic": false,
+    "credentialsDisclosed": false
+  },
+  "nextRunGuidance": "Reread current Airtable, GitHub mapping, and private Drive folders before any copies; never repeat this run's 50 attachment IDs. Continue at most 50 previously unmapped original attachments. Check new gallery 1IXDIFf5Sm_5hsY2C4eYgm8wRG2oS1-kc and sibling 1f2Xp6Bdga2vflbVbm2pcHLlfpJThkjOX; prioritize primary. Historical mappings may lack attachment IDs; overall remaining count is approximate. No image visual/hash comparison was performed."
+}
