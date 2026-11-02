@@ -50,6 +50,17 @@ def main():
                 raise ValueError(f"Drive ID reused for distinct attachments: {did}")
             old = data["byAttachment"].get(key)
             old_detail = data["byRecordAttachments"].get(compound)
+            # A previous batch may have copied the same Airtable attachment twice.
+            # Preserve the FIRST fully recorded original; do not rewrite a valid
+            # existing identity, and never reassign a Drive ID to another image.
+            if old and old_detail:
+                old_id = old.get("destinationDriveFileId") or (URL_RE.match(old.get("driveUrl", "")) or [None, None])[1]
+                detail_id = old_detail.get("destinationDriveFileId") or (URL_RE.match(old_detail.get("driveUrl", "")) or [None, None])[1]
+                if old_id and old_id == detail_id and old_id != did:
+                    assert URL_RE.match(old.get("driveUrl", "")) and URL_RE.match(old.get("driveUrl", "")).group(1) == old_id
+                    assert URL_RE.match(old_detail.get("driveUrl", "")) and URL_RE.match(old_detail.get("driveUrl", "")).group(1) == detail_id
+                    print(f"SKIP_DUPLICATE_COPY: {key} existing={old_id} alternate={did}; kept earlier complete mapping")
+                    continue
             for current in (old, old_detail):
                 if current is not None:
                     current_id = current.get("destinationDriveFileId") or (URL_RE.match(current.get("driveUrl", "")) or [None, None])[1]
