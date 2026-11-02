@@ -36,6 +36,7 @@ jobs:
       - name: Collect public trend sources
         run: python scripts/update-trends.py
       - name: Publish daily snapshot with conflict-safe rebase
+        id: publish
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -46,6 +47,18 @@ jobs:
           fi
           git commit -m "Refresh trend radar rankings"
           bash scripts/git-safe-push.sh
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+      - name: Notify LINE of verified trend update
+        if: steps.publish.outputs.changed == 'true'
+        continue-on-error: true
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TO_USER_ID: ${{ secrets.LINE_TO_USER_ID }}
+          LINE_MESSAGE: |-
+            📊 Personal OS｜網路聲量排行已更新
+            本次排行榜有新的驗證資料。
+            https://github.com/tobytsai/personal-os-static-git/blob/main/public/data/trends-latest.json
+        run: python3 scripts/send_line_notification.py
       - name: Dispatch Pages deployment for refreshed ranking
         env:
           GH_TOKEN: ${{ github.token }}
