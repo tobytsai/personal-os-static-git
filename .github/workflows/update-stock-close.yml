@@ -32,6 +32,7 @@ jobs:
       - name: Collect only source-verified official market data
         run: node scripts/update-stock-close.cjs
       - name: Commit dated public snapshot and immutable history
+        id: publish
         run: |
           if [ ! -f public/data/stocks-latest.json ]; then
             echo "Official same-day prices not yet available; no changes."
@@ -46,3 +47,15 @@ jobs:
           fi
           git commit -m "Refresh official stock close for $(date -u +%F)"
           bash scripts/git-safe-push.sh
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
+      - name: Notify LINE of updated stock close data
+        if: steps.publish.outputs.changed == 'true'
+        continue-on-error: true
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TO_USER_ID: ${{ secrets.LINE_TO_USER_ID }}
+          LINE_MESSAGE: |-
+            📈 Personal OS｜股票收盤資料已更新
+            新的官方行情已寫入觀察資料。
+            https://github.com/tobytsai/personal-os-static-git/blob/main/public/data/stocks-latest.json
+        run: python3 scripts/send_line_notification.py
