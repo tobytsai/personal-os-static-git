@@ -2,7 +2,7 @@
   "runId": "2026-11-03-0522-run40",
   "status": "verified-existing-private-Drive-originals-no-new-copy",
   "source": "Airtable 天下畫博",
-  "count": 4,
+  "count": 3,
   "errors": [],
   "snapshot": {
     "airtableRecords": 4673,
@@ -27,29 +27,6 @@
       "destinationDriveFileId": "1ombSaoVrW10itNRTqBbtEjN468tNsc1m",
       "destinationDriveFolderId": "1kclrqk1G46KnY3wOPBRDfxTep6l7NuwL",
       "sizeBytes": 39265,
-      "mimeType": "image/jpeg",
-      "backupMethod": "previously-backed-up-drive-original-identity-verified",
-      "verifiedDestinationMetadata": true,
-      "publiclyShared": false,
-      "manualVisualReviewSuggested": true,
-      "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
-    },
-    {
-      "recordId": "recEsqbAJWfATZsht",
-      "attachmentId": "attDVdmRq1FQiyGsG",
-      "attachmentField": "Attachments",
-      "attachmentIndex": 1,
-      "catalogIndex": 1113,
-      "code": "A62-5060",
-      "category": "50×60",
-      "filename": "A62.jpg",
-      "sourceFilename": "A62.jpg",
-      "driveFilename": "A62-5060__recEsqbAJWfATZsht_QiyGsG.jpg",
-      "driveUrl": "https://drive.google.com/file/d/1nmjngp5krf6Ozc0YqV0uosiUZkHloGBL/view?usp=drivesdk",
-      "sourceDriveFilename": "A62.jpg",
-      "destinationDriveFileId": "1nmjngp5krf6Ozc0YqV0uosiUZkHloGBL",
-      "destinationDriveFolderId": "1KtlfJRWJq5nMSQSQlUyzTkQ_dXwpYvyn",
-      "sizeBytes": 92713,
       "mimeType": "image/jpeg",
       "backupMethod": "previously-backed-up-drive-original-identity-verified",
       "verifiedDestinationMetadata": true,
@@ -103,5 +80,15 @@
       "manualVisualReviewSuggested": true,
       "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
     }
-  ]
+  ],
+  "skippedAlreadyIndexed": [
+    {
+      "recordId": "recEsqbAJWfATZsht",
+      "attachmentId": "attDVdmRq1FQiyGsG",
+      "existingKeys": [
+        "attDVdmRq1FQiyGsG"
+      ]
+    }
+  ],
+  "originallyVerifiedCount": 4
 }
