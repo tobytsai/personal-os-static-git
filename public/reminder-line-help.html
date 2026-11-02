@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Personal OS｜私人首頁提醒 LINE 到期通知設定</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;color-scheme:light}
+body{background:#f7f8fb;color:#20303f;line-height:1.7;margin:0}
+main{max-width:750px;margin:24px auto;padding:0 16px 44px}
+header{background:#e6f8eb;border-radius:16px;padding:20px 22px}
+h1{font-size:clamp(1.45rem,4.5vw,2rem);line-height:1.35;margin:0 0 8px}
+h2{font-size:1.17rem;margin:0 0 12px}
+p{margin:8px 0}
+section{background:#fff;border:1px solid #dce3e8;border-radius:15px;padding:20px;margin-top:16px}
+a{color:#136d47;overflow-wrap:anywhere}
+code{background:#edf1f5;padding:2px 5px;border-radius:5px;overflow-wrap:anywhere}
+ol{padding-left:23px;margin:10px 0}
+li{margin:10px 0}
+.note{color:#516276;font-size:.94rem}
+.warn{border-left:4px solid #df9651;padding:10px 12px;background:#fff8f0;border-radius:7px}
+kbd{background:#e8ebef;padding:2px 4px;border:1px solid #c9d1d9;border-radius:4px}
+strong{font-weight:750}
+</style>
+</head>
+<body><main>
+<header>
+<h1>🔔 Personal OS｜LINE 到期提醒</h1>
+<p>用現有的「首頁提醒」私人 Google 試算表，透過 Google Apps Script 每日檢查期限，再送到你已建立的 Personal OS LINE 通知中心。</p>
+<p class="note">這不是公開雲端資料，不需要在 GitHub 存放個人提醒，也不需要完成首頁尚未成功的 OAuth 彈出視窗流程。</p>
+</header>
+<section>
+<h2>一、建立與私人試算表綁定的 Apps Script</h2>
+<ol>
+<li>用你的 Google 帳號打開現有的 <strong>「首頁提醒」Google 試算表</strong>（分頁名稱必須是 <code>reminders</code>）。</li>
+<li>在試算表上方點 <strong>「擴充功能 → Apps Script」</strong>。Android Chrome 可先啟用「電腦版網站」顯示這個選單。</li>
+<li>打開 <a href="https://github.com/tobytsai/personal-os-static-git/blob/main/scripts/home-reminder-line.gs" target="_blank" rel="noopener">Personal OS LINE 提醒程式（完整原始碼）</a>，複製整份內容，貼到 Apps Script 的 <code>Code.gs</code> 編輯器，取代預設範例，再按儲存。<strong>請先核對來源是你自己的 GitHub 專案。</strong></li>
+</ol>
+</section>
+<section>
+<h2>二、設定 LINE 授權（不要貼到聊天或公開 GitHub）</h2>
+<p>Apps Script 左側 <strong>「專案設定（齒輪）→ 指令碼屬性（Script properties）」</strong>，新增兩項：</p>
+<ol>
+<li><code>LINE_CHANNEL_ACCESS_TOKEN</code>：LINE Developers 的 Messaging API Channel access token（不是 Channel secret，也不是 Channel ID）。</li>
+<li><code>LINE_TO_USER_ID</code>：相同 LINE Channel 的 Basic settings 頁面內，以 <code>U</code> 開頭的 <strong>Your user ID</strong>。</li>
+</ol>
+<p>LINE 設定：<a href="https://developers.line.biz/console/" target="_blank" rel="noopener">LINE Developers Console</a>。GitHub Secrets 中已儲存的 Token 無法重新顯示，因此應從 LINE Developers 複製目前有效的 Token。</p>
+<p class="warn"><strong>安全提醒：</strong>不要把 Token 貼入公開的網頁、試算表欄位、GitHub 程式碼或聊天。Apps Script 的指令碼屬性只允許受信任的專案編輯者管理，請保持私人試算表不公開。</p>
+</section>
+<section>
+<h2>三、一次性測試並安裝每日排程</h2>
+<ol>
+<li>回到 Apps Script 的編輯器，上方函式選單選擇 <code>sendLineReminderTest</code>，按 <strong>「執行」</strong>，依照 Google 顯示的權限內容確認授權。這一則測試訊息不會把正式提醒標記為已送達。</li>
+<li>確認手機 LINE 收到「✅ Personal OS｜私人提醒 LINE 測試成功」。</li>
+<li>上方函式選單改成 <code>installLineReminderTrigger</code>，再按 <strong>「執行」</strong>。程式會建立每天<strong>台灣時間約 08:30</strong> 的定時觸發條件。</li>
+<li>在 Apps Script 左側「觸發條件（時鐘圖示）」確認 <code>checkLineReminders</code> 的觸發條件已建立。Google 時間型觸發條件可能在指定時間附近稍有偏差。</li>
+</ol>
+<p class="note">以後不必每天開啟網頁，Apps Script 的定時觸發條件會自行檢查這份私人試算表。</p>
+</section>
+<section>
+<h2>四、何時才會收到 LINE？</h2>
+<p><strong>一般提醒：</strong>到期前 7、3、1 天以及到期當天。<strong>機車排氣定檢：</strong>到期前 30、7、1 天以及到期當天。完成（<code>done=TRUE</code>）或刪除（<code>deleted=TRUE</code>）的提醒、沒有日期的提醒，都不發送。</p>
+<p>同一則提醒的同一個日期、同一階段只會送一次；同一天多筆符合的提醒會合併成一則 LINE 以節省訊息額度。</p>
+<p class="warn"><strong>請注意：</strong>目前你的 Personal OS 首頁 Google OAuth 還沒成功連接，因此手機瀏覽器本機新增／完成／刪除的提醒，<strong>不會自動同步到試算表</strong>。LINE 只能看到私人 <code>reminders</code> 工作表中實際存在的資料。你可以先直接在試算表修改提醒，之後再完成首頁 OAuth 同步。</p>
+</section>
+<section>
+<h2>五、查看狀態或停止通知</h2>
+<p>在 Apps Script 左側「執行項目」可以看到每日檢查的成功或錯誤狀態。沒有到期提醒時會顯示「今天沒有新的符合條件提醒」，並且不發 LINE。</p>
+<p>要暫停排程，在函式選單選擇 <code>stopLineReminderTrigger</code> 執行；這不會刪除私人提醒、LINE Token 或已發送的紀錄。</p>
+<p class="note">Google 官方參考：<a href="https://developers.google.com/apps-script/guides/triggers/installable" target="_blank" rel="noopener">Apps Script 時間型觸發條件</a>、<a href="https://developers.google.com/apps-script/reference/properties/properties-service" target="_blank" rel="noopener">指令碼屬性</a>。LINE 官方參考：<a href="https://developers.line.biz/en/docs/messaging-api/sending-messages/" target="_blank" rel="noopener">Messaging API 訊息發送</a>。</p>
+</section>
+<p><a href="./index.html">返回 Personal OS 首頁</a></p>
+</main></body></html>
