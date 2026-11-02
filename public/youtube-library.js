@@ -404,11 +404,42 @@
 
   function initFloating(){
     const button=$("yt-floating-jump");
-    const refresh=()=>{button.hidden=window.scrollY<400;};
-    window.addEventListener("scroll",refresh,{passive:true});refresh();
-    button.addEventListener("click",()=>{
-      $("youtubeWorkspace").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+    const menu=$("yt-floating-topics");
+    const close=$("yt-floating-close");
+    if(!button || !menu || !close)return;
+    function setOpen(shouldOpen,restoreFocus=false){
+      menu.hidden=!shouldOpen;
+      button.setAttribute("aria-expanded",String(shouldOpen));
+      button.setAttribute("aria-label",shouldOpen?"關閉影音主題選單":"開啟影音主題選單");
+      if(shouldOpen){
+        const first=menu.querySelector("a[href]");
+        if(first)first.focus();
+      } else if(restoreFocus && !button.hidden){
+        button.focus();
+      }
+    }
+    function refresh(){
+      const show=window.scrollY>=400;
+      button.hidden=!show;
+      if(!show && !menu.hidden)setOpen(false);
+    }
+    button.addEventListener("click",()=>setOpen(menu.hidden));
+    close.addEventListener("click",()=>setOpen(false,true));
+    menu.addEventListener("click",event=>{
+      if(event.target.closest("a[href]"))setOpen(false);
     });
+    document.addEventListener("click",event=>{
+      if(!menu.hidden && !menu.contains(event.target) && !button.contains(event.target))setOpen(false);
+    });
+    document.addEventListener("keydown",event=>{
+      if(event.key==="Escape" && !menu.hidden){
+        setOpen(false,true);
+        event.stopPropagation();
+      }
+    });
+    window.addEventListener("scroll",refresh,{passive:true});
+    window.addEventListener("resize",refresh,{passive:true});
+    refresh();
   }
   setOptions();
   renderChannels();renderQueue();

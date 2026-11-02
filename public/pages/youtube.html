@@ -22,7 +22,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
 @media(max-width:680px){.wrap{padding:14px 12px 40px}.hero{padding:19px;border-radius:23px}.hero-top{display:block}.hero-actions{justify-content:flex-start;margin-top:15px}.brand{align-items:flex-start}.brand-icon{width:49px;height:49px;border-radius:16px}.pill-link{font-size:11px;padding:9px 11px}.toolbar{grid-template-columns:1fr}.help-top{justify-self:start}.shelves{grid-template-columns:1fr}.featured{gap:8px}.feature{padding:12px}.feature-icon{width:38px;height:38px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{min-height:178px;padding:12px}.card h3{font-size:15px}.open{padding:8px 7px}}
 @media(max-width:390px){.cards{grid-template-columns:1fr}.featured{grid-template-columns:1fr}}
 </style>
-<link rel="stylesheet" href="../youtube-library.css?v=20261102-1">
+<link rel="stylesheet" href="../youtube-library.css?v=20261102-2">
 </head>
 <body>
 <main class="wrap">
@@ -39,7 +39,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
     <span class="yt-kicker">PERSONAL VIDEO LIBRARY & TAIWAN TREND RADAR</span>
     <h2>📺 我的 YouTube 工作台</h2>
     <p>上方快速按鈕是「直接開啟 YouTube」；這個啟動器是你的私人影音書架：觀察台灣排行榜、整理追蹤頻道、儲存待播影片。原本的 24 個影音捷徑也會完整保留在下方。</p>
-    <nav class="yt-jumpbar" aria-label="YouTube 工作台分類選單">
+    <nav class="yt-jumpbar" id="yt-topic-navigation" aria-label="YouTube 工作台分類選單">
       <a href="#yt-ranking">🇹🇼 台灣排行觀察</a>
       <a href="#yt-channels">📡 我的追蹤頻道</a>
       <a href="#yt-watch-queue">🎬 待播清單</a>
@@ -146,9 +146,26 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
     <a href="#yt-watch-queue">↑ 返回待播清單</a><a href="../index.html#tools">⌂ 返回啟動器首頁</a>
   </nav>
 </section>
-<button type="button" class="yt-floating" id="yt-floating-jump" hidden>↑ 影音主題選單</button>
+<button type="button" class="yt-floating" id="yt-floating-jump" aria-controls="yt-floating-topics" aria-expanded="false" aria-label="開啟影音主題選單" hidden>☰ 影音主題選單</button>
+<nav class="yt-floating-topics" id="yt-floating-topics" aria-label="選擇要瀏覽的 YouTube 主題" hidden>
+  <div class="yt-floating-topics-head"><strong>📺 選擇影音主題</strong><button type="button" id="yt-floating-close" aria-label="關閉影音主題選單">✕</button></div>
+  <a href="#yt-ranking">🇹🇼 台灣排行觀察</a>
+  <a href="#yt-channels">📡 我的追蹤頻道</a>
+  <a href="#yt-watch-queue">🎬 我的待播清單</a>
+  <a href="#yt-backup">💾 備份與匯入</a>
+  <a href="#yt-original-shortcuts">🗂 原有 24 個影音捷徑</a>
+  <a href="../index.html#tools">⌂ 回到啟動器首頁</a>
+</nav>
 
 <section id="yt-original-shortcuts"><div class="section-head"><div><h2>🗂 原有 24 個影音捷徑</h2><p>從上傳圖片整理的頻道、平台與主題捷徑。</p></div><span id="count" class="count"></span></div><div class="filters" id="filters"></div><div class="cards" id="cards"></div></section>
+
+<nav class="yt-jumpbar yt-final-jumpbar" aria-label="頁面底部快速切換影音主題">
+  <a href="#yt-topic-navigation">↑ 回到影音主題選單</a>
+  <a href="#yt-ranking">🇹🇼 台灣排行</a>
+  <a href="#yt-channels">📡 追蹤頻道</a>
+  <a href="#yt-watch-queue">🎬 待播清單</a>
+  <a href="../index.html#tools">⌂ 回首頁</a>
+</nav>
 <footer class="foot">收藏與最近開啟記錄保存在目前瀏覽器。頻道捷徑使用 YouTube 搜尋，可再從結果頁選擇想看的頻道或影片。</footer>
 </main>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><article class="dialog"><div class="dialog-head"><h2 id="dialogTitle">怎麼使用 YouTube 啟動器？</h2><button class="close" id="close" aria-label="關閉">×</button></div><p id="dialogText"></p></article></div>
@@ -205,6 +222,6 @@ document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("show")});
 render();
 </script>
-<script src="../youtube-library.js?v=20261102-1" defer></script>
+<script src="../youtube-library.js?v=20261102-2" defer></script>
 <script src="../shared-nav.js?v=20261025-2" defer></script></body>
 </html>
