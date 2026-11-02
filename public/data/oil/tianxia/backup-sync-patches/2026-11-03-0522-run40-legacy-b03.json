@@ -2,7 +2,7 @@
   "runId": "2026-11-03-0522-run40",
   "status": "verified-existing-private-Drive-originals-no-new-copy",
   "source": "Airtable 天下畫博",
-  "count": 10,
+  "count": 6,
   "errors": [],
   "snapshot": {
     "airtableRecords": 4673,
@@ -81,52 +81,6 @@
       "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
     },
     {
-      "recordId": "recCyvt172MM8aq35",
-      "attachmentId": "att0MKsxiDIHqzV9A",
-      "attachmentField": "Attachments",
-      "attachmentIndex": 1,
-      "catalogIndex": 971,
-      "code": "B79-5060",
-      "category": "50×60",
-      "filename": "B79.jpg",
-      "sourceFilename": "B79.jpg",
-      "driveFilename": "B79-5060__recCyvt172MM8aq35_HqzV9A.jpg",
-      "driveUrl": "https://drive.google.com/file/d/1YfkZ5MCcXB1sEFv8kLJNbUwkyLzut8Gy/view?usp=drivesdk",
-      "sourceDriveFilename": "B79.jpg",
-      "destinationDriveFileId": "1YfkZ5MCcXB1sEFv8kLJNbUwkyLzut8Gy",
-      "destinationDriveFolderId": "1KtlfJRWJq5nMSQSQlUyzTkQ_dXwpYvyn",
-      "sizeBytes": 565282,
-      "mimeType": "image/jpeg",
-      "backupMethod": "previously-backed-up-drive-original-identity-verified",
-      "verifiedDestinationMetadata": true,
-      "publiclyShared": false,
-      "manualVisualReviewSuggested": true,
-      "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
-    },
-    {
-      "recordId": "recD1gP0CadwSMsDb",
-      "attachmentId": "attERdzJYZdQK6dYT",
-      "attachmentField": "Attachments",
-      "attachmentIndex": 1,
-      "catalogIndex": 974,
-      "code": "C4-5060",
-      "category": "50×60",
-      "filename": "C4.jpg",
-      "sourceFilename": "C4.jpg",
-      "driveFilename": "C4-5060__recD1gP0CadwSMsDb_QK6dYT.jpg",
-      "driveUrl": "https://drive.google.com/file/d/1yq1MKIfQvY_3zbNk8gbdxqrTi9u-EmSt/view?usp=drivesdk",
-      "sourceDriveFilename": "C4.jpg",
-      "destinationDriveFileId": "1yq1MKIfQvY_3zbNk8gbdxqrTi9u-EmSt",
-      "destinationDriveFolderId": "1KtlfJRWJq5nMSQSQlUyzTkQ_dXwpYvyn",
-      "sizeBytes": 39340,
-      "mimeType": "image/jpeg",
-      "backupMethod": "previously-backed-up-drive-original-identity-verified",
-      "verifiedDestinationMetadata": true,
-      "publiclyShared": false,
-      "manualVisualReviewSuggested": true,
-      "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
-    },
-    {
       "recordId": "recDIIjyhkhscwJ42",
       "attachmentId": "attCPw44Kg4RFOHXC",
       "attachmentField": "Attachments",
@@ -173,29 +127,6 @@
       "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
     },
     {
-      "recordId": "recE7uUNiSfPwuX9w",
-      "attachmentId": "attuz9tLGI0b4Zexe",
-      "attachmentField": "Attachments",
-      "attachmentIndex": 1,
-      "catalogIndex": 1045,
-      "code": "A19-5060",
-      "category": "50×60",
-      "filename": "A19.jpg",
-      "sourceFilename": "A19.jpg",
-      "driveFilename": "A19-5060__recE7uUNiSfPwuX9w_b4Zexe.jpg",
-      "driveUrl": "https://drive.google.com/file/d/1qbQVvp5TLsrkUJdNujoaDQMksICuNrh_/view?usp=drivesdk",
-      "sourceDriveFilename": "A19.jpg",
-      "destinationDriveFileId": "1qbQVvp5TLsrkUJdNujoaDQMksICuNrh_",
-      "destinationDriveFolderId": "1KtlfJRWJq5nMSQSQlUyzTkQ_dXwpYvyn",
-      "sizeBytes": 51892,
-      "mimeType": "image/jpeg",
-      "backupMethod": "previously-backed-up-drive-original-identity-verified",
-      "verifiedDestinationMetadata": true,
-      "publiclyShared": false,
-      "manualVisualReviewSuggested": true,
-      "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
-    },
-    {
       "recordId": "recEFYbc0nqtOrHh6",
       "attachmentId": "att2NR5R1VtA3YGfy",
       "attachmentField": "Attachments",
@@ -217,29 +148,37 @@
       "publiclyShared": false,
       "manualVisualReviewSuggested": true,
       "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
+    }
+  ],
+  "skippedAlreadyIndexed": [
+    {
+      "recordId": "recCyvt172MM8aq35",
+      "attachmentId": "att0MKsxiDIHqzV9A",
+      "existingKeys": [
+        "att0MKsxiDIHqzV9A"
+      ]
+    },
+    {
+      "recordId": "recD1gP0CadwSMsDb",
+      "attachmentId": "attERdzJYZdQK6dYT",
+      "existingKeys": [
+        "attERdzJYZdQK6dYT"
+      ]
+    },
+    {
+      "recordId": "recE7uUNiSfPwuX9w",
+      "attachmentId": "attuz9tLGI0b4Zexe",
+      "existingKeys": [
+        "attuz9tLGI0b4Zexe"
+      ]
     },
     {
       "recordId": "recEHpUuSqBqqvPOU",
       "attachmentId": "atteFUYhtzGFS6ROJ",
-      "attachmentField": "Attachments",
-      "attachmentIndex": 1,
-      "catalogIndex": 1066,
-      "code": "A18-5060",
-      "category": "50×60",
-      "filename": "A18.jpg",
-      "sourceFilename": "A18.jpg",
-      "driveFilename": "A18-5060__recEHpUuSqBqqvPOU_FS6ROJ.jpg",
-      "driveUrl": "https://drive.google.com/file/d/1-PZH0NxkMjvp1LAUy4Z3wKfUAJm4oKbN/view?usp=drivesdk",
-      "sourceDriveFilename": "A18.jpg",
-      "destinationDriveFileId": "1-PZH0NxkMjvp1LAUy4Z3wKfUAJm4oKbN",
-      "destinationDriveFolderId": "1KtlfJRWJq5nMSQSQlUyzTkQ_dXwpYvyn",
-      "sizeBytes": 42147,
-      "mimeType": "image/jpeg",
-      "backupMethod": "previously-backed-up-drive-original-identity-verified",
-      "verifiedDestinationMetadata": true,
-      "publiclyShared": false,
-      "manualVisualReviewSuggested": true,
-      "verification": "Live Airtable attachment identity, record ID, original filename and byte size matched previously backed up private Drive original; destination filename, JPEG type, size, parent and permissions re-read; no visual/hash comparison."
+      "existingKeys": [
+        "atteFUYhtzGFS6ROJ"
+      ]
     }
-  ]
+  ],
+  "originallyVerifiedCount": 10
 }
