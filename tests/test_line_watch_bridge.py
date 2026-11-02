@@ -26,8 +26,20 @@ class BridgeTests(unittest.TestCase):
         cls.now = datetime.now(timezone.utc)
 
     def test_seeded_records_never_realert(self):
-        self.assertEqual([], bridge.find_new_shopee(self.orders, self.prices, self.ledger, self.now))
-        self.assertEqual([], bridge.find_new_gakubuti(self.weekly, self.ledger, self.now))
+        # Freeze prior delivered quotes at the values recorded in the ledger.
+        # Real source data may change after this test was written.
+        state = deepcopy(self.prices)
+        state["last_notified"] = {
+            sid: offer for sid, offer in state.get("last_notified", {}).items()
+            if sid in self.ledger["shopee_last_sent"]
+        }
+        for sid, offer in state["last_notified"].items():
+            offer["current_price"] = self.ledger["shopee_last_sent"][sid]["price"]
+            offer["verified_at"] = self.now.isoformat()
+        self.assertEqual([], bridge.find_new_shopee(self.orders, state, self.ledger, self.now))
+        baseline = deepcopy(self.weekly)
+        baseline["weeklyNew"] = deepcopy(baseline.get("recentBaseline", []))
+        self.assertEqual([], bridge.find_new_gakubuti(baseline, self.ledger, self.now))
 
     def test_lower_verified_shopee_price_triggers_once(self):
         state = deepcopy(self.prices)
