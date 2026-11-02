@@ -40,6 +40,67 @@ def main():
             known_dests.setdefault(v["destinationDriveFileId"], key)
     for f in all_patches:
         patch = json.loads(f.read_text(encoding="utf-8"))
+        # Strict reconciliation of historical originals whose Drive copies predate
+        # the attachment-ID index. No new image is created in this branch.
+        if patch.get("status") == "verified-existing-private-Drive-originals-no-new-copy":
+            if (patch.get("runId") != "2026-11-03-0016-run35"
+                    or patch.get("errors")
+                    or patch.get("count") != len(patch.get("entries", []))):
+                raise ValueError(f"Invalid historical verification checkpoint: {f}")
+            for e in patch["entries"]:
+                rid, aid, did = e["recordId"], e["attachmentId"], e["destinationDriveFileId"]
+                if not (SAFE_REC.fullmatch(rid) and SAFE_ATT.fullmatch(aid)
+                        and SAFE_DRIVE.fullmatch(did)):
+                    raise ValueError(f"Unsafe historical original identity: {rid} {aid}")
+                url_match = URL_RE.fullmatch(e.get("driveUrl", ""))
+                if not url_match or url_match.group(1) != did:
+                    raise ValueError(f"Invalid historical Drive URL for {rid}")
+                category_folders = {
+                    "30×40": "1kclrqk1G46KnY3wOPBRDfxTep6l7NuwL",
+                    "50×60": "1KtlfJRWJq5nMSQSQlUyzTkQ_dXwpYvyn",
+                }
+                legacy = data["byRecord"].get(rid)
+                if (legacy is None
+                        or e.get("attachmentIndex") != 1
+                        or e.get("attachmentField") != "Attachments"
+                        or e.get("mimeType") != "image/jpeg"
+                        or not isinstance(e.get("catalogIndex"), int)
+                        or not 1 <= e["catalogIndex"] <= 4673
+                        or e.get("backupMethod") != "previously-backed-up-drive-original-identity-verified"
+                        or e.get("manualVisualReviewSuggested") is not True
+                        or not e.get("verification", "").startswith("Live Airtable attachment identity")
+                        or e.get("filename") != e.get("sourceFilename")
+                        or e.get("category") not in category_folders
+                        or e.get("destinationDriveFolderId") != category_folders[e["category"]]
+                        or legacy.get("recordId") != rid
+                        or legacy.get("code") != e.get("code")
+                        or legacy.get("category") != e.get("category")
+                        or legacy.get("sourceFilename") != e.get("sourceFilename")
+                        or legacy.get("driveFilename") != e.get("driveFilename")
+                        or legacy.get("driveUrl") != e.get("driveUrl")
+                        or int(legacy.get("sizeBytes", -1)) != int(e.get("sizeBytes", -2))):
+                    raise ValueError(f"Historical private original not compatible with byRecord: {rid}")
+                key = f"{rid}:{aid}"
+                compound = f"{rid}:Attachments:1:{aid}"
+                if did in known_dests and known_dests[did] != key:
+                    raise ValueError(f"Historical original Drive ID reused: {did}")
+                prev = data["byAttachment"].get(key)
+                detail = data["byRecordAttachments"].get(compound)
+                for v in (prev, detail):
+                    if v and ((v.get("destinationDriveFileId")
+                               or (URL_RE.fullmatch(v.get("driveUrl", "")) or [None, None])[1]) != did):
+                        raise ValueError(f"Conflicting historical original identity: {key}")
+                entry = dict(e)
+                entry["verifiedDestinationMetadata"] = True
+                entry["publiclyShared"] = False
+                if not prev:
+                    data["byAttachment"][key] = entry
+                    added += 1
+                    touched.append((key, compound, did))
+                if not detail:
+                    data["byRecordAttachments"][compound] = entry
+                known_dests[did] = key
+            continue
         if patch.get("status") != "drive_metadata_verified" or patch.get("source") != "Airtable 天下畫博":
             raise ValueError(f"Invalid checkpoint: {f}")
         for e in patch["entries"]:
