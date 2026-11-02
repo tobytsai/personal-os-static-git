@@ -37,6 +37,7 @@ jobs:
       - name: Fetch verified YouTube Taiwan leaderboard
         run: python scripts/update-youtube-taiwan.py
       - name: Publish verified snapshot and redeploy Pages
+        id: publish
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -50,4 +51,16 @@ jobs:
           fi
           git commit -m 'Refresh Taiwan YouTube popularity snapshot'
           bash scripts/git-safe-push.sh
+          echo 'changed=true' >> "$GITHUB_OUTPUT"
           gh workflow run pages.yml --ref main
+      - name: Notify LINE of verified Taiwan YouTube ranking update
+        if: steps.publish.outputs.changed == 'true'
+        continue-on-error: true
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_TO_USER_ID: ${{ secrets.LINE_TO_USER_ID }}
+          LINE_MESSAGE: |-
+            📺 Personal OS｜台灣 YouTube 排行已更新
+            目前有新的官方來源核實資料。
+            https://github.com/tobytsai/personal-os-static-git/blob/main/public/data/youtube-taiwan-latest.json
+        run: python3 scripts/send_line_notification.py
