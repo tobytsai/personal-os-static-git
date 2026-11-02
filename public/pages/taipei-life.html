@@ -54,7 +54,7 @@ function renderDistrictContent(name){
  if(name==="士林區"){
   selectedContent.innerHTML='<h4 class="subcategory-title">士林區次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="scienceCategory" type="button">🔬 科教館</button></div><div id="storeResults"></div>';
   document.getElementById("scienceCategory").addEventListener("click",()=>{
-   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>國立臺灣科學教育館</h4><p>🔬 展區與展覽內容 · 侯燁的場館學習卡片</p><p>📍 士林區</p><a class="map-link" href="science-museum.html">開啟科教館頁面 →</a> <a class="map-link" href="https://www.ntsec.gov.tw/" target="_blank" rel="noopener noreferrer">科教館官網 ↗</a></article>';
+   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>國立臺灣科學教育館</h4><p>🔬 展區與展覽內容 · 侯燁的場館學習卡片</p><p>📍 士林區</p><a class="map-link" href="science-museum.html">開啟科教館頁面 →</a> <a class="map-link" href="self-study-venues.html?venue=tp-science">自學場館學習 →</a> <a class="map-link" href="https://www.ntsec.gov.tw/" target="_blank" rel="noopener noreferrer">科教館官網 ↗</a></article>';
   });
   return;
  }
