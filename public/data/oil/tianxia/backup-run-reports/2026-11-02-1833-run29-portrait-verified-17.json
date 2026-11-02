@@ -1,0 +1,68 @@
+{
+  "reportDate": "2026-11-02",
+  "runId": "2026-11-02-1819-run29",
+  "status": "completed_drive_originals_and_github_mapping_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "liveImageAttachments": 5047
+  },
+  "results": {
+    "mappedPrimaryBefore": 3715,
+    "mappedPrimaryAfter": 3732,
+    "newPrimary": 17,
+    "newDriveCloudCopies": 17,
+    "backupMetadataFailures": 0,
+    "githubMappingFailures": 0,
+    "byAttachmentBefore": 3114,
+    "byAttachmentAfter": 3131,
+    "byRecordAttachmentsBefore": 1519,
+    "byRecordAttachmentsAfter": 1536,
+    "pendingBatch": 0,
+    "remainingEstimateBasedOnPrimaryCount": 1315,
+    "exactMissingCountKnown": false,
+    "originalsWithUnresolvedLegacyAttachmentIdsRemain": true
+  },
+  "category": {
+    "name": "未標尺寸・肖像訂製",
+    "count": 17,
+    "sourceOriginalGalleryFolderId": "17XJjdVPb5_z744Ie-26vSzgWkoVUkmH7",
+    "destinationFolderId": "1H1a13D3UHlXI8RNrX6SuB1gMz--86SRP",
+    "newFolderUnderMainId": "17-H63qSdB98i-sqNUbrBGutw4l43ljIb",
+    "artworkDimensionsNotProvided": true
+  },
+  "verification": {
+    "liveAirtableRecordAndAttachmentIds": true,
+    "sourceFileJpegMime": true,
+    "sourceFilenameAndExactBytes": true,
+    "uniqueDriveDestinationIds": true,
+    "destinationMetadataRereadForAll17": true,
+    "destinationPrivateAndNoPublicPermissions": true,
+    "all17InByRecord": true,
+    "all17InByAttachment": true,
+    "all17InByRecordAttachments": true,
+    "githubMainReadbackVerified": true,
+    "visualComparisonPerformed": false,
+    "hashComparisonPerformed": false,
+    "manualVisualReviewSuggested": true
+  },
+  "github": {
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "checkpointPath": "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1819-run29-portrait-originals-verified-17.json",
+    "checkpointCommit": "549b43c1502b8a25396d64e8d21df0cec9be5c4d",
+    "mergeWorkflowRunId": 41429655981,
+    "mergeWorkflowResult": "success",
+    "originalLinksMergeCommit": "ef14032ef2da2f79732b941ac5291a932c9690ad",
+    "originalLinksBlobSha": "bd5522a2336cbe0d4220243893122f040d012925"
+  },
+  "safety": {
+    "airtableModified": false,
+    "sourceOriginalsDeleted": false,
+    "existingWebpPreviewsModified": false,
+    "driveSharingMadePublic": false,
+    "credentialsDisclosed": false
+  },
+  "nextRunGuidance": "Reread latest Airtable, GitHub main mapping and Drive before work; do not recopy these 17 portrait attachments. Prioritize other unmapped primary images; do not trust JPEG filename match if exact byte size mismatches. Continue safely through the connector's authorized Drive cloud copies or proper file transfer bridge, with immutable checkpoints and post-merge readback."
+}
