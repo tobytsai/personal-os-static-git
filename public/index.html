@@ -18,6 +18,7 @@
 .hero>.recent{grid-area:recent}
 @media(max-width:1100px){.hero{grid-template-areas:"weather recent" "reminders reminders"}}
 @media(max-width:760px){.hero{grid-template-areas:"weather" "reminders" "recent"}}
+.reminder-cloud{margin:12px 0;font-size:14px}.reminder-cloud summary{cursor:pointer;padding:8px}.reminder-cloud-fields{display:grid;gap:10px}.reminder-cloud label{display:grid;gap:5px}.reminder-cloud input{width:100%;min-width:0;padding:10px;border:1px solid #ccd4df;border-radius:8px}.reminder-cloud-status{overflow-wrap:anywhere}.reminders button:disabled{opacity:.5;cursor:wait}.reminder-actions{flex-wrap:wrap}
 </style><link rel="icon" type="image/svg+xml" href="./favicon.svg">
 </head>
 <body><div class="shell"><nav class="rail"><div class="logo">◈</div><button onclick="go('home')"><b>⌂</b>首頁</button><button onclick="go('tools')"><b>▦</b>工具</button><button onclick="go('favorites')"><b>★</b>收藏</button><a href="./pages/calendar.html"><b>📅</b>行事曆</a><a href="https://trello.com/" target="_blank"><b>T</b>Trello</a><a href="https://mail.google.com/" target="_blank"><b>✉</b>Gmail</a><a href="https://drive.google.com/" target="_blank"><b>▣</b>Drive</a></nav>
@@ -34,15 +35,15 @@
 <a class="quick-link" href="https://photos.google.com/" target="_blank" rel="noopener" aria-label="相簿"><span class="quick-icon photos-icon">▧</span><span>相簿</span></a>
 <a class="quick-link" href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="抖音"><span class="quick-icon tiktok-icon">♪</span><span>抖音</span></a>
 </nav><header class="top"><div><h1>Toby 啟動器</h1><p>每天打開一次，把工作、創作、學習與生活放回同一個畫面。</p></div><div class="clock"><strong id="clock">--:--</strong><span id="date"></span></div></header>
-<div class="statusbar"><span class="status ok">● 靜態網站</span><span class="status">次頁建置中</span><span class="status">不連接私人資料</span></div>
+<div class="statusbar"><span class="status ok">● 靜態網站</span><span class="status">次頁建置中</span><span class="status">未授權不連接私人資料</span></div>
 <div class="search"><input id="q" placeholder="搜尋 ChatGPT、Trello、膠彩、旅行、Google……"></div>
 <section class="hero">
 <article class="card weather"><div class="head"><h3>🌤 桃園即時天氣</h3><a class="link" href="https://www.cwa.gov.tw/" target="_blank" rel="noopener">中央氣象署 ↗</a></div><div class="weather-big"><div><div class="temp" id="weatherTemp" style="font-size:37px">載入中</div><div id="weatherCondition">正在取得最新資料…</div></div><div class="wxicon" id="weatherIcon">🌤</div></div><div class="weather-details"><div class="weather-detail"><b id="weatherFeels">—</b><span>體感溫度</span></div><div class="weather-detail"><b id="weatherRain">—</b><span>目前降雨</span></div><div class="weather-detail"><b id="weatherHighLow">—</b><span>今日高 / 低</span></div></div><div class="weather-actions"><span class="small" id="weatherUpdated">等待更新</span><button class="weather-refresh" id="weatherRefresh" type="button" onclick="loadWeather(true)">↻ 更新天氣</button></div><div class="small" style="margin-top:6px">資料來源：<a href="https://open-meteo.com/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Open-Meteo</a></div></article>
-<section class="card reminders" aria-labelledby="reminder-heading"><div class="reminders-head"><h2 id="reminder-heading">🔔 提醒事項</h2><button type="button" class="reminder-add" id="reminder-add">＋ 新增提醒</button></div><div class="reminder-list" id="reminder-list" aria-live="polite"></div><form class="reminder-form" id="reminder-form" hidden><label>提醒內容<input name="title" required maxlength="120" placeholder="例如：機車定期排氣檢驗"></label><label>期限（選填）<input type="date" name="date"></label><label>聯絡電話（選填）<input name="phone" type="tel" maxlength="40" placeholder="例如：03-332-4414"></label><p class="reminder-error" id="reminder-error" hidden></p><div class="form-actions"><button type="submit">儲存提醒</button><button type="button" id="reminder-cancel">取消</button></div></form><p class="reminder-note">提醒與完成狀態儲存在目前的瀏覽器；開啟首頁時查看，不會自動推播或跨裝置同步。</p></section>
+<section class="card reminders" aria-labelledby="reminder-heading"><div class="reminders-head"><h2 id="reminder-heading">🔔 提醒事項</h2><button type="button" class="reminder-add" id="reminder-add">＋ 新增提醒</button></div><div class="reminder-list" id="reminder-list" aria-live="polite"></div><form class="reminder-form" id="reminder-form" hidden><label>提醒內容<input name="title" required maxlength="120" placeholder="例如：機車定期排氣檢驗"></label><label>期限（選填）<input type="date" name="date"></label><label>聯絡電話（選填）<input name="phone" type="tel" maxlength="40" placeholder="聯絡電話"></label><p class="reminder-error" id="reminder-error" hidden></p><div class="form-actions"><button type="submit">儲存提醒</button><button type="button" id="reminder-cancel">取消</button></div></form><p class="reminder-note">預設儲存在本機；可自行連接私人 Google 試算表跨裝置查看。連線不會自動上傳本機提醒，也不會自動推播。</p></section>
 <article class="card recent"><div class="head"><h3>↻ 最近使用</h3><span class="link">本機記錄</span></div><div class="chips" id="recent"></div></article></section>
 
 <section class="section" id="favorites"><div class="sectiontop"><div><h2>我的收藏</h2><div class="small">按下啟動器上的星號，常用入口會集中顯示在這裡。</div></div><div class="small" id="favoriteCount"></div></div><div class="tools" id="favoritesGrid"></div></section>
-<section class="section" id="tools"><div class="sectiontop"><div><h2>彩色啟動器</h2><div class="small">保留不同色塊，讓入口可以用視覺快速辨識。</div></div><div class="small" id="toolCount"></div></div><div class="pills" id="pills"></div><div class="tools" id="toolsGrid"></div></section><div class="foot">Personal OS 靜態版 · 不讀取任何私人 API · 收藏與最近使用保存在本機瀏覽器</div></main></div>
+<section class="section" id="tools"><div class="sectiontop"><div><h2>彩色啟動器</h2><div class="small">保留不同色塊，讓入口可以用視覺快速辨識。</div></div><div class="small" id="toolCount"></div></div><div class="pills" id="pills"></div><div class="tools" id="toolsGrid"></div></section><div class="foot">Personal OS 靜態版 · 私人 API 僅於自行授權後連接 · 收藏與最近使用保存在本機瀏覽器</div></main></div>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
 const tools=[
@@ -73,75 +74,14 @@ function renderTools(){let cats=['全部','★ 收藏',...new Set(tools.map(t=>t
 q.addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();renderTools()});
 renderTools();
 
-</script><script src="./shared-nav.js?v=20261025-2" defer></script><script>
+</script><script src="./shared-nav.js?v=20261025-2" defer></script><script src="./home-reminder-sync.js?v=20261102-1"></script><script>
 (()=>{
  const key='tobyHomeRemindersV1';
- const milkReminder={id:'milk-linfengying-20261201',title:'林鳳營高品質鮮乳｜分批領取（購買5瓶、剩餘3瓶；全脂／低脂任選）',date:'2026-12-01',phone:'',done:false};
- const defaults=[{id:'vehicle-ba6950',title:'BA-6950 機車定期排氣檢驗',date:'2026-12-31',phone:'03-332-4414',done:false},{id:'vehicle-kt3720',title:'KT-3720 機車定期排氣檢驗',date:'2027-01-31',phone:'03-332-4414',done:false},milkReminder];
- let entries; try{const raw=localStorage.getItem(key);const data=raw===null?null:JSON.parse(raw);entries=Array.isArray(data)?data:defaults.map(x=>({...x}));}catch{entries=defaults.map(x=>({...x}));}
- // Once per browser, add the new pickup reminder without replacing existing reminders.
- const milkSeedKey='tobyHomeRemindersSeedMilk20261201';
- try{if(localStorage.getItem(milkSeedKey)!=='1'){
-   if(!entries.some(x=>x.id===milkReminder.id)){
-     const updated=[...entries,{...milkReminder}];
-     localStorage.setItem(key,JSON.stringify(updated));entries=updated;
-   }
-   localStorage.setItem(milkSeedKey,'1');
- }}catch{if(!entries.some(x=>x.id===milkReminder.id))entries.push({...milkReminder})}
-
- // 將舊版首頁的甲蟲土購物提醒轉入「購物啟動器」，保留已完成狀態。
- // 只搬一次：如果購買卡片已被使用者刪除，不重新加入。
- const beetleOldId='shopping-beetle-soil-55l-20261102';
- const beetleOld=entries.find(x=>x.id===beetleOldId);
- if(beetleOld){
-  try{
-   const purchaseKey='tobyShoppingPurchaseListV1',purchaseSeedKey='tobyShoppingSeedBeetle20261102';
-   const rawPurchase=localStorage.getItem(purchaseKey);
-   const parsedPurchase=rawPurchase?JSON.parse(rawPurchase):[];
-   const purchases=Array.isArray(parsedPurchase)?parsedPurchase:[];
-   if(!purchases.some(x=>x.id==='beetle-soil-55l-20261102')&&localStorage.getItem(purchaseSeedKey)!=='1'){
-    purchases.unshift({
-     id:'beetle-soil-55l-20261102',platform:'shopee',
-     title:'甲蟲專用土／IM 大兜土（獨角仙、雞母蟲）',
-     spec:'5.5L／包',shop:'安心水族寵物',price:89,quantity:1,
-     url:'https://shopee.tw/product/187780133/3791057414',
-     note:'2026-11-02 蝦皮查詢參考價 NT$89／包。結帳前確認 5.5L 規格、運費、折價券與實付總價。',
-     done:Boolean(beetleOld.done)
-    });
-    localStorage.setItem(purchaseKey,JSON.stringify(purchases));
-    localStorage.setItem(purchaseSeedKey,'1');
-   }
-   const remaining=entries.filter(x=>x.id!==beetleOldId);
-   localStorage.setItem(key,JSON.stringify(remaining));entries=remaining;
-  }catch{entries=entries.filter(x=>x.id!==beetleOldId)}
- }
- const list=document.getElementById('reminder-list'),form=document.getElementById('reminder-form'),err=document.getElementById('reminder-error');
- let editing=null;
- function save(){try{localStorage.setItem(key,JSON.stringify(entries));return true}catch{err.textContent='無法儲存至瀏覽器，請檢查瀏覽器的儲存空間或隱私設定。';err.hidden=false;return false}}
- function closeForm(){form.hidden=true;form.reset();err.hidden=true;editing=null}
- function today(){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())}
- function days(date){const parse=x=>{const p=x.split('-').map(Number);return Date.UTC(p[0],p[1]-1,p[2])};return Math.round((parse(date)-parse(today()))/86400000)}
- function button(label,fn){const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',fn);return b}
- function showForm(item){form.hidden=false;err.hidden=true;editing=item?.id||null;form.elements.title.value=item?.title||'';form.elements.date.value=item?.date||'';form.elements.phone.value=item?.phone||'';form.elements.title.focus()}
- function render(){
-  list.replaceChildren();
-  if(!entries.length){const p=document.createElement('div');p.className='reminder-empty';p.textContent='目前沒有提醒，按「新增提醒」即可建立。';list.append(p);return}
-  [...entries].sort((a,b)=>Number(a.done)-Number(b.done)||String(a.date).localeCompare(String(b.date))).forEach(item=>{
-   const row=document.createElement('article');row.className='reminder-item'+(item.done?' done':'');
-   const info=document.createElement('div'),title=document.createElement('div'),meta=document.createElement('div');
-   title.className='reminder-title';title.textContent=item.title;meta.className='reminder-meta';
-   const diff=item.date?days(item.date):null,status=item.done?'已完成':diff===null?'未設定期限':diff<0?'已逾期 '+Math.abs(diff)+' 天':diff===0?'今天到期':'剩餘 '+diff+' 天';
-   meta.append(document.createTextNode(item.date?'期限：'+item.date+'｜'+status:'待辦｜'+status));
-   if(item.phone){meta.append(document.createTextNode('｜定檢專線：'));const link=document.createElement('a');link.href='tel:'+item.phone.replace(/[^+0-9]/g,'');link.textContent=item.phone;meta.append(link)}
-   if(item.url){const link=document.createElement('a');link.href=item.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='蝦皮商品連結';meta.append(document.createTextNode('｜'),link)}
-   info.append(title,meta);const actions=document.createElement('div');actions.className='reminder-actions';
-   actions.append(button(item.done?'恢復未完成':'標記完成',()=>{item.done=!item.done;if(save())render();else item.done=!item.done}),button('編輯',()=>showForm(item)),button('刪除',()=>{if(!confirm('確定刪除這則提醒？'))return;const previous=entries;entries=entries.filter(x=>x.id!==item.id);if(save())render();else entries=previous}));
-   row.append(info,actions);list.append(row)
-  })
- }
- document.getElementById('reminder-add').addEventListener('click',()=>showForm(null));document.getElementById('reminder-cancel').addEventListener('click',closeForm);
- form.addEventListener('submit',e=>{e.preventDefault();err.hidden=true;const title=form.elements.title.value.trim(),date=form.elements.date.value,phone=form.elements.phone.value.trim();if(!title||(date&&!/^\d{4}-\d{2}-\d{2}$/.test(date))){err.textContent='請填寫提醒內容，並確認期限格式。';err.hidden=false;return}const previous=entries.map(x=>({...x}));if(editing){const target=entries.find(x=>x.id===editing);if(!target)return;Object.assign(target,{title,date,phone})}else entries.push({id:'r-'+Date.now()+'-'+Math.random().toString(36).slice(2,8),title,date,phone,done:false});if(save()){closeForm();render()}else entries=previous});
- render();
+ let entries=[];
+ // Read existing browser reminders only. No public personal defaults or automatic migrations.
+ try{const saved=JSON.parse(localStorage.getItem(key)||'[]');if(Array.isArray(saved))entries=saved.filter(x=>x&&typeof x==='object'&&typeof x.id==='string');}catch{}
+ HomeReminderSync.mount({key,entries});
 })();
 </script>
 </body></html>
+
