@@ -142,7 +142,11 @@ function parseDailyIndex(report){
     const p=number(clean(row[percent]));
     if(value===null||p===null)continue;
     const sign=t.fields.findIndex(x=>x==='漲跌'||x.includes('漲跌('));
-    const deltaSign=sign>=0&&/-|\u2212|▼|跌/.test(clean(row[sign]))?-1:1;
+    const direction=sign>=0?clean(row[sign]):'';
+    // Prefer explicit direction; when missing, keep the percentage sign.
+    // Without this fallback a negative signed percentage was reported as a rise.
+    const deltaSign=/-|\u2212|▼|跌/.test(direction)?-1:
+      /\+|▲|漲/.test(direction)?1:(p<0?-1:1);
     const pointsCol=t.fields.indexOf('漲跌點數');
     return {'日期':requested,'指數':'發行量加權股價指數',
       '收盤指數':value,'漲跌百分比':deltaSign*Math.abs(p),
