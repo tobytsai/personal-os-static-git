@@ -110,6 +110,23 @@ footer{text-align:center;padding:24px 10px;color:#82909b;font-size:15px}
 @media(max-width:1030px){.dv-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:750px){.dv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dv-head p{font-size:18px}.dv-official{width:100%}}
 @media(max-width:420px){.dv-grid{grid-template-columns:1fr}.dv-head h2{font-size:25px}.dv-search{flex-basis:100%}.dv-card{padding:13px}}
+
+/* Page-level return to topic navigation: fixed shortcut + explicit bottom controls */
+html{scroll-behavior:smooth}
+#dailyviewTopicMenu,#trendTopicMenu{scroll-margin-top:90px}
+.return-topic-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:18px 0 6px;padding:17px;border:1px solid #d6e6e8;border-radius:18px;background:#f4fafb}
+.return-topic-hint{font-size:18px;font-weight:800;color:#466574;flex:1 1 230px}
+.return-topic-actions{display:flex;gap:10px;flex-wrap:wrap}
+.return-topic-btn{display:inline-flex;align-items:center;justify-content:center;min-height:49px;padding:10px 17px;border:1px solid #257f85;border-radius:13px;background:#186a79;color:#fff;font-size:19px;font-weight:850;line-height:1.4;text-decoration:none;cursor:pointer}
+.return-topic-btn:hover{background:#114e5a;color:white}
+.return-topic-btn.secondary{background:#fff;border-color:#c9dce4;color:#255f73}
+.return-topic-btn.secondary:hover{background:#e8f3f5;color:#164354}
+.return-topic-btn:focus-visible,#floatingTopicReturn:focus-visible{outline:3px solid #f2ac34;outline-offset:2px}
+#floatingTopicReturn{position:fixed;left:14px;bottom:15px;z-index:10001;display:inline-flex;align-items:center;justify-content:center;max-width:calc(100vw - 30px);min-height:52px;padding:10px 17px;border:1px solid #ffffff88;border-radius:999px;background:#153f54;color:#fff;font:850 18px/1.45 system-ui,-apple-system,"Noto Sans TC",sans-serif;box-shadow:0 9px 25px #153f545c;cursor:pointer}
+#floatingTopicReturn:hover{background:#0d776c}
+#floatingTopicReturn[hidden]{display:none}
+@media(max-width:620px){.return-topic-bar{padding:13px}.return-topic-actions{width:100%}.return-topic-btn{flex:1 1 142px;font-size:18px}#floatingTopicReturn{left:10px;bottom:12px;padding:10px 13px;min-height:49px;font-size:17px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -149,7 +166,7 @@ footer{text-align:center;padding:24px 10px;color:#82909b;font-size:15px}
     <span>3 日／週／月榜依原站提供</span>
     <span>近一段期間的口碑觀測</span>
   </div>
-  <div class="dv-topics-title">依興趣探索官方排行榜</div>
+  <div class="dv-topics-title" id="dailyviewTopicMenu">依興趣探索官方排行榜</div>
   <div class="dv-controls">
     <input id="dvSearch" class="dv-search" type="search" placeholder="🔎 搜尋分類，例如 圖文畫家、咖啡、書籍、觀光工廠…" aria-label="搜尋 DailyView 排行類別" autocomplete="off">
     <span id="dvTotal" class="dv-total" aria-live="polite"></span>
@@ -157,9 +174,17 @@ footer{text-align:center;padding:24px 10px;color:#82909b;font-size:15px}
   <nav class="dv-tabs" id="dvTabs" aria-label="DailyView 排行領域"></nav>
   <a id="dvAreaLink" class="dv-area-link" href="https://dailyview.tw/top100" target="_blank" rel="noopener noreferrer">全部官方排行 ↗</a>
   <div class="dv-grid" id="dvCards" aria-label="DailyView 官方排行連結"></div>
+
+  <div class="return-topic-bar" aria-label="DailyView 切換其他主題">
+    <span class="return-topic-hint">想看其他分類？直接返回主題選單。</span>
+    <div class="return-topic-actions">
+      <button type="button" class="return-topic-btn" data-return-menu="dailyview">↑ 返回 DailyView 選單</button>
+      <button type="button" class="return-topic-btn secondary" data-return-menu="trend">📊 切換每日聲量排行</button>
+    </div>
+  </div>
   <p class="dv-policy">資料來源：<a href="https://dailyview.tw/top100" target="_blank" rel="noopener noreferrer">網路溫度計 DailyView</a>。這一區是<strong>官方即時榜單的分類連結</strong>，不是本站每日自動匯入的排名數據；最新名次、聲量筆數及觀測期間請以官方頁面顯示為準。本啟動器沒有重製第三方排行內容，亦不聲稱與 DailyView 合作或獲得官方授權。</p>
 </section>
-<section class="toolbar" aria-label="排行榜搜尋及篩選">
+<section class="toolbar" id="trendTopicMenu" aria-label="排行榜搜尋及篩選">
 <div class="toolbar-top">
 <input id="search" class="search" type="search" placeholder="🔎 搜尋人物、事件、主題、新聞…" aria-label="搜尋排行">
 <label class="toggle"><input id="onlyNew" type="checkbox"> 只看新上榜</label>
@@ -176,6 +201,13 @@ footer{text-align:center;padding:24px 10px;color:#82909b;font-size:15px}
 <div class="source-note" id="sourceNote">每個榜單使用不同量測方式，不做跨平台加總。</div>
 <div id="warning" class="warning" role="status"></div>
 <section class="rank-grid" id="cards" aria-live="polite"><div class="blank">正在取得資料，稍後會顯示排名。</div></section>
+<div class="return-topic-bar" aria-label="每日排行切換其他主題">
+  <span class="return-topic-hint">看完這個榜單了？返回選單挑選其他話題。</span>
+  <div class="return-topic-actions">
+    <button type="button" class="return-topic-btn" data-return-menu="trend">↑ 返回聲量主題選單</button>
+    <button type="button" class="return-topic-btn secondary" data-return-menu="dailyview">🌡 切換 DailyView 分類</button>
+  </div>
+</div>
 <section class="method">
 <h2>📖 這份排行榜怎麼讀？</h2>
 <p><b>Google Trends：</b>台灣、美國、日本的公開 RSS 熱搜資料，按「估算搜尋量級下限」排序。RSS 僅提供一批新近熱門字詞，不代表全國完整搜尋總榜，也不提供精確成長率。</p>
@@ -186,6 +218,16 @@ footer{text-align:center;padding:24px 10px;color:#82909b;font-size:15px}
 <p>來源：<a href="https://trends.google.com/trending?geo=TW&amp;hl=zh-TW" target="_blank" rel="noopener noreferrer">Google Trends 台灣</a> · <a href="https://news.google.com/?hl=zh-TW&amp;gl=TW&amp;ceid=TW:zh-Hant" target="_blank" rel="noopener noreferrer">Google News</a> · <a href="https://github.com/trending?since=daily" target="_blank" rel="noopener noreferrer">GitHub Trending</a> · <a href="https://news.ycombinator.com/" target="_blank" rel="noopener noreferrer">Hacker News</a></p>
 <p>Threads、Instagram、TikTok、YouTube 等平台未接入官方分析資料前，不會宣稱這裡是全網社群聲量排名。</p>
 </section>
+
+<nav class="return-topic-bar" aria-label="頁尾主題選單">
+  <span class="return-topic-hint">已到頁面最下面｜不用再往上滑</span>
+  <div class="return-topic-actions">
+    <button type="button" class="return-topic-btn" data-return-menu="trend">↑ 聲量排行選單</button>
+    <button type="button" class="return-topic-btn secondary" data-return-menu="dailyview">🌡 DailyView 主題選單</button>
+    <a class="return-topic-btn secondary" href="../index.html#tools">⌂ 啟動器首頁</a>
+  </div>
+</nav>
+<button id="floatingTopicReturn" type="button" data-return-menu="auto" hidden aria-label="快速返回主題選單">↑ 回到主題選單</button>
 <footer>PERSONAL OS · 聲量啟動器｜所有數據標註來源，僅供趨勢觀察</footer>
 </main>
 <script>
@@ -498,6 +540,41 @@ start();
     renderTabs(); renderCards();
   });
   renderTabs(); renderCards();
+})();
+</script>
+
+<script>
+/* Floating one-tap return and explicit bottom links; stay within the current launcher. */
+(function () {
+  "use strict";
+  const floating = document.getElementById("floatingTopicReturn");
+  const dailyview = document.getElementById("dailyviewTopicMenu");
+  const trend = document.getElementById("trendTopicMenu");
+  if (!floating || !dailyview || !trend) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function currentMenu() {
+    const boundary = trend.getBoundingClientRect().top + window.scrollY;
+    return window.scrollY >= boundary - 130 ? "trend" : "dailyview";
+  }
+  function navigate(which) {
+    const target = (which === "auto" ? currentMenu() : which) === "trend" ? trend : dailyview;
+    target.scrollIntoView({behavior:reduced.matches ? "auto" : "smooth",block:"start"});
+  }
+  document.addEventListener("click",function (event) {
+    const control = event.target.closest("[data-return-menu]");
+    if (!control) return;
+    const which = control.getAttribute("data-return-menu");
+    if (!["auto","trend","dailyview"].includes(which)) return;
+    event.preventDefault();
+    navigate(which);
+  });
+  function refresh() {
+    floating.hidden = window.scrollY < 320;
+    floating.title = currentMenu() === "trend" ? "返回聲量排行選單" : "返回 DailyView 分類選單";
+  }
+  window.addEventListener("scroll",refresh,{passive:true});
+  window.addEventListener("resize",refresh,{passive:true});
+  refresh();
 })();
 </script>
 <script src="../shared-nav.js" defer></script>
