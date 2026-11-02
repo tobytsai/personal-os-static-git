@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: main-write-queue
@@ -45,3 +46,7 @@ jobs:
           fi
           git commit -m "Refresh trend radar rankings"
           bash scripts/git-safe-push.sh
+      - name: Dispatch Pages deployment for refreshed ranking
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
