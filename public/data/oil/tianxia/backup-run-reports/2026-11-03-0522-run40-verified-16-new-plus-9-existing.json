@@ -1,0 +1,513 @@
+{
+  "runId": "2026-11-03-0522-run40",
+  "dateLocal": "2026-11-03",
+  "timezone": "Asia/Taipei",
+  "status": "completed_github_main_verified",
+  "summary": "16 original JPEG Drive cloud copies; 9 previously backed-up originals gained canonical identity mappings; 25 records already had valid legacy attachment-ID mappings and were safely skipped.",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "works": 4673,
+    "imageAttachments": 5047
+  },
+  "before": {
+    "byRecord": 3999,
+    "byAttachment": 3548,
+    "byRecordAttachments": 1953
+  },
+  "after": {
+    "byRecord": 4015,
+    "byAttachment": 3573,
+    "byRecordAttachments": 1978,
+    "pendingBatch": 0
+  },
+  "batch": {
+    "candidatesExamined": 50,
+    "actualNewPrivateDriveOriginalCopies": 16,
+    "newlyCanonicalIndexedExistingPrivateOriginals": 9,
+    "alreadyIndexedSkipped": 25,
+    "newVerifiedCanonicalAttachmentEntries": 25,
+    "newWorkPrimaryMappings": 16,
+    "finalUnresolvedFailures": 0,
+    "duplicatePhysicalCopies": 0,
+    "newOriginalBytes": 10065786,
+    "existingVerifiedBytes": 895856,
+    "categoryCopies": {
+      "90×120": 16
+    },
+    "categoryReconciled": {
+      "50×60": 4,
+      "30×40": 5
+    }
+  },
+  "audit": {
+    "liveCompositeAttachmentIdentitiesWithAnyVerifiedRecord": 3576,
+    "liveCompositeAttachmentIdentitiesWithoutVerifiedIdentity": 1471,
+    "worksWithoutPrimaryDriveIndex": 658,
+    "sourceAndDestinationMetadataChecked": true,
+    "permissionsPrivacyChecked": true,
+    "visualComparisonPerformed": false,
+    "hashComparisonPerformed": false,
+    "note": "Counts measure matching recorded identities, not physically missing Drive files. 25 already-indexed legacy aliases do not represent new backup progress."
+  },
+  "git": {
+    "patches": [
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0522-run40-verified-16.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0522-run40-legacy-b01.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0522-run40-legacy-b02.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0522-run40-legacy-b03.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-0522-run40-legacy-b04.json"
+    ],
+    "mappingPath": "public/data/oil/tianxia/drive-original-links.json",
+    "finalMappingBlobSha": "aeaf5a04c21fbc988c9c0b5f7ac37917494f3fe7",
+    "originalNewCopiesMergeCommit": "581fce55ad648dcc3fe483d85e23eace52c59030",
+    "historicalIdentityMergeCommit": "6686e2f77d149e22cf86dc9d333fdd3f39de0708",
+    "verifiedMainReadback": true,
+    "successfulMergeWorkflowUrl": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41529984640",
+    "recoverableIssueResolved": "Initial historical patch runs failed because 25 originals already had legacy attachment-ID-only index keys. Patches were reconciled to exclude those aliases; subsequent merge succeeded."
+  },
+  "safety": {
+    "airtableModified": false,
+    "sourceOriginalDeleted": false,
+    "existingWebPChanged": false,
+    "drivePermissionsBroadened": false
+  },
+  "newCopies": [
+    {
+      "recordId": "recmS5xTTmVxjijtY",
+      "attachmentId": "att05wjgevHGF5XCX",
+      "code": "A76-90120",
+      "category": "90×120",
+      "bytes": 717649,
+      "sourceDriveFileId": "18ODX5WInbtbhyuHf6S3jbsVI0R0NI2Iw",
+      "destinationDriveFileId": "1eoH0XpgnI3nAwUQyNrQvvkNA4n7YqvGj",
+      "driveUrl": "https://drive.google.com/file/d/1eoH0XpgnI3nAwUQyNrQvvkNA4n7YqvGj/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recrihWwIUD05awVv",
+      "attachmentId": "att38pbrzSLw0E2FD",
+      "code": "B75-90120",
+      "category": "90×120",
+      "bytes": 607395,
+      "sourceDriveFileId": "14nXBXutGe1VLW7b7pEvbqoZuafN8r5Ms",
+      "destinationDriveFileId": "1xmOEgzNhC6owOoE3f0VjQsxBmNPww-Ar",
+      "driveUrl": "https://drive.google.com/file/d/1xmOEgzNhC6owOoE3f0VjQsxBmNPww-Ar/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recsIXeqC2d4Sl0kw",
+      "attachmentId": "attljim7o9WfBBhdQ",
+      "code": "B77-90120",
+      "category": "90×120",
+      "bytes": 519709,
+      "sourceDriveFileId": "1jslbGTyEe5odMPN7ps71-85_i7CSC5B2",
+      "destinationDriveFileId": "1SXRdBK3lOXZzxLF-_A5Wk-x1B19Y3fiF",
+      "driveUrl": "https://drive.google.com/file/d/1SXRdBK3lOXZzxLF-_A5Wk-x1B19Y3fiF/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recsQOJ165C7YTWMO",
+      "attachmentId": "attHGL0nYRNWERdOz",
+      "code": "A103-90120",
+      "category": "90×120",
+      "bytes": 552991,
+      "sourceDriveFileId": "1r88WLdwS6p7NGEh7tU3LcLLPWKEQbwUI",
+      "destinationDriveFileId": "1HOk_P1rK0hby9CgfMkoQ5X84jumq6Kv3",
+      "driveUrl": "https://drive.google.com/file/d/1HOk_P1rK0hby9CgfMkoQ5X84jumq6Kv3/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recsaV5PZhI6kYbiN",
+      "attachmentId": "attIZYhT59XmTT5ve",
+      "code": "A146-90120",
+      "category": "90×120",
+      "bytes": 640376,
+      "sourceDriveFileId": "1geHh9iSJm3CJ0LyPEiiJu6iWxz1IXRxZ",
+      "destinationDriveFileId": "1mMoGQkgaWdRsKcVh-CV0qbWE6UwXNckQ",
+      "driveUrl": "https://drive.google.com/file/d/1mMoGQkgaWdRsKcVh-CV0qbWE6UwXNckQ/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recuiIoPlAA7iFzrc",
+      "attachmentId": "att4ki2M0agtTK9gu",
+      "code": "B73-90120",
+      "category": "90×120",
+      "bytes": 674056,
+      "sourceDriveFileId": "1iBfxhS5cskawo44ChQ9dH6w2MrUkyHEQ",
+      "destinationDriveFileId": "1Rm8uDFkK1Mtjj8_Za_dxk9f0JsISSJqR",
+      "driveUrl": "https://drive.google.com/file/d/1Rm8uDFkK1Mtjj8_Za_dxk9f0JsISSJqR/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recv8T4VwfnuryvJ3",
+      "attachmentId": "attBAJ9ipTKHdjuF7",
+      "code": "B78-90120",
+      "category": "90×120",
+      "bytes": 439462,
+      "sourceDriveFileId": "1sjvExZwe1TdtLnCuK50etqH9itSaD0Xq",
+      "destinationDriveFileId": "1EVz5Urt22Hd3l7ZPZy96NLypexH9rlK_",
+      "driveUrl": "https://drive.google.com/file/d/1EVz5Urt22Hd3l7ZPZy96NLypexH9rlK_/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recxqAHNYF0sfdsdt",
+      "attachmentId": "attIvkXK3bz1n555E",
+      "code": "A74-90120",
+      "category": "90×120",
+      "bytes": 664595,
+      "sourceDriveFileId": "1gqTB8nwYU6Nndej_IeVC1BlaB7COdcyQ",
+      "destinationDriveFileId": "1gBDwmjxiaYkF_0ULb_zBOusP80AbRX2X",
+      "driveUrl": "https://drive.google.com/file/d/1gBDwmjxiaYkF_0ULb_zBOusP80AbRX2X/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recly77I5HeGvqtlA",
+      "attachmentId": "attrUXgxNrD83S35W",
+      "code": "X61-90120",
+      "category": "90×120",
+      "bytes": 574631,
+      "sourceDriveFileId": "1QlIqWI2qLyeoy1lfoJGj8ZYLhih4PcbL",
+      "destinationDriveFileId": "1etEUXMyefMZdkeiD2xmncv_tF4hBmuWN",
+      "driveUrl": "https://drive.google.com/file/d/1etEUXMyefMZdkeiD2xmncv_tF4hBmuWN/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recnbT62IwUraTEeu",
+      "attachmentId": "att1pcfcyI6ifhHCc",
+      "code": "X38-90120",
+      "category": "90×120",
+      "bytes": 665982,
+      "sourceDriveFileId": "1nM3Rq_5cSrwzqJ0m8GvkgMAruIorsrLT",
+      "destinationDriveFileId": "1mH47tH4vBkbhULi_YwftQTeC9T5Ylfmd",
+      "driveUrl": "https://drive.google.com/file/d/1mH47tH4vBkbhULi_YwftQTeC9T5Ylfmd/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recnovTOpfVcDnwTS",
+      "attachmentId": "att5ohT9slNVT6wEX",
+      "code": "X90-90120",
+      "category": "90×120",
+      "bytes": 1014335,
+      "sourceDriveFileId": "19-MbY8uP6hCcQ8ZLv7FiJjCicuYDWncO",
+      "destinationDriveFileId": "12P37wgmWDpY6xHDVD5w_gStGP1U0Wsbi",
+      "driveUrl": "https://drive.google.com/file/d/12P37wgmWDpY6xHDVD5w_gStGP1U0Wsbi/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recpd2PVipuEs8AAv",
+      "attachmentId": "att2s5zdve8mVAdt8",
+      "code": "X2-90120",
+      "category": "90×120",
+      "bytes": 457419,
+      "sourceDriveFileId": "1vSfY3CUeqVagwZLueJHQlxTLzap97u3M",
+      "destinationDriveFileId": "1rGMmbcKHLa00j2yETeUMNeH_rY_kpfxR",
+      "driveUrl": "https://drive.google.com/file/d/1rGMmbcKHLa00j2yETeUMNeH_rY_kpfxR/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recpw6G8OxgNGrkAo",
+      "attachmentId": "attiq8hDsYdHDIywT",
+      "code": "X21-90120",
+      "category": "90×120",
+      "bytes": 495671,
+      "sourceDriveFileId": "1HrLv8dUQTCI5Z3MHvEG0tvvQDrLTVat5",
+      "destinationDriveFileId": "1HmjgNiM35iru4_sHd-NZFGHpT4yKFq4n",
+      "driveUrl": "https://drive.google.com/file/d/1HmjgNiM35iru4_sHd-NZFGHpT4yKFq4n/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "rectnBpKDXUCH5bR9",
+      "attachmentId": "attRVRbvYqBFo0Q1Z",
+      "code": "X10-90120",
+      "category": "90×120",
+      "bytes": 690356,
+      "sourceDriveFileId": "1Pk53bIwxKbdPqqD57S2GSenY46H-jq0u",
+      "destinationDriveFileId": "1BhMEmYpef2VhyYP_JOfQAwyTpBv3hB52",
+      "driveUrl": "https://drive.google.com/file/d/1BhMEmYpef2VhyYP_JOfQAwyTpBv3hB52/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recvcvPF4b9A99cup",
+      "attachmentId": "attb9tTsBDKYArK9g",
+      "code": "X43-90120",
+      "category": "90×120",
+      "bytes": 866246,
+      "sourceDriveFileId": "1Wp4_-xEouERriN51g6dY94VzC-_JfsGA",
+      "destinationDriveFileId": "114mwz2kHmj_00ZJH_XIwZjEOkrpStRN9",
+      "driveUrl": "https://drive.google.com/file/d/114mwz2kHmj_00ZJH_XIwZjEOkrpStRN9/view",
+      "manualVisualReviewSuggested": true
+    },
+    {
+      "recordId": "recz5TlHgjw2no8BK",
+      "attachmentId": "attxVgBSWWNvAoc02",
+      "code": "X24-90120",
+      "category": "90×120",
+      "bytes": 484913,
+      "sourceDriveFileId": "1x_mLGu7I17RnEr2BxN2o3jFQFIC8fofT",
+      "destinationDriveFileId": "1p0BHuE-VsIM32I5bKTBIx1dipOinVf4y",
+      "driveUrl": "https://drive.google.com/file/d/1p0BHuE-VsIM32I5bKTBIx1dipOinVf4y/view",
+      "manualVisualReviewSuggested": true
+    }
+  ],
+  "newlyIndexedHistorical": [
+    {
+      "recordId": "recCBAsvCs81OVifJ",
+      "attachmentId": "attLHXSXPomSidvdI",
+      "code": "A87-5060",
+      "category": "50×60",
+      "bytes": 53143,
+      "destinationDriveFileId": "1JvToO5_mUZUoimPbzDmGnlBbTCpbTYQx",
+      "driveUrl": "https://drive.google.com/file/d/1JvToO5_mUZUoimPbzDmGnlBbTCpbTYQx/view?usp=drivesdk"
+    },
+    {
+      "recordId": "recCNNVi2gMTmyaJB",
+      "attachmentId": "attS0GbNbmKOs92AT",
+      "code": "A202-5060",
+      "category": "50×60",
+      "bytes": 143751,
+      "destinationDriveFileId": "13N0LEEsZ-vT6KHG1rZ-VJeIJt5r2juxl",
+      "driveUrl": "https://drive.google.com/file/d/13N0LEEsZ-vT6KHG1rZ-VJeIJt5r2juxl/view?usp=drivesdk"
+    },
+    {
+      "recordId": "recCwmE4NpOL8R8wy",
+      "attachmentId": "attcKrpMNPxQkAieb",
+      "code": "A191-3040",
+      "category": "30×40",
+      "bytes": 46085,
+      "destinationDriveFileId": "1_3dfr3HNj5vFw86uuJVbkVz4B24wu8Va",
+      "driveUrl": "https://drive.google.com/file/d/1_3dfr3HNj5vFw86uuJVbkVz4B24wu8Va/view?usp=drivesdk"
+    },
+    {
+      "recordId": "recDIIjyhkhscwJ42",
+      "attachmentId": "attCPw44Kg4RFOHXC",
+      "code": "A209-5060",
+      "category": "50×60",
+      "bytes": 150270,
+      "destinationDriveFileId": "1ZyyEtEQ73YedaBRdAgd4LBU3BMuxgZ37",
+      "driveUrl": "https://drive.google.com/file/d/1ZyyEtEQ73YedaBRdAgd4LBU3BMuxgZ37/view?usp=drivesdk"
+    },
+    {
+      "recordId": "recDRTFcdczGG93C0",
+      "attachmentId": "attbxbIVDURMbRiou",
+      "code": "A13-3040",
+      "category": "30×40",
+      "bytes": 45952,
+      "destinationDriveFileId": "1jVG2bG5HKuMYK5s7D3dQb72a3U_3IFUp",
+      "driveUrl": "https://drive.google.com/file/d/1jVG2bG5HKuMYK5s7D3dQb72a3U_3IFUp/view?usp=drivesdk"
+    },
+    {
+      "recordId": "recEFYbc0nqtOrHh6",
+      "attachmentId": "att2NR5R1VtA3YGfy",
+      "code": "A242-3040",
+      "category": "30×40",
+      "bytes": 197002,
+      "destinationDriveFileId": "11Zj154ei7heAPyFoFQR6jZotIYavWEHE",
+      "driveUrl": "https://drive.google.com/file/d/11Zj154ei7heAPyFoFQR6jZotIYavWEHE/view?usp=drivesdk"
+    },
+    {
+      "recordId": "recEbG0FfHujKyZTh",
+      "attachmentId": "attgp9MD6lVhlqROK",
+      "code": "A161-3040",
+      "category": "30×40",
+      "bytes": 39265,
+      "destinationDriveFileId": "1ombSaoVrW10itNRTqBbtEjN468tNsc1m",
+      "driveUrl": "https://drive.google.com/file/d/1ombSaoVrW10itNRTqBbtEjN468tNsc1m/view?usp=drivesdk"
+    },
+    {
+      "recordId": "recFCp10YrpMga8bh",
+      "attachmentId": "att23JPCNnnQq2sTv",
+      "code": "A329-3040",
+      "category": "30×40",
+      "bytes": 152073,
+      "destinationDriveFileId": "1VG2b09t4GUp-Tj0GRmXQJfmNd25OvJok",
+      "driveUrl": "https://drive.google.com/file/d/1VG2b09t4GUp-Tj0GRmXQJfmNd25OvJok/view?usp=drivesdk"
+    },
+    {
+      "recordId": "recFIoW3jpPNSIhBW",
+      "attachmentId": "attx1WKPf2erWyccF",
+      "code": "A107-5060",
+      "category": "50×60",
+      "bytes": 68315,
+      "destinationDriveFileId": "19yc_V3M6wCjKzH0ivj_D47fsDE8fr-85",
+      "driveUrl": "https://drive.google.com/file/d/19yc_V3M6wCjKzH0ivj_D47fsDE8fr-85/view?usp=drivesdk"
+    }
+  ],
+  "skippedLegacyAlreadyIndexed": [
+    {
+      "recordId": "rec0E2rfhSXR9jkps",
+      "attachmentId": "attEVR0qndDKp3PIh",
+      "existingKeys": [
+        "attEVR0qndDKp3PIh"
+      ]
+    },
+    {
+      "recordId": "rec13vuoj4JVowYyC",
+      "attachmentId": "attvbjXCXmyFFahuC",
+      "existingKeys": [
+        "attvbjXCXmyFFahuC"
+      ]
+    },
+    {
+      "recordId": "rec1NUweDjJsdhzch",
+      "attachmentId": "attCFbeAgvXkoi2iB",
+      "existingKeys": [
+        "attCFbeAgvXkoi2iB"
+      ]
+    },
+    {
+      "recordId": "rec1xJLFSeZv7vLhh",
+      "attachmentId": "attlMRyjSRLSoGm0w",
+      "existingKeys": [
+        "attlMRyjSRLSoGm0w"
+      ]
+    },
+    {
+      "recordId": "rec242JmaIungIDoi",
+      "attachmentId": "attjv1pM0fUoDscaJ",
+      "existingKeys": [
+        "attjv1pM0fUoDscaJ"
+      ]
+    },
+    {
+      "recordId": "rec3w9md86l76o6N6",
+      "attachmentId": "attoW3a484EWtEF3R",
+      "existingKeys": [
+        "attoW3a484EWtEF3R"
+      ]
+    },
+    {
+      "recordId": "rec53sTaGotZSwYg6",
+      "attachmentId": "atto9r06KcL0D0TtO",
+      "existingKeys": [
+        "atto9r06KcL0D0TtO"
+      ]
+    },
+    {
+      "recordId": "rec5W352zGCSsD6Fz",
+      "attachmentId": "attIG9p3qwuz41Bsa",
+      "existingKeys": [
+        "attIG9p3qwuz41Bsa"
+      ]
+    },
+    {
+      "recordId": "rec7pPBDJ1PTY0iBc",
+      "attachmentId": "attkEGZ61xaEJiPMu",
+      "existingKeys": [
+        "attkEGZ61xaEJiPMu"
+      ]
+    },
+    {
+      "recordId": "rec86SAC5TFCv0zdT",
+      "attachmentId": "attTzsHNjkIZi3uaZ",
+      "existingKeys": [
+        "attTzsHNjkIZi3uaZ"
+      ]
+    },
+    {
+      "recordId": "rec8YLolyBltz7baX",
+      "attachmentId": "attykPwbI8OJP34tc",
+      "existingKeys": [
+        "attykPwbI8OJP34tc"
+      ]
+    },
+    {
+      "recordId": "rec8eQpxmmXV9jNfc",
+      "attachmentId": "att1g4rSGoUpX1iyE",
+      "existingKeys": [
+        "att1g4rSGoUpX1iyE"
+      ]
+    },
+    {
+      "recordId": "rec96TKFVgZdDGIhH",
+      "attachmentId": "attKbGiORIPAKu1sY",
+      "existingKeys": [
+        "attKbGiORIPAKu1sY"
+      ]
+    },
+    {
+      "recordId": "rec9LmSjgli5cvjBf",
+      "attachmentId": "attD99KOstHZyBTei",
+      "existingKeys": [
+        "attD99KOstHZyBTei"
+      ]
+    },
+    {
+      "recordId": "rec9nurvHrCxOfJjc",
+      "attachmentId": "attfD6wP4QL8rVtRP",
+      "existingKeys": [
+        "attfD6wP4QL8rVtRP"
+      ]
+    },
+    {
+      "recordId": "recAEG96psHHnXQZv",
+      "attachmentId": "attx8KklQEnw3CyPA",
+      "existingKeys": [
+        "attx8KklQEnw3CyPA"
+      ]
+    },
+    {
+      "recordId": "recAZiXDoMVctn5P0",
+      "attachmentId": "attSzruvKn7iGhu29",
+      "existingKeys": [
+        "attSzruvKn7iGhu29"
+      ]
+    },
+    {
+      "recordId": "recBG6XmmJ47MRZWL",
+      "attachmentId": "attJ5l8g1G5CtWHNL",
+      "existingKeys": [
+        "attJ5l8g1G5CtWHNL"
+      ]
+    },
+    {
+      "recordId": "recBXsX3tUd3PuomX",
+      "attachmentId": "attVI1B0dwkbnOPXX",
+      "existingKeys": [
+        "attVI1B0dwkbnOPXX"
+      ]
+    },
+    {
+      "recordId": "recC6nmpGJXfoQTEA",
+      "attachmentId": "attl2190OMVADAjR4",
+      "existingKeys": [
+        "attl2190OMVADAjR4"
+      ]
+    },
+    {
+      "recordId": "recCyvt172MM8aq35",
+      "attachmentId": "att0MKsxiDIHqzV9A",
+      "existingKeys": [
+        "att0MKsxiDIHqzV9A"
+      ]
+    },
+    {
+      "recordId": "recD1gP0CadwSMsDb",
+      "attachmentId": "attERdzJYZdQK6dYT",
+      "existingKeys": [
+        "attERdzJYZdQK6dYT"
+      ]
+    },
+    {
+      "recordId": "recE7uUNiSfPwuX9w",
+      "attachmentId": "attuz9tLGI0b4Zexe",
+      "existingKeys": [
+        "attuz9tLGI0b4Zexe"
+      ]
+    },
+    {
+      "recordId": "recEHpUuSqBqqvPOU",
+      "attachmentId": "atteFUYhtzGFS6ROJ",
+      "existingKeys": [
+        "atteFUYhtzGFS6ROJ"
+      ]
+    },
+    {
+      "recordId": "recEsqbAJWfATZsht",
+      "attachmentId": "attDVdmRq1FQiyGsG",
+      "existingKeys": [
+        "attDVdmRq1FQiyGsG"
+      ]
+    }
+  ]
+}
