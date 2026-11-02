@@ -1,0 +1,316 @@
+{
+  "reportDate": "2026-11-02",
+  "run": "2026-11-02-1323-run25",
+  "stage": "completed_drive_copies_and_github_main_merge_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "liveAttachmentReferences": 5047,
+    "snapshotDate": "2026-10-30"
+  },
+  "counts": {
+    "beforeByRecord": 3582,
+    "afterByRecord": 3615,
+    "newPrimary": 33,
+    "verifiedNewAttachmentMappings": 36,
+    "newPhysicalDriveCopies": 36,
+    "reusedPreviouslyExistingDestinations": 0,
+    "afterByAttachment": 3014,
+    "afterByRecordAttachments": 1419,
+    "pendingBatch": 0,
+    "verifiedUniqueDestinationFiles": 36,
+    "unmappedReferencesWithLegacyPrimaryAssumedCovered": 1429,
+    "legacyPrimaryRecordsLackingAttachmentIdentity": 1796,
+    "pendingNonJpegAttachments": 419,
+    "remainingByPrimaryApprox": 1432,
+    "metadataOrCloudCopyFailure": 0,
+    "postCommitIdentityMismatch": 0
+  },
+  "bySize": {
+    "50×150": 30,
+    "100×100": 2,
+    "30×40": 1,
+    "50×60": 3
+  },
+  "byField": {
+    "Attachments": 33,
+    "圖檔2": 3
+  },
+  "github": {
+    "repo": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "mappingPath": "public/data/oil/tianxia/drive-original-links.json",
+    "mappingBlobSha": "8daf20b1fd8c88f6c31badcdbde8e8cafabe3407",
+    "lastVerifiedMappingMergeCommit": "71e326afc5f6b974dae2dfdf6408b4a78ceefef4",
+    "checkpoints": [
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1323-run25-a-verified-6.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1323-run25-b-verified-6.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1323-run25-c-verified-6.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1323-run25-d-verified-6.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1323-run25-e-verified-6.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1323-run25-f-verified-6.json"
+    ],
+    "readBackAllAttachmentIdentities": true
+  },
+  "verification": {
+    "liveAttachmentIdNameTypeAndExactBytes": true,
+    "originalDriveSourceWasJpeg": true,
+    "postCopyDriveMetadataReread": true,
+    "privatePermissionMetadataVerified": true,
+    "independentVisualVerification": false,
+    "independentCryptographicHashVerification": false,
+    "all36UniqueDestId": true
+  },
+  "manualReview": {
+    "sourceGalleryCategoryDisagreesWithAirtable": [
+      {
+        "code": "G5-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "G5.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E6-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E6.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F5-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F5.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "G4-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "G4.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F2-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F2.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "D7-100100",
+        "sourceGalleryFolderId": "1kvN6-Y_rSj6XhhFtsqmisr4eXCQK1-4O",
+        "sourceFilename": "D7.jpg",
+        "assignedCategory": "100×100"
+      },
+      {
+        "code": "F9-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F9.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E21-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E21.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E9-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E9.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E1-100100",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E1.jpg",
+        "assignedCategory": "100×100"
+      },
+      {
+        "code": "G2-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "G2.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E25-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E25.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F10-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F10.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E11-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E11.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E10-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E10.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E14-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E14.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E16-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E16.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "G3-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "G3.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F6-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F6.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E23-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E23.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F7-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F7.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F1-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F1.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "G1-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "G1.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F11-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F11.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E19-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E19.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E8-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E8.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F4-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F4.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F3-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F3.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E12-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E12.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "E13-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "E13.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "F8-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "F8.jpg",
+        "assignedCategory": "50×150"
+      },
+      {
+        "code": "G6-50150",
+        "sourceGalleryFolderId": "1UacaIKY-xmP4URRkUMvfobxKLIu2oyfU",
+        "sourceFilename": "G6.jpg",
+        "assignedCategory": "50×150"
+      }
+    ],
+    "productCodeAndAttachmentFilenameDisagreement": [
+      {
+        "recordId": "recKvIvU25bEGJBfA",
+        "code": "A333-1-3040",
+        "airtableAttachmentFilename": "A233-3040.jpg",
+        "sourceDriveFilename": "A233.jpg"
+      }
+    ],
+    "note": "Exact names/prefix and byte size align, but gallery-size labels and one product code disagree; independently inspect artwork before considering these identities visually confirmed."
+  },
+  "safety": {
+    "airtableUpdated": false,
+    "originalSourceDeleted": false,
+    "webpPreviewsModified": false,
+    "publicPermissionsGranted": false,
+    "duplicateDestinationCreated": false,
+    "forcePushUsed": false
+  },
+  "allProcessedIdentityKeys": [
+    "recyuXucIxSDAp3a4:attBN5NmoZrxMaMAQ",
+    "recxkqCHn8KqdeKpF:attK3IkTN2meLDk56",
+    "recxDImB3YbYxZ6XV:attplYaJsCIQlMHEP",
+    "recwMR9noNjsPZrl8:att2YIeUdZThRi3bu",
+    "recvKlUwdGTOeNhDE:attQY1kNQEKy3DqaW",
+    "rectUY5nlh2jmnfR8:attQkxynYCtM5U82o",
+    "recmwwAtk4RnA3gRa:attKGZw0ncg5mmzNl",
+    "recmTTufEuv7sylwl:atthyPUH0blrvkvpZ",
+    "recklVm7idZt7DciJ:attA0E2gZyw7j6w9j",
+    "recjqZxf7cByIAXW6:attXAVfhOAe5UrNpy",
+    "reciGdJ7Nvbh7gmUi:att1iNdXnfwRvBgim",
+    "recewpH5wnaqvsf34:attHVB1bQ3uD91hLQ",
+    "recaO35u7AXNesLtt:att6TXxs2fEYbGrYV",
+    "recZkPWkAyeVp6Fq6:attl7wQdliJYFyT9y",
+    "recVVl4iAQanSuo4B:attAMAA981Z9wFdk7",
+    "recSYoxbk31az8vwI:attyWPuEkdoO517H4",
+    "recQxbGExhwOm05uy:attuBbzoluuU6f0X0",
+    "recMa7P6Vx3Q5vl7e:attLxMJInIysfJLH2",
+    "recM2X8laqOMWOmN6:att11kFlNMjY8bQDZ",
+    "recKvIvU25bEGJBfA:attAIprWTuENn15pq",
+    "recGx0bdIExwA15BI:attUG3JLKs0jRimRC",
+    "recGJzj95Y1mr92pt:attdbMfGQrMdGUwOF",
+    "recDrFPm83Eeuhx6N:attyhrwHQ672Xlnzx",
+    "recDJCJZkfUYaHQuq:attYIZ5CwhDUfFZFr",
+    "recDIJvnwbHc3sNvk:attBII1ahPBkTMiuY",
+    "recAn2foIzO8nnnlW:att0pZtAW5gXDxZm4",
+    "rec9FSOTpIeeGv5Dy:attszVcMhUztNLQoG",
+    "rec7dG9nfT6A08sQN:attymStS2OAZy30XS",
+    "rec782IVJmqssfhP9:attKqn0BHsGpEIc5v",
+    "rec6HkO0d4MpEkwMf:atteYtayaSZzewA3w",
+    "rec4rNP9UM2cDP8EP:attWCQwg66SUZInYq",
+    "rec3sa6xW4odTbaBj:attaSJMdErLnoXsKk",
+    "rec0e9oLSbYfECYe0:att59e05YycXGAduZ",
+    "rec4raap8juzSbvks:attd3oX9pEUIhff2B",
+    "recXxtpu6Un2RjJKc:attsTQQu31AsPuEYw",
+    "recrR2JV8z6GghlVJ:attpbiGupyzlr4VTp"
+  ]
+}
