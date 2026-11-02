@@ -72,6 +72,28 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 .thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px}.thumb{border:2px solid transparent;padding:0;border-radius:8px;background:#f6f7f8;overflow:hidden;width:57px;height:57px}
 .thumb img{width:100%;height:100%;object-fit:contain}.thumb.active{border-color:#7760ca}.notice{font-size:11px;color:#777;background:#f3f4f6;padding:9px;border-radius:10px}
 @media(max-width:700px){.majorgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.majorbtn{padding:9px;font-size:12px}.tier{padding:10px}.minorchips button{font-size:11px}.metrics{grid-template-columns:repeat(2,1fr)}.pairpreview .photo{height:170px}.shell{padding:8px 12px 60px}.masthead{display:block}.actions{margin-top:14px}.metrics{gap:7px}.metric{padding:10px 11px}.metric strong{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:170px}.cardbody{padding:9px}.card h3{font-size:12px;min-height:38px}.cardlinks{flex-wrap:wrap}.cardlinks a,.cardlinks button{min-width:100%}.viewerbody{display:block}.bigstage{min-height:280px;max-height:55dvh}.bigstage img{max-height:50dvh}.viewside{padding:12px}.sectiontop h2{font-size:16px}}
+
+/* 額緣高橋新品追蹤，保留既有成品／作法圖庫結構 */
+.gbpanel{padding:20px;margin:18px 0 22px;background:linear-gradient(145deg,#fffefc,#f6f3ed);border:1px solid #e5ddd0;border-radius:19px}
+.gbpanel h2{font-size:21px;margin:0 0 6px;color:#3a352e}.gbpanel p{margin:0;color:#6c685f}
+.gbpanel .gbbuttons{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0 15px}
+.gbpanel .gbbuttons a{padding:9px 12px;border-radius:10px;border:1px solid #ded5c4;background:#fff;font-size:13px;font-weight:750}
+.gbmetrics{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+.gbmetrics span{padding:6px 10px;border-radius:999px;background:#f0e8db;color:#635442;font-size:12px;font-weight:700}
+.gbsectionhead{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap;margin:22px 0 11px}
+.gbsectionhead h3{font-size:17px;margin:0}.gbsectionhead small{font-size:12px;color:#887f72}
+.gbempty{padding:17px;border:1px dashed #d1c7b9;background:#ffffffc9;border-radius:12px;color:#756e63}
+.gbgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.gbcard{border:1px solid #e7ded1;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 4px 10px #695f4b0c}
+.gbcover{display:block;background:#f5f3ec;text-align:center;min-height:190px}
+.gbcover img{display:block;width:100%;height:190px;object-fit:contain;image-rendering:auto}
+.gbcardmain{padding:12px}.gbcardmain h4{font-size:15px;line-height:1.45;margin:4px 0}.gbcardmain p{font-size:12px;line-height:1.6;margin:7px 0;color:#67615a}
+.gbmeta{display:flex;flex-wrap:wrap;gap:7px;color:#827869;font-size:11px;font-weight:700}
+.gblinks{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}
+.gblinks a{display:grid;place-items:center;padding:9px 5px;border-radius:8px;background:#f7f4ed;color:#6d513a;border:1px solid #e8dfd0;font-size:12px;font-weight:750}
+.gbdisclaimer{font-size:11px!important;color:#887d72!important;margin-top:9px!important}
+@media(max-width:650px){.gbpanel{padding:13px}.gbgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.gbcover img{height:155px}.gbcardmain{padding:9px}.gbcardmain h4{font-size:13px}.gblinks{grid-template-columns:1fr}.gbbuttons a{flex:1 1 125px;text-align:center}}
+
 </style>
 </head>
 <body>
@@ -85,6 +107,26 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <div class="metric"><strong id="totalExamples">—</strong><span>已對應 Drive 示範圖的商品</span></div>
 <div class="metric"><strong id="totalPictures">—</strong><span>成品示範照片</span></div>
 <div class="metric"><strong id="methodPictures">—</strong><span>額緣框作法圖片</span></div>
+</section>
+
+<section class="gbpanel" id="gakubutiWeekly" aria-label="日本額縁のタカハシ每週新品">
+ <h2>🇯🇵 額縁のタカハシ｜每週新品觀察</h2>
+ <p>日本官網新品同步區：只把首次出現的「新商品」公告列為本週新增；歷史品項單獨展示，不會誤列為新商品。</p>
+ <div class="gbbuttons">
+  <a href="https://www.gakubuti.net/" target="_blank" rel="noopener noreferrer">↗ 額緣高橋官方網站</a>
+  <a href="https://www.gakubuti.net/news" target="_blank" rel="noopener noreferrer">↗ 官網新品公告</a>
+  <a id="gbSheet" href="https://docs.google.com/spreadsheets/d/1zICJamExQN3uyuhnCrr_eJrRnIkrdICGQ591l5-BuJg/edit" target="_blank" rel="noopener noreferrer">↗ 每週追蹤試算表</a>
+  <a href="https://drive.google.com/drive/folders/1d_0jUcSWmZRkFuLcjpoofP6TrpJ4D8Z-" target="_blank" rel="noopener noreferrer">↗ Drive 說明大圖</a>
+ </div>
+ <div class="gbmetrics" aria-live="polite">
+  <span>最近核對：<b id="gbCheckDate">2026-11-02</b></span>
+  <span>官網最新公告：<b id="gbLatestDate">2026-10-09</b></span>
+  <span>本週新增：<b id="gbNewCount">0</b> 筆</span>
+ </div>
+ <div class="gbsectionhead"><h3>🆕 本週新增卡片</h3><small id="gbWindow">2026/10/26 – 11/02</small></div>
+ <div id="gbWeeklyCards" class="gbgrid"><div class="gbempty">這週還沒有新品公告。</div></div>
+ <div class="gbsectionhead"><h3>📚 近期新品｜初始參考基準</h3><small>非本週新增；已收錄，後續比對不重複建卡</small></div>
+ <div id="gbBaselineCards" class="gbgrid"></div>
 </section>
 <section class="toolbar" aria-label="圖庫篩選">
 <div class="searchrow"><input id="search" type="search" placeholder="搜尋商品名稱、編號、內容、分類…" aria-label="搜尋商品"><button type="button" class="action" id="resetFilters">清除分類條件</button></div>
@@ -136,6 +178,22 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <p>為保留私人 Google Drive 原有權限，系統不會公開分享或轉存原始圖片；無法讀取 Drive 圖時，商品卡片自動嘗試使用官網圖片。</p>
 <button type="button" class="action" id="helpClose">了解</button>
 </dialog>
+
+<script src="../data/gakubuti-weekly.js"></script>
+<script>
+(function(){
+const d=window.TOBY_GAKUBUTI_WEEKLY;if(!d)return;
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const card=x=>'<article class="gbcard"><a class="gbcover" href="'+esc(x.large)+'" target="_blank" rel="noopener noreferrer" title="開啟 Drive 大圖"><img loading="lazy" src="'+esc(x.thumb)+'" alt="'+esc(x.title)+'的 AI 概念說明縮圖"></a><div class="gbcardmain"><div class="gbmeta"><span>'+esc(x.date)+'</span><span>・'+esc(x.category)+'</span></div><h4>'+esc(x.title)+'</h4><p class="gbjapanese">'+esc(x.original)+'</p><p>'+esc(x.details)+'</p><div class="gblinks"><a href="'+esc(x.news)+'" target="_blank" rel="noopener noreferrer">↗ 官網公告</a><a href="'+esc(x.large)+'" target="_blank" rel="noopener noreferrer">↗ Drive 說明圖</a><a href="'+esc(x.product)+'" target="_blank" rel="noopener noreferrer">↗ 商品詳情</a></div><p class="gbdisclaimer">此圖為 AI 概念示意，非官網商品實拍；結構規格請以原廠資料為準。</p></div></article>';
+const wk=Array.isArray(d.weeklyNew)?d.weeklyNew:[];
+document.getElementById("gbNewCount").textContent=wk.length;
+document.getElementById("gbCheckDate").textContent=d.updated;
+document.getElementById("gbLatestDate").textContent=d.newestPublished;
+document.getElementById("gbWindow").textContent=d.windowStart+" – "+d.windowEnd;
+document.getElementById("gbWeeklyCards").innerHTML=wk.length?wk.map(card).join(""):'<div class="gbempty">官網本週尚未公告新商品；此處會在每週查核有新商品時新增卡片。</div>';
+document.getElementById("gbBaselineCards").innerHTML=(Array.isArray(d.recentBaseline)?d.recentBaseline:[]).map(card).join("");
+})();
+</script>
 <script src="../data/finished-products-0.js"></script>
 <script src="../data/finished-products-1.js"></script>
 <script src="../data/finished-products-2.js"></script>
