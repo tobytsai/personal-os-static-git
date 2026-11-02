@@ -1,0 +1,40 @@
+name: Validate private LINE reminder integration
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/home-reminder-line.gs'
+      - 'scripts/test-home-reminder-line.cjs'
+      - 'public/home-reminder-sync.js'
+      - 'public/index.html'
+      - 'public/reminder-line-help.html'
+      - '.github/workflows/test-home-reminder-line.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/home-reminder-line.gs'
+      - 'scripts/test-home-reminder-line.cjs'
+      - 'public/home-reminder-sync.js'
+      - 'public/index.html'
+      - 'public/reminder-line-help.html'
+      - '.github/workflows/test-home-reminder-line.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate privacy-preserving reminder rules and homepage sync
+        run: |
+          node --test scripts/test-home-reminder-line.cjs scripts/test-home-reminder-sync.cjs scripts/test-home-reminder-dom.cjs
+      - name: Confirm setup help remains accessible
+        run: |
+          test -f public/reminder-line-help.html
+          grep -Fq './reminder-line-help.html' public/home-reminder-sync.js
