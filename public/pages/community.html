@@ -92,9 +92,58 @@ footer{margin:27px 4px 0;color:var(--muted);font-size:.83rem;line-height:1.75;ov
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 .taxonomy{background:#ffffffd9;border:1px solid #dceee3;border-radius:20px;padding:16px;margin:15px 0}.taxonomy h2{font-size:1.08rem;margin:0 0 5px}.taxonomy p{font-size:.8rem;color:var(--muted);margin:0 0 8px;line-height:1.6}.level-label{font-size:.88rem;font-weight:850;color:#246849;margin:12px 0 2px}.taxonomy .filters{margin:0}.source-label{font-size:.88rem;font-weight:850;color:#246849;margin:16px 0 0}.tags{font-size:.75rem;color:#3f735d;line-height:1.65;margin-top:7px}.tags span{display:inline-block;background:#f0f8f3;border-radius:8px;padding:2px 6px;margin:2px 3px 0 0}.tax-reset{border:0;background:transparent;color:#247957;font-weight:800;cursor:pointer;padding:4px 0}.case-source{font-size:.75rem;color:#6c8079;margin:12px 0 0;line-height:1.5}.edit-tax{align-self:flex-start;margin:8px 0 0;border:1px solid #b8ddc5;background:#fff;color:#246849;border-radius:10px;padding:7px 10px;font:inherit;font-size:.8rem;font-weight:800;cursor:pointer}.tax-dialog{width:min(650px,calc(100% - 24px));max-height:85vh;border:0;border-radius:20px;padding:0;box-shadow:0 20px 70px #143d2a55;color:var(--ink)}.tax-dialog::backdrop{background:#143d2a99}.tax-dialog form{padding:20px;overflow:auto;max-height:85vh}.tax-dialog h2{margin:0 0 6px;font-size:1.2rem}.tax-dialog p{color:var(--muted);font-size:.83rem;line-height:1.5}.tax-dialog fieldset{border:1px solid #d9ebdf;border-radius:14px;margin:12px 0;padding:11px}.tax-dialog legend{font-weight:850;color:#246849;padding:0 5px}.tax-choices{display:flex;flex-wrap:wrap;gap:7px}.tax-choices label{display:inline-flex;align-items:center;gap:5px;background:#f1f8f3;border-radius:9px;padding:7px 9px;font-size:.85rem}.tax-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.tax-actions button{font:inherit}.tax-error{color:#a13232!important}.edit-tax:focus-visible{outline:3px solid #ffbf43;outline-offset:2px}.reading{margin:12px 0;padding:12px;background:#f2f9f2;border:1px solid #dceee3;border-radius:12px}.reading summary{cursor:pointer;font-weight:850;color:#246849}.reading p{font-size:.78rem;color:#617b6c;line-height:1.5}.reading a{display:block;margin-top:7px;color:#216747;font-size:.85rem;line-height:1.5;overflow-wrap:anywhere}.reading .reading-main{font-weight:800}
+
+/* Mini Course Generator: featured draft learning path and individual course links */
+.mcg-panel{margin:17px 0;border:1px solid #c8e6d3;background:#ffffffed}
+.mcg-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.mcg-heading>div{flex:1 1 320px;min-width:0}.mcg-heading h2{font-size:1.34rem;margin:7px 0 5px;color:#205b40}
+.mcg-heading p{max-width:800px;margin:0;color:#48685b;line-height:1.75;font-size:.97rem}
+.mcg-eyebrow{font-size:.74rem;font-weight:850;letter-spacing:.08em;color:#237956}
+.mcg-overview{display:inline-flex;justify-content:center;align-items:center;padding:12px 15px;border-radius:12px;background:#257d58;color:#fff;text-decoration:none;font-weight:850;line-height:1.5}
+.mcg-draft-note{background:#f7f3e8;border:1px solid #ebe0c4;border-radius:12px;padding:12px 14px;margin:13px 0;color:#725b32;font-size:.88rem;line-height:1.65}
+.mcg-course-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.mcg-course-link{display:flex;flex-direction:column;align-items:flex-start;min-width:0;gap:5px;background:#f2faf4;border:1px solid #d7eadb;padding:13px 12px;border-radius:13px;color:#244d3a;text-decoration:none;transition:background .16s}
+.mcg-course-link:hover{background:#e5f4eb}.mcg-course-link:focus-visible,.mcg-overview:focus-visible{outline:3px solid #ffbf43;outline-offset:2px}
+.mcg-number{font-size:.75rem;font-weight:900;color:#428562}.mcg-course-title{font-size:1.03rem;font-weight:900;line-height:1.4;overflow-wrap:anywhere}
+.mcg-course-link small{font-size:.79rem;color:#597567;line-height:1.5}.mcg-state{margin-top:auto;padding-top:5px;font-size:.75rem;font-weight:850;color:#3c795c}
+.mcg-panel-tip{margin:12px 0 0;font-size:.84rem;color:#58746a;line-height:1.55}
+.mcg-card-state{margin:8px 0 0;padding:9px 10px;border-radius:10px;background:#fbf5e7;color:#785e30;font-size:.8rem;line-height:1.5}
+@media(max-width:960px){.mcg-course-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.mcg-heading h2{font-size:1.2rem}.mcg-course-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mcg-heading p{font-size:.91rem}.mcg-overview{width:100%}}
+@media(max-width:390px){.mcg-course-grid{grid-template-columns:1fr}}
 </style></head><body><main class="wrap">
 <a class="back" href="../index.html">← 回到首頁</a>
 <header class="hero"><div class="eyebrow">COMMUNITY • PLACE • ACTION</div><h1>社區營造啟動器</h1><p>把社造計畫、地方案例、影片、書籍與相關資源集中在一起。可依地區、計畫主題及組織類型探索，也保留 Trello 原始清單分類；點開卡片即可前往原始資料。</p><div class="hero-actions"><a href="https://trello.com/b/evcfCGrp/%E7%A4%BE%E5%8D%80%E7%87%9F%E9%80%A0" target="_blank" rel="noopener">🗂 開啟 Trello 社區營造看板</a><a href="#cards">↓ 瀏覽全部卡片</a></div></header>
+
+<section class="shelf mcg-panel" id="mcg-learning" aria-labelledby="mcgHeading">
+  <div class="mcg-heading">
+    <div>
+      <div class="mcg-eyebrow">📗 MINI COURSE GENERATOR · 線上微課程</div>
+      <h2 id="mcgHeading">《社區營造入門》五單元</h2>
+      <p>從田野調查、文化轉譯、社區參與，到工藝營運與成果評估。每個單元提供實際案例、3 題知識測驗、2 題反思問題與實作練習。</p>
+    </div>
+    <a class="mcg-overview" href="https://admin.minicoursegenerator.com/collection/fe1f2847-5b96-4634-9eae-f2492caf01a3/mini-courses" target="_blank" rel="noopener noreferrer">🔐 編輯整套課程 ↗</a>
+  </div>
+  <div class="mcg-draft-note" role="note">🔒 <strong>尚未發布：</strong>此課程目前保存在 MCG 草稿中，以下都是管理員編輯連結，需登入 Mini Course Generator 帳號才能開啟；學員課程連結須待發布後再更新。</div>
+  <div class="mcg-course-grid">
+    <a class="mcg-course-link" href="https://admin.minicoursegenerator.com/mini-course/183347/page" target="_blank" rel="noopener noreferrer" aria-label="開啟單元 01 田野調查 的 MCG 草稿編輯器">
+      <span class="mcg-number">01</span><span class="mcg-course-title">田野調查</span><small>重新認識自己的地方</small><span class="mcg-state">草稿 · 編輯課程 ↗</span>
+    </a>
+    <a class="mcg-course-link" href="https://admin.minicoursegenerator.com/mini-course/183348/page" target="_blank" rel="noopener noreferrer" aria-label="開啟單元 02 文化轉譯 的 MCG 草稿編輯器">
+      <span class="mcg-number">02</span><span class="mcg-course-title">文化轉譯</span><small>讓地方記憶被理解</small><span class="mcg-state">草稿 · 編輯課程 ↗</span>
+    </a>
+    <a class="mcg-course-link" href="https://admin.minicoursegenerator.com/mini-course/183349/page" target="_blank" rel="noopener noreferrer" aria-label="開啟單元 03 社區參與 的 MCG 草稿編輯器">
+      <span class="mcg-number">03</span><span class="mcg-course-title">社區參與</span><small>把計畫變成共同行動</small><span class="mcg-state">草稿 · 編輯課程 ↗</span>
+    </a>
+    <a class="mcg-course-link" href="https://admin.minicoursegenerator.com/mini-course/183350/page" target="_blank" rel="noopener noreferrer" aria-label="開啟單元 04 工藝與商業營運 的 MCG 草稿編輯器">
+      <span class="mcg-number">04</span><span class="mcg-course-title">工藝與商業營運</span><small>建立永續價值</small><span class="mcg-state">草稿 · 編輯課程 ↗</span>
+    </a>
+    <a class="mcg-course-link" href="https://admin.minicoursegenerator.com/mini-course/183351/page" target="_blank" rel="noopener noreferrer" aria-label="開啟單元 05 成果評估 的 MCG 草稿編輯器">
+      <span class="mcg-number">05</span><span class="mcg-course-title">成果評估</span><small>判斷社造真正的改變</small><span class="mcg-state">草稿 · 編輯課程 ↗</span>
+    </a>
+  </div>
+  <p class="mcg-panel-tip">💡 也可以在下方「資源類型 → 社造課程」找到這套課程的總覽卡與五張單元卡，並收藏或使用搜尋。</p>
+</section>
 <section class="stats"><div class="stat">📌 <span id="total">0</span> 筆資源</div><div class="stat">🗂 <span id="catTotal">0</span> 個分類</div><div class="stat">⭐ <span id="favTotal">0</span> 個收藏</div></section>
 <div class="toolbar"><label class="search"><span>⌕</span><input id="q" type="search" placeholder="搜尋卡片名稱或內容…"></label><button class="control" id="showFav">⭐ 只看收藏</button><button class="control secondary" id="clearRecent">清除最近開啟</button></div>
 <section class="shelf" aria-labelledby="recentHeading"><div class="shelf-title"><h2 id="recentHeading">🕘 最近開啟</h2><span class="recent-count" id="recentCount">0 / 10</span></div><div class="shelf-list" id="recent"></div></section>
@@ -115,6 +164,9 @@ cards.forEach(c=>{const key=(c.url.match(/trello\.com\/c\/([^/]+)/)||[])[1];c.dr
 /* community course 2026-10-28: quick review and three speakers */
 const socialCourseCards=[{"id":"L2810Q01","name":"📚 中壢社造培力｜學長姐練習曲分享會（2026/10/28）","category":"社造課程","url":"community-course-q-20261028.html","lesson":true,"desc":"【課程總覽｜2026-10-28 09:00–12:00】中壢舊城願景交流基地（桃園市中壢區中平路144號1樓）。三位講者：鄭瑋萱｜熱映像：餐桌、廟宇與防空洞；盧韻如｜石刃：現實與理想衝突時；巫秀千｜社造種子師資：Q的總和交流活動。快速回憶：田野要從生活進入；文化轉譯要尊重受訪者；工藝要守住品質；社造要留下居民可以延續的關係。點開可閱讀完整重點、案例、30題回憶問答與延伸連結。","tax":{"region":["桃園市"],"topic":["文化與地方記憶","青年與教育","社區參與與治理","地方創生與產業"],"org":["政府機關"]}},{"id":"L2810Q02","name":"🎥 鄭瑋萱｜熱映像・餐桌、廟宇與防空洞","category":"社造課程","url":"community-course-q-20261028.html#zheng","lesson":true,"desc":"【第1場｜09:00–10:00】從馬祖女性的料理與移民生命史，延伸到家族書信、防空洞、《野暖：龍岡馬祖廟宇誌》和擺暝文化。回憶關鍵：餐桌是田野入口；觀眾分家族、馬祖社群與陌生大眾；受訪者應參與成果校對與授權。內附10題田野與轉譯練習。","tax":{"region":["桃園市"],"topic":["文化與地方記憶","多元文化","青年與教育"],"org":["社會企業與民間團隊"]}},{"id":"L2810Q03","name":"🔨 盧韻如｜石刃・現實與理想衝突時","category":"社造課程","url":"community-course-q-20261028.html#lu","lesson":true,"desc":"【第2場｜10:00–11:00】永利刀具第三代與石刃品牌：從傳統製刀到工藝設計、客製化、DIY體驗及飲食記憶課程。回憶關鍵：產品品質不能被故事取代；把日常產品、工藝訂製、體驗與維修分層經營；區分收入和利潤。內附10題工藝與商業營運練習。","tax":{"region":["桃園市"],"topic":["文化與地方記憶","地方創生與產業","青年與教育"],"org":["社會企業與民間團隊"]}},{"id":"L2810Q04","name":"🌱 巫秀千｜社造種子師資・Q的總和","category":"社造課程","url":"community-course-q-20261028.html#wu","lesson":true,"desc":"【第3場｜11:00–12:00】交流活動與課後社造方法提問：地方田調、居民協作、跨代動能、KPI之外的影響與成果返還。回憶關鍵：不只完成活動，而要問誰受益、誰持續參與、什麼留在社區。附10題社造方法延伸題；題目與建議回答為課後整理，非講者逐字稿。","tax":{"region":["桃園市"],"topic":["社區參與與治理","文化與地方記憶","青年與教育"],"org":["組織待確認"]}}];
 cards.unshift(...socialCourseCards);
+/* Mini Course Generator 社區營造入門：課程目前全數為草稿，僅連向需登入的管理員編輯器。 */
+const mcgCourseCards=[{"id":"MCGCM000","name":"📗 Mini Course Generator｜社區營造入門（五單元總覽）","category":"社造課程","url":"https://admin.minicoursegenerator.com/collection/fe1f2847-5b96-4634-9eae-f2492caf01a3/mini-courses","mcgDraft":true,"desc":"【Mini Course Generator｜五單元課程總覽｜草稿未發布】繁體中文《社區營造入門》共五門課、40個學習頁面，包含田野調查、文化轉譯、社區參與、工藝與商業營運、成果評估；每門有臺灣案例、3題知識測驗、2題反思及實作。僅供課程管理員登入 MCG 編輯檢查，尚無學員公開網址。可在本頁上方的課程專區逐單元進入。","tax":{"region":["全國","桃園市"],"topic":["文化與地方記憶","青年與教育","社區參與與治理","地方創生與產業"],"org":["組織待確認"]}},{"id":"MCGCM001","name":"📘 社區營造入門｜01 田野調查","category":"社造課程","url":"https://admin.minicoursegenerator.com/mini-course/183347/page","mcgDraft":true,"desc":"【Mini Course Generator｜草稿未發布】田野調查： 重新認識自己的地方。重點案例：新屋南圳走讀、觀察與訪談。本單元含核心概念、臺灣案例、地方實作、3題可評分測驗及2題反思問題。連結為 MCG 課程編輯器，須登入管理員帳號；並非學員公開課程網址。","tax":{"region":["全國","桃園市"],"topic":["文化與地方記憶","青年與教育","社區參與與治理"],"org":["組織待確認"]}},{"id":"MCGCM002","name":"📘 社區營造入門｜02 文化轉譯","category":"社造課程","url":"https://admin.minicoursegenerator.com/mini-course/183348/page","mcgDraft":true,"desc":"【Mini Course Generator｜草稿未發布】文化轉譯： 讓地方記憶被理解。重點案例：馬祖女人的私房食譜、文化記憶。本單元含核心概念、臺灣案例、地方實作、3題可評分測驗及2題反思問題。連結為 MCG 課程編輯器，須登入管理員帳號；並非學員公開課程網址。","tax":{"region":["全國","連江縣"],"topic":["文化與地方記憶","青年與教育","多元文化"],"org":["組織待確認"]}},{"id":"MCGCM003","name":"📘 社區營造入門｜03 社區參與","category":"社造課程","url":"https://admin.minicoursegenerator.com/mini-course/183349/page","mcgDraft":true,"desc":"【Mini Course Generator｜草稿未發布】社區參與： 把計畫變成共同行動。重點案例：中壢站前參與式預算、居民共識。本單元含核心概念、臺灣案例、地方實作、3題可評分測驗及2題反思問題。連結為 MCG 課程編輯器，須登入管理員帳號；並非學員公開課程網址。","tax":{"region":["全國","桃園市"],"topic":["社區參與與治理","青年與教育"],"org":["組織待確認"]}},{"id":"MCGCM004","name":"📘 社區營造入門｜04 工藝與商業營運","category":"社造課程","url":"https://admin.minicoursegenerator.com/mini-course/183350/page","mcgDraft":true,"desc":"【Mini Course Generator｜草稿未發布】工藝與商業營運： 建立永續價值。重點案例：藺子、石刃與地方工藝產業。本單元含核心概念、臺灣案例、地方實作、3題可評分測驗及2題反思問題。連結為 MCG 課程編輯器，須登入管理員帳號；並非學員公開課程網址。","tax":{"region":["全國","苗栗縣","桃園市"],"topic":["文化與地方記憶","地方創生與產業","青年與教育"],"org":["組織待確認"]}},{"id":"MCGCM005","name":"📘 社區營造入門｜05 成果評估","category":"社造課程","url":"https://admin.minicoursegenerator.com/mini-course/183351/page","mcgDraft":true,"desc":"【Mini Course Generator｜草稿未發布】成果評估： 判斷社造真正的改變。重點案例：新街溪與社造影響力指標。本單元含核心概念、臺灣案例、地方實作、3題可評分測驗及2題反思問題。連結為 MCG 課程編輯器，須登入管理員帳號；並非學員公開課程網址。","tax":{"region":["全國","桃園市"],"topic":["社區參與與治理","青年與教育"],"org":["組織待確認"]}}];
+cards.unshift(...mcgCourseCards);
 const categories=["社造課程","地方創生影響力案例","可投計畫","收集","影片","補助計畫","相關單位","社造博覽會","成果報告","認識及了解過","書單","風土經濟學：地方創生的21堂風土設計課","數位專題","相關連結","意識覺醒社群","野力再生：翻轉社區營造DNA"];
 
 // 初步分類依卡片標題與內容；組織類型不等同申請資格。
@@ -250,10 +302,10 @@ function cardMarkup(c){
   '<button class="star'+(isSaved?" active":"")+'" type="button" aria-label="'+(isSaved?"取消收藏 ":"收藏 ")+esc(c.name)+'" aria-pressed="'+isSaved+'" data-star="'+esc(c.url)+'">'+(isSaved?"★":"☆")+'</button></div>'+
   '<div class="tags">'+[...c.tax.region,...c.tax.topic,...c.tax.org].map(x=>'<span>'+esc(x)+'</span>').join('')+'</div>'+
   '<button type="button" class="edit-tax" data-edit-tax="'+esc(c.url)+'">✏️ 修改分類</button>'+
-  '<p class="detail">'+esc(description)+'</p>'+readingMarkup(c)+
+  '<p class="detail">'+esc(description)+'</p>'+(c.mcgDraft?'<p class="mcg-card-state">🔒 MCG 草稿 · 未公開（需登入管理員帳號）</p>':'')+readingMarkup(c)+
   (booksComLinks[bookKey]?'<div class="actions"><a href="'+esc(booksComLinks[bookKey].url||('https://search.books.com.tw/search/query/cat/all/v/1/key/'+encodeURIComponent(booksComLinks[bookKey].term)))+'" target="_blank" rel="noopener noreferrer">'+(booksComLinks[bookKey].direct?'📚 博客來書籍頁 ↗':'🔎 博客來搜尋書名 ↗')+'</a></div>':'')+
   (hasMore?'<button type="button" class="expand" aria-expanded="false" data-expand>展開說明 ↓</button>':"")+
-  (c.internalCase?'<p class="case-source">📌 依提供的貼文整理；原文連結未提供。</p>':'<div class="actions"><a href="'+esc(c.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(c.url)+'">'+(c.lesson?"📚 開啟課程複習筆記":c.url.startsWith("https://trello.com/")?"🔗 開啟 Trello 卡片":"🌐 開啟資源網站") +'</a></div>')+'</article>';
+  (c.internalCase?'<p class="case-source">📌 依提供的貼文整理；原文連結未提供。</p>':'<div class="actions"><a href="'+esc(c.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(c.url)+'">'+(c.mcgDraft?"🔐 開啟 MCG 草稿編輯器":c.lesson?"📚 開啟課程複習筆記":c.url.startsWith("https://trello.com/")?"🔗 開啟 Trello 卡片":"🌐 開啟資源網站") +'</a></div>')+'</article>';
 }
 function render(){
  const q=query.value.trim().toLocaleLowerCase();
