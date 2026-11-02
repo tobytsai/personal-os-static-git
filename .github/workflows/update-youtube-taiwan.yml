@@ -62,5 +62,5 @@ jobs:
           LINE_MESSAGE: |-
             📺 Personal OS｜台灣 YouTube 排行已更新
             目前有新的官方來源核實資料。
-            https://github.com/tobytsai/personal-os-static-git/blob/main/public/data/youtube-taiwan-latest.json
+            https://tobytsai.github.io/personal-os-static-git/pages/youtube.html#yt-ranking
         run: python3 scripts/send_line_notification.py
