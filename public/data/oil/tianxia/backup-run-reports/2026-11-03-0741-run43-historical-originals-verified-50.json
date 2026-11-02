@@ -18,9 +18,12 @@
     "byAttachment": 3694,
     "byRecordAttachments": 2099,
     "pendingBatch": 0,
-    "liveIndexed": 2449,
-    "unindexed": 2598,
-    "mainMissing": 650
+    "liveIndexed": 3697,
+    "unindexed": 1350,
+    "mainMissing": 650,
+    "uniqueAirtableIdentities": 5044,
+    "uniqueMappedAirtableIdentities": 3694,
+    "duplicatedAttachmentReferences": 3
   },
   "batch": {
     "liveDriveOriginalsVerified": 50,
@@ -819,5 +822,6 @@
       "publiclyShared": false,
       "visualReview": false
     }
-  ]
+  ],
+  "notes": "Legacy byAttachment uses two valid key formats: bare att<ID> (1,245) and rec<ID>:att<ID> (2,449); coverage was normalized by value.recordId and value.attachmentId. Airtable has 5,047 field references but 5,044 unique (record,attachment) identities because 3 references repeat already-indexed attachment identities. 3,697 field references have an indexed original; 1,350 do not. Remaining references are not equivalent to missing physical Drive files."
 }
