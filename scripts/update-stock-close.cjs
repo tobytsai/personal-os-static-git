@@ -260,19 +260,25 @@ async function main(){
     watchlistCount:watch.length,quoteCount:count,missingCodes:missing,
     quotes,index,institutional:flows,sources
   };
-  const quality=x=>Object.keys(x?.quotes||{}).length*10+(x?.index?3:0)+(x?.institutional?2:0);
   if(old?.tradeDate===requested){
-    if(quality(snapshot)<=quality(old)){
-      console.log('No data improvements for '+requested+'; unchanged.');
-      return;
-    }
-    // Never drop previously verified same-day fields when optional upstream is unavailable.
+    // Keep verified same-day fields if a source is temporarily inaccessible.
     snapshot.index ||= old.index;
     snapshot.institutional ||= old.institutional;
     for(const [code,q] of Object.entries(old.quotes||{}))
       if(!snapshot.quotes[code])snapshot.quotes[code]=q;
     snapshot.quoteCount=Object.keys(snapshot.quotes).length;
     snapshot.missingCodes=watch.filter(s=>!snapshot.quotes[s.code]).map(s=>s.code);
+    // Data can be revised later on the same trading day (notably the official
+    // institutional 19:40 report). Do not skip merely because field count is equal.
+    // Compare verified values while ignoring the run timestamp.
+    const comparable=x=>JSON.stringify({
+      tradeDate:x.tradeDate,quotes:x.quotes,index:x.index,
+      institutional:x.institutional,missingCodes:x.missingCodes
+    });
+    if(comparable(snapshot)===comparable(old)){
+      console.log('No new or revised official values for '+requested+'; unchanged.');
+      return;
+    }
   }
   fs.mkdirSync(HISTORY,{recursive:true});
   fs.writeFileSync(LATEST,JSON.stringify(snapshot,null,2)+'\n');
