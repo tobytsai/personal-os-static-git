@@ -19,7 +19,7 @@ window.TOBY_GAKUBUTI_WEEKLY = {
       "details": "官網於 10/09 公告的壓克力展示框新品；實際結構、適用尺寸請以商品官網為準。",
       "news": "https://www.gakubuti.net/news",
       "product": "https://www.gakubuti.net/news",
-      "thumb": "../images/gakubuti/acrylic-block-20261009-thumb.jpg",
+      "thumb": "../images/gakubuti/acrylic-block-20261009-thumb.svg",
       "large": "https://drive.google.com/file/d/1eMNg8KvbnpAJ9YhqUdwxPmW-TFh0XzF8/view?usp=drivesdk"
     },
     {
@@ -31,7 +31,7 @@ window.TOBY_GAKUBUTI_WEEKLY = {
       "details": "約 11mm 細邊框，8 種配色；適合水彩、插畫、版畫、照片等。",
       "news": "https://www.gakubuti.net/news/11342",
       "product": "https://www.gakubuti.net/product/detail/5734",
-      "thumb": "../images/gakubuti/alder11-20261006-thumb.jpg",
+      "thumb": "../images/gakubuti/alder11-20261006-thumb.svg",
       "large": "https://drive.google.com/file/d/1-eoErF25IkjE5zttY8TEKLmAB1q0SF9U/view?usp=drivesdk"
     },
     {
@@ -43,7 +43,7 @@ window.TOBY_GAKUBUTI_WEEKLY = {
       "details": "專為金屬營造業許可牌設計，適用厚度 3mm 內；霧面與簡潔直線造型。",
       "news": "https://www.gakubuti.net/news/11340",
       "product": "https://www.gakubuti.net/product/list/109",
-      "thumb": "../images/gakubuti/bh210f-20260929-thumb.jpg",
+      "thumb": "../images/gakubuti/bh210f-20260929-thumb.svg",
       "large": "https://drive.google.com/file/d/1Bhc3xphE_geBdDc1NGZL1HY8MgDj8gMD/view?usp=drivesdk"
     }
   ]
