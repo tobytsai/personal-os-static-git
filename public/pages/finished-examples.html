@@ -94,6 +94,16 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 .gbdisclaimer{font-size:11px!important;color:#887d72!important;margin-top:9px!important}
 @media(max-width:650px){.gbpanel{padding:13px}.gbgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.gbcover img{height:155px}.gbcardmain{padding:9px}.gbcardmain h4{font-size:13px}.gblinks{grid-template-columns:1fr}.gbbuttons a{flex:1 1 125px;text-align:center}}
 
+/* Structural catalog | 額緣高橋商品分類 V1 */
+.catalogsource{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:12px 0 16px;padding:15px 17px;border-radius:17px;background:linear-gradient(110deg,#fffdf7,#f3f4fa);border:1px solid #dddce7}
+.catalogsource .catalogicon{font-size:26px;display:grid;place-items:center;width:50px;height:50px;border-radius:13px;background:#ece8fb}
+.catalogsource .catalogtext{flex:1 1 280px}.catalogsource strong{font-size:16px}.catalogsource p{margin:3px 0 0;color:#6e7581;font-size:12px;line-height:1.6}
+.catalogsource .action{color:#5942a5;background:#fff;border-color:#cfc8ed}
+.structurenote{margin-top:13px;border-radius:13px;border:1px solid #dce3ed;background:#f7f9fc;padding:12px 14px;color:#4a5c71;font-size:12px;line-height:1.7}
+.structurenote strong{color:#324760}
+.structurenote .structcount{display:inline-block;margin-left:6px;color:#5b4ab0;font-weight:750}
+@media(max-width:700px){.catalogsource{padding:12px;gap:10px}.catalogsource .catalogicon{width:41px;height:41px;font-size:21px}.catalogsource .action{width:100%;text-align:center}.structurenote{font-size:12px}}
+
 </style>
 </head>
 <body>
@@ -102,6 +112,11 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <div><span class="badge">🖼 畫廊工作 · 成品圖庫</span><h1>額緣高橋啟動器</h1><p class="lead">以成品示範圖片探索裱框形式，整合商品編號、繁體中文說明、原始商品圖片，以及 Google Drive 的實例與說明圖。</p></div>
 <div class="actions"><a class="action" href="../index.html">← 首頁</a><button class="action" id="helpBtn" type="button">？使用說明</button></div>
 </header>
+<aside class="catalogsource" id="catalogsource" aria-label="額緣總表完整商品資料">
+  <span class="catalogicon" aria-hidden="true">📊</span>
+  <div class="catalogtext"><strong>額緣總表｜4,159 筆完整商品</strong><p>原始 Excel 商品總表（2026/08/30）：商品 ID、日文／繁體中文說明、日圓價格、商品圖片及官網詳情。可對照下方「相框結構」分類。</p></div>
+  <a class="action" href="https://docs.google.com/spreadsheets/d/16VnaDpdwOQBt1YhfCUp8q3ufaJ0PL6vn/edit" target="_blank" rel="noopener noreferrer">📋 開啟額緣總表 ↗</a>
+</aside>
 <section class="metrics" aria-label="圖庫統計">
 <div class="metric"><strong id="totalProducts">—</strong><span>商品資料</span></div>
 <div class="metric"><strong id="totalExamples">—</strong><span>已對應 Drive 示範圖的商品</span></div>
@@ -136,13 +151,15 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <button class="tab" type="button" data-mode="examples" aria-pressed="true">🖼 成品示範</button>
 <button class="tab" type="button" data-mode="methods" aria-pressed="false">🛠 額緣框作法</button>
 <button class="tab" type="button" data-mode="paired" aria-pressed="false">↔ 成品／作法對照</button>
+<button class="tab" type="button" data-mode="structure" aria-pressed="false">🔩 相框結構</button>
 <button class="tab" type="button" data-mode="all" aria-pressed="false">全部商品</button>
 </div></div>
-<div class="tier"><div class="tierhead"><span class="tiernum">02</span><strong>第二層｜用途大類</strong><small>將原始細分類依裝裱用途彙整</small></div>
+<div class="tier"><div class="tierhead"><span class="tiernum">02</span><strong id="majorLevelTitle">第二層｜用途大類</strong><small id="majorLevelHint">將原始細分類依裝裱用途彙整</small></div>
 <div id="majorTabs" class="majorgrid" aria-label="用途大分類"></div></div>
-<div class="tier"><div class="tierhead"><span class="tiernum">03</span><strong>第三層｜商品細分類</strong><small>依第二層顯示對應細分類</small></div>
+<div class="tier"><div class="tierhead"><span class="tiernum">03</span><strong id="minorLevelTitle">第三層｜商品細分類</strong><small id="minorLevelHint">依第二層顯示對應細分類</small></div>
 <div id="minorTabs" class="minorchips" aria-label="商品細分類"></div></div>
 </div>
+<div class="structurenote" id="structureNote" hidden><strong>🔩 相框結構索引：</strong>依原始商品名稱與可辨識的描述建立構造分組，包含平面入槽、油畫承托、深框盒型、浮框、開合替換、雙層組合、異形與桌立、框條輪廓。此為<strong>文字初分</strong>，不是供應商正式的框條剖面認證；不明確者列為「結構待確認」，非框體配件獨立歸類。<span class="structcount" id="structureCount"></span></div>
 <div class="utilitybar"><span class="small">常用檢視（非商品分類）</span><div class="utilitybuttons" id="utilityModes">
 <button type="button" data-mode="favorites" aria-pressed="false">★ 我的收藏</button>
 <button type="button" data-mode="recent" aria-pressed="false">↻ 最近開啟</button>
@@ -156,7 +173,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <summary>資料來源、圖片權限與整理方式</summary>
 <p>本頁採用來源試算表 2026-08-30 的商品資料，原始日圓價格與圖片僅供參考，請以供應商即時資料為準。Google Drive 資料夾中的圖片按檔名商品 ID 對應，未變更原始檔案。</p>
 <ul>
-<li><a href="https://docs.google.com/spreadsheets/d/16VnaDpdwOQBt1YhfCUp8q3ufaJ0PL6vn/edit" target="_blank" rel="noopener">商品試算表（4,159 項）</a></li>
+<li><a href="https://docs.google.com/spreadsheets/d/16VnaDpdwOQBt1YhfCUp8q3ufaJ0PL6vn/edit" target="_blank" rel="noopener">額緣總表｜原始 Excel（4,159 筆）</a></li>
 <li><a href="https://drive.google.com/drive/folders/1Ts2K5AGGRAkBMRbTecHk6BryAgBuOfjA" target="_blank" rel="noopener">裱框成品分類示範與說明圖資料夾</a></li>
 <li><a href="https://drive.google.com/drive/folders/1lO3IwTEz-EtAbH9RAA-hxXh9N4fVdNFY" target="_blank" rel="noopener">前 150 項商品說明圖資料夾</a></li>
 <li><a href="https://drive.google.com/drive/folders/1IXJJziOwC9-A-JT2sxxqEk8l1Y_pmIOs" target="_blank" rel="noopener">額緣框作法（2,162 張）原始資料夾</a></li>
@@ -174,7 +191,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <dialog id="helpDialog" aria-label="操作說明" style="padding:22px;max-width:520px">
 <h2 style="margin-top:0">額緣高橋啟動器使用說明</h2>
 <p>成品示範、額緣框作法已用商品 ID 雙向配對。卡片內點「成品」或「作法」可直接切換到同款圖片；大圖視窗也可隨時來回切換，並以獨立網址分享指定商品。每張圖片都可開啟 Google Drive 原圖。</p>
-<p>依三層分類瀏覽：① 選擇成品示範／作法／對照；② 選擇用途大類；③ 選擇具體商品細分類。全部商品、我的收藏與最近開啟是獨立檢視功能，不會改動商品分類。</p><p>可輸入商品 ID、名稱或關鍵字搜尋。星號加入收藏，最近開啟保留 10 項。收藏與紀錄只保存在目前這台裝置的瀏覽器。</p>
+<p>依三層分類瀏覽：① 可選成品示範／作法／對照／相框結構；② 在相框結構模式選擇框型大類，原有模式則保留用途大類；③ 選擇相應細分類。相框結構僅依商品名稱與文字描述初分，未明確標示構造的品項會保留「結構待確認」，不代表已核實框條斷面規格。全部商品、收藏與最近開啟不改動商品分類。</p><p>可輸入商品 ID、名稱或關鍵字搜尋。星號加入收藏，最近開啟保留 10 項。收藏與紀錄只保存在目前這台裝置的瀏覽器。</p>
 <p>為保留私人 Google Drive 原有權限，系統不會公開分享或轉存原始圖片；無法讀取 Drive 圖時，商品卡片自動嘗試使用官網圖片。</p>
 <button type="button" class="action" id="helpClose">了解</button>
 </dialog>
@@ -242,6 +259,69 @@ for(const p of all){
  if(!p.examples.length&&p.methods.length)p.category="額緣框作法";
 }
 // 三級分類：圖庫模式 → 用途大類 → 既有商品細分類；保留所有原始分類名稱。
+
+// 相框結構：以商品名稱中可辨識的框型／開啟方式／結構詞彙保守分組。
+// 2026-08-30 額緣總表未提供每件商品的剖面尺寸，不能依用途或售價臆測框型。
+const structureGroups=[
+ {name:"平面入槽結構",icon:"▭",leaves:["一般平面入槽式","紙本／照片平面式","書畫／色紙嵌入式","透明面板展示式","薄邊／扁平輪廓"]},
+ {name:"畫布／油畫承托結構",icon:"🎨",leaves:["油畫裝飾框","仮縁／暫用框"]},
+ {name:"深框／盒型結構",icon:"▣",leaves:["立體深框／盒式","透明壓克力盒式","物件展示／收藏盒式"]},
+ {name:"浮框／懸浮結構",icon:"◫",leaves:["浮框／離邊承托式","懸浮板／浮貼式"]},
+ {name:"開合／替換結構",icon:"⇄",leaves:["前開／翻蓋式","滑入／可抽換式"]},
+ {name:"雙層／組合結構",icon:"▤",leaves:["雙框／複層式","多層展示式"]},
+ {name:"特殊外形／桌面結構",icon:"⬡",leaves:["圓形／異形外框","桌立／背撐式"]},
+ {name:"框條外形輪廓",icon:"⌒",leaves:["弧面／圓頂輪廓","階梯／凹槽輪廓"]},
+ {name:"非框體材料／配件",icon:"🧰",leaves:["掛件／固定支架","面板／背板／襯紙","板材／保護／包裝配件","其他裝配與保護材料"]},
+ {name:"結構待確認",icon:"?",leaves:["成品案例待判讀","型號資料未明示構造"]}
+];
+function structureOf(p){
+ const n=String(p.name||"").trim(),d=String(p.desc||"");
+ const typed=(major,sub)=>({major,sub});
+ // 以成品圖為主的案例通常沒有構造或斷面；不依作品用途推定框型。
+ if(/^(?:額装例|框架範例|額裝實例|裝框範例|額装実例)/.test(n))
+  return typed("結構待確認","成品案例待判讀");
+ // 先排除明確為零配件或消耗材料的商品；「マット付」「プレイマット専用額」仍是畫框。
+ if(/(?:額縁金具|額吊金具|吊紐金具|吊紐|ピクチャーレール|^後付レール|フック|ワイヤー|イーゼル|^スタンド |専用スタンド|フレームシーリングテープ|クリーナークロス|gasQ|ガスキュウ|スーパーバリアシート|ピタック|保存かぶせ箱|額縁用.*(?:挿し箱|かぶせ箱)|保存額装 裏板|PLボード|裏打用紙)/i.test(n))
+  return typed("非框體材料／配件",/(?:金具|吊紐|レール|フック|ワイヤー|イーゼル|スタンド)/.test(n)?"掛件／固定支架":"板材／保護／包裝配件");
+ if(/(?:前開式|前開き|前開|フロントオープン|扉式|ヒンジ開閉)/.test(n))
+  return typed("開合／替換結構","前開／翻蓋式");
+ if(/(?:スライド式|差し替え|差替|入替できる|入れ替え|入替え|マグネット式)/.test(n))
+  return typed("開合／替換結構","滑入／可抽換式");
+ if(/(?:浮かし額|フロートパネル|アクリフロート|フローティング|浮かしフレーム|浮框|懸浮框)/i.test(n))
+  return typed("浮框／懸浮結構",/(?:浮かし額|浮かしフレーム)/.test(n)?"浮框／離邊承托式":"懸浮板／浮貼式");
+ if(/(?:ダブルフレーム|二重額|二層額|ダブル額|多層|レイヤーBOX|レイヤーボックス|レイヤーフレーム|多重額)/i.test(n))
+  return typed("雙層／組合結構",/(?:レイヤー|多層|多重)/i.test(n)?"多層展示式":"雙框／複層式");
+ if(/(?:円形額|変形額|正八角形|正六角形|楕円額|ハート型額|扇形額|丸額)/.test(n))
+  return typed("特殊外形／桌面結構","圓形／異形外框");
+ if(/(?:写真立て|卓上額|フォトスタンド|写真額.*スタンド付|額.*スタンド付)/.test(n))
+  return typed("特殊外形／桌面結構","桌立／背撐式");
+ if(/(?:立体額|立体フレーム|立体ケース|ボックスフレーム|アートボックス|シャドーボックス|展示ボックス|アクリルボックス|ボックス.+キャンバス|ボックス額|アクリルケース)/i.test(n))
+  return typed("深框／盒型結構",/(?:アクリルボックス|アクリルケース)/.test(n)?"透明壓克力盒式":"立體深框／盒式");
+ if(/(?:ユニフォームケース|ユニフォーム額|バットケース|額.*メダル|記念品専用額|ピンバッジ用.*ボックス)/.test(n))
+  return typed("深框／盒型結構","物件展示／收藏盒式");
+ if(/(?:仮縁|仮ぶち|カリブチ)/.test(n))
+  return typed("畫布／油畫承托結構","仮縁／暫用框");
+ if(/(?:油絵額縁|油絵額|油縁|油額|自社油縁)/.test(n))
+  return typed("畫布／油畫承托結構","油畫裝飾框");
+ if(/(?:アクリルフレーム|アクリルパネル|透明フレーム|アクリル展示額)/.test(n))
+  return typed("平面入槽結構","透明面板展示式");
+ if(/(?:一般額|一般畫框|一般價格|デッサン額|ポスター専用額|賞状額|写真額|色紙額|書道.*額|水墨画額|水彩縁|水彩額|手ぬぐい額)/.test(n))
+  return typed("平面入槽結構",/(?:色紙額|書道.*額|水墨画額|手ぬぐい額)/.test(n)?"書畫／色紙嵌入式":/(?:ポスター|賞状額|写真額)/.test(n)?"紙本／照片平面式":"一般平面入槽式");
+ if(/(?:マットボード|^マット |裏板|アクリル板|ガラス板|額装用.*紙|額縁用.*付属|ヒンジ|額縁用紐|吊金具|挿し箱|かぶせ箱|クリアフィルム|保存額装.*シート)/.test(n))
+  return typed("非框體材料／配件",/(?:裏板|アクリル板|ガラス板|マットボード)/.test(n)?"面板／背板／襯紙":"其他裝配與保護材料");
+ // 以下僅取明示的外形輪廓形容詞，不把造型判讀當成精確的框條斷面圖。
+ if(/(?:超薄|纖薄|細邊框|極細邊|薄型|扁平相框)/.test(d))
+  return typed("平面入槽結構","薄邊／扁平輪廓");
+ if(/(?:半圓形造型|優雅的弧形造型|圓弧形外框|圓潤的頂部)/.test(d))
+  return typed("框條外形輪廓","弧面／圓頂輪廓");
+ if(/(?:多階梯造型|階梯式框條|框條凹槽)/.test(d))
+  return typed("框條外形輪廓","階梯／凹槽輪廓");
+ return typed("結構待確認","型號資料未明示構造");
+}
+for(const item of all)item.structure=structureOf(item);
+const viewMajorOf=p=>mode==="structure"?p.structure.major:majorOf(p);
+const viewMinorOf=p=>mode==="structure"?p.structure.sub:p.category;
+
 const majorGroups=[
  {name:"繪畫與書畫裱框",icon:"🎨",leaves:["一般畫框與素描框","油畫框與日本畫框","書法與水墨畫框","色紙畫框","附框畫作"]},
  {name:"照片海報與證書",icon:"🖼",leaves:["海報框","獎狀框","桌上相框","相片框與相片板","臨時畫框","遺照框"]},
@@ -263,30 +343,44 @@ function passesMode(p){
  return true;
 }
 function passesSearch(p){return !term||(p.id+" "+p.name+" "+p.desc+" "+p.category+" "+p.methods.map(x=>x.title).join(" ")).toLocaleLowerCase().includes(term)}
+
 function showHierarchy(){
+ const structural=mode==="structure";
+ const groupList=structural?structureGroups:majorGroups;
+ const mainOf=structural?(p=>p.structure.major):majorOf;
+ const subOf=structural?(p=>p.structure.sub):(p=>p.category);
  const base=all.filter(p=>passesMode(p)&&passesSearch(p));
- const counts=new Map(),leaves=new Map();
- for(const p of base){
-  const m=majorOf(p);
-  counts.set(m,(counts.get(m)||0)+1);
-  if(!leaves.has(m))leaves.set(m,new Map());
-  const map=leaves.get(m);map.set(p.category,(map.get(p.category)||0)+1);
- }
- const majorsToShow=majorGroups.filter(g=>counts.has(g.name));
- if(major!=="全部大類"&&!counts.has(major)){major="全部大類";category="全部分類"}
+ const counts=new Map();
+ for(const p of base){const m=mainOf(p);counts.set(m,(counts.get(m)||0)+1);}
+ const majorsToShow=groupList.filter(g=>counts.has(g.name));
+ if(major!=="全部大類"&&!counts.has(major)){major="全部大類";category="全部分類";}
  const countsForLeaves=new Map();
- for(const p of base)if(major==="全部大類"||majorOf(p)===major)countsForLeaves.set(p.category,(countsForLeaves.get(p.category)||0)+1);
+ for(const p of base){
+  if(major==="全部大類"||mainOf(p)===major){
+   const leaf=subOf(p);countsForLeaves.set(leaf,(countsForLeaves.get(leaf)||0)+1);
+  }
+ }
  if(category!=="全部分類"&&!countsForLeaves.has(category))category="全部分類";
  const majorBtns=[{name:"全部大類",icon:"▦",count:base.length},...majorsToShow.map(g=>({name:g.name,icon:g.icon,count:counts.get(g.name)}))];
  $("majorTabs").innerHTML=majorBtns.map(g=>'<button class="majorbtn" type="button" data-major="'+escapeHtml(g.name)+'" aria-pressed="'+String(g.name===major)+'"><span>'+escapeHtml(g.icon+" "+g.name)+'</span><small>'+g.count.toLocaleString("zh-TW")+'</small></button>').join("");
  const minorBtns=major==="全部大類"?[["全部細分類",base.length]]:[["全部細分類",Array.from(countsForLeaves.values()).reduce((a,b)=>a+b,0)],...Array.from(countsForLeaves).sort((a,b)=>a[0].localeCompare(b[0],"zh-Hant"))];
- $("minorTabs").innerHTML=minorBtns.map(([name,n])=>'<button type="button" data-minor="'+escapeHtml(name)+'" aria-pressed="'+String((name==="全部細分類"&&category==="全部分類")||name===category)+'">'+escapeHtml(name)+' · '+n.toLocaleString("zh-TW")+'</button>').join(""); 
- if(major==="全部大類")$("minorTabs").insertAdjacentHTML("beforeend",'<span class="small" style="align-self:center">先選第二層用途大類，再展開所屬細分類。</span>');
+ $("minorTabs").innerHTML=minorBtns.map(([name,n])=>'<button type="button" data-minor="'+escapeHtml(name)+'" aria-pressed="'+String((name==="全部細分類"&&category==="全部分類")||name===category)+'">'+escapeHtml(name)+' · '+n.toLocaleString("zh-TW")+'</button>').join("");
+ if(major==="全部大類")$("minorTabs").insertAdjacentHTML("beforeend",'<span class="small" style="align-self:center">先選第二層'+(structural?'結構大類':'用途大類')+'，再展開所屬細分類。</span>');
  $("modeTabs").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
  $("utilityModes").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
- const modeText={examples:"成品示範",methods:"額緣框作法",paired:"成品／作法對照",all:"全部商品",favorites:"我的收藏",recent:"最近開啟"};
- $("breadcrumbs").textContent="目前路徑："+(modeText[mode]||"成品示範")+" › "+(major==="全部大類"?"全部用途":major)+" › "+(category==="全部分類"?"全部細分類":category);
+ $("majorLevelTitle").textContent=structural?"第二層｜相框結構大類":"第二層｜用途大類";
+ $("minorLevelTitle").textContent=structural?"第三層｜構造細分類":"第三層｜商品細分類";
+ $("majorLevelHint").textContent=structural?"按框體結構歸納，不混入作品用途":"將原始細分類依裝裱用途彙整";
+ $("minorLevelHint").textContent=structural?"依名稱及說明辨識框型；不確定則保留待確認":"依第二層顯示對應細分類";
+ $("structureNote").hidden=!structural;
+ if(structural){
+  const known=base.filter(p=>p.structure.major!=="結構待確認"&&p.structure.major!=="非框體材料／配件").length;
+  $("structureCount").textContent=known.toLocaleString("zh-TW")+" 筆可初步辨識構造";
+ }
+ const modeText={examples:"成品示範",methods:"額緣框作法",paired:"成品／作法對照",structure:"相框結構",all:"全部商品",favorites:"我的收藏",recent:"最近開啟"};
+ $("breadcrumbs").textContent="目前路徑："+(modeText[mode]||"成品示範")+" › "+(major==="全部大類"?(structural?"全部結構":"全部用途"):major)+" › "+(category==="全部分類"?"全部細分類":category);
 }
+
 const $=id=>document.getElementById(id);
 const escapeHtml=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const saved=(key,def)=>{try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:def}catch(e){return def}};
@@ -312,8 +406,9 @@ function toggleFavorite(id){
  render();
 }
 function getItems(){
- const list=all.filter(p=>passesMode(p)&&passesSearch(p)&&(major==="全部大類"||majorOf(p)===major)&&(category==="全部分類"||p.category===category));
- if(mode==="recent")list.sort((a,b)=>recent.indexOf(a.id)-recent.indexOf(b.id));
+ const list=all.filter(p=>passesMode(p)&&passesSearch(p)&&(major==="全部大類"||viewMajorOf(p)===major)&&(category==="全部分類"||viewMinorOf(p)===category));
+ if(mode==="structure")list.sort((a,b)=>structureGroups.findIndex(g=>g.name===a.structure.major)-structureGroups.findIndex(g=>g.name===b.structure.major)||a.structure.sub.localeCompare(b.structure.sub,"zh-Hant")||a.name.localeCompare(b.name,"zh-Hant"));
+ else if(mode==="recent")list.sort((a,b)=>recent.indexOf(a.id)-recent.indexOf(b.id));
  else if(mode==="favorites")list.sort((a,b)=>favorites.indexOf(a.id)-favorites.indexOf(b.id));
  else if(mode==="methods")list.sort((a,b)=>b.methods.length-a.methods.length||a.id.localeCompare(b.id));
  else if(mode==="paired")list.sort((a,b)=>b.methods.length+b.examples.length-a.methods.length-a.examples.length);
@@ -323,7 +418,7 @@ function getItems(){
 function render(){
  showHierarchy();
  const list=getItems(),shown=list.slice(0,limit);
- $("heading").textContent=mode==="examples"?"成品示範圖":mode==="methods"?"額緣框作法":mode==="paired"?"成品與作法對照":mode==="favorites"?"我的收藏":mode==="recent"?"最近開啟":"完整商品清單";
+ $("heading").textContent=mode==="examples"?"成品示範圖":mode==="methods"?"額緣框作法":mode==="paired"?"成品與作法對照":mode==="structure"?"相框結構｜依構造找商品":mode==="favorites"?"我的收藏":mode==="recent"?"最近開啟":"完整商品清單";
  $("resultInfo").textContent="顯示 "+shown.length+" / "+list.length+" 項";
  const photoButton=(p,im,group,label)=>{
   const src=im?driveThumb(im.fid,600):p.image;
@@ -341,7 +436,7 @@ function render(){
    photoButton(p,group==="methods"?p.methods[0]:p.examples[0],group,group==="methods"?"額緣框作法 "+p.methods.length+" 張":p.examples.length?"成品示範 "+p.examples.length+" 張":"供應商商品圖");
   return '<article class="card" id="product-'+escapeHtml(p.id)+'">'+preview+
    '<div class="cardbody"><div class="cardtop"><span class="pcode"># '+escapeHtml(p.id)+'</span><button class="fav" type="button" data-fav="'+escapeHtml(p.id)+'" aria-label="'+(isFav?"取消收藏":"加入收藏")+'">'+(isFav?"★":"☆")+'</button></div>'+
-   '<h3>'+escapeHtml(p.name)+'</h3><p class="desc">'+escapeHtml(p.desc||"暫無商品說明")+'</p><div class="info"><span class="price">'+escapeHtml(p.price||"價格請洽官網")+'</span><span class="tag">'+escapeHtml(p.category)+'</span></div>'+
+   '<h3>'+escapeHtml(p.name)+'</h3><p class="desc">'+escapeHtml(p.desc||"暫無商品說明")+'</p><div class="info"><span class="price">'+escapeHtml(p.price||"價格請洽官網")+'</span><span class="tag">'+escapeHtml(mode==="structure"?p.structure.sub:p.category)+'</span></div>'+
    '<div class="modejump">'+
    (p.examples.length?'<button type="button" data-open="'+escapeHtml(p.id)+'" data-group="examples">🖼 成品 '+p.examples.length+' 張</button>':'<button type="button" disabled>尚無成品圖</button>')+
    (p.methods.length?'<button type="button" data-open="'+escapeHtml(p.id)+'" data-group="methods">🛠 作法 '+p.methods.length+' 張</button>':'<button type="button" disabled>尚無作法圖</button>')+
