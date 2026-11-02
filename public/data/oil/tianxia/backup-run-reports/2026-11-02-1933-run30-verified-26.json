@@ -1,0 +1,89 @@
+{
+  "reportDate": "2026-11-02",
+  "runId": "2026-11-02-1915-run30",
+  "status": "completed_drive_copies_and_github_mapping_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "liveAttachmentReferences": 5047,
+    "indexSnapshot": "2026-10-30",
+    "mainOriginalsPrior": 3732
+  },
+  "results": {
+    "verifiedOriginalJpegs": 26,
+    "newDriveCloudCopies": 26,
+    "recoveredExisting": 0,
+    "copyFailures": 0,
+    "metadataVerificationFailures": 0,
+    "githubMergeFailures": 0,
+    "uniqueRecordIds": 26,
+    "uniqueAttachmentIds": 26,
+    "uniqueDriveDestinationIds": 26,
+    "allPrimaryAttachments": true,
+    "mappedPrimaryBefore": 3732,
+    "mappedPrimaryAfter": 3758,
+    "byAttachmentBefore": 3131,
+    "byAttachmentAfter": 3157,
+    "byRecordAttachmentsBefore": 1536,
+    "byRecordAttachmentsAfter": 1562,
+    "remainingEstimateBasedOnPrimaryCount": 1289,
+    "exactMissingCountKnown": false,
+    "historicalMainRecordsWithoutFullAttachmentMappingApprox": 601
+  },
+  "byCategory": {
+    "60×80": 11,
+    "70×180": 11,
+    "60×90": 4
+  },
+  "verification": {
+    "liveAirtableRecordAndAttachmentIdentity": true,
+    "liveAirtableNameMimeAndExactBytes": true,
+    "sourceDriveOriginalGalleryJpegAndSize": true,
+    "driveDestinationMetadataRereadForAll26": true,
+    "driveDestinationNonPublicPermissionChecked": true,
+    "githubMergedSafelyFromImmutablePatches": true,
+    "all10MergeWorkflowRunsSucceeded": true,
+    "githubMainMapBlobReadbackSha": "9c7ddfe18cecc11dc0e2f1ebe5130b71ad3793ca",
+    "githubMainFinalMergeCommit": "a5744841d1f524d58ec24cecadfe6b887c8aaaae",
+    "githubFinalMergeWorkflowRunId": 41437572836,
+    "githubFinalMergeJobLogVerifiedCounts": {
+      "byRecord": 3758,
+      "byAttachment": 3157,
+      "byRecordAttachments": 1562,
+      "addedInFinalMerge": 1
+    },
+    "patchEntriesCrosschecked26Unique": true,
+    "visualComparisonPerformed": false,
+    "hashComparisonPerformed": false,
+    "manualVisualReviewSuggested": true
+  },
+  "github": {
+    "repository": "tobytsai/personal-os-static-git",
+    "branch": "main",
+    "workPlan": "public/data/oil/tianxia/backup-work-plans/2026-11-02-1915-run30.json",
+    "patchPaths": [
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b01-verified-3.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b02-verified-3.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b03-verified-3.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b04-verified-2.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b05-verified-3.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b06-verified-3.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b07-verified-3.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b08-verified-2.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b09-verified-3.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-02-1915-run30-b10-verified-1.json"
+    ],
+    "latestMappingCommit": "a5744841d1f524d58ec24cecadfe6b887c8aaaae",
+    "latestMappingBlobSha": "9c7ddfe18cecc11dc0e2f1ebe5130b71ad3793ca",
+    "verifiedMergeWorkflowUrl": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41437572836"
+  },
+  "safety": {
+    "airtableModified": false,
+    "existingWebpPreviewsModified": false,
+    "sourceOriginalsDeleted": false,
+    "driveSharingMadePublic": false,
+    "credentialsDisclosed": false
+  },
+  "nextRunGuidance": "Reread live Airtable, current GitHub main mapping and Drive; skip all 26 validated attachment identities and destination files. Continue at most 50 verified original attachments per run; source JPEGs must match Airtable original attachment exact bytes, not thumbnails or previews. Some historical byRecord items still lack attachment ID mapping."
+}
