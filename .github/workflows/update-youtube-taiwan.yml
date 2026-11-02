@@ -1,0 +1,50 @@
+name: Taiwan YouTube popular daily
+
+on:
+  schedule:
+    - cron: '35 1 * * *' # 09:35 Asia/Taipei, may be delayed by GitHub
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/update-youtube-taiwan.py'
+      - '.github/workflows/update-youtube-taiwan.yml'
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: main-write-queue
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Python syntax
+        run: python -m py_compile scripts/update-youtube-taiwan.py
+      - name: Fetch verified YouTube Taiwan leaderboard
+        run: python scripts/update-youtube-taiwan.py
+      - name: Publish verified snapshot and redeploy Pages
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A public/data/youtube-taiwan-latest.json public/data/youtube-taiwan-history
+          if git diff --cached --quiet; then
+            echo 'No new ranking data to publish.'
+            exit 0
+          fi
+          git commit -m 'Refresh Taiwan YouTube popularity snapshot'
+          bash scripts/git-safe-push.sh
+          gh workflow run pages.yml --ref main

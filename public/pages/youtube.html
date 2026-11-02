@@ -22,17 +22,133 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
 @media(max-width:680px){.wrap{padding:14px 12px 40px}.hero{padding:19px;border-radius:23px}.hero-top{display:block}.hero-actions{justify-content:flex-start;margin-top:15px}.brand{align-items:flex-start}.brand-icon{width:49px;height:49px;border-radius:16px}.pill-link{font-size:11px;padding:9px 11px}.toolbar{grid-template-columns:1fr}.help-top{justify-self:start}.shelves{grid-template-columns:1fr}.featured{gap:8px}.feature{padding:12px}.feature-icon{width:38px;height:38px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{min-height:178px;padding:12px}.card h3{font-size:15px}.open{padding:8px 7px}}
 @media(max-width:390px){.cards{grid-template-columns:1fr}.featured{grid-template-columns:1fr}}
 </style>
+<link rel="stylesheet" href="../youtube-library.css?v=20261102-1">
 </head>
 <body>
 <main class="wrap">
-<header class="hero"><div class="hero-top"><div class="brand"><div class="brand-icon">▶</div><div><div class="eyebrow">WATCH • LISTEN • EXPLORE</div><h1>YouTube 啟動器</h1><p>新聞、知識、戲劇、音樂與興趣內容，整理成一眼就能找到的影音入口。</p></div></div><div class="hero-actions"><a class="pill-link" href="../index.html">← 回到 Toby 首頁</a><a class="pill-link primary" href="https://www.youtube.com/" target="_blank" rel="noopener">開啟 YouTube ↗</a></div></div><div class="stats"><span class="stat">▶ 24 個影音捷徑</span><span class="stat">✦ 星號收藏</span><span class="stat">↻ 最近開啟</span></div></header>
+<header class="hero"><div class="hero-top"><div class="brand"><div class="brand-icon">▶</div><div><div class="eyebrow">WATCH • LISTEN • EXPLORE</div><h1>YouTube 啟動器</h1><p>常看頻道、待播影片與台灣 YouTube 排行，變成自己的私人影音工作台。</p></div></div><div class="hero-actions"><a class="pill-link" href="../index.html">← 回到 Toby 首頁</a><a class="pill-link primary" href="https://www.youtube.com/" target="_blank" rel="noopener">開啟 YouTube ↗</a></div></div><div class="stats"><span class="stat">▶ 24 個原有影音捷徑</span><span class="stat">📡 可管理追蹤頻道</span><span class="stat">🎬 待播清單</span><span class="stat">✦ 星號收藏</span><span class="stat">↻ 最近開啟</span></div></header>
 <div class="toolbar"><label class="search"><input id="search" type="search" placeholder="搜尋公視、新聞、TED、音樂或主題…" aria-label="搜尋 YouTube 影音捷徑"></label><button class="help-top" id="helpAll">？ 功能說明</button></div>
 <div class="featured">
 <a class="feature" href="https://www.youtube.com/premium" target="_blank" rel="noopener" data-entry="premium"><span class="feature-icon">▶</span><span><strong>YouTube Premium</strong><small>無廣告觀賞與背景播放</small></span><span class="arrow">↗</span></a>
 <a class="feature" href="https://music.youtube.com/" target="_blank" rel="noopener" data-entry="music"><span class="feature-icon">♫</span><span><strong>YouTube Music</strong><small>打開音樂與播放清單</small></span><span class="arrow">↗</span></a>
 </div>
 <div class="shelves"><section class="shelf"><div class="shelf-head"><h2>✦ 我的收藏</h2><small>按捷徑右上角星號加入</small></div><div class="mini-grid" id="favorites"></div></section><section class="shelf"><div class="shelf-head"><h2>↻ 最近開啟</h2><small>開啟捷徑後自動記錄</small></div><div class="mini-grid" id="recent"></div></section></div>
-<section><div class="section-head"><div><h2>YouTube 影音分類</h2><p>從上傳圖片整理的頻道、平台與主題捷徑。</p></div><span id="count" class="count"></span></div><div class="filters" id="filters"></div><div class="cards" id="cards"></div></section>
+
+<section class="yt-hub" id="youtubeWorkspace" aria-label="個人 YouTube 影音工作台">
+  <header class="yt-hub-head">
+    <span class="yt-kicker">PERSONAL VIDEO LIBRARY & TAIWAN TREND RADAR</span>
+    <h2>📺 我的 YouTube 工作台</h2>
+    <p>上方快速按鈕是「直接開啟 YouTube」；這個啟動器是你的私人影音書架：觀察台灣排行榜、整理追蹤頻道、儲存待播影片。原本的 24 個影音捷徑也會完整保留在下方。</p>
+    <nav class="yt-jumpbar" aria-label="YouTube 工作台分類選單">
+      <a href="#yt-ranking">🇹🇼 台灣排行觀察</a>
+      <a href="#yt-channels">📡 我的追蹤頻道</a>
+      <a href="#yt-watch-queue">🎬 待播清單</a>
+      <a href="#yt-backup">💾 備份與匯入</a>
+      <a href="#yt-original-shortcuts">🗂 原有影音捷徑</a>
+    </nav>
+  </header>
+
+  <section class="yt-box" id="yt-ranking" aria-labelledby="yt-ranking-title">
+    <div class="yt-section-head">
+      <div><h2 id="yt-ranking-title">🇹🇼 台灣 YouTube 排行觀察</h2>
+        <p>從「當日熱門影片」、「台灣訂閱數排行」、「官方音樂榜」和「YouTube 搜尋趨勢」四個角度觀察。排名指標與時間範圍不同，不能直接互相比較。</p></div>
+      <a class="yt-cta secondary" href="./trends.html">🔥 前往聲量啟動器</a>
+    </div>
+    <div class="yt-rank-sources" aria-label="台灣 YouTube 排行資料來源">
+      <a class="yt-source" href="https://chartslist.com/youtube/tw/" target="_blank" rel="noopener noreferrer">
+        <span class="yt-source-icon">🔥</span><span class="yt-source-body"><strong>台灣熱門影片榜</strong><small>ChartsList 第三方排行榜 · 可查看名次變動、影片與來源時間</small></span><span class="yt-source-arrow">↗</span>
+      </a>
+      <a class="yt-source" href="https://socialblade.com/youtube/top/country/tw" target="_blank" rel="noopener noreferrer">
+        <span class="yt-source-icon">📈</span><span class="yt-source-body"><strong>台灣頻道 Top 50</strong><small>Social Blade · 按訂閱人數排序（不是單日聲量）</small></span><span class="yt-source-arrow">↗</span>
+      </a>
+      <a class="yt-source" href="https://charts.youtube.com/" target="_blank" rel="noopener noreferrer">
+        <span class="yt-source-icon">♫</span><span class="yt-source-body"><strong>YouTube 官方音樂 Charts</strong><small>可在官方頁選台灣，查看歌曲、MV、藝人和 Shorts 音樂榜</small></span><span class="yt-source-arrow">↗</span>
+      </a>
+      <a class="yt-source" href="https://trends.google.com/trends/explore?geo=TW&amp;gprop=youtube" target="_blank" rel="noopener noreferrer">
+        <span class="yt-source-icon">🔎</span><span class="yt-source-body"><strong>台灣 YouTube 搜尋趨勢</strong><small>Google Trends · 反映相對搜尋熱度，並非影片播放排行</small></span><span class="yt-source-arrow">↗</span>
+      </a>
+    </div>
+    <p class="yt-note">資料口徑提醒：2025 年 7 月起，YouTube Data API 的 <code>mostPopular</code> 主要採計音樂、電影與遊戲相關熱門內容，已不是「全類型台灣影片總榜」。第三方榜單的名次與更新時間以原網站為準。</p>
+    <div class="yt-rank-header">
+      <h3>📊 自動排行快照｜台灣前 10 名</h3><span class="yt-snapshot-state" id="yt-taiwan-date">讀取排行資料中…</span>
+    </div>
+    <div class="yt-ranking" id="yt-taiwan-preview" aria-live="polite"><div class="yt-muted-panel">正在檢查是否有已驗證的排行榜資料。</div></div>
+    <p class="yt-note">這個區塊採官方 YouTube Data API 的台灣區域熱門榜。已建立每日台灣時間 09:35 的 GitHub Actions 程式；尚需在倉庫 Secrets 設定 <code>YOUTUBE_API_KEY</code> 才會開始抓取，未啟用時不會顯示假名次。</p>
+    <div style="margin-top:18px">
+      <label class="yt-kicker" for="yt-trend-memo">✍️ 我的趨勢觀察筆記</label>
+      <div class="yt-fields"><label class="yt-wide"><textarea id="yt-trend-memo" rows="3" maxlength="2000" placeholder="例如：留意最近哪些台灣創作者、話題影片、膠彩教學或藝術展覽正在成長…"></textarea></label></div>
+      <div class="yt-form-actions"><button id="yt-memo-save" type="button" class="yt-cta secondary">儲存觀察筆記</button><span class="yt-feedback" id="yt-memo-status" role="status"></span></div>
+    </div>
+  </section>
+
+  <section class="yt-box" id="yt-channels" aria-labelledby="yt-channels-title">
+    <div class="yt-section-head">
+      <div><h2 id="yt-channels-title">📡 我的追蹤頻道</h2>
+        <p>把常看的頻道變成自己的卡片，可依藝術、地方創生、教育、AI 等主題分類。這是啟動器私人清單，<strong>不會改變 YouTube 帳號的訂閱</strong>。</p></div>
+      <button type="button" class="yt-cta" id="yt-channel-open">＋ 新增頻道</button>
+    </div>
+    <form id="yt-channel-form" class="yt-form" hidden>
+      <div class="yt-fields">
+        <label>頻道名稱<input id="yt-channel-name" type="text" maxlength="140" placeholder="例如：喜歡的繪畫教學頻道" required></label>
+        <label>頻道分類<select id="yt-channel-category" aria-label="頻道分類"></select></label>
+        <label class="yt-wide">YouTube 頻道網址<input id="yt-channel-url" type="url" maxlength="2048" placeholder="https://www.youtube.com/@channelname" required></label>
+        <label class="yt-wide">筆記／喜歡的原因<textarea id="yt-channel-notes" maxlength="1200" rows="2" placeholder="例如：膠彩示範、裱框技術、每週社區故事……"></textarea></label>
+      </div>
+      <p class="yt-form-hint">支援 <code>youtube.com/@帳號</code>、<code>/channel/UC...</code>、<code>/user/...</code> 等頻道網址。請貼實際頻道連結，而非搜尋頁網址。</p>
+      <div class="yt-form-actions"><button type="submit" id="yt-channel-save" class="yt-cta">＋ 新增頻道</button><button type="button" id="yt-channel-cancel" class="yt-cta secondary">取消</button></div>
+    </form>
+    <div class="yt-filterbar"><input id="yt-channel-search" type="search" placeholder="🔎 搜尋追蹤頻道、分類或筆記…" aria-label="搜尋已儲存頻道"><span id="yt-channel-count" class="yt-snapshot-state"></span></div>
+    <div id="yt-channel-list" class="yt-grid" aria-live="polite"></div>
+    <p id="yt-channel-notice" class="yt-feedback" role="status"></p>
+    <div class="yt-form-actions"><a class="yt-cta secondary" href="https://www.youtube.com/feed/channels" target="_blank" rel="noopener noreferrer">↗ 開啟 YouTube 原生訂閱清單</a></div>
+  </section>
+
+  <section class="yt-box" id="yt-watch-queue" aria-labelledby="yt-watch-queue-title">
+    <div class="yt-section-head">
+      <div><h2 id="yt-watch-queue-title">🎬 我的待播清單</h2>
+        <p>自己貼影片、Shorts、直播或播放清單連結，安排「待播 → 觀看中 → 已看完」，不怕想看的內容被推薦演算法沖走。</p></div>
+      <button type="button" class="yt-cta" id="yt-queue-open">＋ 加入影片</button>
+    </div>
+    <form id="yt-queue-form" class="yt-form" hidden>
+      <div class="yt-fields">
+        <label class="yt-wide">影片／Shorts／播放清單網址<input id="yt-queue-url" type="url" maxlength="2048" placeholder="https://www.youtube.com/watch?v=..." required></label>
+        <label>影片名稱（選填）<input id="yt-queue-title" type="text" maxlength="190" placeholder="為這部影片取個容易辨識的名稱"></label>
+        <label>內容分類<select id="yt-queue-category" aria-label="影片分類"></select></label>
+        <label class="yt-wide">為什麼想看？／待整理重點<textarea id="yt-queue-notes" rows="2" maxlength="1200" placeholder="例如：要學習礦物顏料製作、留待週末親子觀看…"></textarea></label>
+      </div>
+      <div class="yt-form-actions"><button class="yt-cta" id="yt-queue-save" type="submit">＋ 加入待播清單</button><button class="yt-cta secondary" id="yt-queue-cancel" type="button">取消</button></div>
+    </form>
+    <div id="yt-queue-stats" class="yt-countbox" aria-label="待播狀態統計"></div>
+    <div class="yt-filterbar"><input id="yt-queue-search" type="search" placeholder="🔎 搜尋影片名稱、類別或筆記…" aria-label="搜尋我的待播清單"><span id="yt-queue-count" class="yt-snapshot-state"></span></div>
+    <nav id="yt-queue-filters" class="yt-subtabs" aria-label="待播清單狀態">
+      <button type="button" class="yt-subtab" data-filter="all" aria-pressed="true">全部</button>
+      <button type="button" class="yt-subtab" data-filter="later">待播</button>
+      <button type="button" class="yt-subtab" data-filter="watching">觀看中</button>
+      <button type="button" class="yt-subtab" data-filter="done">已看</button>
+    </nav>
+    <div id="yt-queue-list" class="yt-grid" aria-live="polite"></div>
+    <p id="yt-queue-notice" class="yt-feedback" role="status"></p>
+    <div class="yt-form-actions"><a class="yt-cta secondary" href="https://www.youtube.com/playlist?list=WL" target="_blank" rel="noopener noreferrer">↗ 開啟 YouTube 原生「稍後觀看」</a></div>
+    <p class="yt-note">原生「稍後觀看」的內容無法透過 YouTube Data API 直接讀取，因此這裡的待播清單獨立管理；播放或標記已看不會更動 YouTube 原生清單。</p>
+  </section>
+
+  <section class="yt-box" id="yt-backup" aria-labelledby="yt-backup-title">
+    <div class="yt-backup">
+      <div><div class="yt-section-head"><h2 id="yt-backup-title">💾 我的影音資料備份</h2></div>
+        <p>頻道、待播清單、個人觀察筆記目前儲存在這個瀏覽器。換手機、換瀏覽器時，可匯出 JSON 檔並在另一裝置匯入；相同連結會自動略過。</p></div>
+      <div class="yt-backup-actions"><button type="button" class="yt-cta" id="yt-backup-export">↓ 匯出 JSON</button><button type="button" class="yt-cta secondary" id="yt-backup-import">↑ 匯入 JSON</button><input id="yt-backup-file" class="yt-file-upload" type="file" accept=".json,application/json" aria-label="選擇要匯入的 YouTube 備份 JSON"></div>
+    </div>
+    <p id="yt-save-status" class="yt-note">資料不會自動寫入 GitHub，也不會自動同步到 YouTube 帳號。</p>
+    <p id="yt-backup-notice" class="yt-feedback" role="status"></p>
+  </section>
+  <nav class="yt-jumpbar" aria-label="工作台頁尾返回主題選單">
+    <a href="#yt-ranking">↑ 返回台灣排行</a><a href="#yt-channels">↑ 返回追蹤頻道</a>
+    <a href="#yt-watch-queue">↑ 返回待播清單</a><a href="../index.html#tools">⌂ 返回啟動器首頁</a>
+  </nav>
+</section>
+<button type="button" class="yt-floating" id="yt-floating-jump" hidden>↑ 影音主題選單</button>
+
+<section id="yt-original-shortcuts"><div class="section-head"><div><h2>🗂 原有 24 個影音捷徑</h2><p>從上傳圖片整理的頻道、平台與主題捷徑。</p></div><span id="count" class="count"></span></div><div class="filters" id="filters"></div><div class="cards" id="cards"></div></section>
 <footer class="foot">收藏與最近開啟記錄保存在目前瀏覽器。頻道捷徑使用 YouTube 搜尋，可再從結果頁選擇想看的頻道或影片。</footer>
 </main>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><article class="dialog"><div class="dialog-head"><h2 id="dialogTitle">怎麼使用 YouTube 啟動器？</h2><button class="close" id="close" aria-label="關閉">×</button></div><p id="dialogText"></p></article></div>
@@ -89,5 +205,6 @@ document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="
 document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.remove("show")});
 render();
 </script>
+<script src="../youtube-library.js?v=20261102-1" defer></script>
 <script src="../shared-nav.js?v=20261025-2" defer></script></body>
 </html>
