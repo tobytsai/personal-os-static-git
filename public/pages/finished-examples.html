@@ -104,6 +104,31 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 .structurenote .structcount{display:inline-block;margin-left:6px;color:#5b4ab0;font-weight:750}
 @media(max-width:700px){.catalogsource{padding:12px;gap:10px}.catalogsource .catalogicon{width:41px;height:41px;font-size:21px}.catalogsource .action{width:100%;text-align:center}.structurenote{font-size:12px}}
 
+/* Official casebook styles in structure mode's third tier */
+.cb-panel{border-top:1px solid #dddbe6;margin-top:16px;padding-top:15px}
+.cb-panel[hidden]{display:none!important}
+.cb-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.cb-head h4{font-size:16px;margin:0;color:#4d426c}
+.cb-head a{color:#6752a8;text-decoration:underline;font-weight:750;font-size:12px}
+.cb-explain{font-size:12px;color:#666777;line-height:1.7;margin:7px 0 11px}
+.cb-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px;flex-wrap:wrap}
+.cb-controls span{font-size:12px;color:#584d76;font-weight:750}
+.cb-toggle{border-radius:999px;background:#f5f0fe;color:#584392;border:1px solid #d6ccef;padding:7px 11px;font-size:12px;font-weight:750}
+.cb-types{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:8px}
+.cb-choice{display:flex;align-items:center;gap:8px;text-align:left;background:#fff;border:1px solid #e0dfe9;padding:9px;border-radius:12px;min-width:0;color:#363545}
+.cb-choice[aria-pressed=true]{background:#f0eafe;border-color:#7663b4;box-shadow:inset 0 0 0 1px #7663b4}
+.cb-choice .cb-ico{display:grid;place-items:center;background:#efedf5;color:#63518f;width:32px;height:32px;flex:none;border-radius:9px;font-size:15px}
+.cb-choice b{font-size:13px;line-height:1.3;display:block}
+.cb-choice small{display:block;font-size:11px;color:#827c88;margin-top:2px;line-height:1.3;overflow-wrap:anywhere}
+.cb-detail{background:#fff;border:1px solid #e4e1ea;border-radius:12px;padding:13px;margin-top:11px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.cb-detail h5{font-size:15px;margin:0 0 5px}.cb-detail p{color:#6d6b77;font-size:12px;line-height:1.6;margin:3px 0}
+.cb-detail .cb-actions{display:flex;flex-wrap:wrap;gap:7px}
+.cb-detail .cb-actions a{display:inline-block;background:#6753a8;color:#fff;text-decoration:none;font-weight:750;font-size:12px;border-radius:9px;padding:9px 12px}
+.cb-detail .cb-actions a.cb-share{background:#eeeaf8;color:#55438e}
+.cb-hint{font-size:11px;color:#797582;line-height:1.6;margin:9px 0 0}
+@media(max-width:700px){.cb-types{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.cb-choice{padding:8px 6px;gap:6px}.cb-choice .cb-ico{width:28px;height:28px;font-size:13px}.cb-choice b{font-size:12px}.cb-choice small{font-size:10px}.cb-detail .cb-actions{width:100%}.cb-detail .cb-actions a{flex:1;text-align:center}}
+@media(max-width:350px){.cb-types{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -157,7 +182,14 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <div class="tier"><div class="tierhead"><span class="tiernum">02</span><strong id="majorLevelTitle">第二層｜用途大類</strong><small id="majorLevelHint">將原始細分類依裝裱用途彙整</small></div>
 <div id="majorTabs" class="majorgrid" aria-label="用途大分類"></div></div>
 <div class="tier"><div class="tierhead"><span class="tiernum">03</span><strong id="minorLevelTitle">第三層｜商品細分類</strong><small id="minorLevelHint">依第二層顯示對應細分類</small></div>
-<div id="minorTabs" class="minorchips" aria-label="商品細分類"></div></div>
+<div id="minorTabs" class="minorchips" aria-label="商品細分類"></div><section id="cbPanel" class="cb-panel" hidden aria-labelledby="cbTitle">
+ <div class="cb-head"><h4 id="cbTitle">🇯🇵 額縁の構造から探す｜15 種官網裱框方式</h4><a href="https://www.gakubuti.net/casebook" target="_blank" rel="noopener noreferrer">開啟官網案例總覽 ↗</a></div>
+ <p class="cb-explain">依高橋官網「額縁の構造から探す」整理，保留日文原名及繁體中文解說。此區是官方裱框案例分類，和下面 4,159 筆商品的推測框型並非一對一對應。</p>
+ <div class="cb-controls"><span id="cbScope">全部 15 種做法</span><button type="button" id="cbShowAll" class="cb-toggle" hidden>顯示全部</button></div>
+ <div class="cb-types" id="cbChoices"></div>
+ <div class="cb-detail" id="cbDetail" aria-live="polite"></div>
+ <p class="cb-hint" id="cbFoot"></p>
+</section></div>
 </div>
 <div class="structurenote" id="structureNote" hidden><strong>🔩 相框結構索引：</strong>依原始商品名稱與可辨識的描述建立構造分組，包含平面入槽、油畫承托、深框盒型、浮框、開合替換、雙層組合、異形與桌立、框條輪廓。此為<strong>文字初分</strong>，不是供應商正式的框條剖面認證；不明確者列為「結構待確認」，非框體配件獨立歸類。<span class="structcount" id="structureCount"></span></div>
 <div class="utilitybar"><span class="small">常用檢視（非商品分類）</span><div class="utilitybuttons" id="utilityModes">
@@ -174,6 +206,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <p>本頁採用來源試算表 2026-08-30 的商品資料，原始日圓價格與圖片僅供參考，請以供應商即時資料為準。Google Drive 資料夾中的圖片按檔名商品 ID 對應，未變更原始檔案。</p>
 <ul>
 <li><a href="https://docs.google.com/spreadsheets/d/16VnaDpdwOQBt1YhfCUp8q3ufaJ0PL6vn/edit" target="_blank" rel="noopener">額緣總表｜原始 Excel（4,159 筆）</a></li>
+<li><a href="https://www.gakubuti.net/casebook" target="_blank" rel="noopener noreferrer">日本額縁の構造から探す｜15 種官方裱框實例</a></li>
 <li><a href="https://drive.google.com/drive/folders/1Ts2K5AGGRAkBMRbTecHk6BryAgBuOfjA" target="_blank" rel="noopener">裱框成品分類示範與說明圖資料夾</a></li>
 <li><a href="https://drive.google.com/drive/folders/1lO3IwTEz-EtAbH9RAA-hxXh9N4fVdNFY" target="_blank" rel="noopener">前 150 項商品說明圖資料夾</a></li>
 <li><a href="https://drive.google.com/drive/folders/1IXJJziOwC9-A-JT2sxxqEk8l1Y_pmIOs" target="_blank" rel="noopener">額緣框作法（2,162 張）原始資料夾</a></li>
@@ -191,7 +224,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <dialog id="helpDialog" aria-label="操作說明" style="padding:22px;max-width:520px">
 <h2 style="margin-top:0">額緣高橋啟動器使用說明</h2>
 <p>成品示範、額緣框作法已用商品 ID 雙向配對。卡片內點「成品」或「作法」可直接切換到同款圖片；大圖視窗也可隨時來回切換，並以獨立網址分享指定商品。每張圖片都可開啟 Google Drive 原圖。</p>
-<p>依三層分類瀏覽：① 可選成品示範／作法／對照／相框結構；② 在相框結構模式選擇框型大類，原有模式則保留用途大類；③ 選擇相應細分類。相框結構僅依商品名稱與文字描述初分，未明確標示構造的品項會保留「結構待確認」，不代表已核實框條斷面規格。全部商品、收藏與最近開啟不改動商品分類。</p><p>可輸入商品 ID、名稱或關鍵字搜尋。星號加入收藏，最近開啟保留 10 項。收藏與紀錄只保存在目前這台裝置的瀏覽器。</p>
+<p>在「相框結構」模式的第三層另有官網「額縁の構造から探す」15 種裝裱方式，點選中文分類可看到對應日本案例。</p><p>依三層分類瀏覽：① 可選成品示範／作法／對照／相框結構；② 在相框結構模式選擇框型大類，原有模式則保留用途大類；③ 選擇相應細分類。相框結構僅依商品名稱與文字描述初分，未明確標示構造的品項會保留「結構待確認」，不代表已核實框條斷面規格。全部商品、收藏與最近開啟不改動商品分類。</p><p>可輸入商品 ID、名稱或關鍵字搜尋。星號加入收藏，最近開啟保留 10 項。收藏與紀錄只保存在目前這台裝置的瀏覽器。</p>
 <p>為保留私人 Google Drive 原有權限，系統不會公開分享或轉存原始圖片；無法讀取 Drive 圖時，商品卡片自動嘗試使用官網圖片。</p>
 <button type="button" class="action" id="helpClose">了解</button>
 </dialog>
@@ -211,6 +244,7 @@ document.getElementById("gbWeeklyCards").innerHTML=wk.length?wk.map(card).join("
 document.getElementById("gbBaselineCards").innerHTML=(Array.isArray(d.recentBaseline)?d.recentBaseline:[]).map(card).join("");
 })();
 </script>
+<script src="../data/gakubuti-casebook-structures.js"></script>
 <script src="../data/finished-products-0.js"></script>
 <script src="../data/finished-products-1.js"></script>
 <script src="../data/finished-products-2.js"></script>
@@ -379,6 +413,7 @@ function showHierarchy(){
  }
  const modeText={examples:"成品示範",methods:"額緣框作法",paired:"成品／作法對照",structure:"相框結構",all:"全部商品",favorites:"我的收藏",recent:"最近開啟"};
  $("breadcrumbs").textContent="目前路徑："+(modeText[mode]||"成品示範")+" › "+(major==="全部大類"?(structural?"全部結構":"全部用途"):major)+" › "+(category==="全部分類"?"全部細分類":category);
+ renderOfficialCasebook();
 }
 
 const $=id=>document.getElementById(id);
@@ -387,6 +422,25 @@ const saved=(key,def)=>{try{const v=JSON.parse(localStorage.getItem(key));return
 let favorites=saved("finishedExamplesFavorites",[]);
 let recent=saved("finishedExamplesRecent",[]);
 let mode="examples",major="全部大類",category="全部分類",term="",limit=48,current=null,currentIdx=0,currentImages=[],currentGroup="examples";
+
+const cbData=Array.isArray(window.TAKAHASHI_CASEBOOK_STRUCTURES)?window.TAKAHASHI_CASEBOOK_STRUCTURES:[];
+let cbSelected=null,cbAll=false;
+function renderOfficialCasebook(){
+ const wrap=$("cbPanel");wrap.hidden=mode!=="structure";if(wrap.hidden)return;
+ const narrowed=major==="全部大類"?cbData:cbData.filter(v=>v.group===major);
+ const showAll=major==="全部大類"||cbAll||narrowed.length===0;
+ const visible=showAll?cbData:narrowed;
+ $("cbScope").textContent=major==="全部大類"?"官網全部 "+cbData.length+" 種做法":narrowed.length?"「"+major+"」相近的 "+narrowed.length+" 種官網做法":"目前大類沒有直接對應官網的專屬做法";
+ $("cbFoot").textContent=major==="全部大類"?"點選分類即可閱讀中文說明，並開啟原始日本官網案例。":narrowed.length?"這是便於瀏覽的相近技法歸類，不表示同大類商品均符合該做法。":"因此顯示全部官方做法供比較；請查看個別實例確認適用性。";
+ const t=$("cbShowAll");t.hidden=major==="全部大類"||narrowed.length===0;
+ t.textContent=cbAll?"只看相關官網做法":"查看全部 "+cbData.length+" 種";
+ if(!visible.some(x=>x.id===cbSelected))cbSelected=visible[0]?.id??null;
+ $("cbChoices").innerHTML=visible.map(x=>'<button type="button" class="cb-choice" data-case-id="'+x.id+'" aria-pressed="'+(x.id===cbSelected)+'"><span class="cb-ico" aria-hidden="true">'+escapeHtml(x.icon)+'</span><span><b>'+escapeHtml(x.zh)+'</b><small lang="ja">'+escapeHtml(x.ja)+'</small></span></button>').join("");
+ const x=visible.find(v=>v.id===cbSelected);if(!x){$("cbDetail").textContent="官網分類資料尚未載入";return}
+ const shortcut="?mode=structure&casebook="+encodeURIComponent(x.id)+"#cbPanel";
+ $("cbDetail").innerHTML='<div><h5>'+escapeHtml(x.zh)+' <small lang="ja" style="font-size:12px;font-weight:450;color:#827a8c">｜'+escapeHtml(x.ja)+'</small></h5><p>'+escapeHtml(x.desc)+'</p><p>官網案例分類 #'+x.id+'，並非商品型號或試算表欄位。</p></div><div class="cb-actions"><a href="'+escapeHtml(x.url)+'" target="_blank" rel="noopener noreferrer">查看官網案例 ↗</a><a class="cb-share" href="'+escapeHtml(shortcut)+'">此分類捷徑</a></div>';
+}
+
 const driveThumb=(id,w=800)=>"https://drive.google.com/thumbnail?id="+encodeURIComponent(id)+"&sz=w"+w;
 const driveView=id=>"https://drive.google.com/file/d/"+encodeURIComponent(id)+"/view";
 const picList=(p,group)=>{
@@ -502,9 +556,9 @@ $("totalPictures").textContent=seenPhotos.size.toLocaleString("zh-TW");
 $("methodPictures").textContent=seenMethods.size.toLocaleString("zh-TW");
 $("search").addEventListener("input",e=>{term=e.target.value.trim().toLocaleLowerCase();limit=48;render()});
 $("resetFilters").addEventListener("click",()=>{major="全部大類";category="全部分類";term="";$("search").value="";limit=48;render()});
-$("majorTabs").addEventListener("click",e=>{const b=e.target.closest("[data-major]");if(!b)return;major=b.dataset.major;category="全部分類";limit=48;render()});
+$("majorTabs").addEventListener("click",e=>{const b=e.target.closest("[data-major]");if(!b)return;major=b.dataset.major;category="全部分類";cbAll=false;cbSelected=null;limit=48;render()});
 $("minorTabs").addEventListener("click",e=>{const b=e.target.closest("[data-minor]");if(!b)return;category=b.dataset.minor==="全部細分類"?"全部分類":b.dataset.minor;limit=48;render()});
-function changeMode(next){mode=next;major="全部大類";category="全部分類";limit=48;render()}
+function changeMode(next){mode=next;major="全部大類";category="全部分類";cbAll=false;cbSelected=null;limit=48;render()}
 $("modeTabs").addEventListener("click",e=>{const b=e.target.closest("[data-mode]");if(b)changeMode(b.dataset.mode)});
 $("utilityModes").addEventListener("click",e=>{const b=e.target.closest("[data-mode]");if(b)changeMode(b.dataset.mode)});
 $("cards").addEventListener("click",e=>{const fav=e.target.closest("[data-fav]");if(fav){toggleFavorite(fav.dataset.fav);return}const view=e.target.closest("[data-open]");if(view){openViewer(view.dataset.open,view.dataset.group);return}const visit=e.target.closest("[data-visit]");if(visit)remember(visit.dataset.visit)});
@@ -518,6 +572,10 @@ $("thumbs").addEventListener("click",e=>{const el=e.target.closest("[data-img]")
 document.addEventListener("keydown",e=>{if(!$("viewer").open)return;if(e.key==="ArrowLeft")move(-1);if(e.key==="ArrowRight")move(1)});
 $("helpBtn").addEventListener("click",()=>$("helpDialog").showModal());
 $("helpClose").addEventListener("click",()=>$("helpDialog").close());
+$("cbChoices").addEventListener("click",e=>{const btn=e.target.closest("[data-case-id]");if(!btn)return;cbSelected=Number(btn.dataset.caseId);renderOfficialCasebook()});
+$("cbShowAll").addEventListener("click",()=>{cbAll=!cbAll;cbSelected=null;renderOfficialCasebook()});
+const init=new URLSearchParams(location.search);
+if(init.get("mode")==="structure"){mode="structure";const id=Number(init.get("casebook"));if(cbData.some(x=>x.id===id))cbSelected=id;}
 render();
 const deepLink=new URLSearchParams(location.search);const target=deepLink.get("id");
 if(target&&byId.has(target))openViewer(target,deepLink.get("view"));
