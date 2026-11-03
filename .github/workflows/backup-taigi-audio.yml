@@ -1,0 +1,33 @@
+name: Backup verified Taigi audio as archive
+on:
+  push:
+    paths:
+      - .github/workflows/backup-taigi-audio.yml
+      - public/data/taigi-audio-verified.json
+      - scripts/build-taigi-audio-drive-backup.py
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  collect-audio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout verified mapping
+        uses: actions/checkout@v4
+      - name: Download exact, unchanged Ministry of Education MP3 files
+        run: python3 scripts/build-taigi-audio-drive-backup.py
+      - name: Keep original MP3 archive available for Google Drive transfer
+        uses: actions/upload-artifact@v4
+        with:
+          name: taigi-verified-audio
+          path: backup-output/taigi-verified-audio.zip
+          retention-days: 7
+          if-no-files-found: error
+      - name: Publish validation report for matching and missing audio
+        uses: actions/upload-artifact@v4
+        with:
+          name: taigi-audio-validation
+          path: backup-output/taigi-verified-audio-report.json
+          retention-days: 7
+          if-no-files-found: error
