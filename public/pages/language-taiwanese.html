@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f5f8fc">
+<title>台語詞彙｜語言啟動器</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif;color:#23384b;background:#f5f8fc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+main{max-width:1250px;margin:auto;padding:22px}
+a{color:#235f96}
+.top,.tabs,.filters,.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.back,.tab{padding:10px 15px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700}
+.tab{border-radius:999px;background:#e7f1fa;color:#285c89}
+.tab.current{background:#225da2;color:#fff}
+.hero{border-radius:23px;background:linear-gradient(115deg,#1e5a86,#247d8a);color:#fff;padding:24px;margin:18px 0}
+.hero h1{font-size:31px;margin:8px 0}
+.hero p{line-height:1.7;margin:6px 0}
+.panel{background:#fff;border-radius:18px;padding:20px;margin:15px 0;box-shadow:0 5px 20px #24476d12}
+.notice{font-size:15px;color:#586e81;line-height:1.7}
+.filters{margin:14px 0}
+.filters input,.filters select{font:inherit;padding:12px;border:1px solid #cbd9e7;border-radius:11px;min-width:165px;background:#fff}
+.filters input{flex:2 1 290px}
+.filters select{flex:1 1 180px}
+.filters button,.more{font:inherit;border:0;border-radius:11px;background:#eaf3fd;color:#255f91;padding:12px 17px;cursor:pointer;font-weight:700}
+.stats{color:#536c80;font-weight:700;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:15px}
+.card{border:1px solid #dce8f0;border-radius:16px;padding:17px;background:#fbfdff;min-width:0;scroll-margin-top:25px}
+.card:target{outline:3px solid #68b4bb}
+.card h2{font-size:24px;margin:0 0 8px;overflow-wrap:anywhere}
+.reading{font-size:18px;color:#226884;margin:5px 0 11px;line-height:1.55;overflow-wrap:anywhere}
+.tag{display:inline-block;background:#e6f3ef;color:#24746a;border-radius:999px;padding:5px 10px;font-size:14px}
+.meaning{line-height:1.7;font-size:16px;white-space:pre-wrap;overflow-wrap:anywhere;color:#34475a}
+.meaning.short{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+details{margin-top:9px}
+details summary{cursor:pointer;font-size:14px;color:#2566a1;font-weight:700}
+.actions{margin-top:13px}
+.actions a,.actions button{font:inherit;font-size:14px;border:0;border-radius:9px;padding:8px 10px;background:#eaf3fd;color:#235c89;cursor:pointer;text-decoration:none}
+.more{display:block;margin:22px auto 0}
+.more[hidden],.empty[hidden]{display:none}
+.empty{padding:25px;color:#587083}
+.footer{margin:20px 0;color:#5d7184;font-size:14px}
+@media(max-width:620px){main{padding:13px}.hero{padding:20px}.hero h1{font-size:26px}.panel{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:12px}.card h2{font-size:21px}.reading{font-size:16px}.filters input,.filters select{width:100%;min-width:0;flex:1 0 100%}}
+@media(max-width:375px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<nav class="top" aria-label="上層頁面">
+<a class="back" href="../index.html">← 啟動器首頁</a>
+<a class="back" href="./language.html">🌏 語言啟動器</a>
+<a class="back" href="./self-study.html">📚 自學啟動器</a>
+</nav>
+<header class="hero">
+<p>語言啟動器 › 台語</p>
+<h1>🇹🇼 台語詞彙學習卡</h1>
+<p>依主題分類查找詞目、台羅音讀與釋義，整理自 Airtable「台語」資料庫。</p>
+</header>
+<nav class="tabs" aria-label="語言分類">
+<a class="tab" href="./language.html">🇬🇧 英語 · Lingumi</a>
+<span class="tab current" aria-current="page">🇹🇼 台語</span>
+</nav>
+<section class="panel">
+<p class="notice">資料來源：<a href="https://airtable.com/appPBthyencSKXSwo/tblEkJ1ffFBw1C2Vz/viwFPqphfDpJ9ysOr" target="_blank" rel="noopener noreferrer">Airtable 台語 · Table 1 · Grid view ↗</a>。本頁為 2026/11/03 的資料快照，不會直接修改 Airtable。來源的「音讀」欄是文字，未附音檔，因此不提供可能不準確的自動朗讀。</p>
+<div class="filters">
+<input id="q" type="search" placeholder="搜尋詞目、音讀、釋義" aria-label="搜尋台語詞彙">
+<select id="cat" aria-label="選擇台語分類"><option value="">全部主題分類</option></select>
+<select id="sort" aria-label="選擇排序"><option value="source">分類／原始編號</option><option value="word">詞目筆畫／字序</option></select>
+<button type="button" id="reset">清除篩選</button>
+</div>
+<p class="stats" id="stats" aria-live="polite">正在讀取台語詞彙…</p>
+<div class="grid" id="grid"></div>
+<p class="empty" id="empty" hidden>找不到符合的詞彙，請換一個關鍵字或分類。</p>
+<button type="button" id="more" class="more" hidden>顯示更多卡片</button>
+</section>
+<p class="footer">這裡是學習用詞彙索引；若要修訂資料，請回到原始 Airtable 表格。</p>
+</main>
+<script>
+(function(){
+'use strict';
+const BASE='https://airtable.com/appPBthyencSKXSwo/tblEkJ1ffFBw1C2Vz/viwFPqphfDpJ9ysOr/';
+const q=document.getElementById('q'),cat=document.getElementById('cat'),sort=document.getElementById('sort'),grid=document.getElementById('grid');
+const stats=document.getElementById('stats'),empty=document.getElementById('empty'),more=document.getElementById('more');
+let all=[],shown=48,focus='';
+function folded(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+function element(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e;}
+function link(text,url){const e=element('a','',text);e.href=url;e.target='_blank';e.rel='noopener noreferrer';return e;}
+function card(item){
+ const article=element('article','card');article.id=item.id;
+ article.append(element('h2','',item.term||'（未填詞目）'));
+ if(item.reading)article.append(element('p','reading','音讀｜'+item.reading));
+ article.append(element('span','tag',item.category||'未分類'));
+ const meaning=item.meaning||'（未填釋義）';
+ article.append(element('p','meaning short',meaning));
+ if(meaning.length>75){
+   const details=element('details');details.append(element('summary','','展開完整釋義'),element('p','meaning',meaning));article.append(details);
+ }
+ const actions=element('div','actions');
+ if(/^rec[A-Za-z0-9]{14}$/.test(item.id))actions.append(link('Airtable 原始紀錄 ↗',BASE+item.id));
+ const copy=element('button','','複製詞目');copy.type='button';copy.dataset.copy=item.term||'';actions.append(copy);
+ article.append(actions);
+ return article;
+}
+function visibleRows(){
+ const key=folded(q.value.trim()),v=cat.value;
+ const filtered=all.filter(x=>(!v||x.category===v)&&(!key||folded([x.term,x.reading,x.meaning,x.category,x.label].join(' ')).includes(key)));
+ if(sort.value==='word')filtered.sort((a,b)=>a.term.localeCompare(b.term,'zh-Hant'));
+ return filtered;
+}
+function render(){
+ let rows=visibleRows();
+ if(focus&&!q.value&&!cat.value){const n=rows.findIndex(x=>x.id===focus);if(n>=shown)shown=n+1;}
+ const frag=document.createDocumentFragment();
+ for(const item of rows.slice(0,shown))frag.append(card(item));
+ grid.replaceChildren(frag);
+ stats.textContent='顯示 '+Math.min(rows.length,shown)+' / '+rows.length+' 筆（資料庫共 '+all.length+' 筆）';
+ empty.hidden=rows.length>0;more.hidden=shown>=rows.length;
+ more.textContent='顯示更多（剩餘 '+Math.max(0,rows.length-shown)+' 筆）';
+ if(focus){const target=document.getElementById(focus);if(target){target.scrollIntoView({block:'center'});target.querySelector('details')?.setAttribute('open','');}focus='';}
+}
+function onFilter(){shown=48;render();}
+q.addEventListener('input',onFilter);cat.addEventListener('change',onFilter);sort.addEventListener('change',onFilter);
+document.getElementById('reset').addEventListener('click',()=>{q.value='';cat.value='';sort.value='source';onFilter();});
+more.addEventListener('click',()=>{shown+=48;render();});
+grid.addEventListener('click',e=>{const b=e.target.closest('button[data-copy]');if(!b)return;if(!navigator.clipboard){b.textContent='請長按詞目複製';return;}navigator.clipboard.writeText(b.dataset.copy).then(()=>{b.textContent='已複製';}).catch(()=>{b.textContent='請長按詞目複製';});});
+fetch('../data/language-taiwanese.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(db=>{
+ if(!Array.isArray(db.items))throw Error('找不到詞彙資料');
+ all=db.items;
+ const counts=new Map();for(const item of all)counts.set(item.category,(counts.get(item.category)||0)+1);
+ for(const name of [...counts.keys()].sort((a,b)=>a.localeCompare(b,'zh-Hant'))){const o=element('option','',name+'（'+counts.get(name)+'）');o.value=name;cat.append(o);}
+ const param=new URLSearchParams(location.search).get('card');if(param&&/^rec[A-Za-z0-9]{14}$/.test(param))focus=param;
+ render();
+}).catch(err=>{stats.textContent='無法讀取資料，請稍後重新整理頁面。';empty.hidden=false;empty.textContent=err.message;});
+})();
+</script>
+<script src="../shared-nav.js?v=20261025-2" defer></script>
+</body>
+</html>
