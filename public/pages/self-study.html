@@ -15,6 +15,7 @@
 </style></head><body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
 <header class="hero"><div class="hero-top"><div><span class="eyebrow">🌱 LEARN · PLAY · GROW</span><br><h1>自學啟動器</h1><p>把孩子常用的學習平台、校務看板與閱讀資源放在一起。用分類和搜尋快速找到入口，星號收藏常用卡片，按「？」查看用途說明。</p></div><a class="notes-link" href="https://trello.com/b/fiwZNg41/%E8%87%AA%E5%AD%B8%E8%A8%98%E9%8C%84" target="_blank" rel="noopener">自學紀錄<small>Trello ↗</small></a></div><div class="stats"><span>🎒 <strong id="resourceCount">—</strong> 個學習入口</span><span>⭐ 收藏僅存於此瀏覽器</span><span>🧩 依學習用途分類</span></div></header>
+<a href="./language.html" class="venue-feature" style="background:linear-gradient(110deg,#e9f4ff,#ecfaf6);border-color:#c7dfe9"><span class="venue-feature-icon" aria-hidden="true">🌏</span><div><strong style="color:#276b92">語言啟動器</strong><small>英語 Lingumi、台語詞彙與學習資源</small></div><span class="arrow" aria-hidden="true">→</span></a>
 <a href="./houye-learning-path.html" class="venue-feature" style="background:linear-gradient(110deg,#eaf1ff,#e8f8ef);border-color:#bfd9d6"><span class="venue-feature-icon" aria-hidden="true">🌱</span><div><strong>侯燁自學地圖｜四年級到高中</strong><small>年級 → 學習領域 → 探索主題 · 四年級既有課程入口與各年級規畫</small></div><span class="arrow" aria-hidden="true">→</span></a>
 <a href="./houye-junyi-grade4.html" class="venue-feature" style="background:linear-gradient(110deg,#e7f9f3,#eef9fe);border-color:#bde4d5"><span class="venue-feature-icon" aria-hidden="true" style="background:#d2f1e3">🦊</span><div><strong style="color:#237d6e">均一四年級｜中文課程庫</strong><small>數學、自然、國語、社會、英語及酷課雲 · 單元分類、影片課程、收藏和進度</small></div><span class="arrow" aria-hidden="true">→</span></a>
 <a href="./houye-grade4.html" class="venue-feature" style="background:linear-gradient(110deg,#eaf1ff,#f3faf9);border-color:#c7d4ee"><span class="venue-feature-icon" aria-hidden="true" style="background:#dee8fa">📚</span><div><strong style="color:#3c629b">侯燁四年級自學｜9領域 × 52目標</strong><small>108課綱 × IXL 四年級｜月主題、Minecraft、自然探究、藝術與學習進度</small></div><span class="arrow" aria-hidden="true">→</span></a>
@@ -28,6 +29,15 @@
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog"><h2 id="dialogTitle"></h2><p id="dialogBody"></p><button class="close" id="close">知道了</button></div></div>
 <script>
 const resources=[
+  {
+    "id": "language-launcher",
+    "name": "語言啟動器",
+    "category": "閱讀與語文",
+    "icon": "🌏",
+    "url": "./language.html",
+    "description": "英語 Lingumi 與台語詞彙、有聲閱讀及學習資源。",
+    "tone": "#4386bb"
+  },
   {
     "id": "history-timeline",
     "name": "歷史學習｜年表與文物",
