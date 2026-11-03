@@ -20,11 +20,14 @@
     "byAttachment": 3894,
     "byRecordAttachments": 2299,
     "pendingBatch": 0,
-    "liveIndexedAttachmentReferences": 2652,
-    "unindexedAttachmentReferences": 2395,
+    "liveIndexedAttachmentReferences": 3897,
+    "unindexedAttachmentReferences": 1150,
     "missingPrimaryWorks": 650,
     "missingPrimaryAmongWorksWithAttachments": 649,
-    "duplicateCompositeAttachmentReferences": 3
+    "duplicateCompositeAttachmentReferences": 3,
+    "liveIndexedByCompositeKey": 2652,
+    "liveIndexedByLegacyBareAttachmentKey": 1245,
+    "legacyPrimaryWorksWithDriveLinks": 4023
   },
   "batch": {
     "verifiedExistingPrivateOriginals": 50,
@@ -78,7 +81,10 @@
   "notes": {
     "unindexedReferenceIsNotDriveMissingCount": true,
     "allMapped50FromExistingPrivateDestinationNotNewPhysicalBackups": true,
-    "duplicatesRequireCompositeIdentity": true
+    "duplicatesRequireCompositeIdentity": true,
+    "legacyByAttachmentHasBareAttachmentIdKeys": true,
+    "exactAttachmentCoverageCountsBothBareAndCompositeKeysWithRecordIdValidation": true,
+    "legacyKeyEntriesWereNotMissingOrStale": true
   },
   "errors": []
 }
