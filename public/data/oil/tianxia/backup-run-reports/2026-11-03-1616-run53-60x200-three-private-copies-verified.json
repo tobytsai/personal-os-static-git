@@ -1,0 +1,98 @@
+{
+  "collection": "天下畫博",
+  "runId": "2026-11-03-1616-run53",
+  "date": "2026-11-03",
+  "source": {
+    "airtableBaseId": "apptj1UgL0uVrNypY",
+    "airtableTableId": "tblkZiqP0Ra0E8Nj7",
+    "githubRepository": "tobytsai/personal-os-static-git",
+    "githubRef": "main",
+    "githubPath": "public/data/oil/tianxia/drive-original-links.json",
+    "driveMainFolderId": "17-H63qSdB98i-sqNUbrBGutw4l43ljIb"
+  },
+  "recordCounts": {
+    "airtableRecords": 4673,
+    "airtableAttachmentReferences": 5047,
+    "coveredBefore": 4082,
+    "verifiedAdded": 3,
+    "coveredAfter": 4085,
+    "remainingAttachmentReferences": 962,
+    "githubByRecordBefore": 4054,
+    "githubByRecordAfter": 4057,
+    "githubByAttachmentBefore": 4079,
+    "githubByAttachmentAfter": 4082,
+    "githubByRecordAttachmentsBefore": 2484,
+    "githubByRecordAttachmentsAfter": 2487,
+    "failedNewCopies": 0,
+    "unverifiedVisualOrHash": 3
+  },
+  "backup": {
+    "newOriginalDriveCopies": 3,
+    "existingMatched": 0,
+    "bytes": 1671146,
+    "method": "Drive copy_file",
+    "category": "60×200",
+    "newPrivateDriveFolderId": "1xumGDfDqJnNuK-mwc3YdF9g50Cbi-1fB",
+    "private": true,
+    "visualVerified": false,
+    "hashVerified": false
+  },
+  "entries": [
+    {
+      "recordId": "recS3Hw78b7s7Y1jw",
+      "attachmentId": "attXVsbEczVffx9hU",
+      "catalogIndex": 2103,
+      "code": "Q105-60200",
+      "sourceFilename": "Q105草原.jpg",
+      "sizeBytes": 490909,
+      "sourceDriveFileId": "1id9PGKB_eL6sK5-UjHcl7TZr74ABhwRJ",
+      "destinationDriveFileId": "1ebibTSi25FXSCoLyNgv8NjG-Wh0ZLq8Y"
+    },
+    {
+      "recordId": "recvcY0DlVGw5rZgj",
+      "attachmentId": "attyEwlRA402Yap30",
+      "catalogIndex": 4340,
+      "code": "Q107-60200",
+      "sourceFilename": "Q107塞北之秋.jpg",
+      "sizeBytes": 638340,
+      "sourceDriveFileId": "1KQzVztO7Nltrcx1KXYLj32NMIIRRj9c5",
+      "destinationDriveFileId": "1VISHlDgB1eJbCmZrcZnJNdKrmaMfo5dk"
+    },
+    {
+      "recordId": "recYd3csO7osr3c9e",
+      "attachmentId": "attweBdoAI3jEuoQ5",
+      "catalogIndex": 2600,
+      "code": "Q108-60200",
+      "sourceFilename": "Q108香港之夜.jpg",
+      "sizeBytes": 541897,
+      "sourceDriveFileId": "1XHM175h4oiQPosKpKeM9QOtaC_GU5ySi",
+      "destinationDriveFileId": "1hb4l9RxUX5ONwuCTFKKZUVg4Gmldre6v"
+    }
+  ],
+  "validation": [
+    "Current Airtable record ID, attachment ID, filename, exact byte size, MIME, code and dimensions checked",
+    "Drive pre-copy source file metadata checked",
+    "Drive cloud copies post-copy metadata checked: filename, size, MIME, destination parent, non-public permissions",
+    "GitHub main byRecord, byAttachment and byRecordAttachments reread after Actions merge; three identities matched"
+  ],
+  "skipReason": [
+    "A79/A80 filename/product-code anomalies remain unresolved; not force mapped",
+    "Other pending attachments not assumed to be backed up",
+    "No visual/hash equivalence proven"
+  ],
+  "writes": {
+    "checkpoint": "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1616-run53-original-60x200-3.json",
+    "checkpointCommit": "0a581468459bc627422dcceafdcb4ea203058431",
+    "mappingMergeCommit": "9d9316afd6ca655331e0a46d78f331e5c45ef8dd",
+    "mappingBlobShaAfter": "a49f37a0c5fdb775e17c468272f197c28bdc8c8d",
+    "workflowRunUrl": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41603491226",
+    "workflowConclusion": "success"
+  },
+  "noChanges": [
+    "Airtable source",
+    "WebP preview files",
+    "original source Drive files",
+    "Drive sharing permissions"
+  ],
+  "unresolved": "962 image attachment references lack verified mapping (some source images may already exist Drive). Full archive not complete; automation remains active."
+}
