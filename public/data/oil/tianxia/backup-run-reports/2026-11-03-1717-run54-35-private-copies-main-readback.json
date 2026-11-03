@@ -1,0 +1,70 @@
+{
+  "runDate": "2026-11-03",
+  "localRun": "2026-11-03 17:17 Asia/Taipei",
+  "collection": "天下畫博完整圖庫",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "records": 4673,
+    "attachmentReferences": 5047
+  },
+  "before": {
+    "matchedAttachmentReferences": 4085,
+    "remainingAttachmentReferences": 962,
+    "byRecord": 4057,
+    "byAttachment": 4082,
+    "byRecordAttachments": 2487
+  },
+  "batch": {
+    "attemptedSourceBackupCount": 35,
+    "privateDriveCloudCopies": 35,
+    "validatedOriginalJpegs": 35,
+    "newAttachmentMappings": 35,
+    "failedCopies": 0,
+    "failedMappings": 0,
+    "originalByteSizeSum": 15175170,
+    "sizeCategoryCounts": {
+      "60×200": 6,
+      "60×120": 5,
+      "80×160": 5,
+      "70×180": 6,
+      "80×200": 4,
+      "80×80": 5,
+      "90×120": 3,
+      "50×60": 1
+    },
+    "newDriveFolder": {
+      "name": "80×160｜原始圖",
+      "id": "1cgCMutG5a8NQ4rpJxB_BOn-gPHKkZYK7"
+    },
+    "verifiedBy": "Live Airtable attachment ID, name, size, JPEG MIME, product code; existing source Drive JPEG and postcopy destination metadata; no anonymous/domain share permissions detected; no independent image-visual or content-hash comparison"
+  },
+  "after": {
+    "matchedAttachmentReferences": 4120,
+    "remainingAttachmentReferences": 927,
+    "byRecord": 4091,
+    "byAttachment": 4117,
+    "byRecordAttachments": 2522,
+    "pendingBatch": 0
+  },
+  "github": {
+    "mergeCommit": "0d4e17ef4c4c8d6bed59fd8c9d637add25f63c21",
+    "verifiedMappingBlobSha": "a9248825b571e8020e41d1bd5394c5fbe25e19f6",
+    "successfulWorkflow": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41612831683",
+    "checkpoint": "public/data/oil/tianxia/backup-checkpoints/2026-11-03-1717-run54-verified-originals-35.json",
+    "stageReports": [
+      "public/data/oil/tianxia/backup-run-reports/2026-11-03-1717-stage-01.json",
+      "public/data/oil/tianxia/backup-run-reports/2026-11-03-1717-stage-02.json",
+      "public/data/oil/tianxia/backup-run-reports/2026-11-03-1717-stage-03.json",
+      "public/data/oil/tianxia/backup-run-reports/2026-11-03-1717-stage-04.json",
+      "public/data/oil/tianxia/backup-run-reports/2026-11-03-1717-stage-05.json"
+    ]
+  },
+  "notes": [
+    "Existing Airtable and GitHub WebP previews were not edited.",
+    "Only new private Drive copies were created, no source files removed or privacy policies changed.",
+    "The workflow lastBatch.remainingEstimate=956 is computed from byRecord primary links, not 5047 attachment references; accurate remaining attachment-reference count is 927.",
+    "A79/A80 records with historical filename/source identity conflicts remain separately pending; no unsafe merging."
+  ],
+  "complete": false
+}
