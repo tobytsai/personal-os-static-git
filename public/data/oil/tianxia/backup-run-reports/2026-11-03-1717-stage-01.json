@@ -1,0 +1,91 @@
+{
+  "run": "2026-11-03-1717",
+  "stage": 1,
+  "entries": [
+    {
+      "recordId": "rec4z5Fc81PA4C6xy",
+      "attachmentId": "attvZ0oe5l4ocN514",
+      "code": "F6-60200",
+      "bytes": 347001,
+      "sourceDriveId": "1jqBksLA0Kszr3zEbN_yD76XiZahdiOqv",
+      "destDriveId": "19-B3kGPligOEXBoAa2kzXnxPk0MGV_Dv",
+      "filename": "F6-60200__rec4z5Fc81PA4C6xy_attvZ0oe5l4ocN514.jpg",
+      "size": "60×200",
+      "folderId": "1xumGDfDqJnNuK-mwc3YdF9g50Cbi-1fB",
+      "visuallyVerified": false
+    },
+    {
+      "recordId": "recCbtVGSmtXTfxav",
+      "attachmentId": "attVbpxgtK3QMsLpT",
+      "code": "F4-60120",
+      "bytes": 571299,
+      "sourceDriveId": "1OEyJHbRt_GmT1swY23abtj2tQI7DmxPE",
+      "destDriveId": "1wwRhEKfmrw5zFM-NcvvubtyIgxDKykcQ",
+      "filename": "F4-60120__recCbtVGSmtXTfxav_attVbpxgtK3QMsLpT.jpg",
+      "size": "60×120",
+      "folderId": "1KoVHPFglfuFywkvG_8NCJY4VTaotzqW0",
+      "visuallyVerified": false
+    },
+    {
+      "recordId": "recF68ODFcx1aGNDu",
+      "attachmentId": "attBbPcCb7FlWIx88",
+      "code": "A1-80160",
+      "bytes": 402063,
+      "sourceDriveId": "1f5eeGef919snyKYtuFUuJUK4nP7CCGL9",
+      "destDriveId": "18GAFhdnHwn9etvMNHCekOWRFkdWNCIMX",
+      "filename": "A1-80160__recF68ODFcx1aGNDu_attBbPcCb7FlWIx88.jpg",
+      "size": "80×160",
+      "folderId": "1cgCMutG5a8NQ4rpJxB_BOn-gPHKkZYK7",
+      "visuallyVerified": false
+    },
+    {
+      "recordId": "recIA7h10RTELH1qe",
+      "attachmentId": "attWOctuKuElrt2o7",
+      "code": "A20-70180",
+      "bytes": 443598,
+      "sourceDriveId": "1VbTyZXGcv6CG8aC9PPMkvoDsE0Z3iFwo",
+      "destDriveId": "1MZQ-KjHvB7lAsrIGoie2L1ExG95TeMrq",
+      "filename": "A20-70180__recIA7h10RTELH1qe_attWOctuKuElrt2o7.jpg",
+      "size": "70×180",
+      "folderId": "1s8qNUHCM3e0WbaTGgQeY3QHky7_PCvpt",
+      "visuallyVerified": false
+    },
+    {
+      "recordId": "recJWujc6isz2JRfc",
+      "attachmentId": "attq93o3Nday4YZQH",
+      "code": "A180-80200",
+      "bytes": 339750,
+      "sourceDriveId": "17LO8L7KuCou5ipjJNOSkgEaevqjUN_KW",
+      "destDriveId": "1RHaEc27GV58OizIFtPp7gaAVqALr-WCW",
+      "filename": "A180-80200__recJWujc6isz2JRfc_attq93o3Nday4YZQH.jpg",
+      "size": "80×200",
+      "folderId": "1j-mFBb_vCwkeHDa8Ei2QHH0Xu2wAnSuV",
+      "visuallyVerified": false
+    },
+    {
+      "recordId": "recJeDNjYII4rGow6",
+      "attachmentId": "attT1b02Musp7FK6X",
+      "code": "F8-60200",
+      "bytes": 511496,
+      "sourceDriveId": "1vXryOe3R6-fA-usJ_B_RNbtFWokJ0h4V",
+      "destDriveId": "1ViPrIwJAfe__QpyJEq1ZPNIkHl6VTV-4",
+      "filename": "F8-60200__recJeDNjYII4rGow6_attT1b02Musp7FK6X.jpg",
+      "size": "60×200",
+      "folderId": "1xumGDfDqJnNuK-mwc3YdF9g50Cbi-1fB",
+      "visuallyVerified": false
+    },
+    {
+      "recordId": "recNoHmMu4UlG5HRw",
+      "attachmentId": "attP3u3qZPgFwrcPK",
+      "code": "C20-8080",
+      "bytes": 397726,
+      "sourceDriveId": "1N3KEDhdZlx6lzF4fWTzXr17F_L0jNT9i",
+      "destDriveId": "1dUv9iE_7-LRhmONN3EcUN3bAU8arXAUU",
+      "filename": "C20-8080__recNoHmMu4UlG5HRw_attP3u3qZPgFwrcPK.jpg",
+      "size": "80×80",
+      "folderId": "1LgYK-ZJDXe8qKNIjiSRaLvef5Yk9znCS",
+      "visuallyVerified": false
+    }
+  ],
+  "check": "Airtable ID+size+type, Drive source gallery match, destination metadata and permission, no visual/hash comparison"
+}
