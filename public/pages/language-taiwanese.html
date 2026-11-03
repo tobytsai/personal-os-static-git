@@ -39,7 +39,7 @@ a{color:#235f96}
 details{margin-top:9px}
 details summary{cursor:pointer;font-size:14px;color:#2566a1;font-weight:700}
 .actions{margin-top:13px}
-.actions a,.actions button{font:inherit;font-size:14px;border:0;border-radius:9px;padding:8px 10px;background:#eaf3fd;color:#235c89;cursor:pointer;text-decoration:none}
+.actions a,.actions button{font:inherit;font-size:14px;border:0;border-radius:9px;padding:9px 11px;background:#eaf3fd;color:#235c89;cursor:pointer;text-decoration:none}.actions button.listen{background:#156c86;color:#fff;font-weight:750}.actions button.listen:focus-visible{outline:3px solid #e8b34e}.taigi-player{display:block;width:100%;max-width:100%;margin-top:12px;height:42px}.taigi-player[hidden]{display:none}.audio-status{font-size:14px;line-height:1.5;color:#8a5b24;margin-top:8px}.audio-status[hidden]{display:none}
 .more{display:block;margin:22px auto 0}
 .more[hidden],.empty[hidden]{display:none}
 .empty{padding:25px;color:#587083}
@@ -66,7 +66,7 @@ details summary{cursor:pointer;font-size:14px;color:#2566a1;font-weight:700}
 <a class="tab" href="./language-taiwanese-reading.html">🎧 台語有聲閱讀（20）</a>
 </nav>
 <section class="panel">
-<p class="notice">資料來源：<a href="https://airtable.com/appPBthyencSKXSwo/tblEkJ1ffFBw1C2Vz/viwFPqphfDpJ9ysOr" target="_blank" rel="noopener noreferrer">Airtable 台語 · Table 1 · Grid view ↗</a>。本頁為 2026/11/03 的資料快照，不會直接修改 Airtable。來源的「音讀」欄是文字，未附音檔，因此不提供可能不準確的自動朗讀。</p>
+<p class="notice">資料來源：<a href="https://airtable.com/appPBthyencSKXSwo/tblEkJ1ffFBw1C2Vz/viwFPqphfDpJ9ysOr" target="_blank" rel="noopener noreferrer">Airtable 台語 · Table 1 · Grid view ↗</a>。已比對教育部《臺灣台語常用詞辭典》的詞目、台羅與 810 筆真人錄音檔名，點選卡片「🔊 聽台語」即可在此頁播放。音訊由 <a href="https://github.com/ChhoeTaigi/KipSutianDataMirror" target="_blank" rel="noopener noreferrer">ChhoeTaigi 詞典資料鏡像</a> 提供；錄音著作權為中華民國教育部，採 <a href="https://sutian.moe.edu.tw/zh-hant/piantsip/pankhuan-singbing/" target="_blank" rel="noopener noreferrer">CC BY-ND 3.0 臺灣</a> 授權，保留原音、未改作。播放需連線，若音檔失效可開啟原始詞條。此頁是 2026/11/03 的資料快照，不直接修改 Airtable。</p>
 <div class="filters">
 <input id="q" type="search" placeholder="搜尋詞目、音讀、釋義" aria-label="搜尋台語詞彙">
 <select id="cat" aria-label="選擇台語分類"><option value="">全部主題分類</option></select>
@@ -90,6 +90,14 @@ let all=[],shown=48,focus='';
 function folded(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
 function element(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e;}
 function link(text,url){const e=element('a','',text);e.href=url;e.target='_blank';e.rel='noopener noreferrer';return e;}
+const AUDIO_MIRROR='https://chhoetaigi.github.io/KipSutianDataMirror/public/20261019-0109/imtong/sutiau/';
+const AUDIO_RAW='https://raw.githubusercontent.com/ChhoeTaigi/KipSutianDataMirror/main/public/20261019-0109/imtong/sutiau/';
+let activeAudio=null,activePlayButton=null;
+function stopPlayback(){
+ if(activeAudio){activeAudio.pause();activeAudio.currentTime=0;}
+ if(activePlayButton&&activePlayButton.isConnected)activePlayButton.textContent='🔊 聽台語';
+ activeAudio=null;activePlayButton=null;
+}
 function card(item){
  const article=element('article','card');article.id=item.id;
  article.append(element('h2','',item.term||'（未填詞目）'));
@@ -101,9 +109,23 @@ function card(item){
    const details=element('details');details.append(element('summary','','展開完整釋義'),element('p','meaning',meaning));article.append(details);
  }
  const actions=element('div','actions');
- if(/^rec[A-Za-z0-9]{14}$/.test(item.id))actions.append(link('Airtable 原始紀錄 ↗',BASE+item.id));
+ const hasOfficialAudio=/^\d+\(\d+\)\.mp3$/.test(item.audioFile||'');
+ if(hasOfficialAudio){
+   const play=element('button','listen','🔊 聽台語');play.type='button';play.dataset.play=item.id;play.setAttribute('aria-label','播放「'+item.term+'」的台語真人發音');actions.append(play);
+ }
+ if(item.audioEntryUrl&&safeUrl(item.audioEntryUrl))actions.append(link('教育部詞典 ↗',safeUrl(item.audioEntryUrl)));
+ if(/^rec[A-Za-z0-9]{14}$/.test(item.id))actions.append(link('Airtable ↗',BASE+item.id));
  const copy=element('button','','複製詞目');copy.type='button';copy.dataset.copy=item.term||'';actions.append(copy);
  article.append(actions);
+ if(hasOfficialAudio){
+   const player=element('audio','taigi-player');player.controls=true;player.preload='none';player.hidden=true;player.setAttribute('playsinline','');player.setAttribute('aria-label','台語詞彙「'+item.term+'」真人錄音');
+   const path=encodeURIComponent(item.audioFile);
+   const first=element('source');first.src=AUDIO_MIRROR+path;first.type='audio/mpeg';
+   const backup=element('source');backup.src=AUDIO_RAW+path;backup.type='audio/mpeg';
+   player.append(first,backup);
+   article.append(player);
+   const status=element('p','audio-status');status.hidden=true;status.setAttribute('role','status');status.textContent='音檔暫時無法播放，可點「教育部詞典」在官方網站聆聽。';article.append(status);
+ }
  return article;
 }
 function visibleRows(){
@@ -113,6 +135,7 @@ function visibleRows(){
  return filtered;
 }
 function render(){
+ stopPlayback();
  let rows=visibleRows();
  if(focus&&!q.value&&!cat.value){const n=rows.findIndex(x=>x.id===focus);if(n>=shown)shown=n+1;}
  const frag=document.createDocumentFragment();
@@ -127,7 +150,42 @@ function onFilter(){shown=48;render();}
 q.addEventListener('input',onFilter);cat.addEventListener('change',onFilter);sort.addEventListener('change',onFilter);
 document.getElementById('reset').addEventListener('click',()=>{q.value='';cat.value='';sort.value='source';onFilter();});
 more.addEventListener('click',()=>{shown+=48;render();});
-grid.addEventListener('click',e=>{const b=e.target.closest('button[data-copy]');if(!b)return;if(!navigator.clipboard){b.textContent='請長按詞目複製';return;}navigator.clipboard.writeText(b.dataset.copy).then(()=>{b.textContent='已複製';}).catch(()=>{b.textContent='請長按詞目複製';});});
+grid.addEventListener('click',e=>{
+ const listen=e.target.closest('button[data-play]');
+ if(listen){
+   const article=listen.closest('.card'),player=article&&article.querySelector('audio.taigi-player');
+   if(!player)return;
+   if(activeAudio===player&&!player.paused){stopPlayback();return;}
+   stopPlayback();activeAudio=player;activePlayButton=listen;
+   player.hidden=false;
+   const status=article.querySelector('.audio-status');if(status)status.hidden=true;
+   listen.textContent='⏳ 載入台語錄音…';
+   player.play().then(()=>{if(activeAudio===player)listen.textContent='⏸ 停止';}).catch(()=>{
+     if(activeAudio===player){listen.textContent='🔊 再試播放';if(status)status.hidden=false;}
+   });
+   return;
+ }
+ const b=e.target.closest('button[data-copy]');
+ if(!b)return;
+ const copyValue=b.dataset.copy;
+ if(!navigator.clipboard||!navigator.clipboard.writeText){
+    if(window.prompt)window.prompt('複製台語詞目',copyValue);
+    return;
+ }
+ navigator.clipboard.writeText(copyValue).then(()=>{b.textContent='已複製';}).catch(()=>{if(window.prompt)window.prompt('複製台語詞目',copyValue);});
+});
+grid.addEventListener('ended',e=>{
+ const audio=e.target;
+ if(audio===activeAudio)stopPlayback();
+},true);
+grid.addEventListener('error',e=>{
+ const audio=e.target;
+ if(audio&&audio.matches&&audio.matches('audio.taigi-player')){
+   const article=audio.closest('.card'),status=article&&article.querySelector('.audio-status');
+   if(status)status.hidden=false;
+   if(audio===activeAudio&&activePlayButton)activePlayButton.textContent='🔊 再試播放';
+ }
+},true);
 fetch('../data/language-taiwanese.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(db=>{
  if(!Array.isArray(db.items))throw Error('找不到詞彙資料');
  all=db.items;
