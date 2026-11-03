@@ -1,0 +1,116 @@
+{
+  "runDate": "2026-11-03",
+  "localRun": "2026-11-03 18:27 Asia/Taipei",
+  "collection": "天下畫博完整圖庫",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "records": 4673,
+    "attachmentReferences": 5047,
+    "attachmentFields": [
+      "Attachments",
+      "圖檔2"
+    ],
+    "catalogPaths": [
+      "public/data/oil/tianxia/index.json",
+      "public/data/oil/tianxia/chunk-01.json",
+      "public/data/oil/tianxia/chunk-02.json",
+      "public/data/oil/tianxia/chunk-03.json",
+      "public/data/oil/tianxia/chunk-04.json",
+      "public/data/oil/tianxia/chunk-05.json"
+    ]
+  },
+  "before": {
+    "byRecord": 4091,
+    "byAttachment": 4117,
+    "byRecordAttachments": 2522,
+    "previousReportedCoveredAttachmentReferences": 4120,
+    "previousReportedRemainingAttachmentReferences": 927
+  },
+  "batch": {
+    "attempted": 4,
+    "copiedPrivateDriveOriginalJpegs": 4,
+    "verifiedDestinationJpegs": 4,
+    "newAttachmentMappings": 4,
+    "newPrimaryMappings": 4,
+    "failedCopies": 0,
+    "failedGitHubMappings": 0,
+    "originalByteSizeSum": 1596565,
+    "category": "60×120",
+    "destinationFolderId": "1KoVHPFglfuFywkvG_8NCJY4VTaotzqW0",
+    "sourceGalleryFolderId": "159xvGhSXulKMW5k6CvpzXhX74GtGCPGr",
+    "validation": "Live Airtable record ID, attachment ID, attachment index, product code, original filename, exact bytes and JPEG MIME. Private Drive source original filename, exact bytes and JPEG MIME checked before cloud copy. Destination metadata independently re-read after copying: stable record/attachment-inclusive filename, exact bytes, JPEG MIME, parent category folder, owner-only permissions and shared=false. Visually and by hash not independently compared.",
+    "sameAttachmentIdAcrossDifferentRecords": "The four source attachments have IDs reused by other catalogue records with differing product size. Distinct Drive destination IDs were created and record-scoped GitHub keys preserved. No filename/attachment-ID-only merging.",
+    "entries": [
+      {
+        "recordId": "recGiTrz0CgGtoGpW",
+        "attachmentId": "attqdo0Lbsz3qK42y",
+        "catalogIndex": 1263,
+        "code": "A2-60120",
+        "filename": "A2.jpg",
+        "bytes": 385146,
+        "sourceDriveFileId": "1pazbqF-3MzmhpMowVVf5WRkR2-6ReFhA",
+        "destinationDriveFileId": "1DMzyxGwhI7D8FLFH_IUKM1fXP-j0YNXi"
+      },
+      {
+        "recordId": "recLyhID5tAo8qqUm",
+        "attachmentId": "attvJ4IzM0viJ7E6p",
+        "catalogIndex": 1652,
+        "code": "A7-60120",
+        "filename": "A7.jpg",
+        "bytes": 381051,
+        "sourceDriveFileId": "19uvZqEsI38DS4fh9iWrcVOFRC-59B7O0",
+        "destinationDriveFileId": "1G_zbnBqO--rlDf13kZm4rzSQa_I3HXAg"
+      },
+      {
+        "recordId": "recQYwRRSMBArVy9L",
+        "attachmentId": "attBbPcCb7FlWIx88",
+        "catalogIndex": 2001,
+        "code": "A1-60120",
+        "filename": "A1.jpg",
+        "bytes": 402063,
+        "sourceDriveFileId": "1f5eeGef919snyKYtuFUuJUK4nP7CCGL9",
+        "destinationDriveFileId": "1ldQVV63evz8GE5O0wde-VFsGQ9k94ALC"
+      },
+      {
+        "recordId": "recr2Iq2ReitPHyJm",
+        "attachmentId": "attULMePsKrnuGyJz",
+        "catalogIndex": 3987,
+        "code": "A4-60120",
+        "filename": "A4.jpg",
+        "bytes": 428305,
+        "sourceDriveFileId": "1gX0K2yeg4pAGNvhiPrro4f1iCBYOmdfO",
+        "destinationDriveFileId": "1-BbsNpT2dZa471NlddoV5CCnw7xzjv50"
+      }
+    ]
+  },
+  "after": {
+    "byRecord": 4095,
+    "byAttachment": 4121,
+    "byRecordAttachments": 2526,
+    "pendingBatch": 0,
+    "matchedAttachmentReferences": 4126,
+    "remainingAttachmentReferences": 921,
+    "recordsWithoutPrimaryByRecordMapping": 578,
+    "unmatchedPrimaryAttachments": 577,
+    "unmatchedNonPrimaryAttachments": 344,
+    "fullyCompleted": false
+  },
+  "github": {
+    "checkpoint": "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1826-run55-60x120-private-copies-4.json",
+    "checkpointCommit": "944a32a13cfcb73b3059d219ae24c1f0a79d7623",
+    "mergeCommit": "305e861692a9b15083eab8016c150611637f0ffb",
+    "mergeWorkflow": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41619408269",
+    "verifiedMappingBlobSha": "c43a0ec91f5b14519f575590925fd37f1ea3b0f3",
+    "readbackVerifiedRecords": 4,
+    "readbackVerifiedAttachments": 4,
+    "readbackVerifiedRecordAttachments": 4
+  },
+  "notes": [
+    "Count of 4126 matched attachment references is recomputed from all 5047 live Airtable references and current mapping; differs by +2 from expected prior 4120 + this 4 due to earlier historical-index counting, NOT due to two additional copies in this run.",
+    "Do not use workflow lastBatch.remainingEstimate=952 as attachment reference count; it computes 5047 - byRecord, whereas accurately recomputed unmatched references is 921.",
+    "No changes to Airtable, GitHub WebP thumbnails, Drive originals, private permissions, or existing mappings; no source deletions.",
+    "Original-image visual/hash verification not performed.",
+    "Existing A79/A80 source filename/product-code conflicts remain unresolved and were not merged."
+  ]
+}
