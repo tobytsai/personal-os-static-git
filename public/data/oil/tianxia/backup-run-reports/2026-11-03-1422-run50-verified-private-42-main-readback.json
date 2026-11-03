@@ -1,0 +1,507 @@
+{
+  "runId": "2026-11-03-1422-run50",
+  "collection": "天下畫博",
+  "status": "verified-and-merged-with-three-source-conflicts-held",
+  "source": "Current Airtable base apptj1UgL0uVrNypY table tblkZiqP0Ra0E8Nj7; GitHub main snapshot and mapping; Google Drive private originals",
+  "recordCountLive": 4673,
+  "imageReferencesLive": 5047,
+  "fieldsLive": {
+    "Attachments": 5033,
+    "圖檔2": 14
+  },
+  "catalogSnapshot": {
+    "records": 4673,
+    "attachmentReferences": 5047
+  },
+  "start": {
+    "byRecord": 4023,
+    "byAttachment": 3994,
+    "byRecordAttachments": 2399,
+    "coveredAttachmentReferences": 3997
+  },
+  "end": {
+    "byRecord": 4023,
+    "byAttachment": 4036,
+    "byRecordAttachments": 2441,
+    "coveredAttachmentReferences": 4039,
+    "pendingBatch": 0
+  },
+  "batch": {
+    "candidateHistoricalPrimary": 45,
+    "verifiedIdentityLinks": 42,
+    "drivePhysicalCopies": 0,
+    "newRawUploads": 0,
+    "skippedForIdentityMismatch": 3,
+    "writeFailures": 0,
+    "originalBytesIndependentlyCompared": 3933800,
+    "categories": {
+      "30×40": 23,
+      "50×60": 19
+    },
+    "visualVerification": false,
+    "hashVerification": false
+  },
+  "remaining": {
+    "unlinkedAttachmentReferences": 1008,
+    "mainRecordsWithoutByRecord": 649,
+    "sourceAnomaliesToReview": 3
+  },
+  "github": {
+    "checkpoint": "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1422-run50-verified-existing-private-42.json",
+    "mergedMappingCommit": "bd76b0faa2b4c71a02ed024c077d01b139a6b8a5",
+    "actionsRun": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41590312968"
+  },
+  "checks": {
+    "liveAirtableRecordIdentity": true,
+    "liveExactFilenameAndBytes": true,
+    "DriveOriginalJPEGFolderListingAndPrivacy": true,
+    "all42MappedBackToSameDriveIdsOnGitHubMain": true,
+    "visualOrHashComparison": false
+  },
+  "sourceAnomalies": [
+    {
+      "recordId": "rec6xPakDLsJ8u6Sh",
+      "catalogIndex": 496,
+      "attachmentId": "att0hAbV60QKh3yft",
+      "reason": "Airtable filename A80.JPG and 47875 bytes; historical byRecord maps A79-5060.jpg and 50654 bytes",
+      "status": "unresolved; no new association"
+    },
+    {
+      "recordId": "recc1JzAhPjTFtZa8",
+      "catalogIndex": 2837,
+      "attachmentId": "att6xhrdoV9G2fWrg",
+      "reason": "Airtable filename A79.JPG and 50654 bytes; historical byRecord maps A80-5060.jpg and 47875 bytes",
+      "status": "unresolved; no new association"
+    },
+    {
+      "recordId": "recqNdigdm13SvpHB",
+      "catalogIndex": 3949,
+      "attachmentId": "attcN0otpueYeCFHu",
+      "reason": "Airtable A77-5060.jpg is 176412 bytes; historical Drive A77-5060.jpg is 49004 bytes",
+      "status": "unresolved; no new association"
+    }
+  ],
+  "verifiedAttachmentIdentities": [
+    {
+      "rid": "recwe2kWaIviDcbT7",
+      "aid": "attjMFX3pWQPdEQ9l",
+      "idx": 4426,
+      "file": "1G2G7YzCkzWGsJfJNPgjFJnQJWSuOLRUb",
+      "code": "A126-5060",
+      "category": "50×60",
+      "bytes": 98674,
+      "ok": true
+    },
+    {
+      "rid": "recwhBLY4pWQV0omr",
+      "aid": "att1L7Mr06v4IjglA",
+      "idx": 4428,
+      "file": "1e3HzuI8SvFZ6hiC9zM9-3Ui-voQyOzd2",
+      "code": "A132-3040",
+      "category": "30×40",
+      "bytes": 31197,
+      "ok": true
+    },
+    {
+      "rid": "recwhgEWCvjc4iVGx",
+      "aid": "atthgequS6ZVLVZ5P",
+      "idx": 4430,
+      "file": "1d69gwib_yoPgjwG4l6srJGfppXGSNXNA",
+      "code": "B28-3040",
+      "category": "30×40",
+      "bytes": 114797,
+      "ok": true
+    },
+    {
+      "rid": "recwmW2rg4umWdK8c",
+      "aid": "attAXwyW9nfkd1JHg",
+      "idx": 4440,
+      "file": "1l56RpRnyjDokwuyeYWyxWgTpOJ4fLYgG",
+      "code": "B17-3040",
+      "category": "30×40",
+      "bytes": 90255,
+      "ok": true
+    },
+    {
+      "rid": "recwo9lQJTpqxJgJn",
+      "aid": "attcT3NEfUBzHwbyf",
+      "idx": 4442,
+      "file": "1GcJs7tPCrc0eaIIQkUswSnSxdTSrFIgR",
+      "code": "A103-3040",
+      "category": "30×40",
+      "bytes": 54114,
+      "ok": true
+    },
+    {
+      "rid": "recx1PV30BImoOXOJ",
+      "aid": "att0OU8on6QOpPJ06",
+      "idx": 4452,
+      "file": "1M9cBZrjou3HSqmFtqF5VkU4VfeYfElJL",
+      "code": "A302-3040",
+      "category": "30×40",
+      "bytes": 136844,
+      "ok": true
+    },
+    {
+      "rid": "recxDQBZyDqclGgEz",
+      "aid": "att9giQSk0t2g5ShQ",
+      "idx": 4470,
+      "file": "1grrBLoamBXDJOV6wKmfI0kTgcmYVRlBA",
+      "code": "A140-5060",
+      "category": "50×60",
+      "bytes": 50592,
+      "ok": true
+    },
+    {
+      "rid": "recxGmnqJfUI2xquM",
+      "aid": "attiD5VvSB45rdqFc",
+      "idx": 4475,
+      "file": "19wHqB4kKqL0ao2PcQjwOobh95nnHccU9",
+      "code": "C4-3040",
+      "category": "30×40",
+      "bytes": 102428,
+      "ok": true
+    },
+    {
+      "rid": "recxH6YIhHx320Fpw",
+      "aid": "attMrC5H9pLI8try6",
+      "idx": 4476,
+      "file": "1qGfh3zwul3gzoZcgs1M-Whxi1T1CtQvM",
+      "code": "A378-3040",
+      "category": "30×40",
+      "bytes": 92811,
+      "ok": true
+    },
+    {
+      "rid": "recxI2CtKEbw7diEv",
+      "aid": "attXAKa0RCmi6V8xi",
+      "idx": 4479,
+      "file": "1M6TTaVJinmVPgxWdDj0ogaXSywaqI8-8",
+      "code": "A181-3040",
+      "category": "30×40",
+      "bytes": 67522,
+      "ok": true
+    },
+    {
+      "rid": "recxK6zQlW7lIQh5H",
+      "aid": "atthNoX5PiCe6JetK",
+      "idx": 4480,
+      "file": "1exkEOwpG7bbsRZpV3NObUNJANtIHNuU2",
+      "code": "A37-3040",
+      "category": "30×40",
+      "bytes": 49316,
+      "ok": true
+    },
+    {
+      "rid": "recxKMRR9Jme66y1e",
+      "aid": "attIQdfgJnexJg4tR",
+      "idx": 4481,
+      "file": "1-clIgkHLsbc903h-z4vtggFusc0gaDTG",
+      "code": "A311-5060",
+      "category": "50×60",
+      "bytes": 108810,
+      "ok": true
+    },
+    {
+      "rid": "recxLYFAtdvGcvjW5",
+      "aid": "attW1s13fUhN168Qo",
+      "idx": 4482,
+      "file": "1Pa4CrKkwEscpgFDRu0YfDKV78WsFEhEF",
+      "code": "A192-5060",
+      "category": "50×60",
+      "bytes": 187606,
+      "ok": true
+    },
+    {
+      "rid": "recxQW8CzfG6de7cT",
+      "aid": "attxwTz6pjfeMGJ6C",
+      "idx": 4488,
+      "file": "15eAyFxYswCU6DkM4q4qWWpVWOYdKWNWQ",
+      "code": "A290-5060",
+      "category": "50×60",
+      "bytes": 92811,
+      "ok": true
+    },
+    {
+      "rid": "recxlyj6pjLHNQ4J9",
+      "aid": "attNseAlTLAYM424o",
+      "idx": 4510,
+      "file": "12xUxZY3UQcD8044dR_07wrBJC09Qmu0o",
+      "code": "A305-5060",
+      "category": "50×60",
+      "bytes": 98650,
+      "ok": true
+    },
+    {
+      "rid": "recxo4s1IGuxQ23EM",
+      "aid": "attewIxXdONpaPknm",
+      "idx": 4512,
+      "file": "1FRP7VeW36RbrhfgkFSvVtzLEu1Xl8igY",
+      "code": "A160-5060",
+      "category": "50×60",
+      "bytes": 51580,
+      "ok": true
+    },
+    {
+      "rid": "recxpYiGDlgZNSFGT",
+      "aid": "att728klRzwvN6Dhh",
+      "idx": 4515,
+      "file": "1UWECd05rsgXP-ssYix70zs6gksd3W1IG",
+      "code": "B13-3040",
+      "category": "30×40",
+      "bytes": 51318,
+      "ok": true
+    },
+    {
+      "rid": "recxpvJluPjls4JjW",
+      "aid": "att4aEyPwKgW1HmAJ",
+      "idx": 4516,
+      "file": "12YZi8fGPkcse2zyFv5ko5v3iur3hLL6L",
+      "code": "A233-5060",
+      "category": "50×60",
+      "bytes": 104471,
+      "ok": true
+    },
+    {
+      "rid": "recxwuHTrCU51ZXVr",
+      "aid": "att6WmYUw00R85j1h",
+      "idx": 4522,
+      "file": "1kfC_zpBmJ5hnKVksqk9wargS7Bi815pv",
+      "code": "A189-5060",
+      "category": "50×60",
+      "bytes": 158653,
+      "ok": true
+    },
+    {
+      "rid": "recyU28qNHysbmTe3",
+      "aid": "attq9IFIxkd5ilNJp",
+      "idx": 4563,
+      "file": "1J0j8tNa3a-6BYJeIkzvi-lBKmTChaWry",
+      "code": "A127-5060",
+      "category": "50×60",
+      "bytes": 85210,
+      "ok": true
+    },
+    {
+      "rid": "recybwuI9X5IMTYPH",
+      "aid": "atty8co4Ae55c4orF",
+      "idx": 4567,
+      "file": "1QJBFDLiOblCgz1f0LV43HELTcym0JaVW",
+      "code": "A111-5060",
+      "category": "50×60",
+      "bytes": 61177,
+      "ok": true
+    },
+    {
+      "rid": "recycCBi5HzXsGRRv",
+      "aid": "attphynoRumPwO4iA",
+      "idx": 4568,
+      "file": "1aZVvQtBwN88EKVmmeTcICe-VRmPdyflx",
+      "code": "A87-3040",
+      "category": "30×40",
+      "bytes": 50363,
+      "ok": true
+    },
+    {
+      "rid": "recyccxLfUyV9siq6",
+      "aid": "attXPIpBjZgeIgx5R",
+      "idx": 4569,
+      "file": "1j9X-nUAeOvRilMOS1xywrzUsPxKE-M0I",
+      "code": "A190-3040",
+      "category": "30×40",
+      "bytes": 87395,
+      "ok": true
+    },
+    {
+      "rid": "recyh35CFLTwQUCEm",
+      "aid": "attA96Skg7637wNuW",
+      "idx": 4578,
+      "file": "1k5S1SpYgoXKl7YL40qNR7PiKx1gq8Lp7",
+      "code": "B3-3040",
+      "category": "30×40",
+      "bytes": 53640,
+      "ok": true
+    },
+    {
+      "rid": "recyj8ErBPZqxpX5N",
+      "aid": "attiAyVgtWB1efN83",
+      "idx": 4580,
+      "file": "1vAkBJBFRJDdwl4lYLSDuyalGsgYLN5i1",
+      "code": "A430-3040",
+      "category": "30×40",
+      "bytes": 115590,
+      "ok": true
+    },
+    {
+      "rid": "recylV3HLIdp1iTas",
+      "aid": "attNCDB7ICfZJH7XM",
+      "idx": 4582,
+      "file": "1ExGyS9CZzth_C1GexdTJe7ozNMWz5ySO",
+      "code": "A189-3040",
+      "category": "30×40",
+      "bytes": 67202,
+      "ok": true
+    },
+    {
+      "rid": "recym5rqeHZcRS1mO",
+      "aid": "attOiYPRH0LUR2S3V",
+      "idx": 4583,
+      "file": "1qSoOTf0USdpIO97uYacO2E3kKH5xppUa",
+      "code": "A81-5060",
+      "category": "50×60",
+      "bytes": 49398,
+      "ok": true
+    },
+    {
+      "rid": "recyxz7agu0REeVZr",
+      "aid": "attdmbpy5iym5XvKq",
+      "idx": 4595,
+      "file": "1tKpZW0jGh0G-aXmGN5XPV9yYglXxFfkR",
+      "code": "A86-3040",
+      "category": "30×40",
+      "bytes": 47585,
+      "ok": true
+    },
+    {
+      "rid": "recz1nMqxd4lePYFz",
+      "aid": "attPG50rzdZLviLXh",
+      "idx": 4598,
+      "file": "1yf3mTsf0mtcbvQEjt-TiDARQiNov35DS",
+      "code": "A183-3040",
+      "category": "30×40",
+      "bytes": 72975,
+      "ok": true
+    },
+    {
+      "rid": "recz4hR0v7ja303dW",
+      "aid": "attWusSzlLKlTu4sw",
+      "idx": 4599,
+      "file": "18Jey8bSRQzAm-vt7-3IXMpvOwPiPQa0B",
+      "code": "A112-5060",
+      "category": "50×60",
+      "bytes": 85796,
+      "ok": true
+    },
+    {
+      "rid": "reczAEufqNpHcwSm6",
+      "aid": "attEAsID4dIgmkQQA",
+      "idx": 4603,
+      "file": "15g09uxtW8935b6MTGPilF9D1IGERLo_Y",
+      "code": "A130-3040",
+      "category": "30×40",
+      "bytes": 46308,
+      "ok": true
+    },
+    {
+      "rid": "reczAIG7QviSxduc1",
+      "aid": "attMqUu1KWfNVThJ7",
+      "idx": 4604,
+      "file": "1V9dFJtWmLdt7Sm74rizshwazlvuCLwJB",
+      "code": "A356-5060",
+      "category": "50×60",
+      "bytes": 505313,
+      "ok": true
+    },
+    {
+      "rid": "reczD2mDGVx7G1Npo",
+      "aid": "att3j8mDSLGvG6YX2",
+      "idx": 4608,
+      "file": "1Rbi9OUZU0DJDW6OqY3ZdZDCTHPP8_YcS",
+      "code": "B9-3040",
+      "category": "30×40",
+      "bytes": 48120,
+      "ok": true
+    },
+    {
+      "rid": "reczPU5KdpAQqyunq",
+      "aid": "att0Oz65j4KMAudBS",
+      "idx": 4626,
+      "file": "1LjxGFo0JDKZks4oSrRQfcmxzoh6Tvi2A",
+      "code": "A184-3040",
+      "category": "30×40",
+      "bytes": 85921,
+      "ok": true
+    },
+    {
+      "rid": "reczTsDrQberWS6Uc",
+      "aid": "att0H3Jth6RpXi796",
+      "idx": 4635,
+      "file": "1uiu5YuMM1YJ7vz1f5eCCYkmb0n2zRKJb",
+      "code": "A90-5060",
+      "category": "50×60",
+      "bytes": 38208,
+      "ok": true
+    },
+    {
+      "rid": "reczb5Y6KNpcNdBMN",
+      "aid": "attEPPACLoWvWkmeW",
+      "idx": 4642,
+      "file": "1auftMf94OUbD4EWJizu5e_xs9MafZMeK",
+      "code": "A114-5060",
+      "category": "50×60",
+      "bytes": 60820,
+      "ok": true
+    },
+    {
+      "rid": "reczf7ytv9Qw215oO",
+      "aid": "attc3uBSLwpuGZsLH",
+      "idx": 4649,
+      "file": "1m4FrTpOFlOqnqxy_LavCIRJ4OBUyBd0r",
+      "code": "A47-3040",
+      "category": "30×40",
+      "bytes": 71635,
+      "ok": true
+    },
+    {
+      "rid": "reczi9xOZZ6bWQxFD",
+      "aid": "att9aQLLeglpiiyT3",
+      "idx": 4652,
+      "file": "1gItrvcDmj9VE6vu89xr3XRCbTKsdxHsb",
+      "code": "A91-3040",
+      "category": "30×40",
+      "bytes": 57218,
+      "ok": true
+    },
+    {
+      "rid": "reczisEwrN2VqspID",
+      "aid": "attJh4G47QpfNRw5Y",
+      "idx": 4653,
+      "file": "1mHUyVs2toEhHR4ZxFrSjgB_pqp6sV2VT",
+      "code": "A172-5060",
+      "category": "50×60",
+      "bytes": 144403,
+      "ok": true
+    },
+    {
+      "rid": "reczriUdpyR2HWSZ9",
+      "aid": "attnVrHnOjUf3kXmX",
+      "idx": 4666,
+      "file": "1oSCazD0Ba4Yf77gzGCDtuYZ4zKTfkN6Q",
+      "code": "A306-5060",
+      "category": "50×60",
+      "bytes": 111603,
+      "ok": true
+    },
+    {
+      "rid": "reczuf0KDETdYxxKZ",
+      "aid": "attpwzhpPwZQ3Gycp",
+      "idx": 4669,
+      "file": "1DELMqTsGN1-k_rpckY4DJYt1DNhspQ3A",
+      "code": "A243-3040",
+      "category": "30×40",
+      "bytes": 173733,
+      "ok": true
+    },
+    {
+      "rid": "reczwZBHdwq2JGtYZ",
+      "aid": "attmHqz6bYqKDu9dy",
+      "idx": 4672,
+      "file": "1Pss6sxkYnxj7Jo7f1UW4LItNCtwJQbXM",
+      "code": "A280-5060",
+      "category": "50×60",
+      "bytes": 71738,
+      "ok": true
+    }
+  ],
+  "policies": "No Airtable edits, no WebP changes, no raw-file deletion, no Drive permission edits, no duplication. Historical original metadata was re-verified via folder listing; three mismatches were excluded from merge."
+}
