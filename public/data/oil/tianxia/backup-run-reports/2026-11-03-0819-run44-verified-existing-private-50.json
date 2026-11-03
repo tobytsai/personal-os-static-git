@@ -8,7 +8,10 @@
     "works": 4673,
     "imageAttachments": 5047,
     "uniqueAttachmentIds": 5039,
-    "duplicateAttachmentReferences": 8
+    "duplicateAttachmentReferences": 8,
+    "uniqueRecordAttachmentPairs": 5044,
+    "duplicateWithinRecordReferences": 3,
+    "crossRecordAttachmentIdReuse": 5
   },
   "before": {
     "byRecord": 4023,
@@ -20,9 +23,14 @@
     "byAttachment": 3744,
     "byRecordAttachments": 2149,
     "pendingBatch": 0,
-    "liveIndexed": 2502,
-    "unindexedReferences": 2545,
-    "missingPrimaryWorks": 650
+    "liveIndexed": 3747,
+    "unindexedReferences": 1300,
+    "missingPrimaryWorks": 650,
+    "uniqueMappedRecordAttachmentPairs": 3744,
+    "byAttachmentKeyFormats": {
+      "recordAttachmentPair": 2499,
+      "legacyAttachmentIdOnly": 1245
+    }
   },
   "batch": {
     "verifiedExistingPrivateOriginals": 50,
@@ -771,5 +779,6 @@
       "publiclyShared": false,
       "visualReview": false
     }
-  ]
+  ],
+  "notes": "Mapped references were counted from byAttachment entry values because legacy keys are attachment-ID-only, while newer keys are recordID:attachmentID. 3 references repeat within a record, and 5 attachment IDs recur across distinct records; these references are not merged or deleted."
 }
