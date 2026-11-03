@@ -1,0 +1,75 @@
+{
+  "runId": "2026-11-03-1025-run46",
+  "localDate": "2026-11-03",
+  "status": "completed_github_main_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "works": 4673,
+    "imageAttachments": 5047
+  },
+  "before": {
+    "byRecord": 4023,
+    "byAttachment": 3794,
+    "byRecordAttachments": 2199,
+    "liveIndexedAttachmentReferences": 3797
+  },
+  "after": {
+    "byRecord": 4023,
+    "byAttachment": 3844,
+    "byRecordAttachments": 2249,
+    "pendingBatch": 0,
+    "liveIndexedAttachmentReferences": 3847,
+    "unindexedAttachmentReferences": 1200,
+    "missingPrimaryWorks": 650
+  },
+  "batch": {
+    "verifiedExistingPrivateOriginals": 50,
+    "addedAttachmentMappings": 50,
+    "newPhysicalDriveCopies": 0,
+    "uploadedNewDriveOriginals": 0,
+    "distinctRecords": 50,
+    "distinctDriveOriginalIds": 50,
+    "bytes": 4848467,
+    "bySize": {
+      "50×60": 17,
+      "30×40": 33
+    },
+    "driveDirectMetadataSpotChecks": 10,
+    "driveFolderInventoryVerified": 50,
+    "githubMainReadbackFailures": 0
+  },
+  "verification": {
+    "liveAirtableAttachmentIds": true,
+    "exactBytes": true,
+    "originalFilename": true,
+    "driveFileName": true,
+    "jpegMimeType": true,
+    "correctDriveParent": true,
+    "nonPublicVisibility": true,
+    "githubMainPostCommitReadback": true,
+    "visualReview": false,
+    "hashReview": false,
+    "method": "Live Airtable identities; complete fresh Google Drive source and destination folder inventory with 10 additional direct file metadata checks; original pre-existing private Drive links; no new copies."
+  },
+  "notes": {
+    "unindexedReferenceIsNotDriveMissingCount": true,
+    "duplicateOrReusedAttachmentReferencesRequireCompositeKey": true,
+    "visualIdentityNotIndependentlyChecked": true,
+    "sourceUniquenessWithinLiveRecords": 5044
+  },
+  "github": {
+    "checkpointCommit": "19da1c9240ca8600ebcc4e00e68ec60f1f4512b5",
+    "mappingCommit": "349f50a223e869f894b22f99f32e43131c53bd13",
+    "mappingBlobSha": "6731d7b244d11a684c381b27c1988d694317bea9",
+    "patchPath": "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1025-run46-existing-private-50.json",
+    "workflowRun": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41567050943"
+  },
+  "safety": {
+    "modifiedAirtable": false,
+    "deletedOriginal": false,
+    "modifiedWebP": false,
+    "broadenedDriveSharing": false
+  },
+  "errors": []
+}
