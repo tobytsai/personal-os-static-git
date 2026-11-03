@@ -1,0 +1,528 @@
+{
+  "runId": "2026-11-03-1323-run49",
+  "collection": "天下畫博",
+  "verificationDateTaiwan": "2026-11-03 13:23–13:33 Asia/Taipei",
+  "source": "Live Airtable apptj1UgL0uVrNypY/tblkZiqP0Ra0E8Nj7, private Google Drive originals, GitHub main",
+  "referenceRecords": 4673,
+  "referenceAttachments": 5047,
+  "startingCounts": {
+    "byRecord": 4023,
+    "byAttachment": 3944,
+    "byRecordAttachments": 2349,
+    "liveAttachmentIdentitiesCovered": 3947
+  },
+  "finalCounts": {
+    "byRecord": 4023,
+    "byAttachment": 3994,
+    "byRecordAttachments": 2399,
+    "liveAttachmentIdentitiesCovered": 3997,
+    "pendingBatch": 0
+  },
+  "batch": {
+    "verifiedExistingOriginals": 50,
+    "newDrivePhysicalCopies": 0,
+    "newAirtableRawUploads": 0,
+    "newAttachmentIdentityLinks": 50,
+    "failed": 0,
+    "bytesVerified": 6861880,
+    "byCategory": {
+      "30×40": 30,
+      "50×60": 20
+    },
+    "uniqueDriveFileIds": 50,
+    "visualComparisonsNotPerformed": 50,
+    "hashComparisonsNotPerformed": 50
+  },
+  "remaining": {
+    "unlinkedLiveAttachmentReferences": 1050,
+    "recordsWithoutByRecord": 650,
+    "recordsWithMainAttachmentButWithoutByRecord": 649,
+    "recordsWithoutAnyImageAttachment": 1,
+    "legacyKeyReferencesReconciled": 3
+  },
+  "checks": {
+    "liveAirtableAttachmentIdentity": true,
+    "exactByteSize": true,
+    "originalFilenameOrExistingRecordedFilename": true,
+    "codeAndSizeCategory": true,
+    "privateDriveFolder": true,
+    "driveMetadataReRead": true,
+    "distinctDriveIds": true,
+    "gitHubMainReadbackAfterMerge": true,
+    "visualHashComparison": false
+  },
+  "github": {
+    "mappingFile": "public/data/oil/tianxia/drive-original-links.json",
+    "mappingBlobSha": "4e0ff1b7865fac428e7a6242d91e82d18fc89541",
+    "mergedCommit": "42cdad2560f761c4ca8273417efe133f37b8d61f",
+    "mergedCommitUrl": "https://github.com/tobytsai/personal-os-static-git/commit/42cdad2560f761c4ca8273417efe133f37b8d61f",
+    "verifiedActionsRun": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41584502604",
+    "checkpointFiles": [
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1323-run49-existing-private-part01.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1323-run49-existing-private-part02.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1323-run49-existing-private-part03.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1323-run49-existing-private-part04.json",
+      "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1323-run49-existing-private-part05.json"
+    ]
+  },
+  "preserved": [
+    "Airtable original data",
+    "Drive source original JPEGs",
+    "Drive private sharing settings",
+    "existing WebP previews",
+    "byRecord front-end backward compatibility"
+  ],
+  "notes": "All 50 original JPEG bytes already existed in private Google Drive folders. This batch re-verified them against Airtable and newly published complete attachment identity records, without copying, uploading, or changing permissions. A missing identity link does not imply missing physical Drive image.",
+  "verifiedIdentities": [
+    {
+      "recordId": "recrMIhuQDL4UhM5f",
+      "attachmentId": "attuWc6x1qhhqrS9d",
+      "catalogIndex": 4014,
+      "code": "B26-3040",
+      "category": "30×40",
+      "driveFileId": "1RtcFY3hHEOon81utrxlkTgYaor3iF4af",
+      "byteSize": 123088
+    },
+    {
+      "recordId": "recrMkGx8Ow9kxnPl",
+      "attachmentId": "attwyPZaPgtzKAqXc",
+      "catalogIndex": 4015,
+      "code": "A128-5060",
+      "category": "50×60",
+      "driveFileId": "15md9b1qgkSyKUysHPSwWwSLuyu9Wx9NC",
+      "byteSize": 33318
+    },
+    {
+      "recordId": "recrRlPiFqMHG1Pl4",
+      "attachmentId": "attof7CFYe5qaenW3",
+      "catalogIndex": 4025,
+      "code": "A71-3040",
+      "category": "30×40",
+      "driveFileId": "1z6obL8RdLtadtL1wc8RAbUVtlzQ3kkqM",
+      "byteSize": 44352
+    },
+    {
+      "recordId": "recrX9dS0JfUWDK96",
+      "attachmentId": "attTlCJUBMqN788vW",
+      "catalogIndex": 4032,
+      "code": "A234-5060",
+      "category": "50×60",
+      "driveFileId": "1hvBHpLQucjwFqQKWu23KTxg6NlXccJny",
+      "byteSize": 98622
+    },
+    {
+      "recordId": "recrYrEQ1rgZalpSs",
+      "attachmentId": "attgwYuNESkE3G50x",
+      "catalogIndex": 4034,
+      "code": "A116-3040",
+      "category": "30×40",
+      "driveFileId": "1RYSr9kfGKho2uBPrqJX4RMKQQjtKdoq8",
+      "byteSize": 31026
+    },
+    {
+      "recordId": "recri9H7XqAVdfsov",
+      "attachmentId": "att1J9oCnVNz6M2Ov",
+      "catalogIndex": 4043,
+      "code": "A269-3040",
+      "category": "30×40",
+      "driveFileId": "1fuCUQQ6Dj6htVZdMEchvmLLyofrU_Jxv",
+      "byteSize": 134402
+    },
+    {
+      "recordId": "recroB9AjkcpN1axW",
+      "attachmentId": "attkm06XpxAEHT0cs",
+      "catalogIndex": 4050,
+      "code": "A84-3040",
+      "category": "30×40",
+      "driveFileId": "1r6CqGMNrHQqOuMMn3oUkXL5i24zhQqhS",
+      "byteSize": 54180
+    },
+    {
+      "recordId": "recrs1u5VwM2vLxnj",
+      "attachmentId": "attsQpVrQNCjRBsIb",
+      "catalogIndex": 4056,
+      "code": "A251-5060",
+      "category": "50×60",
+      "driveFileId": "1E0ZeoeLSCIpb18FIOckyVEyMSCIiRCZo",
+      "byteSize": 122522
+    },
+    {
+      "recordId": "recs2WJ2ADqlBlmwn",
+      "attachmentId": "attgIGmHozE3XTOgT",
+      "catalogIndex": 4067,
+      "code": "A384-3040",
+      "category": "30×40",
+      "driveFileId": "1-oVMsESgYqnEX-Kq86YUpDxbPa8oXZ8e",
+      "byteSize": 105213
+    },
+    {
+      "recordId": "recs880k7bGZQvOnK",
+      "attachmentId": "attSKze9pYL1S85qm",
+      "catalogIndex": 4074,
+      "code": "A304-5060",
+      "category": "50×60",
+      "driveFileId": "1Kb-d-2b0H0Gri6ZBi-A1m_KT7x-MEyk-",
+      "byteSize": 123648
+    },
+    {
+      "recordId": "recsQF4xZqqd4kNzF",
+      "attachmentId": "attST1Q6BwNvw09iv",
+      "catalogIndex": 4101,
+      "code": "A2-3040",
+      "category": "30×40",
+      "driveFileId": "1FRIhNL0-xES69FbihAdute01hIqGVNcc",
+      "byteSize": 40520
+    },
+    {
+      "recordId": "recsZkFjgPRVjHMk2",
+      "attachmentId": "attU2exVBaqtHa6qB",
+      "catalogIndex": 4113,
+      "code": "A219-5060",
+      "category": "50×60",
+      "driveFileId": "1Hf1gZxVqMU5_uwAQxy2c00FkxmwY4FJr",
+      "byteSize": 128243
+    },
+    {
+      "recordId": "recsfagVzxHaLA5jR",
+      "attachmentId": "attLIdUDuB5uS7Mke",
+      "catalogIndex": 4123,
+      "code": "A64-3040",
+      "category": "30×40",
+      "driveFileId": "1GG-BjuoB4fmdJDvP-4BMffqmDcrpeDkF",
+      "byteSize": 36726
+    },
+    {
+      "recordId": "recsojC0upMGIaHJ5",
+      "attachmentId": "attedWt1jzpCTYryr",
+      "catalogIndex": 4136,
+      "code": "A301-5060",
+      "category": "50×60",
+      "driveFileId": "1-9Fo02kdjjyslU20DJ5v4FX93XMLsV9M",
+      "byteSize": 105433
+    },
+    {
+      "recordId": "recsz2RSdFS2WwVFL",
+      "attachmentId": "attCtCuYuWesnHhoy",
+      "catalogIndex": 4150,
+      "code": "A169-5060",
+      "category": "50×60",
+      "driveFileId": "11LCMdk82B1hMGgrDoILquSlmiwmX-45P",
+      "byteSize": 78635
+    },
+    {
+      "recordId": "rect43w6kvoqIjRIJ",
+      "attachmentId": "attyZXNxsxPGJSwNJ",
+      "catalogIndex": 4153,
+      "code": "A152-3040",
+      "category": "30×40",
+      "driveFileId": "105NA03mLvP7-MlPdRAn3YtyeDfshVOn7",
+      "byteSize": 24328
+    },
+    {
+      "recordId": "rectJokbzPmIg2gaW",
+      "attachmentId": "attQb6JICjSsCQUQF",
+      "catalogIndex": 4171,
+      "code": "A74-3040",
+      "category": "30×40",
+      "driveFileId": "1EsefHvWi5bDjbQtwyWV8uzOiEVj3UFSa",
+      "byteSize": 53055
+    },
+    {
+      "recordId": "rectM6prpucowNhMa",
+      "attachmentId": "attlL8rTe2JWyegjB",
+      "catalogIndex": 4173,
+      "code": "A177-3040",
+      "category": "30×40",
+      "driveFileId": "1UwerFy1D8mCq4_88L-9R3TCl3dD7IAOn",
+      "byteSize": 50592
+    },
+    {
+      "recordId": "rectYvjwYpEVRcdyk",
+      "attachmentId": "attkOciW7QPG8dXCC",
+      "catalogIndex": 4192,
+      "code": "A353-5060",
+      "category": "50×60",
+      "driveFileId": "12ZzG0pP8ZDInnmz15pvNbMkzagbAFk-M",
+      "byteSize": 518733
+    },
+    {
+      "recordId": "rectZg66QGJ7tZbLJ",
+      "attachmentId": "attrWVga36VfjRmoS",
+      "catalogIndex": 4194,
+      "code": "A191-5060",
+      "category": "50×60",
+      "driveFileId": "1M4pya2EdgXdKIo3JvXXdi_e1tKlp3V35",
+      "byteSize": 100934
+    },
+    {
+      "recordId": "rectb9xmLIxGr8L15",
+      "attachmentId": "atttvRB0XGoiRQUwQ",
+      "catalogIndex": 4196,
+      "code": "A394-3040",
+      "category": "30×40",
+      "driveFileId": "1yyCgZwfUd1LEDqfP0JYW4ogoCytCkv8C",
+      "byteSize": 108810
+    },
+    {
+      "recordId": "recteDHS1fUuurpMQ",
+      "attachmentId": "atthjHtaSXIDJsVd3",
+      "catalogIndex": 4199,
+      "code": "A78-3040",
+      "category": "30×40",
+      "driveFileId": "1bpqrnGJU3KBMhiCCSZTouHrSOPAMKYsM",
+      "byteSize": 47945
+    },
+    {
+      "recordId": "recteUdolm79NOK6m",
+      "attachmentId": "attPdaLeftM8PDaDp",
+      "catalogIndex": 4200,
+      "code": "A264-5060",
+      "category": "50×60",
+      "driveFileId": "1iY1pBNDGyP7-1fVrtDll6FUS3XevX_IJ",
+      "byteSize": 89059
+    },
+    {
+      "recordId": "rectmMBwfEyqz1O5X",
+      "attachmentId": "attk3cBAYg5Fmbsfu",
+      "catalogIndex": 4211,
+      "code": "A176-3040",
+      "category": "30×40",
+      "driveFileId": "1CgV2t8wTHYrUbTIs1OY_o4rZiaopgDnm",
+      "byteSize": 82036
+    },
+    {
+      "recordId": "rectmdsIFGsvdKFLY",
+      "attachmentId": "attnonERGHpUkNcXV",
+      "catalogIndex": 4212,
+      "code": "A131-3040",
+      "category": "30×40",
+      "driveFileId": "1BBt7MIpVxixw2ciliXBH51Taw0qco0M1",
+      "byteSize": 38809
+    },
+    {
+      "recordId": "rectzHUe8XoNcMIjl",
+      "attachmentId": "attQR9e3MZcwPzNGz",
+      "catalogIndex": 4227,
+      "code": "A411-3040",
+      "category": "30×40",
+      "driveFileId": "1ww1xESfUl_DSPJLLMCBnFS9cSgWuioAS",
+      "byteSize": 162915
+    },
+    {
+      "recordId": "rectzoLjallOpcHAx",
+      "attachmentId": "atthZbt93OzwYzh73",
+      "catalogIndex": 4229,
+      "code": "A357-5060",
+      "category": "50×60",
+      "driveFileId": "1hI4OUHNt2H9VN3oMGWWju9vp8_dMTTnI",
+      "byteSize": 675018
+    },
+    {
+      "recordId": "recuEChLigZ3LyvYr",
+      "attachmentId": "att31QUUjImckSykD",
+      "catalogIndex": 4239,
+      "code": "C30-3040",
+      "category": "30×40",
+      "driveFileId": "1X7MlEBfsFGd4UgWLHmtDMpD-C6HpwDvj",
+      "byteSize": 144761
+    },
+    {
+      "recordId": "recuJbOfeksYEneCV",
+      "attachmentId": "attbokS1c2eHOpgyJ",
+      "catalogIndex": 4247,
+      "code": "A297-5060",
+      "category": "50×60",
+      "driveFileId": "1AnXc6MTSxarA6I3rqhxiBHxXVYn8mJem",
+      "byteSize": 145026
+    },
+    {
+      "recordId": "recuNIaixKCsZTc3n",
+      "attachmentId": "attjne88RN0z4P4Xk",
+      "catalogIndex": 4249,
+      "code": "A313-5060",
+      "category": "50×60",
+      "driveFileId": "1X6VpAYQACmQ4yHTs9cPlZSF8WgIhZh-G",
+      "byteSize": 115218
+    },
+    {
+      "recordId": "recuOqMV9EWc8vFxE",
+      "attachmentId": "att6Pzndq2XjMLub0",
+      "catalogIndex": 4253,
+      "code": "A246-3040",
+      "category": "30×40",
+      "driveFileId": "1AGiTc_UoWwLUDKxwi23qjR6yYplqlAhl",
+      "byteSize": 139533
+    },
+    {
+      "recordId": "recuPJmiClUCr0tvc",
+      "attachmentId": "att9UfDddbF16afCG",
+      "catalogIndex": 4254,
+      "code": "A158-3040",
+      "category": "30×40",
+      "driveFileId": "1TT_Kx3XwYeECoTGD1y2cXQ3obB7nEAbZ",
+      "byteSize": 41742
+    },
+    {
+      "recordId": "recujKHvRXaCBtg4g",
+      "attachmentId": "attjIV26qjH7L0lpj",
+      "catalogIndex": 4276,
+      "code": "A188-3040",
+      "category": "30×40",
+      "driveFileId": "1w-PQq56vC0BnaFpMfKHcUgWsxFfX-bHu",
+      "byteSize": 65088
+    },
+    {
+      "recordId": "recukjgdKUf4Pihkv",
+      "attachmentId": "attXoN3OfflsmTuU1",
+      "catalogIndex": 4279,
+      "code": "A300-3040",
+      "category": "30×40",
+      "driveFileId": "1w6rhWOmAbc8Fqnqpfn47OUKARi474nPy",
+      "byteSize": 120787
+    },
+    {
+      "recordId": "recuppV5XlHvIMI3s",
+      "attachmentId": "attWE89039oHAkqfB",
+      "catalogIndex": 4285,
+      "code": "A17-3040",
+      "category": "30×40",
+      "driveFileId": "19ssEEb36DPkpYbQujZbbztG11n_vNGwo",
+      "byteSize": 50907
+    },
+    {
+      "recordId": "recuqF8tU4TgGIBAE",
+      "attachmentId": "attUOE8NXeFfYcoZq",
+      "catalogIndex": 4286,
+      "code": "A256-3040",
+      "category": "30×40",
+      "driveFileId": "1fbVBk5MeI8o5Pugw_yLe5waapCIjNh7R",
+      "byteSize": 128625
+    },
+    {
+      "recordId": "recurzDcc5Pr3SZOu",
+      "attachmentId": "attoyRlIY4yyLk27O",
+      "catalogIndex": 4288,
+      "code": "A306-3040",
+      "category": "30×40",
+      "driveFileId": "1zICwlVXPhQP1jDpn-Wmlw3e4O8bAi1bB",
+      "byteSize": 119264
+    },
+    {
+      "recordId": "recuwY1i50zlMivYC",
+      "attachmentId": "att17YB5BIH9W4Iyx",
+      "catalogIndex": 4294,
+      "code": "A271-3040",
+      "category": "30×40",
+      "driveFileId": "1f6FWgEAImrlEI7rdA3T98fkUBbVFq2VN",
+      "byteSize": 113965
+    },
+    {
+      "recordId": "recv8beYSHJxQZQaj",
+      "attachmentId": "attycCndGrVBa3Bdb",
+      "catalogIndex": 4307,
+      "code": "A193-5060",
+      "category": "50×60",
+      "driveFileId": "1-M-MhzNLmzxq7dOI1_TKFaV6SOoVXtmw",
+      "byteSize": 140575
+    },
+    {
+      "recordId": "recvAT3qu2u4oHW1f",
+      "attachmentId": "att2YFomH6J8neO1a",
+      "catalogIndex": 4313,
+      "code": "A48-5060",
+      "category": "50×60",
+      "driveFileId": "1Vo_x_Rggx0yt6keQKZ9X2TiSPTHIM-3X",
+      "byteSize": 36225
+    },
+    {
+      "recordId": "recvB39e7RnOnRN4O",
+      "attachmentId": "attcmyV2TnyrA3H8y",
+      "catalogIndex": 4314,
+      "code": "A107-3040",
+      "category": "30×40",
+      "driveFileId": "1alk10-0hvgOdLjoWgiR9yta-tuPQANKj",
+      "byteSize": 24047
+    },
+    {
+      "recordId": "recvR46el3pLrvwzb",
+      "attachmentId": "attkrXIfHyBJoGIId",
+      "catalogIndex": 4327,
+      "code": "A253-3040",
+      "category": "30×40",
+      "driveFileId": "19up2uuitE_uDibOH-AT8fY9pOi8umUMo",
+      "byteSize": 134206
+    },
+    {
+      "recordId": "recviMNDr99n5Ocrh",
+      "attachmentId": "attw09PQv4x3B0yXf",
+      "catalogIndex": 4348,
+      "code": "A139-3040",
+      "category": "30×40",
+      "driveFileId": "1Udk4iV5U8Mn3E46NlWhaZutLMboi1bR8",
+      "byteSize": 64051
+    },
+    {
+      "recordId": "recvqeb0C10hwqZqm",
+      "attachmentId": "att9al8Mh6Hj02BBu",
+      "catalogIndex": 4358,
+      "code": "A339-5060",
+      "category": "50×60",
+      "driveFileId": "17IUsdj7TrTCoPUfXhxX1IPnd6HgfZfrS",
+      "byteSize": 586788
+    },
+    {
+      "recordId": "recvrc7wsLoiZPZC1",
+      "attachmentId": "atttbBdDvtFX3RjrL",
+      "catalogIndex": 4362,
+      "code": "A25-5060",
+      "category": "50×60",
+      "driveFileId": "1rWlVA_z0mMJKJmL58kzVfl8H5ZRf9QaM",
+      "byteSize": 57219
+    },
+    {
+      "recordId": "recvxZKL8G7bsEZas",
+      "attachmentId": "att20bTubLQCmTlHE",
+      "catalogIndex": 4368,
+      "code": "A354-5060",
+      "category": "50×60",
+      "driveFileId": "1BmeX48oHPA1mKftx1brUNxAcTKs5K3fq",
+      "byteSize": 741367
+    },
+    {
+      "recordId": "recw6ZvJ7pkgrOqrQ",
+      "attachmentId": "attCoPhOcq7rg3RNK",
+      "catalogIndex": 4380,
+      "code": "A157-5060",
+      "category": "50×60",
+      "driveFileId": "1Vm8DHiAcB4irDD2RImq_7w51BLf8eT6x",
+      "byteSize": 76822
+    },
+    {
+      "recordId": "recwDVG98oBLMO1An",
+      "attachmentId": "attJ6Qr3M75h3yKH4",
+      "catalogIndex": 4389,
+      "code": "A336-5060",
+      "category": "50×60",
+      "driveFileId": "161lur_kMexqaE59m3aq3T54W_Gbj_iwc",
+      "byteSize": 519490
+    },
+    {
+      "recordId": "recwGwqbABTx3lvKu",
+      "attachmentId": "attTDuK9hsvVXPIma",
+      "catalogIndex": 4392,
+      "code": "A148-3040",
+      "category": "30×40",
+      "driveFileId": "1CeNWmbSxD1rIGsUJklXWpTPe3Du6aobI",
+      "byteSize": 48783
+    },
+    {
+      "recordId": "recwdtzVLEtvDdmsM",
+      "attachmentId": "attm3bMISzWk68r3J",
+      "catalogIndex": 4425,
+      "code": "A122-3040",
+      "category": "30×40",
+      "driveFileId": "1An_wR-TOBHZfkUqsszY8GJcHuDtDTCdi",
+      "byteSize": 35229
+    }
+  ]
+}
