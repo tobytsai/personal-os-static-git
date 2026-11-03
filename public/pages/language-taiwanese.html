@@ -8,27 +8,20 @@
 <title>台語詞彙｜語言啟動器</title>
 <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif;color:#23384b;background:#f5f8fc}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0}
-main{max-width:1250px;margin:auto;padding:22px}
-a{color:#235f96}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}
+main{max-width:1250px;margin:auto;padding:22px}a{color:#235f96}
 .top,.tabs,.filters,.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .back,.tab{padding:10px 15px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700}
-.tab{border-radius:999px;background:#e7f1fa;color:#285c89}
-.tab.current{background:#225da2;color:#fff}
+.tab{border-radius:999px;background:#e7f1fa;color:#285c89}.tab.current{background:#225da2;color:#fff}
 .hero{border-radius:23px;background:linear-gradient(115deg,#1e5a86,#247d8a);color:#fff;padding:24px;margin:18px 0}
-.hero h1{font-size:31px;margin:8px 0}
-.hero p{line-height:1.7;margin:6px 0}
+.hero h1{font-size:31px;margin:8px 0}.hero p{line-height:1.7;margin:6px 0}
 .panel{background:#fff;border-radius:18px;padding:20px;margin:15px 0;box-shadow:0 5px 20px #24476d12}
-.notice{font-size:15px;color:#586e81;line-height:1.7}
+.notice{font-size:15px;color:#586e81;line-height:1.7}.sources{font-size:14px;color:#5a7080;line-height:1.8}
 .filters{margin:14px 0}
 .filters input,.filters select{font:inherit;padding:12px;border:1px solid #cbd9e7;border-radius:11px;min-width:165px;background:#fff}
-.filters input{flex:2 1 290px}
-.filters select{flex:1 1 180px}
+.filters input{flex:2 1 290px}.filters select{flex:1 1 175px}
 .filters button,.more{font:inherit;border:0;border-radius:11px;background:#eaf3fd;color:#255f91;padding:12px 17px;cursor:pointer;font-weight:700}
-.stats{color:#536c80;font-weight:700;line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:15px}
+.stats{color:#536c80;font-weight:700;line-height:1.6}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:15px}
 .card{border:1px solid #dce8f0;border-radius:16px;padding:17px;background:#fbfdff;min-width:0;scroll-margin-top:25px}
 .card:target{outline:3px solid #68b4bb}
 .card h2{font-size:24px;margin:0 0 8px;overflow-wrap:anywhere}
@@ -36,15 +29,17 @@ a{color:#235f96}
 .tag{display:inline-block;background:#e6f3ef;color:#24746a;border-radius:999px;padding:5px 10px;font-size:14px}
 .meaning{line-height:1.7;font-size:16px;white-space:pre-wrap;overflow-wrap:anywhere;color:#34475a}
 .meaning.short{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
-details{margin-top:9px}
-details summary{cursor:pointer;font-size:14px;color:#2566a1;font-weight:700}
-.actions{margin-top:13px}
-.actions a,.actions button{font:inherit;font-size:14px;border:0;border-radius:9px;padding:9px 11px;background:#eaf3fd;color:#235c89;cursor:pointer;text-decoration:none}.actions button.listen{background:#156c86;color:#fff;font-weight:750}.actions button.listen:focus-visible{outline:3px solid #e8b34e}.taigi-player{display:block;width:100%;max-width:100%;margin-top:12px;height:42px}.taigi-player[hidden]{display:none}.audio-status{font-size:14px;line-height:1.5;color:#8a5b24;margin-top:8px}.audio-status[hidden]{display:none}
-.more{display:block;margin:22px auto 0}
-.more[hidden],.empty[hidden]{display:none}
-.empty{padding:25px;color:#587083}
-.footer{margin:20px 0;color:#5d7184;font-size:14px}
-@media(max-width:620px){main{padding:13px}.hero{padding:20px}.hero h1{font-size:26px}.panel{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:12px}.card h2{font-size:21px}.reading{font-size:16px}.filters input,.filters select{width:100%;min-width:0;flex:1 0 100%}}
+details{margin-top:9px}details summary{cursor:pointer;font-size:14px;color:#2566a1;font-weight:700}
+.actions{margin-top:13px}.actions a,.actions button{font:inherit;font-size:14px;border:0;border-radius:9px;padding:8px 10px;background:#eaf3fd;color:#235c89;cursor:pointer;text-decoration:none;min-height:36px}
+.actions .listen{background:#1f6b86;color:#fff;font-weight:750}
+.actions a.official{background:#e3f3ee;color:#22664d}
+.sound-status{font-size:13px;color:#5e7180;line-height:1.5;min-height:17px;margin-top:9px;overflow-wrap:anywhere}
+.sound-status.error{color:#9b3b32}
+.inline-player{display:block;width:100%;margin:8px 0 0}
+.inline-player[hidden]{display:none}
+.more{display:block;margin:22px auto 0}.more[hidden],.empty[hidden]{display:none}
+.empty{padding:25px;color:#587083}.footer{margin:20px 0;color:#5d7184;font-size:14px}
+@media(max-width:620px){main{padding:13px}.hero{padding:20px}.hero h1{font-size:26px}.panel{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:12px}.card h2{font-size:21px}.reading{font-size:16px}.filters input,.filters select{width:100%;min-width:0;flex:1 0 100%}.actions{gap:7px}.actions a,.actions button{font-size:13px}}
 @media(max-width:375px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -58,7 +53,7 @@ details summary{cursor:pointer;font-size:14px;color:#2566a1;font-weight:700}
 <header class="hero">
 <p>語言啟動器 › 台語</p>
 <h1>🇹🇼 台語詞彙學習卡</h1>
-<p>依主題分類查找詞目、台羅音讀與釋義，整理自 Airtable「台語」資料庫。</p>
+<p>810 筆台語詞彙｜台羅音讀、釋義及教育部真人發音。</p>
 </header>
 <nav class="tabs" aria-label="語言分類">
 <a class="tab" href="./language.html">🇬🇧 英語 · Lingumi</a>
@@ -66,11 +61,14 @@ details summary{cursor:pointer;font-size:14px;color:#2566a1;font-weight:700}
 <a class="tab" href="./language-taiwanese-reading.html">🎧 台語有聲閱讀（20）</a>
 </nav>
 <section class="panel">
-<p class="notice">資料來源：<a href="https://airtable.com/appPBthyencSKXSwo/tblEkJ1ffFBw1C2Vz/viwFPqphfDpJ9ysOr" target="_blank" rel="noopener noreferrer">Airtable 台語 · Table 1 · Grid view ↗</a>。已比對教育部《臺灣台語常用詞辭典》的詞目、台羅與 810 筆真人錄音檔名，點選卡片「🔊 聽台語」即可在此頁播放。音訊由 <a href="https://github.com/ChhoeTaigi/KipSutianDataMirror" target="_blank" rel="noopener noreferrer">ChhoeTaigi 詞典資料鏡像</a> 提供；錄音著作權為中華民國教育部，採 <a href="https://sutian.moe.edu.tw/zh-hant/piantsip/pankhuan-singbing/" target="_blank" rel="noopener noreferrer">CC BY-ND 3.0 臺灣</a> 授權，保留原音、未改作。播放需連線，若音檔失效可開啟原始詞條。此頁是 2026/11/03 的資料快照，不直接修改 Airtable。</p>
+<p class="notice">資料來源：<a href="https://airtable.com/appPBthyencSKXSwo/tblEkJ1ffFBw1C2Vz/viwFPqphfDpJ9ysOr" target="_blank" rel="noopener noreferrer">Airtable 台語 · Table 1 · Grid view ↗</a>。詞彙為 2026/11/03 的資料快照，不會直接修改 Airtable。</p>
+<p class="notice">🔊 已對應 <strong id="coverage">—</strong> 筆原始台語真人錄音，可按「聽台語」播放；未找到與詞目、音讀同時相符的錄音則顯示官方查詢連結，<strong>不會使用國語語音取代台語</strong>。</p>
+<p class="sources">發音來源：<a href="https://sutian.moe.edu.tw/zh-hant/" target="_blank" rel="noopener noreferrer">教育部《臺灣台語常用詞辭典》</a>，錄音以 <a href="https://sutian.moe.edu.tw/zh-hant/piantsip/pankhuan-singbing/" target="_blank" rel="noopener noreferrer">CC BY-ND 3.0 TW</a> 授權。原始 MP3 由 <a href="https://github.com/yazelin/mandarin-taigi" target="_blank" rel="noopener noreferrer">mandarin-taigi 開源專案</a>保存提供；音檔未裁切或轉換。播放需要網路連線。</p>
 <div class="filters">
 <input id="q" type="search" placeholder="搜尋詞目、音讀、釋義" aria-label="搜尋台語詞彙">
 <select id="cat" aria-label="選擇台語分類"><option value="">全部主題分類</option></select>
-<select id="sort" aria-label="選擇排序"><option value="source">分類／原始編號</option><option value="word">詞目筆畫／字序</option></select>
+<select id="sound" aria-label="發音狀態"><option value="">所有詞彙</option><option value="has">可播放錄音</option><option value="none">尚無對應錄音</option></select>
+<select id="sort" aria-label="選擇排序"><option value="source">分類／原始編號</option><option value="word">詞目字序</option></select>
 <button type="button" id="reset">清除篩選</button>
 </div>
 <p class="stats" id="stats" aria-live="polite">正在讀取台語詞彙…</p>
@@ -78,124 +76,95 @@ details summary{cursor:pointer;font-size:14px;color:#2566a1;font-weight:700}
 <p class="empty" id="empty" hidden>找不到符合的詞彙，請換一個關鍵字或分類。</p>
 <button type="button" id="more" class="more" hidden>顯示更多卡片</button>
 </section>
-<p class="footer">這裡是學習用詞彙索引；若要修訂資料，請回到原始 Airtable 表格。</p>
+<p class="footer">本頁以精確比對取得官方原音，腔口或文白異讀可能不同；按卡片上的教育部連結可查詢完整讀音與例句。</p>
 </main>
 <script>
 (function(){
 'use strict';
-const BASE='https://airtable.com/appPBthyencSKXSwo/tblEkJ1ffFBw1C2Vz/viwFPqphfDpJ9ysOr/';
-const q=document.getElementById('q'),cat=document.getElementById('cat'),sort=document.getElementById('sort'),grid=document.getElementById('grid');
+const AIRTABLE='https://airtable.com/appPBthyencSKXSwo/tblEkJ1ffFBw1C2Vz/viwFPqphfDpJ9ysOr/';
+const RECORDING_REV='413c34bc2e4406e1ac5a81f148d84667e3830831';
+const AUDIO_CDN='https://cdn.jsdelivr.net/gh/yazelin/mandarin-taigi@'+RECORDING_REV+'/assets/audio/';
+const AUDIO_FALLBACK='https://raw.githubusercontent.com/yazelin/mandarin-taigi/'+RECORDING_REV+'/assets/audio/';
+const q=document.getElementById('q'),cat=document.getElementById('cat'),sound=document.getElementById('sound'),sort=document.getElementById('sort'),grid=document.getElementById('grid');
 const stats=document.getElementById('stats'),empty=document.getElementById('empty'),more=document.getElementById('more');
-let all=[],shown=48,focus='';
-function folded(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
-function element(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e;}
-function link(text,url){const e=element('a','',text);e.href=url;e.target='_blank';e.rel='noopener noreferrer';return e;}
-const AUDIO_MIRROR='https://chhoetaigi.github.io/KipSutianDataMirror/public/20261019-0109/imtong/sutiau/';
-const AUDIO_RAW='https://raw.githubusercontent.com/ChhoeTaigi/KipSutianDataMirror/main/public/20261019-0109/imtong/sutiau/';
-let activeAudio=null,activePlayButton=null;
-function stopPlayback(){
- if(activeAudio){activeAudio.pause();activeAudio.currentTime=0;}
- if(activePlayButton&&activePlayButton.isConnected)activePlayButton.textContent='🔊 聽台語';
- activeAudio=null;activePlayButton=null;
-}
+let all=[],shown=48,focus='',activePlayer=null;
+function norm(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e;}
+function ext(text,url,cls){const a=el('a',cls||'',text);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
+function official(item){return item.audioTermId&&/^\d+$/.test(item.audioTermId)?'https://sutian.moe.edu.tw/zh-hant/su/'+item.audioTermId+'/':'https://sutian.moe.edu.tw/zh-hant/tshiau/?iahbe=1&lui=tai_su&pitsoo=100&tsha='+encodeURIComponent(item.term);}
+function audioUrl(base,file){return base+encodeURIComponent(file).replace(/\(/g,'%28').replace(/\)/g,'%29');}
+function stop(){if(activePlayer){activePlayer.pause();activePlayer.currentTime=0;activePlayer=null;}}
 function card(item){
- const article=element('article','card');article.id=item.id;
- article.append(element('h2','',item.term||'（未填詞目）'));
- if(item.reading)article.append(element('p','reading','音讀｜'+item.reading));
- article.append(element('span','tag',item.category||'未分類'));
+ const article=el('article','card');article.id=item.id;
+ article.append(el('h2','',item.term||'（未填詞目）'));
+ if(item.reading)article.append(el('p','reading','音讀｜'+item.reading));
+ article.append(el('span','tag',item.category||'未分類'));
  const meaning=item.meaning||'（未填釋義）';
- article.append(element('p','meaning short',meaning));
- if(meaning.length>75){
-   const details=element('details');details.append(element('summary','','展開完整釋義'),element('p','meaning',meaning));article.append(details);
+ article.append(el('p','meaning short',meaning));
+ if(meaning.length>75){const d=el('details');d.append(el('summary','','展開完整釋義'),el('p','meaning',meaning));article.append(d);}
+ const actions=el('div','actions');
+ if(item.audioFile&&/^\d{1,6}\(1\)\.mp3$/.test(item.audioFile)){
+   const button=el('button','listen','🔊 聽台語');button.type='button';
+   const audio=el('audio','inline-player');audio.controls=true;audio.preload='none';audio.hidden=true;audio.setAttribute('aria-label','播放《'+item.term+'》台語發音');
+   const s=el('p','sound-status','教育部原音 · '+(item.audioReading||item.reading));
+   let triedFallback=false;
+   button.addEventListener('click',()=>{
+     if(activePlayer===audio&&!audio.paused){audio.pause();button.textContent='🔊 聽台語';return;}
+     if(activePlayer&&activePlayer!==audio)stop();
+     activePlayer=audio;audio.hidden=false;
+     if(!audio.src)audio.src=audioUrl(AUDIO_CDN,item.audioFile);
+     const result=audio.play();
+     if(result&&result.then)result.then(()=>{button.textContent='⏸ 暫停';s.textContent='正在播放教育部台語錄音';s.classList.remove('error');}).catch(()=>{
+       if(!triedFallback){
+         triedFallback=true;audio.src=audioUrl(AUDIO_FALLBACK,item.audioFile);
+         const retry=audio.play();
+         if(retry&&retry.then)retry.then(()=>{button.textContent='⏸ 暫停';s.textContent='正在播放教育部台語錄音';}).catch(()=>{button.textContent='🔊 再試一次';s.textContent='音檔載入失敗，請改點「教育部查詞」。';s.classList.add('error');});
+       }else{button.textContent='🔊 再試一次';s.textContent='音檔載入失敗，請改點「教育部查詞」。';s.classList.add('error');}
+     });
+   });
+   audio.addEventListener('ended',()=>{button.textContent='🔊 再聽一次';if(activePlayer===audio)activePlayer=null;});
+   audio.addEventListener('pause',()=>{if(!audio.ended)button.textContent='🔊 繼續播放';});
+   actions.append(button);
+   article.append(audio,s);
+ }else{
+   const p=el('p','sound-status','此詞目前未找到相符的真人錄音；可前往教育部辭典查詢。');article.append(p);
  }
- const actions=element('div','actions');
- const hasOfficialAudio=/^\d+\(\d+\)\.mp3$/.test(item.audioFile||'');
- if(hasOfficialAudio){
-   const play=element('button','listen','🔊 聽台語');play.type='button';play.dataset.play=item.id;play.setAttribute('aria-label','播放「'+item.term+'」的台語真人發音');actions.append(play);
- }
- if(item.audioEntryUrl&&safeUrl(item.audioEntryUrl))actions.append(link('教育部詞典 ↗',safeUrl(item.audioEntryUrl)));
- if(/^rec[A-Za-z0-9]{14}$/.test(item.id))actions.append(link('Airtable ↗',BASE+item.id));
- const copy=element('button','','複製詞目');copy.type='button';copy.dataset.copy=item.term||'';actions.append(copy);
- article.append(actions);
- if(hasOfficialAudio){
-   const player=element('audio','taigi-player');player.controls=true;player.preload='none';player.hidden=true;player.setAttribute('playsinline','');player.setAttribute('aria-label','台語詞彙「'+item.term+'」真人錄音');
-   const path=encodeURIComponent(item.audioFile);
-   const first=element('source');first.src=AUDIO_MIRROR+path;first.type='audio/mpeg';
-   const backup=element('source');backup.src=AUDIO_RAW+path;backup.type='audio/mpeg';
-   player.append(first,backup);
-   article.append(player);
-   const status=element('p','audio-status');status.hidden=true;status.setAttribute('role','status');status.textContent='音檔暫時無法播放，可點「教育部詞典」在官方網站聆聽。';article.append(status);
- }
- return article;
+ if(/^rec[A-Za-z0-9]{14}$/.test(item.id))actions.append(ext('Airtable ↗',AIRTABLE+item.id));
+ actions.append(ext('教育部查詞 ↗',official(item),'official'));
+ const cp=el('button','','複製詞目');cp.type='button';cp.dataset.copy=item.term||'';actions.append(cp);
+ article.append(actions);return article;
 }
-function visibleRows(){
- const key=folded(q.value.trim()),v=cat.value;
- const filtered=all.filter(x=>(!v||x.category===v)&&(!key||folded([x.term,x.reading,x.meaning,x.category,x.label].join(' ')).includes(key)));
- if(sort.value==='word')filtered.sort((a,b)=>a.term.localeCompare(b.term,'zh-Hant'));
- return filtered;
+function filtered(){
+ const key=norm(q.value.trim()),v=cat.value,sv=sound.value;
+ const rows=all.filter(x=>(!v||x.category===v)&&(!sv||(sv==='has'?!!x.audioFile:!x.audioFile))&&(!key||norm([x.term,x.reading,x.meaning,x.category,x.label].join(' ')).includes(key)));
+ if(sort.value==='word')rows.sort((a,b)=>a.term.localeCompare(b.term,'zh-Hant'));
+ return rows;
 }
 function render(){
- stopPlayback();
- let rows=visibleRows();
- if(focus&&!q.value&&!cat.value){const n=rows.findIndex(x=>x.id===focus);if(n>=shown)shown=n+1;}
- const frag=document.createDocumentFragment();
+ const rows=filtered();if(focus&&!q.value&&!cat.value){const i=rows.findIndex(x=>x.id===focus);if(i>=shown)shown=i+1;}
+ stop();const frag=document.createDocumentFragment();
  for(const item of rows.slice(0,shown))frag.append(card(item));
  grid.replaceChildren(frag);
  stats.textContent='顯示 '+Math.min(rows.length,shown)+' / '+rows.length+' 筆（資料庫共 '+all.length+' 筆）';
  empty.hidden=rows.length>0;more.hidden=shown>=rows.length;
  more.textContent='顯示更多（剩餘 '+Math.max(0,rows.length-shown)+' 筆）';
- if(focus){const target=document.getElementById(focus);if(target){target.scrollIntoView({block:'center'});target.querySelector('details')?.setAttribute('open','');}focus='';}
+ if(focus){const t=document.getElementById(focus);if(t)t.scrollIntoView({block:'center'});focus='';}
 }
 function onFilter(){shown=48;render();}
-q.addEventListener('input',onFilter);cat.addEventListener('change',onFilter);sort.addEventListener('change',onFilter);
-document.getElementById('reset').addEventListener('click',()=>{q.value='';cat.value='';sort.value='source';onFilter();});
+q.addEventListener('input',onFilter);cat.addEventListener('change',onFilter);sound.addEventListener('change',onFilter);sort.addEventListener('change',onFilter);
+document.getElementById('reset').addEventListener('click',()=>{q.value='';cat.value='';sound.value='';sort.value='source';onFilter();});
 more.addEventListener('click',()=>{shown+=48;render();});
-grid.addEventListener('click',e=>{
- const listen=e.target.closest('button[data-play]');
- if(listen){
-   const article=listen.closest('.card'),player=article&&article.querySelector('audio.taigi-player');
-   if(!player)return;
-   if(activeAudio===player&&!player.paused){stopPlayback();return;}
-   stopPlayback();activeAudio=player;activePlayButton=listen;
-   player.hidden=false;
-   const status=article.querySelector('.audio-status');if(status)status.hidden=true;
-   listen.textContent='⏳ 載入台語錄音…';
-   player.play().then(()=>{if(activeAudio===player)listen.textContent='⏸ 停止';}).catch(()=>{
-     if(activeAudio===player){listen.textContent='🔊 再試播放';if(status)status.hidden=false;}
-   });
-   return;
- }
- const b=e.target.closest('button[data-copy]');
- if(!b)return;
- const copyValue=b.dataset.copy;
- if(!navigator.clipboard||!navigator.clipboard.writeText){
-    if(window.prompt)window.prompt('複製台語詞目',copyValue);
-    return;
- }
- navigator.clipboard.writeText(copyValue).then(()=>{b.textContent='已複製';}).catch(()=>{if(window.prompt)window.prompt('複製台語詞目',copyValue);});
-});
-grid.addEventListener('ended',e=>{
- const audio=e.target;
- if(audio===activeAudio)stopPlayback();
-},true);
-grid.addEventListener('error',e=>{
- const audio=e.target;
- if(audio&&audio.matches&&audio.matches('audio.taigi-player')){
-   const article=audio.closest('.card'),status=article&&article.querySelector('.audio-status');
-   if(status)status.hidden=false;
-   if(audio===activeAudio&&activePlayButton)activePlayButton.textContent='🔊 再試播放';
- }
-},true);
-fetch('../data/language-taiwanese.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(db=>{
+grid.addEventListener('click',e=>{const b=e.target.closest('button[data-copy]');if(!b)return;const s=b.dataset.copy;if(navigator.clipboard?.writeText)navigator.clipboard.writeText(s).then(()=>b.textContent='✅ 已複製').catch(()=>window.prompt('複製詞目',s));else window.prompt('複製詞目',s);});
+fetch('../data/language-taiwanese.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}).then(db=>{
  if(!Array.isArray(db.items))throw Error('找不到詞彙資料');
  all=db.items;
+ document.getElementById('coverage').textContent=all.filter(x=>x.audioFile).length+' / '+all.length;
  const counts=new Map();for(const item of all)counts.set(item.category,(counts.get(item.category)||0)+1);
- for(const name of [...counts.keys()].sort((a,b)=>a.localeCompare(b,'zh-Hant'))){const o=element('option','',name+'（'+counts.get(name)+'）');o.value=name;cat.append(o);}
- const param=new URLSearchParams(location.search).get('card');if(param&&/^rec[A-Za-z0-9]{14}$/.test(param))focus=param;
+ for(const name of [...counts.keys()].sort((a,b)=>a.localeCompare(b,'zh-Hant'))){const o=el('option','',name+'（'+counts.get(name)+'）');o.value=name;cat.append(o);}
+ const id=new URLSearchParams(location.search).get('card');if(id&&/^rec[A-Za-z0-9]{14}$/.test(id))focus=id;
  render();
-}).catch(err=>{stats.textContent='無法讀取資料，請稍後重新整理頁面。';empty.hidden=false;empty.textContent=err.message;});
+}).catch(err=>{stats.textContent='無法讀取資料，請重新整理頁面。';empty.hidden=false;empty.textContent=err.message;});
 })();
-</script>
-<script src="../shared-nav.js?v=20261025-2" defer></script>
+</script><script src="../shared-nav.js?v=20261025-2" defer></script>
 </body>
 </html>
