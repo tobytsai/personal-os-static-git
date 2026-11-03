@@ -7,7 +7,8 @@
     "桃園市",
     "臺中市",
     "嘉義市",
-    "嘉義縣"
+    "嘉義縣",
+    "臺南市"
   ],
   "types": [
     "歷史文化／博物館",
@@ -15,7 +16,7 @@
     "藝術／工藝",
     "圖書館／閱讀"
   ],
-  "summary": "依城市和場館類型瀏覽自學場館，提供探索主題、觀察任務、地圖與官網。",
+  "summary": "依城市和場館類型瀏覽自學場館，提供探索任務、地圖及展覽品資料。",
   "venues": [
     {
       "id": "tp-npm",
@@ -348,6 +349,59 @@
         "展覽"
       ],
       "icon": "🏛️"
+    },
+    {
+      "id": "tn-anping-fort",
+      "name": "安平古堡",
+      "city": "臺南市",
+      "district": "安平區",
+      "type": "歷史文化／博物館",
+      "address": "臺南市安平區國勝路82號",
+      "url": "https://historic.tainan.gov.tw/index.php?belongid=45&id=58&index=8&lang=cht&option=module&task=pageinfo",
+      "description": "從古堡與展覽紀錄探索臺灣歷史、建築和港口文化。",
+      "mission": "觀察城牆的材料與形狀，想想它如何保護城堡。",
+      "keywords": [
+        "安平古堡",
+        "熱蘭遮城",
+        "古蹟",
+        "歷史"
+      ],
+      "icon": "🏰"
+    },
+    {
+      "id": "tn-chimei",
+      "name": "奇美博物館",
+      "city": "臺南市",
+      "district": "仁德區",
+      "type": "藝術／工藝",
+      "address": "臺南市仁德區文華路二段66號",
+      "url": "https://www.chimeimuseum.tw/",
+      "description": "以藝術、音樂與自然主題展品開啟多元探索。",
+      "mission": "選一件雕塑或樂器，觀察形狀、材料並記錄你的發現。",
+      "keywords": [
+        "奇美",
+        "雕塑",
+        "羅丹",
+        "樂器"
+      ],
+      "icon": "🎻"
+    },
+    {
+      "id": "tc-ntmofa",
+      "name": "國立臺灣美術館",
+      "city": "臺中市",
+      "district": "西區",
+      "type": "藝術／工藝",
+      "address": "臺中市西區五權西路一段2號",
+      "url": "https://www.ntmofa.gov.tw/",
+      "description": "從臺灣美術及展覽紀錄探索藝術與創作。",
+      "mission": "比較兩件作品的線條、色彩與材料，畫一張自己的作品卡。",
+      "keywords": [
+        "國美館",
+        "美術館",
+        "臺灣美術"
+      ],
+      "icon": "🎨"
     }
   ],
   "extras": [],
