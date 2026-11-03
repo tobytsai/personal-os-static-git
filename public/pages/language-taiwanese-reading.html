@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#f5f8fc">
 <title>台語有聲閱讀｜語言啟動器</title>
@@ -9,39 +10,38 @@
 :root{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif;color:#23384b;background:#f5f8fc}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}
 main{max-width:1250px;margin:auto;padding:22px}
-a{color:#245f96}.top,.tabs,.filters,.actions,.chips{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+a{color:#245f96}.top,.tabs,.filters,.actions,.chips,.portal-links{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .back,.tab{padding:10px 15px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700}
-.tab{border-radius:999px;background:#e7f1fa;color:#285c89}
-.tab.current{background:#225da2;color:#fff}
+.tab{border-radius:999px;background:#e7f1fa;color:#285c89}.tab.current{background:#225da2;color:#fff}
 .hero{border-radius:23px;background:linear-gradient(115deg,#1e5a86,#247d8a);color:#fff;padding:24px;margin:18px 0}
 .hero h1{font-size:31px;margin:8px 0}.hero p{line-height:1.7;margin:6px 0}
 .panel{background:#fff;border-radius:18px;padding:20px;margin:15px 0;box-shadow:0 5px 20px #24476d12}
 .notice{font-size:15px;color:#586e81;line-height:1.7}
+.source-status{border-left:4px solid #d7a65d;background:#fff8ed;padding:15px;border-radius:10px;margin:14px 0;line-height:1.7;color:#6c502c}
+.source-status strong{color:#684516}.source-status p{margin:7px 0}
+.portal-links{margin:12px 0}
+.portal-links a{border:1px solid #b9cfdf;background:#eaf4fb;border-radius:10px;padding:11px 13px;text-decoration:none;font-weight:700}
+.help{margin:10px 0;color:#4f657a;line-height:1.8}
 .filters{margin:15px 0}.filters input,.filters select{font:inherit;padding:12px;border:1px solid #cbd9e7;border-radius:11px;min-width:165px;background:#fff}
-.filters input{flex:2 1 260px}.filters select{flex:1 1 175px}
+.filters input{flex:2 1 260px}.filters select{flex:1 1 155px}
 .filters button,.more{font:inherit;border:0;border-radius:11px;background:#eaf3fd;color:#255f91;padding:12px 17px;cursor:pointer;font-weight:700}
 .stats{color:#536c80;font-weight:700;line-height:1.6}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:15px}
 .card{border:1px solid #dce8f0;border-radius:16px;background:#fbfdff;min-width:0;overflow:hidden;scroll-margin-top:28px}
 .card:target{outline:3px solid #68b4bb}
-.cover-wrap{height:150px;background:linear-gradient(120deg,#e8f5f3,#f1f5fc);display:flex;align-items:center;justify-content:center;color:#5a7b8b}
+.cover-wrap{height:125px;background:linear-gradient(120deg,#e8f5f3,#edf1fb);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#4a7082}
+.cover-icon{font-size:37px;line-height:1.4}.cover-label{font-size:14px;font-weight:750}
 .cover-wrap img{height:100%;width:100%;object-fit:contain}
-.cover-wrap.no-cover:before{content:"📚";font-size:58px}
-.cover-wrap.no-cover img{display:none}
-.card-content{padding:15px}
-.card h2{font-size:21px;margin:0 0 9px;overflow-wrap:anywhere}
+.card-content{padding:15px}.card h2{font-size:21px;margin:0 0 9px;overflow-wrap:anywhere}
 .summary{font-size:15px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;color:#43576a;margin:10px 0}
 .tag{display:inline-block;background:#e6f3ef;color:#246d66;border-radius:999px;padding:5px 9px;font-size:13px}
-.tag.lang{background:#dceafb;color:#1f5786}
-.tag.lang.tw{background:#ddf2e8;color:#1b7151}
-.chips{gap:6px}
-.actions{margin-top:12px;gap:8px}
-.actions a,.actions button{font:inherit;font-size:13px;border:0;border-radius:9px;padding:8px 10px;background:#eaf3fd;color:#235c89;cursor:pointer;text-decoration:none}
-audio{width:100%;margin-top:12px;height:38px}
-.more{display:block;margin:22px auto 0}
-.more[hidden],.empty[hidden]{display:none}
-.empty{padding:25px;color:#587083}.footer{margin:20px 0;color:#5d7184;font-size:14px}
-@media(max-width:620px){main{padding:13px}.hero{padding:20px}.hero h1{font-size:26px}.panel{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cover-wrap{height:115px}.card-content{padding:12px}.card h2{font-size:18px}.filters input,.filters select{width:100%;min-width:0;flex:1 0 100%}}
+.tag.lang{background:#dceafb;color:#1f5786}.tag.lang.tw{background:#ddf2e8;color:#1b7151}
+.chips{gap:6px}.media-status{font-size:14px;line-height:1.65;color:#78552f;background:#fbf6ea;border-radius:9px;padding:9px 10px;margin:11px 0}
+.actions{margin-top:12px;gap:8px}.actions a,.actions button{font:inherit;font-size:13px;border:0;border-radius:9px;padding:8px 10px;background:#eaf3fd;color:#235c89;cursor:pointer;text-decoration:none}
+.actions a.official{background:#1c6885;color:#fff}
+audio{width:100%;margin-top:12px;height:38px}.more{display:block;margin:22px auto 0}
+.more[hidden],.empty[hidden]{display:none}.empty{padding:25px;color:#587083}.footer{margin:20px 0;color:#5d7184;font-size:14px}
+@media(max-width:620px){main{padding:13px}.hero{padding:20px}.hero h1{font-size:26px}.panel{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cover-wrap{height:105px}.card-content{padding:12px}.card h2{font-size:18px}.filters input,.filters select{width:100%;min-width:0;flex:1 0 100%}.portal-links a{width:100%}}
 @media(max-width:375px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -51,18 +51,33 @@ audio{width:100%;margin-top:12px;height:38px}
 <a class="back" href="./language.html">🌏 語言啟動器</a>
 <a class="back" href="./self-study.html">📚 自學啟動器</a>
 </nav>
-<header class="hero"><p>語言啟動器 › 台語 › 有聲閱讀</p><h1>🎧 台語有聲閱讀與延伸教材</h1><p>Airtable「台語 → sheet1 → Grid view」閱讀卡片，預設顯示台語資料，另可查看國語延伸內容。</p></header>
+<header class="hero">
+<p>語言啟動器 › 台語 › 有聲閱讀</p>
+<h1>🎧 台語有聲閱讀與科學故事</h1>
+<p>保留 Airtable「台語 → sheet1 → Grid view」的 1,040 筆閱讀卡片；20 筆台語優先顯示，1,020 筆國語可切換。</p>
+</header>
 <nav class="tabs" aria-label="語言分類">
 <a class="tab" href="./language.html">🇬🇧 英語 · Lingumi</a>
 <a class="tab" href="./language-taiwanese.html">🇹🇼 台語詞彙（810）</a>
 <span class="tab current" aria-current="page">🎧 台語有聲閱讀</span>
 </nav>
 <section class="panel">
-<p class="notice">資料來源：<a href="https://airtable.com/appPBthyencSKXSwo/tblaxIvrAfXcrWRsl/viwcnyaJ1Nn9gkjak" target="_blank" rel="noopener noreferrer">Airtable 台語 · sheet1 · Grid view ↗</a>。此表原始標籤包含「台語」與「國語」；不會把國語誤標成台語。圖片、音檔及館藏連結仍指向原始網站，可能因來源變動而失效。本頁為 2026/11/03 的資料快照，編輯請回 Airtable。</p>
+<div class="source-status" role="status">
+<strong>⚠️ 舊館藏與音檔連結無法使用（2026/11/03 檢查）</strong>
+<p>原始資料的 1,034 筆網站連結、1,034 筆封面圖及 249 筆音檔連結，均指向舊的 <code>hyint.typl.gov.tw:3021</code>。已停止在卡片中載入這些失效檔案；原始網址仍保存在資料快照與 Airtable，供日後比對。</p>
+<p><strong>現在的使用方式：</strong>複製故事名稱 → 開啟圖書館官方電子資源入口 → 登入個人借閱證 → 搜尋「阿思克說科學故事」及故事名稱 → 在平台內播放。需要平台授權，無法保證每則故事仍可收聽。</p>
+</div>
+<div class="portal-links">
+<a href="https://hyint.typl.gov.tw/" target="_blank" rel="noopener noreferrer">📚 桃園市立圖書館電子資源 ↗</a>
+<a href="https://ers.nlpi.edu.tw/" target="_blank" rel="noopener noreferrer">🏛️ 國資圖數位資源入口 ↗</a>
+<a href="https://airtable.com/appPBthyencSKXSwo/tblaxIvrAfXcrWRsl/viwcnyaJ1Nn9gkjak" target="_blank" rel="noopener noreferrer">🗂️ 原始 Airtable Grid view ↗</a>
+</div>
+<p class="notice">「阿思克說科學故事」目前仍列於公共圖書館數位資源。平台入口與各別音檔網址不同，請勿將新入口誤當成直接 MP3 連結。此頁是 2026/11/03 的資料快照，並非即時同步。</p>
 <div class="filters">
 <input id="q" type="search" aria-label="搜尋書名或教材" placeholder="搜尋書名、主題、補充標題">
 <select id="lang" aria-label="語言標籤"><option value="台語">台語（20）</option><option value="國語">國語延伸（1020）</option><option value="">全部（1040）</option></select>
 <select id="cat" aria-label="主題分類"><option value="">全部主題分類</option></select>
+<select id="media" aria-label="舊音檔欄位"><option value="">全部媒體狀態</option><option value="old">原表有舊音檔</option><option value="none">原表沒有音檔</option></select>
 <select id="sort" aria-label="排序"><option value="number">原始序號／標題</option><option value="title">標題字序</option></select>
 <button type="button" id="reset">重設</button>
 </div>
@@ -71,24 +86,34 @@ audio{width:100%;margin-top:12px;height:38px}
 <p class="empty" id="empty" hidden>找不到符合的卡片，請改用其他關鍵字或分類。</p>
 <button type="button" id="more" class="more" hidden>顯示更多卡片</button>
 </section>
-<p class="footer">依原表內容建立索引，不改動 Airtable 原始紀錄。原始資料如有更新，需重新匯入快照。</p>
+<p class="footer">保留來源資料、分類及原始紀錄 ID。未驗證的舊網站、封面及音檔連結不再作為可直接開啟的卡片功能。</p>
 </main>
 <script>
 (function(){
 'use strict';
 const ROOT='https://airtable.com/appPBthyencSKXSwo/tblaxIvrAfXcrWRsl/viwcnyaJ1Nn9gkjak/';
-const q=document.getElementById('q'),lang=document.getElementById('lang'),cat=document.getElementById('cat'),sort=document.getElementById('sort'),grid=document.getElementById('grid'),stats=document.getElementById('stats'),empty=document.getElementById('empty'),more=document.getElementById('more');
+const PORTAL='https://hyint.typl.gov.tw/';
+const q=document.getElementById('q'),lang=document.getElementById('lang'),cat=document.getElementById('cat'),media=document.getElementById('media'),sort=document.getElementById('sort'),grid=document.getElementById('grid'),stats=document.getElementById('stats'),empty=document.getElementById('empty'),more=document.getElementById('more');
 let all=[],shown=36,focus='';
 function norm(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
 function make(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
 function safeUrl(s){try{const u=new URL(s);return u.protocol==='https:'||u.protocol==='http:'?u.href:'';}catch(e){return '';}}
-function ext(text,url){const a=make('a','',text);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
+function isOld(s){return /^https?:\/\/hyint\.typl\.gov\.tw:3021(?:\/|$)/i.test(String(s||''));}
+function ext(text,url,klass){const a=make('a',klass||'',text);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
 function isAudio(s){try{return /\.(?:mp3|wav|ogg|m4a)$/i.test(new URL(s).pathname)}catch(e){return false;}}
+function hasOldAudio(item){return isOld(item.detailLink)&&isAudio(item.detailLink);}
 function card(item){
  const article=make('article','card');article.id=item.id;
- const image=make('div','cover-wrap'+(safeUrl(item.cover)?'':' no-cover'));
- if(safeUrl(item.cover)){const img=make('img');img.loading='lazy';img.alt='《'+item.title+'》封面';img.src=safeUrl(item.cover);img.addEventListener('error',()=>{img.remove();image.classList.add('no-cover')},{once:true});image.append(img);}
- article.append(image);
+ const cover=make('div','cover-wrap');
+ if(safeUrl(item.cover)&&!isOld(item.cover)){
+   const pic=make('img');pic.loading='lazy';pic.alt='《'+item.title+'》封面';pic.src=safeUrl(item.cover);
+   pic.addEventListener('error',()=>{cover.replaceChildren(make('span','cover-icon','📚'),make('span','cover-label','原網站封面無法載入'));},{once:true});
+   cover.append(pic);
+ }else{
+   cover.append(make('span','cover-icon',item.languages.includes('台語')?'🎧':'📚'));
+   cover.append(make('span','cover-label',item.languages.includes('台語')?'台語科學故事':'科學故事'));
+ }
+ article.append(cover);
  const body=make('div','card-content');body.append(make('h2','',item.title));
  const chips=make('div','chips');
  for(const l of item.languages||[])chips.append(make('span','tag lang'+(l==='台語'?' tw':''),l));
@@ -96,30 +121,35 @@ function card(item){
  body.append(chips);
  if(item.detail&&item.detail!==item.title)body.append(make('p','summary',item.detail));
  if(item.number!==null&&item.number!==undefined)body.append(make('p','notice','原表序號：'+item.number));
- const link=safeUrl(item.detailLink);
- if(link&&isAudio(link)){
-   const player=make('audio');player.controls=true;player.preload='none';player.src=link;player.setAttribute('aria-label','播放《'+item.title+'》音檔');body.append(player);
+ const audioUrl=safeUrl(item.detailLink);
+ if(audioUrl&&isAudio(audioUrl)&&!isOld(audioUrl)){
+   const player=make('audio');player.controls=true;player.preload='none';player.src=audioUrl;player.setAttribute('aria-label','播放《'+item.title+'》音檔');body.append(player);
+ }else if(hasOldAudio(item)){
+   body.append(make('p','media-status','🔒 原音檔網址已失效。請登入圖書館的「阿思克說科學故事」平台查找播放。'));
+ }else if(isOld(item.url)){
+   body.append(make('p','media-status','🔒 原網站網址已失效。請透過圖書館電子資源入口搜尋本故事。'));
  }
  const actions=make('div','actions');
+ const copy=make('button','','📋 複製故事名稱');copy.type='button';copy.dataset.title=item.title;actions.append(copy);
+ actions.append(ext('開啟圖書館 ↗',PORTAL,'official'));
  if(/^rec[A-Za-z0-9]{14}$/.test(item.id))actions.append(ext('Airtable 原始紀錄 ↗',ROOT+item.id));
- if(safeUrl(item.url))actions.append(ext('開啟原始內容 ↗',safeUrl(item.url)));
- if(link)actions.append(ext(isAudio(link)?'音檔原始連結 ↗':'相關連結 ↗',link));
- if((item.attachments||[]).length)actions.append(make('span','notice','附檔 '+item.attachments.length+' 個（見 Airtable）'));
+ if(audioUrl&&!isOld(audioUrl)&&!isAudio(audioUrl))actions.append(ext('原始相關連結 ↗',audioUrl));
+ if(safeUrl(item.url)&&!isOld(item.url))actions.append(ext('原始故事頁 ↗',safeUrl(item.url)));
+ if((item.attachments||[]).length)actions.append(make('span','notice','有 '+item.attachments.length+' 個 Airtable 附件'));
  body.append(actions);article.append(body);return article;
 }
 function results(){
- const s=norm(q.value.trim()),l=lang.value,c=cat.value;
- const rows=all.filter(item=>(!l||item.languages.includes(l))&&(!c||item.categories.includes(c))&&(!s||norm([item.title,item.detail,item.categoryRaw,item.number,item.languages.join(' ')].join(' ')).includes(s)));
+ const s=norm(q.value.trim()),l=lang.value,c=cat.value,m=media.value;
+ const rows=all.filter(item=>(!l||item.languages.includes(l))&&(!c||item.categories.includes(c))&&(!m||(m==='old'?hasOldAudio(item):!hasOldAudio(item)))&&(!s||norm([item.title,item.detail,item.categoryRaw,item.number,item.languages.join(' ')].join(' ')).includes(s)));
  rows.sort((a,b)=>sort.value==='title'?a.title.localeCompare(b.title,'zh-Hant'):((a.number??999999)-(b.number??999999)||a.title.localeCompare(b.title,'zh-Hant')));
  return rows;
 }
 function updateCategories(){
- const previous=cat.value;
- const optionSet=new Map();
- for(const item of all){if(lang.value&&!item.languages.includes(lang.value))continue;for(const c of item.categories){optionSet.set(c,(optionSet.get(c)||0)+1);}}
+ const previous=cat.value;const counts=new Map();
+ for(const item of all){if(lang.value&&!item.languages.includes(lang.value))continue;for(const c of item.categories)counts.set(c,(counts.get(c)||0)+1);}
  cat.replaceChildren(make('option','','全部主題分類'));
- for(const k of [...optionSet.keys()].sort((a,b)=>a.localeCompare(b,'zh-Hant'))){const o=make('option','',k+'（'+optionSet.get(k)+'）');o.value=k;cat.append(o);}
- cat.value=optionSet.has(previous)?previous:'';
+ for(const k of [...counts.keys()].sort((a,b)=>a.localeCompare(b,'zh-Hant'))){const o=make('option','',k+'（'+counts.get(k)+'）');o.value=k;cat.append(o);}
+ cat.value=counts.has(previous)?previous:'';
 }
 function render(){
  const rows=results(),frag=document.createDocumentFragment();
@@ -129,18 +159,25 @@ function render(){
  stats.textContent='顯示 '+Math.min(shown,rows.length)+' / '+rows.length+' 筆（資料庫共 '+all.length+' 筆）';
  empty.hidden=rows.length>0;more.hidden=shown>=rows.length;
  more.textContent='顯示更多（剩餘 '+Math.max(0,rows.length-shown)+' 筆）';
- if(focus){const target=document.getElementById(focus);if(target){target.scrollIntoView({block:'center'});}focus='';}
+ if(focus){const target=document.getElementById(focus);if(target)target.scrollIntoView({block:'center'});focus='';}
 }
 function change(){shown=36;render();}
 lang.addEventListener('change',()=>{updateCategories();change()});
-q.addEventListener('input',change);cat.addEventListener('change',change);sort.addEventListener('change',change);
-document.getElementById('reset').addEventListener('click',()=>{q.value='';lang.value='台語';sort.value='number';updateCategories();change()});
+q.addEventListener('input',change);cat.addEventListener('change',change);sort.addEventListener('change',change);media.addEventListener('change',change);
+document.getElementById('reset').addEventListener('click',()=>{q.value='';lang.value='台語';media.value='';sort.value='number';updateCategories();change()});
 more.addEventListener('click',()=>{shown+=36;render()});
+grid.addEventListener('click',e=>{
+ const b=e.target.closest('button[data-title]');if(!b)return;
+ const name=b.dataset.title;
+ if(navigator.clipboard&&navigator.clipboard.writeText){
+   navigator.clipboard.writeText(name).then(()=>{b.textContent='✅ 已複製書名'}).catch(()=>{window.prompt('複製書名',name)});
+ }else window.prompt('複製書名',name);
+});
 fetch('../data/language-taiwanese-reading.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}).then(db=>{
  if(!Array.isArray(db.items)||!db.items.length)throw Error('資料格式不正確');
  all=db.items;const url=new URL(location.href);
  const filter=url.searchParams.get('lang');if(filter==='國語'||filter==='all')lang.value=filter==='all'?'':filter;
- const cardId=url.searchParams.get('card');if(cardId&&/^rec[A-Za-z0-9]{14}$/.test(cardId)){const x=all.find(row=>row.id===cardId);if(x){focus=cardId;lang.value=x.languages[0]||'';}}
+ const cardId=url.searchParams.get('card');if(cardId&&/^rec[A-Za-z0-9]{14}$/.test(cardId)){const item=all.find(row=>row.id===cardId);if(item){focus=cardId;lang.value=item.languages[0]||'';}}
  updateCategories();render();
 }).catch(err=>{stats.textContent='目前無法讀取教材資料，請重新整理頁面。';empty.hidden=false;empty.textContent=err.message;});
 })();

@@ -18147,5 +18147,17 @@
         "國語"
       ]
     }
-  ]
+  ],
+  "linkAudit": {
+    "checkedOn": "2026-11-03",
+    "status": "legacy_host_unavailable",
+    "legacyHost": "hyint.typl.gov.tw:3021",
+    "affectedWebLinks": 1034,
+    "affectedCoverLinks": 1034,
+    "affectedAudioLinks": 249,
+    "officialLibraryPortal": "https://hyint.typl.gov.tw/",
+    "alternateLibraryPortal": "https://ers.nlpi.edu.tw/",
+    "providerLandingPage": "https://hunteq.com/askdbc/askdbtp",
+    "note": "Original per-item website, cover, and MP3 URLs are retained only as historical source references. They are not verified playable URLs. New listening requires a valid library subscription and login; individual deep links have not been verified."
+  }
 }
