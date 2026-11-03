@@ -1,0 +1,109 @@
+{
+  "runDate": "2026-11-03",
+  "localRun": "2026-11-03 19:19 Asia/Taipei",
+  "status": "blocked_no_compatible_airtable_to_drive_original_bytes_bridge",
+  "collection": "天下畫博完整圖庫",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "liveRecords": 4673,
+    "catalogRecords": 4673,
+    "catalogImageAttachments": 5047
+  },
+  "before": {
+    "byRecord": 4095,
+    "byAttachment": 4121,
+    "byRecordAttachments": 2526,
+    "mappingBlobSha": "c43a0ec91f5b14519f575590925fd37f1ea3b0f3"
+  },
+  "liveCoverage": {
+    "refs": 5047,
+    "matched": 4126,
+    "unmatched": 921,
+    "missingPrimary": 577,
+    "missingNonPrimary": 344,
+    "byType": {
+      "image/webp": 393,
+      "image/png": 26,
+      "image/jpeg": 502
+    },
+    "byCategory": {
+      "未分類": 500,
+      "60X80": 103,
+      "70X180": 112,
+      "沒尺寸資料": 18,
+      "四拼立幅45 X 160": 14,
+      "60X90": 61,
+      "90X200": 1,
+      "银底60 X 120": 6,
+      "45X160": 11,
+      "50X60": 18,
+      "特大圖": 26,
+      "12X18": 4,
+      "30×40": 16,
+      "90X120": 15,
+      "80X160": 4,
+      "80X80": 6,
+      "110X150": 3,
+      "80X260": 1,
+      "100X200": 1,
+      "60X120": 1
+    }
+  },
+  "batch": {
+    "maxNewOriginals": 50,
+    "attemptedTransfer": 1,
+    "driveCloudCopies": 0,
+    "originalUploads": 0,
+    "newVerifiedMappings": 0,
+    "readbackVerifiedNew": 0,
+    "unresolvedTransferErrors": 1,
+    "blockedCandidate": {
+      "recordId": "recFXtp1LdVzjMcnn",
+      "attachmentId": "attuG7NvPhOhMYWwP",
+      "code": "B86-5060",
+      "filename": "B86.jpg",
+      "sizeBytes": 162839,
+      "mimeType": "image/jpeg",
+      "driveSourceSearch": "No exact filename + byte size original found; two B86.jpg variants in Drive are 115895 and 116407 bytes",
+      "attempt": "Google Drive upload_file with live Airtable original attachment URL",
+      "error": "INVALID_ARGUMENT: file_uri must be a connector file reference object returned by a fetch/upload action. This connector cannot ingest a live Airtable attachment URL; no bytes were uploaded."
+    }
+  },
+  "evidence": [
+    {
+      "category": "12×18",
+      "recordId": "recB5VMba5LQCeloz",
+      "airtableFilename": "A416-1218.jpg",
+      "airtableSizeBytes": 4239297,
+      "driveGalleryFilename": "A416.jpg",
+      "driveGallerySizeBytes": 134426,
+      "result": "not_same_file_do_not_copy"
+    },
+    {
+      "category": "銀底60×120",
+      "filename": "X51-1.jpg",
+      "airtableSizeBytes": 976919,
+      "driveExactFilenameCandidates": 5,
+      "matchingByteSize": 0
+    },
+    {
+      "category": "50×60",
+      "filename": "B86.jpg",
+      "airtableSizeBytes": 162839,
+      "driveExactFilenameCandidates": 2,
+      "matchingByteSize": 0
+    }
+  ],
+  "safety": {
+    "airtableModified": false,
+    "githubOriginalMappingModified": false,
+    "existingWebpModified": false,
+    "drivePermissionChanged": false,
+    "sourceOriginalsDeleted": false,
+    "substitutedThumbnails": false,
+    "visualOrHashProof": false
+  },
+  "actionRequired": "Provide a connector transfer bridge yielding an ingestible file reference, or supply the original binary to Drive through an authorized uploader. Revalidate exact bytes, metadata and permissions before adding any mapping. Do not copy nonmatching source JPEGs.",
+  "fullComplete": false
+}
