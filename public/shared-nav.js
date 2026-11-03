@@ -98,4 +98,5 @@
   document.addEventListener("click",e=>{
     if(menu.classList.contains("is-open")&&!menu.contains(e.target)&&!e.target.closest("#os-global-nav")&&!e.target.closest(".rail .logo"))closeMenu();
   });
+  if(!homePage){const categoryScript=document.createElement("script");categoryScript.src=base+"category-shortcuts.js?v=20261104-1";document.body.appendChild(categoryScript);}
 })();

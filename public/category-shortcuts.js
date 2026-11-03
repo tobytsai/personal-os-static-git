@@ -1,0 +1,33 @@
+(function(){
+  if(document.getElementById("os-category-shortcuts")) return;
+  const fallback=[{"name":"聲量啟動器","cat":"資訊","icon":"🔥","color":"#16a69d","url":"trends.html"},{"name":"資訊啟動器","cat":"資訊","icon":"ⓘ","color":"#65ba54","url":"info.html"},{"name":"AI啟動器","cat":"AI","icon":"✦","color":"#8d7cf6","url":"ai.html"},{"name":"google 服務啟動器","cat":"Google","icon":"G","color":"#4285f4","url":"google.html"},{"name":"AppSumo 啟動器","cat":"資訊","icon":"S","color":"#ff7a59","url":"appsumo.html"},{"name":"資料庫啟動器","cat":"資訊","icon":"▦","color":"#e5ad37","url":"database.html"},{"name":"白板啟動器","cat":"工作","icon":"□","color":"#ffd02f","url":"miro.html"},{"name":"硬碟啟動器","cat":"Google","icon":"▣","color":"#34a853","url":"drive.html"},{"name":"社群啟動器","cat":"社群","icon":"◎","color":"#ff6a8b","url":"social.html"},{"name":"斯瓦魯啟動器","cat":"個人","icon":"◌","color":"#6bc5d2","url":"swaruu.html"},{"name":"筆記啟動器","cat":"工作","icon":"✎","color":"#7657ff","url":"notes.html"},{"name":"娛樂啟動器","cat":"媒體","icon":"▶","color":"#ef5350","url":"entertainment.html"},{"name":"影像編輯啟動器","cat":"創作","icon":"◫","color":"#e85d9e","url":"image-editing.html"},{"name":"金融啟動器","cat":"金融","icon":"$","color":"#43b581","url":"finance.html"},{"name":"自學啟動器","cat":"學習","icon":"⌁","color":"#58b8e8","url":"self-study.html"},{"name":"侯燁作品啟動器","cat":"學習","icon":"🎨","color":"#d18473","url":"houye-art.html"},{"name":"股票啟動器","cat":"金融","icon":"↗","color":"#2fbf71","url":"stocks.html"},{"name":"蔡師傅啟動器","cat":"工作","icon":"🖼","color":"#5d7fc2","url":"cai-shifu.html"},{"name":"裱框找模式啟動器","cat":"工作","icon":"📊","color":"#c28a49","url":"framing-business-model.html"},{"name":"畫廊工作啟動器","cat":"工作","icon":"⌘","color":"#ef8c34","url":"work.html"},{"name":"Podcast 啟動器","cat":"媒體","icon":"◉","color":"#a45de2","url":"podcast.html"},{"name":"色彩啟動器","cat":"創作","icon":"◐","color":"#f59d2a","url":"colors.html"},{"name":"行事曆","cat":"生活","icon":"📅","color":"#80b94f","url":"calendar.html"},{"name":"桃園生活啟動器","cat":"生活","icon":"桃","color":"#7b65d7","url":"taoyuan-life.html"},{"name":"台北生活啟動器","cat":"生活","icon":"北","color":"#d86783","url":"taipei-life.html"},{"name":"展覽啟動器","cat":"藝文","icon":"展","color":"#a45da8","url":"exhibitions.html"},{"name":"新店計畫啟動器","cat":"工作","icon":"🏬","color":"#d87b45","url":"new-store.html"},{"name":"YouTube 啟動器","cat":"媒體","icon":"▶","color":"#ff5b41","url":"youtube.html"},{"name":"購物啟動器","cat":"生活","icon":"🛍️","color":"#d83c79","url":"shopping.html"},{"name":"旅遊資訊啟動器","cat":"生活","icon":"旅","color":"#29a0b1","url":"travel.html"},{"name":"膠彩工作啟動器","cat":"工作","icon":"彩","color":"#c95f72","url":"gouache-work.html"},{"name":"聽書啟動器","cat":"學習","icon":"耳","color":"#6f8fe8","url":"listening.html"},{"name":"閱讀啟動器","cat":"學習","icon":"書","color":"#46b779","url":"reading.html"},{"name":"社區營造啟動器","cat":"社區","icon":"🌱","color":"#27815e","url":"community.html"},{"name":"音樂啟動器","cat":"媒體","icon":"♫","color":"#7f5af0","url":"music.html"},{"name":"視頻編輯啟動器","cat":"創作","icon":"剪","color":"#e05a9d","url":"video-editing.html"},{"name":"裱框材料啟動器","cat":"工作","icon":"🧰","color":"#6b75c9","url":"framing-materials.html"},{"name":"額緣高橋啟動器","cat":"工作","icon":"🖼","color":"#ad6a8c","url":"finished-examples.html"},{"name":"Fb畫框啟動器","cat":"工作","icon":"🖼","color":"#4c74b3","url":"fb-frames.html"},{"name":"仕事啟動器","cat":"工作","icon":"技","color":"#5866a8","url":"frame-tech-work.html"},{"name":"阿竹啟動器","cat":"藝文","icon":"竹","color":"#a66b93","url":"azhu.html"},{"name":"油畫啟動器","cat":"藝文","icon":"🎨","color":"#984f59","url":"oil.html"},{"name":"同行啟動器","cat":"工作","icon":"🤝","color":"#2f7e80","url":"peers.html"},{"name":"交通啟動器","cat":"生活","icon":"🚆","color":"#2472ab","url":"transport.html"},{"name":"公路路網啟動器","cat":"生活","icon":"🛣️","color":"#26799a","url":"highways.html#road-network"},{"name":"我的記事","cat":"生活","icon":"📝","color":"#3a8d94","url":"my-notes.html"},{"name":"字・簡易啟動器","cat":"學習","icon":"字","color":"#398268","url":"character-simple.html"},{"name":"語言啟動器","cat":"學習","icon":"🌏","color":"#4386bb","url":"language.html"},{"name":"兒童 YouTube 啟動器","cat":"學習","icon":"🧸","color":"#3c9bb8","url":"kids-youtube.html"},{"name":"數學啟動器","cat":"學習","icon":"🔢","color":"#388cb5","url":"math.html"}];
+  const current=location.pathname.split("/").pop();
+  function render(items){
+    const selected=items.find(x=>x.url.split("#")[0]===current);
+    if(!selected) return;
+    const same=items.filter(x=>x.cat===selected.cat);
+    if(same.length<2) return;
+    const nav=document.createElement("nav");
+    nav.id="os-category-shortcuts";
+    nav.setAttribute("aria-label",selected.cat+"類啟動器捷徑");
+    const title=document.createElement("div"); title.className="os-category-title"; title.textContent="同分類捷徑｜"+selected.cat; nav.appendChild(title);
+    const links=document.createElement("div");links.className="os-category-links";
+    same.forEach(x=>{
+      const a=document.createElement("a");
+      a.href="./"+x.url;
+      a.textContent=x.icon+" "+x.name;
+      if(x.url.split("#")[0]===current){a.setAttribute("aria-current","page");}
+      links.appendChild(a);
+    });
+    nav.appendChild(links);document.body.prepend(nav);
+  }
+  const style=document.createElement("style");
+  style.textContent=`#os-category-shortcuts{box-sizing:border-box;max-width:1120px;margin:12px auto 8px;padding:13px 16px;border:1px solid #dce5ec;border-radius:18px;background:#fff;box-shadow:0 5px 18px #203e5612;font:600 15px/1.5 system-ui,-apple-system,"Noto Sans TC",sans-serif;color:#30445b}#os-category-shortcuts *{box-sizing:border-box}#os-category-shortcuts .os-category-title{font-weight:800;margin-bottom:9px}#os-category-shortcuts .os-category-links{display:flex;flex-wrap:wrap;gap:8px}#os-category-shortcuts a{display:inline-flex;align-items:center;min-height:42px;padding:8px 12px;border:1px solid #d9e6ed;border-radius:12px;background:#f3f8fb;color:#245875;text-decoration:none}#os-category-shortcuts a:hover,#os-category-shortcuts a:focus-visible{background:#dceef7;outline:2px solid #4a92ad;outline-offset:2px}#os-category-shortcuts a[aria-current=page]{background:#286d88;color:#fff;border-color:#286d88}@media(max-width:600px){#os-category-shortcuts{margin:10px 12px 6px;padding:12px}#os-category-shortcuts a{font-size:15px}}`;
+  document.head.appendChild(style);
+  fetch("../index.html",{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error();return r.text()}).then(html=>{
+    const block=html.match(/const tools=\[([\s\S]*?)\]\.map\(/);
+    if(!block)throw Error();
+    const list=Array.from(block[1].matchAll(/\['([^']+)','([^']+)','([^']+)','([^']+)','\.\/pages\/([^']+)'\]/g),m=>({name:m[1],cat:m[2],icon:m[3],color:m[4],url:m[5]}));
+    render(list.length?list:fallback);
+  }).catch(()=>render(fallback));
+})();

@@ -103,5 +103,5 @@ search.addEventListener("input",filterCards);
 filterButtons.forEach(button=>{const category=button.dataset.category;button.querySelector("span").textContent=category==="all"?cards.length:cards.filter(card=>card.dataset.category===category).length;});
 filterCards();
 </script>
-<script defer src="../launcher-activity.js?v=20261028-1" data-mode="both" data-cards="a.entry"></script></body>
+<script defer src="../launcher-activity.js?v=20261028-1" data-mode="both" data-cards="a.entry"></script><script src="../category-shortcuts.js?v=20261104-1" defer></script></body>
 </html>
