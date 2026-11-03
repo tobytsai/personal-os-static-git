@@ -1,0 +1,84 @@
+{
+  "runId": "2026-11-03-1125-run47",
+  "localDate": "2026-11-03",
+  "status": "completed_github_main_verified",
+  "source": {
+    "airtableBase": "apptj1UgL0uVrNypY",
+    "airtableTable": "tblkZiqP0Ra0E8Nj7",
+    "works": 4673,
+    "attachments": 5047,
+    "fieldAttachments": 5033,
+    "fieldSecondary": 14
+  },
+  "before": {
+    "byRecord": 4023,
+    "byAttachment": 3844,
+    "byRecordAttachments": 2249
+  },
+  "after": {
+    "byRecord": 4023,
+    "byAttachment": 3894,
+    "byRecordAttachments": 2299,
+    "pendingBatch": 0,
+    "liveIndexedAttachmentReferences": 2652,
+    "unindexedAttachmentReferences": 2395,
+    "missingPrimaryWorks": 650,
+    "missingPrimaryAmongWorksWithAttachments": 649,
+    "duplicateCompositeAttachmentReferences": 3
+  },
+  "batch": {
+    "verifiedExistingPrivateOriginals": 50,
+    "addedAttachmentMappings": 50,
+    "newPhysicalDriveCopies": 0,
+    "uploadedNewDriveOriginals": 0,
+    "distinctRecords": 50,
+    "distinctDriveOriginalIds": 50,
+    "bytes": 5081842,
+    "bySize": {
+      "30×40": 13,
+      "50×60": 37
+    },
+    "individualDriveMetadataVerifications": 50,
+    "githubMainReadbackFailures": 0
+  },
+  "verification": {
+    "liveAirtableAttachmentIds": true,
+    "originalFilename": true,
+    "exactBytes": true,
+    "jpegMimeType": true,
+    "correctDriveParent": true,
+    "nonPublicVisibility": true,
+    "githubMainPostCommitReadback": true,
+    "independentSourceGalleryRecheck": false,
+    "visualReview": false,
+    "hashReview": false,
+    "method": "50 independent Google Drive file metadata reads (name, bytes, MIME, parent, visibility) and latest Airtable live attachments compared with historical verified private byRecord originals; existing originals reused without duplicate copy. No new source gallery, hash or visual review."
+  },
+  "github": {
+    "checkpointCommit": "dfe4f4a47b8c86f5a2c1c0fc5de4919121166658",
+    "initialCheckpointCommit": "1794af73fe95026497ff1a19ab72d53f0fa26a87",
+    "mappingCommit": "1baf3d570ba230e07d5960bef20acddbbeee5a5a",
+    "mappingBlobSha": "329c3a34c4f856e9a9d54d648a70e5a519aae43c",
+    "patchPath": "public/data/oil/tianxia/backup-sync-patches/2026-11-03-1125-run47-existing-private-50.json",
+    "workflowRun": "https://github.com/tobytsai/personal-os-static-git/actions/runs/41572863313"
+  },
+  "recovery": {
+    "initialWorkflowFailedDueToCheckpointNotPreservingLegacyDriveUrlQueryString": true,
+    "correctedCheckpointCommit": "dfe4f4a47b8c86f5a2c1c0fc5de4919121166658",
+    "correctedWorkflowSucceeded": true,
+    "unresolvedErrors": []
+  },
+  "safety": {
+    "modifiedAirtable": false,
+    "deletedOriginal": false,
+    "modifiedWebP": false,
+    "broadenedDriveSharing": false,
+    "uploadedOriginals": 0
+  },
+  "notes": {
+    "unindexedReferenceIsNotDriveMissingCount": true,
+    "allMapped50FromExistingPrivateDestinationNotNewPhysicalBackups": true,
+    "duplicatesRequireCompositeIdentity": true
+  },
+  "errors": []
+}
