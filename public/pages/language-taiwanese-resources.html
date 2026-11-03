@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#f5f8fc">
+<title>台語學習資源｜語言啟動器</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif;color:#23384b;background:#f5f8fc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}main{max-width:1220px;margin:auto;padding:22px}
+a{color:#235f96}.top,.tabs,.quick,.actions,.search-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.back,.tab{display:inline-flex;align-items:center;padding:10px 14px;border-radius:12px;background:#fff;text-decoration:none;font-weight:700}
+.tab{border-radius:999px;background:#e7f1fa;color:#285c89}.tab.current{background:#225da2;color:#fff}
+.hero{border-radius:23px;background:linear-gradient(115deg,#1e5a86,#247d8a);color:#fff;padding:25px;margin:18px 0}
+.hero h1{font-size:32px;margin:8px 0}.hero p{line-height:1.75;margin:5px 0}
+.panel{background:#fff;border-radius:18px;padding:20px;margin:15px 0;box-shadow:0 5px 20px #24476d12;scroll-margin-top:15px}
+.notice{color:#52677c;line-height:1.75}.quick{margin:15px 0}.quick a{border-radius:999px;text-decoration:none;font-weight:700;color:#295e87;background:#e6f1fa;padding:8px 13px}
+.search-bar label{font-weight:700}.search-bar input{font:inherit;min-width:220px;flex:1;padding:11px 12px;border:1px solid #b9cddf;border-radius:11px}
+.search-bar button{font:inherit;border:0;border-radius:10px;background:#e7f1fa;color:#285f8f;padding:12px;cursor:pointer}
+.section-head h2{margin:3px 0 15px;font-size:25px}.section-count{font-size:17px;color:#607b8b}
+.eyebrow{color:#537b90;font-size:14px;margin:0;line-height:1.5}
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:13px}
+.card{min-width:0;border:1px solid #dce8f0;border-radius:15px;background:#fbfdff;padding:18px;display:flex;flex-direction:column;gap:10px}
+.card h3{font-size:19px;line-height:1.45;margin:0;overflow-wrap:anywhere}
+.card p{font-size:15px;line-height:1.7;color:#4d6377;margin:0;overflow-wrap:anywhere}.card p.note{font-size:13px;color:#825d26}
+.actions{margin-top:auto;padding-top:7px}.go,.extra{display:inline-flex;align-items:center;text-decoration:none;border-radius:10px;padding:9px 12px;font-weight:700;font-size:14px}
+.go{background:#226b92;color:white}.extra{background:#e9f2fb}
+.footer{line-height:1.8;color:#5f7182;font-size:13px}
+[hidden]{display:none!important}
+@media(max-width:650px){main{padding:14px}.hero h1{font-size:27px}.panel{padding:16px}.resource-grid{grid-template-columns:1fr}.search-bar input{width:100%;min-width:0}}
+</style>
+</head>
+<body>
+<main>
+<nav class="top" aria-label="上層頁面">
+<a class="back" href="../index.html">← 啟動器首頁</a>
+<a class="back" href="./language.html">🌏 語言啟動器</a>
+<a class="back" href="./language-taiwanese.html">🇹🇼 台語詞彙（810）</a>
+</nav>
+<header class="hero">
+<p>語言啟動器 › 台語 › 學習資源</p>
+<h1>🧰 台語工具與學習資源</h1>
+<p>依你提供的 iTaigi 清單與網址整理：字辭典、輸入法、學習、文章、字型共 5 類、17 個資源入口。所有連結均連往來源網站。</p>
+</header>
+<nav class="tabs" aria-label="語言分類">
+<a class="tab" href="./language.html">🇬🇧 英語 · Lingumi</a>
+<a class="tab" href="./language-taiwanese.html">🇹🇼 台語詞彙（810）</a>
+<a class="tab" href="./language-taiwanese-reading.html">🎧 台語有聲閱讀</a>
+<span class="tab current" aria-current="page">🧰 台語學習資源</span>
+<a class="tab" href="https://itaigi.tw/mia" target="_blank" rel="noopener noreferrer">🔎 iTaigi 愛台語 ↗</a>
+<a class="tab" href="https://itaigi.tw/iong" target="_blank" rel="noopener noreferrer">🗣️ iTaigi · iong ↗</a>
+</nav>
+<section class="panel">
+<p class="notice">資料參考：<a href="https://itaigi.tw/iong" target="_blank" rel="noopener noreferrer">iTaigi 愛台語資源頁 ↗</a>；部分沒有附上網址的項目已補上公開網站或官方商店入口。教育部輸入法改用目前可開啟的官方新頁面，部分舊網誌與專案可能已停止維護。</p>
+<form class="search-bar" role="search" onsubmit="return false"><label for="resourceSearch">搜尋資源</label><input type="search" id="resourceSearch" placeholder="搜尋名稱、用途、拼音、字型…" autocomplete="off"><button type="button" id="clearSearch">清除搜尋</button></form>
+<p class="notice" id="resultCount" aria-live="polite">顯示全部 17 筆資源</p>
+<div class="quick" aria-label="快速切換分類">
+<a href="#dictionaries">📚 字辭典類（3）</a>
+<a href="#inputs">⌨️ 輸入法類（5）</a>
+<a href="#learning">📝 學習類（4）</a>
+<a href="#articles">📄 文章（1）</a>
+<a href="#fonts">🔤 字型（4）</a>
+</div>
+</section>
+<section class="panel resource-section" id="dictionaries" aria-labelledby="heading-dictionaries">
+<header class="section-head"><div><p class="eyebrow">📚 字詞查詢、漢字、台羅音讀與詞義對照</p><h2 id="heading-dictionaries">字辭典類 <span class="section-count">(3)</span></h2></div></header>
+<div class="resource-grid">
+<article class="card resource-card" data-search="萌典｜台語辭典 台語萌典詞條入口（你提供的「發穎」查詢頁），可延伸查其他台語字詞。 字辭典類 字詞查詢、漢字、台羅音讀與詞義對照 ">
+<h3>萌典｜台語辭典</h3><p>台語萌典詞條入口（你提供的「發穎」查詢頁），可延伸查其他台語字詞。</p>
+
+<div class="actions"><a class="go" href="https://www.moedict.tw/&#39;%E7%99%BC%E7%A9%8E" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a><a class="extra" href="https://www.moedict.tw/" target="_blank" rel="noopener noreferrer">萌典首頁 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="教育部《臺灣台語常用詞辭典》 官方標準用字、台羅音讀、釋義、用例與真人發音。 字辭典類 字詞查詢、漢字、台羅音讀與詞義對照 ">
+<h3>教育部《臺灣台語常用詞辭典》</h3><p>官方標準用字、台羅音讀、釋義、用例與真人發音。</p>
+
+<div class="actions"><a class="go" href="https://sutian.moe.edu.tw/" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="chhoetaigi 台語辭典⁺ 跨字詞資料庫檢索，含台語歷史字辭典與現代語料。 字辭典類 字詞查詢、漢字、台羅音讀與詞義對照 ">
+<h3>ChhoeTaigi 台語辭典⁺</h3><p>跨字詞資料庫檢索，含台語歷史字辭典與現代語料。</p>
+
+<div class="actions"><a class="go" href="https://chhoe.taigi.info/" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+</div></section>
+<section class="panel resource-section" id="inputs" aria-labelledby="heading-inputs">
+<header class="section-head"><div><p class="eyebrow">⌨️ 電腦與手機的台語漢字、羅馬字輸入工具</p><h2 id="heading-inputs">輸入法類 <span class="section-count">(5)</span></h2></div></header>
+<div class="resource-grid">
+<article class="card resource-card" data-search="教育部臺灣台語漢字輸入法 新版官方入口，含 windows、macos 桌機輸入法及行動裝置版介紹。 輸入法類 電腦與手機的台語漢字、羅馬字輸入工具 已改用新版官方頁面；舊 result.aspx 連結會轉回首頁。">
+<h3>教育部臺灣台語漢字輸入法</h3><p>新版官方入口，含 Windows、macOS 桌機輸入法及行動裝置版介紹。</p>
+<p class="note">ℹ️ 已改用新版官方頁面；舊 result.aspx 連結會轉回首頁。</p>
+<div class="actions"><a class="go" href="https://language.moe.gov.tw/material/info?m=a1c64194-23d9-433e-8782-8550080788d2" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="信望愛台語客語輸入法 免費台語、客語輸入法，可查詢 windows 與 mac 版本及操作說明。 輸入法類 電腦與手機的台語漢字、羅馬字輸入工具 ">
+<h3>信望愛台語客語輸入法</h3><p>免費台語、客語輸入法，可查詢 Windows 與 Mac 版本及操作說明。</p>
+
+<div class="actions"><a class="go" href="https://taigi.fhl.net/TaigiIME/" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="phahtaigi 台語輸入法（android） google play 官方上架頁，支援台文拼音及漢字輸入。 輸入法類 電腦與手機的台語漢字、羅馬字輸入工具 ">
+<h3>PhahTaigi 台語輸入法（Android）</h3><p>Google Play 官方上架頁，支援台文拼音及漢字輸入。</p>
+
+<div class="actions"><a class="go" href="https://play.google.com/store/apps/details?id=com.taccotap.phahtaigi" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="phahtaigi 台語輸入法（ios） app store 官方上架頁。 輸入法類 電腦與手機的台語漢字、羅馬字輸入工具 ">
+<h3>PhahTaigi 台語輸入法（iOS）</h3><p>App Store 官方上架頁。</p>
+
+<div class="actions"><a class="go" href="https://apps.apple.com/tw/app/phahtaigi-%E5%8F%B0%E8%AA%9E%E8%BC%B8%E5%85%A5%E6%B3%95/id1455093650" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="lohankha 台語輸入法（ios） 支援台羅、白話字及漢羅混合輸入的第三方鍵盤。 輸入法類 電腦與手機的台語漢字、羅馬字輸入工具 ">
+<h3>Lohankha 台語輸入法（iOS）</h3><p>支援台羅、白話字及漢羅混合輸入的第三方鍵盤。</p>
+
+<div class="actions"><a class="go" href="https://apps.apple.com/tw/app/lohankha%E5%8F%B0%E8%AA%9E%E8%BC%B8%E5%85%A5%E6%B3%95/id1080190324" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+</div></section>
+<section class="panel resource-section" id="learning" aria-labelledby="heading-learning">
+<header class="section-head"><div><p class="eyebrow">📝 字表、拼音教學、教材與影片課程</p><h2 id="heading-learning">學習類 <span class="section-count">(4)</span></h2></div></header>
+<div class="resource-grid">
+<article class="card resource-card" data-search="教育部《臺灣台語推薦用字700字表》 教育部推薦用字、台羅音讀、華語對照與使用例句（pdf）。 學習類 字表、拼音教學、教材與影片課程 ">
+<h3>教育部《臺灣台語推薦用字700字表》</h3><p>教育部推薦用字、台羅音讀、華語對照與使用例句（PDF）。</p>
+
+<div class="actions"><a class="go" href="https://language.moe.gov.tw/files/people_files/700iongji_1131025.pdf" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="教育部「臺灣台語羅馬字拼音教學網」 聲母、韻母、聲調與變調等台羅基礎課程。 學習類 字表、拼音教學、教材與影片課程 ">
+<h3>教育部「臺灣台語羅馬字拼音教學網」</h3><p>聲母、韻母、聲調與變調等台羅基礎課程。</p>
+
+<div class="actions"><a class="go" href="https://tailo.moe.edu.tw/" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="教育部《咱來學臺灣台語》 官方七冊教材的學習與下載索引（pdf），包含拼音、語詞、語句和閱讀。 學習類 字表、拼音教學、教材與影片課程 ">
+<h3>教育部《咱來學臺灣台語》</h3><p>官方七冊教材的學習與下載索引（PDF），包含拼音、語詞、語句和閱讀。</p>
+
+<div class="actions"><a class="go" href="https://language.moe.gov.tw/files/people_files/tsuguan-book.pdf" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="《講台語當著時》台語教學影片 liz 講台語節目各集連結，包含聲調、漢字、文白音、台羅書寫等主題。 學習類 字表、拼音教學、教材與影片課程 ">
+<h3>《講台語當著時》台語教學影片</h3><p>Liz 講台語節目各集連結，包含聲調、漢字、文白音、台羅書寫等主題。</p>
+
+<div class="actions"><a class="go" href="https://liztaigi.blogspot.com/2017/11/blog-post.html" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+</div></section>
+<section class="panel resource-section" id="articles" aria-labelledby="heading-articles">
+<header class="section-head"><div><p class="eyebrow">📄 台語書寫、文化與文字知識</p><h2 id="heading-articles">文章 <span class="section-count">(1)</span></h2></div></header>
+<div class="resource-grid">
+<article class="card resource-card" data-search="什麼，你也懂台語字？ 介紹台語漢字、白話字、台羅及漢羅書寫方式的入門文章。 文章 台語書寫、文化與文字知識 ">
+<h3>什麼，你也懂台語字？</h3><p>介紹台語漢字、白話字、台羅及漢羅書寫方式的入門文章。</p>
+
+<div class="actions"><a class="go" href="https://liztaigi.blogspot.com/2015/08/blog-post_31.html" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+</div></section>
+<section class="panel resource-section" id="fonts" aria-labelledby="heading-fonts">
+<header class="section-head"><div><p class="eyebrow">🔤 台語漢字及羅馬字的字型參考</p><h2 id="heading-fonts">字型 <span class="section-count">(4)</span></h2></div></header>
+<div class="resource-grid">
+<article class="card resource-card" data-search="台灣楷體、台灣宋體 原始字型介紹網誌連結。 字型 台語漢字及羅馬字的字型參考 此舊網誌目前可能跳轉登入頁，尚未確認可直接取得字型。">
+<h3>台灣楷體、台灣宋體</h3><p>原始字型介紹網誌連結。</p>
+<p class="note">ℹ️ 此舊網誌目前可能跳轉登入頁，尚未確認可直接取得字型。</p>
+<div class="actions"><a class="go" href="https://wesingkasu.blogspot.com/2012/01/blog-post_1223.html" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="jigmo（字雲） 免費的大字集漢字字型專案，可支援多種罕用漢字。 字型 台語漢字及羅馬字的字型參考 ">
+<h3>Jigmo（字雲）</h3><p>免費的大字集漢字字型專案，可支援多種罕用漢字。</p>
+
+<div class="actions"><a class="go" href="https://kamichikoichi.github.io/jigmo/" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="charis sil 支援擴充拉丁字母與變音符號的字型，適合羅馬字文本。 字型 台語漢字及羅馬字的字型參考 ">
+<h3>Charis SIL</h3><p>支援擴充拉丁字母與變音符號的字型，適合羅馬字文本。</p>
+
+<div class="actions"><a class="go" href="https://software.sil.org/charis/" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+<article class="card resource-card" data-search="fira sans mozilla fira 字型原始碼專案。 字型 台語漢字及羅馬字的字型參考 此原始專案已標示 deprecated，保留原連結供參考。">
+<h3>Fira Sans</h3><p>Mozilla Fira 字型原始碼專案。</p>
+<p class="note">ℹ️ 此原始專案已標示 DEPRECATED，保留原連結供參考。</p>
+<div class="actions"><a class="go" href="https://github.com/mozilla/Fira" target="_blank" rel="noopener noreferrer">開啟資源 ↗</a></div>
+</article>
+</div></section>
+<p class="footer">整理日期：2026/11/03。這是台語外部學習資源目錄，不會覆蓋 Airtable 詞彙資料、既有台語錄音或閱讀卡片。外部網站的內容、連結與安裝功能由原站提供。</p>
+</main>
+<script>
+(function(){
+const input=document.getElementById('resourceSearch');
+const cards=[...document.querySelectorAll('.resource-card')];
+const sections=[...document.querySelectorAll('.resource-section')];
+const total=cards.length;
+const report=document.getElementById('resultCount');
+function filter(){
+ const q=input.value.trim().toLocaleLowerCase('zh-Hant');
+ let shown=0;
+ for(const card of cards){const visible=!q||card.dataset.search.includes(q);card.hidden=!visible;if(visible)shown++;}
+ for(const section of sections)section.hidden=![...section.querySelectorAll('.resource-card')].some(card=>!card.hidden);
+ report.textContent=q?'搜尋結果：'+shown+' / '+total+' 筆資源':'顯示全部 '+total+' 筆資源';
+}
+input.addEventListener('input',filter);
+document.getElementById('clearSearch').addEventListener('click',()=>{input.value='';filter();input.focus();});
+})();
+</script>
+</body>
+</html>
