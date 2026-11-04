@@ -46,6 +46,8 @@ jobs:
               page.write_text(html, encoding="utf-8")
           print(f"Added noindex to {len(pages)} HTML pages")
           PY
+      - name: Install recognizable favicon for every launcher page
+        run: python3 scripts/apply_launcher_favicons.py
       - name: Collect Song Feng Ge official frame photos
         run: |
           python3 -m pip install -q --disable-pip-version-check beautifulsoup4 || true
