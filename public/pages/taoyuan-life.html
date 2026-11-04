@@ -34,6 +34,7 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 <section class="quick-section"><div class="section-head"><h2>🏙️ 全桃園・市民服務</h2></div><div class="quick-grid" id="lifeCity"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📰 全桃園・地方新聞</h2></div><div class="quick-grid" id="lifeNews"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📚 全桃園・電子閱讀</h2></div><div class="quick-grid" id="lifeEbooks"></div></section>
+<section class="quick-section"><div class="section-head"><h2>🔗 全桃園・待確認連結</h2></div><div class="quick-grid" id="lifePendingLinks"></div></section>
 <section class="section"><div class="section-head"><h2>📍 桃園行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="桃園市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
 <footer>桃園生活資訊整理頁 · 行政區分類依桃園市 13 區建立</footer>
 </main><script src="../shared-nav.js?v=20261025-2" defer></script>
@@ -218,6 +219,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"Facebook 分享連結（待確認）",
 "桃園誌",
 "桃園市政府電子書平台",
 "桃園電子報",
@@ -249,6 +251,8 @@ function collectLifeCards(){
  lifeCatalog.set(ebookKey,{key:ebookKey,name:ebookName,district:"全桃園",html:'<article class="store-card"><h4>桃園市政府電子書平台</h4><p>瀏覽桃園市政府電子書及出版品。</p><a class="map-link" href="https://ebook.tycg.gov.tw/book/list.php?type=1" target="_blank" rel="noopener noreferrer">開啟電子書平台 ↗</a></article>'});
  const storyName="桃園誌",storyKey=lifeKey("全桃園",storyName);
  lifeCatalog.set(storyKey,{key:storyKey,name:storyName,district:"全桃園",html:'<article class="store-card"><h4>桃園誌</h4><p>探索桃園的人物故事、地方文化、生活與美食，並可閱讀雜誌。</p><a class="map-link" href="https://www.taoyuanstory.tw/" target="_blank" rel="noopener noreferrer">開啟桃園誌 ↗</a></article>'});
+ const pendingName="Facebook 分享連結（待確認）",pendingKey=lifeKey("全桃園",pendingName);
+ lifeCatalog.set(pendingKey,{key:pendingKey,name:pendingName,district:"全桃園",html:'<article class="store-card"><h4>Facebook 分享連結（待確認）</h4><p>連結內容及分類尚待確認，請開啟查看。</p><a class="map-link" href="https://www.facebook.com/share/1AJ4iDQDnX/" target="_blank" rel="noopener noreferrer">開啟 Facebook 連結 ↗</a></article>'});
  const keys=[...lifeCatalog.keys()];
  if(!Array.isArray(lifeState.known)){lifeState.known=keys;lifeState.added=[];}
  else{
@@ -276,6 +280,7 @@ function drawLifeLists(){
  show("lifeCity",[lifeKey("全桃園","桃園市民卡")],"目前沒有市民服務入口。");
  show("lifeNews",[lifeKey("全桃園","桃園電子報")],"目前沒有地方新聞入口。");
  show("lifeEbooks",[lifeKey("全桃園","桃園誌"),lifeKey("全桃園","桃園市政府電子書平台")],"目前沒有電子閱讀入口。");
+ show("lifePendingLinks",[lifeKey("全桃園","Facebook 分享連結（待確認）")],"目前沒有待確認連結。");
  show("lifeRecent",lifeState.recent.filter(k=>lifeCatalog.has(k)).slice(0,10),"開啟卡片中的連結後，會顯示在這裡。");
  show("lifeFavorites",lifeState.favorites.filter(k=>lifeCatalog.has(k)),"按卡片上的「收藏」，常用項目就會出現在這裡。");
  show("lifeNewest",newest,"目前沒有新增項目。");
