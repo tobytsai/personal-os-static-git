@@ -16,6 +16,25 @@ main{max-width:1220px;margin:0 auto;padding:16px 17px 72px}.back{display:inline-
 @media(max-width:960px){.calendar-flex,.notes-layout{grid-template-columns:1fr}.calendar-day{min-height:100px}.calendar-items{gap:3px}}
 @media(max-width:630px){.calendar-day{padding:3px 2px;min-height:85px}.cal-event{font-size:9px;padding:3px 2px}.calendar-date{min-width:27px;min-height:27px;font-size:12px}.calendar-weekdays span{font-size:12px}.fields-2{grid-template-columns:1fr}.cal-legend{font-size:12px}.upcoming-row{flex-wrap:wrap}}
 
+
+/* 行事曆月週視圖切換 */
+.calendar-view-switch{display:inline-flex;align-items:stretch;padding:3px;border-radius:12px;background:#e6eee7;border:1px solid #cddcd0;gap:3px;flex-shrink:0}
+.calendar-view-switch .view-mode{border:0;border-radius:9px;background:transparent;color:#355a4d;min-width:53px;min-height:40px;font-size:15px;font-weight:800;padding:7px 12px;cursor:pointer}
+.calendar-view-switch .view-mode.active{background:#356c5e;color:#fff;box-shadow:0 1px 4px #27462f30}
+.calendar-grid.week-view .calendar-day{min-height:225px;background:#fff}
+.calendar-grid.week-view .calendar-day .calendar-date{font-size:13px;min-width:40px}
+.calendar-grid.week-view .cal-event{font-size:12px;white-space:normal;line-height:1.35;overflow-wrap:anywhere}
+.calendar-grid.week-view .calendar-items{max-height:330px;overflow-y:auto}
+@media(max-width:780px){.calendar-grid.week-view{grid-template-columns:repeat(7,minmax(0,1fr))}.calendar-grid.week-view .calendar-day{min-height:165px}.calendar-grid.week-view .cal-event{font-size:10px}}
+@media(max-width:630px){
+.calendar-controls{gap:7px}.calendar-controls h2{font-size:16px;margin:0 6px!important}
+.calendar-grid.week-view{display:grid;grid-template-columns:1fr}
+#calendarWeekdays.weekdays-week{display:none}
+.calendar-grid.week-view .calendar-day{display:grid;grid-template-columns:70px minmax(0,1fr);align-items:start;gap:8px;min-height:64px;padding:10px 12px}
+.calendar-grid.week-view .calendar-date{font-size:15px;min-height:32px;text-align:left;white-space:nowrap;justify-self:start}
+.calendar-grid.week-view .calendar-items{display:grid;gap:5px;max-height:none;overflow:visible}
+.calendar-grid.week-view .cal-event{font-size:13px;padding:6px 8px;white-space:normal}
+}
 </style>
 </head><body><main>
 <a class="back" href="./wendy-exhibition.html">← 返回溫迪畫展策劃啟動器</a><a class="back" href="../index.html">Personal OS 首頁</a>
@@ -49,13 +68,13 @@ main{max-width:1220px;margin:0 auto;padding:16px 17px 72px}.back{display:inline-
 <div class="planner-note"><b>到期日與月曆連動：</b>工作卡片的到期日可以直接編輯；點「月曆檢視」可找到該日期。月曆內也可修改同一項工作的日期與狀態。獲獎後「第1月～第6月」暫不顯示，直到設定真正日期。</div><div id="taskGrid" class="task-grid"></div></div>
 </section>
 
-<section id="calendar" class="view" aria-label="月記事行事曆">
+<section id="calendar" class="view" aria-label="月與週行事曆">
 <div class="panel">
-<div class="split"><div><h2>土地的顏色｜行事曆月記事</h2><p class="small muted">同一視圖顯示所有有實際日期的工作到期日，以及自行建立的會議、材料採樣、課程或申請行程。</p></div><span class="chip">雙向連動工作項目</span></div>
-<div class="calendar-controls"><button type="button" class="btn" id="calPrev" aria-label="上一個月">← 上月</button><h2 id="calendarTitle">月曆</h2><button type="button" class="btn" id="calNext" aria-label="下一個月">下月 →</button><button type="button" class="btn" id="calToday">回到今天</button></div>
+<div class="split"><div><h2>土地的顏色｜月／週行事曆</h2><p class="small muted">同一視圖顯示所有有實際日期的工作到期日，以及自行建立的會議、材料採樣、課程或申請行程。</p></div><span class="chip">雙向連動工作項目</span></div>
+<div class="calendar-controls"><div class="calendar-view-switch" role="group" aria-label="行事曆顯示方式"><button type="button" id="calMonthView" class="view-mode active" aria-pressed="true">月</button><button type="button" id="calWeekView" class="view-mode" aria-pressed="false">週</button></div><button type="button" class="btn" id="calPrev" aria-label="上一個月">← 上月</button><h2 id="calendarTitle" aria-live="polite">月曆</h2><button type="button" class="btn" id="calNext" aria-label="下一個月">下月 →</button><button type="button" class="btn" id="calToday">回到今天</button></div>
 <div class="calendar-options"><label><input type="checkbox" id="calShowTasks" checked>工作到期</label><label><input type="checkbox" id="calShowEvents" checked>個人行程</label><label><input type="checkbox" id="calShowDone" checked>顯示已完成</label></div>
 <div class="calendar-flex"><div>
-<div class="calendar-weekdays"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div id="calendarGrid" class="calendar-grid" aria-label="月份行事曆"></div>
+<div id="calendarWeekdays" class="calendar-weekdays"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div id="calendarGrid" class="calendar-grid" aria-label="工作與行程月／週行事曆"></div>
 <div class="split" style="margin-top:12px"><div class="cal-legend"><span><i class="dot"></i>工作到期日</span><span><i class="dot event"></i>個人行程</span></div><span class="small muted" id="calendarCount"></span></div>
 </div><div class="agenda-panel">
 <div class="split"><h2 id="selectedDayTitle">選取日期</h2></div>
@@ -248,5 +267,5 @@ document.getElementById("exportJson").addEventListener("click",()=>{const conten
 document.getElementById("importJson").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const j=JSON.parse(await f.text());if(j.project!=="guangfu-dream-2026"||!j.data||typeof j.data!=="object"||!j.data.tasks||!Array.isArray(j.data.budget)||!Array.isArray(j.data.customTasks))throw Error("備份格式不符");if(!confirm("匯入將覆寫此瀏覽器目前所有光復土計畫進度與預算，確定嗎？"))return;data=j.data;save();rerender();document.getElementById("backupMessage").textContent="匯入完成。"}catch(err){alert("無法匯入："+err.message)}finally{e.target.value=""}});
 document.getElementById("resetProgress").addEventListener("click",()=>{if(!confirm("確定清除本機所有任務狀態、筆記、預算和自訂任務？建議先匯出備份。"))return;data={tasks:{},customTasks:[],budget:initialBudget.map(x=>({...x,spent:0,note:""}))};save();rerender()});
 rerender();
-</script><script src="./guangfu-planner.js?v=20261104-1" defer></script>
+</script><script src="./guangfu-planner.js?v=20261104-week-1" defer></script>
 </body></html>
