@@ -11,10 +11,29 @@
 <style>
 :root{--ink:#28362f;--secondary:#657169;--line:#dfe4dd;--green:#2d614b;--cream:#f6f6f2;--white:#fff;--gold:#ab8550}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--cream);font-family:system-ui,-apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.75}a{color:#1f664c;text-underline-offset:3px}a:hover{color:#9b6c2c}main{width:min(1120px,100%);margin:auto;padding:22px 18px 80px}.breadcrumbs{display:flex;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--secondary);margin-bottom:18px}.breadcrumbs a{text-decoration:none}.intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr);gap:28px;align-items:center;padding:32px;border-radius:25px;border:1px solid #edf0e9;background:#fff;box-shadow:0 14px 38px #1d332c09}.eyebrow{font-size:12px;font-weight:850;color:var(--green);letter-spacing:.1em}.intro h1{font-size:clamp(28px,4vw,42px);line-height:1.22;margin:12px 0 16px}.lede{font-size:17px;max-width:680px}.sub{color:var(--secondary);font-size:13px}.tags{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.tags span{background:#edf4ed;color:#2d614b;border-radius:99px;padding:5px 11px;font-size:12px;font-weight:700}.cover{display:block;border:1px solid #ede7df;background:#fff;border-radius:17px;padding:10px;text-align:center;text-decoration:none;color:var(--secondary);box-shadow:0 6px 22px #28362f10}.cover img{display:block;width:min(100%,260px);height:auto;margin:auto;image-rendering:auto}.cover small{display:block;font-size:12px;margin-top:6px}.anchor-nav{display:flex;flex-wrap:wrap;gap:8px;margin:21px 0}.anchor-nav a{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:99px;text-decoration:none;font-size:13px}.panel{margin:20px 0;padding:26px 28px;border:1px solid var(--line);border-radius:22px;background:#fff}.panel h2{margin:0 0 16px;font-size:22px;line-height:1.4}.panel h3{font-size:16px;margin:18px 0 6px}.panel p{margin:8px 0}.columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.fact{padding:14px;background:#f9faf7;border:1px solid #e7ede4;border-radius:14px}.fact small{display:block;color:var(--secondary);font-size:12px}.fact strong{display:block;font-size:15px;line-height:1.5;margin-top:3px}.chips{display:flex;flex-wrap:wrap;gap:9px}.chip{padding:6px 11px;background:#f1f5f0;border-radius:10px;font-size:13px}.step{padding:18px;background:#f9faf7;border:1px solid var(--line);border-radius:16px}.step .num{font-size:12px;font-weight:850;color:var(--gold)}.step h3{margin:3px 0 4px}.note{border-left:4px solid #b78c55;padding:11px 16px;background:#fcf8ef;border-radius:0 10px 10px 0;font-size:14px}.summary{font-size:20px;color:var(--green);font-weight:850}.table-scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}th{background:#f7f9f5;white-space:nowrap}.checklist label{display:flex;gap:10px;margin:9px 0;padding:12px 13px;border:1px solid var(--line);border-radius:12px;cursor:pointer}.checklist input{flex-shrink:0;margin-top:7px;accent-color:var(--green)}.checklist label:has(input:checked){background:#edf4ee}.sources{padding-left:22px;overflow-wrap:anywhere}.sources li{padding:4px 0}.link-row{display:flex;flex-wrap:wrap;gap:8px}.link-row a{display:inline-block;padding:9px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;font-weight:750}.footer{font-size:12px;color:var(--secondary);text-align:center;margin-top:24px}@media(max-width:760px){main{padding:14px 12px 50px}.intro{grid-template-columns:1fr;padding:22px}.cover img{width:180px}.panel{padding:20px 17px}.columns,.fact-grid{grid-template-columns:1fr}table{min-width:620px}}
+
+/* Visible cross-launcher navigation at the very top of the observation note. */
+.peer-relation{display:flex;gap:13px;align-items:center;flex-wrap:wrap;padding:15px 17px;margin:0 0 18px;border:2px solid #a9caba;border-radius:18px;background:#fff;box-shadow:0 6px 20px #163b2910;}
+.peer-relation-icon{font-size:28px;line-height:1}
+.peer-relation-detail{flex:1 1 245px;min-width:0;display:grid;gap:3px}
+.peer-relation-detail strong{font-size:16px;color:#21503a}
+.peer-relation-detail span{font-size:12px;color:#657169}
+.peer-relation-primary{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 17px;border-radius:12px;background:#215b46;color:white;text-decoration:none;font-size:15px;font-weight:850;box-shadow:0 6px 12px #1b52382a}
+.peer-relation-primary:visited{color:white}.peer-relation-primary:hover,.peer-relation-primary:focus-visible{background:#164632;color:white}
+@media(max-width:680px){.peer-relation{gap:10px;padding:13px}.peer-relation-icon{font-size:23px}.peer-relation-detail strong{font-size:15px}.peer-relation-primary{width:100%;flex:1 1 100%;font-size:16px}}
 </style>
 </head>
 <body>
 <main>
+
+<div id="peer-relation-top" class="peer-relation" role="navigation" aria-label="與同行啟動器互相關聯">
+  <span class="peer-relation-icon" aria-hidden="true">🤝</span>
+  <div class="peer-relation-detail">
+    <strong>已連到同行啟動器・傳家／綺美畫廊</strong>
+    <span>新北市新莊｜原有同行資料卡（含地圖、商家資料與 Airtable 來源）</span>
+  </div>
+  <a class="peer-relation-primary" href="./peers.html#peer-recYfL42RBQNTsrc7" title="直接定位同行啟動器中的傳家／綺美畫廊卡片">前往同行資料卡 →</a>
+</div>
 <nav class="breadcrumbs" aria-label="導覽"><a href="../index.html">Personal OS</a><span>／</span><a href="./framing-business-model.html">裱框找模式啟動器</a><span>／</span><a href="./peers.html#peer-recYfL42RBQNTsrc7">同行啟動器：傳家／綺美畫廊</a><span>／</span><span>同行觀察</span></nav>
 <header class="intro">
 <div><span class="eyebrow">同行觀察筆記 · 2026.11.04 · CASE 001</span>
