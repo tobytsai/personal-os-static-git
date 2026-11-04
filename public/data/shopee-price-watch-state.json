@@ -5,7 +5,7 @@
   "baseline_type": "historical displayed per-item price, not verified actual amount paid",
   "currency": "TWD",
   "watch_filter": "done===true && orderStatus!=='refunded' && price>0",
-  "last_checked_at": "2026-11-03T01:17:27.021Z",
+  "last_checked_at": "2026-11-04T00:48:58.137Z",
   "last_checked_count": 27,
   "last_notified": {
     "shorder-20261102-nutella-biscuits": {
@@ -112,6 +112,27 @@
       "checkout_verified": false,
       "shipping_verified": false,
       "coupon_verified": false
+    },
+    "shorder-20261102-clip-phone-holder": {
+      "source_product_id": "shorder-20261102-clip-phone-holder",
+      "historical_display_price": 35,
+      "current_price": 19,
+      "currency": "TWD",
+      "shopid": 38633942,
+      "itemid": 26427537953,
+      "modelid": 252732226093,
+      "shop_name": "黃小鴨生活百貨",
+      "listing_title": "(夾式) 多功能手機架 手機夾 懶人手機架 導航架 直播架 手機架 手機支架 手機後視鏡支架",
+      "matched_spec": "夾式多功能手機架／手機夾（原訂單選項：夾式多功能手機架）",
+      "source_relation": "same_seller",
+      "url": "https://shopee.tw/product/38633942/26427537953",
+      "note": "The same seller offers a Shopee item card matching the purchased clip-style multifunction mobile phone holder title; historical amount is displayed item-card price, not confirmed paid unit price. Price is from item card, not checkout. Shipping/coupons unverified.",
+      "verified_at": "2026-11-04T00:48:58.137Z",
+      "price_verification": "Shopee Taiwan connected app live search item card (two searches)",
+      "listing_status": "normal/not_sold_out",
+      "checkout_verified": false,
+      "shipping_verified": false,
+      "coupon_verified": false
     }
   },
   "notes": "Updated by Shopee price-watch automation only after verified comparable listings. Keep all historic user product data in source_file; no private account/order identifiers. Alerts must not claim to beat the actual paid price unless that baseline was independently verified.",
@@ -119,9 +140,12 @@
     "source": "Shopee Taiwan live search",
     "qualified_products": 27,
     "source_sha": "664ddc66c02c46f1248ca8e77758d764aa355947",
-    "verified_below_baseline_at_least": 6,
-    "change_notifications": 3,
-    "ambiguous_or_multivariant_prices": "excluded",
+    "new_verified_improvements": 1,
+    "change_notifications": 1,
+    "new_items_notified": [
+      "shorder-20261102-clip-phone-holder"
+    ],
+    "excluded_notes": "Excluded results with ambiguous variant, quantity, material, flavor, packaging or expiry; unchanged/previously alerted offers did not trigger.",
     "shipping_and_checkout_verified": false
   }
 }
