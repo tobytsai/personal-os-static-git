@@ -31,6 +31,7 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 <section class="quick-section"><div class="section-head"><h2>🕘 最近開啟</h2></div><div class="quick-grid" id="lifeRecent"></div></section>
 <section class="quick-section"><div class="section-head"><h2>⭐ 我的收藏</h2></div><div class="quick-grid" id="lifeFavorites"></div></section>
 <section class="quick-section"><div class="section-head"><h2>🆕 最近新增 10 項</h2></div><div class="quick-grid" id="lifeNewest"></div></section>
+<section class="quick-section"><div class="section-head"><h2>🏙️ 全桃園・市民服務</h2></div><div class="quick-grid" id="lifeCity"></div></section>
 <section class="section"><div class="section-head"><h2>📍 桃園行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="桃園市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
 <footer>桃園生活資訊整理頁 · 行政區分類依桃園市 13 區建立</footer>
 </main><script src="../shared-nav.js?v=20261025-2" defer></script>
@@ -215,6 +216,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"桃園市民卡",
 "2026 大溪工藝週",
 "「志願行動．幸福轉動」桃園市115年志願服務嘉年華暨 NPO 成果市集",
 "玉國泰式料理","陽柳塘薑母鴨","桃園市兒童美術館","橫山書法藝術館","桃園市原住民族文化會館","石門山步道","桃園市客家文化館","桃園市立圖書館富岡分館","桃園市立圖書館埔心分館"
@@ -234,6 +236,8 @@ function collectLifeCards(){
   }
  }
  choose("全部桃園");
+ const cityName="桃園市民卡",cityKey=lifeKey("全桃園",cityName);
+ lifeCatalog.set(cityKey,{key:cityKey,name:cityName,district:"全桃園",html:'<article class="store-card"><h4>桃園市民卡</h4><p>查看市民卡與數位碼、優惠、桃園活動及市府服務。</p><a class="map-link" href="https://typass.tycg.gov.tw/" target="_blank" rel="noopener noreferrer">開啟桃園市民卡官網 ↗</a></article>'});
  const keys=[...lifeCatalog.keys()];
  if(!Array.isArray(lifeState.known)){lifeState.known=keys;lifeState.added=[];}
  else{
@@ -258,6 +262,7 @@ function drawLifeLists(){
  const newestSeed=initialNewest.map(name=>[...lifeCatalog.values()].find(x=>x.name===name)?.key).filter(Boolean);
  const newest=[...(lifeState.added||[]),...newestSeed].filter((k,i,a)=>lifeCatalog.has(k)&&a.indexOf(k)===i).slice(0,10);
  const show=(id,keys,empty)=>{document.getElementById(id).innerHTML=keys.map(lifeCard).filter(Boolean).join("")||'<p class="quick-empty">'+empty+'</p>';};
+ show("lifeCity",[lifeKey("全桃園","桃園市民卡")],"目前沒有市民服務入口。");
  show("lifeRecent",lifeState.recent.filter(k=>lifeCatalog.has(k)).slice(0,10),"開啟卡片中的連結後，會顯示在這裡。");
  show("lifeFavorites",lifeState.favorites.filter(k=>lifeCatalog.has(k)),"按卡片上的「收藏」，常用項目就會出現在這裡。");
  show("lifeNewest",newest,"目前沒有新增項目。");
