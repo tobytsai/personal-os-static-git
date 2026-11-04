@@ -5,6 +5,7 @@
   const noteCategories=["申請資料","研究觀察","光復土採樣","材料與安全","顏料製程","DIY與教案","會議訪談","成果紀錄","其他"];
   let calendarMonth=new Date(new Date().getFullYear(),new Date().getMonth(),1);
   let selectedDay=localDay(new Date());
+  let calendarView=data.calendarView==="week"?"week":"month";
   let editingNoteId="";
   let editingEventId="";
   function localDay(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-")}
@@ -60,7 +61,7 @@
     showTab("calendar");renderCalendar();document.querySelector(".tabs").scrollIntoView({behavior:"smooth",block:"start"});
   });
   const originalRerender=rerender;
-  rerender=function(){ensurePlanner();originalRerender();renderCalendar();renderNoteCards();renderUpcoming();syncNoteTaskSelect()};
+  rerender=function(){ensurePlanner();calendarView=data.calendarView==="week"?"week":"month";originalRerender();renderCalendar();renderNoteCards();renderUpcoming();syncNoteTaskSelect()};
   const months=["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
   function calendarEntries(){
     const tasks=allTasks().map(t=>({kind:"task",id:t.id,title:t.title,date:taskDeadline(t),state:taskStatus(t),group:t.group,phase:t.phase})).filter(x=>x.date);
@@ -73,26 +74,52 @@
     const showDone=document.getElementById("calShowDone").checked;
     return items.filter(x=>(x.kind==="task"?(showTasks&&(showDone||x.state!=="已完成")):showEvents));
   }
+  function weekStart(iso){
+    const d=new Date(+iso.slice(0,4),+iso.slice(5,7)-1,+iso.slice(8,10));
+    d.setDate(d.getDate()-d.getDay());
+    return d;
+  }
   function renderCalendar(){
     ensurePlanner();
+    const weekView=calendarView==="week";
     const y=calendarMonth.getFullYear(),m=calendarMonth.getMonth();
-    document.getElementById("calendarTitle").textContent=y+"年 "+months[m];
-    const first=new Date(y,m,1),last=new Date(y,m+1,0),before=first.getDay(),total=Math.ceil((before+last.getDate())/7)*7;
+    const first=weekView?weekStart(selectedDay):new Date(y,m,1);
+    const last=weekView?new Date(first.getFullYear(),first.getMonth(),first.getDate()+6):new Date(y,m+1,0);
+    const before=first.getDay();
+    const total=weekView?7:Math.ceil((before+last.getDate())/7)*7;
     const entries=filterEntries(calendarEntries());
+    const weekRange=localDay(first)+"～"+localDay(last);
+    document.getElementById("calendarTitle").textContent=weekView?weekRange.replace(/-/g,"/"):y+"年 "+months[m];
+    document.getElementById("calendarGrid").classList.toggle("week-view",weekView);
+    document.getElementById("calendarWeekdays").classList.toggle("weekdays-week",weekView);
+    for(const view of ["month","week"]){
+      const btn=document.getElementById(view==="month"?"calMonthView":"calWeekView");
+      btn.classList.toggle("active",calendarView===view);
+      btn.setAttribute("aria-pressed",String(calendarView===view));
+    }
+    document.getElementById("calPrev").textContent=weekView?"← 上週":"← 上月";
+    document.getElementById("calNext").textContent=weekView?"下週 →":"下月 →";
+    document.getElementById("calPrev").setAttribute("aria-label",weekView?"上一週":"上一個月");
+    document.getElementById("calNext").setAttribute("aria-label",weekView?"下一週":"下一個月");
     let html="";
+    const today=localDay(new Date());
     for(let i=0;i<total;i++){
-      const day=new Date(y,m,1-before+i),date=localDay(day),sameMonth=day.getMonth()===m;
+      const day=weekView?new Date(first.getFullYear(),first.getMonth(),first.getDate()+i):new Date(y,m,1-before+i);
+      const date=localDay(day),sameMonth=day.getMonth()===m;
       const dayEvents=entries.filter(x=>x.date===date);
-      const classes=["calendar-day",sameMonth?"":"outside",date===localDay(new Date())?"today":"",date===selectedDay?"selected":""].filter(Boolean).join(" ");
-      html+='<div class="'+classes+'" data-calendar-day="'+date+'"><button class="calendar-date" type="button" data-select-day="'+date+'" aria-label="查看 '+date+' 行程">'+day.getDate()+'</button><div class="calendar-items">';
-      for(const item of dayEvents.slice(0,3)){
-        html+='<button class="cal-event '+(item.kind==="task"?"is-task":"is-event")+(item.state==="已完成"?" done":"")+'" data-select-day="'+date+'" type="button" title="'+esc(item.title)+'">'+(item.kind==="task"?"✓ ":"● ")+esc(item.title)+'</button>';
+      const classes=["calendar-day",!weekView&&!sameMonth?"outside":"",date===today?"today":"",date===selectedDay?"selected":""].filter(Boolean).join(" ");
+      const dayLabel=weekView?(day.getMonth()+1)+"/"+day.getDate():String(day.getDate());
+      html+='<div class="'+classes+'" data-calendar-day="'+date+'"><button class="calendar-date" type="button" data-select-day="'+date+'" aria-label="查看 '+date+' 行程">'+dayLabel+'</button><div class="calendar-items">';
+      for(const item of dayEvents.slice(0,weekView?dayEvents.length:3)){
+        const eventTime=weekView&&item.kind==="event"&&item.start?esc(item.start)+" ":"";
+        html+='<button class="cal-event '+(item.kind==="task"?"is-task":"is-event")+(item.state==="已完成"?" done":"")+'" data-select-day="'+date+'" type="button" title="'+esc(item.title)+'">'+(item.kind==="task"?"✓ ":"● ")+eventTime+esc(item.title)+'</button>';
       }
-      if(dayEvents.length>3)html+='<button type="button" class="more-events" data-select-day="'+date+'">＋'+(dayEvents.length-3)+'項</button>';
+      if(!weekView&&dayEvents.length>3)html+='<button type="button" class="more-events" data-select-day="'+date+'">＋'+(dayEvents.length-3)+'項</button>';
       html+="</div></div>";
     }
     document.getElementById("calendarGrid").innerHTML=html;
-    document.getElementById("calendarCount").textContent=y+"年"+(m+1)+"月，共"+entries.filter(x=>x.date.slice(0,7)===y+"-"+String(m+1).padStart(2,"0")).length+"項安排（工作到期／個人行程）";
+    const periodEntries=weekView?entries.filter(x=>x.date>=localDay(first)&&x.date<=localDay(last)):entries.filter(x=>x.date.slice(0,7)===y+"-"+String(m+1).padStart(2,"0"));
+    document.getElementById("calendarCount").textContent=(weekView?"本週":"本月")+"共"+periodEntries.length+"項安排（工作到期／個人行程）";
     renderDayAgenda();
   }
   function renderDayAgenda(){
@@ -106,7 +133,28 @@
       return '<article class="agenda-item event-agenda"><div class="split"><span class="chip">行程｜'+esc(e.type||"活動")+'</span><small>'+esc(time)+'</small></div><h3>'+esc(e.title)+'</h3><p class="muted small">'+esc(e.location||"未填地點")+'</p>'+(e.memo?'<p>'+esc(e.memo).replace(/\n/g,"<br>")+'</p>':"")+(e.link&&/^https?:\/\//i.test(e.link)?'<p><a target="_blank" rel="noopener noreferrer" href="'+esc(e.link)+'">參考連結 ↗</a></p>':"")+'<div class="toolbar"><button class="btn" type="button" data-edit-event="'+esc(e.id)+'">編輯行程</button><button class="btn warn" type="button" data-delete-event="'+esc(e.id)+'">刪除行程</button></div></article>';
     }).join(""):'<p class="muted">這天尚無工作到期或行程。點「＋新增行程」或「＋新增工作項目」即可安排。</p>';
   }
-  function moveCalendar(diff){calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth()+diff,1);selectedDay=localDay(new Date(calendarMonth.getFullYear(),calendarMonth.getMonth(),1));renderCalendar()}
+  function moveCalendar(diff){
+    if(calendarView==="week"){
+      const anchor=new Date(+selectedDay.slice(0,4),+selectedDay.slice(5,7)-1,+selectedDay.slice(8,10));
+      anchor.setDate(anchor.getDate()+diff*7);
+      selectedDay=localDay(anchor);
+      calendarMonth=new Date(anchor.getFullYear(),anchor.getMonth(),1);
+    }else{
+      calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth()+diff,1);
+      selectedDay=localDay(calendarMonth);
+    }
+    renderCalendar();
+  }
+  function setCalendarView(view){
+    if(view!=="month"&&view!=="week")return;
+    calendarView=view;
+    data.calendarView=view;
+    calendarMonth=new Date(+selectedDay.slice(0,4),+selectedDay.slice(5,7)-1,1);
+    save();
+    renderCalendar();
+  }
+  document.getElementById("calMonthView").addEventListener("click",()=>setCalendarView("month"));
+  document.getElementById("calWeekView").addEventListener("click",()=>setCalendarView("week"));
   document.getElementById("calPrev").addEventListener("click",()=>moveCalendar(-1));
   document.getElementById("calNext").addEventListener("click",()=>moveCalendar(1));
   document.getElementById("calToday").addEventListener("click",()=>{selectedDay=localDay(new Date());calendarMonth=new Date(+selectedDay.slice(0,4),+selectedDay.slice(5,7)-1,1);renderCalendar()});
