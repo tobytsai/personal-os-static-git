@@ -163,8 +163,11 @@ function indexRow(rows){
   const close=number(row['收盤指數']);
   if(close===null)return null;
   const plusminus=nap(row['漲跌']);
-  const points=Math.abs(number(row['漲跌點數'])??0)*(plusminus==='-'?-1:1);
-  const percent=Math.abs(number(row['漲跌百分比'])??0)*(plusminus==='-'?-1:1);
+  // OpenAPI may use U+2212 / full-width minus, not ASCII '-'.
+  const negative=/[-−－▼跌]/.test(plusminus) ||
+    (!/[+＋▲漲]/.test(plusminus)&&number(row['漲跌百分比'])<0);
+  const points=Math.abs(number(row['漲跌點數'])??0)*(negative?-1:1);
+  const percent=Math.abs(number(row['漲跌百分比'])??0)*(negative?-1:1);
   return {
     '日期':requested,'指數':'發行量加權股價指數',
     '收盤指數':close,'漲跌點數':points,'漲跌百分比':percent,
@@ -192,6 +195,16 @@ function flowsFromOfficial(report){
     else if(/^合計/.test(name))totals.total=value;
   }
   if(totals.total===null||totals.foreign===null)return null;
+  // When all institutional subcategories are present, reject internally
+  // inconsistent totals rather than publishing misleading net flows.
+  const parts=[totals.foreign,totals.trust,totals.dealerSelf,totals.dealerHedge];
+  if(parts.every(Number.isFinite)){
+    const subtotal=parts.reduce((a,b)=>a+b,0);
+    if(Math.abs(subtotal-totals.total)>5_000_000){
+      console.warn('Official institutional components disagree with total, leaving flows missing.');
+      return null;
+    }
+  }
   return {date:requested,unit:'TWD',...totals,source:sources.flows};
 }
 async function main(){
