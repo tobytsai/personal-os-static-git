@@ -30,6 +30,7 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 <section class="quick-section"><div class="section-head"><h2>🕘 最近開啟</h2></div><div class="quick-grid" id="lifeRecent"></div></section>
 <section class="quick-section"><div class="section-head"><h2>⭐ 我的收藏</h2></div><div class="quick-grid" id="lifeFavorites"></div></section>
 <section class="quick-section"><div class="section-head"><h2>🆕 最近新增 10 項</h2></div><div class="quick-grid" id="lifeNewest"></div></section>
+<section class="quick-section"><div class="section-head"><h2>🏙️ 全臺北・市民服務</h2></div><div class="quick-grid" id="lifeCity"></div></section>
 <section class="section"><div class="section-head"><h2>📍 台北行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="臺北市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
 <footer>台北生活資訊整理頁 · 行政區分類依臺北市 12 區建立</footer>
 </main><script src="../shared-nav.js?v=20261025-2" defer></script>
@@ -80,7 +81,7 @@ let lifeState=readLifeState();
 lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
-const initialNewest=["國立臺灣科學教育館","臺灣新文化運動紀念館"];
+const initialNewest=["台北通 TaipeiPASS","國立臺灣科學教育館","臺灣新文化運動紀念館"];
 function lifeKey(district,name){return district+"｜"+name}
 function saveLifeState(){try{localStorage.setItem(lifeStoreKey,JSON.stringify(lifeState))}catch(e){}}
 function collectLifeCards(){
@@ -96,6 +97,8 @@ function collectLifeCards(){
   }
  }
  choose("全部台北");
+ const cityName="台北通 TaipeiPASS",cityKey=lifeKey("全臺北",cityName);
+ lifeCatalog.set(cityKey,{key:cityKey,name:cityName,district:"全臺北",html:'<article class="store-card"><h4>台北通 TaipeiPASS</h4><p>臺北市市民服務入口，查看數位卡證、市政服務、帳單及優惠資訊。</p><a class="map-link" href="https://id.taipei/tpcd/" target="_blank" rel="noopener noreferrer">開啟台北通官網 ↗</a></article>'});
  const keys=[...lifeCatalog.keys()];
  if(!Array.isArray(lifeState.known)){lifeState.known=keys;lifeState.added=[];}
  else{
@@ -120,6 +123,7 @@ function drawLifeLists(){
  const newestSeed=initialNewest.map(name=>[...lifeCatalog.values()].find(x=>x.name===name)?.key).filter(Boolean);
  const newest=[...(lifeState.added||[]),...newestSeed].filter((k,i,a)=>lifeCatalog.has(k)&&a.indexOf(k)===i).slice(0,10);
  const show=(id,keys,empty)=>{document.getElementById(id).innerHTML=keys.map(lifeCard).filter(Boolean).join("")||'<p class="quick-empty">'+empty+'</p>';};
+ show("lifeCity",[lifeKey("全臺北","台北通 TaipeiPASS")],"目前沒有市民服務入口。");
  show("lifeRecent",lifeState.recent.filter(k=>lifeCatalog.has(k)).slice(0,10),"開啟卡片中的連結後，會顯示在這裡。");
  show("lifeFavorites",lifeState.favorites.filter(k=>lifeCatalog.has(k)),"按卡片上的「收藏」，常用項目就會出現在這裡。");
  show("lifeNewest",newest,"目前沒有新增項目。");
