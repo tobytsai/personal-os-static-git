@@ -441,6 +441,19 @@
     window.addEventListener("resize",refresh,{passive:true});
     refresh();
   }
+  // 每台裝置首次加入一次；保留既有頻道，刪除後不會重新建立。
+  try {
+    const seedKey="toby-youtube-laorou-v1";
+    const channelUrl="https://www.youtube.com/channel/UC5DGiN7-nlPno2kjHUdcdCg";
+    if(!localStorage.getItem(seedKey)){
+      const exists=state.channels.some(x=>x.url.toLowerCase()===channelUrl.toLowerCase());
+      if(exists) localStorage.setItem(seedKey,"1");
+      else if(state.channels.length<MAX_CHANNELS){
+        const item=makeChannel({title:"老肉雜談",url:channelUrl,category:"娛樂／其他"});
+        if(item){state.channels.unshift(item);if(saveState())localStorage.setItem(seedKey,"1");}
+      }
+    }
+  } catch (_) {}
   setOptions();
   renderChannels();renderQueue();
   loadTaiwanRanking();
