@@ -2,7 +2,7 @@
 "use strict";
 (function(){
   const isoPattern=/^\d{4}-\d{2}-\d{2}$/;
-  const noteCategories=["申請資料","研究觀察","光復土採樣","材料與安全","顏料製程","DIY與教案","會議訪談","成果紀錄","其他"];
+  const noteCategories=["申請資料","研究觀察","光復土採樣","材料與安全","顏料製程","泥染／土染","土耳其水拓畫","國畫／礦物設色","壁畫／唐卡","藝術材料包","DIY與教案","會議訪談","成果紀錄","其他"];
   let calendarMonth=new Date(new Date().getFullYear(),new Date().getMonth(),1);
   let selectedDay=localDay(new Date());
   let calendarView=data.calendarView==="week"?"week":"month";
