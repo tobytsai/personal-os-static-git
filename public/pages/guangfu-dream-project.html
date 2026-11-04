@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#365e57">
+<title>光復土築夢計畫｜執行管理工作站｜溫迪策展啟動器</title>
+<style>
+:root{--ink:#264039;--muted:#61796d;--bg:#f3f6f1;--white:#fff;--green:#356c5e;--gold:#a67b40;--line:#dae6dc;--warn:#925523}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{font:16px/1.65 system-ui,-apple-system,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);margin:0}a{color:var(--green)}button,input,select,textarea{font:inherit}button{cursor:pointer}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #81b7a7;outline-offset:2px}
+main{max-width:1220px;margin:0 auto;padding:16px 17px 72px}.back{display:inline-block;text-decoration:none;font-weight:750;margin:4px 12px 14px 0}.hero{padding:27px 30px 24px;border-radius:24px;color:#fff;background:linear-gradient(115deg,#284e46,#487767 70%,#967657)}.hero h1{font-size:clamp(27px,4.5vw,41px);line-height:1.27;margin:8px 0 10px}.hero p{max-width:970px;line-height:1.8;margin:0}.eyebrow{font-size:12px;letter-spacing:.1em;opacity:.86}.hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.hero-actions a{display:inline-block;padding:10px 13px;text-decoration:none;background:white;color:#245143;font-weight:750;border-radius:10px}.hero-actions a.alt{background:#ffffff25;color:white;border:1px solid #ffffff88}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0}.kpi,.panel{background:var(--white);border:1px solid var(--line);border-radius:17px;padding:16px}.kpi strong{display:block;font-size:25px;line-height:1.3}.kpi small{display:block;color:var(--muted)}.panel{margin-top:15px}.panel h2{font-size:21px;line-height:1.4;margin:0 0 10px}.panel h3{font-size:17px;margin:0 0 8px}.muted{color:var(--muted)}.small{font-size:13px}.alert{padding:12px 14px;background:#fff5e7;border-left:4px solid #c18d44;border-radius:9px;font-size:14px}.green-note{padding:12px 14px;background:#edf5ef;border-left:4px solid var(--green);border-radius:9px;font-size:14px}.chip{display:inline-block;padding:4px 9px;border-radius:999px;background:#e7f1e9;font-size:12px;font-weight:700;color:#315a4d}.chip.danger{background:#f9ece0;color:#845220}.tabs{display:flex;gap:8px;overflow-x:auto;padding:15px 0 3px;margin:0;position:sticky;top:0;z-index:20;background:var(--bg)}.tabs button{border:1px solid var(--line);border-radius:999px;background:white;padding:10px 16px;white-space:nowrap;color:var(--ink);font-weight:750}.tabs button.active{background:var(--green);color:#fff;border-color:var(--green)}.view{display:none}.view.active{display:block}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}.threecol{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.soft{background:#f2f7f2;border-radius:13px;padding:14px}.soft p{margin:3px 0}.steps{list-style:none;padding:0;margin:0}.steps li{padding:11px 0;border-top:1px solid var(--line)}.steps li:first-child{border:0}.steps b{display:inline-block;min-width:100px}.progress{height:9px;border-radius:99px;background:#e2eae1;overflow:hidden;margin:7px 0}.progress>i{display:block;height:100%;background:#4c8877;max-width:100%;transition:width .2s}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.toolbar input,.toolbar select{min-height:43px;border:1px solid #c9d8ce;border-radius:10px;padding:8px;background:#fff;color:var(--ink)}.toolbar input[type="search"]{min-width:220px;flex:2}.toolbar select{flex:1;min-width:130px}.btn{border:0;background:#e3efe7;color:#2c5a48;border-radius:11px;padding:10px 13px;font-weight:750}.btn.primary{color:#fff;background:var(--green)}.btn.warn{background:#faece2;color:#844d2b}.btn:disabled{opacity:.5}.task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}.task{border:1px solid var(--line);background:#fff;border-radius:16px;padding:15px}.task h3{margin:9px 0 6px;font-size:17px}.task p{margin:6px 0;color:#4c6558;font-size:14px}.task .meta{display:flex;justify-content:space-between;gap:6px;align-items:center;flex-wrap:wrap}.task details{border-top:1px solid var(--line);padding-top:8px;margin-top:10px}.task summary{cursor:pointer;font-weight:750;color:var(--green)}.task label,.budget label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-top:8px}.task textarea,.task input,.task select,.budget input{width:100%;background:#fff;color:var(--ink);border:1px solid #c9d8ce;border-radius:8px;padding:9px;min-height:40px}.task textarea{min-height:70px;resize:vertical}.task .meta small{font-size:12px;color:var(--muted)}.task .late{color:#9b442e}.budget-table{width:100%;border-collapse:collapse}.budget-table td,.budget-table th{padding:10px 7px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.budget-table th{color:var(--muted);font-size:13px}.budget-table td:first-child{min-width:170px}.budget-table input[type="number"]{max-width:140px}.numbers{text-align:right;font-variant-numeric:tabular-nums}.split{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.budget-sum{font-size:19px;font-weight:800}.panel ul{padding-left:22px}.milestone{border-left:4px solid #87ad9f;padding:6px 0 8px 14px;margin:12px 0}.milestone strong{font-size:16px}.milestone p{margin:3px 0}.evidence{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.evidence>div{padding:12px 14px;border:1px solid var(--line);border-radius:12px}.risk{margin:8px 0;padding:11px 0;border-bottom:1px solid var(--line)}.risk b{display:block}.risk p{margin:4px 0}.linklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}.linklist a{background:#f0f5ef;border-radius:11px;padding:12px;font-weight:750;text-decoration:none}.folded{display:none}.inlineform{border:1px dashed #abc7b7;background:#f3f9f4;padding:13px;border-radius:13px}.inlineform input,.inlineform select{border:1px solid #c9d8ce;border-radius:9px;padding:10px;min-height:40px;width:100%}.formgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px}.note{background:#fbf9ee;border:1px solid #e8e0bd;padding:11px 13px;border-radius:10px}.footer{margin:24px 0;font-size:13px;color:var(--muted)}@media(max-width:770px){.hero{padding:22px}.kpis,.threecol,.twocol,.evidence{grid-template-columns:1fr 1fr}.budget-table{font-size:13px}.formgrid{grid-template-columns:1fr}.budget-table input[type="number"]{min-width:75px;width:100%}.kpi strong{font-size:22px}}@media(max-width:510px){.kpis,.threecol,.twocol,.evidence{grid-template-columns:1fr 1fr}.budget-table td{padding:8px 4px}.budget-table th:last-child,.budget-table td:last-child{display:none}.task-grid{grid-template-columns:1fr}.hero h1{font-size:27px}.kpis{gap:7px}.kpi{padding:12px}}
+</style>
+</head><body><main>
+<a class="back" href="./wendy-exhibition.html">← 返回溫迪畫展策劃啟動器</a><a class="back" href="../index.html">Personal OS 首頁</a>
+<header class="hero"><div class="eyebrow">WENDY / 獨立申請專案 / 2026 第13屆新住民築夢計畫</div><h1>土地的顏色：光復土天然顏料研發與永續藝術應用</h1><p>申請組別：<b>環境保護與永續發展組</b>。以光復土來源與安全性研究為前提，將既有礦物分析、磁選、水飛與粒徑分級經驗，逐步轉化成可用的天然繪畫顏料、DIY體驗材料、教學推廣與成果紀錄。此案獨立於「共生之島」展覽，不共用補助計畫成果。</p><div class="hero-actions"><a href="#tasks" data-jump="tasks">查看待辦進度</a><a href="#budget" data-jump="budget">調整10萬元預算</a><a class="alt" href="https://www.immigration.gov.tw/5385/7229/147023/420389/cp_news" target="_blank" rel="noopener noreferrer">移民署官方公告 ↗</a></div></header>
+<section class="kpis" aria-label="關鍵指標">
+<div class="kpi"><strong>12/15</strong><small>2026 報名截止（郵戳）</small></div>
+<div class="kpi"><strong id="doneCount">0 / 0</strong><small>申請階段完成任務</small></div>
+<div class="kpi"><strong id="budgetKpi">NT$100,000</strong><small>預算草案總額／上限</small></div>
+<div class="kpi"><strong>5項 × 20%</strong><small>官方評分面向</small></div>
+</section>
+<div class="alert"><b>報名必須完成兩個程序：</b>先線上填報，再準備報名表、同意書、計畫書及身分佐證，於 <b>2026/12/15 前掛號寄件</b>。為保留補件緩衝，這裡將<b>12/11</b>設定為內部寄件目標。官方簡章的築夢期程年份前後有誤，務必先致電主辦單位確認；工作頁採「獲獎後第1至6個月」規劃，而不擅自認定官方日期。</div>
+<nav class="tabs" aria-label="專案工作分頁">
+<button type="button" data-tab="overview" class="active">專案概覽</button><button type="button" data-tab="tasks">申請／執行任務</button><button type="button" data-tab="research">研發路線</button><button type="button" data-tab="budget">預算管理</button><button type="button" data-tab="results">成果／風險</button><button type="button" data-tab="sources">官方資料／備份</button>
+</nav>
+<section id="overview" class="view active" aria-label="專案概覽">
+<div class="panel"><div class="split"><h2>夢想與定位</h2><span class="chip">環境保護與永續發展組</span></div>
+<p><b>核心問題：</b>能否以來源可追溯且經適當安全評估的花蓮光復土，建立可複製的顏料製作方法，開發適合藝術創作與親子體驗的天然繪畫材料，並讓人們藉此理解在地土地資源與循環使用？</p>
+<p><b>計畫摘要草稿：</b>本計畫以花蓮光復土為研究材料，延續既有礦物分析、磁選、水飛及粒徑分級經驗，建立材料來源、製程、安全與繪畫性能紀錄。透過粗中細三種級別顏料試作、不同膠結材料與保存測試，開發具使用說明的DIY體驗包，並辦理親子永續藝術活動。以材料研究連結新住民與台灣土地的情感，將地方色彩轉化為可延續的藝術教育資源。</p>
+<div class="green-note"><b>與溫迪畫展的關係：</b>「共生之島」以新住民身分、土地記憶與策展敘事為主；本案以光復土的<b>研究、產品原型、安全與永續實證</b>為主。可相互參考，但申請內容、經費、成果及對外主張需分開管理，避免與其他類似徵選重複申報。</div></div>
+<div class="twocol"><div class="panel"><h2>報名前進度</h2><div class="progress"><i id="appBar" style="width:0%"></i></div><div id="appProgress" class="small muted"></div><ol class="steps"><li><b>11/04–11/10</b>資格與定位、素材來源／研究範圍確認</li><li><b>11/11–11/23</b>製程證據、安全檢測詢價及提案骨架</li><li><b>11/24–12/04</b>樣品、預算、計畫書及佐證整理</li><li><b>12/05–12/09</b>交叉審查並完成線上填報</li><li><b>12/10–12/11</b>簽名、列印、掛號寄件；保存收據</li></ol></div>
+<div class="panel"><h2>獲獎後六個月路線</h2><div class="progress"><i id="execBar" style="width:0%"></i></div><div id="execProgress" class="small muted"></div><ol class="steps"><li><b>第1月</b>確認來源、採樣規範、安全檢驗與基礎材料履歷</li><li><b>第2月</b>磁選、水飛、分級與三類色粉樣本製作</li><li><b>第3月</b>膠結與附著／耐久測試、確立DIY原型</li><li><b>第4月</b>完成20套試作包與第一場小規模教學</li><li><b>第5月</b>第二場體驗與回饋、配方／教案修正</li><li><b>第6月</b>成果展示、收支憑證、報告及影音紀錄</li></ol></div></div>
+<div class="panel"><h2>最先要做的三件事</h2><div id="nextThree" class="threecol"></div></div>
+</section>
+<section id="tasks" class="view" aria-label="任務工作區">
+<div class="panel"><div class="split"><div><h2>可勾稽的工作卡片</h2><p class="small muted">逐張紀錄負責人／筆記、證據連結、狀態與驗收標準；資料只儲存在目前瀏覽器，請定期匯出 JSON 備份。</p></div><span id="taskCounter" class="chip"></span></div>
+<div class="toolbar"><input type="search" id="taskSearch" placeholder="搜尋研究、資格、預算、期限…"><select id="taskPhase"><option value="">全部階段</option><option value="申請前">申請前</option><option value="獲獎後">獲獎後</option></select><select id="taskStatus"><option value="">全部狀態</option><option value="未開始">未開始</option><option value="進行中">進行中</option><option value="待確認">待確認</option><option value="已完成">已完成</option></select><button type="button" class="btn" id="addTaskToggle">＋ 自訂任務</button></div>
+<div id="customTaskForm" class="inlineform folded"><div class="formgrid"><input id="newTaskTitle" placeholder="自訂任務名稱"><select id="newTaskPhase"><option value="申請前">申請前</option><option value="獲獎後">獲獎後</option></select><input id="newTaskDue" placeholder="截止日 2026-11-30 或 第3月"></div><div class="toolbar"><button class="btn primary" id="addTaskBtn" type="button">建立任務</button><button class="btn" id="cancelTaskBtn" type="button">取消</button></div></div>
+<div id="taskGrid" class="task-grid"></div></div>
+</section>
+<section id="research" class="view" aria-label="研發路線">
+<div class="panel"><h2>技術路線：採樣 → 分級 → 入膠 → 測試 → 應用</h2><div class="threecol">
+<div class="soft"><h3>材料來源與礦物履歷</h3><p>逐批記錄來源與授權、採樣日、重量、清理方式、照片及樣本編號。既有 XRD 礦物分析可作前期證據，但<b>不能單獨當作重金屬安全合格證明</b>。</p></div>
+<div class="soft"><h3>磁選、水飛與粒徑</h3><p>延續現有磁選、研磨、水飛（如10秒／5分鐘／24小時沉降）經驗，記錄各批產率、水量、乾燥條件；建立粗、中、細級樣本，不先保證量產穩定。</p></div>
+<div class="soft"><h3>顏料與作品試驗</h3><p>依應用媒材比較膠結比例、色差、遮蓋力、附著與可保存性；測試紙本、木片或杯墊，通過必要安全評估後再讓兒童操作。</p></div>
+</div>
+<div class="note" style="margin-top:12px"><b>試驗先後順序：</b>先完成材料合法來源與風險判定 → 再做受控的小樣試驗 → 確認安全與適用性後才安排親子DIY。勿以「天然」直接推論「無毒」或「較環保」。</div>
+</div>
+<div class="panel"><h2>建議研究紀錄欄位</h2><div class="evidence">
+<div><b>樣本編號／來源</b><p class="small">地點、取得同意、批次日期、原始重量、採集／取得方式</p></div>
+<div><b>製程參數</b><p class="small">磁選、分散、水飛時間、篩目、耗水、乾燥、研磨、粉塵控制</p></div>
+<div><b>材料測試</b><p class="small">礦物組成、相關污染物檢測、色調、附著、耐擦、耐濕、保存觀察</p></div>
+<div><b>應用與回饋</b><p class="small">基材、膠材配比、作品照片、使用說明、參與者回饋</p></div>
+</div></div>
+<div class="panel"><h2>申請書可承諾的成果，不做過度宣稱</h2><p>預計完成 <b>3類粒徑顏料樣本、1套材料／安全／製程紀錄、1份光復土色譜、20套DIY試作包、2場親子體驗、1份成果手冊與展示</b>。以上是<b>提案目標</b>，不是已完成或官方硬性規定。若檢測結果不適合兒童操作，改為受控展示或使用已驗證安全的替代媒材，並清楚記錄調整原因。</p></div>
+</section>
+<section id="budget" class="view" aria-label="預算管理"><div class="panel"><div class="split"><div><h2>10萬元預算草案</h2><p class="muted small">可改估算金額、已支出及備註。實際核定獎金可能低於10萬元，應依核定內容調整並保留報價。</p></div><div class="budget-sum" id="budgetTotal"></div></div>
+<div style="overflow-x:auto"><table class="budget-table"><thead><tr><th>項目／預算依據</th><th>預估金額</th><th>實際支出</th><th>備註</th></tr></thead><tbody id="budgetRows"></tbody></table></div>
+<p id="budgetBalance" class="small"></p><div class="toolbar"><button class="btn" id="addBudget" type="button">＋ 新增預算項目</button><button class="btn" id="resetBudget" type="button">還原預算草案</button></div>
+<div class="note"><b>財務提醒：</b>此為工作版示意估算，尚非核定預算。先補供應商估價、材料數量、交通與課程場地依據；核定後依法規及主辦單位要求執行、留存憑證、處理稅款。不可把獎金挪為非本計畫用途。</div></div></section>
+<section id="results" class="view" aria-label="成果／風險">
+<div class="twocol"><div class="panel"><h2>成果驗收表</h2>
+<div class="milestone"><strong>成果1｜材料研究紀錄</strong><p>來源文件、XRD與適當檢測、3類粒徑樣本、每批製程紀錄與顏料色卡。</p></div>
+<div class="milestone"><strong>成果2｜繪畫材料與DIY</strong><p>配方／附著與保存觀察、20套試作包、使用說明與安全注意事項。</p></div>
+<div class="milestone"><strong>成果3｜推廣與影響</strong><p>2場工作坊、參與回饋問卷與作品紀錄；不以人數替代實際學習成效。</p></div>
+<div class="milestone"><strong>成果4｜結案與延續</strong><p>成果手冊、照片授權、費用明細、展示紀錄；延伸為可重複使用的教育資源。</p></div>
+</div><div class="panel"><h2>風險與預備處置</h2>
+<div class="risk"><b>來源、採樣權利／環境合規</b><p>先取得來源及處理同意，優先使用可溯源既有樣本；禁止無許可採集。</p></div>
+<div class="risk"><b>粉塵、重金屬與DIY安全</b><p>規劃適當檢測與防護，分開「礦物鑑定」和「安全檢測」；不合格不用於兒童體驗。</p></div>
+<div class="risk"><b>天然材料未必比一般顏料低碳</b><p>紀錄用水、烘乾能源、產率與廢棄物，提出可驗證的資源利用比較而非空泛減碳聲明。</p></div>
+<div class="risk"><b>計畫重複申報</b><p>與社區營造案、溫迪展覽作內容／預算／作品成果清楚切分，不以相同內容參加其他類似徵選。</p></div>
+<div class="risk"><b>六個月時程或經費不足</b><p>先做安全與核心材料驗證，再推DIY；將100人擴展、商品量產等列為未來願景。</p></div>
+</div></div>
+<div class="panel"><h2>官方五項20%評分對照</h2><div class="evidence">
+<div><b>主題相關性 20%</b><p class="small">環境永續、材料來源、新住民與台灣土地的連結；避免變成單純美術課</p></div>
+<div><b>可執行性 20%</b><p class="small">既有實作、工作分解、預算估價、六個月里程碑與可驗收成果</p></div>
+<div><b>開創性 20%</b><p class="small">光復土依粒徑分級與藝術材料應用、DIY教具原型</p></div>
+<div><b>影響性 20%</b><p class="small">親子環境教育、材料知識公開、參與者學習成果與回饋</p></div>
+<div><b>持續性 20%</b><p class="small">台灣原土色譜、可複製的教材、實作及研究累積</p></div>
+</div></div>
+</section>
+<section id="sources" class="view" aria-label="官方資料與備份">
+<div class="panel"><h2>原始申請資料</h2><div class="linklist">
+<a href="https://www.immigration.gov.tw/5385/7229/147023/420389/cp_news" target="_blank" rel="noopener noreferrer">官方公告與表件下載 ↗</a>
+<a href="https://www.immigration.gov.tw/media/122449/1%E7%AC%AC13%E5%B1%86%E7%AF%89%E5%A4%A2%E8%A8%88%E7%95%AB%E5%A0%B1%E5%90%8D%E7%B0%A1%E7%AB%A0.pdf" target="_blank" rel="noopener noreferrer">報名簡章 PDF ↗</a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScA7bKh9KQxLKG6TzRFna4MMJikFMvBG9EDer1HKFdw88LmGA/viewform" target="_blank" rel="noopener noreferrer">官方線上報名表 ↗</a>
+<a href="./wendy-exhibition.html" rel="noopener noreferrer">返回溫迪畫展策劃分類 ↗</a>
+</div><p class="muted small">報名程序：線上填報＋紙本掛號。寄至 100213 臺北市中正區廣州街15號5樓，移民署移民事務組「第13屆新住民及子女築夢計畫活動小組」。電話 02-23889393 分機2522、2528；週一至週五9–12時、14–17時。</p>
+<div class="alert">官方 PDF「獲獎者築夢期程：116年3月至115年7月」前後矛盾；請致電確認正確年份及結案時間，再更新正式申請書。申請資料須使用官方最新版本。</div></div>
+<div class="panel"><h2>本機進度備份／轉移</h2><p>任務進度、自己的筆記、證據網址和預算修改僅儲存於<b>目前瀏覽器的 localStorage</b>，不會自動同步 Google Drive、GitHub 或其他裝置。換手機、清除瀏覽資料可能遺失，請定期匯出 JSON。公開程式碼中沒有個人身分文件；本頁設 noindex 但<b>網址不等於私密權限</b>。</p>
+<div class="toolbar"><button class="btn primary" id="exportJson" type="button">匯出進度 JSON</button><label class="btn" style="cursor:pointer" for="importJson">匯入進度 JSON<input id="importJson" type="file" accept=".json,application/json" hidden></label><button class="btn warn" id="resetProgress" type="button">清空本機紀錄</button></div>
+<div id="backupMessage" class="small muted" role="status"></div></div>
+</section>
+<p class="footer">建立於2026-11-04。此頁是個人執行規劃工具；目標數量與預算為草案，並非移民署承諾給付或核定成果。避免將身分證、戶籍謄本、未授權照片或私人訪談公開上傳至 GitHub Pages。</p>
+</main>
+<script>
+"use strict";
+const KEY="tobyWendyGuangfuDreamV1";
+const statusNames=["未開始","進行中","待確認","已完成"];
+const taskRows=[
+["A01","申請前","資格與行政","2026-11-07","高","確認簡章、執行年份與報名限制","致電主辦單位確認期程年份筆誤、團隊條件、身份文件及同內容重複申報解讀","通話日期、答覆摘要、待補問題清單","取得最新正式規則並記錄承辦說明"],
+["A02","申請前","資格與行政","2026-11-09","高","確認2名以上合格申請成員","依簡章確認至少2人為符合資格的新住民／8歲以上在臺新住民子女，最多5人，並確認未曾獲獎","成員分工表（個資不上傳公開網站）","資格完整且符合單家庭報名限制"],
+["A03","申請前","策略與定位","2026-11-10","高","區分光復土築夢與溫迪展覽／社造案","寫1頁比較表，界定本案的材料研發、獨立費用、交付成果與其他計畫不重疊部分","計畫範圍及成果不重複檢核表","能清楚回答是否運用相同內容參加其他徵選"],
+["A04","申請前","研究證據","2026-11-11","高","整理既有XRD、礦物與前期試驗","蒐集既有礦物資訊、原始照片、磁選水飛粒徑分級的試作紀錄，標明資料來源及可引用範圍","前期研究證據索引、照片編號與資料來源","能附合法授權的佐證，不誤把XRD當污染物合格報告"],
+["A05","申請前","研究證據","2026-11-13","高","確認光復土來源與取得授權","記錄現有材料的來源、取得同意、可取得數量及採樣／轉運限制；避免未核可挖取","材料來源與合法性說明","樣本來源可追溯，計畫不依賴未獲許可的採集"],
+["A06","申請前","策略與定位","2026-11-15","高","確定計畫名稱、摘要與新住民築夢故事","將天然顏料開發作主軸；說明與台灣土地、材料永續及多元文化的關係","150–300字摘要及一頁緣起","能清楚區分研究成果、文化動機與教育延伸"],
+["A07","申請前","研究證據","2026-11-18","高","設定研究問題及測試指標","定義3級粒徑、產率、水耗、附著、耐擦、保存條件；若比較環境優勢，先明確基準與數據","試驗設計表與觀察紀錄表","每個主張有可觀測的指標與記錄方法"],
+["A08","申請前","研究證據","2026-11-20","高","取得檢測與安全評估報價","詢問適合土粉／兒童DIY用途的污染物與必要檢測範圍、樣品數、檢驗周期及價目","至少1份檢測詢價或技術諮詢紀錄","知道安全門檻、費用、前置條件及替代方案"],
+["A09","申請前","研究證據","2026-11-23","中","整理小樣顏料試作資料","記錄磁選、篩分或水飛的小樣參數和拍攝照片；沒有安全確認前不辦兒童實作","小樣照片、試作紀錄、粗中細樣本描述","可展示研究基礎，不宣稱未檢測樣本已安全"],
+["A10","申請前","成果與課程","2026-11-25","中","設計DIY材料包的最小可行原型","提出杯墊／填色／繪畫材料三選項，定義適用年齡、工具與安全防護需求","一套可試驗的材料包設計清單","材料用量、成本、風險與使用程序可說明"],
+["A11","申請前","策略與定位","2026-11-26","高","完成6個月里程碑與替代路線","把材料合法性／安全性作階段門檻，後續才做配方、DIY、體驗與展示","6個月甘特／里程碑表","每月都有可驗收成果與失敗時的替代做法"],
+["A12","申請前","預算與資源","2026-11-28","高","確認10萬元初估與報價依據","依檢測、工具、耗材、課程、交通、展示分項估價，標註可刪減項目","經費預算表、至少主要大項估價來源","總額不超10萬元，足以支撐優先研究與安全工作"],
+["A13","申請前","成果與課程","2026-11-29","中","規劃2場工作坊與20套DIY包","定義對象、規模、流程、報名和回饋方式；保留因檢測結果更改內容的條件","活動規劃表與材料清單","不將未通過安全評估的土粉交由兒童操作"],
+["A14","申請前","成果與課程","2026-11-30","中","建立研究與社會影響指標","設計顏料樣本數、材料履歷、參與回饋、學習前後問答、成果紀錄","KPI／成果驗收表","所有承諾可在有限預算和六個月內檢核"],
+["A15","申請前","書面申請","2026-12-02","高","完成計畫書第一稿","使用官方計畫書範本，撰寫緣起、目標、執行方法、期程、預算、創新、影響與持續性","完整可閱讀的第一版計畫書","逐段回應5項20%評分指標"],
+["A16","申請前","書面申請","2026-12-03","中","整理作品、研究照片與合作佐證","核對照片來源、材料測試、作品說明、合作支持或場地可行性；不附私人未授權內容","一份佐證清單與圖說","每張佐證可清楚對應一個計畫能力或可行性指標"],
+["A17","申請前","書面申請","2026-12-04","高","準備正式身份文件及同意書","依官方規定取得3個月內記事不省略的戶籍謄本或其他合格身份文件，檢查表單簽名","完整文件檢核表（實際證件不上傳公開網頁）","每位必要成員的報名資料與簽署無缺漏"],
+["A18","申請前","書面申請","2026-12-06","高","五大指標及重複申報交叉審查","請合作夥伴從主題、可行、創新、影響、持續性五面向逐項挑錯","審查修正清單","修正重點與更動版本有紀錄"],
+["A19","申請前","書面申請","2026-12-08","高","計畫書／附件定稿","修正文字、研究指標及預算；核對報名人、聯絡資訊、作品授權及所有附件","最終版計畫書與附件清單","紙本與線上使用一致資訊"],
+["A20","申請前","報名送件","2026-12-09","高","完成線上報名","依官方表單逐項填報，保存送出結果及報名資料副本","線上報名完成證明","正式送出完成，不只打開表單"],
+["A21","申請前","報名送件","2026-12-10","高","列印、親簽、紙本裝訂","整理報名表、同意書、計畫書、身分證明及相關佐證；注意文件順序","紙本寄件資料包","紙本完整、簽名齊全、符合簡章裝訂規定"],
+["A22","申請前","報名送件","2026-12-11","高","掛號郵寄至移民署","寄至100213臺北市中正區廣州街15號5樓活動小組，使用掛號並保留憑證","掛號編號、收據及寄件日期","12/15截止前以郵戳完成寄件；內部目標12/11"],
+["A23","申請前","報名送件","2026-12-12","中","保存寄件證明並追蹤","確認掛號查詢狀態，保存線上報名與紙本寄件的相關證明","送件存檔紀錄","日後可核對報名與郵寄是否完成"],
+["A24","申請前","資格與行政","2026-12-14","中","再查官方變更公告與補件訊息","再次閱讀官方公告，確認有無日期或表單變動；若接獲補件通知立即處理","最新公告核對日期","資料未因官方更新而過期"],
+["E01","獲獎後","材料與安全","第1月","高","建立正式來源履歷與安全檢測","取得材料來源同意、檢測結果或適用評估報告；建立批次資料","來源履歷、安全風險表、基本試驗報告","通過安全門檻後才進行公開DIY"],
+["E02","獲獎後","製程與樣本","第2月","高","磁選／水飛／分級小量製程","批次記錄耗水、回收率、研磨烘乾、粗中細樣本差異","3類粒徑樣本、製程參數與色卡","樣本可追溯且重複性有記錄"],
+["E03","獲獎後","製程與樣本","第3月","高","顏料配方、保存與DIY包原型","測試不同媒材、膠結比例、乾燥保存與穩定性；建立使用說明","配方紀錄及DIY包可行原型","知道可使用基材、限制、保存方式"],
+["E04","獲獎後","推廣與回饋","第4月","中","20套試作包與第一場親子體驗","完成包材與課程安全審核，執行小規模體驗並記錄回饋","試作包、課程照片（經授權）、回饋紀錄","安全與課程目標均可核對"],
+["E05","獲獎後","推廣與回饋","第5月","中","第二場體驗與材料優化","依第一場回饋修正教案與包材，再辦一場並比較回饋","第二場紀錄、改善清單與作品","形成可再使用的材料與教學說明"],
+["E06","獲獎後","結案與延續","第6月","高","成果展、經費明細與結案資料","整理研究色譜、作品、授權照片、收據、成果報告及影片素材","成果冊、展示紀錄、收支憑證與結案報告","可配合業師與主辦單位的驗收需求"]
+];
+const baseTasks=taskRows.map(a=>({id:a[0],phase:a[1],group:a[2],due:a[3],priority:a[4],title:a[5],action:a[6],proof:a[7],accept:a[8]}));
+const initialBudget=[
+{id:"B01",title:"材料檢測與安全評估",amount:22000,explain:"詢價後按實際檢測項目調整"},
+{id:"B02",title:"樣本來源確認、採集交通",amount:8000,explain:"以合法取得材料及必要運輸為前提"},
+{id:"B03",title:"磁選、篩分、研磨器材與耗材",amount:16000,explain:"優先利用既有設備"},
+{id:"B04",title:"顏料調製、膠材與保存測試",amount:12000,explain:"小樣試驗、塗布及色卡"},
+{id:"B05",title:"DIY材料包20套試作",amount:12000,explain:"每套約600元示意成本，待試作詢價"},
+{id:"B06",title:"親子工作坊2場",amount:16000,explain:"場地／活動耗材／教學物料估算"},
+{id:"B07",title:"色譜手冊、紀錄及成果展示",amount:10000,explain:"成果版面、紀錄與展示"},
+{id:"B08",title:"個人防護與廢水管理",amount:4000,explain:"防塵、清理及安全耗材"}
+];
+let data;
+try{data=JSON.parse(localStorage.getItem(KEY)||"{}");if(!data||typeof data!=="object")data={}}catch{data={}}
+if(!data.tasks||typeof data.tasks!=="object")data.tasks={};
+if(!Array.isArray(data.customTasks))data.customTasks=[];
+if(!Array.isArray(data.budget))data.budget=initialBudget.map(x=>({...x,spent:0,note:""}));
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){alert("瀏覽器儲存失敗，請匯出備份。")}}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function allTasks(){return baseTasks.concat(data.customTasks)}
+function record(id){return data.tasks[id]||{}}
+function taskStatus(t){return record(t.id).status||"未開始"}
+function overdue(t){return t.phase==="申請前"&&/^\d{4}-\d{2}-\d{2}$/.test(t.due)&&t.due<new Date().toLocaleDateString("sv-SE")&&taskStatus(t)!=="已完成"}
+function renderProgress(){
+const a=allTasks().filter(t=>t.phase==="申請前"), e=allTasks().filter(t=>t.phase==="獲獎後");
+const da=a.filter(t=>taskStatus(t)==="已完成").length,de=e.filter(t=>taskStatus(t)==="已完成").length;
+document.getElementById("doneCount").textContent=da+" / "+a.length;
+document.getElementById("appBar").style.width=(a.length?da/a.length*100:0)+"%";
+document.getElementById("execBar").style.width=(e.length?de/e.length*100:0)+"%";
+document.getElementById("appProgress").textContent="已完成 "+da+" 項；剩餘 "+(a.length-da)+" 項";
+document.getElementById("execProgress").textContent="已完成 "+de+" 項；獲獎後啟動";
+const next=a.filter(t=>taskStatus(t)!=="已完成").sort((x,y)=>x.due.localeCompare(y.due)).slice(0,3);
+document.getElementById("nextThree").innerHTML=next.length?next.map(t=>'<div class="soft"><span class="chip">'+esc(t.due)+'</span><h3>'+esc(t.title)+'</h3><p class="small">'+esc(t.proof)+'</p></div>').join(""):"<p>申請階段任務都已標記完成；請再確認官方資料。</p>";
+}
+function renderTasks(){
+const q=document.getElementById("taskSearch").value.trim().toLowerCase(),p=document.getElementById("taskPhase").value,s=document.getElementById("taskStatus").value;
+const items=allTasks().filter(t=>(!p||t.phase===p)&&(!s||taskStatus(t)===s)&&(!q||[t.title,t.action,t.group,t.proof,t.accept,t.due].join(" ").toLowerCase().includes(q)));
+document.getElementById("taskCounter").textContent="顯示 "+items.length+" / "+allTasks().length+" 項";
+document.getElementById("taskGrid").innerHTML=items.length?items.map(t=>{
+const r=record(t.id),late=overdue(t)?"late":"";
+return '<article class="task"><div class="meta"><span class="chip">'+esc(t.phase)+" / "+esc(t.group)+'</span><small class="'+late+'">'+esc(t.due)+" · "+esc(t.priority)+"優先</small></div><h3>"+esc(t.title)+'</h3><p>'+esc(t.action)+'</p><div class="meta"><label for="status-'+esc(t.id)+'">進度</label><select data-task-status="'+esc(t.id)+'" id="status-'+esc(t.id)+'">'+statusNames.map(x=>'<option '+(taskStatus(t)===x?"selected ":"")+'value="'+x+'">'+x+"</option>").join("")+'</select></div><details><summary>展開：成果驗收、筆記與證據</summary><p><b>要留下的成果：</b>'+esc(t.proof)+'</p><p><b>完成判準：</b>'+esc(t.accept)+'</p><label for="note-'+esc(t.id)+'">備註／負責人／下一步（本機保存）</label><textarea id="note-'+esc(t.id)+'" data-task-note="'+esc(t.id)+'" placeholder="例如：誰負責、文件存在哪裡、已詢問的窗口…">'+esc(r.note||"")+'</textarea><label for="proof-'+esc(t.id)+'">佐證連結（可留空）</label><input type="url" id="proof-'+esc(t.id)+'" data-task-link="'+esc(t.id)+'" value="'+esc(r.link||"")+'" placeholder="https://…">'+(t.custom?'<button class="btn warn" type="button" data-task-delete="'+esc(t.id)+'" style="margin-top:8px">刪除自訂任務</button>':"")+'</details></article>'
+}).join(""):'<p class="muted">沒有符合篩選的任務。</p>';
+}
+function renderBudget(){
+const fmt=n=>new Intl.NumberFormat("zh-TW").format(n||0);
+document.getElementById("budgetRows").innerHTML=data.budget.map((b,i)=>'<tr><td><b>'+esc(b.title)+'</b><div class="muted small">'+esc(b.explain||"")+'</div></td><td><input aria-label="'+esc(b.title)+'預算金額" type="number" min="0" step="100" data-amount="'+i+'" value="'+Number(b.amount||0)+'"></td><td><input aria-label="'+esc(b.title)+'已支出" type="number" min="0" step="100" data-spent="'+i+'" value="'+Number(b.spent||0)+'"></td><td><input aria-label="'+esc(b.title)+'備註" data-budget-note="'+i+'" value="'+esc(b.note||"")+'" placeholder="估價／數量"></td></tr>').join("");
+const sum=data.budget.reduce((a,x)=>a+Number(x.amount||0),0),spent=data.budget.reduce((a,x)=>a+Number(x.spent||0),0),bal=100000-sum;
+document.getElementById("budgetTotal").textContent="預估 NT$"+fmt(sum);
+document.getElementById("budgetKpi").textContent="NT$"+fmt(sum);
+document.getElementById("budgetBalance").innerHTML='<b style="color:'+(bal<0?"#a5462b":"#356c5e")+'">相較10萬元上限：'+(bal>=0?"尚可編列 ":"超出 ")+ 'NT$'+fmt(Math.abs(bal))+"</b>　｜　已支出 NT$"+fmt(spent)+"　｜　提醒：此為草案，不代表獎金已核定。";
+}
+function rerender(){renderProgress();renderTasks();renderBudget()}
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));
+function showTab(id){document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===id));document.querySelectorAll(".view").forEach(x=>x.classList.toggle("active",x.id===id));}
+document.querySelectorAll("[data-jump]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();showTab(a.dataset.jump);document.querySelector(".tabs").scrollIntoView({behavior:"smooth",block:"start"})}));
+["taskSearch","taskPhase","taskStatus"].forEach(id=>document.getElementById(id).addEventListener("input",renderTasks));
+document.getElementById("taskGrid").addEventListener("change",e=>{const el=e.target,id=el.dataset.taskStatus||el.dataset.taskNote||el.dataset.taskLink;if(!id)return;const r=data.tasks[id]||{};if(el.dataset.taskStatus)r.status=el.value;if(el.dataset.taskNote)r.note=el.value;if(el.dataset.taskLink)r.link=el.value;data.tasks[id]=r;save();if(el.dataset.taskStatus){renderProgress();renderTasks()}});
+document.getElementById("taskGrid").addEventListener("input",e=>{const el=e.target,id=el.dataset.taskNote||el.dataset.taskLink;if(!id)return;const r=data.tasks[id]||{};if(el.dataset.taskNote)r.note=el.value;if(el.dataset.taskLink)r.link=el.value;data.tasks[id]=r;save()});
+document.getElementById("taskGrid").addEventListener("click",e=>{const b=e.target.closest("[data-task-delete]");if(!b)return;let id=b.dataset.taskDelete;if(!confirm("確定刪除這項自訂任務？"))return;data.customTasks=data.customTasks.filter(t=>t.id!==id);delete data.tasks[id];save();renderProgress();renderTasks()});
+function toggleCustom(v){document.getElementById("customTaskForm").classList.toggle("folded",!v)}
+document.getElementById("addTaskToggle").addEventListener("click",()=>toggleCustom(true));document.getElementById("cancelTaskBtn").addEventListener("click",()=>toggleCustom(false));
+document.getElementById("addTaskBtn").addEventListener("click",()=>{const title=document.getElementById("newTaskTitle").value.trim(),phase=document.getElementById("newTaskPhase").value,due=document.getElementById("newTaskDue").value.trim();if(!title){alert("請先輸入任務名稱");return}const id="C"+Date.now();data.customTasks.push({id,phase,group:"自訂任務",due:due||"待定",priority:"中",title,action:"請在工作筆記中補充執行方式",proof:"自行定義交付成果",accept:"留下可核對的完成證據",custom:true});save();document.getElementById("newTaskTitle").value="";document.getElementById("newTaskDue").value="";toggleCustom(false);renderProgress();renderTasks()});
+document.getElementById("budgetRows").addEventListener("change",e=>{const el=e.target;for(const field of ["amount","spent","budgetNote"]){let key=field==="budgetNote"?"budgetNote":field;const idx=el.dataset[key];if(idx===undefined)continue;data.budget[Number(idx)][field==="budgetNote"?"note":field]=field==="budgetNote"?el.value:Math.max(0,Number(el.value)||0);save();renderBudget();return;}});
+document.getElementById("addBudget").addEventListener("click",()=>{const title=prompt("新預算項目名稱");if(!title||!title.trim())return;data.budget.push({id:"B"+Date.now(),title:title.trim(),amount:0,spent:0,explain:"新增項目，請補估價依據",note:""});save();renderBudget()});
+document.getElementById("resetBudget").addEventListener("click",()=>{if(!confirm("確定還原初始預算？您修改的預算金額、支出、備註將被取代。"))return;data.budget=initialBudget.map(x=>({...x,spent:0,note:""}));save();renderBudget()});
+document.getElementById("exportJson").addEventListener("click",()=>{const content=JSON.stringify({schema:1,project:"guangfu-dream-2026",exported_at:new Date().toISOString(),data},null,2);const blob=new Blob([content],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="光復土築夢計畫-進度備份-"+new Date().toISOString().slice(0,10)+".json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);document.getElementById("backupMessage").textContent="已產生本機 JSON 備份檔，請自行保管。"});
+document.getElementById("importJson").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const j=JSON.parse(await f.text());if(j.project!=="guangfu-dream-2026"||!j.data||typeof j.data!=="object"||!j.data.tasks||!Array.isArray(j.data.budget)||!Array.isArray(j.data.customTasks))throw Error("備份格式不符");if(!confirm("匯入將覆寫此瀏覽器目前所有光復土計畫進度與預算，確定嗎？"))return;data=j.data;save();rerender();document.getElementById("backupMessage").textContent="匯入完成。"}catch(err){alert("無法匯入："+err.message)}finally{e.target.value=""}});
+document.getElementById("resetProgress").addEventListener("click",()=>{if(!confirm("確定清除本機所有任務狀態、筆記、預算和自訂任務？建議先匯出備份。"))return;data={tasks:{},customTasks:[],budget:initialBudget.map(x=>({...x,spent:0,note:""}))};save();rerender()});
+rerender();
+</script>
+</body></html>
