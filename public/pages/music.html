@@ -18,7 +18,7 @@ dialog{width:calc(100% - 28px);max-width:510px;padding:23px;border:0;border-radi
 <section class="shelf"><div class="shelf-head"><h2>↻ 最近開啟</h2><span class="hint">開啟聆聽或 Trello 卡片後自動記錄</span></div><div class="shelf-list" id="recent"></div></section>
 <div class="section-head"><div><h2 class="section-title">音樂分類</h2><p>依序選擇內容類型、歌手或演出者地區、內容分類；不確定的資料保留在待確認／跨地區。</p></div><span class="hint" id="resultCount"></span></div><div class="levels"><div><strong>第一層｜內容類型</strong><nav class="filters" id="filters" aria-label="內容類型"></nav></div><div><strong>第二層｜歌手或演出者地區</strong><nav class="filters" id="regions" aria-label="地區分類"></nav></div><div><strong>第三層｜內容分類</strong><nav class="filters" id="contents" aria-label="內容分類"></nav></div></div><section class="grid" id="cards" aria-live="polite"></section>
 <footer>收藏與最近開啟記錄保存在目前瀏覽器，不會同步至其他裝置。Spotify 收藏為 2026-11-05 的資料快照，不會自動同步；若卡片沒有 Spotify、YouTube 或 KKBOX 連結，可從「查看 Trello 卡片」閱讀原始說明。</footer></main>
-<dialog id="help"><button class="close" id="closeHelp">關閉</button><h2>怎麼使用音樂啟動器？</h2><p>分類：第一層選音樂、歌曲或歌劇；第二層選歌手或演出者地區；第三層選內容。原 Trello 分類仍予保留，無法確認的地區歸入待確認／跨地區。
+<dialog id="help"><button class="close" id="closeHelp">關閉</button><h2>怎麼使用音樂啟動器？</h2><p>分類：第一層選音樂、歌曲、歌劇或音樂家；第二層選歌手或演出者地區；第三層選內容。原 Trello 分類仍予保留，無法確認的地區歸入待確認／跨地區。
 搜尋：輸入歌名、歌手或分類即可篩選。
 星號收藏：點卡片右上角 ☆，加入「我的收藏」；再點一次可取消。
 最近開啟：按「聆聽」或「查看 Trello 卡片」後，會記錄在「最近開啟」。
@@ -48,19 +48,30 @@ function getRegion(x){
  const found=REGION_NAMES.filter(region=>(REGION_ARTISTS[region]||[]).some(n=>parts.toLocaleLowerCase().includes(n.toLocaleLowerCase())));
  if(found.length===1)return found[0];return "待確認／跨地區";
 }
+const ARTIST_REGIONS={
+"台灣歌手":["蘇打綠","徐若瑄","范逸臣","劉若英","阿桑","侯湘婷","范曉萱","王力宏","李千娜","張宇","彭佳慧","周蕙","周杰倫","李聖傑","周傳雄","田馥甄","郭采潔","梁文音","陳昇","張韶涵","蔡依林","王心凌","江美琪","萬芳","楊丞琳","張雨生","利綺","蕭敬騰","徐佳瑩","楊宗緯","茄子蛋","伍佰 & China Blue","吳卓源(Julia Wu)","五月天","謝金燕","林子安AnViolin"],
+"大陸歌手":["郁可唯","丁噹","周深","承桓","趙照","張靚穎","向思思","陸虎","張碧晨","那英","于春洋","蒋雪儿Snow.J","王宇宙","崔健","石頭","等什么君","李袁杰","奇然","胡夏"],
+"馬來西亞歌手":["梁靜茹","陳佩賢","黃明志","蔡恩雨 Priscilla Abby"],
+"新加坡歌手":["許美靜","蔡健雅","孫燕姿"],
+"香港歌手":["莫文蔚","梅艷芳","鄧紫棋","BEYOND","何韻詩","鐘鎮濤"],
+"歐美歌手":["Keira Knightley（姬拉·麗莉）","Taylor Swift（泰勒絲）","Meghan Trainor（梅根·崔娜）","Bruno Mars（火星人布魯諾）","潔西·J","艾麗·高登","Christina Perri","Charlie Puth","艾莉西亞·凱斯"],
+"其他地區":["J.Fla"]
+};
+function artistRegion(x){for(const [region,names] of Object.entries(ARTIST_REGIONS))if(names.includes(x.name))return region;return "待確認／跨地區";}
 function classify(x){
  const cat=x.category||"",n=x.name||"";
- let type=/歌劇|opera/i.test(cat+" "+n)&&!/鋼琴|piano|介紹|introduction/i.test(n)?"歌劇":(/古典|器樂|音樂家|純音樂|法國音樂|YouTube  music 專輯/.test(cat)||/卓文君 - 伴奏|Tank!|卡農|蕭邦|Sibelius|Rachmaninoff|Bach|Richard Strauss|Richard Wagner|Spring Dream|Chinese Dance|中国传统庭院古筝|Flûte relaxante|The Piano Guys|Helena Basilova|Let It Go \(ピアノ\)|Mountain King/.test(n)?"音樂":"歌曲");
- let content=cat.startsWith("Spotify｜")?"Spotify 收藏歌曲":cat;
+ const artistCard=["台灣歌星","馬來西亞歌星","香港歌星","大陸歌星","韓國歌星","美國歌手","音樂家"].includes(cat);
+ let type=artistCard?"音樂家":/歌劇|opera/i.test(cat+" "+n)&&!/鋼琴|piano|介紹|introduction/i.test(n)?"歌劇":(/古典|器樂|音樂家|純音樂|法國音樂|YouTube  music 專輯/.test(cat)||/卓文君 - 伴奏|Tank!|卡農|蕭邦|Sibelius|Rachmaninoff|Bach|Richard Strauss|Richard Wagner|Spring Dream|Chinese Dance|中国传统庭院古筝|Flûte relaxante|The Piano Guys|Helena Basilova|Let It Go \(ピアノ\)|Mountain King/.test(n)?"音樂":"歌曲");
+ let content=artistCard?(cat==="音樂家"?"演奏家":/蘇打綠|茄子蛋|伍佰 & China Blue|五月天|BEYOND/i.test(n)?"樂團／組合":"歌手"):cat.startsWith("Spotify｜")?"Spotify 收藏歌曲":cat;
  if(cat.startsWith("Spotify｜")){if(/Animal Fair|兒歌/.test(n))content="親子兒歌";else if(/祝禱歌-2|魯凱的姑娘/.test(n))content="原住民族音樂";else if(type==="音樂")content="古典與器樂";else if(/月彎彎.*REMIX|REMIX EDM/i.test(n))content="舞曲與混音";else if(/電影|电视剧|電視劇|戏剧|戲劇/.test(n))content="影視歌曲";else if(/ - Live| - live/i.test(n))content="現場演唱";else if(/若無你我欲去佗位|綿綿無絕期|家后|必巡/.test(n))content="台語歌曲";}
- return {type,region:getRegion(x),content};
+ return {type,region:artistCard?artistRegion(x):getRegion(x),content};
 }
 ITEMS.forEach(x=>Object.assign(x,{structure:classify(x)}));
 const cats=[...new Set(ITEMS.map(x=>x.structure.content))];
 $("total").textContent=ITEMS.length;$("groupTotal").textContent=cats.length;
 function button(label,attr,value,on,count){return '<button class="filter" '+attr+'="'+esc(value)+'" aria-pressed="'+on+'">'+esc(label)+(count===undefined?'':' · '+count)+'</button>'}
 function drawFilters(){
- const types=["全部","音樂","歌曲","歌劇"];
+ const types=["全部","音樂","歌曲","歌劇","音樂家"];
  $("filters").innerHTML=types.map(v=>button(v,"data-type",v,level1===v,v==="全部"?ITEMS.length:ITEMS.filter(x=>x.structure.type===v).length)).join("");
  const scoped=ITEMS.filter(x=>level1==="全部"||x.structure.type===level1);
  $("regions").innerHTML=["全部",...REGION_NAMES].map(v=>button(v,"data-region",v,level2===v,v==="全部"?scoped.length:scoped.filter(x=>x.structure.region===v).length)).join("");
