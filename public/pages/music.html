@@ -17,9 +17,9 @@ img.musicmark{width:72px;height:72px;flex-basis:72px;object-fit:cover;background
 <div class="toolbar"><label class="search"><span>⌕</span><input id="query" type="search" placeholder="搜尋歌名、歌手或分類…" aria-label="搜尋音樂"></label><button class="help" id="helpButton">？ 功能說明</button></div>
 <section class="shelf"><div class="shelf-head"><h2>✦ 我的收藏</h2><span class="hint">點卡片右上角 ☆ 收藏喜愛的音樂</span></div><div class="shelf-list" id="favorites"></div></section>
 <section class="shelf"><div class="shelf-head"><h2>↻ 最近開啟</h2><span class="hint">開啟聆聽或 Trello 卡片後自動記錄</span></div><div class="shelf-list" id="recent"></div></section>
-<div class="section-head"><div><h2 class="section-title">音樂分類</h2><p>依序選擇內容類型、歌手或演出者地區、內容分類；不確定的資料保留在待確認／跨地區。</p></div><span class="hint" id="resultCount"></span></div><div class="levels"><div><strong>第一層｜內容類型</strong><nav class="filters" id="filters" aria-label="內容類型"></nav></div><div><strong>第二層｜歌手或演出者地區</strong><nav class="filters" id="regions" aria-label="地區分類"></nav></div><div><strong>第三層｜內容分類</strong><nav class="filters" id="contents" aria-label="內容分類"></nav></div></div><section class="grid" id="cards" aria-live="polite"></section>
+<div class="section-head"><div><h2 class="section-title">音樂分類</h2><p>依序選擇內容類型、歌手或演出者地區、內容分類；同名歌單整合顯示，不確定的地區保留在待確認／跨地區。</p></div><span class="hint" id="resultCount"></span></div><div class="levels"><div><strong>第一層｜內容類型</strong><nav class="filters" id="filters" aria-label="內容類型"></nav></div><div><strong>第二層｜歌手或演出者地區</strong><nav class="filters" id="regions" aria-label="地區分類"></nav></div><div><strong>第三層｜內容分類</strong><nav class="filters" id="contents" aria-label="內容分類"></nav></div></div><section class="grid" id="cards" aria-live="polite"></section>
 <footer>收藏與最近開啟記錄保存在目前瀏覽器，不會同步至其他裝置。Spotify 和 YouTube Music 郵件備份為 2026-11-05 的資料快照，不會自動同步；郵件備份沒有直接歌曲網址，使用搜尋連結；若卡片沒有 Spotify、YouTube 或 KKBOX 連結，可從「查看 Trello 卡片」閱讀原始說明。</footer></main>
-<dialog id="help"><button class="close" id="closeHelp">關閉</button><h2>怎麼使用音樂啟動器？</h2><p>分類：第一層選音樂、歌曲、歌劇或音樂家；第二層選歌手或演出者地區；第三層選內容。原 Trello 分類仍予保留，無法確認的地區歸入待確認／跨地區。
+<dialog id="help"><button class="close" id="closeHelp">關閉</button><h2>怎麼使用音樂啟動器？</h2><p>分類：第一層選音樂、歌曲、歌劇或音樂家；第二層選歌手或演出者地區；第三層選內容。相同歌單整合為同一個分類，卡片保留來源連結；無法確認的地區歸入待確認／跨地區。
 搜尋：輸入歌名、歌手或分類即可篩選。
 星號收藏：點卡片右上角 ☆，加入「我的收藏」；再點一次可取消。
 最近開啟：按「聆聽」或「查看 Trello 卡片」後，會記錄在「最近開啟」。
@@ -110,6 +110,24 @@ fav=[...new Set(fav.map(id=>duplicateAliases[id]||id))];
 recent=[...new Set(recent.map(id=>duplicateAliases[id]||id))];
 save(FAV,fav);save(REC,recent);
 
+
+function integratedMusicCategory(label){
+ const text=String(label||"").trim();
+ const playlists=text.match(/^(?:備份歌單|Spotify 歌單)｜(.+)$/);
+ if(playlists)return "歌單｜"+playlists[1].trim();
+ const names={
+  "華語歌":"華語歌曲","粵語歌":"粵語歌曲","韓國歌":"韓語歌曲",
+  "經典英文歌":"西洋經典歌曲","美國音樂":"西洋歌曲",
+  "古典":"古典與器樂","古典音樂專輯":"古典與器樂",
+  "YouTube  music 專輯":"專輯","演唱會":"現場演唱",
+  "Spotify 收藏歌曲":"Spotify 喜歡的歌曲"
+ };
+ return names[text]||text;
+}
+ITEMS.forEach(x=>{
+ x.structure.content=integratedMusicCategory(x.structure.content);
+ x.structure.contents=[...new Set(x.structure.contents.map(integratedMusicCategory))];
+});
 const cats=[...new Set(ITEMS.flatMap(x=>x.structure.contents))];
 $("total").textContent=ITEMS.length;$("groupTotal").textContent=cats.length;
 function button(label,attr,value,on,count){return '<button class="filter" '+attr+'="'+esc(value)+'" aria-pressed="'+on+'">'+esc(label)+(count===undefined?'':' · '+count)+'</button>'}
