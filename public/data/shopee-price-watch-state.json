@@ -5,7 +5,7 @@
   "baseline_type": "historical displayed per-item price, not verified actual amount paid",
   "currency": "TWD",
   "watch_filter": "done===true && orderStatus!=='refunded' && price>0",
-  "last_checked_at": "2026-11-04T00:48:58.137Z",
+  "last_checked_at": "2026-11-05T00:53:20.621Z",
   "last_checked_count": 27,
   "last_notified": {
     "shorder-20261102-nutella-biscuits": {
@@ -137,15 +137,15 @@
   },
   "notes": "Updated by Shopee price-watch automation only after verified comparable listings. Keep all historic user product data in source_file; no private account/order identifiers. Alerts must not claim to beat the actual paid price unless that baseline was independently verified.",
   "last_check_summary": {
-    "source": "Shopee Taiwan live search",
+    "source": "Shopee Taiwan live search via connected app",
     "qualified_products": 27,
     "source_sha": "664ddc66c02c46f1248ca8e77758d764aa355947",
-    "new_verified_improvements": 1,
-    "change_notifications": 1,
-    "new_items_notified": [
-      "shorder-20261102-clip-phone-holder"
-    ],
-    "excluded_notes": "Excluded results with ambiguous variant, quantity, material, flavor, packaging or expiry; unchanged/previously alerted offers did not trigger.",
-    "shipping_and_checkout_verified": false
+    "search_queries": 32,
+    "new_verified_improvements": 0,
+    "change_notifications": 0,
+    "new_items_notified": [],
+    "excluded_notes": "Candidate lower card prices for several products could not be confirmed for exact purchased variant/pack size/flavor/quantity, notably 1700ml Orange House detergent, 315g Coloko cool-spicy vs other flavors, UNIDESIGN Tang Xin Zi vs original, and 1500ml YES water 12-bottle case. Previous 6 notified offers were unchanged or higher, or did not meet robust stricter comparisons; no new alert.",
+    "shipping_and_checkout_verified": false,
+    "checked_at": "2026-11-05T00:53:20.621Z"
   }
 }
