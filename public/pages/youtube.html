@@ -26,7 +26,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
 </head>
 <body>
 <main class="wrap">
-<header class="hero"><div class="hero-top"><div class="brand"><div class="brand-icon">▶</div><div><div class="eyebrow">WATCH • LISTEN • EXPLORE</div><h1>YouTube 啟動器</h1><p>常看頻道、待播影片與台灣 YouTube 排行，變成自己的私人影音工作台。</p></div></div><div class="hero-actions"><a class="pill-link" href="../index.html">← 回到 Toby 首頁</a><a class="pill-link primary" href="https://www.youtube.com/" target="_blank" rel="noopener">開啟 YouTube ↗</a></div></div><div class="stats"><span class="stat">▶ 24 個原有影音捷徑</span><span class="stat">📡 可管理追蹤頻道</span><span class="stat">🎬 待播清單</span><span class="stat">✦ 星號收藏</span><span class="stat">↻ 最近開啟</span></div></header>
+<header class="hero"><div class="hero-top"><div class="brand"><div class="brand-icon">▶</div><div><div class="eyebrow">WATCH • LISTEN • EXPLORE</div><h1>YouTube 啟動器</h1><p>常看頻道、待播影片與台灣 YouTube 排行，變成自己的私人影音工作台。</p></div></div><div class="hero-actions"><a class="pill-link" href="../index.html">← 回到 Toby 首頁</a><a class="pill-link primary" href="https://www.youtube.com/" target="_blank" rel="noopener">開啟 YouTube ↗</a></div></div><div class="stats"><span class="stat">▶ 25 個影音捷徑</span><span class="stat">📡 可管理追蹤頻道</span><span class="stat">🎬 待播清單</span><span class="stat">✦ 星號收藏</span><span class="stat">↻ 最近開啟</span></div></header>
 <div class="toolbar"><label class="search"><input id="search" type="search" placeholder="搜尋公視、新聞、TED、音樂或主題…" aria-label="搜尋 YouTube 影音捷徑"></label><button class="help-top" id="helpAll">？ 功能說明</button></div>
 <div class="featured">
 <a class="feature" href="https://www.youtube.com/premium" target="_blank" rel="noopener" data-entry="premium"><span class="feature-icon">▶</span><span><strong>YouTube Premium</strong><small>無廣告觀賞與背景播放</small></span><span class="arrow">↗</span></a>
@@ -38,7 +38,7 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
   <header class="yt-hub-head">
     <span class="yt-kicker">PERSONAL VIDEO LIBRARY & TAIWAN TREND RADAR</span>
     <h2>📺 我的 YouTube 工作台</h2>
-    <p>上方快速按鈕是「直接開啟 YouTube」；這個啟動器是你的私人影音書架：觀察台灣排行榜、整理追蹤頻道、儲存待播影片。原本的 24 個影音捷徑也會完整保留在下方。</p>
+    <p>上方快速按鈕是「直接開啟 YouTube」；這個啟動器是你的私人影音書架：觀察台灣排行榜、整理追蹤頻道、儲存待播影片。影音捷徑也會完整保留在下方。</p>
     <nav class="yt-jumpbar" id="yt-topic-navigation" aria-label="YouTube 工作台分類選單">
       <a href="#yt-ranking">🇹🇼 台灣排行觀察</a>
       <a href="#yt-channels">📡 我的追蹤頻道</a>
@@ -153,11 +153,11 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
   <a href="#yt-channels">📡 我的追蹤頻道</a>
   <a href="#yt-watch-queue">🎬 我的待播清單</a>
   <a href="#yt-backup">💾 備份與匯入</a>
-  <a href="#yt-original-shortcuts">🗂 原有 24 個影音捷徑</a>
+  <a href="#yt-original-shortcuts">🗂 影音捷徑</a>
   <a href="../index.html#tools">⌂ 回到啟動器首頁</a>
 </nav>
 
-<section id="yt-original-shortcuts"><div class="section-head"><div><h2>🗂 原有 24 個影音捷徑</h2><p>從上傳圖片整理的頻道、平台與主題捷徑。</p></div><span id="count" class="count"></span></div><div class="filters" id="filters"></div><div class="cards" id="cards"></div></section>
+<section id="yt-original-shortcuts"><div class="section-head"><div><h2>🗂 影音捷徑</h2><p>從上傳圖片整理的頻道、平台與主題捷徑。</p></div><span id="count" class="count"></span></div><div class="filters" id="filters"></div><div class="cards" id="cards"></div></section>
 
 <nav class="yt-jumpbar yt-final-jumpbar" aria-label="頁面底部快速切換影音主題">
   <a href="#yt-topic-navigation">↑ 回到影音主題選單</a>
@@ -178,6 +178,7 @@ const ITEMS=[
 {id:"pts-channel",name:"公視影音",category:"公視與公共內容",icon:"⚪",description:"公視節目、影音與公共內容。",query:"公視 公共電視"},
 {id:"pts-night",name:"公視主題之夜 SHOW",category:"公視與公共內容",icon:"🌙",description:"公視主題之夜節目與深度對談。",query:"公視主題之夜 SHOW"},
 {id:"pts-live",name:"公視主題直播",category:"公視與公共內容",icon:"📡",description:"尋找公視主題直播與特別節目。",query:"公視 主題 直播"},
+{id:"ntu-speech",name:"臺大演講網",category:"知識與紀錄",icon:"🎓",description:"臺灣大學演講影音與跨領域觀點。",url:"https://www.youtube.com/@ntuspeech",search:"臺大演講網 NTU Speech 演講 教育"},
 {id:"ted",name:"TED",category:"知識與紀錄",icon:"🔴",description:"TED 演講與跨領域觀點。",url:"https://www.youtube.com/@TED",search:"TED talks 演講"},
 {id:"ufo",name:"UFO 未解之謎",category:"知識與紀錄",icon:"🛸",description:"未解之謎、UFO 與神秘現象內容。",query:"UFO 未解之謎"},
 {id:"cw",name:"天下雜誌",category:"知識與紀錄",icon:"🌏",description:"國際趨勢、科技、財經與社會議題。",url:"https://www.youtube.com/@cwvideo",search:"天下雜誌 video"},
