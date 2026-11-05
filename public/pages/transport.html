@@ -162,6 +162,7 @@ h1{margin:9px 0 8px;font-size:clamp(32px,5vw,49px);line-height:1.2}.hero p{margi
 <script>
 const $=id=>document.getElementById(id);
 const documents=[
+{id:"rail-island",name:"軌島 Rail Island｜台灣鐵道動態地圖",icon:"🚆",meta:"鐵路｜全臺動態地圖",desc:"在地圖上探索臺鐵、高鐵、捷運及輕軌列車；多數列車位置依時刻表推估，臺鐵可套用即時誤點資料。",url:"https://railisland.tw/",source:"https://unwire.hk/2026/09/29/railisland-taiwan-live-rail-map/mobile-phone/",date:"列車位置多為推估；實際班次以官方資訊為準",button:"開啟軌島地圖"},
 {id:"tra-live",name:"臺鐵列車動態",icon:"🚆",meta:"台鐵｜第三方查詢網站",desc:"查詢車次、即時運行狀態與列車位置地圖；行車資訊仍以臺鐵官方公告為準。",url:"https://railway.chienwen.net/taiwan/",date:"即時查詢",button:"開啟列車動態"},
 {id:"metro-map",name:"大臺北鐵路及捷運路網示意圖",icon:"🗺️",meta:"台鐵｜現場路網圖照片",desc:"臺北捷運路網、北部鐵路及平溪線、東部幹線整體關係示意。為示意圖，未按真實距離與比例繪製。",url:"https://drive.google.com/file/d/15iy1g5mAhldz3mSBnNfcYS6UFAeMSBYS/view?usp=drivesdk",date:"現場照片",button:"查看路網原圖"},
 {id:"tra-qidu-stops",name:"七堵站｜各列車停靠站對照表",icon:"🛤️",meta:"台鐵｜七堵站現場停靠站表",desc:"往基隆及東行宜蘭、花蓮、臺東等方向之列車與停靠車站對照，適合核對不同車種停站差異。",url:"https://drive.google.com/file/d/1qMWwOPehHfn_iRv_wtMns42CuTp0Uioq/view?usp=drivesdk",date:"照片標示：2026/10/03 修訂",button:"查看停靠站原圖"},
@@ -221,7 +222,7 @@ function stationCard(st,line){
  (st.traCode?'<a href="./tra-stations.html?code='+encodeURIComponent(st.traCode)+'" data-open="'+esc(id)+'">臺鐵本站詳情</a><a href="'+esc(officialTra)+'" target="_blank" rel="noopener noreferrer">臺鐵官方本站</a>':'<a href="'+esc(local)+'" data-open="'+esc(id)+'">站碼／本站資訊</a>'+official+directory)+
  '</div></div></article>';
 }
-function documentCard(d){return '<article class="card doc"><div class="doc-icon" aria-hidden="true">'+esc(d.icon)+'</div><div class="heading"><div><h3>'+esc(d.name)+'</h3><div class="meta">'+esc(d.meta)+'</div></div>'+favoriteBtn(d.id)+'</div><p>'+esc(d.desc)+'</p><div class="warn">'+esc(d.date)+'</div><div class="links"><a class="primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(d.id)+'">'+esc(d.button)+' ↗</a></div></article>'}
+function documentCard(d){return '<article class="card doc"><div class="doc-icon" aria-hidden="true">'+esc(d.icon)+'</div><div class="heading"><div><h3>'+esc(d.name)+'</h3><div class="meta">'+esc(d.meta)+'</div></div>'+favoriteBtn(d.id)+'</div><p>'+esc(d.desc)+'</p><div class="warn">'+esc(d.date)+'</div><div class="links"><a class="primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" data-open="'+esc(d.id)+'">'+esc(d.button)+' ↗</a>'+(d.source?'<a href="'+esc(d.source)+'" target="_blank" rel="noopener noreferrer">介紹文章 ↗</a>':'')+'</div></article>'}
 function activeNorth(){return (selectedRoot==="rail"||selectedRoot==="metro")&&selectedRegion==="北部"}
 function activeRegional(){return (selectedRoot==="rail"||selectedRoot==="metro")&&(selectedRegion==="中部"||selectedRegion==="南部")}
 function activeTRA(){return selectedRoot==="tra"||(selectedRoot==="rail"&&selectedRegion!=="北部")}
