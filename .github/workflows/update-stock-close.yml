@@ -28,6 +28,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Always collect against the newest main, including manual re-runs
+          # of historical jobs; avoid rebasing a stale stock snapshot.
+          ref: main
+          fetch-depth: 0
           persist-credentials: true
       - name: Collect only source-verified official market data
         run: node scripts/update-stock-close.cjs
