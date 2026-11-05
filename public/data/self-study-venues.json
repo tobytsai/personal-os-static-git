@@ -9,7 +9,9 @@
     "嘉義市",
     "嘉義縣",
     "臺南市",
-    "高雄市"
+    "高雄市",
+    "基隆市",
+    "屏東縣"
   ],
   "types": [
     "歷史文化／博物館",
@@ -423,6 +425,46 @@
         "National Science and Technology Museum"
       ],
       "icon": "⚙️"
+    },
+    {
+      "id": "kl-nmmst",
+      "name": "國立海洋科技博物館（海科館）",
+      "city": "基隆市",
+      "district": "中正區",
+      "type": "科學／自然",
+      "address": "基隆市中正區北寧路367號",
+      "url": "https://www.nmmst.gov.tw/",
+      "description": "探索海洋科學、海洋科技、漁業與海洋文化，結合基隆海岸環境進行觀察。",
+      "mission": "選一艘船或一項海洋科技展品，畫出構造，想想它如何幫助人們探索或利用海洋。",
+      "keywords": [
+        "海科館",
+        "基隆",
+        "海洋科技",
+        "船舶",
+        "海洋科學",
+        "National Museum of Marine Science and Technology"
+      ],
+      "icon": "🚢"
+    },
+    {
+      "id": "pt-nmmba",
+      "name": "國立海洋生物博物館（海生館）",
+      "city": "屏東縣",
+      "district": "車城鄉",
+      "type": "科學／自然",
+      "address": "屏東縣車城鄉後灣村後灣路2號",
+      "url": "https://www.nmmba.gov.tw/",
+      "description": "透過海洋生物與水域環境展示，認識海洋生態、物種及保育。",
+      "mission": "觀察兩種海洋生物，記錄牠們的外形與生活環境，想想各自如何適應水中生活。",
+      "keywords": [
+        "海生館",
+        "屏東",
+        "海洋生物",
+        "水族館",
+        "珊瑚",
+        "National Museum of Marine Biology and Aquarium"
+      ],
+      "icon": "🐠"
     }
   ],
   "extras": [],
