@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#df5206">
-<title>YouTube 啟動器｜Toby Personal OS</title>
+<title>YouTube 啟動器｜YouTube 啟動器</title>
 <style>
 :root{--ink:#38220f;--muted:#85684f;--orange:#d94f08;--orange2:#f27518;--gold:#d2a82f;--cream:#fff9ed;--line:#f0e2d1;--shadow:0 16px 40px rgba(119,53,10,.15)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC","PingFang TC",sans-serif;background:linear-gradient(145deg,#fff2dc,#fff9ee 42%,#ffe8d6);min-height:100vh}
@@ -23,9 +23,20 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
 @media(max-width:390px){.cards{grid-template-columns:1fr}.featured{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="../youtube-library.css?v=20261102-2">
+<style>
+.category-heading{font-size:16px;margin:22px 0 10px}.category-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.category-links a,.yt-return{display:block;padding:12px 14px;background:#fff;border:1px solid #ead6c5;border-radius:13px;font-weight:700;color:#804019;text-align:center}.yt-return{margin:16px 0}.yt-subtitle{font-size:22px;margin:22px 0 6px}
+body[data-view="home"] .toolbar,body[data-view="home"] .yt-box,body[data-view="home"] #yt-original-shortcuts,body[data-view="home"] .yt-hub>nav,body[data-view="home"] .yt-floating,body[data-view="home"] .yt-floating-topics,body[data-view="home"] .yt-final-jumpbar{display:none!important}
+body:not([data-view="home"]) .yt-hub-head,body:not([data-view="home"]) .yt-hub>nav,body:not([data-view="home"]) .yt-floating,body:not([data-view="home"]) .yt-floating-topics{display:none!important}
+body:not([data-view="home"]) .yt-box,body:not([data-view="home"]) #yt-original-shortcuts{display:none}
+body[data-view="ranking"] #yt-ranking,body[data-view="channels"] #yt-channels,body[data-view="queue"] #yt-watch-queue,body[data-view="backup"] #yt-backup,body[data-view="shortcuts"] #yt-original-shortcuts,body[data-kind="category"] #yt-original-shortcuts{display:block}
+body:not([data-view="home"]):not([data-view="shortcuts"]):not([data-kind="category"]) .toolbar,body:not([data-view="home"]):not([data-view="shortcuts"]):not([data-kind="category"]) .shelves,body:not([data-view="home"]):not([data-view="shortcuts"]):not([data-kind="category"]) .featured{display:none}
+body[data-kind="category"] .filters{display:none}
+body[data-view="home"] .yt-return,body[data-view="home"] .yt-subtitle{display:none}
+</style>
 </head>
-<body>
+<body data-view="home">
 <main class="wrap">
+<a class="yt-return" href="./youtube.html">← 返回 YouTube 啟動器首頁</a><h2 class="yt-subtitle">YouTube 啟動器</h2>
 <header class="hero"><div class="hero-top"><div class="brand"><div class="brand-icon">▶</div><div><div class="eyebrow">WATCH • LISTEN • EXPLORE</div><h1>YouTube 啟動器</h1><p>常看頻道、待播影片與台灣 YouTube 排行，變成自己的私人影音工作台。</p></div></div><div class="hero-actions"><a class="pill-link" href="../index.html">← 回到 Toby 首頁</a><a class="pill-link primary" href="https://www.youtube.com/" target="_blank" rel="noopener">開啟 YouTube ↗</a></div></div><div class="stats"><span class="stat">▶ 25 個影音捷徑</span><span class="stat">📡 可管理追蹤頻道</span><span class="stat">🎬 待播清單</span><span class="stat">✦ 星號收藏</span><span class="stat">↻ 最近開啟</span></div></header>
 <div class="toolbar"><label class="search"><input id="search" type="search" placeholder="搜尋公視、新聞、TED、音樂或主題…" aria-label="搜尋 YouTube 影音捷徑"></label><button class="help-top" id="helpAll">？ 功能說明</button></div>
 <div class="featured">
@@ -38,14 +49,14 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
   <header class="yt-hub-head">
     <span class="yt-kicker">PERSONAL VIDEO LIBRARY & TAIWAN TREND RADAR</span>
     <h2>📺 我的 YouTube 工作台</h2>
-    <p>上方快速按鈕是「直接開啟 YouTube」；這個啟動器是你的私人影音書架：觀察台灣排行榜、整理追蹤頻道、儲存待播影片。影音捷徑也會完整保留在下方。</p>
+    <p>上方快速按鈕是「直接開啟 YouTube」；這個啟動器是你的私人影音書架：觀察台灣排行榜、整理追蹤頻道、儲存待播影片。選擇分類後可進入獨立頁面。</p>
     <nav class="yt-jumpbar" id="yt-topic-navigation" aria-label="YouTube 工作台分類選單">
-      <a href="#yt-ranking">🇹🇼 台灣排行觀察</a>
-      <a href="#yt-channels">📡 我的追蹤頻道</a>
-      <a href="#yt-watch-queue">🎬 待播清單</a>
-      <a href="#yt-backup">💾 備份與匯入</a>
-      <a href="#yt-original-shortcuts">🗂 原有影音捷徑</a>
-    </nav>
+      <a href="./youtube-ranking.html">🇹🇼 台灣排行觀察</a>
+      <a href="./youtube-channels.html">📡 我的追蹤頻道</a>
+      <a href="./youtube-queue.html">🎬 待播清單</a>
+      <a href="./youtube-backup.html">💾 備份與匯入</a>
+      <a href="./youtube-shortcuts.html">🗂 原有影音捷徑</a>
+    </nav><h3 class="category-heading">🗂 影音捷徑分類</h3><nav class="category-links" aria-label="影音捷徑分類"><a href="./youtube-public.html">公視與公共內容 ↗</a><a href="./youtube-knowledge.html">知識與紀錄 ↗</a><a href="./youtube-news.html">新聞與財經 ↗</a><a href="./youtube-platforms.html">影音平台 ↗</a><a href="./youtube-youku.html">優酷影音 ↗</a><a href="./youtube-community.html">社區與興趣 ↗</a></nav>
   </header>
 
   <section class="yt-box" id="yt-ranking" aria-labelledby="yt-ranking-title">
@@ -142,28 +153,28 @@ a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{max-width:1
     <p id="yt-backup-notice" class="yt-feedback" role="status"></p>
   </section>
   <nav class="yt-jumpbar" aria-label="工作台頁尾返回主題選單">
-    <a href="#yt-ranking">↑ 返回台灣排行</a><a href="#yt-channels">↑ 返回追蹤頻道</a>
-    <a href="#yt-watch-queue">↑ 返回待播清單</a><a href="../index.html#tools">⌂ 返回啟動器首頁</a>
+    <a href="./youtube-ranking.html">↑ 返回台灣排行</a><a href="./youtube-channels.html">↑ 返回追蹤頻道</a>
+    <a href="./youtube-queue.html">↑ 返回待播清單</a><a href="../index.html#tools">⌂ 返回啟動器首頁</a>
   </nav>
 </section>
 <button type="button" class="yt-floating" id="yt-floating-jump" aria-controls="yt-floating-topics" aria-expanded="false" aria-label="開啟影音主題選單" hidden>☰ 影音主題選單</button>
 <nav class="yt-floating-topics" id="yt-floating-topics" aria-label="選擇要瀏覽的 YouTube 主題" hidden>
   <div class="yt-floating-topics-head"><strong>📺 選擇影音主題</strong><button type="button" id="yt-floating-close" aria-label="關閉影音主題選單">✕</button></div>
-  <a href="#yt-ranking">🇹🇼 台灣排行觀察</a>
-  <a href="#yt-channels">📡 我的追蹤頻道</a>
-  <a href="#yt-watch-queue">🎬 我的待播清單</a>
-  <a href="#yt-backup">💾 備份與匯入</a>
-  <a href="#yt-original-shortcuts">🗂 影音捷徑</a>
+  <a href="./youtube-ranking.html">🇹🇼 台灣排行觀察</a>
+  <a href="./youtube-channels.html">📡 我的追蹤頻道</a>
+  <a href="./youtube-queue.html">🎬 我的待播清單</a>
+  <a href="./youtube-backup.html">💾 備份與匯入</a>
+  <a href="./youtube-shortcuts.html">🗂 影音捷徑</a>
   <a href="../index.html#tools">⌂ 回到啟動器首頁</a>
 </nav>
 
 <section id="yt-original-shortcuts"><div class="section-head"><div><h2>🗂 影音捷徑</h2><p>從上傳圖片整理的頻道、平台與主題捷徑。</p></div><span id="count" class="count"></span></div><div class="filters" id="filters"></div><div class="cards" id="cards"></div></section>
 
 <nav class="yt-jumpbar yt-final-jumpbar" aria-label="頁面底部快速切換影音主題">
-  <a href="#yt-topic-navigation">↑ 回到影音主題選單</a>
-  <a href="#yt-ranking">🇹🇼 台灣排行</a>
-  <a href="#yt-channels">📡 追蹤頻道</a>
-  <a href="#yt-watch-queue">🎬 待播清單</a>
+  <a href="./youtube.html">↑ 回到影音主題選單</a>
+  <a href="./youtube-ranking.html">🇹🇼 台灣排行</a>
+  <a href="./youtube-channels.html">📡 追蹤頻道</a>
+  <a href="./youtube-queue.html">🎬 待播清單</a>
   <a href="../index.html#tools">⌂ 回首頁</a>
 </nav>
 <footer class="foot">收藏與最近開啟記錄保存在目前瀏覽器。頻道捷徑使用 YouTube 搜尋，可再從結果頁選擇想看的頻道或影片。</footer>
