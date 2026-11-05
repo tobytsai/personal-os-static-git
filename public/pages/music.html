@@ -11,15 +11,15 @@ a{color:inherit}.wrap{max-width:1200px;margin:auto;padding:20px 18px 50px}.hero{
 dialog{width:calc(100% - 28px);max-width:510px;padding:23px;border:0;border-radius:22px;box-shadow:0 20px 60px #29151f66;color:var(--ink)}dialog::backdrop{background:#21131d91}dialog h2{margin:4px 0 12px}.close{float:right;border:0;border-radius:9px;padding:8px 10px;background:#f3e6ed;font-weight:800;cursor:pointer}dialog p{white-space:pre-line;line-height:1.75;color:#675a63}
 @media(max-width:560px){.wrap{padding:12px 12px 32px}.hero{border-radius:22px;padding:21px 17px 23px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:11px;min-height:215px}.musicmark{width:39px;height:39px;flex-basis:39px;font-size:19px}.name{font-size:.88rem}.summary{font-size:.75rem}.actions{flex-direction:column;gap:5px}.actions a{font-size:.72rem;padding:7px 4px}.star{width:33px;height:33px;flex-basis:33px}.shelf{padding:14px}.stat{font-size:.8rem}}
 img.musicmark{width:72px;height:72px;flex-basis:72px;object-fit:cover;background:#eee;box-shadow:0 6px 13px #784db833}@media(max-width:560px){img.musicmark{width:58px;height:58px;flex-basis:58px}}
-</style></head><body><main class="wrap">
+.category-tags{margin:0 0 10px;color:#726c83;font-size:.72rem;line-height:1.5;overflow-wrap:anywhere}\n</style></head><body><main class="wrap">
 <header class="hero"><div class="kicker">LISTEN • FEEL • REPLAY</div><h1>音樂啟動器</h1><p class="subtitle">把 Trello「音樂欣賞」看板和 Spotify 喜歡的歌曲整理成可搜尋的音樂入口。從經典情歌、華語歌、英文歌，到歌手與專輯分類，找到一首歌就能直接前往聆聽或查看原始卡片。</p><div class="hero-actions"><a class="dark" href="../index.html">← 回到 Toby 首頁</a><a href="https://trello.com/b/6bReynF1/%E9%9F%B3%E6%A8%樂%E6%AC%A3%E8%B3%9E" target="_blank" rel="noopener">🎼 開啟 Trello 音樂欣賞看板</a><a href="https://music.youtube.com/" target="_blank" rel="noopener">▶ 開啟 YouTube Music</a></div></header>
 <div class="stats"><span class="stat">🎵 <b id="total">0</b> 張音樂卡片</span><span class="stat">🗂️ <b id="groupTotal">0</b> 個音樂分類</span><span class="stat">✦ 星號收藏</span><span class="stat">↻ 最近開啟</span></div>
 <div class="toolbar"><label class="search"><span>⌕</span><input id="query" type="search" placeholder="搜尋歌名、歌手或分類…" aria-label="搜尋音樂"></label><button class="help" id="helpButton">？ 功能說明</button></div>
 <section class="shelf"><div class="shelf-head"><h2>✦ 我的收藏</h2><span class="hint">點卡片右上角 ☆ 收藏喜愛的音樂</span></div><div class="shelf-list" id="favorites"></div></section>
 <section class="shelf"><div class="shelf-head"><h2>↻ 最近開啟</h2><span class="hint">開啟聆聽或 Trello 卡片後自動記錄</span></div><div class="shelf-list" id="recent"></div></section>
-<div class="section-head"><div><h2 class="section-title">音樂分類</h2><p>依序選擇內容類型、歌手或演出者地區、內容分類；同名歌單整合顯示，不確定的地區保留在待確認／跨地區。</p></div><span class="hint" id="resultCount"></span></div><div class="levels"><div><strong>第一層｜內容類型</strong><nav class="filters" id="filters" aria-label="內容類型"></nav></div><div><strong>第二層｜歌手或演出者地區</strong><nav class="filters" id="regions" aria-label="地區分類"></nav></div><div><strong>第三層｜內容分類</strong><nav class="filters" id="contents" aria-label="內容分類"></nav></div></div><section class="grid" id="cards" aria-live="polite"></section>
+<div class="section-head"><div><h2 class="section-title">音樂分類</h2><p>依序選擇內容類型、歌手或演出者地區、內容分類；第三層依主題瀏覽，原分類與歌單名稱保留為標籤，可透過搜尋找到。</p></div><span class="hint" id="resultCount"></span></div><div class="levels"><div><strong>第一層｜內容類型</strong><nav class="filters" id="filters" aria-label="內容類型"></nav></div><div><strong>第二層｜歌手或演出者地區</strong><nav class="filters" id="regions" aria-label="地區分類"></nav></div><div><strong>第三層｜內容分類</strong><nav class="filters" id="contents" aria-label="內容分類"></nav></div></div><section class="grid" id="cards" aria-live="polite"></section>
 <footer>收藏與最近開啟記錄保存在目前瀏覽器，不會同步至其他裝置。Spotify 和 YouTube Music 郵件備份為 2026-11-05 的資料快照，不會自動同步；郵件備份沒有直接歌曲網址，使用搜尋連結；若卡片沒有 Spotify、YouTube 或 KKBOX 連結，可從「查看 Trello 卡片」閱讀原始說明。</footer></main>
-<dialog id="help"><button class="close" id="closeHelp">關閉</button><h2>怎麼使用音樂啟動器？</h2><p>分類：第一層選音樂、歌曲、歌劇或音樂家；第二層選歌手或演出者地區；第三層選內容。相同歌單整合為同一個分類，卡片保留來源連結；無法確認的地區歸入待確認／跨地區。
+<dialog id="help"><button class="close" id="closeHelp">關閉</button><h2>怎麼使用音樂啟動器？</h2><p>分類：第一層選音樂、歌曲、歌劇或音樂家；第二層選歌手或演出者地區；第三層選內容。第三層依主題瀏覽；原分類與歌單名稱保留為標籤，也可輸入搜尋。無法確認的地區歸入待確認／跨地區。
 搜尋：輸入歌名、歌手或分類即可篩選。
 星號收藏：點卡片右上角 ☆，加入「我的收藏」；再點一次可取消。
 最近開啟：按「聆聽」或「查看 Trello 卡片」後，會記錄在「最近開啟」。
@@ -111,22 +111,36 @@ recent=[...new Set(recent.map(id=>duplicateAliases[id]||id))];
 save(FAV,fav);save(REC,recent);
 
 
-function integratedMusicCategory(label){
+
+function compactCategories(x){
+ const tags=[...new Set([...(x.structure.contents||[]),x.category,...(x.playlistCategories||[])].filter(Boolean).map(integratedMusicTag))];
+ const labels=tags.join(" ");const topics=[];
+ const add=(condition,topic)=>{if(condition&&!topics.includes(topic))topics.push(topic)};
+ if(x.structure.type==="音樂家")return {tags,topics:[x.structure.content]};
+ if(x.structure.type==="歌劇")return {tags,topics:[/完整歌劇|全劇|complete opera/i.test(x.name)?"完整歌劇":/詠嘆調|aria|act [ivx0-9]|nessun dorma|casta diva|barcarolle|un bel di/i.test(x.name)?"選曲與詠嘆調":"其他"]};
+ add(/古典與器樂|古典流行音樂|古典樂|卡農|韋瓦第四季|Albeniz/i.test(labels)||/卡農|piano|violin|concerto|symphony/i.test(x.name),"古典與器樂");
+ add(/原住民族音樂|歌單｜原住民/.test(labels),"原住民族音樂");
+ add(/親子兒歌/.test(labels),"親子與兒歌");
+ add(/古風|古风|古詩|民歌與詩|歌單｜詩歌/.test(labels),"古風與詩歌");
+ add(/影視歌曲|現場演唱|演唱會|歌單｜電影主題曲/i.test(labels)||/\bLive\b|現場|主题曲|主題曲/i.test(x.name),"影視與現場");
+ add(/婚禮的祝福|歌單｜婚禮音樂|歌單｜健身音樂|歌單｜沙發音樂|歌單｜Spiritual Flute Music|舞曲與混音/i.test(labels),"情境音樂");
+ add(/台語歌曲|粵語歌曲/.test(labels),"台語與粵語");
+ add((/西洋歌曲|西洋經典歌曲|韓語歌曲|西班牙歌曲|法國音樂/.test(labels)&&!/^Spotify｜/.test(x.category||""))||/歌單｜40英文歌/.test(labels),"西洋與其他語言");
+ add(/^(華語歌|大陸歌曲|滾石愛情故事|老牌歌手50首|最佳對唱情歌|婚禮的祝福)$/.test(x.category||"")||/歌單｜(?:華語歌曲|懷舊華語歌曲|國語50-60年代老歌|超級星光大道 全精選)/.test(labels),"華語歌曲");
+ if(x.structure.type==="音樂"&&x.backupKind==="Album")add(true,"專輯");
+ if(!topics.length)topics.push("待分類");
+ return {tags,topics};
+}
+function integratedMusicTag(label){
  const text=String(label||"").trim();
- const playlists=text.match(/^(?:備份歌單|Spotify 歌單)｜(.+)$/);
- if(playlists)return "歌單｜"+playlists[1].trim();
- const names={
-  "華語歌":"華語歌曲","粵語歌":"粵語歌曲","韓國歌":"韓語歌曲",
-  "經典英文歌":"西洋經典歌曲","美國音樂":"西洋歌曲",
-  "古典":"古典與器樂","古典音樂專輯":"古典與器樂",
-  "YouTube  music 專輯":"專輯","演唱會":"現場演唱",
-  "Spotify 收藏歌曲":"Spotify 喜歡的歌曲"
- };
- return names[text]||text;
+ const match=text.match(/^(?:備份歌單|Spotify 歌單)｜(.+)$/);
+ return match?"歌單｜"+match[1].trim():text;
 }
 ITEMS.forEach(x=>{
- x.structure.content=integratedMusicCategory(x.structure.content);
- x.structure.contents=[...new Set(x.structure.contents.map(integratedMusicCategory))];
+ const grouped=compactCategories(x);
+ x.categoryTags=grouped.tags;
+ x.structure.content=grouped.topics[0];
+ x.structure.contents=grouped.topics;
 });
 const cats=[...new Set(ITEMS.flatMap(x=>x.structure.contents))];
 $("total").textContent=ITEMS.length;$("groupTotal").textContent=cats.length;
@@ -142,9 +156,9 @@ function drawFilters(){
 }
 function youtubeMusicDirect(x){return /^https:\/\/music\.youtube\.com\/(watch\?v=|playlist\?list=|channel\/|browse\/)/.test(x.url||"")?x.url:""}
 function youtubeMusicLink(x){if(youtubeMusicDirect(x))return youtubeMusicDirect(x);const q=(x.name||"").replace(/^\s*\d+\s*[.｜|、:：-]\s*/,"").replace(/[｜—]/g," ").trim();return "https://music.youtube.com/search?q="+encodeURIComponent(q)}
-function card(x){const activeFav=fav.includes(x.id);const label=x.platform==="Trello"?"開啟卡片":x.platform==="YouTube Music"?"YouTube Music 搜尋":"前往 "+x.platform;return '<article class="card"><div class="card-head"><div style="display:flex;align-items:flex-start;gap:10px;min-width:0">'+(x.image?(x.imageOriginal?'<a href="'+esc(x.imageOriginal)+'" target="_blank" rel="noopener" title="查看原圖"><img class="musicmark" src="'+esc(x.image)+'" alt="查看原圖" loading="lazy" onerror="this.hidden=true"></a>':'<img class="musicmark" src="'+esc(x.image)+'" alt="" loading="lazy" onerror="this.hidden=true">'):'<div class="musicmark">♪</div>')+'<div class="name">'+esc(x.name)+'<br><span class="category">'+esc(x.structure.type+" / "+x.structure.region+" / "+x.structure.content)+'</span></div></div><button class="star '+(activeFav?"active":"")+'" data-star="'+esc(x.id)+'" aria-label="'+(activeFav?"取消收藏":"收藏")+' '+esc(x.name)+'">'+(activeFav?"★":"☆")+'</button></div><p class="summary">'+esc(x.summary||"收錄於 Trello 音樂欣賞看板。")+'</p><div class="actions"><a class="listen" href="'+esc(x.url)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">'+esc(label)+' ↗</a>'+(x.spotifyUrl&&!/^https:\/\/open\.spotify\.com\//.test(x.url||"")?'<a href="'+esc(x.spotifyUrl)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">前往 Spotify ↗</a>':'')+(x.platform==="YouTube Music"?'':'<a href="'+esc(youtubeMusicLink(x))+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">'+(youtubeMusicDirect(x)?"YouTube Music 播放":"YouTube Music 搜尋")+' ↗</a>')+(x.trello?'<a href="'+esc(x.trello)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">查看 Trello 卡片 ↗</a>':'')+(x.extraLinks||[]).map(l=>'<a href="'+esc(l.url)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">'+esc(l.label)+' 其他來源 ↗</a>').join('')+'</div></article>'}
+function card(x){const activeFav=fav.includes(x.id);const label=x.platform==="Trello"?"開啟卡片":x.platform==="YouTube Music"?"YouTube Music 搜尋":"前往 "+x.platform;return '<article class="card"><div class="card-head"><div style="display:flex;align-items:flex-start;gap:10px;min-width:0">'+(x.image?(x.imageOriginal?'<a href="'+esc(x.imageOriginal)+'" target="_blank" rel="noopener" title="查看原圖"><img class="musicmark" src="'+esc(x.image)+'" alt="查看原圖" loading="lazy" onerror="this.hidden=true"></a>':'<img class="musicmark" src="'+esc(x.image)+'" alt="" loading="lazy" onerror="this.hidden=true">'):'<div class="musicmark">♪</div>')+'<div class="name">'+esc(x.name)+'<br><span class="category">'+esc(x.structure.type+" / "+x.structure.region+" / "+x.structure.content)+'</span></div></div><button class="star '+(activeFav?"active":"")+'" data-star="'+esc(x.id)+'" aria-label="'+(activeFav?"取消收藏":"收藏")+' '+esc(x.name)+'">'+(activeFav?"★":"☆")+'</button></div><p class="summary">'+esc(x.summary||"收錄於 Trello 音樂欣賞看板。")+'</p>'+((x.categoryTags||[]).length?'<p class="category-tags">標籤：'+x.categoryTags.map(esc).join('、')+'</p>':'')+'<div class="actions"><a class="listen" href="'+esc(x.url)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">'+esc(label)+' ↗</a>'+(x.spotifyUrl&&!/^https:\/\/open\.spotify\.com\//.test(x.url||"")?'<a href="'+esc(x.spotifyUrl)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">前往 Spotify ↗</a>':'')+(x.platform==="YouTube Music"?'':'<a href="'+esc(youtubeMusicLink(x))+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">'+(youtubeMusicDirect(x)?"YouTube Music 播放":"YouTube Music 搜尋")+' ↗</a>')+(x.trello?'<a href="'+esc(x.trello)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">查看 Trello 卡片 ↗</a>':'')+(x.extraLinks||[]).map(l=>'<a href="'+esc(l.url)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">'+esc(l.label)+' 其他來源 ↗</a>').join('')+'</div></article>'}
 function drawShelf(id,ids,message){const found=ids.map(k=>ITEMS.find(x=>x.id===k)).filter(Boolean);$(id).innerHTML=found.length?found.map(x=>'<a href="'+esc(x.url)+'" data-open="'+esc(x.id)+'" target="_blank" rel="noopener">♪ '+esc(x.name)+'</a>').join(""):'<p class="empty">'+message+"</p>"}
-function render(){const list=ITEMS.filter(x=>(level1==="全部"||x.structure.type===level1)&&(level2==="全部"||x.structure.region===level2)&&(level3==="全部"||x.structure.contents.includes(level3))&&(x.name+" "+x.category+" "+x.structure.region+" "+x.structure.contents.join(" ")+" "+(x.summary||"")).toLowerCase().includes(query.toLowerCase()));$("cards").innerHTML=list.length?list.map(card).join(""):'<div class="empty-grid">找不到符合的音樂，試試其他歌名或歌手。</div>';$("resultCount").textContent="顯示 "+list.length+" / "+ITEMS.length+" 張卡片";drawShelf("favorites",fav,"還沒有收藏音樂，點卡片上的 ☆ 開始收藏。");drawShelf("recent",recent,"開啟音樂或 Trello 卡片後，最近使用項目會列在這裡。")}
+function render(){const list=ITEMS.filter(x=>(level1==="全部"||x.structure.type===level1)&&(level2==="全部"||x.structure.region===level2)&&(level3==="全部"||x.structure.contents.includes(level3))&&(x.name+" "+x.category+" "+x.structure.region+" "+x.structure.contents.join(" ")+" "+(x.summary||"")+" "+(x.categoryTags||[]).join(" ")).toLowerCase().includes(query.toLowerCase()));$("cards").innerHTML=list.length?list.map(card).join(""):'<div class="empty-grid">找不到符合的音樂，試試其他歌名或歌手。</div>';$("resultCount").textContent="顯示 "+list.length+" / "+ITEMS.length+" 張卡片";drawShelf("favorites",fav,"還沒有收藏音樂，點卡片上的 ☆ 開始收藏。");drawShelf("recent",recent,"開啟音樂或 Trello 卡片後，最近使用項目會列在這裡。")}
 $("filters").addEventListener("click",e=>{const b=e.target.closest("[data-type]");if(!b)return;level1=b.dataset.type;level2="全部";level3="全部";drawFilters();render()});
 $("regions").addEventListener("click",e=>{const b=e.target.closest("[data-region]");if(!b)return;level2=b.dataset.region;level3="全部";drawFilters();render()});
 $("contents").addEventListener("click",e=>{const b=e.target.closest("[data-content]");if(!b)return;level3=b.dataset.content;drawFilters();render()});
