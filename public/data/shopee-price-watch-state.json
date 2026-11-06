@@ -5,7 +5,7 @@
   "baseline_type": "historical displayed per-item price, not verified actual amount paid",
   "currency": "TWD",
   "watch_filter": "done===true && orderStatus!=='refunded' && price>0",
-  "last_checked_at": "2026-11-05T00:53:20.621Z",
+  "last_checked_at": "2026-11-06T01:30:35.592Z",
   "last_checked_count": 27,
   "last_notified": {
     "shorder-20261102-nutella-biscuits": {
@@ -116,19 +116,19 @@
     "shorder-20261102-clip-phone-holder": {
       "source_product_id": "shorder-20261102-clip-phone-holder",
       "historical_display_price": 35,
-      "current_price": 19,
+      "current_price": 14,
       "currency": "TWD",
       "shopid": 38633942,
       "itemid": 26427537953,
       "modelid": 252732226093,
       "shop_name": "黃小鴨生活百貨",
       "listing_title": "(夾式) 多功能手機架 手機夾 懶人手機架 導航架 直播架 手機架 手機支架 手機後視鏡支架",
-      "matched_spec": "夾式多功能手機架／手機夾（原訂單選項：夾式多功能手機架）",
+      "matched_spec": "夾式多功能手機架／手機夾（與2026-11-04通知相同的賣場、商品及modelid）",
       "source_relation": "same_seller",
       "url": "https://shopee.tw/product/38633942/26427537953",
-      "note": "The same seller offers a Shopee item card matching the purchased clip-style multifunction mobile phone holder title; historical amount is displayed item-card price, not confirmed paid unit price. Price is from item card, not checkout. Shipping/coupons unverified.",
-      "verified_at": "2026-11-04T00:48:58.137Z",
-      "price_verification": "Shopee Taiwan connected app live search item card (two searches)",
+      "note": "Same shopid/itemid/modelid as last notified offer NT$19 on Nov 4. Current displayed model price NT$14, newly NT$5 lower than last notified, NT$21 lower than historical displayed NT$35; checkout price, coupon and shipping not verified.",
+      "verified_at": "2026-11-06T01:30:35.592Z",
+      "price_verification": "Shopee Taiwan connected app live search item card, three separate queries; returned price=1400000 (NT$14)",
       "listing_status": "normal/not_sold_out",
       "checkout_verified": false,
       "shipping_verified": false,
@@ -137,15 +137,17 @@
   },
   "notes": "Updated by Shopee price-watch automation only after verified comparable listings. Keep all historic user product data in source_file; no private account/order identifiers. Alerts must not claim to beat the actual paid price unless that baseline was independently verified.",
   "last_check_summary": {
-    "source": "Shopee Taiwan live search via connected app",
+    "source": "Shopee Taiwan connected app live search",
     "qualified_products": 27,
     "source_sha": "664ddc66c02c46f1248ca8e77758d764aa355947",
-    "search_queries": 32,
-    "new_verified_improvements": 0,
-    "change_notifications": 0,
-    "new_items_notified": [],
-    "excluded_notes": "Candidate lower card prices for several products could not be confirmed for exact purchased variant/pack size/flavor/quantity, notably 1700ml Orange House detergent, 315g Coloko cool-spicy vs other flavors, UNIDESIGN Tang Xin Zi vs original, and 1500ml YES water 12-bottle case. Previous 6 notified offers were unchanged or higher, or did not meet robust stricter comparisons; no new alert.",
+    "search_queries": 29,
+    "new_verified_improvements": 1,
+    "change_notifications": 1,
+    "new_items_notified": [
+      "shorder-20261102-clip-phone-holder"
+    ],
+    "excluded_notes": "Candidate lower card prices excluded when selected variation, exact size, flavor, expiry, bundled quantity, concentration or confirmed in-stock matching specification could not be established (including 1700ml Orange House variants, 315g cool-spicy Coloko, UNIDESIGN flavor, 16g x30 IM jelly, 50-sheet foot pads, 193.2g Nutella near-expiry specials, and 1500ml mineral water regional delivery listings).",
     "shipping_and_checkout_verified": false,
-    "checked_at": "2026-11-05T00:53:20.621Z"
+    "checked_at": "2026-11-06T01:30:35.592Z"
   }
 }
