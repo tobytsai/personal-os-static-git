@@ -69,11 +69,62 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 .population-feature .population-actions a{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:850;color:#6048b7;background:#fff;border:1px solid #d5c7f7}
 .population-feature .population-actions a:first-child{background:#6e56dc;color:#fff;border-color:#6e56dc}
 @media(max-width:600px){.population-feature{padding:16px}.population-feature .population-number{font-size:25px}}
+
+/* 桃園生活八大主分類：共用現有卡片索引，不另外複製資料來源。 */
+.topic-hub{scroll-margin-top:15px}
+.topic-hub .topic-guide{color:#58637d;font-size:14px;line-height:1.9;margin:0 2px 12px}
+.topic-shortcuts,.topic-related{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
+.topic-shortcuts a,.topic-related a{color:#5e4bb6;background:#ffffffd8;border:1px solid #dcd5fb;border-radius:999px;padding:8px 12px;text-decoration:none;font-size:12px;font-weight:800}
+.topic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.topic-category{display:flex;flex-direction:column;text-align:left;align-items:flex-start;min-height:155px;padding:16px;border:1.5px solid #e1dcf0;border-radius:21px;background:#ffffffed;box-shadow:0 6px 15px #28324b0a;color:#354058;cursor:pointer;transition:transform .16s,box-shadow .16s,border-color .16s}
+.topic-category:hover{transform:translateY(-2px);box-shadow:0 8px 22px #28324b14}
+.topic-category[aria-pressed="true"]{border-color:var(--violet);box-shadow:0 0 0 2px #7257df27,0 8px 22px #7257df19;background:#faf8ff}
+.topic-emoji{font-size:25px;line-height:1.2;margin-bottom:10px}
+.topic-category strong{font-size:15px;line-height:1.5}
+.topic-category small{font-size:12px;color:var(--muted);line-height:1.6;margin-top:3px}
+.topic-category .topic-n{font-size:11px;color:#6d57bd;margin-top:auto;padding-top:9px;font-weight:800}
+.topic-finder{margin-top:15px;padding:19px;border-radius:22px;border:1px solid #e2ddf3;background:#ffffffd9;box-shadow:0 7px 20px #28324b0a;scroll-margin-top:15px}
+.topic-finder-head{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.topic-finder-head h3{font-size:18px;margin:0}
+.topic-reset{font-size:12px;border:1px solid #ddd5ff;border-radius:999px;background:#f5f1ff;color:#5e4ab5;padding:8px 12px;font-weight:850;cursor:pointer}
+.topic-fields{display:flex;gap:11px;flex-wrap:wrap;align-items:flex-end;margin-bottom:11px}
+.topic-field{display:flex;flex-direction:column;gap:6px;min-width:170px;flex:1 1 185px}
+.topic-field.search{flex:2 1 290px}
+.topic-field label{font-size:12px;font-weight:850;color:#45516b}
+.topic-field input,.topic-field select{width:100%;min-height:42px;padding:9px 11px;border:1px solid #d4d7e8;border-radius:12px;background:#fff;color:#29344e;font-size:14px}
+.topic-shared{display:flex;gap:8px;align-items:center;color:#5e687c;font-size:12px;line-height:1.5;margin:0 0 12px}
+.topic-shared input{accent-color:#7257df;width:16px;height:16px}
+.topic-subnav{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 14px}
+.topic-subnav[hidden]{display:none}
+.topic-subnav button{padding:8px 11px;background:white;border:1px solid #dad3ef;border-radius:999px;color:#5a4b8f;font-size:12px;font-weight:780;cursor:pointer}
+.topic-subnav button[aria-pressed="true"]{background:#7257df;color:#fff;border-color:#7257df}
+.topic-result-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin:6px 0 8px}
+.topic-result-head p{margin:0;font-size:12px;color:#59667c;line-height:1.6}
+.topic-results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.topic-results .topic-card{margin:0;display:flex;flex-direction:column;gap:7px;min-width:0}
+.topic-card h4{margin:0;font-size:17px;line-height:1.5}
+.topic-chips{display:flex;flex-wrap:wrap;gap:5px}
+.topic-chip{display:inline-block;padding:5px 8px;border-radius:999px;background:#f2edff;color:#5b4799;font-size:11px;line-height:1.3;font-weight:800}
+.topic-chip.muted{background:#f2f5f8;color:#69748a}
+.topic-card .topic-abstract{margin:4px 0 0;line-height:1.75;font-size:13px;color:#5c677b;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.topic-card-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px;align-items:center}
+.topic-card-actions .map-link{margin:0;padding:8px 11px;font-size:11px}
+.topic-card-actions .save-card{margin:0;padding:8px 11px;font-size:11px}
+.topic-details{margin-top:6px;border-top:1px dashed #d5d5e5;padding-top:9px}
+.topic-details summary{font-size:12px;color:#604cbc;font-weight:850;cursor:pointer;padding:5px 0}
+.topic-details .topic-expanded{font-size:13px;line-height:1.75;padding-top:8px}
+.topic-details .topic-expanded p{margin:6px 0}
+.topic-details .topic-expanded .map-link{margin-right:5px;margin-bottom:4px}
+.topic-more{display:block;margin:16px auto 0;padding:10px 18px;border:1px solid #d6cff0;border-radius:999px;background:#f2edff;color:#5a47a8;cursor:pointer;font-weight:800}
+.topic-more[hidden]{display:none}
+.topic-hub .topic-note{font-size:12px;color:#737b92;line-height:1.8;margin:13px 2px 0}
+@media(max-width:830px){.topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.topic-category{min-height:142px}}
+@media(max-width:640px){.topic-finder{padding:14px}.topic-results{grid-template-columns:1fr}.topic-category{padding:13px;min-height:136px}.topic-category strong{font-size:14px}.topic-category small{font-size:11px}}
 </style>
 </head>
 <body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
-<header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAOYUAN LIFE</span><h1>桃園生活啟動器</h1><p>依桃園市行政區整理日常生活入口。先選擇行政區，再逐步加入在地服務、交通、採買、醫療與休閒資訊。</p><div class="stats"><span>📍 桃園 13 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
+<header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAOYUAN LIFE</span><h1>桃園生活啟動器</h1><p>以八大主題串起桃園 13 區的生活資源、電子出版、文化藝術、深度旅遊與社區研究。可由主題、次分類、行政區與關鍵字交叉尋找資料。</p><div class="stats"><span>📍 桃園 13 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
 
 <section class="quick-section" id="taoyuanPopulationFeature" aria-labelledby="populationFeatureTitle">
  <div class="section-head"><h2 id="populationFeatureTitle">📊 桃園人口與行政區</h2><span class="hint">台灣位置圖 × 13 區人口統計</span></div>
@@ -85,9 +136,40 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
   <div class="population-actions"><a href="taoyuan-population.html">開啟人口與行政區互動圖表 ↗</a><a href="https://cab.tycg.gov.tw/News.aspx?n=7902&amp;sms=12475" target="_blank" rel="noopener noreferrer">民政局官方人口統計</a></div>
  </div>
 </section>
-<section class="quick-section"><div class="section-head"><h2>🕘 最近開啟</h2></div><div class="quick-grid" id="lifeRecent"></div></section>
-<section class="quick-section"><div class="section-head"><h2>⭐ 我的收藏</h2></div><div class="quick-grid" id="lifeFavorites"></div></section>
-<section class="quick-section"><div class="section-head"><h2>🆕 最近新增 10 項</h2></div><div class="quick-grid" id="lifeNewest"></div></section>
+<section class="quick-section" id="lifeRecentSection"><div class="section-head"><h2>🕘 最近開啟</h2></div><div class="quick-grid" id="lifeRecent"></div></section>
+<section class="quick-section" id="lifeFavoritesSection"><div class="section-head"><h2>⭐ 我的收藏</h2></div><div class="quick-grid" id="lifeFavorites"></div></section>
+<section class="quick-section" id="lifeNewestSection"><div class="section-head"><h2>🆕 最近新增 10 項</h2></div><div class="quick-grid" id="lifeNewest"></div></section>
+
+<section class="quick-section topic-hub" id="taoyuanTopicHub" aria-label="桃園生活主題分類">
+ <div class="section-head"><h2>🗂️ 桃園生活・八大主分類</h2><span class="hint">主分類 → 次分類 → 卡片</span></div>
+ <p class="topic-guide">每筆資料只保存一張主要卡片，以地區與主題標籤交叉搜尋。點選分類可查看對應卡片，並可從結果展開原始內容、開啟官方連結或收藏。</p>
+ <nav class="topic-shortcuts" aria-label="快速前往桃園生活專區">
+  <a href="#lifeFavoritesSection">⭐ 我的收藏</a>
+  <a href="#lifeRecentSection">🕘 最近開啟</a>
+  <a href="#taoyuanEbookLibrary">📖 電子書專區</a>
+  <a href="#taoyuanStoryTravel">🧭 桃園誌研究</a>
+  <a href="#taoyuanDistricts">📍 13 區原始卡片</a>
+ </nav>
+ <div class="topic-grid" id="topicCategoryGrid" role="group" aria-label="選擇八大主分類"></div>
+ <div class="topic-finder" id="topicFinder">
+  <div class="topic-finder-head"><h3 id="topicActiveTitle">全部桃園生活資料</h3><button class="topic-reset" type="button" id="topicReset">↺ 清除篩選・看全部</button></div>
+  <div class="topic-fields">
+   <div class="topic-field search"><label for="topicKeyword">🔎 搜尋卡片、書名、景點與研究標籤</label><input type="search" id="topicKeyword" placeholder="例：楊梅、泥染、桃園誌、社區營造" autocomplete="off"></div>
+   <div class="topic-field"><label for="topicDistrict">📍 行政區</label><select id="topicDistrict"><option value="全桃園">全桃園（全部行政區）</option></select></div>
+  </div>
+  <label class="topic-shared" for="topicIncludeShared"><input id="topicIncludeShared" type="checkbox" checked>行政區篩選時，也納入全市共用出版品與入口</label>
+  <nav class="topic-subnav" id="topicSubcategoryFilters" aria-label="次分類篩選" hidden></nav>
+  <div class="topic-result-head"><p id="topicResultCount" role="status" aria-live="polite"></p><span class="hint">點開卡片可看完整來源</span></div>
+  <div class="topic-results" id="topicResultGrid" aria-live="polite"></div>
+  <button id="topicShowMore" type="button" class="topic-more" hidden>顯示更多卡片</button>
+ </div>
+ <nav class="topic-related" aria-label="桃園研究相關啟動器">
+  <a href="travel.html">🧳 旅遊資訊</a><a href="community.html">🌱 社區營造</a>
+  <a href="social-enterprise.html">🤝 社會企業</a><a href="transport.html">🚌 交通</a>
+  <a href="self-study.html">🎓 自學</a><a href="food.html">🌾 食農</a>
+ </nav>
+ <p class="topic-note">這裡是現有桃園生活卡片的主題索引；站內跨啟動器連結會標明「站內入口」，不代表已複製其他啟動器全部資料。尚無內容的次分類仍保留，方便後續逐步增補。</p>
+</section>
 <section class="quick-section"><div class="section-head"><h2>🏙️ 全桃園・市民服務</h2></div><div class="quick-grid" id="lifeCity"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📰 全桃園・地方新聞</h2></div><div class="quick-grid" id="lifeNews"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📚 全桃園・電子閱讀</h2></div><div class="quick-grid" id="lifeEbooks"></div></section>
@@ -121,7 +203,7 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
  <div class="quick-grid" id="lifeStoryResearch" aria-live="polite"></div>
 </section>
 <section class="quick-section"><div class="section-head"><h2>🔗 全桃園・待確認連結</h2></div><div class="quick-grid" id="lifePendingLinks"></div></section>
-<section class="section"><div class="section-head"><h2>📍 桃園行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="桃園市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
+<section class="section" id="taoyuanDistricts"><div class="section-head"><h2>📍 桃園行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="桃園市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
 <footer>桃園生活資訊整理頁 · 行政區分類依桃園市 13 區建立</footer>
 </main><script src="../shared-nav.js?v=20261025-2" defer></script>
 <script>
@@ -141,6 +223,81 @@ const intros={
 "觀音區":"觀音地區生活資訊分類。",
 "復興區":"復興地區生活資訊分類。"
 };
+
+
+/* 主題分類與次分類：卡片只有一個 primary，但可帶多個 tags。
+   儘量使用來源的按鈕 ID，而不是猜測名稱；原始 localStorage 收藏 key 不變。 */
+const lifeTopicTaxonomy=[
+ {id:"civic",emoji:"🏛️",title:"市政與便民服務",hint:"市民卡、行政、地方新聞",subs:["市民服務","行政機關","政府公告","地方新聞","福利資源","待核對資料"]},
+ {id:"reading",emoji:"📖",title:"桃園閱讀與出版",hint:"電子書、桃園誌、地方文獻",subs:["市府電子書","桃園誌","文化刊物","地方文史","研究資料"]},
+ {id:"travel",emoji:"🗺️",title:"深度旅遊與走讀",hint:"景點、聚落、路線與自然",subs:["特色景點","歷史聚落","自然生態","親子旅遊","主題路線"]},
+ {id:"culture",emoji:"🎨",title:"文化藝術與歷史",hint:"美術館、古蹟、工藝文化",subs:["藝文場館","文化資產","客家文化","原住民族文化","地方工藝"]},
+ {id:"community",emoji:"🌱",title:"社區營造與社創",hint:"社造、地方創生、社會企業",subs:["社區組織","地方創生","社會企業","多元文化","社造案例"]},
+ {id:"life",emoji:"🛍️",title:"在地生活與產業",hint:"美食、農業、商圈與店家",subs:["在地美食","商圈市場","農業食農","觀光工廠","生活店家"]},
+ {id:"transport",emoji:"🚌",title:"交通與公共設施",hint:"公車、圖書館與公共空間",subs:["公車客運","桃小巴","停車資訊","圖書館","公共設施"]},
+ {id:"events",emoji:"🗓️",title:"活動與教育學習",hint:"展覽、市集、課程與走讀",subs:["展覽","市集","講座","工作坊","親子活動","走讀課程"]}
+];
+const lifeSourceFacet={
+ pingzhenEventsCategory:["events","市集"],
+ agricultureProductsCategory:["life","農業食農"],
+ xinwuFoodCategory:["life","在地美食"],
+ xinwuHistoryCategory:["culture","文化資產"],
+ xinwuGovernmentCategory:["civic","行政機關"],
+ longtanHistoryCategory:["culture","客家文化"],
+ longtanTrailCategory:["travel","自然生態"],
+ zhongliArtCategory:["culture","藝文場館"],
+ dayuanArtCategory:["culture","藝文場館"],
+ daxiHistoryCategory:["culture","原住民族文化"],
+ daxiEventsCategory:["events","市集"],
+ daxiStoryCategory:["reading","桃園誌"],
+ badeStoryCategory:["reading","桃園誌"],
+ hotpotCategory:["life","在地美食"],
+ yangmeiLifeCategory:["life","生活店家"],
+ internationalCuisineCategory:["life","在地美食"],
+ administrationCategory:["civic","行政機關"],
+ convenienceCategory:["life","生活店家"],
+ historyCategory:["culture","文化資產"],
+ hakkaCuisineCategory:["life","在地美食"],
+ trailCategory:["travel","自然生態"],
+ teaCategory:["life","農業食農"],
+ farmCategory:["life","農業食農"],
+ factoryCategory:["life","觀光工廠"],
+ attractionCategory:["travel","特色景點"]
+};
+const lifePortalEntries=[
+ {name:"旅遊資訊啟動器（站內入口）",href:"travel.html",primary:"travel",secondary:"主題路線",desc:"從桃園線索延伸全台景點與旅遊路線研究。",tags:["旅遊規畫","景點"]},
+ {name:"社區營造啟動器（站內入口）",href:"community.html",primary:"community",secondary:"社區組織",desc:"連結社造組織、地方資料、社區課程與研究紀錄。",tags:["社區營造","地方創生"]},
+ {name:"社會企業啟動器（站內入口）",href:"social-enterprise.html",primary:"community",secondary:"社會企業",desc:"整理政策、課程、提案、企業媒合與成果案例。",tags:["社會企業","社會創新"]},
+ {name:"交通啟動器（站內入口）",href:"transport.html",primary:"transport",secondary:"公車客運",desc:"延伸桃園公車、桃小巴及其他交通資料。",tags:["交通","桃小巴"]},
+ {name:"自學啟動器（站內入口）",href:"self-study.html",primary:"events",secondary:"親子活動",desc:"將地方展覽、親子活動與走讀轉成自學專題。",tags:["親子","學習","場館"]},
+ {name:"食物啟動器（站內入口）",href:"food.html",primary:"life",secondary:"農業食農",desc:"從農產、食物文化延伸至食農教育與教材。",tags:["食農教育","農業"]}
+];
+function lifeFacet(item){
+ if(item.facet)return item.facet;
+ const name=item.name;
+ const story=storyResearchRecords.find(r=>r.title===name);
+ if(story)return {primary:"reading",secondary:"桃園誌",tags:story.topics||[]};
+ const ebook=ebookResearchRecords.find(r=>r.title===name);
+ if(ebook){
+  let secondary="研究資料";
+  if(name==="桃園市政府電子書平台")secondary="市府電子書";
+  else if(name==="桃園誌")secondary="桃園誌";
+  else if(["桃園藝文","桃園新住民專刊"].includes(name))secondary="文化刊物";
+  else if(ebook.category==="地方文史")secondary="地方文史";
+  return {primary:"reading",secondary,tags:[ebook.category,ebook.kind,ebook.region]};
+ }
+ if(name==="桃園誌")return {primary:"reading",secondary:"桃園誌",tags:["地方故事","深度旅遊"]};
+ if(name==="桃園電子報")return {primary:"civic",secondary:"地方新聞",tags:["地方新聞"]};
+ if(name==="桃園市民卡")return {primary:"civic",secondary:"市民服務",tags:["市政"]};
+ if(name.startsWith("Facebook 分享連結"))return {primary:"civic",secondary:"待核對資料",tags:["待確認"]};
+ if(name.includes("圖書館"))return {primary:"transport",secondary:"圖書館",tags:["公共設施","閱讀"]};
+ if(name==="富岡老街")return {primary:"travel",secondary:"歷史聚落",tags:["老街","地方文史"]};
+ if(name==="埔心牧場")return {primary:"travel",secondary:"親子旅遊",tags:["親子"]};
+ if(name==="楊梅故事園區"||name==="埔心故事館")return {primary:"culture",secondary:"文化資產",tags:["地方文史","地方記憶"]};
+ const mapped=lifeSourceFacet[item.sourceId];
+ if(mapped)return {primary:mapped[0],secondary:mapped[1],tags:[item.sourceLabel].filter(Boolean)};
+ return {primary:"travel",secondary:"特色景點",tags:[]};
+}
 
 /* 後續《桃園誌》文章加進 storyResearchRecords；保留摘要/議題/查證/來源。 */
 const storyResearchTopics=["全部主題","原住民族文化","新住民與多元文化","族群遷徙與移民文化","宗教信仰與歲時祭儀","地方記憶與聚落","社區共創與自治","社會支持與培力","語言與文化交流","河岸環境與土地","飲食與產業","在地工藝"];
@@ -437,7 +594,7 @@ function collectLifeCards(){
    button.click();
    for(const card of selectedContent.querySelectorAll(".store-card")){
     const name=card.querySelector("h4")?.textContent.trim();
-    if(name){const key=lifeKey(district,name);lifeCatalog.set(key,{key,name,district,html:card.outerHTML});}
+    if(name){const key=lifeKey(district,name);lifeCatalog.set(key,{key,name,district,html:card.outerHTML,sourceId:button.id,sourceLabel:button.textContent.trim()});}
    }
   }
  }
@@ -456,6 +613,12 @@ function collectLifeCards(){
  lifeCatalog.set(pendingKey,{key:pendingKey,name:pendingName,district:"全桃園",html:'<article class="store-card"><h4>Facebook 分享連結（待確認）</h4><p>連結內容及分類尚待確認，請開啟查看。</p><a class="map-link" href="https://www.facebook.com/share/1AJ4iDQDnX/" target="_blank" rel="noopener noreferrer">開啟 Facebook 連結 ↗</a></article>'});
  for(const entry of storyResearchRecords){const key=lifeKey(entry.district,entry.title);if(!lifeCatalog.has(key))lifeCatalog.set(key,{key,name:entry.title,district:entry.district,html:storyCardHtml(entry)});}
  for(const entry of ebookResearchRecords){const key=lifeKey("全桃園",entry.title);lifeCatalog.set(key,{key,name:entry.title,district:"全桃園",html:ebookCardHtml(entry)});}
+
+ for(const entry of lifePortalEntries){
+  const key=lifeKey("全桃園",entry.name);
+  lifeCatalog.set(key,{key,name:entry.name,district:"全桃園",portal:true,facet:{primary:entry.primary,secondary:entry.secondary,tags:entry.tags},
+   html:'<article class="store-card"><h4>'+storyEscape(entry.name)+'</h4><p>'+storyEscape(entry.desc)+'</p><a class="map-link" href="'+storyEscape(entry.href)+'">開啟站內啟動器 ↗</a></article>'});
+ }
  const keys=[...lifeCatalog.keys()];
  if(!Array.isArray(lifeState.known)){lifeState.known=keys;lifeState.added=[];}
  else{
@@ -490,6 +653,7 @@ function drawLifeLists(){
  decorateLifeCards();
  drawStoryResearch();
  drawEbookResearch();
+ drawLifeTopicExplorer();
 }
 function decorateLifeCards(){
  const district=document.getElementById("selectedTitle").textContent.replace(/^📍\s*/,"");
@@ -541,6 +705,111 @@ function drawEbookResearch(){
  document.getElementById("ebookResultCount").textContent="顯示 "+matches.length+" / "+ebookResearchRecords.length+" 筆精選書刊與入口";
  document.getElementById("lifeEbookResearch").innerHTML=matches.map(r=>lifeCard(lifeKey("全桃園",r.title))).join("")||'<p class="story-empty">目前沒有符合條件的書刊；請清除關鍵字或切換分類。</p>';
 }
+
+/* 全站主分類瀏覽：原地引用 lifeCatalog，收藏鍵與最近開啟不變。 */
+let topicMain="all",topicSub="all",topicDistrict="全桃園",topicIncludeShared=true,topicKeyword="",topicPageSize=12;
+const topicGridEl=document.getElementById("topicCategoryGrid");
+const topicSubEl=document.getElementById("topicSubcategoryFilters");
+const topicDistrictEl=document.getElementById("topicDistrict");
+topicDistrictEl.innerHTML=['全桃園',...districts].map(d=>'<option value="'+storyEscape(d)+'">'+(d==="全桃園"?"全桃園（全部行政區）":storyEscape(d))+'</option>').join("");
+function matchesTopicDistrict(item){
+ return topicDistrict==="全桃園"||item.district===topicDistrict||(topicIncludeShared&&item.district==="全桃園");
+}
+function topicIndexedItems(){
+ return [...lifeCatalog.values()].map(item=>({item,facet:lifeFacet(item)}));
+}
+function topicCardHtml(item,facet){
+ const e=storyEscape,key=item.key;
+ const box=document.createElement("div");box.innerHTML=item.html;
+ const article=box.firstElementChild;
+ const descriptions=[...article.querySelectorAll("p")].filter(el=>!el.matches(".story-meta,.ebook-meta,.story-check,.ebook-check"));
+ const abstract=(descriptions.find(p=>p.textContent.trim().length>13)||descriptions[0])?.textContent.trim()||"可從原始來源閱讀與延伸研究。";
+ const featuredLinks=[...article.querySelectorAll("a")].slice(0,2).map(a=>a.outerHTML).join("");
+ article.querySelector("h4")?.remove();
+ const t=lifeTopicTaxonomy.find(x=>x.id===facet.primary);
+ const labels=[(t?.title||"生活資料"),facet.secondary,...(facet.tags||[]).filter(tag=>tag&&tag!==facet.secondary).slice(0,2)];
+ const chips=labels.map((label,i)=>'<span class="topic-chip '+(i>1?"muted":"")+'">'+e(label)+'</span>').join("");
+ const fav=lifeState.favorites.includes(key);
+ const favHtml='<button type="button" class="save-card" data-life-favorite="'+e(key)+'" aria-pressed="'+String(fav)+'">'+(fav?"★ 已收藏":"☆ 收藏")+'</button>';
+ const districtHtml=districts.includes(item.district)?'<button class="topic-reset" data-topic-jump="'+e(item.district)+'" type="button">查看'+e(item.district)+'原分類</button>':"";
+ return '<article class="store-card topic-card" data-life-key="'+e(key)+'">'
+   +'<h4>'+e(item.name)+'</h4>'
+   +'<div class="topic-chips">'+chips+'<span class="topic-chip muted">📍 '+e(item.district)+'</span></div>'
+   +'<p class="topic-abstract">'+e(abstract)+'</p>'
+   +'<div class="topic-card-actions">'+featuredLinks+favHtml+'</div>'
+   +'<details class="topic-details"><summary>展開完整卡片與資料來源</summary><div class="topic-expanded">'+article.innerHTML+districtHtml+'</div></details>'
+   +'</article>';
+}
+function drawLifeTopicExplorer(){
+ const e=storyEscape;
+ const rows=topicIndexedItems();
+ const districtRows=rows.filter(x=>matchesTopicDistrict(x.item));
+ topicGridEl.innerHTML=lifeTopicTaxonomy.map(t=>{
+  const count=districtRows.filter(x=>x.facet.primary===t.id).length;
+  return '<button class="topic-category" type="button" data-topic-main="'+e(t.id)+'" aria-pressed="'+String(topicMain===t.id)+'">'
+   +'<span class="topic-emoji" aria-hidden="true">'+t.emoji+'</span><strong>'+e(t.title)+'</strong><small>'+e(t.hint)+'</small><span class="topic-n">'+count+' 張卡片</span></button>';
+ }).join("");
+ const active=lifeTopicTaxonomy.find(t=>t.id===topicMain);
+ document.getElementById("topicActiveTitle").textContent=active?active.emoji+" "+active.title:"全部桃園生活資料";
+ topicSubEl.hidden=!active;
+ if(active){
+  topicSubEl.innerHTML=["全部次分類",...active.subs].map(sub=>{
+   const value=sub==="全部次分類"?"all":sub;
+   const count=sub==="全部次分類"?"": "（"+districtRows.filter(x=>x.facet.primary===topicMain&&x.facet.secondary===sub).length+"）";
+   return '<button type="button" data-topic-sub="'+e(value)+'" aria-pressed="'+String(topicSub===value)+'">'+e(sub)+count+'</button>';
+  }).join("");
+ }
+ const kw=topicKeyword.trim().toLocaleLowerCase();
+ const matches=districtRows.filter(({item,facet})=>{
+  if(topicMain!=="all"&&facet.primary!==topicMain)return false;
+  if(topicSub!=="all"&&facet.secondary!==topicSub)return false;
+  if(!kw)return true;
+  const holder=document.createElement("div");holder.innerHTML=item.html;
+  const haystack=[item.name,item.district,facet.secondary,facet.tags?.join(" "),holder.textContent].join(" ").toLocaleLowerCase();
+  return haystack.includes(kw);
+ });
+ const rank=name=>{const i=initialNewest.indexOf(name);return i<0?999:i;};
+ matches.sort((a,b)=>rank(a.item.name)-rank(b.item.name)||a.item.name.localeCompare(b.item.name,"zh-Hant"));
+ const visible=matches.slice(0,topicPageSize);
+ document.getElementById("topicResultCount").textContent="符合條件 "+matches.length+" 筆／索引共 "+rows.length+" 筆，顯示 "+visible.length+" 筆"+(topicDistrict!=="全桃園"&&topicIncludeShared?"（包含全市共用資料）":"");
+ document.getElementById("topicResultGrid").innerHTML=visible.map(x=>topicCardHtml(x.item,x.facet)).join("")||'<p class="story-empty">這個主題、行政區與關鍵字組合目前沒有卡片。請切換其他條件，或返回 13 區原始資料。</p>';
+ const more=document.getElementById("topicShowMore");
+ more.hidden=matches.length<=topicPageSize;
+ more.textContent="顯示更多卡片（尚有 "+Math.max(0,matches.length-topicPageSize)+" 筆）";
+}
+function topicRefresh(){topicPageSize=12;drawLifeTopicExplorer();}
+topicGridEl.addEventListener("click",event=>{
+ const btn=event.target.closest("[data-topic-main]");if(!btn)return;
+ topicMain=btn.dataset.topicMain;topicSub="all";topicRefresh();
+ document.getElementById("topicFinder").scrollIntoView({behavior:"smooth",block:"start"});
+});
+topicSubEl.addEventListener("click",event=>{
+ const btn=event.target.closest("[data-topic-sub]");if(!btn)return;
+ topicSub=btn.dataset.topicSub;topicRefresh();
+});
+topicDistrictEl.addEventListener("change",()=>{
+ topicDistrict=topicDistrictEl.value;topicRefresh();
+});
+document.getElementById("topicIncludeShared").addEventListener("change",event=>{
+ topicIncludeShared=event.target.checked;topicRefresh();
+});
+document.getElementById("topicKeyword").addEventListener("input",event=>{
+ topicKeyword=event.target.value;topicRefresh();
+});
+document.getElementById("topicShowMore").addEventListener("click",()=>{topicPageSize+=12;drawLifeTopicExplorer();});
+document.getElementById("topicReset").addEventListener("click",()=>{
+ topicMain="all";topicSub="all";topicDistrict="全桃園";topicIncludeShared=true;topicKeyword="";topicPageSize=12;
+ topicDistrictEl.value=topicDistrict;
+ document.getElementById("topicIncludeShared").checked=true;
+ document.getElementById("topicKeyword").value="";
+ drawLifeTopicExplorer();
+});
+document.getElementById("topicResultGrid").addEventListener("click",event=>{
+ const btn=event.target.closest("[data-topic-jump]");if(!btn)return;
+ const district=btn.dataset.topicJump;choose(district);decorateLifeCards();
+ document.getElementById("taoyuanDistricts").scrollIntoView({behavior:"smooth",block:"start"});
+});
+
 collectLifeCards();drawLifeLists();
 /* 從人口地圖可直接返回指定行政區生活分類。 */
 const districtFromPopulationMap=new URLSearchParams(location.search).get("district");
