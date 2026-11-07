@@ -57,11 +57,34 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 .ebook-card p{line-height:1.75}.ebook-card a.map-link{margin-right:5px}
 .ebook-card .ebook-tag{display:inline-block;padding:4px 9px;background:#f2edff;border-radius:999px;color:#6449ad;font-size:11px;font-weight:800;margin:4px 5px 6px 0}
 @media(max-width:600px){.ebook-tools label{width:100%}.ebook-tools input,.ebook-tools select{flex:1 1 100%}}
+
+/* 民政局人口統計 × 台灣／桃園行政區互動地圖入口 */
+.population-feature{border:1px solid #ded8f7;border-radius:23px;background:linear-gradient(120deg,#fffefa,#f4efff 68%,#e9f8f8);padding:21px;box-shadow:0 8px 23px #5544aa0d}
+.population-feature .population-inside{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.population-feature h3{margin:0 0 7px;font-size:21px}
+.population-feature p{font-size:13px;color:#626c84;line-height:1.8;margin:0 0 8px;max-width:630px}
+.population-feature .population-number{font-size:29px;font-weight:900;color:#654bbf;font-variant-numeric:tabular-nums;margin:5px 0}
+.population-feature .population-period{font-size:12px;color:#78658c}
+.population-feature .population-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.population-feature .population-actions a{display:inline-block;padding:10px 14px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:850;color:#6048b7;background:#fff;border:1px solid #d5c7f7}
+.population-feature .population-actions a:first-child{background:#6e56dc;color:#fff;border-color:#6e56dc}
+@media(max-width:600px){.population-feature{padding:16px}.population-feature .population-number{font-size:25px}}
 </style>
 </head>
 <body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
 <header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAOYUAN LIFE</span><h1>桃園生活啟動器</h1><p>依桃園市行政區整理日常生活入口。先選擇行政區，再逐步加入在地服務、交通、採買、醫療與休閒資訊。</p><div class="stats"><span>📍 桃園 13 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
+
+<section class="quick-section" id="taoyuanPopulationFeature" aria-labelledby="populationFeatureTitle">
+ <div class="section-head"><h2 id="populationFeatureTitle">📊 桃園人口與行政區</h2><span class="hint">台灣位置圖 × 13 區人口統計</span></div>
+ <div class="population-feature">
+  <div class="population-inside">
+   <div><h3>探索桃園 13 區的人口分布</h3><p>從台灣地圖定位桃園，按行政區地圖選取桃園、中壢、楊梅、平鎮等 13 區，連動人口排名、全市占比與在地生活卡片。可作為社區營造和深度走讀的研究起點。</p><div class="population-period">來源：桃園市政府民政局、內政部戶政司資料；數據期別：2026 年 9 月底</div></div>
+   <div><div class="population-number">2,358,611 人</div><div class="population-period">官方公告全市戶籍人口</div></div>
+  </div>
+  <div class="population-actions"><a href="taoyuan-population.html">開啟人口與行政區互動圖表 ↗</a><a href="https://cab.tycg.gov.tw/News.aspx?n=7902&amp;sms=12475" target="_blank" rel="noopener noreferrer">民政局官方人口統計</a></div>
+ </div>
+</section>
 <section class="quick-section"><div class="section-head"><h2>🕘 最近開啟</h2></div><div class="quick-grid" id="lifeRecent"></div></section>
 <section class="quick-section"><div class="section-head"><h2>⭐ 我的收藏</h2></div><div class="quick-grid" id="lifeFavorites"></div></section>
 <section class="quick-section"><div class="section-head"><h2>🆕 最近新增 10 項</h2></div><div class="quick-grid" id="lifeNewest"></div></section>
@@ -384,6 +407,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"桃園人口 × 行政區圖表",
 "樂桃園－公園無限探索指南",
 "桃園藝文",
 "桃園新住民專刊",
@@ -418,6 +442,8 @@ function collectLifeCards(){
   }
  }
  choose("全部桃園");
+ const populationName="桃園人口 × 行政區圖表",populationKey=lifeKey("全桃園",populationName);
+ lifeCatalog.set(populationKey,{key:populationKey,name:populationName,district:"全桃園",html:'<article class="store-card"><h4>桃園人口 × 行政區圖表</h4><p>台灣位置地圖、桃園13行政區人口分布、人口排名、全市占比與資料表（2026年9月）。</p><a class="map-link" href="taoyuan-population.html">開啟互動圖表 ↗</a> <a class="map-link" href="https://cab.tycg.gov.tw/News.aspx?n=7902&amp;sms=12475" target="_blank" rel="noopener noreferrer">官方統計來源 ↗</a></article>'});
  const cityName="桃園市民卡",cityKey=lifeKey("全桃園",cityName);
  lifeCatalog.set(cityKey,{key:cityKey,name:cityName,district:"全桃園",html:'<article class="store-card"><h4>桃園市民卡</h4><p>查看市民卡與數位碼、優惠、桃園活動及市府服務。</p><a class="map-link" href="https://typass.tycg.gov.tw/" target="_blank" rel="noopener noreferrer">開啟桃園市民卡官網 ↗</a></article>'});
  const newsName="桃園電子報",newsKey=lifeKey("全桃園",newsName);
@@ -454,7 +480,7 @@ function drawLifeLists(){
  const newestSeed=initialNewest.map(name=>[...lifeCatalog.values()].find(x=>x.name===name)?.key).filter(Boolean);
  const newest=[...(lifeState.added||[]),...newestSeed].filter((k,i,a)=>lifeCatalog.has(k)&&a.indexOf(k)===i).slice(0,10);
  const show=(id,keys,empty)=>{document.getElementById(id).innerHTML=keys.map(lifeCard).filter(Boolean).join("")||'<p class="quick-empty">'+empty+'</p>';};
- show("lifeCity",[lifeKey("全桃園","桃園市民卡")],"目前沒有市民服務入口。");
+ show("lifeCity",[lifeKey("全桃園","桃園市民卡"),lifeKey("全桃園","桃園人口 × 行政區圖表")],"目前沒有市民服務入口。");
  show("lifeNews",[lifeKey("全桃園","桃園電子報")],"目前沒有地方新聞入口。");
  show("lifeEbooks",[lifeKey("全桃園","桃園市政府電子書平台"),lifeKey("全桃園","樂桃園－公園無限探索指南"),lifeKey("全桃園","桃園誌"),lifeKey("全桃園","桃園藝文")],"目前沒有電子閱讀入口。");
  show("lifePendingLinks",[lifeKey("全桃園","Facebook 分享連結（待確認）")],"目前沒有待確認連結。");
@@ -516,4 +542,7 @@ function drawEbookResearch(){
  document.getElementById("lifeEbookResearch").innerHTML=matches.map(r=>lifeCard(lifeKey("全桃園",r.title))).join("")||'<p class="story-empty">目前沒有符合條件的書刊；請清除關鍵字或切換分類。</p>';
 }
 collectLifeCards();drawLifeLists();
+/* 從人口地圖可直接返回指定行政區生活分類。 */
+const districtFromPopulationMap=new URLSearchParams(location.search).get("district");
+if(districtFromPopulationMap&&districts.includes(districtFromPopulationMap)){choose(districtFromPopulationMap);decorateLifeCards();}
 </script></body></html>
