@@ -87,8 +87,23 @@ const intros={
 };
 
 /* 後續《桃園誌》文章加進 storyResearchRecords；保留摘要/議題/查證/來源。 */
-const storyResearchTopics=["全部主題","原住民族文化","地方記憶與聚落","社區共創與自治","河岸環境與土地","飲食與產業","在地工藝"];
+const storyResearchTopics=["全部主題","原住民族文化","族群遷徙與移民文化","宗教信仰與歲時祭儀","地方記憶與聚落","社區共創與自治","河岸環境與土地","飲食與產業","在地工藝"];
 const storyResearchRecords=[{
+ id:"taoyuanstory-20261130301",
+ title:"桃園誌｜把信仰帶到桃園",
+ issue:"113期",date:"2026-11-01",district:"八德區",sourceCategory:"封面故事",
+ topics:["族群遷徙與移民文化","宗教信仰與歲時祭儀","地方記憶與聚落","社區共創與自治"],
+ sourceUrl:"https://www.taoyuanstory.tw/article/20261130301",
+ summary:"第113期〈從落地，到生根〉的一篇封面故事，介紹移居桃園的馬祖鄉親如何藉由擺暝祭典與宮廟聚會，延續原鄉信仰和文化記憶。",
+ socialStudy:"可研究移民社群的地方認同、宮廟作為互助與聯繫節點、閩東語和祭儀傳承，以及跨世代節慶共創。",
+ travelStudy:"以八德的馬祖擺暝文化祭及相關文化據點作為延伸研究線索；先確認各宮廟是否開放、祭典實際日期、拍攝限制及主辦單位安排。",
+ status:"已由《桃園誌》第113期目錄與簡介確認文章標題和主題，原文全文尚待核對；八德區為延伸研究行政區，不代表文章只記錄八德。",
+ references:[
+  {name:"《桃園誌》第113期電子書與目錄",url:"https://ebook.hyread.com.tw/bookDetail.jsp?id=522089"},
+  {name:"桃園馬祖擺暝扛乩信仰交流會",url:"https://www.tybm.org.tw/?section=2"},
+  {name:"桃園市府｜2026桃園馬祖擺暝文化祭",url:"https://www.tycg.gov.tw/NewsPage_Content.aspx?n=10&s=1616461&sms=7885"}
+ ]
+},{
  id:"taoyuanstory-20261130303",
  title:"桃園誌｜在河岸築起一個家 續寫撒烏瓦知族群記憶",
  issue:"113期",date:"2026-11-01",district:"大溪區",sourceCategory:"封面故事",
@@ -111,6 +126,7 @@ function storyCardHtml(item){
  +'<p><strong>旅遊規畫：</strong>'+e(item.travelStudy)+'</p>'
  +'<p class="story-check"><strong>核對狀態：</strong>'+e(item.status)+'</p>'
  +'<a class="map-link" href="'+e(item.sourceUrl)+'" target="_blank" rel="noopener noreferrer">閱讀桃園誌原文 ↗</a>'
+ +((item.references||[]).map(ref=>'<a class="map-link" href="'+e(ref.url)+'" target="_blank" rel="noopener noreferrer">'+e(ref.name)+' ↗</a>').join(""))
  +'</article>';
 }
 const nav=document.getElementById("districts"),grid=document.getElementById("areaGrid"),selected=document.getElementById("selected"),selectedContent=document.getElementById("selectedContent");
@@ -186,6 +202,13 @@ function renderDistrictContent(name){
   });
   document.getElementById("daxiStoryCategory").addEventListener("click",()=>{
    document.getElementById("storeResults").innerHTML=storyResearchRecords.filter(item=>item.district==="大溪區").map(storyCardHtml).join("");
+  });
+  return;
+ }
+ if(name==="八德區"){
+  selectedContent.innerHTML='<h4 class="subcategory-title">八德次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="badeStoryCategory" type="button">📖 桃園誌・深度旅遊</button></div><div id="storeResults"></div>';
+  document.getElementById("badeStoryCategory").addEventListener("click",()=>{
+   document.getElementById("storeResults").innerHTML=storyResearchRecords.filter(item=>item.district==="八德區").map(storyCardHtml).join("");
   });
   return;
  }
@@ -280,6 +303,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"桃園誌｜把信仰帶到桃園",
 "桃園誌｜在河岸築起一個家 續寫撒烏瓦知族群記憶",
 "Facebook 分享連結（待確認）",
 "桃園誌",
