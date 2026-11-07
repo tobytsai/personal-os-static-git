@@ -147,14 +147,25 @@ def download(url: str) -> bytes:
         "Accept": "application/rss+xml,application/atom+xml,application/xml,text/xml,*/*",
         "Accept-Language": "zh-TW,zh;q=0.9",
     })
-    with urllib.request.urlopen(req, timeout=22) as res:
-        resolved = res.geturl()
-        if not official_url(resolved):
-            raise ValueError("Feed redirected to a non-official site")
-        content = res.read(MAX_BYTES + 1)
-        if len(content) > MAX_BYTES:
-            raise ValueError("Feed too large")
-        return content
+    # The city's event feed can respond slowly. Use a longer socket timeout and
+    # one bounded retry rather than silently treating a timeout as "no events".
+    import time
+    for attempt in range(2):
+        try:
+            with urllib.request.urlopen(req, timeout=65) as res:
+                resolved = res.geturl()
+                if not official_url(resolved):
+                    raise ValueError("Feed redirected to a non-official site")
+                content = res.read(MAX_BYTES + 1)
+                if len(content) > MAX_BYTES:
+                    raise ValueError("Feed too large")
+                return content
+        except (TimeoutError, urllib.error.URLError) as exc:
+            if attempt:
+                raise
+            print(f"[RETRY] {url} - {exc}", file=sys.stderr, flush=True)
+            time.sleep(3)
+    raise RuntimeError("Feed request did not return a response")
 
 
 def synchronize(output: Path) -> int:
