@@ -1,0 +1,104 @@
+{
+  "schema": "taoyuan-population-snapshot-v1",
+  "period": "2026-09",
+  "asOf": "2026-09-30",
+  "generatedOn": "2026-11-07",
+  "note": "2026年9月月底戶籍人口快照，非即時數字。各區數據來自內政部戶政司資料之TWProbe整理，總計與桃園市民政局115年9月份大事記相符。後續月份應另建新快照並核對官方來源。",
+  "city": {
+    "name": "桃園市",
+    "population": 2358611,
+    "households": 1008598,
+    "male": 1158850,
+    "female": 1199761,
+    "villages": 529,
+    "neighborhoods": 12124
+  },
+  "districts": [
+    {
+      "name": "桃園區",
+      "population": 478459,
+      "yoyPercent": 0.1
+    },
+    {
+      "name": "中壢區",
+      "population": 438835,
+      "yoyPercent": 0
+    },
+    {
+      "name": "平鎮區",
+      "population": 226901,
+      "yoyPercent": -0.6
+    },
+    {
+      "name": "八德區",
+      "population": 216891,
+      "yoyPercent": 0.6
+    },
+    {
+      "name": "龜山區",
+      "population": 190506,
+      "yoyPercent": 1.5
+    },
+    {
+      "name": "楊梅區",
+      "population": 183153,
+      "yoyPercent": 0.2
+    },
+    {
+      "name": "蘆竹區",
+      "population": 170858,
+      "yoyPercent": 0.1
+    },
+    {
+      "name": "龍潭區",
+      "population": 126607,
+      "yoyPercent": -0.7
+    },
+    {
+      "name": "大溪區",
+      "population": 93278,
+      "yoyPercent": -0.8
+    },
+    {
+      "name": "大園區",
+      "population": 91749,
+      "yoyPercent": 2.9
+    },
+    {
+      "name": "觀音區",
+      "population": 78376,
+      "yoyPercent": 1.6
+    },
+    {
+      "name": "新屋區",
+      "population": 49752,
+      "yoyPercent": 0
+    },
+    {
+      "name": "復興區",
+      "population": 13246,
+      "yoyPercent": 0.2
+    }
+  ],
+  "trend": [
+    {
+      "period": "2024-12",
+      "population": 2338648
+    },
+    {
+      "period": "2025-12",
+      "population": 2355106
+    },
+    {
+      "period": "2026-09",
+      "population": 2358611
+    }
+  ],
+  "sources": {
+    "populationOfficial": "https://cab.tycg.gov.tw/News.aspx?n=7902&sms=12475",
+    "cityAggregateOfficial": "https://cab.tycg.gov.tw/News_Content.aspx?n=7818&s=1892995",
+    "districtPopulationCrossCheck": "https://twprobe.com/stats/area/taoyuan-city",
+    "districtBoundary": "https://github.com/jason2506/Taiwan.TopoJSON",
+    "districtBoundaryOriginal": "https://data.gov.tw/"
+  }
+}
