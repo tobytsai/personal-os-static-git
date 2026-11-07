@@ -44,6 +44,19 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 .story-card .story-check{color:#84622d}
 .story-empty{margin:0;padding:13px;border:1px dashed #c8cadb;border-radius:13px;color:#6c748b;font-size:13px;background:#fff}
 @media(max-width:600px){.story-controls{align-items:stretch}.story-controls label{width:100%;justify-content:space-between}.story-controls select{flex:1;max-width:none}}
+
+/* 桃園市政府電子書：市府公告核對來源，卡片只收錄摘要與書目，不轉存出版品。 */
+.ebook-section .ebook-intro{margin:0 2px 12px;color:#566078;font-size:14px;line-height:1.85}
+.ebook-tools{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:9px}
+.ebook-tools label{font-size:13px;font-weight:800;color:#3f4c61}
+.ebook-tools input,.ebook-tools select{min-height:43px;padding:10px 12px;border:1px solid #d8cffd;border-radius:13px;background:#fff;color:#354058;font-size:14px}
+.ebook-tools input{flex:2 1 220px;min-width:0}.ebook-tools select{flex:1 1 170px;min-width:0}
+.ebook-count{margin:0 0 13px;color:#696b87;font-size:12px;line-height:1.6}
+.ebook-card .ebook-meta{color:#6852ae;font-size:12px;font-weight:800;line-height:1.7}
+.ebook-card .ebook-check{color:#816529}
+.ebook-card p{line-height:1.75}.ebook-card a.map-link{margin-right:5px}
+.ebook-card .ebook-tag{display:inline-block;padding:4px 9px;background:#f2edff;border-radius:999px;color:#6449ad;font-size:11px;font-weight:800;margin:4px 5px 6px 0}
+@media(max-width:600px){.ebook-tools label{width:100%}.ebook-tools input,.ebook-tools select{flex:1 1 100%}}
 </style>
 </head>
 <body><main>
@@ -55,6 +68,26 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 <section class="quick-section"><div class="section-head"><h2>🏙️ 全桃園・市民服務</h2></div><div class="quick-grid" id="lifeCity"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📰 全桃園・地方新聞</h2></div><div class="quick-grid" id="lifeNews"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📚 全桃園・電子閱讀</h2></div><div class="quick-grid" id="lifeEbooks"></div></section>
+
+<section class="quick-section ebook-section" id="taoyuanEbookLibrary">
+ <div class="section-head"><h2>📖 桃園市電子書・地方知識書架</h2><span class="hint">官方出版品精選索引</span></div>
+ <p class="ebook-intro">以桃園市政府電子書平台為主入口，將地方故事、文化資產、藝文、社會議題與親子走讀素材整理成可搜尋的閱讀卡片。<strong>這裡是經來源公告核對的精選索引，不代表平台全站已匯入。</strong></p>
+ <nav class="story-links" aria-label="桃園市府電子書與延伸研究入口">
+  <a href="https://ebook.tycg.gov.tw/index/index.php" target="_blank" rel="noopener noreferrer">📚 市府電子書平台</a>
+  <a href="https://www.taoyuanstory.tw/" target="_blank" rel="noopener noreferrer">📰 桃園誌原文</a>
+  <a href="travel.html">🧳 旅遊資訊啟動器</a>
+  <a href="community.html">🌱 社區營造啟動器</a>
+ </nav>
+ <div class="ebook-tools">
+  <label for="ebookSearch">🔎 搜尋書刊</label>
+  <input id="ebookSearch" type="search" placeholder="搜尋書名、行政區、主題或用途" autocomplete="off">
+  <label for="ebookCategory">分類</label>
+  <select id="ebookCategory" aria-label="依電子書主題分類篩選"><option value="全部分類">全部分類</option></select>
+ </div>
+ <p class="ebook-count" id="ebookResultCount" role="status" aria-live="polite"></p>
+ <div class="quick-grid" id="lifeEbookResearch" aria-live="polite"></div>
+ <p class="ebook-count">資料核對說明：各書目與網址依市府出版單位或官方公告整理；電子書主站於 2026-11-07 暫無法在整理端逐頁讀取，獨立閱讀連結尚未進一步驗證。刊物封面與內文未搬移，請由原站閱讀。</p>
+</section>
 <section class="quick-section" id="taoyuanStoryTravel">
  <div class="section-head"><h2>🧭 桃園誌 × 深度旅遊・社創素材</h2><span class="hint">地方研究與行程規畫資料庫</span></div>
  <p class="story-intro">將《桃園誌》的地方人物、聚落與文化故事，對照桃園官方觀光資訊，整理成深度旅遊與社區創生的研究線索。<strong>文章記載的生活場域不等於開放參觀景點</strong>，實際行程須另行查證。</p>
@@ -136,6 +169,32 @@ const storyResearchRecords=[{
  travelStudy:"可作為研究大溪河岸、原住民族生活史及社區營造的行前閱讀；應優先查證可公開參訪的周邊文化場域。",
  status:"已確認文章來源；部落參訪、採訪、攝影與活動合作均未取得確認，不應列為自由參觀景點。"
 }];
+
+/* 資料字典：根據官方公告人工核對的書刊入口；不聲稱已同步全部電子書。 */
+const ebookResearchRecords=[
+ {title:"桃園市政府電子書平台",kind:"官方入口",category:"平台入口",region:"全桃園",url:"https://ebook.tycg.gov.tw/index/index.php",linkLabel:"開啟市府電子書平台",source:"https://typass.tycg.gov.tw/list/library",summary:"桃園市政府出版的電子刊物與圖書集中閱讀入口。",usage:"依書名尋找地方故事、文化政策、社區營造與旅遊研究資料。",check:"已核對桃園市民卡官方「圖書閱讀」入口；全站目錄尚未批次匯入。"},
+ {title:"桃園誌",kind:"雙月市刊",category:"城市故事",region:"全桃園",url:"https://ebook.tycg.gov.tw/book/list.php?type=11",linkLabel:"閱讀《桃園誌》專區",source:"https://news.tycg.gov.tw/News_Toggle.aspx?n=5010&sms=10632",other:"https://www.taoyuanstory.tw/",otherLabel:"桃園誌文章官網",summary:"人物、聚落、飲食、產業與地方文化的城市敘事。市府新聞處說明《桃園誌》每單數月 1 日出刊。",usage:"與下方「桃園誌 × 深度旅遊」研究卡片互相對照，發展社區走讀與地方創生主題。",check:"市府新聞處公告確認有市府電子版；分類頁 type=11 由國家圖書館電子書資源索引佐證。"},
+ {title:"桃園藝文",kind:"文化刊物",category:"藝文與工藝",region:"全桃園",url:"https://ebook.tycg.gov.tw/book/list.php?type=5",linkLabel:"閱讀《桃園藝文》",source:"https://culture.tycg.gov.tw/News_Content.aspx?n=8812&s=1769089&sms=12719",summary:"桃園文化局的展覽、藝文節目與文化活動出版資訊。",usage:"尋找場館、展覽及藝術教育案例，延伸到藝術活動與工藝走讀規畫。",check:"已由桃園市政府文化局 2026 年公告核對專區網址。"},
+ {title:"桃園新住民專刊",kind:"多語專刊",category:"多元文化與社創",region:"全桃園",url:"https://ebook.tycg.gov.tw/book/list.php?type=42",linkLabel:"閱讀《桃園新住民專刊》",source:"https://dowcd.tycg.gov.tw/News_Content.aspx?n=16345&s=1408247",summary:"記錄桃園新住民與子女的成長、文化交流、公共參與與社會支持資源。第三期有中文及越、印、泰、英版本。",usage:"新住民參與、跨文化教育、社會企業與社區互助的案例研究。",check:"已由市府婦幼發展局公告確認專刊與網址；此處未逐本核對其他期數。"},
+ {title:"樂桃園－公園無限探索指南",kind:"2026 專書",category:"親子與深度旅遊",region:"13 行政區",url:"https://ebook.tycg.gov.tw/gogofinderReader/index.php?bid=711",linkLabel:"開啟公園探索指南",source:"https://www.tyc.edu.tw/News_Content.aspx?n=5143&s=1615245",summary:"2026 年出版的桃園公園與地景指南，市府說明涵蓋全市 13 區共 81 處公園及特色場域，包含山、河、埤、海景觀。",usage:"規畫親子觀察路線、特色公園串連、桃園埤塘與生態景觀主題旅行。",check:"已由桃園市政府教育局轉知公告核對閱讀器網址與收錄範圍。"},
+ {title:"疼惜桃園勞工｜第 38 期",kind:"2026 年 9 月季刊",category:"市民服務",region:"全桃園",url:"https://ebook.tycg.gov.tw/book/content.php?id=808",linkLabel:"閱讀第 38 期",source:"https://www.career.com.tw/CareerNews/AtrcleContent/08770963A89289624A27826B8F41F3A7",summary:"聚焦中高齡就業、人力再運用、青銀共創及友善職場。",usage:"研究在地勞動需求、跨世代合作與社企就業服務提案。",check:"引用桃園市政府勞動局新聞稿刊載的閱讀連結；電子書內容頁尚未直接開啟驗證。"},
+ {title:"打開時空寶盒：嬉遊大園文化資產",kind:"地方文化圖文書",category:"地方文史",region:"大園區",url:"https://ebook.tycg.gov.tw/index/index.php",linkLabel:"到平台搜尋本書",source:"https://culture.tycg.gov.tw/News_Content.aspx?n=11103&s=1068272",summary:"連結大園考古、機場／空軍基地記憶、竹圍福海宮信仰與學校在地文化資產教育。",usage:"大園文化資產、地方記憶和親子地方學的主題閱讀。",check:"桃園市政府文化局公告確認本書可由市府平台閱讀；尚未取得本書獨立閱讀網址。"},
+ {title:"流與變—打開故事的老街溪",kind:"地方史系列套書",category:"地方文史",region:"平鎮、中壢及下游流域",url:"https://ebook.tycg.gov.tw/index/index.php",linkLabel:"到平台搜尋本書",source:"https://www.tycg.gov.tw/NewsPage_Content.aspx?n=10&s=308695",summary:"從老街溪整治、城市河川與聚落地景，探索流域及河岸生活的歷史變遷。",usage:"設計從平鎮到中壢及下游河段的流域走讀，搭配水文化、河川生態與在地訪談。",check:"市府新書介紹確認可在電子書平台觀看；尚未取得本書獨立閱讀網址。"}
+];
+function ebookCardHtml(item){
+ const e=storyEscape;
+ return '<article class="store-card ebook-card">'
+  +'<h4>'+e(item.title)+'</h4>'
+  +'<p class="ebook-meta">📖 '+e(item.kind)+'｜📍 '+e(item.region)+'</p>'
+  +'<span class="ebook-tag">'+e(item.category)+'</span>'
+  +'<p><strong>內容：</strong>'+e(item.summary)+'</p>'
+  +'<p><strong>研究應用：</strong>'+e(item.usage)+'</p>'
+  +'<p class="ebook-check"><strong>核對：</strong>'+e(item.check)+'</p>'
+  +'<a class="map-link" href="'+e(item.url)+'" target="_blank" rel="noopener noreferrer">'+e(item.linkLabel)+' ↗</a>'
+  +'<a class="map-link" href="'+e(item.source)+'" target="_blank" rel="noopener noreferrer">來源公告 ↗</a>'
+  +(item.other?'<a class="map-link" href="'+e(item.other)+'" target="_blank" rel="noopener noreferrer">'+e(item.otherLabel||"延伸閱讀")+' ↗</a>':"")
+  +'</article>';
+}
 function storyEscape(str){return String(str).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
 function storyCardHtml(item){
  const e=storyEscape;
@@ -325,6 +384,12 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"樂桃園－公園無限探索指南",
+"桃園藝文",
+"桃園新住民專刊",
+"疼惜桃園勞工｜第 38 期",
+"打開時空寶盒：嬉遊大園文化資產",
+"流與變—打開故事的老街溪",
 "桃園誌｜從故鄉出發，在桃園落地",
 "桃園誌｜從陌生到熟悉 在桃園扎根的新住民",
 "桃園誌｜把信仰帶到桃園",
@@ -358,12 +423,13 @@ function collectLifeCards(){
  const newsName="桃園電子報",newsKey=lifeKey("全桃園",newsName);
  lifeCatalog.set(newsKey,{key:newsKey,name:newsName,district:"全桃園",html:'<article class="store-card"><h4>桃園電子報</h4><p>桃園地方新聞，瀏覽生活、活動、文教、交通與美食資訊。</p><a class="map-link" href="https://tyenews.com/" target="_blank" rel="noopener noreferrer">開啟桃園電子報 ↗</a></article>'});
  const ebookName="桃園市政府電子書平台",ebookKey=lifeKey("全桃園",ebookName);
- lifeCatalog.set(ebookKey,{key:ebookKey,name:ebookName,district:"全桃園",html:'<article class="store-card"><h4>桃園市政府電子書平台</h4><p>瀏覽桃園市政府電子書及出版品。</p><a class="map-link" href="https://ebook.tycg.gov.tw/book/list.php?type=1" target="_blank" rel="noopener noreferrer">開啟電子書平台 ↗</a></article>'});
+ lifeCatalog.set(ebookKey,{key:ebookKey,name:ebookName,district:"全桃園",html:'<article class="store-card"><h4>桃園市政府電子書平台</h4><p>瀏覽桃園市政府電子書及出版品。</p><a class="map-link" href="https://ebook.tycg.gov.tw/index/index.php" target="_blank" rel="noopener noreferrer">開啟電子書平台 ↗</a></article>'});
  const storyName="桃園誌",storyKey=lifeKey("全桃園",storyName);
  lifeCatalog.set(storyKey,{key:storyKey,name:storyName,district:"全桃園",html:'<article class="store-card"><h4>桃園誌</h4><p>探索桃園的人物故事、地方文化、生活與美食，並可閱讀雜誌。</p><a class="map-link" href="https://www.taoyuanstory.tw/" target="_blank" rel="noopener noreferrer">開啟桃園誌 ↗</a></article>'});
  const pendingName="Facebook 分享連結（待確認）",pendingKey=lifeKey("全桃園",pendingName);
  lifeCatalog.set(pendingKey,{key:pendingKey,name:pendingName,district:"全桃園",html:'<article class="store-card"><h4>Facebook 分享連結（待確認）</h4><p>連結內容及分類尚待確認，請開啟查看。</p><a class="map-link" href="https://www.facebook.com/share/1AJ4iDQDnX/" target="_blank" rel="noopener noreferrer">開啟 Facebook 連結 ↗</a></article>'});
  for(const entry of storyResearchRecords){const key=lifeKey(entry.district,entry.title);if(!lifeCatalog.has(key))lifeCatalog.set(key,{key,name:entry.title,district:entry.district,html:storyCardHtml(entry)});}
+ for(const entry of ebookResearchRecords){const key=lifeKey("全桃園",entry.title);lifeCatalog.set(key,{key,name:entry.title,district:"全桃園",html:ebookCardHtml(entry)});}
  const keys=[...lifeCatalog.keys()];
  if(!Array.isArray(lifeState.known)){lifeState.known=keys;lifeState.added=[];}
  else{
@@ -390,13 +456,14 @@ function drawLifeLists(){
  const show=(id,keys,empty)=>{document.getElementById(id).innerHTML=keys.map(lifeCard).filter(Boolean).join("")||'<p class="quick-empty">'+empty+'</p>';};
  show("lifeCity",[lifeKey("全桃園","桃園市民卡")],"目前沒有市民服務入口。");
  show("lifeNews",[lifeKey("全桃園","桃園電子報")],"目前沒有地方新聞入口。");
- show("lifeEbooks",[lifeKey("全桃園","桃園誌"),lifeKey("全桃園","桃園市政府電子書平台")],"目前沒有電子閱讀入口。");
+ show("lifeEbooks",[lifeKey("全桃園","桃園市政府電子書平台"),lifeKey("全桃園","樂桃園－公園無限探索指南"),lifeKey("全桃園","桃園誌"),lifeKey("全桃園","桃園藝文")],"目前沒有電子閱讀入口。");
  show("lifePendingLinks",[lifeKey("全桃園","Facebook 分享連結（待確認）")],"目前沒有待確認連結。");
  show("lifeRecent",lifeState.recent.filter(k=>lifeCatalog.has(k)).slice(0,10),"開啟卡片中的連結後，會顯示在這裡。");
  show("lifeFavorites",lifeState.favorites.filter(k=>lifeCatalog.has(k)),"按卡片上的「收藏」，常用項目就會出現在這裡。");
  show("lifeNewest",newest,"目前沒有新增項目。");
  decorateLifeCards();
  drawStoryResearch();
+ drawEbookResearch();
 }
 function decorateLifeCards(){
  const district=document.getElementById("selectedTitle").textContent.replace(/^📍\s*/,"");
@@ -431,6 +498,22 @@ document.getElementById("storyTopicFilters").addEventListener("click",event=>{
 function drawStoryResearch(){
  const matches=storyResearchRecords.filter(entry=>(storyActiveDistrict==="全部桃園"||entry.district===storyActiveDistrict)&&(storyActiveTopic==="全部主題"||entry.topics.includes(storyActiveTopic)));
  document.getElementById("lifeStoryResearch").innerHTML=matches.map(entry=>lifeCard(lifeKey(entry.district,entry.title))).join("")||'<p class="story-empty">這個行政區／主題目前尚無收錄文章。可繼續從《桃園誌》補充研究素材。</p>';
+}
+
+/* 電子書書架：沿用全站收藏、最近開啟與最近新增，並提供搜尋與主題篩選。 */
+let ebookActiveCategory="全部分類",ebookActiveSearch="";
+const ebookCategorySelect=document.getElementById("ebookCategory");
+ebookCategorySelect.innerHTML=["全部分類",...new Set(ebookResearchRecords.map(r=>r.category))].map(category=>'<option value="'+storyEscape(category)+'">'+storyEscape(category)+'</option>').join("");
+document.getElementById("ebookSearch").addEventListener("input",event=>{ebookActiveSearch=event.target.value.trim().toLocaleLowerCase();drawEbookResearch();});
+ebookCategorySelect.addEventListener("change",()=>{ebookActiveCategory=ebookCategorySelect.value;drawEbookResearch();});
+function drawEbookResearch(){
+ const matches=ebookResearchRecords.filter(r=>{
+  const categoryOK=ebookActiveCategory==="全部分類"||r.category===ebookActiveCategory;
+  const corpus=[r.title,r.kind,r.category,r.region,r.summary,r.usage].join(" ").toLocaleLowerCase();
+  return categoryOK&&(!ebookActiveSearch||corpus.includes(ebookActiveSearch));
+ });
+ document.getElementById("ebookResultCount").textContent="顯示 "+matches.length+" / "+ebookResearchRecords.length+" 筆精選書刊與入口";
+ document.getElementById("lifeEbookResearch").innerHTML=matches.map(r=>lifeCard(lifeKey("全桃園",r.title))).join("")||'<p class="story-empty">目前沒有符合條件的書刊；請清除關鍵字或切換分類。</p>';
 }
 collectLifeCards();drawLifeLists();
 </script></body></html>
