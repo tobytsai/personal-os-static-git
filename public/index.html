@@ -21,6 +21,7 @@
 .reminder-toggle{border:1px solid #e4d6be;background:#fffaf1;border-radius:10px;padding:7px 10px;font-size:12px}.reminder-body-actions{display:flex;justify-content:flex-end;margin-top:10px}#reminder-content[hidden]{display:none}.reminder-cloud{margin:12px 0;font-size:14px}.reminder-cloud summary{cursor:pointer;padding:8px}.reminder-cloud-fields{display:grid;gap:10px}.reminder-cloud label{display:grid;gap:5px}.reminder-cloud input{width:100%;min-width:0;padding:10px;border:1px solid #ccd4df;border-radius:8px}.reminder-cloud-status{overflow-wrap:anywhere}.reminders button:disabled{opacity:.5;cursor:wait}.reminder-actions{flex-wrap:wrap}
 </style><link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="stylesheet" href="./assets/independent-sites.css">
+<script src="./assets/independent-sites.js" defer></script>
 </head>
 <body><div class="shell"><nav class="rail"><div class="logo">◈</div><button onclick="go('home')"><b>⌂</b>首頁</button><a href="#independent-sites"><b>▧</b>獨立站</a><button onclick="go('tools')"><b>▦</b>工具</button><button onclick="go('favorites')"><b>★</b>收藏</button><a href="./pages/calendar.html"><b>📅</b>行事曆</a><a href="https://trello.com/" target="_blank"><b>T</b>Trello</a><a href="https://mail.google.com/" target="_blank"><b>✉</b>Gmail</a><a href="https://drive.google.com/" target="_blank"><b>▣</b>Drive</a></nav>
 <main class="main" id="home"><nav class="quick-links" aria-label="常用網站">
@@ -94,6 +95,5 @@ renderTools();
  toggle.addEventListener('click',()=>{setCollapsed(!collapsed);try{localStorage.setItem('tobyHomeRemindersCollapsedV1',String(collapsed))}catch{}});
 })();
 </script>
-<script src="./assets/independent-sites.js" defer></script>
 </body></html>
 
