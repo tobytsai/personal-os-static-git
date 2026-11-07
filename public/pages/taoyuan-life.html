@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f2edff">
-<meta name="description" content="依桃園市各行政區整理生活資訊入口。">
+<meta name="description" content="桃園13行政區生活資訊、桃園誌深度旅遊及社區創生地方研究素材入口。">
 <title>桃園生活啟動器｜Personal OS</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <style>
@@ -23,6 +23,26 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 
 .quick-section{margin-top:22px}.quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.quick-grid .store-card{margin:0}.quick-empty{color:var(--muted);font-size:13px}.save-card{border:1px solid #d8cffd;border-radius:999px;background:#f2edff;color:#6046bb;padding:7px 12px;cursor:pointer;font-weight:700}.store-card .save-card{margin-top:8px}.quick-grid .map-link{margin-right:4px}@media(max-width:600px){.quick-grid{grid-template-columns:1fr}}
+
+/* 桃園誌×深度旅遊：本站只整理研究摘要，不下載原文圖片。 */
+.story-intro{margin:0 1px 12px;color:#566078;font-size:14px;line-height:1.8}
+.story-steps{margin:0 1px 12px;color:#6851b6;font-weight:750;font-size:12px;line-height:1.8}
+.story-links{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 15px}
+.story-links a{display:inline-block;padding:8px 12px;border:1px solid #ddd5ff;border-radius:999px;background:#fff;color:#5c4ab4;text-decoration:none;font-size:12px;font-weight:800}
+.story-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.story-controls label{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:800}
+.story-controls select{max-width:210px;padding:9px 10px;border:1px solid #d8cffd;border-radius:12px;background:#fff;color:#354058;font-size:13px}
+.story-filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.story-filter{padding:9px 13px;border:1px solid #ddd5ff;border-radius:999px;background:#fff;color:#5c4ab4;font-weight:800;cursor:pointer}
+.story-filter[aria-pressed="true"]{background:#7257df;border-color:#7257df;color:#fff}
+.story-card .story-meta{font-size:12px;font-weight:800;color:#615199;line-height:1.8}
+.story-card .story-chips{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}
+.story-chips span{padding:5px 9px;border-radius:999px;background:#f2edff;color:#615199;font-size:11px;font-weight:800}
+.story-card p{line-height:1.8}
+.story-card p strong{color:#303b53}
+.story-card .story-check{color:#84622d}
+.story-empty{margin:0;padding:13px;border:1px dashed #c8cadb;border-radius:13px;color:#6c748b;font-size:13px;background:#fff}
+@media(max-width:600px){.story-controls{align-items:stretch}.story-controls label{width:100%;justify-content:space-between}.story-controls select{flex:1;max-width:none}}
 </style>
 </head>
 <body><main>
@@ -34,6 +54,15 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 <section class="quick-section"><div class="section-head"><h2>🏙️ 全桃園・市民服務</h2></div><div class="quick-grid" id="lifeCity"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📰 全桃園・地方新聞</h2></div><div class="quick-grid" id="lifeNews"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📚 全桃園・電子閱讀</h2></div><div class="quick-grid" id="lifeEbooks"></div></section>
+<section class="quick-section" id="taoyuanStoryTravel">
+ <div class="section-head"><h2>🧭 桃園誌 × 深度旅遊・社創素材</h2><span class="hint">地方研究與行程規畫資料庫</span></div>
+ <p class="story-intro">將《桃園誌》的地方人物、聚落與文化故事，對照桃園官方觀光資訊，整理成深度旅遊與社區創生的研究線索。<strong>文章記載的生活場域不等於開放參觀景點</strong>，實際行程須另行查證。</p>
+ <p class="story-steps">整理流程：閱讀地方故事 → 辨識社區議題 → 核對官方旅遊資源 → 徵詢在地意見 → 規畫負責任的走讀路線</p>
+ <nav class="story-links" aria-label="桃園深度旅遊研究來源"><a href="https://www.taoyuanstory.tw/" target="_blank" rel="noopener noreferrer">📖 桃園誌來源</a><a href="https://travel.tycg.gov.tw/zh-tw/" target="_blank" rel="noopener noreferrer">🗺️ 桃園觀光導覽網</a><a href="travel.html">🧳 旅遊資訊啟動器</a><a href="community.html">🌱 社區營造啟動器</a></nav>
+ <div class="story-controls"><label for="storyDistrictFilter">📍 行政區 <select id="storyDistrictFilter" aria-label="依行政區篩選文章"><option value="全部桃園">全部桃園</option></select></label><span class="hint">下方可依研究主題篩選文章</span></div>
+ <nav class="story-filters" id="storyTopicFilters" aria-label="桃園誌深度旅遊主題分類"></nav>
+ <div class="quick-grid" id="lifeStoryResearch" aria-live="polite"></div>
+</section>
 <section class="quick-section"><div class="section-head"><h2>🔗 全桃園・待確認連結</h2></div><div class="quick-grid" id="lifePendingLinks"></div></section>
 <section class="section"><div class="section-head"><h2>📍 桃園行政區</h2><span class="hint">選擇一區查看分類</span></div><nav class="districts" id="districts" aria-label="桃園市行政區"></nav><div class="area-grid" id="areaGrid"></div><div class="selected" id="selected"><h3 id="selectedTitle"></h3><p id="selectedIntro"></p><div id="selectedContent"></div></div></section>
 <footer>桃園生活資訊整理頁 · 行政區分類依桃園市 13 區建立</footer>
@@ -55,6 +84,34 @@ const intros={
 "觀音區":"觀音地區生活資訊分類。",
 "復興區":"復興地區生活資訊分類。"
 };
+
+/* 後續《桃園誌》文章加進 storyResearchRecords；保留摘要/議題/查證/來源。 */
+const storyResearchTopics=["全部主題","原住民族文化","地方記憶與聚落","社區共創與自治","河岸環境與土地","飲食與產業","在地工藝"];
+const storyResearchRecords=[{
+ id:"taoyuanstory-20261130303",
+ title:"桃園誌｜在河岸築起一個家 續寫撒烏瓦知族群記憶",
+ issue:"113期",date:"2026-11-01",district:"大溪區",sourceCategory:"封面故事",
+ topics:["原住民族文化","地方記憶與聚落","社區共創與自治","河岸環境與土地"],
+ sourceUrl:"https://www.taoyuanstory.tw/article/20261130303",
+ summary:"大溪大漢溪河岸的撒烏瓦知阿美族部落，從遷居、拆遷抗爭，到族人協力重建居所、發展共同生活與文化傳承的地方故事。",
+ socialStudy:"居民共同參與決策、舊料再利用與集體造屋，以及文化認同、土地使用和居住權議題。",
+ travelStudy:"可作為研究大溪河岸、原住民族生活史及社區營造的行前閱讀；應優先查證可公開參訪的周邊文化場域。",
+ status:"已確認文章來源；部落參訪、採訪、攝影與活動合作均未取得確認，不應列為自由參觀景點。"
+}];
+function storyEscape(str){return String(str).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+function storyCardHtml(item){
+ const e=storyEscape;
+ return '<article class="store-card story-card">'
+ +'<h4>'+e(item.title)+'</h4>'
+ +'<p class="story-meta">📖 《桃園誌》第'+e(item.issue)+'｜'+e(item.date)+'｜'+e(item.sourceCategory)+'｜'+e(item.district)+'</p>'
+ +'<div class="story-chips">'+item.topics.map(topic=>'<span>'+e(topic)+'</span>').join("")+'</div>'
+ +'<p><strong>地方故事：</strong>'+e(item.summary)+'</p>'
+ +'<p><strong>社創研究：</strong>'+e(item.socialStudy)+'</p>'
+ +'<p><strong>旅遊規畫：</strong>'+e(item.travelStudy)+'</p>'
+ +'<p class="story-check"><strong>核對狀態：</strong>'+e(item.status)+'</p>'
+ +'<a class="map-link" href="'+e(item.sourceUrl)+'" target="_blank" rel="noopener noreferrer">閱讀桃園誌原文 ↗</a>'
+ +'</article>';
+}
 const nav=document.getElementById("districts"),grid=document.getElementById("areaGrid"),selected=document.getElementById("selected"),selectedContent=document.getElementById("selectedContent");
 function renderDistrictContent(name){
  if(name==="平鎮區"){
@@ -116,7 +173,7 @@ function renderDistrictContent(name){
   return;
  }
  if(name==="大溪區"){
-  selectedContent.innerHTML='<h4 class="subcategory-title">大溪次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="daxiHistoryCategory" type="button">🏛️ 歷史文化</button><button class="subcategory-button" id="daxiEventsCategory" type="button">🎉 活動市集</button></div><div id="storeResults"></div>';
+  selectedContent.innerHTML='<h4 class="subcategory-title">大溪次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="daxiHistoryCategory" type="button">🏛️ 歷史文化</button><button class="subcategory-button" id="daxiEventsCategory" type="button">🎉 活動市集</button><button class="subcategory-button" id="daxiStoryCategory" type="button">📖 桃園誌・深度旅遊</button></div><div id="storeResults"></div>';
   document.getElementById("daxiHistoryCategory").addEventListener("click",()=>{
    const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("桃園市原住民族文化會館 桃園市大溪區員林路一段29巷101號");
    document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>桃園市原住民族文化會館</h4><p>歷史文化 · 原住民族文化展示、藝文活動與教育體驗</p><p>📍 桃園市大溪區員林路一段29巷101號</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a> <a class="map-link" href="https://trello.com/c/KQHMY8HJ" target="_blank" rel="noopener noreferrer">Trello 介紹卡片 ↗</a> <a class="map-link" href="https://neecs.moenv.gov.tw/Home/PlaceQryView?id=d8d1af38-e56d-464c-b87d-de33dc17d8c8" target="_blank" rel="noopener noreferrer">環境教育場域資訊 ↗</a></article>';
@@ -125,6 +182,9 @@ function renderDistrictContent(name){
    const mapUrl="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("大溪木藝生態博物館 桃園市大溪區普濟路33之3號");
    const articleUrl="https://www.taiwanhot.net/news/focus/1152106/%E6%89%93%E9%96%8B%E5%B7%A5%E5%A0%B4%E5%A4%A7%E9%96%80%E8%AE%93%E5%9C%A8%E5%9C%B0%E5%B7%A5%E8%97%9D%E8%B5%B0%E5%90%91%E5%9C%8B%E9%9A%9B+2026%E5%A4%A7%E6%BA%AA%E5%B7%A5%E8%97%9D%E9%80%B1%E7%99%BB%E5%A0%B4/70/%E7%94%9F%E6%B4%BB";
    document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>2026 大溪工藝週</h4><p>活動市集 · 從地方出發，與世界相遇</p><p>📅 2026年10月31日（六）至11月8日（日）</p><p>📍 桃園市大溪區各活動場地，包含大溪木藝生態博物館及在地工場；各場次地點與時間請查活動資訊。</p><p>職人工場開放、工藝體驗、市集與國際交流等系列活動，部分場次需預約。</p><a class="map-link" href="'+mapUrl+'" target="_blank" rel="noopener noreferrer">木博館地圖 ↗</a> <a class="map-link" href="'+articleUrl+'" target="_blank" rel="noopener noreferrer">查看新聞報導 ↗</a> <a class="map-link" href="https://wem.tycg.gov.tw/News_Content.aspx?n=15031&amp;s=1895952" target="_blank" rel="noopener noreferrer">木博館活動資訊 ↗</a> <a class="map-link" href="https://www.accupass.com/event/2609161000251480404030" target="_blank" rel="noopener noreferrer">工藝短講報名 ↗</a></article>';
+  });
+  document.getElementById("daxiStoryCategory").addEventListener("click",()=>{
+   document.getElementById("storeResults").innerHTML=storyResearchRecords.filter(item=>item.district==="大溪區").map(storyCardHtml).join("");
   });
   return;
  }
@@ -219,6 +279,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"桃園誌｜在河岸築起一個家 續寫撒烏瓦知族群記憶",
 "Facebook 分享連結（待確認）",
 "桃園誌",
 "桃園市政府電子書平台",
@@ -253,6 +314,7 @@ function collectLifeCards(){
  lifeCatalog.set(storyKey,{key:storyKey,name:storyName,district:"全桃園",html:'<article class="store-card"><h4>桃園誌</h4><p>探索桃園的人物故事、地方文化、生活與美食，並可閱讀雜誌。</p><a class="map-link" href="https://www.taoyuanstory.tw/" target="_blank" rel="noopener noreferrer">開啟桃園誌 ↗</a></article>'});
  const pendingName="Facebook 分享連結（待確認）",pendingKey=lifeKey("全桃園",pendingName);
  lifeCatalog.set(pendingKey,{key:pendingKey,name:pendingName,district:"全桃園",html:'<article class="store-card"><h4>Facebook 分享連結（待確認）</h4><p>連結內容及分類尚待確認，請開啟查看。</p><a class="map-link" href="https://www.facebook.com/share/1AJ4iDQDnX/" target="_blank" rel="noopener noreferrer">開啟 Facebook 連結 ↗</a></article>'});
+ for(const entry of storyResearchRecords){const key=lifeKey(entry.district,entry.title);if(!lifeCatalog.has(key))lifeCatalog.set(key,{key,name:entry.title,district:entry.district,html:storyCardHtml(entry)});}
  const keys=[...lifeCatalog.keys()];
  if(!Array.isArray(lifeState.known)){lifeState.known=keys;lifeState.added=[];}
  else{
@@ -285,6 +347,7 @@ function drawLifeLists(){
  show("lifeFavorites",lifeState.favorites.filter(k=>lifeCatalog.has(k)),"按卡片上的「收藏」，常用項目就會出現在這裡。");
  show("lifeNewest",newest,"目前沒有新增項目。");
  decorateLifeCards();
+ drawStoryResearch();
 }
 function decorateLifeCards(){
  const district=document.getElementById("selectedTitle").textContent.replace(/^📍\s*/,"");
@@ -303,5 +366,22 @@ document.addEventListener("click",e=>{
  if(card&&e.target.closest("a")){const key=card.dataset.lifeKey;lifeState.recent=[key,...lifeState.recent.filter(k=>k!==key)].slice(0,10);saveLifeState();drawLifeLists();}
  if(e.target.closest(".subcategory-button"))setTimeout(decorateLifeCards,0);
 });
+
+/* 行政區 × 主題，可持續新增素材。 */
+let storyActiveTopic="全部主題",storyActiveDistrict="全部桃園";
+const storyDistrictFilter=document.getElementById("storyDistrictFilter");
+storyDistrictFilter.innerHTML=["全部桃園",...districts].map(n=>'<option value="'+storyEscape(n)+'">'+storyEscape(n)+'</option>').join("");
+storyDistrictFilter.addEventListener("change",()=>{storyActiveDistrict=storyDistrictFilter.value;drawStoryResearch();});
+document.getElementById("storyTopicFilters").innerHTML=storyResearchTopics.map(topic=>'<button class="story-filter" type="button" data-story-topic="'+storyEscape(topic)+'" aria-pressed="'+(topic===storyActiveTopic)+'">'+storyEscape(topic)+'</button>').join("");
+document.getElementById("storyTopicFilters").addEventListener("click",event=>{
+ const b=event.target.closest("[data-story-topic]");if(!b)return;
+ storyActiveTopic=b.dataset.storyTopic;
+ document.querySelectorAll("[data-story-topic]").forEach(el=>el.setAttribute("aria-pressed",String(el.dataset.storyTopic===storyActiveTopic)));
+ drawStoryResearch();
+});
+function drawStoryResearch(){
+ const matches=storyResearchRecords.filter(entry=>(storyActiveDistrict==="全部桃園"||entry.district===storyActiveDistrict)&&(storyActiveTopic==="全部主題"||entry.topics.includes(storyActiveTopic)));
+ document.getElementById("lifeStoryResearch").innerHTML=matches.map(entry=>lifeCard(lifeKey(entry.district,entry.title))).join("")||'<p class="story-empty">這個行政區／主題目前尚無收錄文章。可繼續從《桃園誌》補充研究素材。</p>';
+}
 collectLifeCards();drawLifeLists();
 </script></body></html>
