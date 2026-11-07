@@ -1,0 +1,37 @@
+{
+  "schema": "taoyuan-official-rss-cache-v1",
+  "lastAttempt": null,
+  "note": "初始化快取：尚未經 GitHub Actions 成功取得官方 RSS。所有文章必須從官方 RSS 檢驗後寫入，不得憑空填入。",
+  "channels": [
+    {
+      "id": "news",
+      "label": "最新消息",
+      "status": "pending",
+      "fetchedAt": null,
+      "successfulAt": null,
+      "itemCount": 0,
+      "error": null,
+      "items": []
+    },
+    {
+      "id": "events",
+      "label": "熱門活動",
+      "status": "pending",
+      "fetchedAt": null,
+      "successfulAt": null,
+      "itemCount": 0,
+      "error": null,
+      "items": []
+    },
+    {
+      "id": "press",
+      "label": "市政新聞",
+      "status": "pending",
+      "fetchedAt": null,
+      "successfulAt": null,
+      "itemCount": 0,
+      "error": null,
+      "items": []
+    }
+  ]
+}

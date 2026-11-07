@@ -1,0 +1,31 @@
+{
+  "schema": "taoyuan-official-rss-config-v1",
+  "sourcePage": "https://www.tycg.gov.tw/cp.aspx?n=18",
+  "verifiedOn": "2026-11-07",
+  "channels": [
+    {
+      "id": "news",
+      "label": "最新消息",
+      "emoji": "📢",
+      "source": "https://www.tycg.gov.tw/NewsPage.aspx?n=7&sms=7882",
+      "feed": "https://www.tycg.gov.tw/OpenData.aspx?SN=65D106AB5A9DB388",
+      "desc": "市府與各局處公告、公共服務、政策及生活提醒"
+    },
+    {
+      "id": "events",
+      "label": "熱門活動",
+      "emoji": "📅",
+      "source": "https://www.tycg.gov.tw/ActiveMonthList.aspx?n=8&sms=7883",
+      "feed": "https://www.tycg.gov.tw/OpenData.aspx?SN=6EE17DD61E44335F",
+      "desc": "官方活動、演出、親子休閒、地方節慶與展覽"
+    },
+    {
+      "id": "press",
+      "label": "市政新聞",
+      "emoji": "📰",
+      "source": "https://www.tycg.gov.tw/NewsPage.aspx?n=10&sms=7885",
+      "feed": "https://www.tycg.gov.tw/OpenData.aspx?SN=50C7BB8497F3C8C2",
+      "desc": "市府新聞、建設進度及政策動態"
+    }
+  ]
+}

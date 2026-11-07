@@ -1,0 +1,71 @@
+name: Sync Taoyuan Government RSS
+on:
+  schedule:
+    # UTC 23:15 and 11:15 = Taipei 07:15 and 19:15
+    - cron: "15 23,11 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/sync_taoyuan_rss.py"
+      - ".github/workflows/taoyuan-rss-sync.yml"
+      - "public/data/taoyuan-rss-config.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: taoyuan-official-rss
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Use Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read official RSS feeds and validate XML
+        id: download
+        continue-on-error: true
+        run: |
+          python scripts/sync_taoyuan_rss.py --output "$RUNNER_TEMP/taoyuan-rss-latest.json"
+      - name: Commit only refreshed RSS cache (retry on concurrent updates)
+        if: steps.download.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git checkout main
+            git reset --hard origin/main
+            mkdir -p public/data
+            cp "$RUNNER_TEMP/taoyuan-rss-latest.json" public/data/taoyuan-rss-latest.json
+            if git diff --quiet -- public/data/taoyuan-rss-latest.json; then
+              echo "Cache unchanged."
+              exit 0
+            fi
+            git add public/data/taoyuan-rss-latest.json
+            git commit -m "data: refresh official Taoyuan RSS cache" 
+            if git push origin HEAD:main; then
+              echo "Synced and committed."
+              exit 0
+            fi
+            echo "Main branch changed concurrently; retrying on the latest main."
+            sleep "$((attempt*2))"
+          done
+          echo "Could not publish after retries." >&2
+          exit 1
+      - name: Report source failure
+        if: steps.download.outcome != 'success'
+        run: |
+          echo "::warning::No official RSS feed was obtained; previous cache remains unchanged."
+          exit 1
