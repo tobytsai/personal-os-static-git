@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f2edff">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="桃園市13行政區戶籍人口、台灣位置圖、可互動行政區人口分布、人口排名與官方統計資料。">
+<title>桃園人口 × 行政區互動圖表｜桃園生活啟動器</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--ink:#26364c;--sub:#65738a;--line:#dfe6ef;--purple:#6c54db;--paper:#fff;--surface:#f5f4fc;--orange:#e68a30}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:linear-gradient(150deg,#f1eeff 0%,#faf9ff 45%,#eaf8f4 100%);min-height:100vh}
+a{color:#5141a1}button,select{font:inherit}button{cursor:pointer}
+.shell{width:min(1200px,100%);margin:auto;padding:17px 19px 60px}
+.top-nav{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 15px}
+.nav-link{display:inline-flex;align-items:center;text-decoration:none;padding:10px 15px;border-radius:999px;background:#fff;color:#445572;border:1px solid #e3e7ef;font-size:13px;font-weight:800}
+.hero{display:grid;grid-template-columns:1.65fr .9fr;gap:17px;align-items:stretch;padding:clamp(22px,4vw,36px);border-radius:28px;background:linear-gradient(120deg,#5848b4,#8462d8 60%,#219ca4);color:#fff;box-shadow:0 15px 32px #5f4aae31}
+.eyebrow{display:inline-flex;padding:6px 11px;border:1px solid #ffffff70;border-radius:999px;background:#ffffff23;font-weight:800;font-size:11px;letter-spacing:.08em}
+h1{margin:12px 0 10px;font-size:clamp(28px,5vw,43px);line-height:1.2}
+.hero p{margin:0;max-width:650px;font-size:14px;line-height:1.9;color:#f5f1ff}
+.hero-markers{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.hero-markers span{font-size:12px;padding:7px 11px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff50}
+.hero-number{display:flex;flex-direction:column;justify-content:center;gap:9px;padding:21px;border:1px solid #ffffff43;border-radius:22px;background:#ffffff1b}
+.hero-number small{font-weight:750;letter-spacing:.06em}.hero-number strong{font-size:clamp(28px,4vw,43px);letter-spacing:-.03em;line-height:1.2;font-variant-numeric:tabular-nums}.hero-number span{font-size:12px;color:#f6edff}
+.section{margin-top:24px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}.section-head h2{margin:0;font-size:22px}.section-head p{margin:3px 0 0;color:var(--sub);font-size:12px;line-height:1.7}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.metric{border:1px solid #fff;border-radius:20px;padding:17px;background:#ffffffeb;box-shadow:0 6px 18px #2d3c5b09}.metric small{color:var(--sub);font-size:12px;font-weight:800}.metric strong{display:block;margin-top:8px;font-size:clamp(17px,2.3vw,26px);font-weight:900;font-variant-numeric:tabular-nums}.metric span{display:block;color:var(--sub);font-size:11px;margin-top:6px}
+.maps{display:grid;grid-template-columns:.77fr 1.23fr;gap:12px}.panel{background:#ffffffed;border:1px solid #e7e9f4;border-radius:22px;padding:19px;box-shadow:0 8px 22px #26364c0a}.panel h3{font-size:18px;margin:0 0 5px}.panel-sub{color:var(--sub);font-size:12px;line-height:1.7;margin:0 0 12px}
+.map-container{display:flex;align-items:center;justify-content:center;border-radius:17px;background:linear-gradient(180deg,#f8faff,#eef4fd);border:1px solid #e7ebf6;min-height:310px;overflow:hidden}
+.map-container svg{width:100%;max-height:500px;display:block}.map-container svg .region{stroke:#fff;stroke-width:1.45;vector-effect:non-scaling-stroke;transition:filter .12s,stroke .12s,opacity .12s;outline:none}
+.map-container svg .region.clickable{cursor:pointer}.map-container svg .region.clickable:hover,.map-container svg .region.clickable:focus-visible{stroke:#152f48;stroke-width:2.5;filter:brightness(1.08)}
+.map-container svg .region.is-active{stroke:#142b46;stroke-width:3.5;filter:drop-shadow(0 2px 4px #102a3540)}
+.map-label{font-size:13px;font-weight:900;text-anchor:middle;dominant-baseline:central;paint-order:stroke;stroke:#fff;stroke-width:3.4;stroke-linejoin:round;pointer-events:none;fill:#38455d}.map-label.small{font-size:12px}.location-label{font-size:15px;fill:#9a4400;stroke:#fff;stroke-width:4;paint-order:stroke;font-weight:900}
+.map-status{margin:10px 0 0;color:#6e648e;font-weight:700;font-size:12px;line-height:1.7;min-height:22px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px}.legend span{display:flex;align-items:center;gap:5px;font-size:11px;color:#66758c}.swatch{width:11px;height:11px;border-radius:4px;display:inline-block}
+.details-layout{display:grid;grid-template-columns:1.17fr .83fr;gap:12px}.chart-panel,.detail-panel{min-width:0}
+.control-bar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:8px 0 14px}.control-bar label{font-size:12px;font-weight:800;color:var(--sub)}.control-bar select{min-height:39px;border:1px solid #ccd5e8;border-radius:12px;background:#fff;padding:8px 12px;color:var(--ink)}
+.bar-list{display:grid;gap:7px}.bar-row{display:grid;grid-template-columns:62px 1fr 92px;gap:9px;align-items:center;width:100%;padding:9px 10px;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--ink);text-align:left}.bar-row:hover,.bar-row:focus-visible{background:#f2f0ff;border-color:#d5cafd}.bar-row.active{background:#ece8ff;border-color:#ac98f1}.bar-name{font-size:13px;font-weight:850}.bar-track{height:14px;border-radius:8px;background:#eceaf7;overflow:hidden}.bar-fill{height:100%;min-width:2px;border-radius:8px;background:linear-gradient(90deg,#b4a1f1,#7050d8)}.bar-row.active .bar-fill{background:linear-gradient(90deg,#f2b66c,#dd7d2f)}.bar-value{text-align:right;font-variant-numeric:tabular-nums;font-size:12px;font-weight:850}
+.details-name{display:flex;align-items:center;justify-content:space-between;gap:8px}.details-name h3{font-size:25px;margin:0}.rank-pill{padding:6px 10px;border-radius:999px;background:#eae6fe;color:#6048be;font-size:12px;font-weight:800}
+.detail-pop{font-size:36px;letter-spacing:-.03em;font-weight:950;font-variant-numeric:tabular-nums;margin:12px 0 5px}.detail-pop small{font-size:14px;color:var(--sub)}
+.detail-sub{color:var(--sub);font-size:12px;line-height:1.8;margin:0}
+.donut-wrap{display:flex;align-items:center;gap:14px;margin:18px 0;padding:15px 0;border-block:1px solid #e9eaf4}.donut{width:116px;height:116px;flex:0 0 auto}.donut-side strong{display:block;font-size:24px}.donut-side span{display:block;font-size:12px;color:var(--sub);line-height:1.8}
+.action-row{display:flex;gap:8px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;border:1px solid #dcd4ff;color:#5846b6;background:#f0ecff;text-decoration:none;font-size:13px;font-weight:850}.btn.primary{background:#6c54db;color:#fff;border-color:#6c54db}.btn:hover,.btn:focus-visible{filter:brightness(.96);outline:2px solid #baa7ed;outline-offset:2px}
+.info-box{margin-top:16px;border-radius:12px;background:#f7f7fc;padding:12px;font-size:12px;color:#647188;line-height:1.85}
+.trends{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.trend-card{border:1px solid #e2e3f2;border-radius:17px;padding:15px;background:#fff}.trend-card small{display:block;color:#69758a;font-weight:800;font-size:12px}.trend-card strong{display:block;font-size:22px;letter-spacing:-.03em;margin:9px 0;font-variant-numeric:tabular-nums}.trend-rail{height:9px;border-radius:9px;background:#ece8f8;overflow:hidden}.trend-level{height:100%;background:linear-gradient(90deg,#9e87ee,#6b50d4);border-radius:9px}
+.table-wrap{width:100%;overflow-x:auto;border:1px solid #e2e6ee;border-radius:16px;background:white}table{border-collapse:collapse;width:100%;min-width:520px}th,td{padding:12px 15px;border-bottom:1px solid #edf0f7;text-align:left;font-size:13px}th{background:#f4f3fb;color:#54617c;font-weight:850}tr:last-child td{border-bottom:0}td:nth-child(n+2),th:nth-child(n+2){text-align:right;font-variant-numeric:tabular-nums}.table-link{border:0;background:transparent;color:#5844a9;padding:0;font-weight:800;cursor:pointer}.table-link:hover{text-decoration:underline}
+.source{font-size:13px;line-height:1.85;color:#66738a}.source a{word-break:break-word}.sources-list{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.sources-list a{border:1px solid #e2ddfa;border-radius:999px;padding:9px 12px;background:#fff;color:#6350b4;text-decoration:none;font-weight:850;font-size:12px}.sources-list a:hover{text-decoration:underline}
+.error{border:1px solid #f3c7c7;padding:14px;border-radius:14px;color:#8b2b2b;background:#fff5f5;line-height:1.8}
+footer{margin:24px 0 0;color:var(--sub);font-size:12px;text-align:center}
+@media(max-width:900px){.maps{grid-template-columns:1fr 1.1fr}.details-layout{grid-template-columns:1fr}}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.maps{grid-template-columns:1fr}.shell{padding:12px}.panel{padding:15px}.map-container{min-height:260px}.trends{grid-template-columns:1fr 1fr}.bar-row{grid-template-columns:60px 1fr 85px;gap:7px}.hero-number strong{font-size:33px}}
+@media(max-width:430px){.metric{padding:13px}.trends{grid-template-columns:1fr}.bar-row{padding:8px 6px}.bar-name{font-size:12px}.bar-value{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+<nav class="top-nav" aria-label="啟動器導覽"><a class="nav-link" href="taoyuan-life.html">← 桃園生活啟動器</a><a class="nav-link" href="../index.html">🏠 回首頁</a><a class="nav-link" href="travel.html">🧭 旅遊資訊</a><a class="nav-link" href="community.html">🌱 社區營造</a></nav>
+<header class="hero">
+  <div>
+    <span class="eyebrow">TAOYUAN · PEOPLE & PLACE</span>
+    <h1>桃園人口 × 行政區互動圖表</h1>
+    <p>從台灣位置認識桃園，再深入 13 個行政區。點選地圖或人口排名，即可查看該區人口、全市占比與在地生活入口，作為地方創生、走讀與社區研究的基礎資料。</p>
+    <div class="hero-markers"><span>🗓️ 2026 年 9 月底戶籍人口</span><span>📍 13 行政區</span><span>🔎 已核對全市人口加總</span></div>
+  </div>
+  <div class="hero-number"><small>桃園市總人口</small><strong id="heroPopulation">2,358,611</strong><span>人 · 民國 115 年 9 月底，非即時人口</span></div>
+</header>
+
+<section class="section" aria-labelledby="metricTitle">
+ <div class="section-head"><div><h2 id="metricTitle">城市人口總覽</h2><p>統計期別：2026-09，以下均為戶籍登記資料。</p></div></div>
+ <div class="metrics">
+  <article class="metric"><small>全市戶數</small><strong id="cityHouseholds">—</strong><span>戶</span></article>
+  <article class="metric"><small>全市男性</small><strong id="cityMale">—</strong><span>人</span></article>
+  <article class="metric"><small>全市女性</small><strong id="cityFemale">—</strong><span>人</span></article>
+  <article class="metric"><small>行政區數</small><strong id="cityDistricts">13 區</strong><span>另有 529 里</span></article>
+ </div>
+</section>
+
+<section class="section" aria-labelledby="mapTitle">
+ <div class="section-head"><div><h2 id="mapTitle">台灣地圖 → 桃園 13 區</h2><p>左圖看桃園在台灣的位置；右圖按各區戶籍人口著色，點選行政區會連動下方圖表。</p></div></div>
+ <div class="maps">
+  <article class="panel"><h3>台灣・桃園定位</h3><p class="panel-sub">桃園市位於台灣西北部，橘色區塊為桃園市。</p>
+   <div class="map-container"><svg id="taiwanMap" viewBox="0 0 420 520" role="img" aria-label="台灣縣市位置地圖，桃園市以橘色標示"><text x="40" y="260">載入地圖中…</text></svg></div>
+   <p class="map-status" id="taiwanStatus">點選橘色桃園市區域，可移至右側地圖。</p>
+  </article>
+  <article class="panel"><h3>桃園・行政區人口地圖</h3><p class="panel-sub">顏色越深表示人口越多，深淺不是人口密度。</p>
+   <div class="map-container"><svg id="districtMap" viewBox="0 0 640 520" role="img" aria-label="桃園13行政區人口著色互動地圖"><text x="40" y="260">載入地圖中…</text></svg></div>
+   <div class="legend" aria-label="人口數圖例">
+    <span><i class="swatch" style="background:#eee9fc"></i>未滿 5 萬</span><span><i class="swatch" style="background:#d9cefa"></i>5–10 萬</span>
+    <span><i class="swatch" style="background:#afa0ef"></i>10–20 萬</span><span><i class="swatch" style="background:#7d69da"></i>20–40 萬</span><span><i class="swatch" style="background:#5040ad"></i>40 萬以上</span>
+   </div>
+   <p class="map-status" id="districtStatus" aria-live="polite">點選地圖上任一區，查看人口資料。</p>
+  </article>
+ </div>
+</section>
+
+<section class="section" id="populationComparison" aria-labelledby="comparisonTitle">
+ <div class="section-head"><div><h2 id="comparisonTitle">13 區人口排名與比較</h2><p>點選橫條或地圖選取行政區。橫條以人口最多的區為相對基準。</p></div></div>
+ <div class="details-layout">
+  <article class="panel chart-panel">
+   <div class="control-bar"><h3>各區戶籍人口</h3><label for="sortPopulation">排列方式
+     <select id="sortPopulation"><option value="desc">人口由多到少</option><option value="asc">人口由少到多</option><option value="name">行政區名稱</option></select></label>
+   </div>
+   <div id="barChart" class="bar-list" aria-label="13區人口水平長條圖"></div>
+  </article>
+  <article class="panel detail-panel" id="districtDetail" aria-live="polite">
+   <div class="details-name"><h3 id="detailName">選取行政區</h3><span class="rank-pill" id="detailRank">—</span></div>
+   <div class="detail-pop"><span id="detailPopulation">—</span><small> 人</small></div>
+   <p class="detail-sub" id="detailText">按地圖或橫條查看該區統計。</p>
+   <div class="donut-wrap"><svg class="donut" id="shareDonut" viewBox="0 0 120 120" role="img" aria-label="選取行政區占全市人口比例"><circle cx="60" cy="60" r="44" fill="none" stroke="#eceaf5" stroke-width="18"></circle><circle id="donutShare" cx="60" cy="60" r="44" fill="none" stroke="#785ad8" stroke-width="18" transform="rotate(-90 60 60)" stroke-dasharray="0 276.46"></circle><text id="donutText" x="60" y="66" text-anchor="middle" font-size="20" font-weight="900" fill="#29354d">—</text></svg>
+     <div class="donut-side"><strong id="detailShare">—</strong><span>占桃園市總人口比重</span><span id="detailYear">—</span></div>
+   </div>
+   <div class="action-row"><a class="btn primary" id="districtLifeLink" href="taoyuan-life.html">查看此區生活卡片</a><a class="btn" href="https://cab.tycg.gov.tw/News.aspx?n=7902&amp;sms=12475" target="_blank" rel="noopener noreferrer">民政局人口原始資料</a></div>
+   <div class="info-box">此頁呈現的是<strong>戶籍人口</strong>，不是實際居住人口。年度變化為資料來源提供的同比概略百分比（四捨五入至小數 1 位），不宜直接推算淨遷入人口。</div>
+  </article>
+ </div>
+</section>
+
+<section class="section" aria-labelledby="trendTitle">
+ <div class="section-head"><div><h2 id="trendTitle">全市人口近期比較</h2><p>以不同年度「當時最新期別」比較：2024、2025 為 12 月底；2026 為 9 月底，並非完整年度。</p></div></div>
+ <div id="trendCards" class="trends"></div>
+</section>
+
+<section class="section" aria-labelledby="tableTitle">
+ <div class="section-head"><div><h2 id="tableTitle">13 區人口資料表</h2><p>保留精確人數、名次和全市占比，適合轉入地方研究試算表。</p></div><button class="btn" type="button" id="downloadCsv">↓ 匯出 CSV</button></div>
+ <div class="table-wrap"><table><thead><tr><th>行政區</th><th>人口（人）</th><th>占全市</th><th>人口排名</th></tr></thead><tbody id="districtTable"></tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="sourceTitle">
+ <div class="section-head"><div><h2 id="sourceTitle">來源、統計口徑與更新</h2></div></div>
+ <div class="panel source">
+  <p>本頁採 <strong>2026 年 9 月 30 日</strong> 為統計快照。各區數字彙整自內政部戶政司資料的公開再整理，13 區加總為 2,358,611 人，與桃園市政府民政局同期官方公告一致。原始官方附件為 ODS／PDF，建議後續每月更新時優先以民政局及戶政司新表再次核對。<strong>不代表已自動即時同步</strong>。</p>
+  <div class="sources-list">
+   <a target="_blank" rel="noopener noreferrer" href="https://cab.tycg.gov.tw/News.aspx?n=7902&amp;sms=12475">民政局人口統計（官方）</a>
+   <a target="_blank" rel="noopener noreferrer" href="https://cab.tycg.gov.tw/News_Content.aspx?n=7818&amp;s=1892995">115 年 9 月全市公告（官方）</a>
+   <a target="_blank" rel="noopener noreferrer" href="https://cab.tycg.gov.tw/cp.aspx?n=7824">民政局行政區劃（官方）</a>
+   <a target="_blank" rel="noopener noreferrer" href="https://twprobe.com/stats/area/taoyuan-city">13 區人口整理及年度資料</a>
+   <a target="_blank" rel="noopener noreferrer" href="https://github.com/jason2506/Taiwan.TopoJSON">台灣行政區界線開放圖資</a>
+  </div>
+  <p>地圖界線資料源自內政部國土測繪中心的開放行政區界線，經開源專案轉為 TopoJSON。圖片及圖表由本頁繪製；人口著色採各區人數，不代表地理面積或人口密度。若只需要官方資料，請使用上方民政局原始統計連結。</p>
+  <p id="loadStatus" aria-live="polite">正在載入本地人口統計快照與地理資料。</p>
+ </div>
+</section>
+<footer>桃園生活啟動器 · 人口與行政區互動圖表 · 資料期別 2026-09</footer>
+</main>
+
+<script>
+(function(){
+"use strict";
+const DATA="../data/taoyuan-population-2026-09.json";
+const MAP_TOWNS="../data/taoyuan-population-towns.topo.json";
+const MAP_COUNTIES="../data/taoyuan-population-counties.topo.json";
+const NS="http://www.w3.org/2000/svg";
+const fmt=n=>Number(n).toLocaleString("zh-TW");
+const $=id=>document.getElementById(id);
+let snapshot=null,townTopology=null,countyTopology=null,activeDistrict="",sortMode="desc";
+const palette=[{limit:50000,color:"#eee9fc"},{limit:100000,color:"#d9cefa"},{limit:200000,color:"#afa0ef"},{limit:400000,color:"#7d69da"},{limit:Infinity,color:"#5040ad"}];
+function shade(value){for(const entry of palette){if(value<entry.limit)return entry.color}return palette[palette.length-1].color}
+function sv(tag,attrs){const el=document.createElementNS(NS,tag);for(const key in attrs)el.setAttribute(key,attrs[key]);return el}
+function decodeArc(topo,index){
+ const arc=topo.arcs[index<0?~index:index],pts=[];let x=0,y=0;
+ for(const delta of arc){x+=delta[0];y+=delta[1];pts.push([x*topo.transform.scale[0]+topo.transform.translate[0],y*topo.transform.scale[1]+topo.transform.translate[1]])}
+ return index<0?pts.reverse():pts;
+}
+function decodeRing(topo,arcIds){
+ const result=[];
+ arcIds.forEach((index,i)=>{const pts=decodeArc(topo,index);result.push(...(i?pts.slice(1):pts))});
+ return result;
+}
+function polygonCoordinates(topo,geometry){
+ const polygons=geometry.type==="Polygon"?[geometry.arcs]:geometry.type==="MultiPolygon"?geometry.arcs:[];
+ return polygons.map(poly=>poly.map(ring=>decodeRing(topo,ring)));
+}
+function renderGeoMap(topo,target,kind){
+ const svg=$(target),width=kind==="taiwan"?420:640,height=520;
+ svg.setAttribute("viewBox","0 0 "+width+" "+height);svg.replaceChildren();
+ const geometries=(topo.objects.map||Object.values(topo.objects)[0]).geometries;
+ const features=geometries.map(g=>({name:g.properties.name,polygons:polygonCoordinates(topo,g)}));
+ const all=features.flatMap(f=>f.polygons.flatMap(p=>p.flatMap(r=>r)));
+ if(!all.length)throw Error("地圖沒有可用的行政區界線");
+ const cos=Math.cos(24*Math.PI/180);
+ const xs=all.map(p=>p[0]*cos),ys=all.map(p=>p[1]);
+ const loX=Math.min(...xs),hiX=Math.max(...xs),loY=Math.min(...ys),hiY=Math.max(...ys);
+ const scale=Math.min((width-52)/(hiX-loX),(height-40)/(hiY-loY));
+ const ox=(width-(hiX-loX)*scale)/2,oy=(height-(hiY-loY)*scale)/2;
+ const xy=p=>[ox+(p[0]*cos-loX)*scale,oy+(hiY-p[1])*scale];
+ for(const feature of features){
+  const values=feature.polygons.flatMap(poly=>poly.flatMap(ring=>ring));
+  if(!values.length)continue;
+  let pathText="";
+  feature.polygons.forEach(poly=>poly.forEach(ring=>{
+   if(!ring.length)return;
+   pathText+=ring.map((p,i)=>{const v=xy(p);return (i?"L":"M")+v[0].toFixed(1)+","+v[1].toFixed(1)}).join(" ")+" Z ";
+  }));
+  const isTaoyuan=feature.name==="桃園市";
+  const row=snapshot.districts.find(d=>d.name===feature.name);
+  const active=kind==="district"&&feature.name===activeDistrict;
+  const path=sv("path",{d:pathText,fill:kind==="taiwan"?(isTaoyuan?"#f19c43":"#deddeb"):shade(row?row.population:0),class:"region"+((kind==="district"||isTaoyuan)?" clickable":"")+(active?" is-active":"")});
+  const label=kind==="taiwan"?feature.name+"（"+(isTaoyuan?"點選查看桃園13區":"台灣縣市")+"）":feature.name+"："+fmt(row?row.population:0)+"人";
+  const title=sv("title",{});title.textContent=label;path.appendChild(title);
+  if(kind==="district"||isTaoyuan){
+   path.setAttribute("tabindex","0");path.setAttribute("role","button");path.setAttribute("aria-label",label);
+   const action=()=>{if(kind==="district")chooseDistrict(feature.name);else{$("districtMap").scrollIntoView({behavior:"smooth",block:"center"});$("taiwanStatus").textContent="已定位桃園市，請在右側選取行政區。"}};
+   path.addEventListener("click",action);path.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();action()}});
+  }
+  svg.appendChild(path);
+ }
+ if(kind==="taiwan"){
+  const tai=features.find(f=>f.name==="桃園市");
+  if(tai){
+   const pts=tai.polygons.flatMap(p=>p[0]||[]),c=[pts.reduce((a,p)=>a+p[0],0)/pts.length,pts.reduce((a,p)=>a+p[1],0)/pts.length],pos=xy(c);
+   svg.appendChild(sv("circle",{cx:pos[0],cy:pos[1],r:6,fill:"#f9b64f",stroke:"#fff","stroke-width":2}));
+   const text=sv("text",{x:pos[0]+14,y:pos[1]-12,class:"location-label"});text.textContent="桃園市";svg.appendChild(text);
+  }
+ }else{
+  for(const f of features){
+   const outer=f.polygons.map(p=>p[0]||[]).sort((a,b)=>b.length-a.length)[0];
+   if(!outer||!outer.length)continue;
+   const px=outer.map(p=>xy(p)),minx=Math.min(...px.map(p=>p[0])),maxx=Math.max(...px.map(p=>p[0])),miny=Math.min(...px.map(p=>p[1])),maxy=Math.max(...px.map(p=>p[1]));
+   const t=sv("text",{x:(minx+maxx)/2,y:(miny+maxy)/2,class:"map-label"+((maxx-minx)<55?" small":"")});t.textContent=f.name.replace("區","");svg.appendChild(t);
+  }
+ }
+}
+function rankOf(name){return [...snapshot.districts].sort((a,b)=>b.population-a.population).findIndex(x=>x.name===name)+1}
+function chooseDistrict(name){
+ if(!snapshot||!snapshot.districts.some(d=>d.name===name))return;
+ activeDistrict=name;
+ const row=snapshot.districts.find(d=>d.name===name),share=100*row.population/snapshot.city.population;
+ $("detailName").textContent=name;$("detailPopulation").textContent=fmt(row.population);$("detailRank").textContent="人口第 "+rankOf(name)+" 名";
+ $("detailText").textContent="占全市人口 "+share.toFixed(2)+"%；統計基準：2026 年 9 月 30 日。";
+ $("detailShare").textContent=share.toFixed(2)+"%";
+ $("detailYear").textContent="對比去年同月："+(row.yoyPercent>0?"+":"")+row.yoyPercent.toFixed(1)+"%（資料來源四捨五入）";
+ $("districtLifeLink").href="taoyuan-life.html?district="+encodeURIComponent(name)+"#districts";
+ const length=2*Math.PI*44;
+ $("donutShare").setAttribute("stroke-dasharray",(length*share/100).toFixed(2)+" "+length.toFixed(2));
+ $("donutText").textContent=share.toFixed(1)+"%";
+ $("districtStatus").textContent="已選擇 "+name+"：人口 "+fmt(row.population)+" 人，占全市 "+share.toFixed(2)+"%。";
+ if(townTopology)renderGeoMap(townTopology,"districtMap","district");
+ renderBars();
+ document.querySelectorAll("#districtTable tr").forEach(tr=>{tr.style.background=tr.dataset.name===name?"#f2eeff":""});
+}
+function renderBars(){
+ if(!snapshot)return;
+ const max=Math.max(...snapshot.districts.map(x=>x.population)),rows=[...snapshot.districts];
+ if(sortMode==="desc")rows.sort((a,b)=>b.population-a.population);
+ else if(sortMode==="asc")rows.sort((a,b)=>a.population-b.population);
+ else rows.sort((a,b)=>a.name.localeCompare(b.name,"zh-Hant"));
+ const node=$("barChart");node.replaceChildren();
+ for(const row of rows){
+  const button=document.createElement("button");button.type="button";button.className="bar-row"+(row.name===activeDistrict?" active":"");
+  button.setAttribute("aria-pressed",String(row.name===activeDistrict));button.setAttribute("aria-label",row.name+" "+fmt(row.population)+"人");
+  const name=document.createElement("span");name.className="bar-name";name.textContent=row.name;
+  const track=document.createElement("span");track.className="bar-track";
+  const fill=document.createElement("span");fill.className="bar-fill";fill.style.display="block";fill.style.width=(row.population/max*100).toFixed(2)+"%";track.appendChild(fill);
+  const value=document.createElement("span");value.className="bar-value";value.textContent=fmt(row.population);
+  button.append(name,track,value);button.addEventListener("click",()=>chooseDistrict(row.name));node.appendChild(button);
+ }
+}
+function renderTable(){
+ const rows=[...snapshot.districts].sort((a,b)=>b.population-a.population),node=$("districtTable");
+ node.replaceChildren();rows.forEach((d,i)=>{
+  const tr=document.createElement("tr");tr.dataset.name=d.name;const td=document.createElement("td"),btn=document.createElement("button");btn.className="table-link";btn.type="button";btn.textContent=d.name;btn.addEventListener("click",()=>{chooseDistrict(d.name);$("districtDetail").scrollIntoView({behavior:"smooth",block:"center"})});td.appendChild(btn);tr.appendChild(td);
+  for(const v of [fmt(d.population),(100*d.population/snapshot.city.population).toFixed(2)+"%",String(i+1)]){const cell=document.createElement("td");cell.textContent=v;tr.appendChild(cell)}node.appendChild(tr);
+ });
+}
+function renderTrends(){
+ const root=$("trendCards");root.replaceChildren();
+ const baseline=2300000,max=Math.max(...snapshot.trend.map(r=>r.population));
+ for(const entry of snapshot.trend){
+  const card=document.createElement("article");card.className="trend-card";
+  const label=document.createElement("small");label.textContent=entry.period==="2026-09"?"2026 年 9 月底（本期）":entry.period.replace("-"," 年 ")+" 月底";
+  const total=document.createElement("strong");total.textContent=fmt(entry.population)+" 人";
+  const bar=document.createElement("div");bar.className="trend-rail";
+  const fill=document.createElement("div");fill.className="trend-level";fill.style.width=(Math.max(0,entry.population-baseline)/Math.max(1,max-baseline)*100).toFixed(1)+"%";bar.appendChild(fill);card.append(label,total,bar);root.appendChild(card);
+ }
+ const p=document.createElement("p");p.className="source";p.style.gridColumn="1/-1";p.textContent="短條僅放大顯示超過 230 萬人的部分（截斷刻度），用於辨認近年小幅變化，不可按長條長度直接比較總人口比例。";root.appendChild(p);
+}
+function downloadCsv(){
+ if(!snapshot)return;
+ const lines=[["行政區","人口","全市占比(%)","人口排名","統計年月"],...([...snapshot.districts].sort((a,b)=>b.population-a.population).map((r,i)=>[r.name,r.population,(100*r.population/snapshot.city.population).toFixed(2),i+1,snapshot.period]))];
+ const csv="\ufeff"+lines.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(",")).join("\r\n");
+ const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"})),link=document.createElement("a");
+ link.href=url;link.download="taoyuan-district-population-"+snapshot.period+".csv";document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);
+}
+$("sortPopulation").addEventListener("change",e=>{sortMode=e.target.value;renderBars()});
+$("downloadCsv").addEventListener("click",downloadCsv);
+Promise.all([
+ fetch(DATA,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("人口資料 HTTP "+r.status);return r.json()}),
+ fetch(MAP_TOWNS).then(r=>{if(!r.ok)throw Error("行政區地圖 HTTP "+r.status);return r.json()}),
+ fetch(MAP_COUNTIES).then(r=>{if(!r.ok)throw Error("台灣地圖 HTTP "+r.status);return r.json()})
+]).then(([data,towns,counties])=>{
+ const sum=data.districts.reduce((n,d)=>n+d.population,0);
+ if(data.districts.length!==13||sum!==data.city.population||data.city.male+data.city.female!==data.city.population)throw Error("各區人口或男女總計與全市數字不符，已停止載入。");
+ snapshot=data;townTopology=towns;countyTopology=counties;
+ $("heroPopulation").textContent=fmt(data.city.population);$("cityHouseholds").textContent=fmt(data.city.households);$("cityMale").textContent=fmt(data.city.male);$("cityFemale").textContent=fmt(data.city.female);$("cityDistricts").textContent=data.districts.length+" 區";
+ renderTable();renderTrends();renderGeoMap(countyTopology,"taiwanMap","taiwan");
+ const requested=new URLSearchParams(location.search).get("district");
+ chooseDistrict(data.districts.some(x=>x.name===requested)?requested:"桃園區");
+ $("loadStatus").textContent="已載入 "+data.period+" 的戶籍人口快照；13 區加總與官方全市公告一致。下期更新須重新核對並替換資料快照。";
+}).catch(e=>{
+ $("loadStatus").textContent="資料載入失敗："+e.message+"。請確認網站佈署及本地 JSON／TopoJSON 資料檔。";
+ $("loadStatus").className="error";
+ $("taiwanStatus").textContent="地圖尚未載入。請使用下方官方來源連結。";
+ $("districtStatus").textContent="地圖尚未載入。請使用下方官方來源連結。";
+});
+})();
+</script>
+<script src="../shared-nav.js?v=20261025-2" defer></script>
+</body>
+</html>
