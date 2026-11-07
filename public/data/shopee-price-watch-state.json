@@ -5,7 +5,7 @@
   "baseline_type": "historical displayed per-item price, not verified actual amount paid",
   "currency": "TWD",
   "watch_filter": "done===true && orderStatus!=='refunded' && price>0",
-  "last_checked_at": "2026-11-06T01:30:35.592Z",
+  "last_checked_at": "2026-11-07T00:34:56.447Z",
   "last_checked_count": 27,
   "last_notified": {
     "shorder-20261102-nutella-biscuits": {
@@ -137,17 +137,16 @@
   },
   "notes": "Updated by Shopee price-watch automation only after verified comparable listings. Keep all historic user product data in source_file; no private account/order identifiers. Alerts must not claim to beat the actual paid price unless that baseline was independently verified.",
   "last_check_summary": {
-    "source": "Shopee Taiwan connected app live search",
+    "source": "Shopee Taiwan connected app live search, 31 searches (27 historical bought items; four targeted cross-checks)",
     "qualified_products": 27,
     "source_sha": "664ddc66c02c46f1248ca8e77758d764aa355947",
-    "search_queries": 29,
-    "new_verified_improvements": 1,
-    "change_notifications": 1,
-    "new_items_notified": [
-      "shorder-20261102-clip-phone-holder"
-    ],
-    "excluded_notes": "Candidate lower card prices excluded when selected variation, exact size, flavor, expiry, bundled quantity, concentration or confirmed in-stock matching specification could not be established (including 1700ml Orange House variants, 315g cool-spicy Coloko, UNIDESIGN flavor, 16g x30 IM jelly, 50-sheet foot pads, 193.2g Nutella near-expiry specials, and 1500ml mineral water regional delivery listings).",
+    "search_queries": 31,
+    "new_verified_improvements": 0,
+    "change_notifications": 0,
+    "new_items_notified": [],
+    "excluded_notes": "All newly observed below-baseline offers were excluded because exact purchased variant/quantity, flavor, brand, length, packaging, availability in applicable delivery location, or model-specific price could not be verified; apparent candidates included OPPO 6.5A cable 100cm, ice pillow deep-snowflake adult, OREO chocolate 315g, UNIDESIGN chili flavor 50g, Coloko spicy 315g, foot pads 50 patches, battery tester silver toothed, insect jelly black syrup 16g x30, and 1700ml Orange House product. An NT$70 Nutella 193.2g offer labeled 惜福商品 may be near expiry and is not confirmed comparable. Previously notified lowest exact-item offers did not improve.",
+    "previously_notified_comparison": "Nutella 109, 50-bag Jinxuan tea 89, CHAOKOH 1000ml 133, Bull Head sauce 127g 52, Double A 80P 500 sheets 128, clip-on phone holder 14; none lower verified in this run.",
     "shipping_and_checkout_verified": false,
-    "checked_at": "2026-11-06T01:30:35.592Z"
+    "checked_at": "2026-11-07T00:34:56.447Z"
   }
 }
