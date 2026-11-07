@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f1edff">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="桃園市政府官方RSS訂閱中心：最新消息、熱門活動、市政新聞，支援搜尋、收藏、已讀與OPML匯出。">
+<title>桃園市政 RSS 訂閱中心｜桃園生活啟動器</title>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root{--ink:#24344c;--muted:#6b7790;--line:#e3e6ef;--main:#7056d9;--soft:#f2edff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 2% 0%,#faedcc,transparent 290px),linear-gradient(145deg,#f3efff,#fdfcf8 55%,#e6f7f3);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}
+main{width:min(1160px,100%);margin:auto;padding:16px 18px 55px}a{color:#5848b0}button,input,select{font:inherit}
+.nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 16px}.nav a{padding:10px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);color:#44516c;font-size:13px;font-weight:800;text-decoration:none}
+.hero{padding:30px;border-radius:27px;color:#fff;background:linear-gradient(120deg,#5846b8,#8265db 56%,#329aa4);box-shadow:0 14px 30px #5f50bc2b}.eyebrow{display:inline-flex;padding:6px 11px;border-radius:999px;background:#ffffff25;border:1px solid #ffffff60;font-size:12px;font-weight:850}.hero h1{font-size:clamp(29px,5.2vw,45px);margin:14px 0 8px;line-height:1.2}.hero p{margin:0;color:#f7f4ff;font-size:14px;line-height:1.85;max-width:810px}.hero-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.hero-chips span{border:1px solid #ffffff55;border-radius:999px;padding:6px 10px;font-size:11px;background:#ffffff25}
+section{margin-top:22px}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:9px;flex-wrap:wrap;margin-bottom:11px}.section-head h2{margin:0;font-size:21px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.65}
+.panel{background:#fffffff2;border:1px solid #e4e8f1;border-radius:21px;padding:17px;box-shadow:0 8px 22px #40506e0b}
+.sources{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.source-card{display:flex;flex-direction:column;gap:9px;padding:18px;border:1px solid #e4e2f4;border-radius:19px;background:#fff;min-width:0}
+.source-card h3{margin:0;font-size:19px}.source-card p{margin:0;font-size:12px;line-height:1.75;color:var(--muted);flex:1}.source-meta{font-size:12px;color:#655a9d;font-weight:750}
+.source-actions{display:flex;gap:8px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #d4c9f7;border-radius:12px;background:#f3f0ff;color:#5b48af;text-decoration:none;padding:9px 13px;font-weight:800;font-size:12px;cursor:pointer;min-height:39px}.btn.primary{border-color:#7056d9;background:#7056d9;color:#fff}.btn:focus-visible,.btn:hover{outline:2px solid #8c7fe0;outline-offset:2px}
+.hint{font-size:12px;line-height:1.75;color:#6f7690}.status{margin:0 0 12px;padding:12px 15px;border:1px solid #ded4f7;border-radius:14px;background:#f8f5ff;color:#554a80;font-size:12px;line-height:1.7}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:13px}
+.filter{display:flex;flex-direction:column;gap:5px;min-width:160px;flex:1}
+.filter.keyword{flex:2;min-width:200px}
+.filter label{font-weight:800;font-size:12px;color:#536078}
+.filter input,.filter select{width:100%;min-height:43px;border:1px solid #d8d9e9;border-radius:13px;padding:9px 12px;color:var(--ink);background:#fff;font-size:13px}
+.toggle-group{display:flex;gap:7px;flex-wrap:wrap}.toggle-group button{border:1px solid #d8d3ed;background:#fff;padding:9px 13px;border-radius:999px;font-size:12px;font-weight:850;color:#5b5180;cursor:pointer;min-height:40px}.toggle-group button[aria-pressed=true]{background:#7056d9;color:#fff;border-color:#7056d9}
+.total{font-size:12px;color:#728097;margin:12px 0;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.item{border:1px solid #e4e7ef;border-radius:19px;background:#fff;padding:16px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.item.read{opacity:.75}.item .meta{font-size:11px;color:#6e6389;font-weight:800;display:flex;justify-content:space-between;flex-wrap:wrap;gap:9px}.item h3{margin:0;font-size:17px;line-height:1.55}.item p{margin:0;color:#667188;font-size:12px;line-height:1.7;overflow-wrap:anywhere}.item .actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.mini{border:1px solid #ded8f1;border-radius:999px;background:#fff;color:#584b8c;padding:8px 11px;font-size:12px;font-weight:800;cursor:pointer}.mini[aria-pressed=true]{background:#ede6ff;border-color:#9e8ce6;color:#5340a2}
+.empty{padding:20px;background:#fff;border:1px dashed #bfbde4;border-radius:17px;color:#68748d;line-height:1.8;font-size:13px}
+.help{font-size:13px;line-height:1.85;color:#58677f}.help p{margin:0 0 8px}.help a{word-break:break-word}
+footer{color:#7b849b;text-align:center;margin-top:24px;font-size:12px}
+@media(max-width:790px){.sources{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+@media(max-width:590px){main{padding:11px}.hero{padding:21px;border-radius:21px}.sources{grid-template-columns:1fr}.panel{padding:14px}.filter{flex:1 1 100%}.filter.keyword{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<main>
+<nav class="nav" aria-label="返回其他啟動器"><a href="taoyuan-life.html">← 桃園生活啟動器</a><a href="../index.html">🏠 個人首頁</a><a href="taoyuan-population.html">📊 桃園人口地圖</a></nav>
+<header class="hero"><span class="eyebrow">🏛️ PERSONAL OS × CITY RSS</span><h1>桃園市政 RSS 訂閱中心</h1><p>彙整桃園市政府官方發布的最新消息、熱門活動及市政新聞。依分類或關鍵字閱讀、收藏重要文章，也可以開啟官方 RSS 原始來源。</p><div class="hero-chips"><span>官方來源・可追溯</span><span>分類／關鍵字搜尋</span><span>我的收藏與已讀</span><span>資訊由 GitHub 排程更新，非即時</span></div></header>
+<section aria-label="官方RSS頻道">
+ <div class="section-head"><div><h2>三個官方訂閱來源</h2><p>每一項都可以開啟來源列表或訂閱 XML；訂閱來源依市府提供的 RSS 網址設定。</p></div><button class="btn" id="downloadOpml" type="button">↓ 匯出 3 個 RSS（OPML）</button></div>
+ <div class="sources" id="sourceCards"></div>
+</section>
+<section id="articleSection">
+ <div class="section-head"><div><h2>🗞️ 市政資訊閱讀看板</h2><p>顯示 GitHub 已成功抓取的官方 RSS 快取，不將舊資料當作即時消息。</p></div></div>
+ <div class="panel">
+  <p id="status" class="status" role="status" aria-live="polite">正在讀取官方 RSS 快取狀態…</p>
+  <div class="filters">
+   <div class="filter keyword"><label for="keyword">搜尋標題與摘要</label><input id="keyword" type="search" placeholder="例：楊梅、兒童、社區、文化、活動" autocomplete="off"></div>
+   <div class="filter"><label for="category">消息分類</label><select id="category"><option value="all">全部三個分類</option></select></div>
+   <div class="filter"><label for="ordering">排序方式</label><select id="ordering"><option value="newest">日期新到舊</option><option value="oldest">日期舊到新</option></select></div>
+  </div>
+  <nav class="toggle-group" aria-label="閱讀狀態篩選">
+   <button data-mode="all" aria-pressed="true" type="button">全部文章</button>
+   <button data-mode="unread" aria-pressed="false" type="button">尚未讀取</button>
+   <button data-mode="starred" aria-pressed="false" type="button">★ 我的收藏</button>
+  </nav>
+  <p class="total" id="count"></p>
+  <div class="grid" id="articles" aria-live="polite"></div>
+  <div style="display:flex;justify-content:center;margin-top:16px"><button type="button" id="showMore" class="btn" hidden>顯示更多文章</button></div>
+ </div>
+</section>
+<section aria-label="RSS說明">
+ <div class="section-head"><div><h2>來源與使用說明</h2></div></div>
+ <div class="panel help">
+  <p><strong>官方 RSS 訂閱頁：</strong><a href="https://www.tycg.gov.tw/cp.aspx?n=18" target="_blank" rel="noopener noreferrer">桃園市政府・訂閱 RSS</a>。此頁提供「最新消息」、「熱門活動」及「市政新聞」三種訂閱。</p>
+  <p><strong>更新機制：</strong>網站以 GitHub Actions 嘗試每天早晚讀取一次官方 RSS，再將確認過的文章標題、時間、摘要、官方連結保存為本站 JSON。如果來源阻擋存取或格式改變，會保留上次成功的資料並標示失敗，不會編造新聞或顯示假的更新時間。</p>
+  <p><strong>本機收藏：</strong>收藏、已讀狀態只保存在這台瀏覽器的本機儲存空間，清除網站資料或更換裝置後不會自動同步。按「OPML 匯出」可將三條 RSS 來源匯入其他閱讀器。</p>
+  <p><strong>重要提醒：</strong>重要公告的有效日期與報名資格仍應開啟市府原文核對；RSS 文章提供閱讀入口，不代表能代替線上申辦與活動報名。</p>
+ </div>
+</section>
+<footer>桃園生活啟動器 · 市政 RSS 訂閱中心 · 僅提供原始來源摘要與個人閱讀管理</footer>
+</main>
+<script>
+(function(){
+"use strict";
+const CONFIG="../data/taoyuan-rss-config.json",CACHE="../data/taoyuan-rss-latest.json",KEY="taoyuanRSSUserStateV1";
+const $=id=>document.getElementById(id);
+let configuration=null,cache=null,mode="all",displayCount=20;
+let state={starred:[],read:[]};
+try{const stored=JSON.parse(localStorage.getItem(KEY)||"{}");if(Array.isArray(stored.starred))state.starred=stored.starred;if(Array.isArray(stored.read))state.read=stored.read;}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+function make(tag,className,text){const el=document.createElement(tag);if(className)el.className=className;if(text!==undefined)el.textContent=text;return el}
+function formatDate(value){
+ if(!value)return "日期未提供";
+ const date=new Date(value);
+ return Number.isNaN(date.getTime())?value:date.toLocaleDateString("zh-TW",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"});
+}
+function formatUpdated(value){
+ if(!value)return "尚未成功更新";
+ const date=new Date(value);
+ return Number.isNaN(date.getTime())?value:date.toLocaleString("zh-TW",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});
+}
+function safeURL(url,fallback){
+ try{const parsed=new URL(url);if(parsed.protocol==="https:"&&(parsed.hostname==="tycg.gov.tw"||parsed.hostname.endsWith(".tycg.gov.tw")))return parsed.href}catch(e){}
+ return fallback;
+}
+function downloadFile(name,body,type){
+ const blob=new Blob([body],{type}),url=URL.createObjectURL(blob);
+ const a=make("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function renderSources(){
+ const root=$("sourceCards");root.replaceChildren();
+ for(const source of configuration.channels){
+  const record=cache?.channels?.find(r=>r.id===source.id);
+  const card=make("article","source-card"),title=make("h3","",source.emoji+" "+source.label),desc=make("p","",source.desc);
+  const count=record?.status==="ok"?"上次抓取 "+record.itemCount+" 筆":record?.successfulAt?"快取 "+(record.itemCount||0)+" 筆（本次抓取失敗）":"尚無可用 RSS 快取";
+  const meta=make("div","source-meta",count);
+  const action=make("div","source-actions");
+  const official=make("a","btn primary","官方文章列表");official.href=source.source;official.target="_blank";official.rel="noopener noreferrer";
+  const feed=make("a","btn","RSS 原始網址");feed.href=source.feed;feed.target="_blank";feed.rel="noopener noreferrer";
+  const select=make("button","btn","看此分類");select.type="button";select.addEventListener("click",()=>{$("category").value=source.id;resetPage();$("articleSection").scrollIntoView({behavior:"smooth",block:"start"})});
+  action.append(official,feed,select);card.append(title,desc,meta,action);root.appendChild(card);
+ }
+}
+function allItems(){
+ if(!cache||!Array.isArray(cache.channels))return [];
+ const known=new Map();
+ for(const ch of cache.channels){
+  for(const r of ch.items||[]){
+   if(!r.title)continue;
+   const fallback=configuration.channels.find(x=>x.id===ch.id)?.source||configuration.sourcePage;
+   const item={...r,link:safeURL(r.link,fallback),channel:ch.id};
+   const id=item.id||item.link+"#"+item.title;
+   if(!known.has(id))known.set(id,{...item,id});
+  }
+ }
+ return [...known.values()];
+}
+function currentList(){
+ const keyword=$("keyword").value.trim().toLocaleLowerCase(),cat=$("category").value;
+ return allItems().filter(item=>(cat==="all"||item.channel===cat)&&(!keyword||[item.title,item.summary].join(" ").toLocaleLowerCase().includes(keyword))&&(mode!=="unread"||!state.read.includes(item.id))&&(mode!=="starred"||state.starred.includes(item.id))).sort((a,b)=>{
+  const cmp=(a.publishedAt||"").localeCompare(b.publishedAt||"");
+  return $("ordering").value==="newest"?-cmp:cmp;
+ });
+}
+function renderArticles(){
+ const items=currentList(),view=items.slice(0,displayCount),root=$("articles");root.replaceChildren();
+ $("count").textContent="符合條件 "+items.length+" 篇｜顯示 "+view.length+" 篇；按卡片原文連結會標記已讀。";
+ if(!view.length){
+  const message=!allItems().length?"目前尚無已成功同步的官方 RSS 文章。可使用上方三個「官方文章列表」直接閱讀來源內容；此看板會在排程成功後顯示。":"沒有符合目前分類、搜尋或收藏條件的文章。";
+  root.replaceWith(root);root.appendChild(make("p","empty",message));
+ }
+ for(const item of view){
+  const article=make("article","item"+(state.read.includes(item.id)?" read":""));
+  const meta=make("div","meta");
+  const label=configuration.channels.find(ch=>ch.id===item.channel)?.label||"官方資訊";
+  meta.append(make("span","",label),make("span","",formatDate(item.publishedAt)));
+  const heading=make("h3","",item.title);
+  const summary=make("p","",item.summary||"請開啟原始文章閱讀完整內容。");
+  const actions=make("div","actions");
+  const link=make("a","btn primary","閱讀市府原文 ↗");link.href=item.link;link.target="_blank";link.rel="noopener noreferrer";
+  link.addEventListener("click",()=>{if(!state.read.includes(item.id)){state.read.unshift(item.id);state.read=state.read.slice(0,400);save();setTimeout(renderArticles,0)}});
+  const star=make("button","mini",state.starred.includes(item.id)?"★ 已收藏":"☆ 收藏");star.type="button";star.setAttribute("aria-pressed",String(state.starred.includes(item.id)));
+  star.addEventListener("click",()=>{state.starred=state.starred.includes(item.id)?state.starred.filter(x=>x!==item.id):[item.id,...state.starred].slice(0,400);save();renderArticles()});
+  const mark=make("button","mini",state.read.includes(item.id)?"標記未讀":"標記已讀");mark.type="button";
+  mark.addEventListener("click",()=>{state.read=state.read.includes(item.id)?state.read.filter(x=>x!==item.id):[item.id,...state.read].slice(0,400);save();renderArticles()});
+  actions.append(link,star,mark);article.append(meta,heading,summary,actions);root.appendChild(article);
+ }
+ $("showMore").hidden=items.length<=displayCount;
+ $("showMore").textContent="顯示更多（剩 "+Math.max(0,items.length-displayCount)+" 篇）";
+}
+function renderStatus(){
+ const records=cache.channels||[],ok=records.filter(c=>c.status==="ok").length,failed=records.filter(c=>c.status==="failed"),latest=records.map(c=>c.successfulAt).filter(Boolean).sort().pop();
+ let text="最新成功同步： "+formatUpdated(latest)+"（台灣時間）。本地快取共 "+allItems().length+" 筆；本次成功 "+ok+"/"+configuration.channels.length+" 個來源。";
+ if(failed.length)text+=" 抓取失敗："+failed.map(c=>c.label).join("、")+"；顯示的是之前的快取（如有），請核對市府官方列表。";
+ if(!latest)text="目前尚未成功取得官方 RSS 快取。資料來源與原始 RSS 連結已設定；可先直接開啟市府官方文章列表。";
+ $("status").textContent=text;
+}
+function exportOpml(){
+ const esc=s=>String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+ const text='<?xml version="1.0" encoding="UTF-8"?>\n<opml version="2.0"><head><title>桃園市政府官方RSS訂閱</title></head><body>'
+   +configuration.channels.map(c=>'<outline text="'+esc(c.label)+'" title="'+esc(c.label)+'" type="rss" xmlUrl="'+esc(c.feed)+'" htmlUrl="'+esc(c.source)+'"/>').join("")
+   +'</body></opml>';
+ downloadFile("taoyuan-government-official-rss.opml",text,"text/xml;charset=utf-8");
+}
+function resetPage(){displayCount=20;renderArticles()}
+$("keyword").addEventListener("input",resetPage);$("category").addEventListener("change",resetPage);$("ordering").addEventListener("change",resetPage);
+$("showMore").addEventListener("click",()=>{displayCount+=20;renderArticles()});
+document.querySelectorAll("[data-mode]").forEach(btn=>btn.addEventListener("click",()=>{
+ mode=btn.dataset.mode;document.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b===btn)));resetPage();
+}));
+$("downloadOpml").addEventListener("click",()=>{if(configuration)exportOpml()});
+Promise.all([
+ fetch(CONFIG,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("訂閱設定 HTTP "+r.status);return r.json()}),
+ fetch(CACHE,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("RSS 快取 HTTP "+r.status);return r.json()})
+]).then(([cfg,data])=>{
+ if(!Array.isArray(cfg.channels)||cfg.channels.length!==3)throw Error("官方頻道設定不完整");
+ configuration=cfg;cache=data;
+ for(const ch of cfg.channels){const option=make("option","",ch.emoji+" "+ch.label);option.value=ch.id;$("category").appendChild(option)}
+ renderSources();renderStatus();renderArticles();
+ const requested=new URLSearchParams(location.search).get("channel");
+ if(cfg.channels.some(c=>c.id===requested)){$("category").value=requested;resetPage()}
+}).catch(e=>{
+ $("status").textContent="無法讀取本站訂閱資料："+e.message+"。可先至桃園市政府官方 RSS 訂閱頁使用三種服務。";
+ const official=make("a","btn primary","開啟官方 RSS 訂閱頁");official.href="https://www.tycg.gov.tw/cp.aspx?n=18";official.target="_blank";official.rel="noopener noreferrer";$("sourceCards").appendChild(official);
+});
+})();
+</script>
+<script src="../shared-nav.js?v=20261025-2" defer></script>
+</body>
+</html>
