@@ -98,7 +98,7 @@ footer{margin-top:27px;color:#878b9b;text-align:center;font-size:11px}
   </div>
   <div class="hero-art" aria-hidden="true"><span class="spark one">✦</span><span class="spark two">✧</span><span class="spark three">✦</span><div class="orbit"><div class="book-stack"><div class="book">讀一點新知</div><div class="book">找一本好書</div><div class="book">開啟新靈感</div></div></div></div>
 </header>
-<div class="stats"><span class="stat" id="entryStat">📚 35 個入口</span><span class="stat">🗂 6 個主題</span><span class="stat">✨ 搜尋與分類</span></div>
+<div class="stats"><span class="stat" id="entryStat">📚 35 個入口</span><span class="stat">🗂 7 個主題</span><span class="stat">✨ 搜尋與分類</span></div>
 <section class="activity-grid" aria-label="個人入口紀錄">
   <div class="activity-panel"><div class="activity-title"><h2>⭐ 我的收藏</h2><span id="favoriteCount">0 個</span></div><div class="activity-items" id="favoriteItems"></div></div>
   <div class="activity-panel"><div class="activity-title"><h2>🕘 近期打開</h2><span id="recentCount">0 個</span></div><div class="activity-items" id="recentItems"></div></div>
@@ -115,7 +115,7 @@ footer{margin-top:27px;color:#878b9b;text-align:center;font-size:11px}
 </main>
 <script>
 const entries=[
-{name:"Gemini Voice Remixing｜AI 配音",group:"資訊探索",icon:"🎙️",desc:"用文字調整 AI 音色；查看操作步驟、提示詞與 Google AI Studio。",url:"gemini-voice-remixing.html",color:"#7855dc"},
+{name:"Gemini Voice Remixing｜AI 配音",group:"網路技術",icon:"🎙️",desc:"用文字調整 AI 音色；查看操作步驟、提示詞與 Google AI Studio。",url:"gemini-voice-remixing.html",color:"#7855dc"},
 {name:"免費資源網",group:"資訊探索",icon:"🧰",desc:"探索免費軟體、線上工具、素材與科技教學。",url:"https://free.com.tw/",color:"#27a9a0"},
 {name:"Instapaper",group:"資訊探索",icon:"📌",desc:"收藏文章，留待有空時閱讀。",url:"https://www.instapaper.com/",color:"#f39a37"},
 {name:"Google 新聞",group:"資訊探索",icon:"🗞️",desc:"瀏覽各地新聞與最新消息。",url:"https://news.google.com/?hl=zh-TW&gl=TW&ceid=TW:zh-Hant",color:"#4285f4"},
@@ -154,7 +154,7 @@ const entries=[
 {name:"抖音百科",group:"百科",icon:"🎬",desc:"瀏覽抖音百科內容。",url:"https://www.baike.com/",color:"#5682db"},
 {name:"今日頭條",group:"百科",icon:"📣",desc:"前往今日頭條資訊平台。",pending:true,color:"#5682db"}
 ];
-const categories=["全部","資訊探索","圖書館","書店","讀書","論壇","百科"];
+const categories=["全部","資訊探索","網路技術","圖書館","書店","讀書","論壇","百科"];
 let activeCategory="全部",query="";
 const cards=document.getElementById("cards"),filters=document.getElementById("filters");
 const favoriteKey="infoLauncherFavorites",recentKey="infoLauncherRecent";
