@@ -130,6 +130,7 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 @media(max-width:350px){.cb-types{grid-template-columns:1fr}}
 
 </style>
+<link rel="stylesheet" href="../assets/independent-sites.css">
 </head>
 <body>
 <main class="shell">
@@ -137,6 +138,8 @@ dialog::backdrop{background:rgba(10,13,20,.82)}
 <div><span class="badge">🖼 畫廊工作 · 成品圖庫</span><h1>額緣高橋啟動器</h1><p class="lead">以成品示範圖片探索裱框形式，整合商品編號、繁體中文說明、原始商品圖片，以及 Google Drive 的實例與說明圖。</p></div>
 <div class="actions"><a class="action" href="../index.html">← 首頁</a><a class="action" href="./takahashi-glossary.html">📖 日中裱框術語表</a><button class="action" id="helpBtn" type="button">？使用說明</button></div>
 </header>
+<section id="independent-sites" class="independent-sites" aria-labelledby="independent-sites-title"><div class="independent-heading"><h2 id="independent-sites-title">獨立站 · 私人管理站</h2><span data-sites-count aria-live="polite">共 2 站</span></div><p class="independent-note">使用建立網站的 ChatGPT 帳號登入。同名站以建立日期與時間辨識。</p><div class="independent-controls"><label>搜尋獨立站<input type="search" data-sites-search placeholder="輸入網站名稱、主題或日期"></label></div><div class="independent-grid"><article class="independent-card" data-site-category="額緣高橋" data-site-search="額緣高橋規格核對工作站 額緣高橋 規格核對 2026-11-04 額緣高橋啟動器"><span class="independent-topic">額緣高橋 · 規格核對</span><h3>額緣高橋規格核對工作站</h3><p class="independent-date">建立：2026-11-04（台灣時間）</p><div class="independent-actions"><a href="https://takahashi-spec-workbench.cantertsai.chatgpt.site" target="_blank" rel="noopener noreferrer">開啟私人站 ↗</a></div></article><article class="independent-card" data-site-category="額緣高橋" data-site-search="產品資料與圖片規格管理站 額緣高橋 產品與圖片管理 2026-11-04 額緣高橋啟動器"><span class="independent-topic">額緣高橋 · 產品與圖片管理</span><h3>產品資料與圖片規格管理站</h3><p class="independent-date">建立：2026-11-04（台灣時間）</p><div class="independent-actions"><a href="https://product-image-spec-manager.cantertsai.chatgpt.site" target="_blank" rel="noopener noreferrer">開啟私人站 ↗</a></div></article></div><p class="independent-empty" hidden>沒有符合條件的網站，請試試其他關鍵字或分類。</p></section>
+
 <section class="sourcepanel"><strong>✏️ 商品中文編輯</strong><p>每張商品卡片可修改中文名稱與說明並對照日文原文。修改儲存在目前瀏覽器，不會自動同步，請定期匯出備份。</p><div class="actions"><button class="action" id="trExport">匯出中文備份</button><button class="action" id="trImport">匯入中文備份</button><input type="file" id="trFile" accept=".json,application/json" hidden></div><p id="trStatus" role="status" aria-live="polite"></p></section><aside class="catalogsource" id="catalogsource" aria-label="額緣總表完整商品資料">
   <span class="catalogicon" aria-hidden="true">📊</span>
   <div class="catalogtext"><strong>額緣總表｜4,159 筆完整商品</strong><p>原始 Excel 商品總表（2026/08/30）：商品 ID、日文／繁體中文說明、日圓價格、商品圖片及官網詳情。可對照下方「相框結構」分類。</p></div>
@@ -597,4 +600,5 @@ if(target&&byId.has(target))openViewer(target,deepLink.get("view"));
 })();
 </script>
 <script src="../shared-nav.js?v=20261029" defer></script>
+<script src="../assets/independent-sites.js" defer></script>
 </body></html>

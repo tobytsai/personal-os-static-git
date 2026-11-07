@@ -121,10 +121,13 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 @media(max-width:830px){.topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.topic-category{min-height:142px}}
 @media(max-width:640px){.topic-finder{padding:14px}.topic-results{grid-template-columns:1fr}.topic-category{padding:13px;min-height:136px}.topic-category strong{font-size:14px}.topic-category small{font-size:11px}}
 </style>
+<link rel="stylesheet" href="../assets/independent-sites.css">
 </head>
 <body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
 <header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAOYUAN LIFE</span><h1>桃園生活啟動器</h1><p>以八大主題串起桃園 13 區的生活資源、電子出版、文化藝術、深度旅遊與社區研究。可由主題、次分類、行政區與關鍵字交叉尋找資料。</p><div class="stats"><span>📍 桃園 13 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
+<section id="independent-sites" class="independent-sites" aria-labelledby="independent-sites-title"><div class="independent-heading"><h2 id="independent-sites-title">獨立站 · 私人管理站</h2><span data-sites-count aria-live="polite">共 2 站</span></div><p class="independent-note">使用建立網站的 ChatGPT 帳號登入。同名站以建立日期與時間辨識。</p><div class="independent-controls"><label>搜尋獨立站<input type="search" data-sites-search placeholder="輸入網站名稱、主題或日期"></label></div><div class="independent-grid"><article class="independent-card" data-site-category="桃園生活" data-site-search="桃園旅遊素材匯入與路線比較管理站 桃園生活 旅遊素材 2026-11-07 桃園生活啟動器"><span class="independent-topic">桃園生活 · 旅遊素材</span><h3>桃園旅遊素材匯入與路線比較管理站</h3><p class="independent-date">建立：2026-11-07（台灣時間）</p><div class="independent-actions"><a href="https://taoyuan-material-route-workspace.cantertsai.chatgpt.site" target="_blank" rel="noopener noreferrer">開啟私人站 ↗</a></div></article><article class="independent-card" data-site-category="桃園生活" data-site-search="桃園旅遊深度規畫與走讀管理站 桃園生活 深度旅遊 2026-11-07 桃園生活啟動器"><span class="independent-topic">桃園生活 · 深度旅遊</span><h3>桃園旅遊深度規畫與走讀管理站</h3><p class="independent-date">建立：2026-11-07（台灣時間）</p><div class="independent-actions"><a href="https://taoyuan-walks-planner-2026.cantertsai.chatgpt.site" target="_blank" rel="noopener noreferrer">開啟私人站 ↗</a></div></article></div><p class="independent-empty" hidden>沒有符合條件的網站，請試試其他關鍵字或分類。</p></section>
+
 
 <section class="quick-section" id="taoyuanPopulationFeature" aria-labelledby="populationFeatureTitle">
  <div class="section-head"><h2 id="populationFeatureTitle">📊 桃園人口與行政區</h2><span class="hint">台灣位置圖 × 13 區人口統計</span></div>
@@ -832,4 +835,5 @@ collectLifeCards();drawLifeLists();
 /* 從人口地圖可直接返回指定行政區生活分類。 */
 const districtFromPopulationMap=new URLSearchParams(location.search).get("district");
 if(districtFromPopulationMap&&districts.includes(districtFromPopulationMap)){choose(districtFromPopulationMap);decorateLifeCards();}
-</script></body></html>
+</script><script src="../assets/independent-sites.js" defer></script>
+</body></html>
