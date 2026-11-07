@@ -146,6 +146,7 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
  <nav class="topic-shortcuts" aria-label="快速前往桃園生活專區">
   <a href="#lifeFavoritesSection">⭐ 我的收藏</a>
   <a href="#lifeRecentSection">🕘 最近開啟</a>
+  <a href="#taoyuanRSSFeature">📡 市政 RSS 訂閱</a>
   <a href="#taoyuanEbookLibrary">📖 電子書專區</a>
   <a href="#taoyuanStoryTravel">🧭 桃園誌研究</a>
   <a href="#taoyuanDistricts">📍 13 區原始卡片</a>
@@ -172,6 +173,11 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 </section>
 <section class="quick-section"><div class="section-head"><h2>🏙️ 全桃園・市民服務</h2></div><div class="quick-grid" id="lifeCity"></div></section>
 <section class="quick-section"><div class="section-head"><h2>📰 全桃園・地方新聞</h2></div><div class="quick-grid" id="lifeNews"></div></section>
+<section class="quick-section" id="taoyuanRSSFeature" aria-labelledby="taoyuanRSSTitle">
+ <div class="section-head"><h2 id="taoyuanRSSTitle">📡 全桃園・市政 RSS 訂閱</h2><span class="hint">官方最新消息 × 熱門活動 × 市政新聞</span></div>
+ <p class="story-intro">把桃園市府的三種官方 RSS 來源整合成可搜尋與收藏的閱讀入口。點選卡片即可依頻道開啟市政快訊，並可取得原始 RSS XML 或 OPML；資訊以 GitHub 快取同步，並非即時推播。</p>
+ <div class="quick-grid" id="lifeRSS"></div>
+</section>
 <section class="quick-section"><div class="section-head"><h2>📚 全桃園・電子閱讀</h2></div><div class="quick-grid" id="lifeEbooks"></div></section>
 
 <section class="quick-section ebook-section" id="taoyuanEbookLibrary">
@@ -235,7 +241,7 @@ const lifeTopicTaxonomy=[
  {id:"community",emoji:"🌱",title:"社區營造與社創",hint:"社造、地方創生、社會企業",subs:["社區組織","地方創生","社會企業","多元文化","社造案例"]},
  {id:"life",emoji:"🛍️",title:"在地生活與產業",hint:"美食、農業、商圈與店家",subs:["在地美食","商圈市場","農業食農","觀光工廠","生活店家"]},
  {id:"transport",emoji:"🚌",title:"交通與公共設施",hint:"公車、圖書館與公共空間",subs:["公車客運","桃小巴","停車資訊","圖書館","公共設施"]},
- {id:"events",emoji:"🗓️",title:"活動與教育學習",hint:"展覽、市集、課程與走讀",subs:["展覽","市集","講座","工作坊","親子活動","走讀課程"]}
+ {id:"events",emoji:"🗓️",title:"活動與教育學習",hint:"展覽、市集、課程與走讀",subs:["展覽","市集","講座","工作坊","親子活動","走讀課程","活動公告"]}
 ];
 const lifeSourceFacet={
  pingzhenEventsCategory:["events","市集"],
@@ -564,6 +570,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"桃園市政 RSS 訂閱中心",
 "桃園人口 × 行政區圖表",
 "樂桃園－公園無限探索指南",
 "桃園藝文",
@@ -605,6 +612,16 @@ function collectLifeCards(){
  lifeCatalog.set(cityKey,{key:cityKey,name:cityName,district:"全桃園",html:'<article class="store-card"><h4>桃園市民卡</h4><p>查看市民卡與數位碼、優惠、桃園活動及市府服務。</p><a class="map-link" href="https://typass.tycg.gov.tw/" target="_blank" rel="noopener noreferrer">開啟桃園市民卡官網 ↗</a></article>'});
  const newsName="桃園電子報",newsKey=lifeKey("全桃園",newsName);
  lifeCatalog.set(newsKey,{key:newsKey,name:newsName,district:"全桃園",html:'<article class="store-card"><h4>桃園電子報</h4><p>桃園地方新聞，瀏覽生活、活動、文教、交通與美食資訊。</p><a class="map-link" href="https://tyenews.com/" target="_blank" rel="noopener noreferrer">開啟桃園電子報 ↗</a></article>'});
+ const rssEntries=[
+  {name:"桃園市政 RSS 訂閱中心",desc:"彙整桃園市政府的最新消息、熱門活動與市政新聞；依來源、關鍵字、已讀及收藏查閱，支援 OPML 匯出。",href:"taoyuan-rss.html",primary:"civic",secondary:"政府公告",tags:["RSS","官方","市政資訊","新聞","活動"]},
+  {name:"市府 RSS｜最新消息",desc:"桃園市政府及局處公告、市民服務與政策更新；點選進入 RSS 最新消息分類。",href:"taoyuan-rss.html?channel=news",primary:"civic",secondary:"政府公告",tags:["RSS","最新消息","公告"]},
+  {name:"市府 RSS｜熱門活動",desc:"桃園市府發布的地方活動、演出、親子休閒與節慶；可搜尋、收藏及查看官網。",href:"taoyuan-rss.html?channel=events",primary:"events",secondary:"活動公告",tags:["RSS","熱門活動","演出","親子"]},
+  {name:"市府 RSS｜市政新聞",desc:"桃園市政府市政新聞、重大建設與政策進度的官方 RSS 訂閱分類。",href:"taoyuan-rss.html?channel=press",primary:"civic",secondary:"地方新聞",tags:["RSS","市政新聞","公共建設"]}
+ ];
+ for(const entry of rssEntries){const key=lifeKey("全桃園",entry.name);
+  lifeCatalog.set(key,{key,name:entry.name,district:"全桃園",facet:{primary:entry.primary,secondary:entry.secondary,tags:entry.tags},
+   html:'<article class="store-card"><h4>'+storyEscape(entry.name)+'</h4><p>'+storyEscape(entry.desc)+'</p><a class="map-link" href="'+storyEscape(entry.href)+'">開啟 RSS 訂閱 ↗</a> <a class="map-link" href="https://www.tycg.gov.tw/cp.aspx?n=18" target="_blank" rel="noopener noreferrer">市府官方 RSS 來源 ↗</a></article>'});
+ }
  const ebookName="桃園市政府電子書平台",ebookKey=lifeKey("全桃園",ebookName);
  lifeCatalog.set(ebookKey,{key:ebookKey,name:ebookName,district:"全桃園",html:'<article class="store-card"><h4>桃園市政府電子書平台</h4><p>瀏覽桃園市政府電子書及出版品。</p><a class="map-link" href="https://ebook.tycg.gov.tw/index/index.php" target="_blank" rel="noopener noreferrer">開啟電子書平台 ↗</a></article>'});
  const storyName="桃園誌",storyKey=lifeKey("全桃園",storyName);
@@ -643,8 +660,9 @@ function drawLifeLists(){
  const newestSeed=initialNewest.map(name=>[...lifeCatalog.values()].find(x=>x.name===name)?.key).filter(Boolean);
  const newest=[...(lifeState.added||[]),...newestSeed].filter((k,i,a)=>lifeCatalog.has(k)&&a.indexOf(k)===i).slice(0,10);
  const show=(id,keys,empty)=>{document.getElementById(id).innerHTML=keys.map(lifeCard).filter(Boolean).join("")||'<p class="quick-empty">'+empty+'</p>';};
- show("lifeCity",[lifeKey("全桃園","桃園市民卡"),lifeKey("全桃園","桃園人口 × 行政區圖表")],"目前沒有市民服務入口。");
- show("lifeNews",[lifeKey("全桃園","桃園電子報")],"目前沒有地方新聞入口。");
+ show("lifeCity",[lifeKey("全桃園","桃園市民卡"),lifeKey("全桃園","桃園人口 × 行政區圖表"),lifeKey("全桃園","桃園市政 RSS 訂閱中心")],"目前沒有市民服務入口。");
+ show("lifeNews",[lifeKey("全桃園","桃園電子報"),lifeKey("全桃園","市府 RSS｜市政新聞")],"目前沒有地方新聞入口。");
+ show("lifeRSS",["桃園市政 RSS 訂閱中心","市府 RSS｜最新消息","市府 RSS｜熱門活動","市府 RSS｜市政新聞"].map(n=>lifeKey("全桃園",n)),"市政 RSS 來源尚未加入。");
  show("lifeEbooks",[lifeKey("全桃園","桃園市政府電子書平台"),lifeKey("全桃園","樂桃園－公園無限探索指南"),lifeKey("全桃園","桃園誌"),lifeKey("全桃園","桃園藝文")],"目前沒有電子閱讀入口。");
  show("lifePendingLinks",[lifeKey("全桃園","Facebook 分享連結（待確認）")],"目前沒有待確認連結。");
  show("lifeRecent",lifeState.recent.filter(k=>lifeCatalog.has(k)).slice(0,10),"開啟卡片中的連結後，會顯示在這裡。");
