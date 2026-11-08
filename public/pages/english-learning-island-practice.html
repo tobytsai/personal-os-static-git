@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0c7979">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="英語學習島發音與練習管理站：延續 Word Blossom 的中心單字，支援英語發音、例句跟讀、錄音回放、學習紀錄、錯題與收藏。">
+<title>英語學習島｜發音與練習管理站</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../english-island-practice.css?v=20261108">
+</head>
+<body>
+<div class="app-shell">
+<header class="header">
+ <div class="brand"><span class="brand-icon" aria-hidden="true">🏝️</span><div><small>WORD BLOSSOM · ENGLISH ISLAND</small><strong>英語學習島 <span>發音與練習站</span></strong></div></div>
+ <div class="header-links"><a href="./english-learning-island.html">🗺️ 六座島嶼地圖</a><a href="./self-study.html">📚 自學啟動器</a><a href="../index.html">⌂ 首頁</a></div>
+</header>
+<main>
+<section class="welcome">
+ <div><div class="eyebrow">🌈 聽一聽・說一說・玩一玩</div><h1>每天一點英文，<br><em>讓單字開出花朵。</em></h1><p>延續既有 202 組 Word Blossom 中心字。點一下就聽、放慢再聽、自己錄一段，最後由孩子決定「會了」還是「再練一次」。</p>
+ <div class="quick-links"><a class="quick-link" href="https://english-word-blossom.cantertsai.chatgpt.site/" target="_blank" rel="noopener noreferrer">🌸 原版英語單字花園</a><a class="quick-link" href="https://isleforge-tw.netlify.app/" target="_blank" rel="noopener noreferrer">🧭 造島工坊</a><a class="quick-link" href="https://chatgpt.com/s/t_6aeff05aecf88191ba41a43489a3906a" target="_blank" rel="noopener noreferrer">📖 原始學習內容</a></div>
+ </div><div class="hero-art" aria-hidden="true"><span>🌴</span><span>🌼</span><span>🐬</span><span>☀️</span><span>🐢</span></div>
+</section>
+<div class="statusbar"><span id="siteStatus" role="status" aria-live="polite">正在讀取原本的英語學習島單字…</span><label for="voiceLocale">發音口音</label><select id="voiceLocale" aria-label="選擇英語口音"><option value="en-US">🇺🇸 美式英語</option><option value="en-GB">🇬🇧 英式英語</option></select><button class="mini" id="testVoice" type="button">🔊 試聽聲音</button></div>
+<section class="stats" aria-label="學習進度">
+ <div class="stat"><small>總單字</small><strong id="totalCount">—</strong></div><div class="stat"><small>今天練習</small><strong id="todayCount">—</strong></div><div class="stat"><small>已學</small><strong id="learnedCount">—</strong></div><div class="stat"><small>錯題</small><strong id="mistakeCount">—</strong></div><div class="stat"><small>收藏</small><strong id="favCount">—</strong></div>
+</section>
+<nav class="view-nav" id="viewNav" aria-label="練習分類">
+ <button type="button" data-view="today" class="active">☀️ 今日練習</button>
+ <button type="button" data-view="all">🌸 全部單字</button>
+ <button type="button" data-view="learned">✅ 已學</button>
+ <button type="button" data-view="due">🔄 待複習</button>
+ <button type="button" data-view="wrong">✏️ 錯題</button>
+ <button type="button" data-view="favorites">💛 收藏</button>
+ <button type="button" data-view="game">🎲 遊戲</button>
+ <button type="button" data-view="log">📅 紀錄</button>
+</nav>
+<div class="workspace">
+ <aside class="catalog card">
+  <div class="section-head"><div><h2>🧺 單字籃</h2><p>選擇單字，開啟你的跟讀任務。</p></div><button class="mini" id="newCardBtn" type="button">＋ 新增</button></div>
+  <label class="sr-only" for="q">搜尋英文或中文</label><input id="q" class="search" type="search" placeholder="🔎 搜尋英文、中文或例句…" autocomplete="off">
+  <div class="filters"><label>主題<select id="topicFilter"><option value="">所有主題</option></select></label><label>年級<select id="gradeFilter"><option value="">全部年級</option><option value="1–2年級">1–2 年級</option><option value="3–4年級">3–4 年級</option><option value="5–6年級">5–6 年級</option><option value="7年級以上">7 年級以上</option><option value="未分級">未分級</option></select></label><label>難度<select id="levelFilter"><option value="">全部難度</option><option value="入門">入門</option><option value="基礎">基礎</option><option value="進階">進階</option><option value="未分級">未分級</option></select></label></div>
+  <div id="resultCount" class="result-count" aria-live="polite"></div>
+  <div id="wordList" class="word-list" aria-label="單字卡清單"></div>
+ </aside>
+ <section class="learning card" aria-label="單字與跟讀工作區">
+ <div id="learningPanel">
+  <div class="section-head"><div><h2>🌼 聽說小舞台</h2><p>聽原音 → 慢慢聽 → 跟著說 → 自己決定</p></div><button class="mini" id="editCurrentBtn" type="button">✏️ 編輯卡片</button></div>
+  <div class="flashcard">
+   <div id="imageWrap" class="flash-image" aria-label="單字圖片"><img id="cardImage" alt="" hidden><span id="cardEmoji" aria-hidden="true">🌸</span></div>
+   <div class="flash-text"><div id="cardBadges" class="badges"></div><button id="wordSpeak" class="word-button" type="button" title="點擊聽單字"><span id="wordTitle">Hello</span><span aria-hidden="true">🔊</span></button><p id="wordZh" class="word-zh">你好</p><small id="audioOrigin">語音來源：瀏覽器英文語音</small></div>
+  </div>
+  <div class="sound-controls"><button id="wordSlow" class="softbtn" type="button">🐢 慢速聽</button><button id="wordReplay" class="softbtn" type="button">🔁 重播</button><button id="favToggle" class="softbtn" type="button">♡ 收藏</button></div>
+  <section class="sentence card-in"><div class="section-head"><h3>📖 例句與跟讀</h3><button id="sentenceSpeak" type="button" class="mini">🔊 聽例句</button></div><button id="sentenceText" class="sentence-en" type="button">Can you say this word?</button><p id="sentenceZh" class="translation"></p><button id="sentenceSlow" class="softbtn" type="button">🐢 慢速例句</button></section>
+  <section class="recording card-in"><div class="section-head"><h3>🎤 我的跟讀錄音</h3><small>聲音不會自動上傳</small></div><div class="record-actions"><button id="recordStart" class="action-btn" type="button">🎙️ 開始錄音</button><button id="recordStop" class="softbtn" type="button" disabled>■ 結束錄音</button><audio id="recordAudio" controls playsinline preload="none" hidden aria-label="回放自己的跟讀"></audio></div><p id="recordHint" class="assist" aria-live="polite">先聽英文，再按開始錄音；錄好後可直接回放。</p><div class="recognition"><button id="sttStart" class="softbtn" type="button">🗣️ 語音辨識比對（選用）</button><p id="sttOutput" class="assist" aria-live="polite">辨識只能提供參考，並不是發音成績；沒有辨識功能也能完成練習。</p></div></section>
+  <section class="self-eval card-in"><div class="section-head"><h3>💫 今天學得如何？</h3><span id="dueInfo" class="due-info"></span></div><div class="eval-actions"><button id="markLearned" type="button" class="success-btn">✅ 我會了</button><button id="markReview" type="button" class="again-btn">🔄 我想再練一次</button><button id="nextCard" type="button" class="softbtn">下一張 →</button></div><p class="assist">孩子聽過、練過後自己選，不以語音辨識或一次答題決定能力。</p></section>
+  <section class="quiz card-in" id="gameArea"><div class="section-head"><h3>🎲 聽音配對小遊戲</h3><button type="button" id="quizHear" class="mini">🔊 播放題目</button></div><p id="quizPrompt" class="assist">聽一個英文，找出正確的中文意思。</p><div id="quizOptions" class="quiz-options"></div><p id="quizResult" class="assist" aria-live="polite"></p></section>
+  <section class="notes card-in"><div class="section-head"><h3>📝 單字備註</h3><button id="saveNote" type="button" class="mini">儲存備註</button></div><textarea id="noteInput" rows="2" placeholder="例如：今天練習了 /r/，還想再讀一次。"></textarea></section>
+ </div>
+ <section id="logPanel" class="log-panel" hidden><h2>📅 我的練習紀錄</h2><p class="assist">僅保存在目前的瀏覽器；可透過下方的備份功能帶到另一台裝置。</p><div id="activityList" class="activity-list"></div></section>
+ </section>
+</div>
+<section class="manage card" id="manage">
+ <div class="section-head"><div><h2>🧰 內容管理與備份</h2><p>保留既有單字，可補例句、圖片、音檔和分類；也能匯入新課程。</p></div><div class="manage-actions"><button id="exportJsonBtn" class="mini" type="button">↓ 備份 JSON</button><button id="exportCsvBtn" class="mini" type="button">↓ 匯出 CSV</button><label class="mini upload-label" for="importFile">↑ 匯入 JSON／CSV</label><input id="importFile" type="file" accept=".json,.csv,application/json,text/csv" hidden></div></div>
+ <details id="editor"><summary>＋ 新增或修改一張單字／句子卡</summary><form id="editForm" class="edit-grid"><input id="editId" type="hidden"><label>英文單字或短句 *<input id="editWord" required maxlength="180" placeholder="Example: butterfly"></label><label>繁體中文 *<input id="editZh" required maxlength="180" placeholder="例：蝴蝶"></label><label class="full">英文例句<input id="editSentence" maxlength="400" placeholder="The butterfly is beautiful."></label><label class="full">中文例句<input id="editSentenceZh" maxlength="400" placeholder="這隻蝴蝶很漂亮。"></label><label>主題<input id="editTopic" maxlength="60" placeholder="自然、家庭、食物…"></label><label>年級<select id="editGrade"><option value="未分級">未分級</option><option>1–2年級</option><option>3–4年級</option><option>5–6年級</option><option>7年級以上</option></select></label><label>難度<select id="editLevel"><option value="未分級">未分級</option><option>入門</option><option>基礎</option><option>進階</option></select></label><label>圖片網址（HTTPS）<input id="editImage" type="url" placeholder="https://…/photo.jpg"></label><label>單字音檔網址（選填）<input id="editAudio" type="url" placeholder="https://…/audio.mp3"></label><label class="full">備註<textarea id="editNotes" rows="2"></textarea></label><div class="full edit-actions"><button type="submit" class="action-btn">💾 儲存卡片</button><button id="clearEditor" type="button" class="softbtn">清空，新增另一張</button><span id="editFeedback" class="assist" aria-live="polite"></span></div></form></details>
+ <p class="assist">原版目前提供 202 組中心字；1,751 個完整花瓣單字尚未全部匯入。新資料會保存在此裝置，匯出 JSON 備份後可在另一裝置匯入。若用 Google Sites 嵌入，錄音可能受權限限制，請直接開啟本站網址練習。</p>
+</section>
+<footer><a href="./english-learning-island.html">← 返回原本六座英語學習島</a><span>發音與跟讀管理站 · 繁體中文 · 資料保存在瀏覽器</span></footer>
+</main></div>
+<script src="../english-island-practice.js?v=20261108" defer></script>
+<script src="../shared-nav.js?v=20261108" defer></script>
+</body></html>
