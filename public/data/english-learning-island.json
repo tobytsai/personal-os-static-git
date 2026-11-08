@@ -1,0 +1,1332 @@
+{
+  "title": "Word Blossom｜英語學習島",
+  "subtitle": "從單字花園出航，沿六座島嶼探索英文",
+  "source": {
+    "name": "Word Blossom｜英語單字花園",
+    "sharedUrl": "https://chatgpt.com/s/t_6aeff05aecf88191ba41a43489a3906a",
+    "originalStatistics": {
+      "wordBlossoms": 202,
+      "uniqueWords": 1751
+    },
+    "note": "本資料檔僅轉換了原站可讀的 202 個中心字及 best 的 11 個關聯字；原站完整 1,751 個單字並未全部轉入。原站採拼字聯想，不能視為詞源/字根分類。"
+  },
+  "created": "2026-11-08",
+  "zones": [
+    {
+      "id": "ab",
+      "range": "A–D",
+      "name": "初芽草原",
+      "en": "Sprout Meadow",
+      "icon": "🌱",
+      "quest": "從 A 到 D，找出十朵英文單字花",
+      "count": 47
+    },
+    {
+      "id": "eh",
+      "range": "E–H",
+      "name": "海風沙灘",
+      "en": "Breezy Beach",
+      "icon": "🏖️",
+      "quest": "聽一聽 E 到 H 的單字發音",
+      "count": 32
+    },
+    {
+      "id": "il",
+      "range": "I–L",
+      "name": "星光森林",
+      "en": "Starlit Woods",
+      "icon": "🌳",
+      "quest": "練習 I 到 L 的單字與中文意思",
+      "count": 19
+    },
+    {
+      "id": "mp",
+      "range": "M–P",
+      "name": "故事山谷",
+      "en": "Story Valley",
+      "icon": "🏡",
+      "quest": "用 M 到 P 的單字說句話",
+      "count": 38
+    },
+    {
+      "id": "qt",
+      "range": "Q–T",
+      "name": "詞語燈塔",
+      "en": "Word Lighthouse",
+      "icon": "🗼",
+      "quest": "挑戰 Q 到 T 的單字快問快答",
+      "count": 52
+    },
+    {
+      "id": "uz",
+      "range": "U–Z",
+      "name": "天空城堡",
+      "en": "Sky Castle",
+      "icon": "🏰",
+      "quest": "蒐集 U 到 Z 的稀有單字",
+      "count": 14
+    }
+  ],
+  "words": [
+    {
+      "id": "w001",
+      "word": "best",
+      "zh": "最好的",
+      "zone": "ab"
+    },
+    {
+      "id": "w002",
+      "word": "count",
+      "zh": "數數；計算",
+      "zone": "ab"
+    },
+    {
+      "id": "w003",
+      "word": "fish",
+      "zh": "魚",
+      "zone": "eh"
+    },
+    {
+      "id": "w004",
+      "word": "round",
+      "zh": "圓的",
+      "zone": "qt"
+    },
+    {
+      "id": "w005",
+      "word": "meal",
+      "zh": "一餐",
+      "zone": "mp"
+    },
+    {
+      "id": "w006",
+      "word": "arm",
+      "zh": "手臂",
+      "zone": "ab"
+    },
+    {
+      "id": "w007",
+      "word": "son",
+      "zh": "兒子",
+      "zone": "qt"
+    },
+    {
+      "id": "w008",
+      "word": "long",
+      "zh": "長的",
+      "zone": "il"
+    },
+    {
+      "id": "w009",
+      "word": "play",
+      "zh": "玩；演奏",
+      "zone": "mp"
+    },
+    {
+      "id": "w010",
+      "word": "have",
+      "zh": "有",
+      "zone": "eh"
+    },
+    {
+      "id": "w011",
+      "word": "deer",
+      "zh": "鹿",
+      "zone": "ab"
+    },
+    {
+      "id": "w012",
+      "word": "other",
+      "zh": "其他的",
+      "zone": "mp"
+    },
+    {
+      "id": "w013",
+      "word": "out",
+      "zh": "在外面",
+      "zone": "mp"
+    },
+    {
+      "id": "w014",
+      "word": "use",
+      "zh": "使用",
+      "zone": "uz"
+    },
+    {
+      "id": "w015",
+      "word": "east",
+      "zh": "東方",
+      "zone": "eh"
+    },
+    {
+      "id": "w016",
+      "word": "dear",
+      "zh": "親愛的",
+      "zone": "ab"
+    },
+    {
+      "id": "w017",
+      "word": "head",
+      "zh": "頭",
+      "zone": "eh"
+    },
+    {
+      "id": "w018",
+      "word": "tea",
+      "zh": "茶",
+      "zone": "qt"
+    },
+    {
+      "id": "w019",
+      "word": "read",
+      "zh": "閱讀",
+      "zone": "qt"
+    },
+    {
+      "id": "w020",
+      "word": "now",
+      "zh": "現在",
+      "zone": "mp"
+    },
+    {
+      "id": "w021",
+      "word": "your",
+      "zh": "你的；你們的",
+      "zone": "uz"
+    },
+    {
+      "id": "w022",
+      "word": "sea",
+      "zh": "海",
+      "zone": "qt"
+    },
+    {
+      "id": "w023",
+      "word": "father",
+      "zh": "爸爸",
+      "zone": "eh"
+    },
+    {
+      "id": "w024",
+      "word": "keep",
+      "zh": "保持；保留",
+      "zone": "il"
+    },
+    {
+      "id": "w025",
+      "word": "eight",
+      "zh": "八",
+      "zone": "eh"
+    },
+    {
+      "id": "w026",
+      "word": "light",
+      "zh": "光；燈",
+      "zone": "il"
+    },
+    {
+      "id": "w027",
+      "word": "right",
+      "zh": "正確的；右邊",
+      "zone": "qt"
+    },
+    {
+      "id": "w028",
+      "word": "here",
+      "zh": "這裡",
+      "zone": "eh"
+    },
+    {
+      "id": "w029",
+      "word": "tool",
+      "zh": "工具",
+      "zone": "qt"
+    },
+    {
+      "id": "w030",
+      "word": "cool",
+      "zh": "涼爽的",
+      "zone": "ab"
+    },
+    {
+      "id": "w031",
+      "word": "foot",
+      "zh": "腳",
+      "zone": "eh"
+    },
+    {
+      "id": "w032",
+      "word": "monkey",
+      "zh": "猴子",
+      "zone": "mp"
+    },
+    {
+      "id": "w033",
+      "word": "tire",
+      "zh": "使疲倦；輪胎",
+      "zone": "qt"
+    },
+    {
+      "id": "w034",
+      "word": "warm",
+      "zh": "溫暖的",
+      "zone": "uz"
+    },
+    {
+      "id": "w035",
+      "word": "green",
+      "zh": "綠色",
+      "zone": "eh"
+    },
+    {
+      "id": "w036",
+      "word": "dress",
+      "zh": "洋裝；穿衣",
+      "zone": "ab"
+    },
+    {
+      "id": "w037",
+      "word": "act",
+      "zh": "行動；表演",
+      "zone": "ab"
+    },
+    {
+      "id": "w038",
+      "word": "man",
+      "zh": "男人",
+      "zone": "mp"
+    },
+    {
+      "id": "w039",
+      "word": "turn",
+      "zh": "轉動；轉彎",
+      "zone": "qt"
+    },
+    {
+      "id": "w040",
+      "word": "one",
+      "zh": "一",
+      "zone": "mp"
+    },
+    {
+      "id": "w041",
+      "word": "chick",
+      "zh": "小雞",
+      "zone": "ab"
+    },
+    {
+      "id": "w042",
+      "word": "rock",
+      "zh": "岩石",
+      "zone": "qt"
+    },
+    {
+      "id": "w043",
+      "word": "will",
+      "zh": "將；意願",
+      "zone": "uz"
+    },
+    {
+      "id": "w044",
+      "word": "black",
+      "zh": "黑色的",
+      "zone": "ab"
+    },
+    {
+      "id": "w045",
+      "word": "side",
+      "zh": "邊；側面",
+      "zone": "qt"
+    },
+    {
+      "id": "w046",
+      "word": "art",
+      "zh": "藝術；美術",
+      "zone": "ab"
+    },
+    {
+      "id": "w047",
+      "word": "car",
+      "zh": "汽車",
+      "zone": "ab"
+    },
+    {
+      "id": "w048",
+      "word": "watch",
+      "zh": "觀看；手錶",
+      "zone": "uz"
+    },
+    {
+      "id": "w049",
+      "word": "five",
+      "zh": "五",
+      "zone": "eh"
+    },
+    {
+      "id": "w050",
+      "word": "old",
+      "zh": "老的；舊的",
+      "zone": "mp"
+    },
+    {
+      "id": "w051",
+      "word": "end",
+      "zh": "結束",
+      "zone": "eh"
+    },
+    {
+      "id": "w052",
+      "word": "shop",
+      "zh": "商店；購物",
+      "zone": "qt"
+    },
+    {
+      "id": "w053",
+      "word": "coat",
+      "zh": "外套",
+      "zone": "ab"
+    },
+    {
+      "id": "w054",
+      "word": "cake",
+      "zh": "蛋糕",
+      "zone": "ab"
+    },
+    {
+      "id": "w055",
+      "word": "all",
+      "zh": "全部",
+      "zone": "ab"
+    },
+    {
+      "id": "w056",
+      "word": "port",
+      "zh": "港口",
+      "zone": "mp"
+    },
+    {
+      "id": "w057",
+      "word": "late",
+      "zh": "遲到的；晚的",
+      "zone": "il"
+    },
+    {
+      "id": "w058",
+      "word": "police",
+      "zh": "警察",
+      "zone": "mp"
+    },
+    {
+      "id": "w059",
+      "word": "quick",
+      "zh": "快速的",
+      "zone": "qt"
+    },
+    {
+      "id": "w060",
+      "word": "live",
+      "zh": "居住；生活",
+      "zone": "il"
+    },
+    {
+      "id": "w061",
+      "word": "hen",
+      "zh": "母雞",
+      "zone": "eh"
+    },
+    {
+      "id": "w062",
+      "word": "are",
+      "zh": "是（be 的現在式）",
+      "zone": "ab"
+    },
+    {
+      "id": "w063",
+      "word": "ice",
+      "zh": "冰",
+      "zone": "il"
+    },
+    {
+      "id": "w064",
+      "word": "world",
+      "zh": "世界",
+      "zone": "uz"
+    },
+    {
+      "id": "w065",
+      "word": "our",
+      "zh": "我們的",
+      "zone": "mp"
+    },
+    {
+      "id": "w066",
+      "word": "night",
+      "zh": "夜晚",
+      "zone": "mp"
+    },
+    {
+      "id": "w067",
+      "word": "ant",
+      "zh": "螞蟻",
+      "zone": "ab"
+    },
+    {
+      "id": "w068",
+      "word": "lay",
+      "zh": "放置；產卵",
+      "zone": "il"
+    },
+    {
+      "id": "w069",
+      "word": "book",
+      "zh": "書；預訂",
+      "zone": "ab"
+    },
+    {
+      "id": "w070",
+      "word": "part",
+      "zh": "部分",
+      "zone": "mp"
+    },
+    {
+      "id": "w071",
+      "word": "shame",
+      "zh": "羞恥；遺憾",
+      "zone": "qt"
+    },
+    {
+      "id": "w072",
+      "word": "like",
+      "zh": "喜歡；像",
+      "zone": "il"
+    },
+    {
+      "id": "w073",
+      "word": "main",
+      "zh": "主要的",
+      "zone": "mp"
+    },
+    {
+      "id": "w074",
+      "word": "orange",
+      "zh": "橘子；橘色",
+      "zone": "mp"
+    },
+    {
+      "id": "w075",
+      "word": "ski",
+      "zh": "滑雪；滑雪板",
+      "zone": "qt"
+    },
+    {
+      "id": "w076",
+      "word": "smell",
+      "zh": "聞；氣味",
+      "zone": "qt"
+    },
+    {
+      "id": "w077",
+      "word": "age",
+      "zh": "年齡",
+      "zone": "ab"
+    },
+    {
+      "id": "w078",
+      "word": "room",
+      "zh": "房間；空間",
+      "zone": "qt"
+    },
+    {
+      "id": "w079",
+      "word": "start",
+      "zh": "開始",
+      "zone": "qt"
+    },
+    {
+      "id": "w080",
+      "word": "life",
+      "zh": "生命；生活",
+      "zone": "il"
+    },
+    {
+      "id": "w081",
+      "word": "sing",
+      "zh": "唱歌",
+      "zone": "qt"
+    },
+    {
+      "id": "w082",
+      "word": "ear",
+      "zh": "耳朵",
+      "zone": "eh"
+    },
+    {
+      "id": "w083",
+      "word": "ever",
+      "zh": "曾經；在任何時候",
+      "zone": "eh"
+    },
+    {
+      "id": "w084",
+      "word": "over",
+      "zh": "在……上方；結束",
+      "zone": "mp"
+    },
+    {
+      "id": "w085",
+      "word": "love",
+      "zh": "愛",
+      "zone": "il"
+    },
+    {
+      "id": "w086",
+      "word": "member",
+      "zh": "成員",
+      "zone": "mp"
+    },
+    {
+      "id": "w087",
+      "word": "low",
+      "zh": "低的",
+      "zone": "il"
+    },
+    {
+      "id": "w088",
+      "word": "how",
+      "zh": "如何；怎樣",
+      "zone": "eh"
+    },
+    {
+      "id": "w089",
+      "word": "row",
+      "zh": "一排；划船",
+      "zone": "qt"
+    },
+    {
+      "id": "w090",
+      "word": "coke",
+      "zh": "焦炭",
+      "zone": "ab"
+    },
+    {
+      "id": "w091",
+      "word": "rob",
+      "zh": "搶劫",
+      "zone": "qt"
+    },
+    {
+      "id": "w092",
+      "word": "complain",
+      "zh": "抱怨",
+      "zone": "ab"
+    },
+    {
+      "id": "w093",
+      "word": "rub",
+      "zh": "摩擦；揉",
+      "zone": "qt"
+    },
+    {
+      "id": "w094",
+      "word": "chess",
+      "zh": "西洋棋",
+      "zone": "ab"
+    },
+    {
+      "id": "w095",
+      "word": "way",
+      "zh": "方法；道路",
+      "zone": "uz"
+    },
+    {
+      "id": "w096",
+      "word": "while",
+      "zh": "當……時候；一會兒",
+      "zone": "uz"
+    },
+    {
+      "id": "w097",
+      "word": "bit",
+      "zh": "一點；少量",
+      "zone": "ab"
+    },
+    {
+      "id": "w098",
+      "word": "under",
+      "zh": "在……下面",
+      "zone": "uz"
+    },
+    {
+      "id": "w099",
+      "word": "she",
+      "zh": "她",
+      "zone": "qt"
+    },
+    {
+      "id": "w100",
+      "word": "it",
+      "zh": "它",
+      "zone": "il"
+    },
+    {
+      "id": "w101",
+      "word": "trade",
+      "zh": "貿易；交易",
+      "zone": "qt"
+    },
+    {
+      "id": "w102",
+      "word": "pan",
+      "zh": "平底鍋",
+      "zone": "mp"
+    },
+    {
+      "id": "w103",
+      "word": "write",
+      "zh": "寫",
+      "zone": "uz"
+    },
+    {
+      "id": "w104",
+      "word": "wait",
+      "zh": "等待",
+      "zone": "uz"
+    },
+    {
+      "id": "w105",
+      "word": "any",
+      "zh": "任何；一些",
+      "zone": "ab"
+    },
+    {
+      "id": "w106",
+      "word": "sit",
+      "zh": "坐",
+      "zone": "qt"
+    },
+    {
+      "id": "w107",
+      "word": "six",
+      "zh": "六",
+      "zone": "qt"
+    },
+    {
+      "id": "w108",
+      "word": "bag",
+      "zh": "袋子；包包",
+      "zone": "ab"
+    },
+    {
+      "id": "w109",
+      "word": "bird",
+      "zh": "鳥",
+      "zone": "ab"
+    },
+    {
+      "id": "w110",
+      "word": "lunch",
+      "zh": "午餐",
+      "zone": "il"
+    },
+    {
+      "id": "w111",
+      "word": "sad",
+      "zh": "傷心的",
+      "zone": "qt"
+    },
+    {
+      "id": "w112",
+      "word": "pardon",
+      "zh": "原諒",
+      "zone": "mp"
+    },
+    {
+      "id": "w113",
+      "word": "back",
+      "zh": "背部；後面",
+      "zone": "ab"
+    },
+    {
+      "id": "w114",
+      "word": "famous",
+      "zh": "著名的",
+      "zone": "eh"
+    },
+    {
+      "id": "w115",
+      "word": "proper",
+      "zh": "適當的",
+      "zone": "mp"
+    },
+    {
+      "id": "w116",
+      "word": "child",
+      "zh": "小孩",
+      "zone": "ab"
+    },
+    {
+      "id": "w117",
+      "word": "prefer",
+      "zh": "比較喜歡",
+      "zone": "mp"
+    },
+    {
+      "id": "w118",
+      "word": "library",
+      "zh": "圖書館",
+      "zone": "il"
+    },
+    {
+      "id": "w119",
+      "word": "blue",
+      "zh": "藍色的",
+      "zone": "ab"
+    },
+    {
+      "id": "w120",
+      "word": "nation",
+      "zh": "國家；民族",
+      "zone": "mp"
+    },
+    {
+      "id": "w121",
+      "word": "day",
+      "zh": "日子；白天",
+      "zone": "ab"
+    },
+    {
+      "id": "w122",
+      "word": "popular",
+      "zh": "受歡迎的；流行的",
+      "zone": "mp"
+    },
+    {
+      "id": "w123",
+      "word": "able",
+      "zh": "能夠的",
+      "zone": "ab"
+    },
+    {
+      "id": "w124",
+      "word": "table",
+      "zh": "桌子",
+      "zone": "qt"
+    },
+    {
+      "id": "w125",
+      "word": "trouble",
+      "zh": "麻煩；困難",
+      "zone": "qt"
+    },
+    {
+      "id": "w126",
+      "word": "desk",
+      "zh": "書桌；課桌",
+      "zone": "ab"
+    },
+    {
+      "id": "w127",
+      "word": "subject",
+      "zh": "科目；主題",
+      "zone": "qt"
+    },
+    {
+      "id": "w128",
+      "word": "sail",
+      "zh": "航行（動詞）；帆",
+      "zone": "qt"
+    },
+    {
+      "id": "w129",
+      "word": "bridge",
+      "zh": "橋",
+      "zone": "ab"
+    },
+    {
+      "id": "w130",
+      "word": "expect",
+      "zh": "預期；期待",
+      "zone": "eh"
+    },
+    {
+      "id": "w131",
+      "word": "him",
+      "zh": "他（受格）",
+      "zone": "eh"
+    },
+    {
+      "id": "w132",
+      "word": "collect",
+      "zh": "收集",
+      "zone": "ab"
+    },
+    {
+      "id": "w133",
+      "word": "pea",
+      "zh": "豌豆",
+      "zone": "mp"
+    },
+    {
+      "id": "w134",
+      "word": "pen",
+      "zh": "筆",
+      "zone": "mp"
+    },
+    {
+      "id": "w135",
+      "word": "hole",
+      "zh": "洞",
+      "zone": "eh"
+    },
+    {
+      "id": "w136",
+      "word": "grate",
+      "zh": "磨碎；刨成絲",
+      "zone": "eh"
+    },
+    {
+      "id": "w137",
+      "word": "ware",
+      "zh": "商品；器皿",
+      "zone": "uz"
+    },
+    {
+      "id": "w138",
+      "word": "some",
+      "zh": "一些",
+      "zone": "qt"
+    },
+    {
+      "id": "w139",
+      "word": "name",
+      "zh": "名字",
+      "zone": "mp"
+    },
+    {
+      "id": "w140",
+      "word": "form",
+      "zh": "形式；表格；形成",
+      "zone": "eh"
+    },
+    {
+      "id": "w141",
+      "word": "even",
+      "zh": "甚至；平的",
+      "zone": "eh"
+    },
+    {
+      "id": "w142",
+      "word": "interest",
+      "zh": "興趣",
+      "zone": "il"
+    },
+    {
+      "id": "w143",
+      "word": "view",
+      "zh": "看法；景色；觀看",
+      "zone": "uz"
+    },
+    {
+      "id": "w144",
+      "word": "rise",
+      "zh": "上升",
+      "zone": "qt"
+    },
+    {
+      "id": "w145",
+      "word": "contract",
+      "zh": "合約（名詞）；收縮（動詞）",
+      "zone": "ab"
+    },
+    {
+      "id": "w146",
+      "word": "silent",
+      "zh": "安靜的",
+      "zone": "qt"
+    },
+    {
+      "id": "w147",
+      "word": "boss",
+      "zh": "老闆",
+      "zone": "ab"
+    },
+    {
+      "id": "w148",
+      "word": "comment",
+      "zh": "評論",
+      "zone": "ab"
+    },
+    {
+      "id": "w149",
+      "word": "percent",
+      "zh": "百分之",
+      "zone": "mp"
+    },
+    {
+      "id": "w150",
+      "word": "dry",
+      "zh": "乾的",
+      "zone": "ab"
+    },
+    {
+      "id": "w151",
+      "word": "soil",
+      "zh": "土壤",
+      "zone": "qt"
+    },
+    {
+      "id": "w152",
+      "word": "pig",
+      "zh": "豬",
+      "zone": "mp"
+    },
+    {
+      "id": "w153",
+      "word": "different",
+      "zh": "不同的",
+      "zone": "ab"
+    },
+    {
+      "id": "w154",
+      "word": "top",
+      "zh": "頂部",
+      "zone": "qt"
+    },
+    {
+      "id": "w155",
+      "word": "boy",
+      "zh": "男孩",
+      "zone": "ab"
+    },
+    {
+      "id": "w156",
+      "word": "empty",
+      "zh": "空的",
+      "zone": "eh"
+    },
+    {
+      "id": "w157",
+      "word": "for",
+      "zh": "為了；給；達（多久）",
+      "zone": "eh"
+    },
+    {
+      "id": "w158",
+      "word": "frog",
+      "zh": "青蛙",
+      "zone": "eh"
+    },
+    {
+      "id": "w159",
+      "word": "fix",
+      "zh": "修理；固定",
+      "zone": "eh"
+    },
+    {
+      "id": "w160",
+      "word": "must",
+      "zh": "必須",
+      "zone": "mp"
+    },
+    {
+      "id": "w161",
+      "word": "nature",
+      "zh": "大自然；本性",
+      "zone": "mp"
+    },
+    {
+      "id": "w162",
+      "word": "after",
+      "zh": "在……之後",
+      "zone": "ab"
+    },
+    {
+      "id": "w163",
+      "word": "record",
+      "zh": "紀錄；記錄",
+      "zone": "qt"
+    },
+    {
+      "id": "w164",
+      "word": "granny",
+      "zh": "奶奶；外婆",
+      "zone": "eh"
+    },
+    {
+      "id": "w165",
+      "word": "clap",
+      "zh": "拍手",
+      "zone": "ab"
+    },
+    {
+      "id": "w166",
+      "word": "sure",
+      "zh": "確定的",
+      "zone": "qt"
+    },
+    {
+      "id": "w167",
+      "word": "let",
+      "zh": "讓；允許",
+      "zone": "il"
+    },
+    {
+      "id": "w168",
+      "word": "rush",
+      "zh": "衝；匆忙",
+      "zone": "qt"
+    },
+    {
+      "id": "w169",
+      "word": "pub",
+      "zh": "酒吧",
+      "zone": "mp"
+    },
+    {
+      "id": "w170",
+      "word": "ten",
+      "zh": "十",
+      "zone": "qt"
+    },
+    {
+      "id": "w171",
+      "word": "exit",
+      "zh": "出口；離開",
+      "zone": "eh"
+    },
+    {
+      "id": "w172",
+      "word": "was",
+      "zh": "是（be 的過去式）",
+      "zone": "uz"
+    },
+    {
+      "id": "w173",
+      "word": "ill",
+      "zh": "生病的",
+      "zone": "il"
+    },
+    {
+      "id": "w174",
+      "word": "sun",
+      "zh": "太陽",
+      "zone": "qt"
+    },
+    {
+      "id": "w175",
+      "word": "purse",
+      "zh": "錢包；手提包",
+      "zone": "mp"
+    },
+    {
+      "id": "w176",
+      "word": "exam",
+      "zh": "考試",
+      "zone": "eh"
+    },
+    {
+      "id": "w177",
+      "word": "sale",
+      "zh": "出售；特賣",
+      "zone": "qt"
+    },
+    {
+      "id": "w178",
+      "word": "talk",
+      "zh": "談話",
+      "zone": "qt"
+    },
+    {
+      "id": "w179",
+      "word": "his",
+      "zh": "他的",
+      "zone": "eh"
+    },
+    {
+      "id": "w180",
+      "word": "letter",
+      "zh": "信；字母",
+      "zone": "il"
+    },
+    {
+      "id": "w181",
+      "word": "bus",
+      "zh": "公車",
+      "zone": "ab"
+    },
+    {
+      "id": "w182",
+      "word": "duck",
+      "zh": "鴨子",
+      "zone": "ab"
+    },
+    {
+      "id": "w183",
+      "word": "prove",
+      "zh": "證明",
+      "zone": "mp"
+    },
+    {
+      "id": "w184",
+      "word": "thank",
+      "zh": "感謝",
+      "zone": "qt"
+    },
+    {
+      "id": "w185",
+      "word": "seek",
+      "zh": "尋找",
+      "zone": "qt"
+    },
+    {
+      "id": "w186",
+      "word": "face",
+      "zh": "臉；面對",
+      "zone": "eh"
+    },
+    {
+      "id": "w187",
+      "word": "post",
+      "zh": "郵寄；貼文",
+      "zone": "mp"
+    },
+    {
+      "id": "w188",
+      "word": "air",
+      "zh": "空氣",
+      "zone": "ab"
+    },
+    {
+      "id": "w189",
+      "word": "tell",
+      "zh": "告訴",
+      "zone": "qt"
+    },
+    {
+      "id": "w190",
+      "word": "come",
+      "zh": "來",
+      "zone": "ab"
+    },
+    {
+      "id": "w191",
+      "word": "nine",
+      "zh": "九",
+      "zone": "mp"
+    },
+    {
+      "id": "w192",
+      "word": "nose",
+      "zh": "鼻子",
+      "zone": "mp"
+    },
+    {
+      "id": "w193",
+      "word": "doll",
+      "zh": "玩偶",
+      "zone": "ab"
+    },
+    {
+      "id": "w194",
+      "word": "ring",
+      "zh": "戒指；環；響鈴",
+      "zone": "qt"
+    },
+    {
+      "id": "w195",
+      "word": "last",
+      "zh": "最後的；持續",
+      "zone": "il"
+    },
+    {
+      "id": "w196",
+      "word": "tie",
+      "zh": "領帶；綁",
+      "zone": "qt"
+    },
+    {
+      "id": "w197",
+      "word": "rain",
+      "zh": "雨；下雨",
+      "zone": "qt"
+    },
+    {
+      "id": "w198",
+      "word": "seed",
+      "zh": "種子",
+      "zone": "qt"
+    },
+    {
+      "id": "w199",
+      "word": "tree",
+      "zh": "樹",
+      "zone": "qt"
+    },
+    {
+      "id": "w200",
+      "word": "past",
+      "zh": "過去；經過",
+      "zone": "mp"
+    },
+    {
+      "id": "w201",
+      "word": "rice",
+      "zh": "米；米飯",
+      "zone": "qt"
+    },
+    {
+      "id": "w202",
+      "word": "fork",
+      "zh": "叉子",
+      "zone": "eh"
+    }
+  ],
+  "examples": {
+    "best": [
+      {
+        "word": "best",
+        "zh": "最好的"
+      },
+      {
+        "word": "rest",
+        "zh": "休息"
+      },
+      {
+        "word": "restroom",
+        "zh": "洗手間"
+      },
+      {
+        "word": "restaurant",
+        "zh": "餐廳"
+      },
+      {
+        "word": "restless",
+        "zh": "焦躁不安的"
+      },
+      {
+        "word": "forest",
+        "zh": "森林"
+      },
+      {
+        "word": "test",
+        "zh": "測驗"
+      },
+      {
+        "word": "text",
+        "zh": "文字；課文"
+      },
+      {
+        "word": "textbook",
+        "zh": "課本"
+      },
+      {
+        "word": "vest",
+        "zh": "背心"
+      },
+      {
+        "word": "harvest",
+        "zh": "收穫"
+      }
+    ]
+  }
+}
