@@ -94,7 +94,7 @@ $("cardBadges").innerHTML=[topic,m.grade||"未分級",m.level||"未分級"].map(
 const realSentence=m.sentence||"Can you say "+m.word+"?";
 $("sentenceText").textContent=realSentence;$("sentenceZh").textContent=m.sentenceZh||(m.sentence?"（此句尚未加入中文翻譯）":"跟讀提示：試著說出這個英文。可在下方編輯例句。");
 $("favToggle").textContent=state.favorites.includes(w.id)?"💛 已收藏":"♡ 收藏";
-$("audioOrigin").textContent="單字語音來源："+(pictureUrl(m.audio)?"自訂音檔":wordHasLocalAudio(w,m)?"學習島 MP3 音檔（無法播放時改用裝置語音）":"裝置英文語音");
+$("audioOrigin").textContent="單字語音來源："+(pictureUrl(m.audio)?"自訂音檔":(state.voice==="en-US"&&wordHasLocalAudio(w,m))?"學習島美式 MP3 音檔（無法播放時改用裝置語音）":"裝置英文語音（"+state.voice+"）");
 $("dueInfo").textContent=p?.due?"下次複習："+p.due:"尚未安排複習";
 $("noteInput").value=m.notes||"";
 renderQuiz();
@@ -109,10 +109,10 @@ function next(){let list=filters();if(list.length<2)list=words;const i=list.find
 function wordHasLocalAudio(w,m){return /^w\d+$/.test(w.id)&&w.word===m.word&&/^[a-z]{1,32}$/.test(w.word)}
 function stopAllSpeech(){player.pause();player.currentTime=0;try{window.speechSynthesis?.cancel()}catch(e){}}
 function tts(text,slow){if(!("speechSynthesis" in window)||typeof SpeechSynthesisUtterance==="undefined"){textStatus("此裝置無內建英文語音。單字可使用原站 MP3，例句請改用支援語音的 Chrome。");return}
-try{stopAllSpeech();const u=new SpeechSynthesisUtterance(text);u.lang=state.voice;u.rate=slow?.72:.94;u.pitch=1;u.volume=1;const vs=window.speechSynthesis.getVoices()||[];const v=vs.find(v=>v.lang.toLowerCase()===state.voice.toLowerCase())||vs.find(v=>v.lang.toLowerCase().startsWith("en"));if(v)u.voice=v;u.onstart=()=>textStatus("🔊 正在朗讀："+text);u.onerror=()=>textStatus("語音啟動失敗。請先試聽或檢查手機音量及語音服務。");window.speechSynthesis.speak(u)}catch(e){textStatus("裝置語音無法播放。請檢查瀏覽器語音服務。")}}
+try{stopAllSpeech();const u=new SpeechSynthesisUtterance(text);u.lang=state.voice;u.rate=slow ? 0.72 : 0.94;u.pitch=1;u.volume=1;const vs=window.speechSynthesis.getVoices()||[];const v=vs.find(v=>v.lang.toLowerCase()===state.voice.toLowerCase())||vs.find(v=>v.lang.toLowerCase().startsWith("en"));if(v)u.voice=v;u.onstart=()=>textStatus("🔊 正在朗讀："+text);u.onerror=()=>textStatus("語音啟動失敗。請先試聽或檢查手機音量及語音服務。");window.speechSynthesis.speak(u)}catch(e){textStatus("裝置語音無法播放。請檢查瀏覽器語音服務。")}}
 function playSpeech(text,opt={}){if(!text)return;stopAllSpeech();lastSpeech={text,slow:!!opt.slow,word:!!opt.word};
-const m=selected?mOf(selected):{},url=opt.word&&(pictureUrl(m.audio)||(selected&&wordHasLocalAudio(selected,m)?"../audio/english-island/"+selected.word+".mp3":""));
-if(url){player.src=url;player.playbackRate=opt.slow?.75:1;player.play().then(()=>textStatus("🔊 正在播放："+text+(opt.slow?"（慢速）":""))).catch(()=>tts(text,!!opt.slow));}else tts(text,!!opt.slow);
+const m=selected?mOf(selected):{},url=opt.word&&(pictureUrl(m.audio)||(state.voice==="en-US"&&selected&&wordHasLocalAudio(selected,m)?"../audio/english-island/"+selected.word+".mp3":""));
+if(url){player.src=url;player.playbackRate=opt.slow ? 0.75 : 1;player.play().then(()=>textStatus("🔊 正在播放："+text+(opt.slow?"（慢速）":""))).catch(()=>tts(text,!!opt.slow));}else tts(text,!!opt.slow);
 }
 function playWord(slow){if(!selected)return;playSpeech(mOf(selected).word,{slow,word:true})}
 function playSentence(slow){if(!selected)return;const m=mOf(selected);playSpeech(m.sentence||"Can you say "+m.word+"?",{slow})}
