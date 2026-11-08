@@ -74,6 +74,10 @@ h1{font-size:clamp(35px,5.5vw,65px);line-height:1.06;letter-spacing:-.05em;margi
 .center-content .zh{font-weight:800;margin-top:6px;color:#416575;font-size:15px}
 .center-content .label{font-size:10px;letter-spacing:.1em;font-weight:850;color:#438395}
 .word-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}
+.audio-player-row{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.audio-player-row audio{display:block;width:min(100%,325px);height:48px;border-radius:14px;background:#eef7fa}
+.audio-status{margin:8px 0 1px;text-align:center;color:#4c7b8d;font-size:12px;line-height:1.6;min-height:20px}
+.petal-play{margin-top:6px;padding:4px 9px;border:1px solid #d2b6e7;background:#fff;border-radius:10px;font-size:12px;color:#674381;font-weight:800}
 .primary{border:0;border-radius:13px;padding:11px 16px;font-size:13px;font-weight:900;background:#066e95;color:#fff}
 .primary:hover{background:#064f75}
 .primary.secondary{background:#e2f6f8;color:#23687b}
@@ -132,6 +136,8 @@ h1{font-size:clamp(35px,5.5vw,65px);line-height:1.06;letter-spacing:-.05em;margi
   <p class="hint">點中心字、聽發音，再答對中文意思，完成一個小任務。</p>
   <div class="center-flower" aria-live="polite"><div class="center-content"><div class="label">TODAY'S WORD</div><div class="en" id="detailEn">Hello!</div><div class="zh" id="detailZh">你好！</div></div></div>
   <div class="word-actions"><button class="primary" type="button" id="speak">🔊 朗讀英文</button><button class="primary secondary" type="button" id="review">☆ 加入複習</button><button class="secondary-action" type="button" id="learned">✓ 標記學會</button></div>
+  <div class="audio-player-row"><audio id="wordAudio" controls preload="none" playsinline aria-label="英文單字音檔播放器">瀏覽器不支援音檔播放器。</audio><button class="smallbtn" type="button" id="slowAudio" aria-pressed="false">🐢 慢速 0.8×</button></div>
+  <p class="audio-status" id="audioStatus" role="status" aria-live="polite">按下朗讀鍵，聽英文單字發音。</p>
   <div class="learning-info"><p class="hint" id="petalHint">原站以拼字聯想探索相關單字。請注意，字形相似不一定代表同源或同義。</p><div id="petals" class="petals"></div></div>
   <div class="quiz"><div class="quiz-head"><strong>🎯 小小單字任務</strong><small>答對可得 10 XP</small></div><div id="quizQuestion" class="quiz-question">這個英文是什麼意思？</div><div class="options" id="options"></div><p id="quizFeedback" class="quiz-feedback" aria-live="polite"></p><button class="smallbtn" id="nextWord" type="button">下一題 →</button></div>
   <div class="notice">🪴 本島已轉入原站可讀取的 <b>202 個中心單字</b>，與「best」示範組的花瓣詞。原版另有 1,751 個不重複單字；完整花瓣尚未全部轉入。學習進度只儲存在目前瀏覽器。這是獨立的互動島嶼版，<b>不是</b>造島工坊網站內已發布的 3D 島。</div>
@@ -165,7 +171,65 @@ h1{font-size:clamp(35px,5.5vw,65px);line-height:1.06;letter-spacing:-.05em;margi
    $("wordCount").textContent="找到 "+found.length+" 朵中心字花";
    $("roots").innerHTML=found.length?found.map(w=>'<button type="button" class="root '+(state.chosen?.id===w.id?'active':'')+'" data-word="'+esc(w.id)+'"><span><strong>'+esc(w.word)+'</strong><small>'+esc(w.zh)+'</small></span><span class="flag">'+(state.learned.includes(w.id)?'✅':state.review.includes(w.id)?'⭐':'🌱')+'</span></button>').join(""):'<div class="empty">沒有符合條件的單字，試試其他字母或搜尋字。</div>';
  }
- function speakWord(word){if(!("speechSynthesis" in window)){alert("這個瀏覽器不支援語音朗讀。");return}try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang="en-US";u.rate=.82;window.speechSynthesis.speak(u)}catch{alert("暫時無法朗讀，請檢查瀏覽器的語音設定。")}}
+ const wordAudio=$("wordAudio");
+ let slowPlayback=false;
+ function audioFile(word){return /^[a-z]{1,32}$/.test(word)?("../audio/english-island/"+word+".mp3"):"";}
+ function stopDeviceSpeech(){try{if(window.speechSynthesis)window.speechSynthesis.cancel()}catch(e){}}
+ function setAudioWord(word){
+   stopDeviceSpeech();
+   if(wordAudio.dataset.word===word)return;
+   wordAudio.pause();
+   wordAudio.dataset.word=word;
+   wordAudio.src=audioFile(word);
+   wordAudio.load();
+   wordAudio.playbackRate=slowPlayback ? 0.8 : 1;
+   $("audioStatus").textContent="按「🔊 朗讀英文」或下方播放鍵，聽 "+word+"。";
+ }
+ function speakWithDevice(word){
+   if(!("speechSynthesis" in window)||typeof SpeechSynthesisUtterance==="undefined"){
+     $("audioStatus").textContent="這個瀏覽器無法播放音檔也不支援語音，請改用手機 Chrome 並確認媒體音量。";
+     return;
+   }
+   try{
+     const synth=window.speechSynthesis;
+     synth.cancel();
+     const u=new SpeechSynthesisUtterance(word);
+     u.lang="en-US";
+     u.rate=slowPlayback ? 0.75 : 0.95;
+     u.volume=1;
+     const voices=synth.getVoices()||[];
+     const voice=voices.find(v=>/^en-US/i.test(v.lang))||voices.find(v=>/^en/i.test(v.lang));
+     if(voice)u.voice=voice;
+     u.onstart=()=>{$("audioStatus").textContent="🔊 裝置語音正在讀："+word;};
+     u.onerror=()=>{$("audioStatus").textContent="裝置語音無法啟動。請用手機 Chrome 開啟並確認媒體音量。";};
+     u.onend=()=>{$("audioStatus").textContent="已完成裝置發音："+word;};
+     synth.speak(u);
+     $("audioStatus").textContent="音檔未能播放，已嘗試改用裝置發音："+word;
+   }catch(err){$("audioStatus").textContent="音檔與裝置語音都無法播放。請改用 Chrome 並確認媒體音量。";}
+ }
+ function speakWord(word){
+   if(!word)return;
+   if(wordAudio.dataset.word!==word)setAudioWord(word);
+   stopDeviceSpeech();
+   wordAudio.playbackRate=slowPlayback ? 0.8 : 1;
+   $("audioStatus").textContent="正在播放 "+word+"...";
+   try{
+     const playing=wordAudio.play();
+     if(playing&&typeof playing.catch==="function"){
+       playing.catch(()=>{if(wordAudio.dataset.word===word)speakWithDevice(word)});
+     }
+   }catch(err){speakWithDevice(word);}
+ }
+ wordAudio.addEventListener("playing",()=>{$("audioStatus").textContent="🔊 正在播放 "+(wordAudio.dataset.word||"英文單字")+(slowPlayback?"（慢速）":"");});
+ wordAudio.addEventListener("ended",()=>{$("audioStatus").textContent="已完成發音："+(wordAudio.dataset.word||"英文單字");});
+ wordAudio.addEventListener("error",()=>{$("audioStatus").textContent="此單字音檔尚未就緒；點「朗讀英文」可改用裝置語音。";});
+ $("slowAudio").addEventListener("click",()=>{
+   slowPlayback=!slowPlayback;
+   wordAudio.playbackRate=slowPlayback ? 0.8 : 1;
+   $("slowAudio").setAttribute("aria-pressed",String(slowPlayback));
+   $("slowAudio").textContent=slowPlayback?"🐢 慢速：開":"🐢 慢速 0.8×";
+   $("audioStatus").textContent=slowPlayback?"已切換慢速 0.8 倍。":"已切換正常速度。";
+ });
  function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
  function renderQuiz(){
    const w=state.chosen;if(!w)return;
@@ -178,12 +242,12 @@ h1{font-size:clamp(35px,5.5vw,65px);line-height:1.06;letter-spacing:-.05em;margi
  }
  function selectWord(w,scroll){
    if(!w)return;state.chosen=w;
-   $("detailEn").textContent=w.word;$("detailZh").textContent=w.zh;
+   $("detailEn").textContent=w.word;$("detailZh").textContent=w.zh;setAudioWord(w.word);
    $("review").textContent=state.review.includes(w.id)?"★ 已加入複習":"☆ 加入複習";
    $("learned").textContent=state.learned.includes(w.id)?"✓ 已經學會":"✓ 標記學會";
    const pet=source.examples[w.word];
    $("petalHint").textContent=pet?"原版 Word Blossom 的「"+w.word+"」組：拼字聯想的花瓣詞，不代表字根／詞源關係。":"此處顯示中心字；完整關聯花瓣請由上方連結開啟原版 Word Blossom。";
-   $("petals").innerHTML=pet?pet.map(p=>'<div class="petal"><b>'+esc(p.word)+'</b><span>'+esc(p.zh)+'</span></div>').join(""):'<a class="petal" target="_blank" rel="noopener noreferrer" href="https://chatgpt.com/s/t_6aeff05aecf88191ba41a43489a3906a">在原版查看完整花瓣 ↗</a>';
+   $("petals").innerHTML=pet?pet.map(p=>'<div class="petal"><b>'+esc(p.word)+'</b><span>'+esc(p.zh)+'</span><button class="petal-play" type="button" data-say="'+esc(p.word)+'" aria-label="朗讀 '+esc(p.word)+'">🔊 播放</button></div>').join(""):'<a class="petal" target="_blank" rel="noopener noreferrer" href="https://chatgpt.com/s/t_6aeff05aecf88191ba41a43489a3906a">在原版查看完整花瓣 ↗</a>';
    renderQuiz();renderList();stats();
    if(scroll && window.matchMedia("(max-width:900px)").matches)$("detailEn").scrollIntoView({behavior:"smooth",block:"center"});
  }
@@ -212,6 +276,7 @@ h1{font-size:clamp(35px,5.5vw,65px);line-height:1.06;letter-spacing:-.05em;margi
   if(win){state.xp+=10;save();stats();$("quizFeedback").textContent="答對了！🎉 +10 XP，再去探索下一朵單字花。";}
   else{$("quizFeedback").textContent="再記一次："+state.chosen.word+"＝"+state.chosen.zh+"。聽一下發音，再挑戰下一題。";}
  });
+ $("petals").addEventListener("click",e=>{const b=e.target.closest("[data-say]");if(b)speakWord(b.dataset.say);});
  $("nextWord").addEventListener("click",next);
  initState();
  fetch("../data/english-learning-island.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
