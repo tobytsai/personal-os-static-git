@@ -5,7 +5,7 @@
   "baseline_type": "historical displayed per-item price, not verified actual amount paid",
   "currency": "TWD",
   "watch_filter": "done===true && orderStatus!=='refunded' && price>0",
-  "last_checked_at": "2026-11-07T00:34:56.447Z",
+  "last_checked_at": "2026-11-08T00:46:45.299Z",
   "last_checked_count": 27,
   "last_notified": {
     "shorder-20261102-nutella-biscuits": {
@@ -133,20 +133,43 @@
       "checkout_verified": false,
       "shipping_verified": false,
       "coupon_verified": false
+    },
+    "shorder-20261102-coloko-hot-315g": {
+      "source_product_id": "shorder-20261102-coloko-hot-315g",
+      "historical_display_price": 99,
+      "current_price": 93,
+      "currency": "TWD",
+      "shopid": 390025330,
+      "itemid": 12684615450,
+      "modelid": 161366211908,
+      "shop_name": "萬家福線上購物",
+      "listing_title": "聯華食品 可樂果酷辣豌豆酥 315g【萬家福】",
+      "matched_spec": "聯華食品 可樂果 酷辣口味豌豆酥 315g／包",
+      "source_relation": "other_seller",
+      "url": "https://shopee.tw/product/390025330/12684615450",
+      "note": "Two live Shopee searches return exact flavor 酷辣 and weight 315g, shopid/itemid/modelid identical, price=9300000 (NT$93), listing normal and not sold out. Historical item displayed NT$99; exact historical paid unit price unknown. Shipping, coupons and checkout total not verified. Excluded cheaper multi-flavor option NT$89 because selected variant is not confirmed.",
+      "verified_at": "2026-11-08T00:46:45.299Z",
+      "price_verification": "Shopee Taiwan connected app live product search card; repeated in targeted verification",
+      "listing_status": "normal/not_sold_out",
+      "checkout_verified": false,
+      "shipping_verified": false,
+      "coupon_verified": false
     }
   },
   "notes": "Updated by Shopee price-watch automation only after verified comparable listings. Keep all historic user product data in source_file; no private account/order identifiers. Alerts must not claim to beat the actual paid price unless that baseline was independently verified.",
   "last_check_summary": {
-    "source": "Shopee Taiwan connected app live search, 31 searches (27 historical bought items; four targeted cross-checks)",
+    "source": "Shopee Taiwan connected app live search",
     "qualified_products": 27,
     "source_sha": "664ddc66c02c46f1248ca8e77758d764aa355947",
-    "search_queries": 31,
-    "new_verified_improvements": 0,
-    "change_notifications": 0,
-    "new_items_notified": [],
-    "excluded_notes": "All newly observed below-baseline offers were excluded because exact purchased variant/quantity, flavor, brand, length, packaging, availability in applicable delivery location, or model-specific price could not be verified; apparent candidates included OPPO 6.5A cable 100cm, ice pillow deep-snowflake adult, OREO chocolate 315g, UNIDESIGN chili flavor 50g, Coloko spicy 315g, foot pads 50 patches, battery tester silver toothed, insect jelly black syrup 16g x30, and 1700ml Orange House product. An NT$70 Nutella 193.2g offer labeled 惜福商品 may be near expiry and is not confirmed comparable. Previously notified lowest exact-item offers did not improve.",
-    "previously_notified_comparison": "Nutella 109, 50-bag Jinxuan tea 89, CHAOKOH 1000ml 133, Bull Head sauce 127g 52, Double A 80P 500 sheets 128, clip-on phone holder 14; none lower verified in this run.",
+    "search_queries": 32,
+    "new_verified_improvements": 1,
+    "change_notifications": 1,
+    "new_items_notified": [
+      "shorder-20261102-coloko-hot-315g"
+    ],
+    "previously_notified_comparison": "Nutella 193.2g: now lowest strictly comparable standard item NT$128 but last notified NT$109; 金萱冷泡茶50入 NT$89 unchanged; CHAOKOH 1000ml NT$133 unchanged; 牛頭牌原味沙茶醬127g lowest exact NT$52 unchanged; Double A A4 80P/500 sheets NT$128 unchanged; same shop same clip-phone holder model NT$20 above last notified NT$14.",
+    "excluded_notes": "Cheaper listings with only multi-variant or unknown selected size/flavor, different brand, unknown package quantity, unverified original specifications, expiring discounted food, delivery restrictions, or unspecified color were excluded. Examples: OREO chocolate 315g multi-flavor card NT$89, same seller ice pillow deep snowflake unverified NT$110, IM black-syrup jelly 16g x30 ambiguous variants NT$44, orange cleaner variants, 50-count foot patches, assorted acrylic color 702 unknown capacity. Water NT$166 listing title lacked 12-bottle quantity. No evidence to claim historical actually-paid price.",
     "shipping_and_checkout_verified": false,
-    "checked_at": "2026-11-07T00:34:56.447Z"
+    "checked_at": "2026-11-08T00:46:45.299Z"
   }
 }
