@@ -48,6 +48,20 @@ jobs:
           PY
       - name: Install recognizable favicon for every launcher page
         run: python3 scripts/apply_launcher_favicons.py
+      - name: Restore English island pronunciation MP3 cache
+        uses: actions/cache@v4
+        with:
+          path: public/audio/english-island
+          key: english-island-espeak-v1-${{ hashFiles('public/data/english-learning-island.json') }}
+      - name: Build local English island pronunciation MP3 files
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v espeak >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends espeak ffmpeg
+          fi
+          python3 scripts/build_english_island_audio.py
       - name: Collect Song Feng Ge official frame photos
         run: |
           python3 -m pip install -q --disable-pip-version-check beautifulsoup4 || true
