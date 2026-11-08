@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#06577f">
+<meta name="description" content="以 Word Blossom 英語單字花園的 202 組中心字打造六座互動英語學習島。聽發音、看中文、挑戰測驗、收藏與標記學會。">
+<title>Word Blossom｜英語學習島</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+:root{--ink:#193148;--muted:#647a89;--ocean:#0d729b;--line:#dbe8ec;--foam:#e8fbff;--card:#ffffffef}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f0fbff;color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #f2a93e;outline-offset:3px}
+a{color:#126f94}
+.page{max-width:1230px;margin:0 auto;padding:20px 22px 55px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top .brand{font-weight:900;color:#075675;text-decoration:none;font-size:14px}
+.top-links{display:flex;gap:9px;flex-wrap:wrap}
+.top-links a{font-size:12px;border:1px solid #b6dce7;border-radius:999px;padding:8px 12px;background:#fff;text-decoration:none;font-weight:800}
+.hero{display:flex;justify-content:space-between;align-items:end;gap:24px;margin:27px 0 13px}
+.eyebrow{font-size:11px;letter-spacing:.19em;font-weight:900;color:#278c9e}
+h1{font-size:clamp(35px,5.5vw,65px);line-height:1.06;letter-spacing:-.05em;margin:10px 0 13px;color:#064d70}
+.hero p{font-size:15px;color:#537083;line-height:1.8;max-width:620px;margin:0}
+.hero-emoji{font-size:70px;filter:drop-shadow(0 8px 4px #62a9b955)}
+.stats{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0}
+.stat{display:flex;align-items:baseline;gap:5px;padding:9px 13px;background:#fff;border-radius:16px;border:1px solid #ddf0f5;box-shadow:0 6px 12px #0b6e9b10;color:#56717f;font-size:12px;font-weight:700}
+.stat b{font-size:20px;color:#175678}
+.map-section{border:1px solid #c3edf0;border-radius:30px;overflow:hidden;background:#1289b2;box-shadow:0 22px 48px #1d789035}
+.map-head{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:19px 22px 0;color:#fff}
+.map-head strong{font-size:19px}
+.map-head small{color:#d0f4fa;font-size:12px}
+.map{position:relative;isolation:isolate;min-height:445px;background:radial-gradient(circle at 14% 22%,#ffffff3a 1px,transparent 3px) 0 0 / 40px 37px,radial-gradient(circle at 70% 63%,#ffffff36 1px,transparent 3px) 0 0 / 55px 48px,linear-gradient(155deg,#1b9ac0,#0c7fab 63%,#056996);overflow:hidden}
+.map:before{content:"";position:absolute;width:840px;height:560px;left:50%;top:40%;border:2px dashed #c1fbff56;transform:translate(-50%,-50%) rotate(-13deg);border-radius:47%;pointer-events:none}
+.map:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.30;background:repeating-radial-gradient(ellipse at 50% 48%,transparent 0 50px,#8deaff 51px 52px,transparent 53px 68px)}
+.island{--land1:#7fcf88;--land2:#167954;position:absolute;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:190px;height:147px;padding:22px 16px;border:0;color:#083e43;background:linear-gradient(145deg,var(--land1),var(--land2));clip-path:polygon(12% 18%,40% 4%,78% 8%,97% 33%,90% 75%,62% 97%,26% 90%,4% 59%);filter:drop-shadow(0 8px 3px #075273);text-align:center;transition:transform .2s,filter .2s;box-shadow:inset -8px -10px 0 #0d5d501c}
+.island:before{content:"";z-index:-1;position:absolute;inset:9px;background:linear-gradient(150deg,#c8f9a88a,transparent 45%);clip-path:inherit}
+.island:hover,.island.active{transform:translateY(-9px) scale(1.055);filter:drop-shadow(0 13px 5px #044d64)}
+.island.active{outline-offset:5px}
+.island .emoji{font-size:33px;filter:drop-shadow(0 2px 0 #fff7)}
+.island .name{font-weight:950;font-size:18px;text-shadow:0 1px #ffffff85}
+.island .number{font-size:11px;font-weight:900;background:#ffffffe3;border-radius:999px;padding:4px 9px}
+.island[data-zone="ab"]{left:4%;top:10%;--land1:#b7ec90;--land2:#72c77b;transform:rotate(-8deg)}
+.island[data-zone="eh"]{left:36%;top:4%;--land1:#ffe5a0;--land2:#e6ae71;transform:rotate(6deg)}
+.island[data-zone="il"]{right:4%;top:15%;--land1:#a7e48e;--land2:#469a63;transform:rotate(9deg)}
+.island[data-zone="mp"]{left:14%;bottom:6%;--land1:#f5d49d;--land2:#cc9a7a;transform:rotate(7deg)}
+.island[data-zone="qt"]{left:43%;bottom:11%;--land1:#b4d9ef;--land2:#599db0;transform:rotate(-6deg)}
+.island[data-zone="uz"]{right:3%;bottom:5%;--land1:#f9c9e6;--land2:#c286c7;transform:rotate(4deg)}
+.island[data-zone]:hover,.island[data-zone].active{transform:translateY(-8px) scale(1.05)}
+.map-tip{position:absolute;z-index:3;left:21px;bottom:13px;color:#e7fcff;font-size:11px;background:#054f7191;padding:8px 11px;border-radius:10px}
+.main-grid{display:grid;grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);gap:18px;margin-top:22px}
+.panel{min-width:0;border:1px solid #d4ebf0;border-radius:24px;background:var(--card);padding:20px;box-shadow:0 8px 22px #0b66840b}
+.panel h2{font-size:23px;margin:0 0 4px}
+.panel p.hint{font-size:13px;color:var(--muted);line-height:1.6;margin:5px 0 15px}
+.toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 13px}
+.search{min-width:130px;flex:1;padding:12px 13px;border:1px solid #cfe5ec;border-radius:13px;background:#fff;outline:0}
+.search:focus{border-color:#35aac9}
+.smallbtn{padding:10px 12px;border:1px solid #cfe3e9;border-radius:12px;background:#fff;color:#236079;font-size:12px;font-weight:850}
+.smallbtn.active,.smallbtn:hover{background:#e8f9fd;border-color:#7ccede}
+.roots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:490px;overflow:auto;padding-right:3px}
+.root{display:flex;justify-content:space-between;align-items:center;gap:7px;min-width:0;padding:11px;border:1px solid #e2eef2;border-radius:14px;background:#fff;text-align:left}
+.root:hover,.root.active{border-color:#5eacc2;background:#f2fdff}
+.root span{min-width:0}
+.root strong{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.root small{display:block;margin-top:3px;color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.root .flag{font-size:16px;flex-shrink:0}
+.empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed #cfe3ea;border-radius:16px}
+.center-flower{display:grid;place-items:center;margin:9px auto 13px;width:min(100%,340px);min-height:230px;position:relative}
+.center-flower:before{content:"";position:absolute;width:220px;height:220px;background:conic-gradient(from 0deg,#ffc56a 0 20%,#ffe6ac 20% 40%,#f5a6bb 40% 60%,#b5e6d0 60% 80%,#b2daf9 80%);border-radius:42% 59% 45% 58% / 55% 42% 60% 46%;transform:rotate(19deg);filter:drop-shadow(0 11px 0 #e4a8bc22)}
+.center-content{position:relative;text-align:center;max-width:85%}
+.center-content .en{font-size:clamp(35px,5vw,48px);font-weight:950;letter-spacing:-.03em;overflow-wrap:anywhere;color:#064f65}
+.center-content .zh{font-weight:800;margin-top:6px;color:#416575;font-size:15px}
+.center-content .label{font-size:10px;letter-spacing:.1em;font-weight:850;color:#438395}
+.word-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}
+.primary{border:0;border-radius:13px;padding:11px 16px;font-size:13px;font-weight:900;background:#066e95;color:#fff}
+.primary:hover{background:#064f75}
+.primary.secondary{background:#e2f6f8;color:#23687b}
+.secondary-action{border:1px solid #d0e5ea;border-radius:13px;padding:10px 14px;background:#fff;color:#23667b;font-size:13px;font-weight:900}
+.learning-info{margin:18px 0 0;border-top:1px solid var(--line);padding-top:14px}
+.petals{display:flex;flex-wrap:wrap;gap:7px}
+.petal{padding:8px 10px;border-radius:14px;background:#fbf3fe;border:1px solid #ecdaf0;font-size:12px}
+.petal b{display:block;color:#714e87}
+.petal span{color:#806a82}
+.quiz{margin-top:18px;border:1px solid #d5e7ef;border-radius:18px;padding:16px;background:#f5fcfe}
+.quiz-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.quiz-head strong{font-size:14px}
+.quiz-head small{color:#688292}
+.quiz-question{font-size:19px;margin:12px 0 15px;font-weight:900}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.option{padding:12px;text-align:left;border:1px solid #ccdee7;border-radius:12px;background:#fff;color:#214e66;font-size:13px;font-weight:750}
+.option:hover{border-color:#4eabc3}
+.option.right{background:#d9f7e5;border-color:#37ab6d;color:#146a3d}
+.option.wrong{background:#ffe2e1;border-color:#db7672;color:#a82f3d}
+.quiz-feedback{min-height:23px;font-weight:750;font-size:12px;margin:12px 0 0}
+.notice{font-size:12px;color:#637c85;background:#ecf9fb;border-radius:12px;padding:12px;line-height:1.7;margin-top:17px}
+.foot{margin-top:22px;color:#6b8796;text-align:center;font-size:11px}
+@media(max-width:900px){.island{width:168px;height:133px}.main-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.page{padding:14px 12px 35px}.hero{margin:22px 4px 10px}.hero-emoji{display:none}.map-section{border-radius:21px}.map-head{padding:15px 15px 0}.map-head strong{font-size:15px}.map{min-height:430px}.island{width:136px;height:112px;padding:11px}.island .emoji{font-size:24px}.island .name{font-size:14px}.island .number{font-size:9px}.island[data-zone="ab"]{left:3%;top:8%}.island[data-zone="eh"]{left:49%;top:4%}.island[data-zone="il"]{right:3%;top:36%}.island[data-zone="mp"]{left:4%;bottom:34%}.island[data-zone="qt"]{left:9%;bottom:5%}.island[data-zone="uz"]{right:5%;bottom:4%}.map-tip{font-size:10px;left:12px;bottom:2px}.panel{padding:15px;border-radius:18px}.roots{max-height:370px}.options{grid-template-columns:1fr}}
+@media(max-width:360px){.island{width:121px;height:100px}.island .name{font-size:12px}.island .emoji{font-size:21px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main class="page">
+<nav class="top" aria-label="站點連結">
+  <a class="brand" href="../index.html">✿ PERSONAL OS / 英語學習島</a>
+  <div class="top-links"><a href="https://chatgpt.com/s/t_6aeff05aecf88191ba41a43489a3906a" target="_blank" rel="noopener noreferrer">原版 Word Blossom ↗</a><a href="https://isleforge-tw.netlify.app/" target="_blank" rel="noopener noreferrer">造島工坊 ↗</a><a href="self-study.html">自學啟動器 ↗</a></div>
+</nav>
+<header class="hero">
+  <div><div class="eyebrow">WORD BLOSSOM EXPEDITION · 2026</div><h1>英語學習島<br><span style="color:#2a9b9b">English Learning Island</span></h1><p>把《Word Blossom｜英語單字花園》的 202 組中心字變成六座探索島。走上島嶼，聽發音、看中文、練習配對，收集自己的單字花。從一朵花，開出一片英文世界。</p></div>
+  <div class="hero-emoji" aria-hidden="true">🏝️</div>
+</header>
+<section class="stats" aria-label="探索紀錄">
+  <div class="stat"><b id="totalStat">202</b> 中心單字</div><div class="stat"><b>6</b> 探索島嶼</div><div class="stat"><b id="learnedStat">0</b> 已學會</div><div class="stat"><b id="starStat">0</b> 待複習</div><div class="stat"><b id="xpStat">0</b> XP</div>
+</section>
+<section class="map-section" aria-label="英語學習島嶼地圖">
+ <div class="map-head"><strong>🧭 島嶼探索地圖</strong><small>選擇島嶼 → 解鎖單字任務</small></div>
+ <div class="map" id="map" role="group" aria-label="六座可點擊的學習島"></div>
+</section>
+<section class="main-grid" id="explore">
+ <section class="panel" aria-label="島嶼單字清單">
+  <h2 id="zoneTitle">🌱 初芽草原</h2>
+  <p class="hint" id="zoneHint">從島嶼出發，探索英文單字花。</p>
+  <div class="toolbar"><input id="search" type="search" class="search" placeholder="搜尋英文或中文" aria-label="搜尋英文或中文"><button type="button" class="smallbtn" id="toggleReview">☆ 我的複習</button><button type="button" class="smallbtn" id="exportCsv">匯出教材 CSV</button></div>
+  <div id="wordCount" class="hint" aria-live="polite"></div>
+  <div class="roots" id="roots" aria-live="polite"></div>
+ </section>
+ <section class="panel" aria-label="單字學習與測驗">
+  <h2>🌼 單字探險站</h2>
+  <p class="hint">點中心字、聽發音，再答對中文意思，完成一個小任務。</p>
+  <div class="center-flower" aria-live="polite"><div class="center-content"><div class="label">TODAY'S WORD</div><div class="en" id="detailEn">Hello!</div><div class="zh" id="detailZh">你好！</div></div></div>
+  <div class="word-actions"><button class="primary" type="button" id="speak">🔊 朗讀英文</button><button class="primary secondary" type="button" id="review">☆ 加入複習</button><button class="secondary-action" type="button" id="learned">✓ 標記學會</button></div>
+  <div class="learning-info"><p class="hint" id="petalHint">原站以拼字聯想探索相關單字。請注意，字形相似不一定代表同源或同義。</p><div id="petals" class="petals"></div></div>
+  <div class="quiz"><div class="quiz-head"><strong>🎯 小小單字任務</strong><small>答對可得 10 XP</small></div><div id="quizQuestion" class="quiz-question">這個英文是什麼意思？</div><div class="options" id="options"></div><p id="quizFeedback" class="quiz-feedback" aria-live="polite"></p><button class="smallbtn" id="nextWord" type="button">下一題 →</button></div>
+  <div class="notice">🪴 本島已轉入原站可讀取的 <b>202 個中心單字</b>，與「best」示範組的花瓣詞。原版另有 1,751 個不重複單字；完整花瓣尚未全部轉入。學習進度只儲存在目前瀏覽器。這是獨立的互動島嶼版，<b>不是</b>造島工坊網站內已發布的 3D 島。</div>
+ </section>
+</section>
+<p class="foot">WORD BLOSSOM · Explore, Listen, Remember · 英語學習島 2026</p>
+</main>
+<script>
+(function(){
+ "use strict";
+ const STORAGE="wordBlossomEnglishLearningIslandV1";
+ const state={zone:"ab",reviewOnly:false,chosen:null,answered:false,correct:null,review:[],learned:[],xp:0};
+ let source={words:[],zones:[],examples:{}};
+ const $=id=>document.getElementById(id);
+ const esc=s=>String(s??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+ function initState(){try{const v=JSON.parse(localStorage.getItem(STORAGE)||"{}");if(Array.isArray(v.review))state.review=v.review;if(Array.isArray(v.learned))state.learned=v.learned;state.xp=Number(v.xp)||0}catch{}}
+ function save(){try{localStorage.setItem(STORAGE,JSON.stringify({review:state.review,learned:state.learned,xp:state.xp}))}catch{}}
+ function stats(){ $("totalStat").textContent=source.words.length;$("learnedStat").textContent=state.learned.length;$("starStat").textContent=state.review.length;$("xpStat").textContent=state.xp; }
+ function wordById(id){return source.words.find(w=>w.id===id)}
+ function renderMap(){
+   $("map").innerHTML=source.zones.map(z=>'<button class="island '+(z.id===state.zone?'active':'')+'" type="button" data-zone="'+esc(z.id)+'" aria-pressed="'+(z.id===state.zone)+'"><span class="emoji">'+esc(z.icon)+'</span><span class="name">'+esc(z.name)+'</span><span class="number">'+esc(z.range)+' · '+z.count+' 朵</span></button>').join("")+'<div class="map-tip">🌊 六座島嶼依英文字母排列；可自由探索</div>';
+ }
+ function renderList(){
+   const zone=source.zones.find(z=>z.id===state.zone)||source.zones[0];
+   $("zoneTitle").textContent=zone.icon+" "+zone.name+" · "+zone.range;
+   $("zoneHint").textContent=zone.quest;
+   $("toggleReview").classList.toggle("active",state.reviewOnly);
+   $("toggleReview").textContent=state.reviewOnly?"★ 顯示全部":"☆ 我的複習";
+   const q=$("search").value.trim().toLowerCase();
+   const found=source.words.filter(w=>(state.reviewOnly?state.review.includes(w.id):w.zone===state.zone)&&(!q||w.word.includes(q)||w.zh.includes(q)));
+   $("wordCount").textContent="找到 "+found.length+" 朵中心字花";
+   $("roots").innerHTML=found.length?found.map(w=>'<button type="button" class="root '+(state.chosen?.id===w.id?'active':'')+'" data-word="'+esc(w.id)+'"><span><strong>'+esc(w.word)+'</strong><small>'+esc(w.zh)+'</small></span><span class="flag">'+(state.learned.includes(w.id)?'✅':state.review.includes(w.id)?'⭐':'🌱')+'</span></button>').join(""):'<div class="empty">沒有符合條件的單字，試試其他字母或搜尋字。</div>';
+ }
+ function speakWord(word){if(!("speechSynthesis" in window)){alert("這個瀏覽器不支援語音朗讀。");return}try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang="en-US";u.rate=.82;window.speechSynthesis.speak(u)}catch{alert("暫時無法朗讀，請檢查瀏覽器的語音設定。")}}
+ function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+ function renderQuiz(){
+   const w=state.chosen;if(!w)return;
+   state.answered=false;state.correct=null;
+   $("quizQuestion").textContent='"'+w.word+'" 的中文是？';
+   const distractors=shuffle(source.words.filter(x=>x.id!==w.id && x.zh!==w.zh)).slice(0,3);
+   const options=shuffle([w,...distractors]);
+   $("options").innerHTML=options.map(x=>'<button type="button" class="option" data-answer="'+esc(x.id)+'">'+esc(x.zh)+'</button>').join("");
+   $("quizFeedback").textContent="選擇一個答案，完成這朵單字花。";
+ }
+ function selectWord(w,scroll){
+   if(!w)return;state.chosen=w;
+   $("detailEn").textContent=w.word;$("detailZh").textContent=w.zh;
+   $("review").textContent=state.review.includes(w.id)?"★ 已加入複習":"☆ 加入複習";
+   $("learned").textContent=state.learned.includes(w.id)?"✓ 已經學會":"✓ 標記學會";
+   const pet=source.examples[w.word];
+   $("petalHint").textContent=pet?"原版 Word Blossom 的「"+w.word+"」組：拼字聯想的花瓣詞，不代表字根／詞源關係。":"此處顯示中心字；完整關聯花瓣請由上方連結開啟原版 Word Blossom。";
+   $("petals").innerHTML=pet?pet.map(p=>'<div class="petal"><b>'+esc(p.word)+'</b><span>'+esc(p.zh)+'</span></div>').join(""):'<a class="petal" target="_blank" rel="noopener noreferrer" href="https://chatgpt.com/s/t_6aeff05aecf88191ba41a43489a3906a">在原版查看完整花瓣 ↗</a>';
+   renderQuiz();renderList();stats();
+   if(scroll && window.matchMedia("(max-width:900px)").matches)$("detailEn").scrollIntoView({behavior:"smooth",block:"center"});
+ }
+ function next(){
+   const list=source.words.filter(w=>w.zone===state.zone && !state.learned.includes(w.id));
+   const pool=list.length?list:source.words.filter(w=>w.zone===state.zone);
+   const available=pool.filter(w=>w.id!==state.chosen?.id);
+   selectWord(shuffle(available.length?available:pool)[0]||source.words[0],false);
+ }
+ function exportCsv(){
+   const rows=[["島嶼","字母區","英文","繁體中文","資料類型","來源"],...source.words.map(w=>{const z=source.zones.find(x=>x.id===w.zone);return [z?.name||"",z?.range||"",w.word,w.zh,"中心單字","Word Blossom 英語單字花園"]})];
+   const csv="\uFEFF"+rows.map(row=>row.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(",")).join("\r\n");
+   const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
+   const a=document.createElement("a"),url=URL.createObjectURL(blob);a.href=url;a.download="Word-Blossom-English-Island-202-words.csv";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);
+ }
+ $("map").addEventListener("click",e=>{const b=e.target.closest("[data-zone]");if(!b)return;state.zone=b.dataset.zone;state.reviewOnly=false;renderMap();renderList();const first=source.words.find(w=>w.zone===state.zone);selectWord(first,false);if(window.matchMedia("(max-width:900px)").matches)$("explore").scrollIntoView({behavior:"smooth"})});
+ $("roots").addEventListener("click",e=>{const b=e.target.closest("[data-word]");if(b)selectWord(wordById(b.dataset.word),true)});
+ $("search").addEventListener("input",renderList);
+ $("toggleReview").addEventListener("click",()=>{state.reviewOnly=!state.reviewOnly;renderList()});
+ $("exportCsv").addEventListener("click",exportCsv);
+ $("speak").addEventListener("click",()=>{if(state.chosen)speakWord(state.chosen.word)});
+ $("review").addEventListener("click",()=>{if(!state.chosen)return;const id=state.chosen.id;state.review=state.review.includes(id)?state.review.filter(x=>x!==id):[...state.review,id];save();selectWord(state.chosen,false)});
+ $("learned").addEventListener("click",()=>{if(!state.chosen)return;const id=state.chosen.id;state.learned=state.learned.includes(id)?state.learned.filter(x=>x!==id):[...state.learned,id];save();selectWord(state.chosen,false)});
+ $("options").addEventListener("click",e=>{const btn=e.target.closest("[data-answer]");if(!btn||state.answered||!state.chosen)return;state.answered=true;const win=btn.dataset.answer===state.chosen.id;
+  for(const el of $("options").querySelectorAll(".option")){el.disabled=true;if(el.dataset.answer===state.chosen.id)el.classList.add("right");else if(el===btn&&!win)el.classList.add("wrong");}
+  if(win){state.xp+=10;save();stats();$("quizFeedback").textContent="答對了！🎉 +10 XP，再去探索下一朵單字花。";}
+  else{$("quizFeedback").textContent="再記一次："+state.chosen.word+"＝"+state.chosen.zh+"。聽一下發音，再挑戰下一題。";}
+ });
+ $("nextWord").addEventListener("click",next);
+ initState();
+ fetch("../data/english-learning-island.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(data=>{
+   if(!Array.isArray(data.words)||data.words.length<1)throw Error("Missing words");
+   source=data;renderMap();selectWord(source.words[0],false);stats();
+ }).catch(err=>{$("roots").innerHTML='<div class="empty">無法載入單字資料。請重新整理此頁，或返回原版 Word Blossom。</div>';$("wordCount").textContent="單字資料暫不可用";$("map").innerHTML="";console.error("English island load failed",err)});
+})();
+</script>
+<script src="../shared-nav.js?v=20261108" defer></script>
+</body>
+</html>
