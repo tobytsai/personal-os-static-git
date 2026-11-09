@@ -1,6 +1,6 @@
-import crypto from "node:crypto";
+const crypto = require("node:crypto");
 
-export const config = { api: { bodyParser: false } };
+const config = { api: { bodyParser: false } };
 
 const REQUIRED_ENV = [
   "META_VERIFY_TOKEN",
@@ -46,7 +46,8 @@ function humanHandoffReply() {
 }
 
 async function sendMessengerText(recipientId, text) {
-  const endpoint = `https://graph.facebook.com/${${process.env.META_GRAPH_API_VERSION || "v24.0"}/me/messages?access_token=${encodeURIComponent(process.env.META_PAGE_ACCESS_TOKEN)}`;
+  const graphVersion = process.env.META_GRAPH_API_VERSION || "v24.0";
+  const endpoint = `https://graph.facebook.com/${graphVersion}/me/messages?access_token=${encodeURIComponent(process.env.META_PAGE_ACCESS_TOKEN)}`;
   const response = await fetch(endpoint, {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -75,7 +76,7 @@ async function askOpenAI(message) {
   return result.output_text?.trim() || "我已收到訊息。請提供作品照片、完整尺寸與作品類型，專人會協助您確認。";
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   if (req.method === "GET") {
     const mode = req.query["hub.mode"];
     const token = req.query["hub.verify_token"];
@@ -112,3 +113,6 @@ export default async function handler(req, res) {
     return res.status(500).send("Webhook error");
   }
 }
+
+module.exports = handler;
+module.exports.config = config;
