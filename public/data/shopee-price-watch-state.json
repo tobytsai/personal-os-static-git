@@ -5,7 +5,7 @@
   "baseline_type": "historical displayed per-item price, not verified actual amount paid",
   "currency": "TWD",
   "watch_filter": "done===true && orderStatus!=='refunded' && price>0",
-  "last_checked_at": "2026-11-08T00:46:45.299Z",
+  "last_checked_at": "2026-11-09T00:51:19.143Z",
   "last_checked_count": 27,
   "last_notified": {
     "shorder-20261102-nutella-biscuits": {
@@ -154,6 +154,27 @@
       "checkout_verified": false,
       "shipping_verified": false,
       "coupon_verified": false
+    },
+    "shorder-20261102-yes-mineral-water": {
+      "source_product_id": "shorder-20261102-yes-mineral-water",
+      "historical_display_price": 175,
+      "current_price": 169,
+      "currency": "TWD",
+      "shopid": 33206500,
+      "itemid": 1644016012,
+      "modelid": 61133597478,
+      "shop_name": "康是美Cosmed",
+      "listing_title": "悅氏礦泉水1500mlx12瓶",
+      "matched_spec": "悅氏礦泉水 1500ml／瓶 ×12瓶／箱",
+      "source_relation": "same_seller",
+      "url": "https://shopee.tw/product/33206500/1644016012",
+      "note": "Shopee connected app search returned the identical seller + 1500ml x12 bottles single listing three times, exact price NT$169 and normal/not sold out. Historical item-card price NT$175 per 12-bottle case (historical quantity x2), not known actually-paid per-case price. Current displayed promotion does not imply coupon verified; availability for shipping to user/total checkout including shipping not confirmed.",
+      "price_verification": "Shopee Taiwan connected app live product item card, 3 exact/seller-specific queries",
+      "listing_status": "normal/not_sold_out",
+      "checkout_verified": false,
+      "shipping_verified": false,
+      "coupon_verified": false,
+      "verified_at": "2026-11-09T00:51:19.143Z"
     }
   },
   "notes": "Updated by Shopee price-watch automation only after verified comparable listings. Keep all historic user product data in source_file; no private account/order identifiers. Alerts must not claim to beat the actual paid price unless that baseline was independently verified.",
@@ -161,15 +182,16 @@
     "source": "Shopee Taiwan connected app live search",
     "qualified_products": 27,
     "source_sha": "664ddc66c02c46f1248ca8e77758d764aa355947",
-    "search_queries": 32,
+    "search_queries": 29,
     "new_verified_improvements": 1,
     "change_notifications": 1,
     "new_items_notified": [
-      "shorder-20261102-coloko-hot-315g"
+      "shorder-20261102-yes-mineral-water"
     ],
-    "previously_notified_comparison": "Nutella 193.2g: now lowest strictly comparable standard item NT$128 but last notified NT$109; 金萱冷泡茶50入 NT$89 unchanged; CHAOKOH 1000ml NT$133 unchanged; 牛頭牌原味沙茶醬127g lowest exact NT$52 unchanged; Double A A4 80P/500 sheets NT$128 unchanged; same shop same clip-phone holder model NT$20 above last notified NT$14.",
-    "excluded_notes": "Cheaper listings with only multi-variant or unknown selected size/flavor, different brand, unknown package quantity, unverified original specifications, expiring discounted food, delivery restrictions, or unspecified color were excluded. Examples: OREO chocolate 315g multi-flavor card NT$89, same seller ice pillow deep snowflake unverified NT$110, IM black-syrup jelly 16g x30 ambiguous variants NT$44, orange cleaner variants, 50-count foot patches, assorted acrylic color 702 unknown capacity. Water NT$166 listing title lacked 12-bottle quantity. No evidence to claim historical actually-paid price.",
+    "previously_notified_comparison": "Nutella 193.2g regular item at NT$128–130, not below previously reported NT$109; 金萱冷泡茶50入 NT$89 unchanged; CHAOKOH 1000ml NT$133 unchanged, cheaper display listings are multi-variant 250ml/1000ml unverified; 牛頭牌127g NT$52 unchanged; Double A A4 80磅500張 NT$128 unchanged; 夾式手機架 先前同款NT$14未有確定較低的同型號；可樂果酷辣315g 先前NT$93未見更低且完全同規格的供貨。",
+    "new_offer": "悅氏礦泉水1500ml x12瓶，原賣家康是美，蝦皮即時標價NT$169 < 歷史標示單價NT$175，兩次再查同一shopid/itemid/modelid均一致，顯示正常供貨，運費與最終可結帳總價未核實。",
+    "excluded_notes": "Lower results often target alternate product variant, incomplete capacity/count, different material, unclear size/flavour, or expiring/惜福 products. Specifically the NT$166 悅氏 listing did not explicitly state 12瓶/箱 and was excluded. UNIDESIGN 唐辛子 same seller NT$19 display belonged to combined 原味/唐辛子 multi-option listing, selected flavor price not independently confirmed; OPPO 6.5A cable NT$48 same seller lacked proof of exact 100cm, excluded; OREO 315g NT$89 multi-flavour selected price not confirmed; IM 黑蜜16g x30 NT$44 from 10入/30入 variants unconfirmed.",
     "shipping_and_checkout_verified": false,
-    "checked_at": "2026-11-08T00:46:45.299Z"
+    "checked_at": "2026-11-09T00:51:19.143Z"
   }
 }
