@@ -64,10 +64,11 @@ async function askOpenAI(message) {
       authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
     },
     body: JSON.stringify({
-      model: process.env.OPENAI_MODEL || "gpt-5-mini",
+      model: process.env.OPENAI_MODEL || "gpt-5.6-terra",
       instructions: SYSTEM_INSTRUCTIONS,
       input: message,
       max_output_tokens: 320,
+      store: false,
     }),
   });
   if (!response.ok) throw new Error(`OpenAI response failed: ${response.status}`);
