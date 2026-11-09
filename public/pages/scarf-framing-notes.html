@@ -23,7 +23,7 @@
 </header>
 
 <section class="grid">
-<article class="panel"><h2>發布控管總覽</h2><p class="sub">目前已先建入可公開核對的絲巾相關內容；新增、補網址、調整狀態都會保存在這個瀏覽器。</p><div class="numbers"><div class="number"><b id="publishedCount">0</b><span>已發布</span></div><div class="number"><b id="verifyCount">0</b><span>待核對</span></div><div class="number"><b id="platformCount">0</b><span>平台數</span></div></div></article>
+<article class="panel"><h2>發布控管總覽</h2><p class="sub">已依「專題主內容／引流型服務提及／聯絡通路」整理可公開核對的紀錄；新增、補網址、調整狀態都會保存在這個瀏覽器。</p><div class="numbers"><div class="number"><b id="publishedCount">0</b><span>已發布</span></div><div class="number"><b id="verifyCount">0</b><span>待核對</span></div><div class="number"><b id="platformCount">0</b><span>平台數</span></div></div></article>
 <aside class="panel"><h2>本週檢查順序</h2><div class="checklist"><div class="check"><i>1</i><span>確認每一篇的公開連結、標題與發佈日期。</span></div><div class="check"><i>2</i><span>檢查詢價入口是否仍能連到 LINE、電話或門市資訊。</span></div><div class="check"><i>3</i><span>有新貼文才新增一筆，避免同一內容重複計數。</span></div></div></aside>
 </section>
 
@@ -47,11 +47,19 @@
 <script>
 const STORAGE='caiShifuScarfContentTrackerV1';
 const initial=[
-{id:'blogger-guide',title:'台北松山絲巾與球衣裱框｜展示、固定與詢價準備',platform:'Blogger',date:'2026-11-06',type:'長篇指南',status:'已發布',url:'https://taipeidali.blogspot.com/2026/11/blog-post_06.html',next:'每週核對搜尋收錄與詢價入口',notes:'含絲巾展示、捲邊、取出需求、詢價範例；並清楚區分實際接件評估。'},
-{id:'youtube-short',title:'絲巾裱框效果｜金框與留白搭配｜台北松山達利畫廊',platform:'YouTube',date:'2026-11-09',type:'16 秒短片',status:'已發布',url:'https://www.youtube.com/watch?v=FFgoXjvZQcU',next:'觀察觀看、點擊與詢價反應',notes:'AI 裱框效果示意；影片與 Blogger 文章均已標示非實際施工或完工紀錄。'}
+{id:'blogger-guide',title:'台北松山絲巾與球衣裱框｜展示、固定與詢價準備',platform:'Google 部落格（Blogger）',date:'2026-11-06',type:'專題主內容｜長篇指南',status:'已發布',url:'https://taipeidali.blogspot.com/2026/11/blog-post_06.html',next:'每週核對搜尋收錄與詢價入口',notes:'含絲巾展示、捲邊、取出需求與詢價範例。'},
+{id:'youtube-short',title:'絲巾裱框效果｜金框與留白搭配｜台北松山達利畫廊',platform:'YouTube',date:'2026-11-09',type:'專題主內容｜16 秒短片',status:'已發布',url:'https://www.youtube.com/watch?v=FFgoXjvZQcU',next:'觀察觀看、點擊與詢價反應',notes:'AI 裱框效果示意，非實際施工或完工紀錄。'},
+{id:'pixnet-guide',title:'台北松山絲巾裱框｜花色、摺線與展示比例怎麼選？',platform:'痞客邦 PIXNET',date:'2026-11-09',type:'專題主內容｜服務文章',status:'已發布',url:'https://taipeidali.pixnet.net/blog/posts/960515011557417718',next:'保留連回 Blogger 與 LINE 的詢價入口',notes:'聚焦花色、摺線與展示比例。'},
+{id:'vocus-guide',title:'一條絲巾，如何變成牆上的風景？達利畫廊的絲巾裱框指南',platform:'方格子 vocus',date:'2026-11-09',type:'專題主內容｜長篇文章',status:'已發布',url:'https://vocus.cc/article/6af12e8bfd897800014deb38',next:'以專題文章導回服務頁與詢價入口',notes:'說明展示方式、框色留白與固定前的準備。'},
+{id:'instagram-inquiry',title:'想裱框，不知道從哪裡開始？',platform:'Instagram',date:'2026-11-09',type:'引流型服務提及｜詢價貼文',status:'已發布',url:'https://www.instagram.com/caitenghui2236/p/DfgD6OTCQgf/',next:'以限動或留言補回專題文章連結',notes:'文案含「絲巾框」與 #絲巾裱框；非獨立絲巾專題。'},
+{id:'threads-inquiry',title:'想裱框卻不知道怎麼開始？',platform:'Threads',date:'2026-11-09',type:'引流型服務提及｜詢價貼文',status:'已發布',url:'https://www.threads.com/@caitenghui2236',next:'發佈獨立絲巾案例或串接專題文章',notes:'文案含「絲巾框」；目前非獨立絲巾專題。'},
+{id:'facebook-service',title:'台北松山裱框｜達利畫廊・服務與詢價指南',platform:'Facebook',date:'2026-11-08',type:'引流型服務提及｜綜合服務貼文',status:'已發布',url:'https://www.facebook.com/taipeidali',next:'規劃一則實際絲巾裱框案例貼文',notes:'服務清單提及絲巾；目前未見專門絲巾案例貼文。'},
+{id:'line-contact',title:'達利畫廊 LINE 官方帳號',platform:'LINE 官方帳號',date:'',type:'聯絡通路｜非公開貼文',status:'待核對',url:'https://lin.ee/SZAp5v1',next:'確認歡迎訊息是否導向絲巾詢價資料',notes:'ID：@042mfznb；作為詢價入口，不列入公開發布內容。'},
+{id:'messenger-contact',title:'Messenger 傳送訊息詢價',platform:'Messenger',date:'',type:'聯絡通路｜非公開貼文',status:'待核對',url:'https://m.me/571209622990851',next:'確認自動回覆含照片、尺寸與用途提示',notes:'作為詢價入口，不列入公開發布內容。'},
+{id:'whatsapp-unverified',title:'WhatsApp 官方帳號／連結',platform:'WhatsApp',date:'',type:'聯絡通路｜尚未確認',status:'待核對',url:'',next:'未確認前不放入對外導流與發布清單',notes:'目前沒有可確認屬於達利畫廊的官方 WhatsApp 號碼或連結。'}
 ];
 let items=load(),editing=null;
-function load(){try{const saved=JSON.parse(localStorage.getItem(STORAGE));return Array.isArray(saved)?saved:initial}catch{return initial}}
+function load(){try{const saved=JSON.parse(localStorage.getItem(STORAGE));if(!Array.isArray(saved))return initial;const byId=new Map(saved.map(x=>[x.id,x]));const seeded=initial.map(x=>byId.get(x.id)||x);const extras=saved.filter(x=>!initial.some(seed=>seed.id===x.id));return [...seeded,...extras]}catch{return initial}}
 function save(){localStorage.setItem(STORAGE,JSON.stringify(items))}
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function badge(status){const cl=status==='已發布'?'':status==='待核對'?'verify':'draft';return '<span class="badge '+cl+'">'+esc(status)+'</span>'}
