@@ -6,7 +6,6 @@ const REQUIRED_ENV = [
   "META_VERIFY_TOKEN",
   "META_APP_SECRET",
   "META_PAGE_ACCESS_TOKEN",
-  "META_GRAPH_API_VERSION",
   "OPENAI_API_KEY",
 ];
 
@@ -47,7 +46,7 @@ function humanHandoffReply() {
 }
 
 async function sendMessengerText(recipientId, text) {
-  const endpoint = `https://graph.facebook.com/${process.env.META_GRAPH_API_VERSION}/me/messages?access_token=${encodeURIComponent(process.env.META_PAGE_ACCESS_TOKEN)}`;
+  const endpoint = `https://graph.facebook.com/${${process.env.META_GRAPH_API_VERSION || "v24.0"}/me/messages?access_token=${encodeURIComponent(process.env.META_PAGE_ACCESS_TOKEN)}`;
   const response = await fetch(endpoint, {
     method: "POST",
     headers: { "content-type": "application/json" },
