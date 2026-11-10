@@ -5,7 +5,7 @@
   "baseline_type": "historical displayed per-item price, not verified actual amount paid",
   "currency": "TWD",
   "watch_filter": "done===true && orderStatus!=='refunded' && price>0",
-  "last_checked_at": "2026-11-09T00:51:19.143Z",
+  "last_checked_at": "2026-11-10T01:09:06.328Z",
   "last_checked_count": 27,
   "last_notified": {
     "shorder-20261102-nutella-biscuits": {
@@ -175,23 +175,44 @@
       "shipping_verified": false,
       "coupon_verified": false,
       "verified_at": "2026-11-09T00:51:19.143Z"
+    },
+    "shorder-20261102-foot-scraper": {
+      "source_product_id": "shorder-20261102-foot-scraper",
+      "historical_display_price": 88,
+      "current_price": 49,
+      "currency": "TWD",
+      "shopid": 85147090,
+      "itemid": 1628726711,
+      "modelid": 420799522784,
+      "shop_name": "上手家居｜Jouzu",
+      "listing_title": "【上手家居】磨腳皮 去腳皮 腳皮刀 不鏽鋼 附搓腳頭 10片刀片 不銹鋼 腳皮去除器",
+      "matched_spec": "不鏽鋼腳皮刨刀／刮腳刀，附搓腳頭與10片替換刀片",
+      "source_relation": "other_seller",
+      "url": "https://shopee.tw/product/85147090/1628726711",
+      "price_verification": "Shopee Taiwan connected app live search item card; confirmed same listing in two targeted queries; price 4900000 (NT$49)",
+      "listing_status": "normal/not_sold_out",
+      "checkout_verified": false,
+      "shipping_verified": false,
+      "coupon_verified": false,
+      "verified_at": "2026-11-10T01:09:06.328Z",
+      "note": "Same product class and complete accessory specification as historical purchase from A&S好物-桃花塢; different seller. Historical product display price NT$88, current item-card price NT$49, difference NT$39 (44.3%). Historical checkout unit price and actual delivery, coupon, final checkout unverified."
     }
   },
   "notes": "Updated by Shopee price-watch automation only after verified comparable listings. Keep all historic user product data in source_file; no private account/order identifiers. Alerts must not claim to beat the actual paid price unless that baseline was independently verified.",
   "last_check_summary": {
     "source": "Shopee Taiwan connected app live search",
-    "qualified_products": 27,
     "source_sha": "664ddc66c02c46f1248ca8e77758d764aa355947",
-    "search_queries": 29,
+    "qualified_products": 27,
+    "search_queries": 36,
     "new_verified_improvements": 1,
     "change_notifications": 1,
     "new_items_notified": [
-      "shorder-20261102-yes-mineral-water"
+      "shorder-20261102-foot-scraper"
     ],
-    "previously_notified_comparison": "Nutella 193.2g regular item at NT$128–130, not below previously reported NT$109; 金萱冷泡茶50入 NT$89 unchanged; CHAOKOH 1000ml NT$133 unchanged, cheaper display listings are multi-variant 250ml/1000ml unverified; 牛頭牌127g NT$52 unchanged; Double A A4 80磅500張 NT$128 unchanged; 夾式手機架 先前同款NT$14未有確定較低的同型號；可樂果酷辣315g 先前NT$93未見更低且完全同規格的供貨。",
-    "new_offer": "悅氏礦泉水1500ml x12瓶，原賣家康是美，蝦皮即時標價NT$169 < 歷史標示單價NT$175，兩次再查同一shopid/itemid/modelid均一致，顯示正常供貨，運費與最終可結帳總價未核實。",
-    "excluded_notes": "Lower results often target alternate product variant, incomplete capacity/count, different material, unclear size/flavour, or expiring/惜福 products. Specifically the NT$166 悅氏 listing did not explicitly state 12瓶/箱 and was excluded. UNIDESIGN 唐辛子 same seller NT$19 display belonged to combined 原味/唐辛子 multi-option listing, selected flavor price not independently confirmed; OPPO 6.5A cable NT$48 same seller lacked proof of exact 100cm, excluded; OREO 315g NT$89 multi-flavour selected price not confirmed; IM 黑蜜16g x30 NT$44 from 10入/30入 variants unconfirmed.",
+    "new_offer": "不鏽鋼腳皮刨刀附搓腳頭+10替換刀片，上手家居 Jouzu，單價NT$49，低於原歷史標價NT$88（原賣場A&S好物），不同賣家，兩次搜尋回傳同shopid/itemid/modelid，正常在售且未標售罄。運費、券及最終結帳未驗證。",
+    "previously_notified_comparison": "Nutella 193.2g 愛買NT$119高於已通知NT$109；金萱50入NT$89持平；CHAOKOH1000mlNT$133持平；牛頭牌沙茶醬127gNT$52持平；Double A A4 80磅500張NT$128持平；可樂果酷辣315gNT$93持平；悅氏水12入康是美NT$169持平。夾式手機架另有不同商品刊登NT$10或NT$24，但已通知品項的相同 itemid/modelid NT$14 未確認更低，不重複通知。",
+    "excluded_notes": "冰枕同賣場顯示NT$110但未確認已購買的深雪花加厚成人款選中規格價；UNIDESIGN唐辛子同賣場NT$19為原味/唐辛子多選款，未確認該口味; IM黑蜜30入顯示NT$44為10入/30入多選款；OPPO線材同賣場NT$48但未確認100cm；Oreo315g NT$89為多口味多選；老北京足貼不同賣場可能配方/片裝不同；電池檢測器NT$37缺少完整銀色齒狀型號確認；橘子工坊NT$145未確認無香精制菌版；部分物品缺尺寸/容量或同款佐證，皆不報低價。",
     "shipping_and_checkout_verified": false,
-    "checked_at": "2026-11-09T00:51:19.143Z"
+    "checked_at": "2026-11-10T01:09:06.328Z"
   }
 }
