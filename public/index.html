@@ -27,6 +27,8 @@
 .home-fold>summary .sectiontop,.home-fold>summary .independent-heading{margin:0;flex:1;min-width:0}.home-fold>summary h2{font-size:22px;line-height:1.4;margin:0}.home-fold>summary .small{font-size:13px;line-height:1.6;margin-top:4px}.home-fold-hint{display:flex;align-items:center;gap:8px;flex:none;background:#edf4ef;color:#345f4b;border-radius:10px;padding:8px 12px;font-size:14px;font-weight:700}.home-fold-hint:after{content:'＋';font-size:20px;line-height:1}.home-fold[open]>summary .home-fold-hint:after{content:'−'}.home-fold-close,.home-fold[open] .home-fold-open{display:none}.home-fold[open] .home-fold-close{display:inline}.home-fold[open]>summary{border-bottom:1px solid #e1eae4}.home-fold-content{padding:18px 22px 22px}.home-fold-content .independent-note{margin-top:0}
 @media(max-width:600px){.home-fold>summary{padding:17px 16px;gap:10px;min-height:80px}.home-fold>summary h2{font-size:20px}.home-fold>summary .independent-heading{display:block}.home-fold-hint{padding:8px 10px;font-size:13px}.home-fold-content{padding:16px}.home-fold>summary .sectiontop{align-items:flex-start;gap:6px;flex-direction:column}}
 .independent-launch{display:flex;align-items:center;gap:14px;max-width:760px;margin:16px 0 4px;padding:16px 20px;border-radius:18px;background:linear-gradient(110deg,#17634f,#2d9871);color:#fff;box-shadow:0 8px 22px #17634f30}.independent-launch:hover{background:linear-gradient(110deg,#124f40,#237c5c)}.independent-launch-icon{display:grid;place-items:center;background:#ffffff29;border-radius:12px;width:46px;height:46px;font-size:26px;flex:none}.independent-launch strong,.independent-launch small{display:block}.independent-launch strong{font-size:19px}.independent-launch small{margin-top:3px;color:#ddf5e7;font-size:12px}.independent-launch-arrow{margin-left:auto;font-size:26px}.independent-launch:focus-visible{outline:3px solid #d69b32;outline-offset:3px}
+
+.mind-fold{background:#fff;border:1px solid #e6e9ee;border-radius:22px;padding:17px;margin:20px 0;box-shadow:0 5px 22px rgba(30,37,47,.045)}.mind-fold summary{cursor:pointer;font-weight:800;font-size:18px}.mind-intro{color:#747c87;font-size:13px;line-height:1.6}.mind-switch{display:flex;flex-wrap:wrap;gap:8px}.mind-switch button{border:1px solid #dedff0;background:#fff;border-radius:999px;padding:9px 15px;cursor:pointer}.mind-switch button[aria-pressed=true]{background:#454276;color:#fff;border-color:#454276}.mind-stage{height:410px;position:relative;overflow:hidden;margin:12px auto;background:radial-gradient(circle at center,#f4edff,#f8fbff 63%,#fff);border-radius:22px;max-width:850px}.mind-stage svg{position:absolute;width:100%;height:100%;inset:0;pointer-events:none}.mind-stage line{stroke:#b8b4d9;stroke-width:1.5}.mind-center,.mind-node{position:absolute;transform:translate(-50%,-50%);border:0;cursor:pointer;font-weight:700}.mind-center{left:50%;top:50%;width:95px;height:95px;border-radius:50%;background:linear-gradient(140deg,#7762d7,#de88b1);color:white;box-shadow:0 12px 28px #9b88c966}.mind-node{width:66px;height:66px;border-radius:50%;background:var(--node-color);color:#fff;box-shadow:inset -5px -8px 14px #0002,inset 4px 4px 12px #fff5,0 6px 12px #47506633}.mind-node.selected{outline:3px solid #282650;outline-offset:3px}.mind-stage[data-mode=network]{background:#f8f9fd}.mind-stage[data-mode=network] .mind-node{border-radius:18px;box-shadow:0 5px 15px #47506622}.mind-stage[data-mode=network] .mind-center{border-radius:24px}.mind-stage[data-mode=network] line{stroke:#aaa8cb;stroke-dasharray:4 4}.mind-items{display:flex;flex-wrap:wrap;gap:8px}.mind-item{display:inline-flex;align-items:center;border:1px solid #e7e7ef;border-left:4px solid var(--node-color);border-radius:12px;background:#fff;padding:10px 12px;font-size:13px;color:#282b35;cursor:pointer}.mind-item:hover{background:#f3f1fa}.mind-selection{font-size:14px;margin:12px 0}.mind-fold button:focus-visible,.mind-fold a:focus-visible{outline:3px solid #6b57d8;outline-offset:3px}@media(max-width:600px){.mind-stage{height:340px}.mind-node{width:54px;height:54px;font-size:12px}.mind-center{width:74px;height:74px;font-size:12px}.mind-stage[data-mode=network] .mind-node{border-radius:14px}}
 </style><link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="stylesheet" href="./assets/independent-sites.css">
 
@@ -55,7 +57,7 @@
 
 
 
-<section class="section" id="favorites"><div class="sectiontop"><div><h2>我的收藏</h2><div class="small">按下啟動器上的星號，常用入口會集中顯示在這裡。</div></div><div class="small" id="favoriteCount"></div></div><div class="tools" id="favoritesGrid"></div></section>
+<section class="section" id="mind-map"><details class="mind-fold" id="mind-fold"><summary>◉ 心智球與思維圖</summary><p class="mind-intro">以圖像探索原有啟動器：先選分類，再點選下方入口開啟。</p><div class="mind-switch" aria-label="選擇瀏覽方式"><button type="button" data-mind-mode="sphere" aria-pressed="true">◉ 心智球</button><button type="button" data-mind-mode="network" aria-pressed="false">⌘ 網狀思維圖</button></div><p class="mind-intro" id="mind-hint">點選彩色球體展開分類，再選擇入口。</p><div class="mind-stage" id="mind-stage"></div><h3 class="mind-selection" id="mind-selection"></h3><div class="mind-items" id="mind-items"></div></details></section><section class="section" id="favorites"><div class="sectiontop"><div><h2>我的收藏</h2><div class="small">按下啟動器上的星號，常用入口會集中顯示在這裡。</div></div><div class="small" id="favoriteCount"></div></div><div class="tools" id="favoritesGrid"></div></section>
 <section class="section home-directory" id="tools"><details class="home-fold" id="tools-fold"><summary><div class="sectiontop"><div><h2>彩色啟動器</h2><div class="small">保留不同色塊，讓入口可以用視覺快速辨識。</div></div><div class="small" id="toolCount"></div></div><span class="home-fold-hint"><span class="home-fold-open">展開</span><span class="home-fold-close">收合</span></span></summary><div class="home-fold-content"><div class="pills" id="pills"></div><div class="tools" id="toolsGrid"></div></div></details></section><div class="foot">Personal OS 靜態版 · 私人 API 僅於自行授權後連接 · 收藏與最近使用保存在本機瀏覽器</div></main></div>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
@@ -104,5 +106,33 @@ renderTools();
  toggle.addEventListener('click',()=>{setCollapsed(!collapsed);try{localStorage.setItem('tobyHomeRemindersCollapsedV1',String(collapsed))}catch{}});
 })();
 </script>
-</body></html>
+<script>(()=>{
+const host=document.getElementById('mind-map'), field=document.getElementById('mind-stage'), items=document.getElementById('mind-items'), title=document.getElementById('mind-selection'), hint=document.getElementById('mind-hint');
+let mode='sphere', selected=null;
+const groups=[...new Set(tools.filter(Boolean).map(t=>t.cat))];
+function draw(){
+ field.replaceChildren();
+ const width=field.clientWidth, height=field.clientHeight, cx=width/2, cy=height/2;
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.setAttribute('viewBox','0 0 '+width+' '+height);svg.setAttribute('aria-hidden','true');field.appendChild(svg);
+ const center=document.createElement('button');center.className='mind-center';center.textContent='我的啟動器';center.setAttribute('aria-label','顯示全部入口');center.onclick=()=>{selected=null;draw();showItems()};field.appendChild(center);
+ const radiusX=Math.max(80,Math.min(width/2-62,300)), radiusY=Math.max(90,height/2-50);
+ groups.forEach((group,i)=>{
+ const angle=-Math.PI/2+2*Math.PI*i/groups.length;
+ const x=cx+Math.cos(angle)*radiusX,y=cy+Math.sin(angle)*radiusY;
+ const line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1',cx);line.setAttribute('y1',cy);line.setAttribute('x2',x);line.setAttribute('y2',y);svg.appendChild(line);
+ const button=document.createElement('button');button.type='button';button.className='mind-node'+(selected===group?' selected':'');button.style.left=x+'px';button.style.top=y+'px';
+ const first=tools.find(t=>t&&t.cat===group);button.style.setProperty('--node-color',first?.color||'#7766bb');button.textContent=group;button.setAttribute('aria-pressed',String(selected===group));button.onclick=()=>{selected=group;draw();showItems()};field.appendChild(button);
+ });
+ field.dataset.mode=mode;
+}
+function showItems(){
+ const list=tools.filter(t=>t&&(!selected||t.cat===selected));
+ title.textContent=selected?selected+' · '+list.length+' 個入口':'全部入口 · '+list.length+' 個';
+ items.replaceChildren();
+ list.forEach(t=>{const linked=t.url&&t.url!=='#';const el=document.createElement(linked?'a':'button');el.className='mind-item';el.style.setProperty('--node-color',t.color||'#7766bb');el.textContent=(t.icon||'◌')+'  '+t.name;if(linked){el.href=t.url;const internal=t.url.startsWith('./')||t.url.includes('/personal-os-static-git/pages/');if(!internal){el.target='_blank';el.rel='noopener'}el.addEventListener('click',()=>recordRecent(t.id));}else{el.type='button';el.addEventListener('click',()=>remember(t));}items.appendChild(el)});
+}
+host.querySelectorAll('[data-mind-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mindMode;host.querySelectorAll('[data-mind-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));hint.textContent=mode==='sphere'?'點選彩色球體展開分類，再選擇入口。':'點選網狀節點查看分類，再選擇入口。';draw()}));
+const fold=document.getElementById('mind-fold');fold.addEventListener('toggle',()=>{if(fold.open){draw();showItems()}});window.addEventListener('resize',()=>{if(fold.open)draw()});
+})();</script></body></html>
 
