@@ -1,0 +1,2399 @@
+{
+  "schema_version": 1,
+  "date_taipei": "2026-11-11",
+  "generated_at": "2026-11-11T06:35:27+00:00",
+  "comparison_date": "2026-11-10",
+  "note": "Google Trends RSS 熱搜量級是估算下限；新聞為來源排序；GitHub stars 和 HN points 不可跨榜比較。",
+  "source_status": [
+    {
+      "group": "tw",
+      "source": "Google Trends 台灣",
+      "ok": true,
+      "count": 10,
+      "error": ""
+    },
+    {
+      "group": "us",
+      "source": "Google Trends 美國",
+      "ok": true,
+      "count": 10,
+      "error": ""
+    },
+    {
+      "group": "jp",
+      "source": "Google Trends 日本",
+      "ok": true,
+      "count": 10,
+      "error": ""
+    },
+    {
+      "group": "news",
+      "source": "Google News｜台灣新聞焦點",
+      "ok": true,
+      "count": 15,
+      "error": ""
+    },
+    {
+      "group": "ai",
+      "source": "Google News｜AI 與科技",
+      "ok": true,
+      "count": 15,
+      "error": ""
+    },
+    {
+      "group": "art",
+      "source": "Google News｜藝文與設計",
+      "ok": true,
+      "count": 15,
+      "error": ""
+    },
+    {
+      "group": "community",
+      "source": "Google News｜地方創生與社造",
+      "ok": true,
+      "count": 15,
+      "error": ""
+    },
+    {
+      "group": "education",
+      "source": "Google News｜自學與教育",
+      "ok": true,
+      "count": 9,
+      "error": ""
+    },
+    {
+      "group": "business",
+      "source": "Google News｜商業與行銷",
+      "ok": true,
+      "count": 14,
+      "error": ""
+    },
+    {
+      "group": "github",
+      "source": "GitHub Trending",
+      "ok": true,
+      "count": 12,
+      "error": ""
+    },
+    {
+      "group": "hn",
+      "source": "Hacker News 熱門討論",
+      "ok": true,
+      "count": 15,
+      "error": ""
+    }
+  ],
+  "rankings": {
+    "tw": [
+      {
+        "id": "tw:caf2fb3ef597ac",
+        "title": "記憶 體",
+        "url": "https://www.google.com/search?q=%E8%A8%98%E6%86%B6+%E9%AB%94&hl=zh-TW",
+        "published_at": "2026-11-11T05:30:00+00:00",
+        "value": "500+",
+        "value_number": 500,
+        "publisher": "Google Trends TW",
+        "related": [],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:78644e01f96f68",
+        "title": "威秀",
+        "url": "https://www.google.com/search?q=%E5%A8%81%E7%A7%80&hl=zh-TW",
+        "published_at": "2026-11-11T04:30:00+00:00",
+        "value": "500+",
+        "value_number": 500,
+        "publisher": "Google Trends TW",
+        "related": [
+          {
+            "title": "BTS高雄場直播秒殺 急加開18影城逾萬席",
+            "url": "https://tw.news.yahoo.com/bts%E9%AB%98%E9%9B%84%E5%A0%B4%E7%9B%B4%E6%92%AD%E7%A7%92%E6%AE%BA-%E6%80%A5%E5%8A%A0%E9%96%8B18%E5%BD%B1%E5%9F%8E%E9%80%BE%E8%90%AC%E5%B8%AD-032446642.html",
+            "publisher": "Yahoo新聞"
+          },
+          {
+            "title": "ARMY必喝！BTS降臨高雄 福容高雄推期間限定夢幻紫「防彈特調」",
+            "url": "https://www.ctee.com.tw/news/20261110701672-431401",
+            "publisher": "工商時報"
+          },
+          {
+            "title": "三星攜手’BTS WORLD TOUR ‘ARIRANG’ IN KAOHSIUNG’ 打造演唱會沉浸星體驗",
+            "url": "https://news.samsung.com/tw/%E4%B8%89%E6%98%9F%E6%94%9C%E6%89%8Bbts-world-tour-arirang-in-kaohsiung-%E6%89%93%E9%80%A0%E6%BC%94%E5%94%B1%E6%9C%83%E6%B2%89%E6%B5%B8%E6%98%9F%E9%AB%94%E9%A9%97",
+            "publisher": "samsung.com"
+          }
+        ],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:9e4e22b31fa417",
+        "title": "3026",
+        "url": "https://www.google.com/search?q=3026&hl=zh-TW",
+        "published_at": "2026-11-11T06:10:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends TW",
+        "related": [],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:b8e4ee16a3ea64",
+        "title": "公館運動館",
+        "url": "https://www.google.com/search?q=%E5%85%AC%E9%A4%A8%E9%81%8B%E5%8B%95%E9%A4%A8&hl=zh-TW",
+        "published_at": "2026-11-11T05:20:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends TW",
+        "related": [],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:1e0a482829ea7f",
+        "title": "星宇航空",
+        "url": "https://www.google.com/search?q=%E6%98%9F%E5%AE%87%E8%88%AA%E7%A9%BA&hl=zh-TW",
+        "published_at": "2026-11-11T05:00:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends TW",
+        "related": [
+          {
+            "title": "少了貨機護體！星宇Q3每股虧0.1元 10月營收再創單月新高- 產業",
+            "url": "https://www.ctee.com.tw/news/20261110702050-430503",
+            "publisher": "工商時報"
+          },
+          {
+            "title": "星宇航空前3季稅後虧損逾6億元 每股虧損0.21元",
+            "url": "https://tw.stock.yahoo.com/news/%E6%98%9F%E5%AE%87%E8%88%AA%E7%A9%BA%E5%89%8D3%E5%AD%A3%E7%A8%85%E5%BE%8C%E8%99%A7%E6%90%8D%E9%80%BE6%E5%84%84%E5%85%83-%E6%AF%8F%E8%82%A1%E8%99%A7%E6%90%8D021%E5%85%83-102727968.html",
+            "publisher": "Yahoo股市"
+          },
+          {
+            "title": "星宇航空10月營收創新高 第三季虧損縮小",
+            "url": "https://stock.ltn.com.tw/article/p34a3wrrdqqt",
+            "publisher": "自由時報"
+          }
+        ],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:cb41d7a0ba2b00",
+        "title": "trail blazers vs thunder",
+        "url": "https://www.google.com/search?q=trail+blazers+vs+thunder&hl=zh-TW",
+        "published_at": "2026-11-11T04:50:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends TW",
+        "related": [
+          {
+            "title": "Injury Report: OKC Thunder List Six Players Against Trail Blazers",
+            "url": "https://sports.yahoo.com/articles/injury-report-okc-thunder-list-000133305.html",
+            "publisher": "Yahoo Sports"
+          },
+          {
+            "title": "NBA Player Props for Wendell Carter, Shai Gilgeous-Alexander (Tuesday, Nov. 10)",
+            "url": "https://www.actionnetwork.com/nba/nba-player-props-for-kentavious-caldwell-pope-shai-gilgeous-alexander-on-tuesday-november-10",
+            "publisher": "Action Network"
+          },
+          {
+            "title": "Thunder Basketball",
+            "url": "https://www.idahostatejournal.com/sports/national/thunder-basketball/image_05e29532-a805-5671-a96f-59fc191aa99c.html",
+            "publisher": "Idaho State Journal"
+          }
+        ],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:62a8bde4f86119",
+        "title": "異 病 偵探",
+        "url": "https://www.google.com/search?q=%E7%95%B0+%E7%97%85+%E5%81%B5%E6%8E%A2&hl=zh-TW",
+        "published_at": "2026-11-11T04:40:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends TW",
+        "related": [],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:023f463b470ffb",
+        "title": "8150",
+        "url": "https://www.google.com/search?q=8150&hl=zh-TW",
+        "published_at": "2026-11-11T06:20:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends TW",
+        "related": [],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:1cf145918d1174",
+        "title": "電動汽車",
+        "url": "https://www.google.com/search?q=%E9%9B%BB%E5%8B%95%E6%B1%BD%E8%BB%8A&hl=zh-TW",
+        "published_at": "2026-11-11T05:50:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends TW",
+        "related": [
+          {
+            "title": "トヨタ自動車九州4〜9月期、売上高1%増 レクサス電動車比率が向上",
+            "url": "https://www.nikkei.com/article/DGXZQOJC106UH0Q6A111C2000000/",
+            "publisher": "日本経済新聞"
+          },
+          {
+            "title": "トヨタ自動車九州の売上高が中間期で２年連続増収、高単価の電動車売れ…前年比１・２％増の７２７５億円（読売新聞オンライン）",
+            "url": "https://news.yahoo.co.jp/articles/722d199d6ee43025acd6fc3d60175d61c207c7b1",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "トヨタ自動車九州、中間期売上高7275億円 電動車シフトが奏功",
+            "url": "https://finance.biggo.jp/news/a67a91b2-918c-48b0-845a-d5a1350db33c",
+            "publisher": "BigGo ファイナンス"
+          }
+        ],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "tw:62adbee7b83e53",
+        "title": "馬拉松",
+        "url": "https://www.google.com/search?q=%E9%A6%AC%E6%8B%89%E6%9D%BE&hl=zh-TW",
+        "published_at": "2026-11-11T04:40:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends TW",
+        "related": [],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "us": [
+      {
+        "id": "us:8780c7cd42a5a7",
+        "title": "portland trail blazers",
+        "url": "https://www.google.com/search?q=portland+trail+blazers&hl=zh-TW",
+        "published_at": "2026-11-11T06:00:00+00:00",
+        "value": "2000+",
+        "value_number": 2000,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Blazers Move Scoot Henderson Out of Starting Lineup Versus Thunder",
+            "url": "https://www.blazersedge.com/trail-blazers-news/118225/blazers-move-scoot-henderson-out-of-starting-lineup-versus-thunder",
+            "publisher": "Blazer's Edge"
+          },
+          {
+            "title": "Scoot Henderson returning to the bench in favor of Sidy Cissoko",
+            "url": "https://sports.yahoo.com/articles/scoot-henderson-returning-bench-favor-052006312.html",
+            "publisher": "Yahoo Sports"
+          },
+          {
+            "title": "Trail Blazers' Scoot Henderson: Not starting Tuesday",
+            "url": "https://www.cbssports.com/fantasy/basketball/news/trail-blazers-scoot-henderson-not-starting-tuesday/",
+            "publisher": "CBS Sports"
+          }
+        ],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:67e0739bd92a7c",
+        "title": "deni avdija",
+        "url": "https://www.google.com/search?q=deni+avdija&hl=zh-TW",
+        "published_at": "2026-11-11T06:00:00+00:00",
+        "value": "1000+",
+        "value_number": 1000,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Deni Avdija is at it again",
+            "url": "https://www.jta.org/2026/11/06/sports/deni-avdija-is-at-it-again",
+            "publisher": "Jewish Telegraphic Agency"
+          },
+          {
+            "title": "Turnover-filled loss to Lakers gives Blazers further evidence they need Ja Morant",
+            "url": "https://ripcityproject.com/turnover-filled-loss-lakers-gives-blazers-further-evidence-need-ja-morant",
+            "publisher": "Rip City Project"
+          },
+          {
+            "title": "Deni Avdija, Micah Nori and the summer phone call that defines Trail Blazers’ quick start - The Athletic",
+            "url": "https://www.nytimes.com/athletic/7749871/2026/11/03/deni-avdija-micah-nori-trail-blazers-nba/",
+            "publisher": "The New York Times"
+          }
+        ],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:9365f2f9ee622b",
+        "title": "ajay mitchell",
+        "url": "https://www.google.com/search?q=ajay+mitchell&hl=zh-TW",
+        "published_at": "2026-11-11T06:20:00+00:00",
+        "value": "500+",
+        "value_number": 500,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Courtside at the Coral: Ajay Mitchell Returns to Help the Gauchos Make Their Next Move",
+            "url": "https://www.montecitojournal.net/2026/11/10/courtside-at-the-coral-ajay-mitchell-returns-to-help-the-gauchos-make-their-next-move/",
+            "publisher": "Montecito Journal"
+          },
+          {
+            "title": "How Thunder’s Ajay Mitchell Evolved From Overlooked Prospect to Budding NBA Star",
+            "url": "https://www.si.com/nba/thunder/how-thunder-ajay-mitchell-evolved-overlooked-prospect-budding-nba-star",
+            "publisher": "Sports Illustrated"
+          },
+          {
+            "title": "Ajay Mitchell's Big Season Could Leave The Thunder With Big Decisions In The Future",
+            "url": "https://sports.yahoo.com/articles/ajay-mitchells-big-season-could-000003554.html",
+            "publisher": "Yahoo Sports"
+          }
+        ],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:1afba11fecfc24",
+        "title": "amanda nunes",
+        "url": "https://www.google.com/search?q=amanda+nunes&hl=zh-TW",
+        "published_at": "2026-11-11T06:20:00+00:00",
+        "value": "500+",
+        "value_number": 500,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Coach Conversation | Polymarket UFC 334: Kayla Harrison vs Amanda Nunes",
+            "url": "https://www.ufc.com/news/coach-conversation-polymarket-ufc-334-kayla-harrison-vs-amanda-nunes",
+            "publisher": "UFC.com"
+          },
+          {
+            "title": "UFC 334 faceoff: Kayla Harrison, Amanda Nunes exchange serious stares in Times Square",
+            "url": "https://mmajunkie.usatoday.com/story/sports/ufc/2026/11/10/kayla-harrison-amanda-nunes-ufc-334-faceoff-times-square/92715520007/",
+            "publisher": "MMA Junkie"
+          },
+          {
+            "title": "Video: UFC 334 'Countdown' for Kayla Harrison vs. Amanda Nunes",
+            "url": "https://www.centraloregondaily.com/sports/video-ufc-334-countdown-for-kayla-harrison-vs-amanda-nunes/article_113d20f9-ca66-5ffc-b603-15efd8f7c6dc.html",
+            "publisher": "Central Oregon Daily"
+          }
+        ],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:6ee7d569e8ee08",
+        "title": "donovan clingan",
+        "url": "https://www.google.com/search?q=donovan+clingan&hl=zh-TW",
+        "published_at": "2026-11-11T06:10:00+00:00",
+        "value": "500+",
+        "value_number": 500,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Donovan Clingan on Ja Morant: 'He's a great teammate, he's supportive'",
+            "url": "https://sports.yahoo.com/articles/donovan-clingan-ja-morant-hes-014359177.html",
+            "publisher": "Yahoo Sports"
+          },
+          {
+            "title": "Donovan Clingan on Ja Morant: 'He's a great teammate, he's supportive'",
+            "url": "https://www.hoopshype.com/story/sports/nba/rumors/2026/11/10/donovan-clingan-on-ja-morant-hes-a-great-teammate-hes-supportive/92717453007/",
+            "publisher": "HoopsHype"
+          },
+          {
+            "title": "Exclusive: Blazers’ Donovan Clingan Talks Defending Nikola Jokić Well, Damian Lillard/Dillon Brooks Dustup",
+            "url": "https://fadeawayworld.net/nba/portland-trail-blazers/exclusive-blazers-donovan-clingan-talks-defending-nikola-jokic-well-damian-lillard-dillon-brooks-dustup",
+            "publisher": "Fadeaway World"
+          }
+        ],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:723d3038849bd5",
+        "title": "larry ellison",
+        "url": "https://www.google.com/search?q=larry+ellison&hl=zh-TW",
+        "published_at": "2026-11-11T06:20:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Skydance buyouts at CNN, CBS News spark exodus of veteran staffers -- including workers bosses wanted to keep: report",
+            "url": "https://nypost.com/2026/11/10/media/skydance-buyouts-at-cnn-cbs-news-spark-exodus-of-veteran-staffers-including-workers-bosses-wanted-to-keep-report/",
+            "publisher": "New York Post"
+          },
+          {
+            "title": "David Ellison’s Offer to Staff Backfires Spectacularly",
+            "url": "https://finance.yahoo.com/media-advertising/articles/david-ellison-offer-staff-backfires-135615786.html",
+            "publisher": "Yahoo Finance"
+          },
+          {
+            "title": "CNN Sees Some Staff Buyouts Under Skydance Merger Plan",
+            "url": "https://variety.com/2026/tv/news/cnn-staff-buyouts-skydance-merger-1236943369/",
+            "publisher": "Variety"
+          }
+        ],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:d30758fb0e999d",
+        "title": "thunder score",
+        "url": "https://www.google.com/search?q=thunder+score&hl=zh-TW",
+        "published_at": "2026-11-11T06:20:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Thunder 114-75 Wizards (Nov 7, 2026) Game Recap",
+            "url": "https://www.espn.com/nba/recap/_/gameId/401909941",
+            "publisher": "ESPN"
+          },
+          {
+            "title": "Game Recap: Thunder 114, Wizards 75 (Nov. 7)",
+            "url": "https://www.nba.com/watch/video/game-recap-thunder-114-wizards-75-nov-7",
+            "publisher": "NBA.com"
+          },
+          {
+            "title": "Against Oklahoma City, the Wizards were the bug",
+            "url": "https://www.bulletsforever.com/washington-wizards-statistical-analysis/73921/against-oklahoma-city-the-wizards-were-the-bug",
+            "publisher": "Bullets Forever"
+          }
+        ],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:424b69b13c903f",
+        "title": "taye diggs",
+        "url": "https://www.google.com/search?q=taye+diggs&hl=zh-TW",
+        "published_at": "2026-11-11T06:20:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Taye Diggs Stars in 'The Chosen: The Three Kings' Christmas Special",
+            "url": "https://variety.com/2026/tv/news/taye-diggs-the-chosen-the-three-kings-christmas-special-fox-1236943728/",
+            "publisher": "Variety"
+          },
+          {
+            "title": "Casting News: The Chosen Crowns Taye Diggs, Clueless Star Returning For Sequel Series, And More",
+            "url": "https://www.tvline.com/2312759/the-chosen-christmas-special-cast-taye-diggs-clueless-star-returning-sequel/",
+            "publisher": "TVLine"
+          },
+          {
+            "title": "Taye Diggs Cast in The Chosen’s Christmas Spin-off, Release Date & First Look Revealed",
+            "url": "https://www.yahoo.com/entertainment/tv/articles/taye-diggs-cast-chosen-christmas-205632567.html",
+            "publisher": "Yahoo"
+          }
+        ],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:2edcdd30a3c83d",
+        "title": "ja morant injury",
+        "url": "https://www.google.com/search?q=ja+morant+injury&hl=zh-TW",
+        "published_at": "2026-11-11T06:20:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Trail Blazers Announce Encouraging Ja Morant Injury Update Before Spurs Game",
+            "url": "https://sports.yahoo.com/articles/trail-blazers-announce-encouraging-ja-045805609.html",
+            "publisher": "Yahoo Sports"
+          },
+          {
+            "title": "Nori: Morant could be back sooner than expected",
+            "url": "https://www.nbcsports.com/fantasy/basketball/player-news/2026-11-07/nori-morant-could-be-back-sooner-than-expected",
+            "publisher": "NBC Sports"
+          },
+          {
+            "title": "Is Ja Morant Playing Tonight? Blazers Injury Update vs. Lakers",
+            "url": "https://heavy.com/sports/nba/portland-trail-blazers/ja-morant-playing-tonight-lakers/",
+            "publisher": "Heavy.com"
+          }
+        ],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "us:21a024be592123",
+        "title": "michigan senate abdul el sayed",
+        "url": "https://www.google.com/search?q=michigan+senate+abdul+el+sayed&hl=zh-TW",
+        "published_at": "2026-11-11T06:10:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends US",
+        "related": [
+          {
+            "title": "Alaska Governor Midterm Election 2026: Live Results",
+            "url": "https://www.nbcnews.com/politics/2026-elections/alaska-governor-results",
+            "publisher": "NBC News"
+          },
+          {
+            "title": "Delaware Dems gain supermajority in House",
+            "url": "https://www.capegazette.com/article/delaware-dems-likely-gain-supermajority-house/356700",
+            "publisher": "Cape Gazette"
+          },
+          {
+            "title": "\"There is change in the air\" - Sen. Coons celebrates reelection, opportunity in a Democratic-controlled Congress",
+            "url": "https://www.wdel.com/news/there-is-change-in-the-air---sen-coons-celebrates-reelection-opportunity-in-a/article_a8d47351-a06e-453a-9a6a-089c3e4ee962.html",
+            "publisher": "WDEL"
+          }
+        ],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "jp": [
+      {
+        "id": "jp:7d2fa113c19900",
+        "title": "細野 豪志",
+        "url": "https://www.google.com/search?q=%E7%B4%B0%E9%87%8E+%E8%B1%AA%E5%BF%97&hl=zh-TW",
+        "published_at": "2026-11-11T06:00:00+00:00",
+        "value": "2000+",
+        "value_number": 2000,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "「散々、世界中の国から支援してもらっていてこの言い草」 芥川賞作家を怒らせた細野豪志防災相の言葉",
+            "url": "https://news.yahoo.co.jp/articles/8a8d3450bfa017543fc6de6565b475d47dc14a6c",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "細野防災相 「震度5強」地震スルーして「おいしい災害食」投稿に疑問の声…「防災庁と大臣の存在意義とは」集まる疑問",
+            "url": "https://jisin.jp/domestic/2608723/",
+            "publisher": "女性自身"
+          },
+          {
+            "title": "「防災庁」から漂う違和感。細野豪志大臣の会見にも疑問",
+            "url": "https://www.chiba-tv.com/plus/detail/2026112207489",
+            "publisher": "千葉テレビ放送株式会社"
+          }
+        ],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:7cd50bf1685b6c",
+        "title": "豊島逸夫",
+        "url": "https://www.google.com/search?q=%E8%B1%8A%E5%B3%B6%E9%80%B8%E5%A4%AB&hl=zh-TW",
+        "published_at": "2026-11-11T05:40:00+00:00",
+        "value": "1000+",
+        "value_number": 1000,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "いやな予感が的中",
+            "url": "https://gold.mmc.co.jp/toshima_t/2026/11/4412.html",
+            "publisher": "三菱マテリアル GOLDPARK"
+          },
+          {
+            "title": "米中間選挙の結果は関係なし､いまは金買いの絶好機（会社四季報オンライン）",
+            "url": "https://news.yahoo.co.jp/articles/ad1ab6556ffe2e2b762da8c527d2ca003af6a5f1",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "米国中間選挙、金（ゴールド）高・原油反発、戦争は終わらず",
+            "url": "https://media.rakuten-sec.net/articles/-/53987",
+            "publisher": "トウシル"
+          }
+        ],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:87222ae89f5ac3",
+        "title": "ローレンス・ストロール",
+        "url": "https://www.google.com/search?q=%E3%83%AD%E3%83%BC%E3%83%AC%E3%83%B3%E3%82%B9%E3%83%BB%E3%82%B9%E3%83%88%E3%83%AD%E3%83%BC%E3%83%AB&hl=zh-TW",
+        "published_at": "2026-11-11T05:20:00+00:00",
+        "value": "500+",
+        "value_number": 500,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "【Ｆ１】アストンＭ ホンダ製エンジンに「お手上げ状態」「オーナーは途方に暮れている」（東スポWEB）",
+            "url": "https://news.yahoo.co.jp/articles/a1420bb5c9672e0c95cfe38765691e5520b84914",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "アロンソ「楽しんではいない。ただ仕事をしているだけ」雨の激闘も無念の12位…母国メディアに偽らざる本音を吐露｜F1",
+            "url": "https://www.dazn.com/ja-JP/news/%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC%E3%82%B9%E3%83%9B%E3%83%BC%E3%83%84/2026-11-10-alonso-astonmartin-sao-paulo-f-f1/12384d177fkv51hqcs8tr8nece",
+            "publisher": "DAZN"
+          },
+          {
+            "title": "【F1】アストンマーティン・ホンダはもっと現実を直視せよ ブラジルの気まぐれな天候が教えてくれた教訓",
+            "url": "https://sportiva.shueisha.co.jp/clm/motorsports/motorsports/2026/11/10/f1_79/",
+            "publisher": "webスポルティーバ"
+          }
+        ],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:fc942a800f659a",
+        "title": "圏央道 事故",
+        "url": "https://www.google.com/search?q=%E5%9C%8F%E5%A4%AE%E9%81%93+%E4%BA%8B%E6%95%85&hl=zh-TW",
+        "published_at": "2026-11-11T05:00:00+00:00",
+        "value": "500+",
+        "value_number": 500,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "【速報】東京・青梅市の圏央道外回りのトンネル付近で5台が絡む事故 1人が心肺停止の状態 大型車の運転手を現行犯逮捕 警視庁",
+            "url": "https://newsdig.tbs.co.jp/articles/-/3077731",
+            "publisher": "TBS NEWS DIG"
+          },
+          {
+            "title": "圏央道で5台絡む事故 1人が心肺停止（ABEMA TIMES）",
+            "url": "https://news.yahoo.co.jp/articles/4fdd66d940ea2c21cc68b5f1fdcc7457ca34aef7",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "圏央道でトラックなど5台がからむ玉突き事故 1人が意識不明の重体 東京・青梅市",
+            "url": "https://news.ntv.co.jp/category/society/45775adfd130468aa1ae00f3cdf8c5bd",
+            "publisher": "日テレNEWS NNN"
+          }
+        ],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:3b2f972ce41393",
+        "title": "佐藤栞里",
+        "url": "https://www.google.com/search?q=%E4%BD%90%E8%97%A4%E6%A0%9E%E9%87%8C&hl=zh-TW",
+        "published_at": "2026-11-11T06:00:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "【ＢＳ日テレ】佐藤栞里がナビゲート！地中海が育んだチュニジア料理「大使館シェフのスペシャリテ」本場の「クスクス」が味わえる名店も！11月14日（土）よる10時放送",
+            "url": "https://prtimes.jp/main/html/rd/p/000001109.000125910.html",
+            "publisher": "PR TIMES"
+          },
+          {
+            "title": "大使館シェフのスペシャリテ「地中海が育んだチュニジア料理」",
+            "url": "https://thetv.jp/program/0001079254/4/",
+            "publisher": "WEBザテレビジョン"
+          },
+          {
+            "title": "【ＢＳ日テレ】大ブームのタコスを深掘り！「大使館シェフのスペシャリテ」メキシコ政府認定のレストランも！11月7日（土）",
+            "url": "https://news.nicovideo.jp/watch/nw19956037?news_ref=watch_20_nw19816067",
+            "publisher": "ニコニコニュース"
+          }
+        ],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:341e4dc34ae756",
+        "title": "ジェニー",
+        "url": "https://www.google.com/search?q=%E3%82%B8%E3%82%A7%E3%83%8B%E3%83%BC&hl=zh-TW",
+        "published_at": "2026-11-11T05:30:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "「Vとジェニーが一緒に来店した」と主張したLAの韓国料理店、Vの名前だけをこっそり削除（中央日報日本語版）",
+            "url": "https://news.yahoo.co.jp/articles/e8c46d65fce965ef757938af4580203cd7010969",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "BTS・VとBLACKPINK・ジェニーの熱愛説を再燃させた米飲食店、“一緒に来店”と主張もVのみ削除",
+            "url": "https://topics.smt.docomo.ne.jp/article/sportsseoulweb/entertainment/sportsseoulweb-163194?utm_source=dnews&utm_medium=article&utm_campaign=contentsmatch1",
+            "publisher": "ｄメニューニュース"
+          },
+          {
+            "title": "「BTS」V＆「BLACKPINK」JENNIEの熱愛説が再燃…LAの韓国料理店、騒動後にVの名前だけひっそり削除",
+            "url": "https://www.wowkorea.jp/news/read/542059.html",
+            "publisher": "wowKorea"
+          }
+        ],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:bc3cb2a8d4a8cf",
+        "title": "マラソン",
+        "url": "https://www.google.com/search?q=%E3%83%9E%E3%83%A9%E3%82%BD%E3%83%B3&hl=zh-TW",
+        "published_at": "2026-11-11T05:30:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "アクアマラソン来年11月に延期開催決定 千葉県知事「災害復興の大会に」（チバテレ）",
+            "url": "https://news.yahoo.co.jp/articles/4c5bad77e71b153343785e9c0548066cbf665c41",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "「復興の象徴に」ちばアクアラインマラソン 来年11月21日に延期開催を正式決定 千葉県",
+            "url": "https://newsdig.tbs.co.jp/articles/-/3076005",
+            "publisher": "TBS NEWS DIG"
+          },
+          {
+            "title": "アクアラインマラソン、27年11月21日に延期 台風の影響で",
+            "url": "https://mainichi.jp/articles/20261110/k00/00m/310/096000c",
+            "publisher": "毎日新聞"
+          }
+        ],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:36e27819ec4e35",
+        "title": "金沢ドラゴンクロス",
+        "url": "https://www.google.com/search?q=%E9%87%91%E6%B2%A2%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%83%AD%E3%82%B9&hl=zh-TW",
+        "published_at": "2026-11-11T05:20:00+00:00",
+        "value": "200+",
+        "value_number": 200,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "名門・愛工大名電出身の人気YouTuberが独立リーグへ！来年のNPBドラフト指名を目指し、金沢ドラゴンクロスに入団",
+            "url": "https://news.yahoo.co.jp/articles/88feb0878e82f0e288682a2cc98dffcda2a3a695",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "名門・愛工大名電出身の人気YouTuberが独立リーグへ！来年のNPBドラフト指名を目指し、金沢ドラゴンクロスに入団",
+            "url": "https://sportsbull.jp/p/2454924/",
+            "publisher": "スポーツブル"
+          }
+        ],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:f157a833552385",
+        "title": "小椋藍",
+        "url": "https://www.google.com/search?q=%E5%B0%8F%E6%A4%8B%E8%97%8D&hl=zh-TW",
+        "published_at": "2026-11-11T06:10:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "小椋 藍（おぐら・あい）フィーバーでMotoGP日本GPは過去最高動員。その会場で120年以上の歴史を持つ米二輪トップブランドの4代目を直撃！ 世界最高峰のレースと組むハーレーダビッドソンの 「新戦略」とは？（週プレNEWS）",
+            "url": "https://news.yahoo.co.jp/articles/01934312e1c6e6c6d7b267b04da726cbff9c1bfa",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "『Harley-Davidson Bagger World Cup』～開催２年目の開催日程を発表",
+            "url": "https://www.motogp.com/ja/news/2026/11/04/2027-bagger-world-cup-calendar/1183965",
+            "publisher": "www.motogp.com"
+          },
+          {
+            "title": "【2027年カレンダー発表】ハーレー「バガーワールドカップ」が全8戦16レースに拡大 ル・マンなど3会場を追加、日本GPは含まれず",
+            "url": "https://news.webike.net/raceinfo/611249/",
+            "publisher": "Webikeプラス"
+          }
+        ],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "jp:a127438f3d4bbd",
+        "title": "帝国データバンク",
+        "url": "https://www.google.com/search?q=%E5%B8%9D%E5%9B%BD%E3%83%87%E3%83%BC%E3%82%BF%E3%83%90%E3%83%B3%E3%82%AF&hl=zh-TW",
+        "published_at": "2026-11-11T05:30:00+00:00",
+        "value": "100+",
+        "value_number": 100,
+        "publisher": "Google Trends JP",
+        "related": [
+          {
+            "title": "【倒産】物価高・人件費増でも「価格転嫁できない」…小規模・零細企業中心に襲う“息切れ倒産” 新潟県内の倒産は10カ月連続2桁に",
+            "url": "https://news.yahoo.co.jp/articles/34e8489bc0cbef25aece631be1f537ab6fcf3e7e",
+            "publisher": "Yahoo!ニュース"
+          },
+          {
+            "title": "倒産集計 2026年 10月報",
+            "url": "https://www.tdb.co.jp/report/bankruptcy/aggregation/20261110-bankruptcy202610/",
+            "publisher": "帝国データバンク"
+          },
+          {
+            "title": "１０月倒産、９３４件 ２カ月連続減―商工リサーチ",
+            "url": "https://www.jiji.com/jc/article?k=2026111000854&g=eco",
+            "publisher": "時事ドットコム"
+          }
+        ],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "news": [
+      {
+        "id": "news:2e40a7bd27148c",
+        "title": "黃仁勳坦承外遇後 CNBC：已回輝達總部上班 內部氣氛悲傷",
+        "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1ER0ZMV3N0bm9PNk9DY3BRc3RGdEFhWkNCYzViMWxVdHJ1RnVrWWdYaVRXWlh1SGE3enZGZDFZckhQSmgwdTI1MFBBbGNKLUk?oc=5",
+        "published_at": "2026-11-11T02:41:19+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "鉅亨網",
+        "related": [],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:0826e8e6f566d8",
+        "title": "羅大佑狂轟民進黨！酸賴清德「腦袋變屁股」 喊外省人被欺負遭起底家世背景",
+        "url": "https://news.google.com/rss/articles/CBMiywNBVV95cUxOQk80NE0wLUwySnFHa1Nqc2FXa0xkUVF5NExMQkNDdUZablZ5ZmdNYWExTk4yUUxjU3VOQ0VIVlVYTTl3RjdQdTlRY1VBNnZVRjFlUXd6bjJTRFRnbXRIeFdXelF2QUlSY09SZVN0aS0yOVJTdERPTDVjc2VkWHNpQWR4d1NBdmtTNEhRSGFKNGpEdU1HMHA0WjhhSFpILTV3RGZzNURKaXdJbHZkN05ubl9ZeUhsUko1TjB0TUtjenE4VmJxR1JsYUFqT2dia1h0RnNfU3hzV1pVZFZ1Qy1KMDQ3Rlh5WDZRbHdhQ2RJM2tJV0VMWHVrZjFzUU1tX2tsMVlaZmF5U3loaEdrOG1RQUs0d2UzbjZQNmNxWXhCclppN3BCc3NQbk1UWGMwQjI4WFhmY0dqMExsR3BQb2lOUzBwWk01dk1zdDRSdVppdkRLd2pRTVRVVUhsRnZuQzR6eFJlbFNySWNvZVVaajhGNTN4bEFzOTNPV2JEVkVRVlNMM0dYc0g2TkFjVkxjVlVjSEVGcXpBWHFpaGRDYjg0azN2MHUxNXZYeFVHTDk2VWJMS0xZbHVxZHMxX1Q4Z3IxYksyd3Z4QUpIZGM?oc=5",
+        "published_at": "2026-11-11T01:17:56+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Yahoo新聞",
+        "related": [],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:70165d15bf2b1d",
+        "title": "明起請假！蔣萬安今晚7點半合體民眾黨六小雞藍白合直播| 2026九合一選舉",
+        "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1sbm1kWmt5a2c4RXg0YkNvRkZyaTBad1k5cVZzZlVfeGhUMjEtdENyVG1RUXZsVU0tQy05Mmdsek03QnVjWUNGdTlYcjJ2c2tsUEZ2MlVfZHM?oc=5",
+        "published_at": "2026-11-11T02:36:51+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "UDN",
+        "related": [],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:9c933c88dc4ae6",
+        "title": "周六變天 賈新興曝2波鋒面+2波東北季風接力時程 下周恐更冷",
+        "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9INGptT191VnlNUW0yYWVSUlV6RldFRWtkYzVKbm5IRHJYUU5XcnIweUpicFhNSXpPM1Jla3Bnb0VSZlVMZEROaHd0Y1hGMW0x?oc=5",
+        "published_at": "2026-11-11T01:37:50+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "UDN",
+        "related": [],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:67e018394082e3",
+        "title": "鄭麗文稱「北北基桃能過關」！認了「3縣市」選情危險",
+        "url": "https://news.google.com/rss/articles/CBMivgJBVV95cUxOYTF0Q3FMQ0JtRTB5ckE5R3Y4R2tqbFdlWkFCNzJ2d19YMUhkOW5kVVFnSjN3SVBiUjFuT0N4SEtjZ2FxT1k0V2hYNlJoOERGTlBJYTdoR3kzbENsdUdEd2oxY0F4LWRpWkxndmtLZHNhZDBRbmxpR1IyaHJBQW8wVVNZcUYwVTlYMlhpd0xvb1RtalYzc3JFVG5JUkwxTEZiUExtTWlMTlRrN1l1eGUydzdnbVdwVzc0MVBrS1BWc2liMWZKbFhrbm5oMVZuZjFVeU1TN1llZXl4Rzk1SnFUUG9yQ25pVERIUFNwMDF1bWZfX0pyZDgxdDVGZ2hkU3Z4NlQ0NHRpVmM4V1p2a1R0c1pfS2RFTmxQQzdLay1aZW5jSmd2LXl6OFVVamtIMmlHTzB6MGlFTG1FaWNlaWc?oc=5",
+        "published_at": "2026-11-10T23:45:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Yahoo新聞",
+        "related": [],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:c105e71e70a53f",
+        "title": "謝國樑辯論突沉默6秒！ 吳靜怡狠酸：恐親手把藍天翻了",
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBKX0o5TlBjc3d5VHY3ZktZY2VxTVc3S29MaGZ2U2lxQlF2ZjQyZzdILS1Hb1kwMzdQaFdDaF9FYXdROFg5Q2lUTUo4TzJEWmtnWkVIYzB5NnRITnhoYTc5aVU0ZklFdGlvUXfSAW9BVV95cUxPYXN5NWdNbldOMjc4UTRhNkp1cC1kdk1hQ1NEOHd1OHZYYVVJTUc1dDh5QVhOTlBJSXRMVzBiS2p5RlNUdHp5Qi04Y3hTUFBRN0dyeWVvUm9tNllwTkduZXEtTnByaWYwTWUtcng1SWc?oc=5",
+        "published_at": "2026-11-11T02:49:23+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "自由時報",
+        "related": [],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:5cbbb7e6194fe2",
+        "title": "莒光日播沈伯洋影片？顧立雄：113年4月談抖音影響國安無關選舉| 2026九合一選舉",
+        "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9zUjg5cWJYRHFCVkVDX2ZhRkVFVzVRWnBYRmpNMmtNemZ5bG1fVkpCekYtZDNacGZ0WUxVeUhZbm1qNEdMLTNiYlQ4aThpTzVkaUxNRDA0c1c?oc=5",
+        "published_at": "2026-11-11T03:18:33+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "UDN",
+        "related": [],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:2d48d7cc38ce3a",
+        "title": "陸客來台觀光被要求簽「台獨聲明」？移民署長回應了",
+        "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1xTHFGYUJmNlRpS2t1amQ5OUU0YkNscXlLU2o4Z0RsQ0VHbHpSakk5Wl9LdWdKSXJoTFFSZGFEcE90YWhMQ29yLTVJOTBpRFFP0gFWQVVfeXFMUHhqc1FLZ0ZUaV8zbHEwVkVNWEIyd1BIcF96eTM5Y3lpS2dHbm05X21GYjE4U0dQTDJKRUVrMFVLWHdIM09Jbl8wZmxuUms4a0xFd19WVEE?oc=5",
+        "published_at": "2026-11-11T02:33:41+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "UDN",
+        "related": [],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:dc96b2f5032783",
+        "title": "不忍了！鄭麗文要黨員應「知所進退」 趙少康下午親上火線回應",
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9sRm50eDJxVHJTdjZBbVBsVmRTdzZyeXpHclhfNEFxYTc3eFNnbTIyY2dCdDhMXzlJVktSb2p4LW5kdDlIR29zVDJqbnhnVkVKOVFSR3JCM09qODZNbGs5ZWkxbS1rNlE1V2fSAW9BVV95cUxQTjl3T0RUQmRTcjRiVl92R2F3dTV1b1BYejJaa0wwN2hLRUQzdFFoN18wRG9Pejl2eklpRHpnYy1majhJajJhU3BGS1RIX1MybWd2ZDhpbVJxdlc3OV9KYlp5Tmw2TWlJQW84REcyUWs?oc=5",
+        "published_at": "2026-11-11T05:19:49+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "自由時報",
+        "related": [],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:b47f04db014dcd",
+        "title": "涉共諜案遭起訴！高金素梅轟：政治清洗",
+        "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxPeUN5QzJpWVVDSEZFMU9mX2sySnYtZ3JQbUJ3SW13dmEyeUJFVU9wd09SLU05bEoyRnJ5dzlNT19TMmlHanNBLW1FenV0TEp3elljRlVHMEZkRUIzN0Fib0pBVm5maXU1c3ZUeUcxMXJOM2V2LWkxUnZpTVdwQURVTHJHSHBnMXJLQ202aEdMY3RETWt2b19HbnpRY3JieTBFTld0QlhPUTBNUmlHdk4yN2Yzc0VUb05nT1JzSWwyTHRBaU50QTNoMzZaY042alhoQlpTYnJ4LXYtdmh5NnVVSDIzOTZ6UDM5M1p0eF9xbFVsX0pNZXNQSF9Wb1FkelhGV0tLcU5CQk0zQzlZRjJXTVlIX1hGZw?oc=5",
+        "published_at": "2026-11-11T03:41:14+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Yahoo新聞",
+        "related": [],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:eeab2aa30687c2",
+        "title": "習近平不給高市面子？APEC峰會恐「唯獨冷落日本」強硬態度未鬆動- 國際",
+        "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFAyb3dhTjEtZk1Jc25UTkk5V2o2VzJsWHNGV2x3RTVka1lDb2NUZWlBdnpCMmNCdk1KeVpoTE5MRHlQME05TDZWTHRIY1drSW5MdDAtMEE3RXU3LWxlTmpoNkR4TEVmVDdvMVBjVC1B?oc=5",
+        "published_at": "2026-11-11T01:46:48+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "中時新聞網",
+        "related": [],
+        "rank": 11,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:d6baef8919a79e",
+        "title": "俄烏戰爭有望落幕？睽違9個月重啟和平談判 澤倫斯基：看到變化",
+        "url": "https://news.google.com/rss/articles/CBMikANBVV95cUxPNlduT1VUSVVrTTRRRWNEOHlCTmJIcFd4YndtTlRLMklZbHE3Qi1mYUFWZzRkNm1McXZkV29qQ0t4VFZxcDRubGt4bHkxMFltTW43S0JXRGJoR3ExX0I4c0QxTWlKT3lvdjNQaDc0Z19hdVctdDM2SUlLWW52Q1AwMDlkc2oxZ3ZqTDVQRjltXzVqUTFER2MxQjNCV1RnV2dSSVpRTENuSjhYSkJqS2NBTnlobTZ6dTZYX3ZTWXJTcWVTNjY5TG56VTRzNFVvZFlWc0d3NUFrVlkzSVFFNk9UVnN6OHJGcl94YmZROWl1VFVBZUQ0UGEtRHRrUnJpU3VrR1lwUlFDMnd1Q0hBMExYdE90Y2NjbmhQLVd1Vi1CWWd2b0dwQ2VGMjBkNTlsY1lNRzlQUW5wdUFNQTBKRUFtc1lZODA1VlpfZEVIazRhSE5PUDJUVUJDeFhqczZtcTE5bTNSNHFfWXdvNFNKcW5kS21YS1JyTlJBQWNzbDZibkttZkZvbWFWOU5Fcnc1eFMz?oc=5",
+        "published_at": "2026-11-11T01:35:06+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Yahoo新聞",
+        "related": [],
+        "rank": 12,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:aa1114b4be72c5",
+        "title": "美防長赫塞斯彈劾案遭封殺！川普讚兩場戰爭勝利助洗刷指控",
+        "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE41RC1TNHh4c0p4V2ZxU080dGt3d2g3dFUzSG9nMzBLSGwyb19DMVdTd0dUa2h3SldfZGxzdVRIOEs2WXFLR05fMHQ3ZFZDc1ZZ0gFWQVVfeXFMTzJ3cjg0TUhQaFdwRXROa3loSXJ1VU1SNXB5dnU1ai1BWHFyZS1jTWJzbzBzOXlySGVKdkhSeFJ5VDNTQVA5T25mQXRiVUFTNmJsUGk3Rnc?oc=5",
+        "published_at": "2026-11-11T03:04:08+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "UDN",
+        "related": [],
+        "rank": 13,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:db1516b062dfbc",
+        "title": "稱美國已重創伊朗經濟 魯比歐：不需要進行大規模作戰行動",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5KUW1EdUxLU1B3alFoa1JtZ2RWZHVfaEE4c2ttZUR5S3FQMVZkTWFfekRneVY3dzlINHF4OUpEQWtNTV9mTzlCd1NhXzBLdDhIcGxyOVIyYTVOQTl4RzdGbmFpUmo1Z9IBa0FVX3lxTFBpVTlJd29DY2RkZEtkT1phZDBWb1IzM1Q5OUVqNUdLSlJvU0hacUQ0Zko3aVFBcjNNQTRPX1IzT3lBVVNtdWFwZGdfVEpaQy1lWFpBMUY0X0t1Wl8tTGh6SHdRNjZNeEx0UGQ0?oc=5",
+        "published_at": "2026-11-10T23:09:39+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "自由時報",
+        "related": [],
+        "rank": 14,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "news:57dd4b6fbf4017",
+        "title": "台股漲1545點創史上第六大收盤漲點 收復44000點大關 台積電漲110元",
+        "url": "https://news.google.com/rss/articles/CBMihgNBVV95cUxQaGkyZE9vY2JXOUYxaTd4S21VbFFNR1JkQk9xYUhIbGkyQzRya3lkOUFIa29tdjFSMHZjZzBhREFsWnR1YWhmUjVLTkF6RmlhUC1WT1hKMmRLQ0R0R0hSbTVsRlczVHJtaDF6NWdHZE4tNU1SSG5HWFpkT25ZQjBEUlU0bm9EaDZKMFZYbGsycUsyLU8xUFdCd0p0enFNMVZ2U3FKbmFaVURyQ1NCdndtU1h3a3ZYYUlRRFlmWm9FS0lMTDJ6eXI2aVhsdkxNNlg5c1JmZ3ZMR3ZBdTIyakt5dXhWd3NJbF93T3JVZXl4bVFOQWVrcUlBSTByaWZVTFhHcWVWanVjR1Utck9TWm5hZ2R1SVpsRkxVOXdVVVFpcDg4VzdBTmE1MHFKQ01RU3lxTVg2TzNjcU9Wa3cwYXg2dVh5Q3pvT0pNajExbUU4SFdCT1pCZWdqMjc0SXlhT0ZaLWhwemVjeEc1aUR0X3ltUXlxY3I3T05yWE9PV3pPS3F3SWZBRXc?oc=5",
+        "published_at": "2026-11-11T05:44:22+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Yahoo新聞",
+        "related": [],
+        "rank": 15,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "ai": [
+      {
+        "id": "ai:280725a80eb085",
+        "title": "OpenAI開放商家在ChatGPT設AI代理 12億用戶成商家廣告新入口",
+        "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1Nck91bWNiRmpTVnZQNTUtWUJvTm9za1Q1ZzhUQnQxRVhIZUlHdWJ1N29zTHpiVi1GaWxtT1pJZml1c3VFdVk0cmZLdWZKd2M?oc=5",
+        "published_at": "2026-11-11T03:30:04+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "鉅亨網",
+        "related": [],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:ee6b9c4e012ae3",
+        "title": "經過驗證的企業進駐 ChatGPT，專屬企業 Agent 展開對話",
+        "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1tRVBUZktUNlJ3Mmp4cVFpM0dCR0ZOTUxJakxVdk95S0FsOXVVemZITVlvN0lRWlE4YVNJQmI2Ykc0YUVZQTBsWDFGb28wcncyV1Fna3daRFhCN0RrQ21NdW9EM281OElQM1RSUzZ5Y1ZXeTVCYlkyRFcybw?oc=5",
+        "published_at": "2026-11-11T03:41:47+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "TechNews 科技新報",
+        "related": [],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:dbb4b35a03d1ce",
+        "title": "AI應用顛覆App市場生態 ChatGPT躍全球營收冠軍、手遊面臨挑戰",
+        "url": "https://news.google.com/rss/articles/CBMi_wJBVV95cUxPN1YzRzQtS20wRG9xSzlYN2NhQmoyNHl3UHBrUFZDOUtCeFJxVllSQVZ6QVdrNi1LTHEtdWY5T2ZPWFFsOGdmcEZiTWoxUjF5M0V6YU5ERHFOOGc1TFFwenpuZGVfaWFjck9KcW1SNzVNRmRPckNhSURTUmk0VUROQjhmdTFjRjVZalYtR3FxQmEycEZwVW5VR3c3b3V0S1Q3dGxVWlNVQ1luMjVGX1dyS1hpMHBsc3Vma0J5d1FOaEIzalJxYjAzXzlhQ3I1VHQ2YlhqTmdFRWU5N2tOdy1GRk5tekxpbHR1Rm5LV3VIRGZGOVBrWXAyMzdiN1l5c29GX3pvTl9YYmpkeFc1Ml9LaVFtWTlHVEVHLTdtZTJxWTVkTVB6YjZLMTRTZjRGTlcwYkFOQThBYklYNE55aU5PMnNYNWo2TUZPcld4T0lHYWFJb3o0bFAxelNMNTR5djg4UnFQSUs0NGd3d1FGOVQ2SE1fdG9BREJsVktha0F1Yw?oc=5",
+        "published_at": "2026-11-11T03:25:40+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "商傳媒",
+        "related": [],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:b2d7d494c82a5a",
+        "title": "亞省批准為人工智慧資料中心建造920兆瓦發電廠",
+        "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBUWHlHQWJ0SXVpQTZpQXFXdFFfeWpCdDd3ME1MRElocGE2QkdkSnRLd3NHbWptWTZLbHFwVEFzLXZJTkFtMV8yMEI2WlRSRGp5NjNmbmZTeWxxX2VXeFFQWlRR0gFnQVVfeXFMTjZJWDlVeDZLa0RNdUlod19aeDZlU1h1Q05FYVRFdTRucGYwZDVTbFZjREpVajlUdHNJM21EMi11STdJMmIzZm1MVFZveWFhTmJkY1pTVVhONmozM3JIQ0IwWVd6dGFVRQ?oc=5",
+        "published_at": "2026-11-11T05:01:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "大紀元",
+        "related": [],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:c25b2c4e05266d",
+        "title": "ChatGPT 學 Google 推商家檔案：店家能認領、看被提到幾次，台灣也能申請",
+        "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOVHFSOENLems4WTRlVkt1eWxiaWJDZmRObk5pb2RNVUdWUlZzQkxnTXlSLVA5dWhyUjdyMmNTTXJNdFp4MGY4di05azE0Q09HVndIREF3cnU4UGFBLWFkMXVaWkpxQTNNRnBjQzg3QmltQ0JzWklULXBYSkxpNWp6MGdDdW1DcGZBd2F3UktIQ1dXNFVvTWFsSktSZFlnZlFW?oc=5",
+        "published_at": "2026-11-11T01:55:45+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "動區動趨",
+        "related": [],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:7fd912c3dbe0ea",
+        "title": "ChatGPT 開放商家認領檔案，可看 28 天內被提及與點擊次數",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE51WVJxelVOUUpNdkFEMWphVHNvcWh4RFUtdVBJZEY3aHVwTjBLWEdfU3JoS0dLSlAzUDRkQWtITWdoU0pvdC1WTF9TbmVTNlBWbDFEY2JXcjlIV19Hc25jQkN2cjZxUQ?oc=5",
+        "published_at": "2026-11-11T02:56:19+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "鏈新聞 ABMedia",
+        "related": [],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:f04065664ada3e",
+        "title": "OpenAI開放商家在ChatGPT設AI代理 12億用戶成商家廣告新入口- 股市爆料同學會",
+        "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1qUU9XTjJaeHFnVHgyOUFzbnI3VzMyZzcwTDFXT1lBdnVCQUFkeW9iVnVRY1pwek5CWENXalpSUy1fWG5aVXQ3RUhwTWdudkJ2ck1wOFYyNGM?oc=5",
+        "published_at": "2026-11-11T03:57:19+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "CMoney",
+        "related": [],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:2031ee221ad4d6",
+        "title": "破解中國內卷死結：大循環與三元共振，科技創新如何改變產業秩序？",
+        "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8zbzVUUUFvY2l3Z0RRMlA0RTVVOGdzSk5pWkxLdHVGX2lpVjU4SnViUWp0X2owNTMxNmRienRtRUdHSXh0WGF4M2hobGNfdEJlSzdkLQ?oc=5",
+        "published_at": "2026-11-11T03:00:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "TNL The News Lens 關鍵評論網",
+        "related": [],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:3a0ad3fca2cf44",
+        "title": "英偉達將與Anthropic深度綁定，計劃投資百億美元- 紐約時報中文網",
+        "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE0wZzlWclk0Sll0UGVBd2swSUpyUDJhLTlBTmJwTHdhcHhvRWpZSnZHYmVFRFJCSW4ySnQxQjVmOVowWUk1YVN4TkhtZmJvM0RyakxHXzc1aWRqYW1SYnV2QXE1Y2huejJtRWp0Q3I3TzM2b3hnNHBLeS1n?oc=5",
+        "published_at": "2026-11-11T05:01:33+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "纽约时报中文网",
+        "related": [],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:6aec34fd556236",
+        "title": "ChatGPT全球大當機！ OpenAI官方證實：積極修復中",
+        "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBzUjhNMTI1SEtzSlhFWUlGaHRMaFZmaWhrZGNqWUc2UFdkdXV1dnVTRi1ZaEpFWFpLeGFZWkkzY2g3LUdUMnpYcdIBTEFVX3lxTE1wMjRwb2xjM1dVVGRpeklwZkR4Q0NkdTE2ODdZMjJVZkFJM19nbGsteEpIMUhTZlBGTUY5T2pYeEFiVnM4M3V5ZWtMUGg?oc=5",
+        "published_at": "2026-11-10T21:54:03+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "三立新聞網SETN.com",
+        "related": [],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:12bad5a38a55df",
+        "title": "OpenAI宣布ChatGPT Classic將於2027年1月退役！聊天紀錄無縫遷移新版，Codex額度整併共享",
+        "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPWk53V2ptNkpVOXduaG1qQnBCa0JtRnBJeXRDUDNDalZ6UXduUzBDZWVFUUswWE5KZ2xKNUhmOEo0RWFVT0pWVVdGQUQ1WDktWFlwOTllengzcXVSYVhzNk0yeGJDallaWHVLOUMybEQ2WWdBSGs4Uk1WQmdPS3puTDdiQi1OZmM?oc=5",
+        "published_at": "2026-11-11T01:30:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "T客邦",
+        "related": [],
+        "rank": 11,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:0392edcb49c098",
+        "title": "AI 導入效果差很大？科技打底越深，效益翻倍看的見！",
+        "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE5Ib0JRMUJfUWozdTFzWFJkQ3lFODZYekhKWkRmSTNzUXVMMWl2c19WbHAwb0hYVi1xek1xMGg2cEt1TTg1?oc=5",
+        "published_at": "2026-11-10T22:00:57+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "CIO Taiwan",
+        "related": [],
+        "rank": 12,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:4db822d256ece6",
+        "title": "黃仁勳曾告訴我，那些關於中國與國家安全的問題",
+        "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE4xR3ltMVNKVXJHTUwwQk5ha01waUpvLUJSRFZmcm9Na0tMdlFHcXlwekJMUVQxMTRMVnJUcWNFNTNZeXNJU1BPLUs5RnZEb21XVTY4blFBWGF6NUJNd3pYMklBV2dzR2fSAWxBVV95cUxPNGFNVmN2UUt2UVotSWF5YWZocC1DazR3bHJqN0o0eWhfcVBuN01kZWtwZ1RHWkhha1l4NkE1eUEzWGxra25yakRyYUNFTnJvRHUyYWRhWE01cmk1aTR6bGZTZGtwMkRaeG1maGw?oc=5",
+        "published_at": "2026-11-11T02:46:14+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "BBC",
+        "related": [],
+        "rank": 13,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:d36fe342e2f36e",
+        "title": "科技巨頭的弱點: 關鍵人物",
+        "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBibnY4bV95cXIzTDdRblZKNHFLX1FpWnJlV2stNmFGNWpfMjM3YmhWYmYxNUY0VUhPTmF5Wmo3REt5UDc2bXIzaDB3?oc=5",
+        "published_at": "2026-11-11T04:08:34+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "草根影響力新視野",
+        "related": [],
+        "rank": 14,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "ai:3b732c633fddc6",
+        "title": "OpenAI推Businesses in ChatGPT挑機Google 夥Shopify推AI代理與廣告變現",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQbk1JVmVETGdwd3l4Znp0S1dHQTlUTGhESFh1TUQyZGRLQ0x4TXZ6LXhyZTFKektkSWNCWmNpbTBDME96TW9zaTU2RzBUaUVvcFdsXzV5b0NlX0FqT3BldUMxVkc0QjZYbmpReGdfbjFIbFFDRHhSdGxNUURSMTE2UDJHWDVNT1M3X2dha3JKdkZ1OVFWVnZNOVBLcUg3VGtzQWlrRDFQaHBaNjlSdzZDbE9VWkM?oc=5",
+        "published_at": "2026-11-11T04:54:21+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "香港經濟日報HKET",
+        "related": [],
+        "rank": 15,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "art": [
+      {
+        "id": "art:602f72648aabc2",
+        "title": "哪些作品被帶到上海？2026 West Bund Art ＆ Design 第十三屆「西岸藝術與設計博覽會」",
+        "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFAtdnpYODNqZjVZOElKUl8xRnptMDhRWTdoaTE3SjA4SDd3M2k0X0xKSFdMVzcxOHV6UGlYY1BGRGFvZW8yZjJr?oc=5",
+        "published_at": "2026-11-11T05:27:49+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "非池中藝術網",
+        "related": [],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:804f58450f2a9a",
+        "title": "2026全台11月展覽整理：坂本龍一、勤美術館泡泡樹、台南藝術雙年展必逛",
+        "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQkY1NlV3RTMwSk9TejlHWVk2aGFyaFpGdVZvdnBKZzZ0eTZVRzhHWlB5SzhidVpMVE8zeEVRX0JLSUUtMlVEY05NeXgwc0R0YXFHNTNnMDhmemtFWGdBckdpeUQxSDRJbGZ4a0hOcGw5a3lqdDVyZ2REanUtSGU5Mk1lYThPU2k2Z2xhQUh4VTFUQVE2NDJibQ?oc=5",
+        "published_at": "2026-11-11T00:59:38+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Bella.tw儂儂",
+        "related": [],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:f5cf678bd19418",
+        "title": "2026臺灣工藝獎得獎作品公佈 以創新開拓工藝新境 用協作延續文化傳承 意義非凡 | 大媒體",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE11SkJfa1BWOTJDUWFpQUc1OVg2Z0dTMDBIZEFMMEI0Q3B6QXU2RE5SaGlVQnNyRmVxVG54djlsQXQzQ0ZVQTU2TERUcHlCZVdXUkQtM19B?oc=5",
+        "published_at": "2026-11-11T01:31:15+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "LINE TODAY",
+        "related": [],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:b4dd50eedf5a32",
+        "title": "亞洲6國藝術家齊聚！台中纖維工藝博物館5大展覽一次看",
+        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1WX3lPMW1kUEk4dFdIWGlWalRyYmtjUDRxYmg5emJ3QTU5SktNRGotWHBrME51OXoyd001N2F3VVk1N1NtcnNHUWxxSGtSZ3djQ1U0YktzS2I0czNjU3pF?oc=5",
+        "published_at": "2026-11-11T04:41:15+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "ShareLife 台灣旅行趣",
+        "related": [],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:1959d03fc5a925",
+        "title": "錶誌／科幻製錶遇上百年琺瑯工藝！MB&F LM101 以「掐絲琺瑯」化身奇幻叢林",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1hS0VVbjBINlV4SklsMTgxSUFIenZGdUpKU2Z1bGVhUjVyVUpBUE05N2l3SEtUTnNyMmpzSnpwcUdzSmtOTlpYem5kWHJsVUQtMncwNlJVVjZoQmV6WFVONEoyUFdGZkdxOEk2OdIBckFVX3lxTE9nRlRIanlfU1V2SkZ5SlNlUzNEby0ySUpId1Y1MFRsbU9kQU5JUjBpTDh1TjM0bXl6Wmg3TVNtMEd6MHhsby1zZl9ZUjZGOFFpSjJ2QktGUlZPYXdJVlZQRENMQmZWamZhcnRJX0phM2F1Zw?oc=5",
+        "published_at": "2026-11-11T02:44:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "鏡週刊Mirror Media",
+        "related": [],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:0c7fe210fc8a13",
+        "title": "Do Ho Suh 將於 Guggenheim 美術館重建其 New York 寓所",
+        "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPbi1LZUd4VlNGU0FlRGFsMldzNFN3cm55UTlTcHJ2U292TTA4a3RzR3VrOVNIVGRlWXN4SzRzRW4yTFFJdlRsM2I1a0JfUlFyakIxLWZrOFJ2TWhlTzI4dFZadWNCTk1xREtidkIzcVFPOGlTbS0wdnFVYUhoaVpOdWZacV9EZ0JkVnlUOUZ5d3FQQm5JdVVGMEs0MEVGX2VsQ2ZKSlFjSU5IUldDenJXNXNTUlhuUGE5X1NRd3g1MmZxQUZaTUtDZzZGWmM?oc=5",
+        "published_at": "2026-11-10T20:36:23+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Yahoo",
+        "related": [],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:9d6dbdea068f33",
+        "title": "讓作品彼此照見：卓納畫廊在ART021的長線觀看",
+        "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBzdjZNcnE4SzZrYmxWTXdNeFZfWkEwRi1KYU0tUHo2U19xNjFLRkNRS3lLVklIdS1NclNyczlKZW5aZWsyck5xSzlTMGVpY3lqWDhxaTNwNmNqY2di?oc=5",
+        "published_at": "2026-11-10T08:11:35+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "典藏ARTouch.com",
+        "related": [],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:b102a0e2e27c8b",
+        "title": "崑山科大AI結合府城刺繡工藝西市場百年古蹟變身時尚展演舞台- 生活新聞",
+        "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQcmI4eDR5UkhhZUhZRjdnUi1jSk1QR18yVnhveVgtek5ubml2Wl9jejdDWXd0M01Pc0tTeVVFU2JLMFMxdkstWG5Za3QtaHl1azJrT0hGTkZTdm1fSHpUQUhvRlJlYnlTU0xtdS1XaHZMbDd3VEZqZ0NFYmVXUVpmT3Atc0pWeGZ0MEc4?oc=5",
+        "published_at": "2026-11-11T01:38:59+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "PChome Online 新聞",
+        "related": [],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:5a9d8a1c9b9d0e",
+        "title": "臺中市立美術館啟動2028年雙軌徵件計畫 鼓勵創新藝術提案",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9yWkpnVnF2RG1SOWxlTGZVZXFMd0FoVC1fdldMdXZlV1JYZzFuUExQZ3U2S1hXSm5oMVhFNm8yLWlBdUpFVDdsMnFrM25tckNjb1E?oc=5",
+        "published_at": "2026-11-11T01:55:23+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "蕃新聞",
+        "related": [],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:51f25ac660d84d",
+        "title": "台東崁頂部落「小米鞦韆餐桌」限量登場 一日慢旅沉浸布農飲食智慧與工藝",
+        "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE0yNGFhamJXTmlzSjFyaks2YVppQjBKVFl4OXRNRTd5aTU0YXdlUEFhWmF6MV83b2prSFNEdWUzZ0VRZzZsMncxdVFLNkVXclVGa1NuNW1PdGU?oc=5",
+        "published_at": "2026-11-11T01:47:54+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "《旅奇傳媒》TR Omnimedia",
+        "related": [],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:e1ccb7118b95a0",
+        "title": "讓房間多了一盞會呼吸的光，Poster Light 這次把傳統越前和紙做成海報燈！",
+        "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQUmRhSTV4U2VIQ091TUI5Z2MtenRxai1DTURqMVpsLW9EeEtkaFR1aVk5ZVRFdUNmTjNNaG1UM1J1dE1DSmQxbnJNcXdnUWs4ZVlXVVRjWWdCWVlLb1lWSG1BNE9XLVZrNzZzU200YWxmTEpTVVYzT29Zb0pzZkVVYmpubw?oc=5",
+        "published_at": "2026-11-11T04:25:50+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Popbee",
+        "related": [],
+        "rank": 11,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:4e6613c5fcbc3e",
+        "title": "台灣工藝獎揭曉得獎名單 37件創作入選12月台北展出",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE95em5SaUk4blkzSnE5aXBDZHRyNmRoTng4NDhZblFTRlFUSUpQTmpKalNzX2poWUd1YkwxeGo5SkVSaEUxcklQdzQ0ZmR5SF80SFE?oc=5",
+        "published_at": "2026-11-10T15:08:40+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "中華新聞雲／中華日報",
+        "related": [],
+        "rank": 12,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:56fc860689f73e",
+        "title": "革新染色技法讓傳統工藝千色萬象- 副刊",
+        "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE85MWZpeTRReGp3OXhLUElHYXpCSzBsWXE1b1kzUk1IYmYwa0lrX2w3SmpqX0RWTHJIcS14SC0yV255d1RaQ2lfWXYyVUh1R2stYlRtMGttdFRmNkNyT2xzbWx1QUE1OHVDaFVSUDA1eDZVQ2ptZ2RF?oc=5",
+        "published_at": "2026-11-10T20:13:45+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "香港文匯報",
+        "related": [],
+        "rank": 13,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:7499120acb61d0",
+        "title": "中美館2028雙軌徵件開跑！最高百萬元創作與策展經費 邀青年藝術家打開美術館",
+        "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE96czRkQWt4al9oNEZTNGpTc0xaZU0xYnRFMjljLXdfYm5DUHF3V3l6WldqblVmRzVNSFdiQzRmdUJ2Wm50WFlCY3ZVaFlmeV9GbFZpUy1HVFZQLW8?oc=5",
+        "published_at": "2026-11-11T01:18:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "新華報導",
+        "related": [],
+        "rank": 14,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "art:fb6f347fb839d1",
+        "title": "2026臺灣工藝獎揭曉 黃世昌《積光》奪一等獎、天染工坊獲協作獎",
+        "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5uWU5MWGNMVnV4WUlkUGRkVHZjaTZBNllab1AyQUVFdW02dXlRTnVFSFNyN0JZUzQ0WXdZZlVHTEtoWHJjSmZUd2ZzZDlBZ1E?oc=5",
+        "published_at": "2026-11-10T12:20:32+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "www.winnews.com.tw",
+        "related": [],
+        "rank": 15,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "community": [
+      {
+        "id": "community:6d466bb4db4b13",
+        "title": "金山漫遊獲國際責任旅遊銀獎串聯地方創生帶動經濟| 地方",
+        "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE4yZE53S2N0TmhuRDFJdUhzSzRkVloxSU5sOTZDSnpFamV0a2IyY3ZBMUZtbTRrRjhxYUtDU2loaWM3b3J4WFhySHNzZ19sTy1tRXhPbUd0OVNfWjk1SVE0?oc=5",
+        "published_at": "2026-11-11T06:05:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "中央社 CNA",
+        "related": [],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:1855988836e685",
+        "title": "六堆客家文化園區共下來割禾 親子體驗客家傳統秋收農事",
+        "url": "https://news.google.com/rss/articles/CBMi5wJBVV95cUxQSFpiRGQ1LXZDNWp0QldTcGJnUW1Xa0FIMEh5RktJcVRJdktteWZ6cmZoTURHazB3QzlkZW5iTVpDcm9qMGNxVFptYWFhaTdtZmlIdUVDZUp2Y25hRUktX1lFYU5BUV81bndsYXZPRUNpNjBXNUlKeGNqNmZlMjRkc2VlYVFCVGJMejVZTnowMmtDUDdYcklocjN5TzBYUTNRMHhpR2RGNWxsR1Z1NWRSYjlvcTVJU2x3aVJ1Z0ZSN0VuNGxqdTZqRmo5bTRTdUhNd2o1R3VhVmVHUmthOHNHR0lxcXBUZkhDY2FPY2RUZHBHR2JEbDBISHdEUUJYN0xQQ2czeC12SkJPaG42YkwzdkpSWFVtYi03WklCNDJPTFMwa25xZE9SWllYZUlSeTllT0I2cmxaMUlJQzE3SWt6RWZJOFlkMFBuZEI2VnZ4ekIzNHdyblA0UDBwRjlwWVlqM0l3ZHE0OA?oc=5",
+        "published_at": "2026-11-11T02:21:46+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "報新聞 Mega News",
+        "related": [],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:f02f8dfb3ee847",
+        "title": "北區社區營造暨青年見學成果展 新竹生活美學館展至11月26日",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE0zTU5YcTJiWHZJeE5WUTdCQmQtaHVVcUNEUjZ1eVFsZ1NZQzhmRHQ4MThxOGc0RXRMRzJOY3FmNnNsc3dBYmdsc1ZnYzZPLU1RYkE?oc=5",
+        "published_at": "2026-11-11T02:31:40+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "蕃新聞",
+        "related": [],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:88ebfcb98d7fc3",
+        "title": "大安區公所榮獲114年社區營造金區獎",
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9zVEFaYnRtSVZnN1pNMWNra1JfUmVnWF9wdmF6UGdBYVVlMzAtNF8zWGV4bkt4Y1F3ZUdNdEpmSFhENUs1WXJkSHAtYUI5UVBRLTRRX3dSWHlhVmpJR2xyU1k5a0VpaURWTnc?oc=5",
+        "published_at": "2026-11-10T23:10:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "新華報導",
+        "related": [],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:75d5e99186a6ff",
+        "title": "明明生意已經好到要排隊 為何還要投入地方創生？從彰化媽祖平安祭 看見一群人為下一代鋪路",
+        "url": "https://news.google.com/rss/articles/CBMi_ANBVV95cUxOdndGR09pYnBIdWNhdEhjREs3cl9naHJac21NTU5ERFR4cENxZk5HRG5jdTBwVUVwM0ViUDNUbzhCSlBFSW5NU2tDSzZYd2FTYXlZd1c0TXktdzRSYUdRcWk0bWl5Y3RYNGw2SDBtZ1kzRmpHMWY0eHplS2lnTVRuWGxMNjQ0ejJDUUVVc0YzWEVRVGw1bFdTUkFtdUZlQklDa1g5VE1rdWtINXBQV0xEWlNfTGEtbzNJTjNPNm5BTkFLWmtFenJxYklXUkJlWnVrYXNud0MtNm9wQzNUa24tWFM4a3RIN24wTEx4NkJDTWhpbFh0YWlFN2ZyS3F3a3NPU2NLNDlDQnpLRDl0WjlWd28ybm9MaHpXcG0tZzA4SmU2c1AwTlA0Q3hheUtiNThIZkNQUk5qTWI5aGVLSTRxMVlXbFZXSHlOZ2RxWDlIUkJ3NXplcDhRMmt6cVJwNmFxR3RKZ1MzY0JUcm95U3BjTHBaV2RibW1FM05jSVhLOGpiSmx2SUY4VHBJZkpJVzBTUXFJZ0lBWTV2N05tNVF2Yk9hanZiOVFHVDVOVVRHN3Q2ZjdMaENYcTM2LXBIekQxY1BHTS1aSW56eUhTU1BtWjBuRUc5Ym93NVoyYlhwZXdRR19fckZxQ2EybXpKajlUcVlaWXVfeGJVb3B3?oc=5",
+        "published_at": "2026-11-11T05:43:11+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Yahoo新聞",
+        "related": [],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:f25b41321cd1de",
+        "title": "中國醫大立夫中醫藥博物館榮獲臺中市「金館獎」 深耕中醫藥文化保存與教育推廣",
+        "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5EeER4T3hJakxuOXB0Z1NkU2JMemh1UWhmUXpQREJJTWF3enVTVi1Qd2xnaG5WblF5WHBsRlBrNWU3bnNVenl3VHlB?oc=5",
+        "published_at": "2026-11-11T02:22:49+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "17news民生好報",
+        "related": [],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:17a8537e3c6174",
+        "title": "尋回客家文化根源 彰化客底文化節 10 月登場",
+        "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5GYWxsNkUxU2F4QjExcTd0Nk5kSGJxN0RUOGE1UEZTa3dSTFdaNzJsUUxuZm45dGZMMlhzS0t2NEcwTVZuVkh6R0I4NWk5dkpUTzhN?oc=5",
+        "published_at": "2026-11-10T14:13:44+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "奧丁丁新聞 OwlNews",
+        "related": [],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:6e6c1b931e6e09",
+        "title": "首部35毫米《薛平貴與王寶釧》第3集數位修復首映 見證台語電影文化保存",
+        "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9MenJ6RVN5RUQyYlZTRk01dWFMZGFaWHBzazl5RFQ0cUFaZ2tRNUJpMVBOUjA2b2g4T3lmRDBrMXphUWdram1qQVpsZGtKX1R5c1psZjA0alFpTkg3bEdFYtIBZkFVX3lxTE4yNW5HVjRUWWNYanJTZ3pUd1gxNHZBZHRsc1ZnU0diNUg4Q3NyanlTQVlKZHVlY2gtblpWT1ktV1lEYmI1WjRkdnB3VXBnUWdQcUVXUUdJdzVvcVNSazduZHBsODJ0Zw?oc=5",
+        "published_at": "2026-11-10T11:07:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "自由藝文網",
+        "related": [],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:04bb11eedab83a",
+        "title": "余文忠發起客家傳承愛心連署 陳仁杰、全市27里長力挺拒「選戰口水」",
+        "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOVjZyVjFyQUVlUFloNHFMOS1zUWpUWm1LUnJVS2pHRHprcW9XTzB3bmluNVZkdWxhZDMxTmxqY1ZNNXF4cExsaHVaRTZSVGxDVWxYM1BhX1dFMUEzTTBKeXZBcnhtTTl3dnMtbDZKTlE2bEV1Rk9Ga0hQX0pySHJWdzNENmNWbjN0LVE?oc=5",
+        "published_at": "2026-11-11T02:38:44+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "PChome Online 新聞",
+        "related": [],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:31f61063ef3902",
+        "title": "國發會南區地方創生成果展台南舉辦 六縣市團隊開生活處方箋",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE90N1hDX0RJWDBKX1pEeXZmc2JtbDNsUl9qR2VBSEREVW03cmh4ZjI2NnBGOWFYY1puY29nd2JkZngwc2hpWWdlQ210OXJsREU3cWc?oc=5",
+        "published_at": "2026-11-11T02:21:59+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "蕃新聞",
+        "related": [],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:53d19b548b89df",
+        "title": "吳品叡、張啓楷拜會前政務委員陳錦煌 請益地方創生與治理之道",
+        "url": "https://news.google.com/rss/articles/CBMiwwJBVV95cUxPWkdkWWdEUnFZOWpIVGtBa005VmhjbE5oZU9zZ0tWaXc3OEpxVTA2TUwzdlBjVmxiVmJGSkJJbjNZMzFJbmNBcHdqcmQ2SGtKSEFqTUNUVmF2RXRNQ3pVMnJFczJOYVdjSVpYbmVhclgyLTFJaXFtUDdSaFhXMUNra2ZXZUktTk1ubWZQWHh0bUk1WTYwa3ByLXFIN2JMUFZGckU1bXdON19uczFCZXpuekFhSTFDdjR2S1pvY0lrcW54UDl6Y3Z0WUF6MGZVTWFhNFRTSkZCd1RjN01YVGtGMi0yQXhsbE1icEFSeEhZNERHczZNck9IdnpGMzFlN2JFeTVtaVZhbDd2RlZScU9IT2lsdkMxZHRaY3AwbG1zSDB6amJ1NzNhRmpqNzV0YlZxa3Y0S3FhVFJHTFpGMzkyamk1cw?oc=5",
+        "published_at": "2026-11-10T11:45:05+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "引新聞",
+        "related": [],
+        "rank": 11,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:af54decdcc4c8c",
+        "title": "連續7年獲獎！石岡區公所勇奪社造金區獎 創新策略擦亮山城品牌",
+        "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5Tb0ZNRDNaSHJOZldhZFc3bFdBRURWME1YNkcyaGVtYXJhZzVRcUFUWlUweWtmLVJyenB4Zi1ScWNhWEJoUE9HYTl6OEpuWTc4RUF0aHR0aks2aTJjeGZ4UWxWaXhYdw?oc=5",
+        "published_at": "2026-11-11T00:56:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "新華報導",
+        "related": [],
+        "rank": 12,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:e497e8b4d5be8b",
+        "title": "溫哥華台灣客家會辦「樟之細路」講座 客家米食DIY吸引外國友人",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9ZNlU4SUlULS0zUW1tNHZiVVRDUGNCTTk1ei1Ma2wtUWNpRU5KWm5SR1RFaHlPOGx2RVBkNmJ0R09zVmNGUVRRM01EYkRza1ZSa0E?oc=5",
+        "published_at": "2026-11-11T04:16:44+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "蕃新聞",
+        "related": [],
+        "rank": 13,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:66d23d06ef9176",
+        "title": "屏東2026狂客音樂祭連嗨兩天 金曲歌手、人氣樂團接力開唱 展現客家文化魅力",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1mLUVtSlUxQ3ZYS01hWjdqX0p6cUVlV05XeGlVd1NhM3c3LVNCY3ZvalFNSHl0STlRSnhTRDkyVnkwdmx0Rkh2RGhGMXEzQWxvcFE?oc=5",
+        "published_at": "2026-11-10T10:51:52+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "蕃新聞",
+        "related": [],
+        "rank": 14,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "community:f863411d784ee2",
+        "title": "新北哈客鶯歌館揭牌啟用 侯友宜：116年將設置泰山館",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBqbklWY1JNUldTRFVkMm5WSGd0bHRXYjlDVGdBS2pVOEJsVjRHVnRRQUJrU3VYSXpFUzNfMVBJd3pVc3hWbUxYWVM0SGs3REhRaXc?oc=5",
+        "published_at": "2026-11-10T08:57:10+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "蕃新聞",
+        "related": [],
+        "rank": 15,
+        "movement": "down",
+        "rank_change": -1
+      }
+    ],
+    "education": [
+      {
+        "id": "education:75c8f7217915d8",
+        "title": "2026臺灣教育科技展登場 北市打造AI智慧教育體驗展區",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE83TFd3Q1dlQkR6YTdNcG94ZHZMVmNoUVpCc3hGWHhSQWlBaWhiMldTQmhsM3VFMnYyb0tDeTJuT1BlQjB5QUJ5TTNvcVVzeTNuYWc?oc=5",
+        "published_at": "2026-11-11T02:27:19+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "蕃新聞",
+        "related": [],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "education:c7a254c78ac34f",
+        "title": "AI時代該學什麼？2026資訊月打造全民「AI起手式」",
+        "url": "https://news.google.com/rss/articles/CBMizgJBVV95cUxNYWJzWnNvU29pMW93N0hxZkNIaGhmOTJPRlZXcUc4aUZOQVNNUFBfMk9uRml3VmhWdm1pa1MzTTZpSmZOUF9hSDNsUDN4Q3NUb2ZyYllGeG1SbDNoM1dlNXRsMXJZYkh3VlRLLXFLTVhkTk15V0FXLWFpNm96RjF2T3hiTC01aXZ3MzdJZjdjQkVpaHJYSjVReHZCSlpRX0lBX2V3ckJMMG42WUx4U082cUhWUl9kYUxEZ3R4TU9CT05PbW0zNVc2dlJOOGhBU0w2ZjJRMGJmTUx0MzFwQzFuTW4xc3RDY2JFazFDbFdYQ09fSWs1ZjVHUlpaYlo4akh2UllVc1VnV05PazlfRlFSYzZSTWQydHNVZTE2N2duc1BmVmFwb3NpazI3S2lHNjYzUUNnNFJBOV9oWG9WNVNLSV8wOEtnQlY2bExOOWRn?oc=5",
+        "published_at": "2026-11-11T01:17:04+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "商傳媒",
+        "related": [],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "education:19553013b43308",
+        "title": "打造AI共學新日常！「2026臺灣教育科技展」五大智慧教學講座登場 | 勁報",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1yRng3NlV1emxncE5jLVlkNTdsQ1pTNkZ4clRhemg4aE5fc2kxMnRvNnFVdmZMMFcydkctaDlnckd3REh2SDlPQmExbkpvWklXbWowdTBR?oc=5",
+        "published_at": "2026-11-10T11:44:29+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "LINE TODAY",
+        "related": [],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "education:28f368feb7a6e7",
+        "title": "嶺大與清華大學簽署校際合作備忘錄共促AI+教育科技合-嶺南大學-紫荊號",
+        "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQQ3Q3SEtTcmhvd1VaMTNEb1gyanlxVlFHaXEycUZzNVhKcTF5eDhEZ2dRS1AyTzdXcEZuOUM2YnZZSEtSaWFlbmp2Sk9pZ3BJRkk5QjVQTFRSd2NuR1hCeW5tT1M5bFY3X1l2YzBNYXl0MUx1aGdRNWJtbXFhWlhETlFnb2xfdVU1MEs4bEhDYzI?oc=5",
+        "published_at": "2026-11-11T02:21:22+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "紫荊網",
+        "related": [],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "education:185959f7032d9e",
+        "title": "「富動科技GENETOUCH」參展2026臺灣教育科技展 五大智慧教學講座登場 打造AI共學新日常",
+        "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9WRkxjQjJHZ2YwUFlFSlVqRjZoaXVCYnFucFR3UkFSNWoyQmtUV196clQyeWFjZTBvWjBWSDNWakQ4eW1YS0g3NjJpZU1JeUI4SE5nQw?oc=5",
+        "published_at": "2026-11-10T14:48:15+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "新頭條",
+        "related": [],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "education:69273d20095919",
+        "title": "臺北市VIS國際實驗教育美加巡迴交流 學生不只是旅行者 更是臺灣故事的最佳說書人",
+        "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9BbFdtSFFWRmg1MDJmQjg5OG52YzJqWmhKUzZqUXRzb1RmZDFRU0hKT1B6Y0RHMGZmWnM0RUdrTnEzYkhwanA2dGtYWFBoZ05oQm50Mg?oc=5",
+        "published_at": "2026-11-10T07:33:50+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "住展雜誌",
+        "related": [],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "education:0283177e5dac42",
+        "title": "「臺灣教育科技展」 教部展AI方舟航向數位平權成果",
+        "url": "https://news.google.com/rss/articles/CBMixwJBVV95cUxOTzlxb0lQbWlwa2s3dlBGck90aUhFSDFRNmtpNWp1Xy15aE9seW5Ocm14ZDVRbWZsRERYNHZ0d3JCaGo1LVFBejVwcmFUNzJDc3VnaHZqc1hrY2V1Vm9XV2dwaVZ5a28tQVBaQ1pwS09GVWVhdGZ3QUVydkQyY25lVTZiNWR0OE93UGhvcFY4ek9kdTBLQlRYZDEwTHBGOFdjbEdZbXR4ekxhcEZVRWRUS2dQRUR3WmtQSFowcVgwdzloM2d3NG42SzFraERvM0FCQWVMNjVFS3E0MkZRS255ZDZyNHE2TUdGd3MzbVY5OHY2cmY0cmlTSVFvNGtTdndkN1E4Vk5sU0FhSjBTVG0zYjV4b2tsY2lBQmd5ZF94MHpxVGhuTnlrSVZIYUJib0xhWlNDSERMYzlWcDFQcDdTR2Qzdi1qQlk?oc=5",
+        "published_at": "2026-11-10T09:06:15+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "Yahoo新聞",
+        "related": [],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "education:86724be9b5e536",
+        "title": "討論牆 | 打造AI共學新日常！「2026臺灣教育科技展」五大智慧教學講座登場",
+        "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9rc19XTU9xcUdQemdJWWFTc3hRS2tsMUU3RjMwY2xXUmNxNzZrNVBMLXNFdzdNellxWTUwdGwzdnJrYU9DYW9ObHRwQ0F0MjZXa0ZMWlRtTnZKT3FwSlk3SUlyT0o?oc=5",
+        "published_at": "2026-11-10T16:40:04+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "LINE TODAY",
+        "related": [],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "education:26ee8619cf39e1",
+        "title": "資訊月臺灣教育科技展 探索AI無限可能 | 青年日報",
+        "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBabTlTMExrWFlvUkRVQWVzSm05eUw2bjdUdXU5ZXowM1V0cDl1OGczT1BGeW1yTE94Qm5zcnZGUzh0TXRhQzJkSFVyZEFzOFdZSnR2YndB?oc=5",
+        "published_at": "2026-11-10T08:50:26+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "LINE TODAY",
+        "related": [],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "business": [
+      {
+        "id": "business:e580d6e16be600",
+        "title": "每年加碼25.5億升級！龔明鑫表彰20大卓越商圈 推動跨部會獎勵行銷",
+        "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5JSllZMG4tY0RjZDQ2bGR4dW5OVmJuRm9lOWRScU9iQ0VlNnpycW5kZDhBemFDWlc5VU9zWjloUUNvc3VkVnZhRXB3UQ?oc=5",
+        "published_at": "2026-11-10T12:15:26+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "鉅亨網",
+        "related": [],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:f8a83b1cf27969",
+        "title": "天能綠電前三季營收續創高 搶攻AI時代綠電零售商機 | 熱門亮點 | 商情",
+        "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBsMzZBYXR3LXhRcjZGTDkyNkhLZ3NWWFRyRmxBSUppaGZXWW9RN2RYSjlRQnNBN1VHMzBoNGtKbXhuTXdHcVlYeExkQm5ZMThDYzRENTJRY1BPdw?oc=5",
+        "published_at": "2026-11-10T08:00:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "經濟日報",
+        "related": [],
+        "rank": 2,
+        "movement": "down",
+        "rank_change": -1
+      },
+      {
+        "id": "business:b55ab4cb8c4a9c",
+        "title": "從 25 萬元創業到挑戰百家門市！歐漾國際「勞闆斌哥」如何跨越電商成長天花板，搶攻美麗經濟新商機？",
+        "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9xTWNvNk8yWVg2WE5lMEdlbENYVGhfMnFDSnkyTXF1QjRsMFdhZHF6RXl0enpSLVJ5eTgtME1EUVhZUW5mVWFGMWFMS1JuUQ?oc=5",
+        "published_at": "2026-11-10T07:53:01+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "天下雜誌",
+        "related": [],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:4f5246392ed154",
+        "title": "同程旅行在京舉辦冰雪季發佈會，以產業協同激發冰雪經濟新活力",
+        "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE50WXJ2R0wxMl9VZ0ROYzFVQjh4TVZwWnRkb3RFeHJLX2t1aGRmWkV0ZXUyOWZiV0J4d19BOGJhbVBnQTV6RlozU2lWcERpV3FydkJ0bXNJVHJkcGcxRU5zc0F6M0pSb3RvSXc?oc=5",
+        "published_at": "2026-11-10T12:44:11+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "TradingView",
+        "related": [],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:bc88f4e03b926f",
+        "title": "2026台北國際網紅節香堤大道登場 131組網紅報名角逐TY Star獎",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBMVlk3QWdETWVzN1JNdnBnS2taMmlGTUJmc0tHa0JVTllGT0hPZFZfOW01SGtMWVJZbkxDOGVpRERNVk1jeHN6ZDhQS25xVGtJQ0E?oc=5",
+        "published_at": "2026-11-11T02:32:08+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "蕃新聞",
+        "related": [],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:bd73dbd16b147f",
+        "title": "騰雲10月營收近億！年增35.64% 前10月年增39.22%",
+        "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPU290emNJRWVuZzl1blItTy1BdTFvVEJvZzV3NjY2cHktMVVsZlJTSUwtNzVhWmFCSlZEWFZmTW44NlhpVzJkTkRvMlNEVkV4N2NuSEpRazZtWHI4U0RDRFJHMUFYZ1Y0aTRDX0RKUWtlVmhwQ2tydW9HdGp0cjdKc3FRcEYxeVlHU0JJ?oc=5",
+        "published_at": "2026-11-10T11:22:48+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "PChome Online新聞",
+        "related": [],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:e5a4e92188c998",
+        "title": "獨家／知名豆漿驚爆個資外洩！詐騙訂單狂發 業者控電商平台外洩",
+        "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1oSDd2UVM4STZJSDFhMHl0aEZsRXFjTzJrQXVhM2R6cms5WDJOVkdTb3VUSkJZejR4WVFTT2w2R3hZLWo0V2c0WDV1alZyS00?oc=5",
+        "published_at": "2026-11-10T10:42:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "TVBS新聞網",
+        "related": [],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:4c002cc5918106",
+        "title": "11街「Grand 11節」11日壓軸登場：500多項限時優惠，最高8折",
+        "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcVhSWTVEVlV1T0hBZGI2UUdaWU0xTDRMNzlwYjBhdUVZQ0wxRTdKczVadzNnblc0NkhlQXNBcjBjWGlSMUxseEF5dTlqYU80NzdZdlBjcm55OWxxeDRoaTVTR2RjQnNyR09yeFd5cUt5aXVqY0FQRUhTczNKNXY4c2NRMXVRXzVEeXlpcTFvdWpUa19xZ0JQS09kc2s5UTVqOVk3TWlNSkVKZ0NxUnBNWEdkcHRmQTFWX3ZUekNlOWU?oc=5",
+        "published_at": "2026-11-10T09:36:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "www.diarypoint.com",
+        "related": [],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:dd73c247890a3b",
+        "title": "每年加碼25.5億升級！龔明鑫表彰20大卓越商圈 將推動跨部會獎勵行銷",
+        "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1yT1FGbmJUQ1BPekFjV2R3eWNHYWpPbC1WaG5Qa2E2ZHdYTEIxckpGcUlyTWRpTzgteUtVaTgtTlMwSkVOb1VBNjJYOHlyU0E?oc=5",
+        "published_at": "2026-11-10T12:58:51+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "鉅亨網",
+        "related": [],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:2abdf3ba498c7f",
+        "title": "泰妍將於11月30日推出正規四輯《Unspecial》 16日公開預告片",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNdUozb1ljYUxFZ1ZEQVUzbjNBU2JPOENHekVkLWl0QnZjX3FzMkdKbVRzM1VmdGltNWx5NlhweVpEYXpKcmVFQmtsRFZKUnk1YUhLeFNfb0VBNnluZXZ3c2VJV18zWEYteS1qdEl6NnhqdEV2aG96cUlTRUNhd0UtaHlMZ1I2dlFvenVoX2R4SVVPal9iQ3FjNnlXSEFKTzJCNnd4dThpQnhyUFhyV2oxMnBFeXE?oc=5",
+        "published_at": "2026-11-10T09:41:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "www.diarypoint.com",
+        "related": [],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:58e848d0e7662c",
+        "title": "漢庭快捷“美麗豪華大宿舍”，為什麼被全網追著誇？",
+        "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5nekt6MVhQOXpjczVKYy1CcEhIc2F3T1ZJOTQ5RG1vWUhHNjNLM1hCSk5fa2Zaa0NKMkNHZDAzcGV4R1RSTUN4Vw?oc=5",
+        "published_at": "2026-11-10T08:11:23+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "鉅亨號",
+        "related": [],
+        "rank": 11,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:59ae6c672dc3d6",
+        "title": "跨域轉型 台南市文創協會再出發",
+        "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBkWlRjWXJtSlktMUtMX2pfS1l2WUJKR1B4eHkxX2ZtUVBxUDRrbHhDWEotMzJjUDNMTVN2emF5RmxLY1JFOUNrdnlWTVFCcjlOQUE?oc=5",
+        "published_at": "2026-11-10T12:48:04+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "中華新聞雲／中華日報",
+        "related": [],
+        "rank": 12,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:d5b4ec7d25966c",
+        "title": "創造觀光亮點 明年起經濟部每年砸25.5億支持商圈夜市",
+        "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZG4tbzdsZGp3UGd0Y29QVS1uWEpKdDJmbTNRQ2Z0UE5SSnhSZmh5QW5fUkppaXg2WFBrMlhhb0Z6RnltQ3kwWlh0Sjk2bmYtY3huNm1VMzAzeS1ESE5zdm9iVWN2WnhaN1oxejNIR2F6MTBZWUo5MXRnWUdUY0gxc0Vn?oc=5",
+        "published_at": "2026-11-10T11:03:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "壹蘋新聞網",
+        "related": [],
+        "rank": 13,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "business:30b2173665c15e",
+        "title": "臺南市文創協會轉型再出發打造產業共創新平台- 政府消息新聞",
+        "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQlRsMngyd0xzNTFwSUVLS2FFSnZBdGNoMFdmNmNmS3MwNWhDaUt5YkIwWlFBWUdLVXl0dGFPMWQ2RWtLUHB6S1pHRnJlaS03MU0wbjQzbWhDT3FsZzhmbERQcTduTUZLekFGS2ZnV1hvZllvVmpIVGRzWkxQc3FBc0tTMFQzaXYxNktVRw?oc=5",
+        "published_at": "2026-11-10T09:02:00+00:00",
+        "value": "",
+        "value_number": 0,
+        "publisher": "PChome Online 新聞",
+        "related": [],
+        "rank": 14,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "github": [
+      {
+        "id": "github:7a326e4e59c76a",
+        "title": "meta/astryx",
+        "url": "https://github.com/meta/astryx",
+        "published_at": "",
+        "value": "+3,108 stars 今日",
+        "value_number": 3108,
+        "publisher": "An open source design system that's fully customizable and agent ready",
+        "related": [],
+        "rank": 1,
+        "movement": "up",
+        "rank_change": 1
+      },
+      {
+        "id": "github:4cb2062a8a942d",
+        "title": "anthropics/skills",
+        "url": "https://github.com/anthropics/skills",
+        "published_at": "",
+        "value": "+1,679 stars 今日",
+        "value_number": 1679,
+        "publisher": "Public repository for Agent Skills",
+        "related": [],
+        "rank": 2,
+        "movement": "down",
+        "rank_change": -1
+      },
+      {
+        "id": "github:35dedba68491d6",
+        "title": "addyosmani/agent-skills",
+        "url": "https://github.com/addyosmani/agent-skills",
+        "published_at": "",
+        "value": "+465 stars 今日",
+        "value_number": 465,
+        "publisher": "Production-grade engineering skills for AI coding agents.",
+        "related": [],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "github:69168c0e5ca123",
+        "title": "anthropics/claude-quickstarts",
+        "url": "https://github.com/anthropics/claude-quickstarts",
+        "published_at": "",
+        "value": "+531 stars 今日",
+        "value_number": 531,
+        "publisher": "A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API",
+        "related": [],
+        "rank": 4,
+        "movement": "up",
+        "rank_change": 1
+      },
+      {
+        "id": "github:668010e3bdb0c1",
+        "title": "google-deepmind/mujoco",
+        "url": "https://github.com/google-deepmind/mujoco",
+        "published_at": "",
+        "value": "+456 stars 今日",
+        "value_number": 456,
+        "publisher": "Multi-Joint dynamics with Contact. A general purpose physics simulator.",
+        "related": [],
+        "rank": 5,
+        "movement": "down",
+        "rank_change": -1
+      },
+      {
+        "id": "github:128f00ecf8b14d",
+        "title": "we-promise/sure",
+        "url": "https://github.com/we-promise/sure",
+        "published_at": "",
+        "value": "+159 stars 今日",
+        "value_number": 159,
+        "publisher": "The personal finance app for everyone (by everyone)",
+        "related": [],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "github:9000c56789e48a",
+        "title": "homeassistant-ai/ha-mcp",
+        "url": "https://github.com/homeassistant-ai/ha-mcp",
+        "published_at": "",
+        "value": "+790 stars 今日",
+        "value_number": 790,
+        "publisher": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
+        "related": [],
+        "rank": 7,
+        "movement": "up",
+        "rank_change": 3
+      },
+      {
+        "id": "github:dbaf6cfbe8909a",
+        "title": "vercel-labs/agent-browser",
+        "url": "https://github.com/vercel-labs/agent-browser",
+        "published_at": "",
+        "value": "+780 stars 今日",
+        "value_number": 780,
+        "publisher": "Browser automation CLI for AI agents",
+        "related": [],
+        "rank": 8,
+        "movement": "down",
+        "rank_change": -1
+      },
+      {
+        "id": "github:2cd277ce848728",
+        "title": "sherlock-project/sherlock",
+        "url": "https://github.com/sherlock-project/sherlock",
+        "published_at": "",
+        "value": "+2,393 stars 今日",
+        "value_number": 2393,
+        "publisher": "Hunt down social media accounts by username across social networks",
+        "related": [],
+        "rank": 9,
+        "movement": "down",
+        "rank_change": -6
+      },
+      {
+        "id": "github:3c65949bc94043",
+        "title": "tokio-rs/topcoat",
+        "url": "https://github.com/tokio-rs/topcoat",
+        "published_at": "",
+        "value": "+192 stars 今日",
+        "value_number": 192,
+        "publisher": "A batteries-included framework for building web apps",
+        "related": [],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "github:939cd5a2c59e47",
+        "title": "ranxianglei/billion-context",
+        "url": "https://github.com/ranxianglei/billion-context",
+        "published_at": "",
+        "value": "+375 stars 今日",
+        "value_number": 375,
+        "publisher": "A context-compression plugin for month-long single sessions (billions of tokens) ,small context windows (a 100K context is enough) and token savings (",
+        "related": [],
+        "rank": 11,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "github:6ef6a81d18c423",
+        "title": "mattpocock/skills",
+        "url": "https://github.com/mattpocock/skills",
+        "published_at": "",
+        "value": "+1,225 stars 今日",
+        "value_number": 1225,
+        "publisher": "Skills for Real Engineers. Straight from my .agents directory.",
+        "related": [],
+        "rank": 12,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ],
+    "hn": [
+      {
+        "id": "hn:ab29eb04a4f77d",
+        "title": "Smart home devices should work without the internet",
+        "url": "https://news.ycombinator.com/item?id=50441707",
+        "published_at": "2026-11-10T15:25:20+00:00",
+        "value": "840 points",
+        "value_number": 840,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50441707",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 1,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:54f763db138b08",
+        "title": ".name Grandfathered",
+        "url": "https://news.ycombinator.com/item?id=50442736",
+        "published_at": "2026-11-10T16:37:44+00:00",
+        "value": "761 points",
+        "value_number": 761,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50442736",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 2,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:2078b665314538",
+        "title": "AlphaProof Code",
+        "url": "https://news.ycombinator.com/item?id=50439193",
+        "published_at": "2026-11-10T12:11:12+00:00",
+        "value": "608 points",
+        "value_number": 608,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50439193",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 3,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:260fd1a8943d8a",
+        "title": "AI usage generates a fragile codebase",
+        "url": "https://news.ycombinator.com/item?id=50438318",
+        "published_at": "2026-11-10T10:25:58+00:00",
+        "value": "471 points",
+        "value_number": 471,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50438318",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 4,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:ccfb182a60dbb4",
+        "title": "Scion is back and is going to sell a kei truck in America",
+        "url": "https://news.ycombinator.com/item?id=50445401",
+        "published_at": "2026-11-10T19:50:46+00:00",
+        "value": "430 points",
+        "value_number": 430,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50445401",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 5,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:397c564de6f56c",
+        "title": "Tracking Anthropic-discovered vulnerabilities",
+        "url": "https://news.ycombinator.com/item?id=50447074",
+        "published_at": "2026-11-10T22:17:56+00:00",
+        "value": "373 points",
+        "value_number": 373,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50447074",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 6,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:0710a1a5e60294",
+        "title": "Starlink Mini 2",
+        "url": "https://news.ycombinator.com/item?id=50444129",
+        "published_at": "2026-11-10T18:22:32+00:00",
+        "value": "361 points",
+        "value_number": 361,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50444129",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 7,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:0c89c535a3529a",
+        "title": "Synaptics patent claims stop work on DisplayLink drivers",
+        "url": "https://news.ycombinator.com/item?id=50443824",
+        "published_at": "2026-11-10T18:02:02+00:00",
+        "value": "358 points",
+        "value_number": 358,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50443824",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 8,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:4a005e5eb63d50",
+        "title": "Val Town is winding down",
+        "url": "https://news.ycombinator.com/item?id=50443427",
+        "published_at": "2026-11-10T17:31:14+00:00",
+        "value": "355 points",
+        "value_number": 355,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50443427",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 9,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:58e4d8046b5ae2",
+        "title": "Show HN: Get your coding agent off ~2019 JavaScript, onto modern web primitives",
+        "url": "https://news.ycombinator.com/item?id=50443812",
+        "published_at": "2026-11-10T18:01:15+00:00",
+        "value": "330 points",
+        "value_number": 330,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50443812",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 10,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:c01cbab7129537",
+        "title": "Ableton Live 13",
+        "url": "https://news.ycombinator.com/item?id=50439695",
+        "published_at": "2026-11-10T12:58:04+00:00",
+        "value": "301 points",
+        "value_number": 301,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50439695",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 11,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:7737ae74e7398f",
+        "title": "AMD's Zen 6 Family: Feeding the Beast",
+        "url": "https://news.ycombinator.com/item?id=50443090",
+        "published_at": "2026-11-10T17:02:32+00:00",
+        "value": "215 points",
+        "value_number": 215,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50443090",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 12,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:0933ea0ca28abd",
+        "title": "Six Math Essentials",
+        "url": "https://news.ycombinator.com/item?id=50446246",
+        "published_at": "2026-11-10T20:58:44+00:00",
+        "value": "203 points",
+        "value_number": 203,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50446246",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 13,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:db4816de6951b3",
+        "title": "Process Explorer for macOS",
+        "url": "https://news.ycombinator.com/item?id=50433216",
+        "published_at": "2026-11-09T22:30:41+00:00",
+        "value": "179 points",
+        "value_number": 179,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50433216",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 14,
+        "movement": "new",
+        "rank_change": 0
+      },
+      {
+        "id": "hn:2a0b549471397f",
+        "title": "Claude Whiteboards, Claude Sheets, and Claude Data",
+        "url": "https://news.ycombinator.com/item?id=50443716",
+        "published_at": "2026-11-10T17:55:07+00:00",
+        "value": "170 points",
+        "value_number": 170,
+        "publisher": "Hacker News",
+        "related": [
+          {
+            "title": "原始討論",
+            "url": "https://news.ycombinator.com/item?id=50443716",
+            "publisher": "HN"
+          }
+        ],
+        "rank": 15,
+        "movement": "new",
+        "rank_change": 0
+      }
+    ]
+  }
+}
