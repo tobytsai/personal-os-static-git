@@ -41,16 +41,44 @@ function mount({key,entries}){
  if(current!==generation)throw Error('連線已變更，請重新整理。');if(response.status===401){token='';expires=0;throw Error('Google 登入已到期，請重新連線。');}if(!response.ok)throw Error(response.status===403?'無法存取：請確認 API 已啟用，並使用「選擇提醒表」授權該檔案。':'Google Sheets 操作失敗（'+response.status+'），請重新整理後再試。');return response.json();}
  async function refresh(){if(!store)throw Error('請先登入並選擇提醒表。');const current=generation,rows=await store.read();if(current!==generation)return;visible=[...rows.values()].filter(x=>!x.deleted);render();notice('雲端模式 · 已重新整理 '+new Date().toLocaleTimeString('zh-TW')+'；不會自動推播。');}
  async function run(fn){if(busy||authPending)return;busy=true;render();try{await fn()}catch(e){fail(e)}finally{busy=false;render();}}
+ function taipeiDay(offset=0){
+   const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+   const d=new Date(today+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+offset);return d.toISOString().slice(0,10);
+ }
+ function snoozedDate(date){
+   const today=taipeiDay(),base=validDate(date)&&date>=today?date:today;
+   const d=new Date(base+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+1);return d.toISOString().slice(0,10);
+ }
+ function quickValue(raw){
+   let title=String(raw||'').trim(),date='';
+   const suffix=/(?:^|\s)@(今天|明天|後天|\d{4}-\d{2}-\d{2})\s*$/.exec(title);
+   if(suffix){
+     const when=suffix[1];
+     date=when==='今天'?taipeiDay():when==='明天'?taipeiDay(1):when==='後天'?taipeiDay(2):when;
+     title=title.slice(0,suffix.index).trim();
+   }
+   if(!title||title.length>120||!validDate(date))throw Error('請輸入 1～120 字的提醒內容，並確認 @日期 有效。');
+   return {title,date,phone:'',done:false,deleted:false,source:'manual'};
+ }
  function render(){
  list.replaceChildren();if(!visible.length){const p=document.createElement('p');p.textContent=store?'雲端沒有提醒；本機提醒仍保留，可自行選擇上傳。':'目前沒有提醒。';list.append(p);}
  [...visible].sort((a,b)=>Number(a.done)-Number(b.done)||String(a.date||'9999').localeCompare(String(b.date||'9999'))).forEach(item=>{
  const row=document.createElement('article');row.className='reminder-item'+(item.done?' done':'');const info=document.createElement('div'),title=document.createElement('div'),meta=document.createElement('div');title.className='reminder-title';title.textContent=item.title;meta.className='reminder-meta';meta.textContent=(item.date?'期限：'+item.date:'未設定期限')+'｜'+dueStatus(item);
  if(item.phone){const a=document.createElement('a');a.href='tel:'+String(item.phone).replace(/[^+0-9]/g,'');a.textContent=item.phone;meta.append('｜',a)}const url=safeUrl(item.url);if(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=new URL(url).hostname==='mail.google.com'?'查看 Gmail 通知':'查看相關連結';meta.append('｜',a)}
- const actions=document.createElement('div');actions.className='reminder-actions';actions.append(button(item.done?'恢復未完成':'標記完成',()=>run(()=>change(item.id,{done:!item.done}))),button('編輯',()=>showForm(item)),button('刪除',()=>{if(confirm('確定刪除這則提醒？雲端會保留刪除標記避免再次匯入。'))run(()=>change(item.id,{deleted:true}))}));info.append(title,meta);row.append(info,actions);list.append(row);
+ const actions=document.createElement('div');actions.className='reminder-actions';actions.append(button(item.done?'恢復未完成':'標記完成',()=>run(()=>change(item.id,{done:!item.done}))));if(!item.done){const snooze=button('延後 1 天',()=>run(()=>change(item.id,{date:snoozedDate(item.date)})));snooze.className='reminder-snooze';actions.append(snooze);}actions.append(button('編輯',()=>showForm(item)),button('刪除',()=>{if(confirm('確定刪除這則提醒？雲端會保留刪除標記避免再次匯入。'))run(()=>change(item.id,{deleted:true}))}));info.append(title,meta);row.append(info,actions);list.append(row);
  });document.querySelectorAll('.reminders button').forEach(b=>b.disabled=busy||(authPending&&b.textContent!=='中斷連線／回本機'));fields.forEach(f=>f.disabled=busy||authPending||!!token);
  }
  async function change(id,patch,create=false){if(store){const current=generation,rows=await store.mutate(id,patch,create);if(current!==generation)return;visible=[...rows.values()].filter(x=>!x.deleted);notice('已儲存至私人雲端提醒表。');}else{const next=local.map(x=>({...x})),i=next.findIndex(x=>x.id===id);if(i>=0)Object.assign(next[i],patch);else if(create)next.push({...patch,id});else throw Error('提醒不存在');const filtered=next.filter(x=>!x.deleted);try{localStorage.setItem(key,JSON.stringify(filtered))}catch{throw Error('本機儲存失敗，請檢查瀏覽器設定。')}local=filtered;visible=local;}render();}
  function showForm(item){if(busy||authPending)return;editing=item?.id||null;pendingId=item?.id||'r-'+crypto.randomUUID();form.hidden=false;err.hidden=true;form.elements.title.value=item?.title||'';form.elements.date.value=item?.date||'';form.elements.phone.value=item?.phone||'';opened={title:form.elements.title.value,date:form.elements.date.value,phone:form.elements.phone.value};form.elements.title.focus();}
+ const quickForm=$('reminder-quick-form'),quickInput=$('reminder-quick-input');
+ if(quickForm&&quickInput)quickForm.onsubmit=e=>{
+   e.preventDefault();if(busy||authPending)return;
+   let patch;try{patch=quickValue(quickInput.value);}catch(error){notice(error.message);quickInput.focus();return;}
+   run(async()=>{
+     await change('r-'+crypto.randomUUID(),patch,true);
+     quickForm.reset();notice('提醒已新增'+(patch.date?' · 期限 '+patch.date:'')+'。');
+   });
+ };
  $('reminder-add').onclick=()=>showForm(null);$('reminder-cancel').onclick=closeForm;
  form.onsubmit=e=>{e.preventDefault();const patch={title:form.elements.title.value.trim(),date:form.elements.date.value,phone:form.elements.phone.value.trim()};if(!patch.title||!validDate(patch.date)){err.hidden=false;err.textContent='請確認提醒內容與期限。';return}run(async()=>{await change(pendingId,editing?dirtyFields(opened,patch):{...patch,done:false,deleted:false,source:'manual'},!editing);closeForm()})};
  function saveConfig(){const [client,apiKey,project]=fields.map(f=>f.value.trim());if(!/^[\w.-]+\.apps\.googleusercontent\.com$/.test(client)||!apiKey||!/^\d+$/.test(project))throw Error('請先填寫有效的 Web Client ID、Picker API key 與專案編號。');config={...config,client,apiKey,project};localStorage.setItem(configKey,JSON.stringify(config));}
