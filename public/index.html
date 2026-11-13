@@ -32,6 +32,7 @@
 .mind-node{font-size:11px;line-height:1.15;padding:5px;overflow-wrap:anywhere}.mind-center{font-size:12px;line-height:1.2;padding:8px;overflow-wrap:anywhere}.mind-crumbs,.mind-items-list{display:flex;flex-wrap:wrap;gap:8px;width:100%}.mind-crumbs{align-items:center;margin-bottom:10px}.mind-small{border:1px solid #ddd9ec;background:#fff;border-radius:999px;padding:8px 12px;font:inherit;font-size:12px;cursor:pointer}.mind-small:disabled{opacity:.4;cursor:default}.mind-page{font-size:12px;color:#747c87}</style><link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="stylesheet" href="./assets/independent-sites.css">
 <link rel="stylesheet" href="./assets/personal-os-v2.css?v=20261114">
+<link rel="stylesheet" href="./assets/personal-os-focus-mobile.css?v=20261114">
 
 </head>
 <body><div class="shell"><nav class="rail"><div class="logo">◈</div><button onclick="go('home')"><b>⌂</b>首頁</button><a href="./pages/independent-sites.html"><b>▧</b>獨立站</a><button onclick="go('tools')"><b>▦</b>工具</button><button onclick="go('favorites')"><b>★</b>收藏</button><a href="./pages/calendar.html"><b>📅</b>行事曆</a><a href="https://trello.com/" target="_blank"><b>T</b>Trello</a><a href="https://mail.google.com/" target="_blank"><b>✉</b>Gmail</a><a href="https://drive.google.com/" target="_blank"><b>▣</b>Drive</a></nav>
@@ -55,12 +56,24 @@
 <section class="hero">
 <article class="card weather"><div class="head"><h3>🌤 桃園即時天氣</h3><a class="link" href="https://www.cwa.gov.tw/" target="_blank" rel="noopener">中央氣象署 ↗</a></div><div class="weather-big"><div><div class="temp" id="weatherTemp" style="font-size:37px">載入中</div><div id="weatherCondition">正在取得最新資料…</div></div><div class="wxicon" id="weatherIcon">🌤</div></div><div class="weather-details"><div class="weather-detail"><b id="weatherFeels">—</b><span>體感溫度</span></div><div class="weather-detail"><b id="weatherRain">—</b><span>目前降雨</span></div><div class="weather-detail"><b id="weatherHighLow">—</b><span>今日高 / 低</span></div></div><div class="weather-actions"><span class="small" id="weatherUpdated">等待更新</span><button class="weather-refresh" id="weatherRefresh" type="button" onclick="loadWeather(true)">↻ 更新天氣</button></div><div class="small" style="margin-top:6px">資料來源：<a href="https://open-meteo.com/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Open-Meteo</a></div></article>
 <section class="card reminders" aria-labelledby="reminder-heading"><div class="reminders-head"><h2 id="reminder-heading">🔔 提醒事項</h2><button type="button" class="reminder-toggle" id="reminder-toggle" aria-expanded="true" aria-controls="reminder-content">收合 ▲</button></div><form id="reminder-quick-form" class="reminder-quick" autocomplete="off"><label for="reminder-quick-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">快速新增提醒</label><input id="reminder-quick-input" maxlength="160" placeholder="快速新增：寄送報價單 @明天" aria-label="快速新增提醒"><button type="submit">＋ 加入</button></form><p class="reminder-quick-note">支援 @今天、@明天、@後天、@2026-12-15；不加日期也能新增。</p><div id="reminder-content"><div class="reminder-body-actions"><button type="button" class="reminder-add" id="reminder-add">＋ 新增提醒</button></div><div class="reminder-list" id="reminder-list" aria-live="polite"></div><form class="reminder-form" id="reminder-form" hidden><label>提醒內容<input name="title" required maxlength="120" placeholder="例如：機車定期排氣檢驗"></label><label>期限（選填）<input type="date" name="date"></label><label>聯絡電話（選填）<input name="phone" type="tel" maxlength="40" placeholder="聯絡電話"></label><p class="reminder-error" id="reminder-error" hidden></p><div class="form-actions"><button type="submit">儲存提醒</button><button type="button" id="reminder-cancel">取消</button></div></form><p class="reminder-note">預設儲存在本機；可自行連接私人 Google 試算表跨裝置查看。連線不會自動上傳本機提醒；LINE 到期通知需另行啟用專屬排程。</p></div></section>
+<article class="card focus" id="today-focus" aria-labelledby="focus-heading">
+  <div class="focus-header"><div><h3 id="focus-heading">📌 今日 Top 3 重點</h3><p class="focus-sub">從現有提醒挑選最重要的三件事</p></div><strong class="focus-counter" id="focus-count">0 / 3</strong></div>
+  <div id="focus-items" class="focus-list" aria-live="polite"><p class="focus-empty">從下方提醒事項按「☆ 設為重點」，即可置頂。</p></div>
+  <div class="focus-footer"><button type="button" id="focus-choose">挑選重點提醒</button><span>釘選偏好僅儲存在這台裝置，不會寫入雲端提醒表。</span></div>
+</article>
 <article class="card recent"><div class="head"><h3>↻ 最近使用</h3><span class="link">本機記錄</span></div><div class="chips" id="recent"></div></article><article class="card calendar" aria-label="今日行程"><div class="head"><h3>📅 今日行程</h3><a class="link" href="./pages/calendar.html">開啟完整行事曆</a></div><div id="calendarEvents" role="status"><div class="zero">連接 Google 日曆後，可在首頁查看今天的行程；僅要求唯讀權限。</div></div><button type="button" class="auth-btn" onclick="connectGoogle('calendar')">連接 Google 日曆（唯讀）</button></article></section>
 
 
 
 <section class="section" id="mind-map"><details class="mind-fold" id="mind-fold"><summary>◉ 心智球與思維圖</summary><p class="mind-intro">以圖像逐層探索：分類 → 啟動器 → 可辨識的內容連結。</p><div class="mind-switch" aria-label="選擇瀏覽方式"><button type="button" data-mind-mode="sphere" aria-pressed="true">◉ 心智球</button><button type="button" data-mind-mode="network" aria-pressed="false">⌘ 網狀思維圖</button></div><p class="mind-intro" id="mind-hint">點選彩色球體展開分類，再選擇入口。</p><div class="mind-stage" id="mind-stage"></div><h3 class="mind-selection" id="mind-selection"></h3><div class="mind-items" id="mind-items"></div></details></section><section class="section" id="favorites"><div class="sectiontop"><div><h2>我的收藏</h2><div class="small">按下啟動器上的星號，常用入口會集中顯示在這裡。</div></div><div class="small" id="favoriteCount"></div></div><div class="tools" id="favoritesGrid"></div></section>
 <section class="section home-directory" id="tools"><details class="home-fold" id="tools-fold"><summary><div class="sectiontop"><div><h2>彩色啟動器</h2><div class="small">保留不同色塊，讓入口可以用視覺快速辨識。</div></div><div class="small" id="toolCount"></div></div><span class="home-fold-hint"><span class="home-fold-open">展開</span><span class="home-fold-close">收合</span></span></summary><div class="home-fold-content"><div class="pills" id="pills"></div><div class="tools" id="toolsGrid"></div></div></details></section><div class="foot">Personal OS 靜態版 · 私人 API 僅於自行授權後連接 · 收藏與最近使用保存在本機瀏覽器</div></main></div>
+<nav class="mobile-action-bar" id="mobile-action-bar" aria-label="手機快速操作">
+  <button type="button" data-mobile-action="search"><span aria-hidden="true">⌕</span><small>搜尋</small></button>
+  <button type="button" data-mobile-action="reminders"><span aria-hidden="true">☑</span><small>提醒</small></button>
+  <button type="button" data-mobile-action="calendar"><span aria-hidden="true">▣</span><small>行程</small></button>
+  <button type="button" data-mobile-action="favorites"><span aria-hidden="true">★</span><small>收藏</small></button>
+  <button type="button" data-mobile-action="tools"><span aria-hidden="true">▦</span><small>工具</small></button>
+</nav>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
 const tools=[
@@ -154,5 +167,5 @@ function render(){
 }
 host.querySelectorAll('[data-mind-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mindMode;host.querySelectorAll('[data-mind-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));
 const fold=document.getElementById('mind-fold');fold.addEventListener('toggle',()=>{if(fold.open)render()});window.addEventListener('resize',()=>{if(fold.open)draw()});
-})();</script><script src="./personal-os-v2.js?v=20261114"></script></body></html>
+})();</script><script src="./personal-os-v2.js?v=20261114"></script><script src="./personal-os-mobile.js?v=20261114"></script></body></html>
 
