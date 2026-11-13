@@ -54,9 +54,9 @@
       input.value=cmd.value;
       field.value='';
       field.dispatchEvent(new Event('input',{bubbles:true}));
-      document.getElementById('reminder-content').hidden=false;
+      const content=document.getElementById('reminder-content');
       const toggle=document.getElementById('reminder-toggle');
-      if(toggle){toggle.textContent='收合 ▲';toggle.setAttribute('aria-expanded','true');}
+      if(content&&content.hidden&&toggle)toggle.click();
       form.requestSubmit();
       input.focus();
     }
