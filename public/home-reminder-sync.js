@@ -29,6 +29,43 @@ function mount({key,entries}){
  const $=id=>document.getElementById(id),list=$('reminder-list'),form=$('reminder-form'),err=$('reminder-error');
  const configKey='tobyHomeReminderCloudConfigV1';let config={};try{config=JSON.parse(localStorage.getItem(configKey)||'{}')}catch{}
  let local=entries.map(x=>({...x})),visible=local,editing=null,opened={},pendingId=null,store=null,token='',expires=0,generation=0,busy=false,authPending=false;
+ // Top 3 stores only reminder IDs in this browser, separate from the private Sheet.
+ // Maintain distinct pin sets for local reminders and each selected cloud sheet.
+ const focusKey='tobyHomeFocusPinsV1',focusHost=$('focus-items'),focusCounter=$('focus-count');
+ let focusData={};try{const stored=JSON.parse(localStorage.getItem(focusKey)||'{}');if(stored&&typeof stored==='object'&&!Array.isArray(stored))focusData=stored;}catch{}
+ function focusScope(){return store&&config.sheet?'cloud:'+config.sheet:'local';}
+ function savedPins(){const value=focusData[focusScope()];return Array.isArray(value)?[...new Set(value.filter(v=>typeof v==='string'&&v.length>0&&v.length<180))].slice(0,3):[];}
+ function availablePins(){const live=new Set(visible.filter(x=>x&&!x.done&&!x.deleted).map(x=>x.id));return savedPins().filter(id=>live.has(id));}
+ function storePins(next){const updated={...focusData,[focusScope()]:next};try{localStorage.setItem(focusKey,JSON.stringify(updated));}catch{notice('這台裝置無法儲存重點釘選，請檢查瀏覽器儲存設定。');return false;}focusData=updated;return true;}
+ function toggleFocus(id){
+   if(busy||authPending)return;
+   const pins=availablePins(),exists=pins.includes(id);
+   if(!exists&&pins.length>=3){notice('今日重點最多三件；請先取消一件釘選。');return;}
+   const next=exists?pins.filter(x=>x!==id):[...pins,id];
+   if(storePins(next))render();
+ }
+ function renderFocus(){
+   if(!focusHost||!focusCounter)return;
+   const ids=availablePins(),byId=new Map(visible.map(x=>[x.id,x]));
+   focusCounter.textContent=ids.length+' / 3';focusHost.replaceChildren();
+   if(!ids.length){
+     const empty=document.createElement('p');empty.className='focus-empty';
+     empty.textContent='還沒有重點任務。到「提醒事項」按「☆ 設為重點」，即可釘選到這裡。';
+     focusHost.append(empty);return;
+   }
+   ids.forEach(id=>{
+     const item=byId.get(id),card=document.createElement('article');
+     card.className='focus-item';
+     const title=document.createElement('div');title.className='focus-item-title';title.textContent=item.title;
+     const meta=document.createElement('div');meta.className='focus-item-meta';
+     meta.textContent=(item.date?'期限：'+item.date:'未設定期限')+'｜'+dueStatus(item);
+     const actions=document.createElement('div');actions.className='focus-item-actions';
+     actions.append(button('完成',()=>run(()=>change(id,{done:true}))),button('取消釘選',()=>toggleFocus(id)));
+     card.append(title,meta,actions);focusHost.append(card);
+   });
+   focusHost.querySelectorAll('button').forEach(btn=>btn.disabled=busy||authPending);
+ }
+
  const panel=document.createElement('details');panel.className='reminder-cloud';panel.innerHTML='<summary>☁ 私人雲端同步設定</summary><p>只存取你選取的 Google 試算表；不會公開提醒。本機提醒不會自動上傳。</p><div class="reminder-cloud-fields"><label>Google Web OAuth Client ID<input id="reminder-client" autocomplete="off" placeholder="…apps.googleusercontent.com"></label><label>Google Picker API key<input id="reminder-api-key" autocomplete="off"></label><label>Google Cloud 專案編號<input id="reminder-project" inputmode="numeric" autocomplete="off"></label></div><p><a href="./reminder-cloud-help.html" target="_blank" rel="noopener">首次設定說明</a> · <a href="./reminder-line-help.html" target="_blank" rel="noopener">🔔 LINE 到期提醒設定</a> · 請勿輸入 client secret 或登入密碼。</p><div class="reminder-actions" id="reminder-cloud-actions"></div>';
  list.before(panel);const status=document.createElement('p');status.id='reminder-cloud-status';status.setAttribute('role','status');panel.after(status);
  const fields=[$('reminder-client'),$('reminder-api-key'),$('reminder-project')];fields.forEach((el,i)=>el.value=config[['client','apiKey','project'][i]]||'');
@@ -65,10 +102,10 @@ function mount({key,entries}){
  [...visible].sort((a,b)=>Number(a.done)-Number(b.done)||String(a.date||'9999').localeCompare(String(b.date||'9999'))).forEach(item=>{
  const row=document.createElement('article');row.className='reminder-item'+(item.done?' done':'');const info=document.createElement('div'),title=document.createElement('div'),meta=document.createElement('div');title.className='reminder-title';title.textContent=item.title;meta.className='reminder-meta';meta.textContent=(item.date?'期限：'+item.date:'未設定期限')+'｜'+dueStatus(item);
  if(item.phone){const a=document.createElement('a');a.href='tel:'+String(item.phone).replace(/[^+0-9]/g,'');a.textContent=item.phone;meta.append('｜',a)}const url=safeUrl(item.url);if(url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=new URL(url).hostname==='mail.google.com'?'查看 Gmail 通知':'查看相關連結';meta.append('｜',a)}
- const actions=document.createElement('div');actions.className='reminder-actions';actions.append(button(item.done?'恢復未完成':'標記完成',()=>run(()=>change(item.id,{done:!item.done}))));if(!item.done){const snooze=button('延後 1 天',()=>run(()=>change(item.id,{date:snoozedDate(item.date)})));snooze.className='reminder-snooze';actions.append(snooze);}actions.append(button('編輯',()=>showForm(item)),button('刪除',()=>{if(confirm('確定刪除這則提醒？雲端會保留刪除標記避免再次匯入。'))run(()=>change(item.id,{deleted:true}))}));info.append(title,meta);row.append(info,actions);list.append(row);
- });document.querySelectorAll('.reminders button').forEach(b=>b.disabled=busy||(authPending&&b.textContent!=='中斷連線／回本機'));fields.forEach(f=>f.disabled=busy||authPending||!!token);
+ const actions=document.createElement('div');actions.className='reminder-actions';actions.append(button(item.done?'恢復未完成':'標記完成',()=>run(()=>change(item.id,{done:!item.done}))));if(!item.done){const snooze=button('延後 1 天',()=>run(()=>change(item.id,{date:snoozedDate(item.date)})));snooze.className='reminder-snooze';actions.append(snooze);const focused=availablePins().includes(item.id),pin=button(focused?'📌 取消重點':'☆ 設為重點',()=>toggleFocus(item.id));pin.className='reminder-pin';pin.setAttribute('aria-pressed',String(focused));actions.append(pin);}actions.append(button('編輯',()=>showForm(item)),button('刪除',()=>{if(confirm('確定刪除這則提醒？雲端會保留刪除標記避免再次匯入。'))run(()=>change(item.id,{deleted:true}))}));info.append(title,meta);row.append(info,actions);list.append(row);
+ });renderFocus();document.querySelectorAll('.reminders button').forEach(b=>b.disabled=busy||(authPending&&b.textContent!=='中斷連線／回本機'));fields.forEach(f=>f.disabled=busy||authPending||!!token);
  }
- async function change(id,patch,create=false){if(store){const current=generation,rows=await store.mutate(id,patch,create);if(current!==generation)return;visible=[...rows.values()].filter(x=>!x.deleted);notice('已儲存至私人雲端提醒表。');}else{const next=local.map(x=>({...x})),i=next.findIndex(x=>x.id===id);if(i>=0)Object.assign(next[i],patch);else if(create)next.push({...patch,id});else throw Error('提醒不存在');const filtered=next.filter(x=>!x.deleted);try{localStorage.setItem(key,JSON.stringify(filtered))}catch{throw Error('本機儲存失敗，請檢查瀏覽器設定。')}local=filtered;visible=local;}render();}
+ async function change(id,patch,create=false){if(store){const current=generation,rows=await store.mutate(id,patch,create);if(current!==generation)return;visible=[...rows.values()].filter(x=>!x.deleted);notice('已儲存至私人雲端提醒表。');}else{const next=local.map(x=>({...x})),i=next.findIndex(x=>x.id===id);if(i>=0)Object.assign(next[i],patch);else if(create)next.push({...patch,id});else throw Error('提醒不存在');const filtered=next.filter(x=>!x.deleted);try{localStorage.setItem(key,JSON.stringify(filtered))}catch{throw Error('本機儲存失敗，請檢查瀏覽器設定。')}local=filtered;visible=local;}if(patch.done===true||patch.deleted===true){const pins=savedPins();if(pins.includes(id))storePins(pins.filter(x=>x!==id));}render();}
  function showForm(item){if(busy||authPending)return;editing=item?.id||null;pendingId=item?.id||'r-'+crypto.randomUUID();form.hidden=false;err.hidden=true;form.elements.title.value=item?.title||'';form.elements.date.value=item?.date||'';form.elements.phone.value=item?.phone||'';opened={title:form.elements.title.value,date:form.elements.date.value,phone:form.elements.phone.value};form.elements.title.focus();}
  const quickForm=$('reminder-quick-form'),quickInput=$('reminder-quick-input');
  if(quickForm&&quickInput)quickForm.onsubmit=e=>{
@@ -78,6 +115,12 @@ function mount({key,entries}){
      await change('r-'+crypto.randomUUID(),patch,true);
      quickForm.reset();notice('提醒已新增'+(patch.date?' · 期限 '+patch.date:'')+'。');
    });
+ };
+ const focusChoose=$('focus-choose');
+ if(focusChoose)focusChoose.onclick=()=>{
+   const content=$('reminder-content'),toggle=$('reminder-toggle');
+   if(content&&content.hidden&&toggle)toggle.click();
+   list.scrollIntoView?.({behavior:'smooth',block:'start'});
  };
  $('reminder-add').onclick=()=>showForm(null);$('reminder-cancel').onclick=closeForm;
  form.onsubmit=e=>{e.preventDefault();const patch={title:form.elements.title.value.trim(),date:form.elements.date.value,phone:form.elements.phone.value.trim()};if(!patch.title||!validDate(patch.date)){err.hidden=false;err.textContent='請確認提醒內容與期限。';return}run(async()=>{await change(pendingId,editing?dirtyFields(opened,patch):{...patch,done:false,deleted:false,source:'manual'},!editing);closeForm()})};

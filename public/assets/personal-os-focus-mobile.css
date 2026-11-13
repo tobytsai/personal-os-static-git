@@ -1,0 +1,47 @@
+/* Personal OS 2.0 — Today Top 3 and mobile thumb navigation */
+.hero{grid-template-areas:"weather calendar recent" "focus focus focus" "reminders reminders reminders"}
+.hero>.focus{grid-area:focus}
+.focus{border-left:5px solid #6e64be}
+.focus-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.focus-header h3{font-size:16px;margin:0}
+.focus-sub{margin:5px 0 0;font-size:12px;color:#777e8b}
+.focus-counter{border:1px solid #e4e0f3;color:#554a92;border-radius:99px;padding:5px 11px;font-size:12px;white-space:nowrap}
+.focus-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.focus-empty{grid-column:1/-1;font-size:13px;color:#727885;margin:4px 0 8px}
+.focus-item{background:#f7f6fd;border:1px solid #e9e6f2;border-radius:13px;min-width:0;padding:12px;display:flex;flex-direction:column;gap:8px}
+.focus-item-title{font-size:13px;font-weight:750;color:#2f2949;overflow-wrap:anywhere}
+.focus-item-meta{font-size:11px;color:#6d687b;line-height:1.5}
+.focus-item-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.focus-item-actions button,.focus-footer button{border:1px solid #d7d0ee;border-radius:9px;background:#fff;color:#514480;padding:7px 10px;font-size:11px;font-weight:700;cursor:pointer}
+.focus-footer{display:flex;align-items:center;gap:9px;margin-top:12px;flex-wrap:wrap}
+.focus-footer span{font-size:11px;color:#747c87}
+.reminder-pin{border-color:#d7d0ee!important;color:#554580}
+.reminder-pin[aria-pressed="true"]{background:#ece9fc!important}
+.focus button:disabled{opacity:.48;cursor:wait}
+.mobile-action-bar{display:none}
+@media(max-width:1100px){
+ .hero{grid-template-areas:"weather calendar" "recent recent" "focus focus" "reminders reminders"}
+}
+@media(max-width:760px){
+ .hero{grid-template-areas:"weather" "calendar" "focus" "reminders" "recent"}
+ .focus-list{grid-template-columns:minmax(0,1fr)}
+ .focus-item{gap:6px}
+ .main{padding-bottom:calc(106px + env(safe-area-inset-bottom, 0px))}
+ html{scroll-padding-bottom:calc(96px + env(safe-area-inset-bottom, 0px))}
+ .mobile-action-bar{
+   position:fixed;bottom:0;left:0;right:0;z-index:50;display:grid;
+   grid-template-columns:repeat(5,minmax(0,1fr));align-items:stretch;
+   padding:5px 7px calc(6px + env(safe-area-inset-bottom, 0px));
+   background:rgba(255,255,255,.97);border-top:1px solid #dce1e8;
+   box-shadow:0 -5px 24px rgba(23,31,44,.11)
+ }
+ .mobile-action-bar button{
+   min-width:0;min-height:53px;background:transparent;color:#485366;
+   border:0;border-radius:12px;display:flex;flex-direction:column;
+   align-items:center;justify-content:center;gap:1px;cursor:pointer
+ }
+ .mobile-action-bar button span{font-size:23px;line-height:1.15}
+ .mobile-action-bar button small{font-size:11px}
+ .mobile-action-bar button:focus-visible,.mobile-action-bar button:active{outline:2px solid #7762d7;outline-offset:-2px;background:#f2efff}
+ .mobile-action-bar button[aria-current="page"]{background:#efedff;color:#584cb4}
+}
