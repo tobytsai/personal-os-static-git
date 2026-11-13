@@ -1,0 +1,38 @@
+/* Personal OS 2.0 homepage enhancements, after the existing inline styles. */
+.search{z-index:12}
+.search input{padding-right:60px}
+.search input:focus{border-color:#7064c6;box-shadow:0 0 0 3px #7064c625}
+.search-hint{display:block;margin:5px 7px 0;color:#6d7582;font-size:11px}
+.command-results{position:absolute;top:calc(100% + 5px);left:0;right:0;background:#fff;border:1px solid #dfe2eb;border-radius:16px;z-index:30;box-shadow:0 16px 40px #26324b24;padding:6px;max-height:330px;overflow:auto}
+.command-results[hidden]{display:none}
+.command-option{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px;border:0;background:transparent;text-align:left;border-radius:10px;cursor:pointer;color:#263042}
+.command-option strong{font-size:13px;overflow-wrap:anywhere}
+.command-option small{font-size:11px;color:#6a7484;white-space:nowrap}
+.command-option.selected,.command-option:hover,.command-option:focus-visible{background:#eeecff;outline:none}
+.command-empty{font-size:12px;color:#69717c;margin:8px;padding:8px}
+.hero{grid-template-areas:"weather calendar recent" "reminders reminders reminders"}
+.hero>.calendar{grid-area:calendar}
+.hero>.reminders{grid-area:reminders}
+.hero>.weather{grid-area:weather}
+.hero>.recent{grid-area:recent}
+.calendar .link{color:#5f4d29;font-weight:700}
+.calendar .head{margin-bottom:7px}
+.calendar .event-item{margin:7px 0}
+.calendar .zero{padding:12px;background:#fff9e9}
+.reminder-quick{margin-top:12px;display:flex;gap:8px}
+.reminder-quick input{flex:1;min-width:0;border:1px solid #e2d3b8;background:#fff;border-radius:11px;padding:11px 12px;font-size:13px}
+.reminder-quick button{border:1px solid #e2d3b8;border-radius:11px;padding:8px 14px;background:#fff7e8;color:#61491e;font-size:12px;font-weight:800;cursor:pointer}
+.reminder-quick input:focus{outline:3px solid #d6aa574d}
+.reminder-quick-note{color:#7c725e;font-size:11px;margin:6px 0 0}
+.reminder-actions button{font-size:11px}
+.reminder-actions .reminder-snooze{background:#f2f7ff;border-color:#cbdbee;color:#315276}
+@media(max-width:1100px){
+  .hero{grid-template-areas:"weather calendar" "recent recent" "reminders reminders"}
+  .hero>.calendar{grid-column:auto}
+}
+@media(max-width:760px){
+  .hero{grid-template-areas:"weather" "calendar" "reminders" "recent"}
+  .reminder-quick{flex-direction:column}
+  .reminder-quick button{align-self:flex-end}
+  .command-results{max-height:min(45vh,330px)}
+}
