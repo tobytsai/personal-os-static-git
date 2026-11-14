@@ -44,6 +44,24 @@ button:hover{filter:brightness(.94)}
 footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 @media(max-width:700px){main{padding:12px 11px 40px}.hero{padding:23px 18px}.grid{grid-template-columns:1fr}.card{padding:17px}.fields{grid-template-columns:1fr}.full{grid-column:auto}}
 @media print{body{background:white}.hero{box-shadow:none}.back,.actions,.muted small,button{display:none!important}.grid{display:block}.card{box-shadow:none;break-inside:avoid;margin-top:10px}textarea{height:auto;min-height:85px}}
+
+.photo-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.photo-controls label{margin:0}
+.photo-controls select,.photo-controls input{margin-top:5px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.photo-card{min-width:0;border:1px solid #dce9e4;border-radius:15px;overflow:hidden;background:#fafffd}
+.photo-thumb{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;position:relative;overflow:hidden;background:linear-gradient(120deg,#dceee7,#edf1fb);color:#4a756b;text-decoration:none;text-align:center;font-size:13px}
+.photo-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-body{padding:12px}
+.photo-body strong{font-size:13px}
+.photo-body p{margin:5px 0;font-size:12px}
+.photo-filename{display:block;color:#748482;font-size:10px;overflow-wrap:anywhere}
+.photo-category{width:100%;font-size:12px;padding:6px 8px;margin-top:9px}
+.photo-insert{width:100%;font-size:12px;margin-top:7px;padding:8px}
+.photo-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:10px 0 14px;font-size:13px}
+#photoMore{display:block;margin:18px auto 0}
+@media(max-width:800px){.photo-controls{grid-template-columns:1fr 1fr}.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.photo-controls{grid-template-columns:1fr}.photo-grid{gap:7px}.photo-body{padding:8px}.photo-body strong{font-size:12px}}
 </style>
 </head>
 <body>
@@ -95,6 +113,37 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <h2>🧑‍🤝‍🧑 跨世代學習與社區活動構想</h2>
 <label>如何轉成樂齡／親子共學活動？<small>例如：長輩與孩子一起操作、手機防詐情境演練、簡單機器人挑戰，或社區手機應用工作坊。</small>
 <textarea name="seniorIdeas" placeholder="活動構想／需要材料／適合對象／觀察或成果證據……"></textarea></label>
+</section>
+
+<section class="card full" id="field-photo-gallery">
+<h2>📸 現場照片｜2026資訊展</h2>
+<p>已索引 <strong>445 張</strong> 2026 年 11 月 13 日現場照片。先顯示目視核對的主題精選，也可切換「全部照片」依拍攝順序查看、按時間或主題篩選，再把任一張照片連同出處加入觀察筆記。</p>
+<p class="muted">🔒 照片原檔保留在私人 <a href="https://drive.google.com/drive/folders/1FfGQFrV7-88bRNsOLGF503MyG0hH5MWT" target="_blank" rel="noopener noreferrer">Google Drive「2026資訊展」資料夾</a>，未更改權限，也未將原圖上傳到公開網站。只有登入有權限的 Google 帳號才能開啟原圖；縮圖若無法顯示，點卡片可開啟 Drive。</p>
+<div class="photo-controls">
+<label>照片主題
+<select id="photoTopicFilter">
+<option value="精選照片">主題精選（已目視核對）</option>
+<option value="全部照片">全部照片</option>
+<option value="AI與數位教學">AI與數位教學</option>
+<option value="程式與STEAM">程式與STEAM</option>
+<option value="永續教育">永續教育</option>
+<option value="互動體驗">互動體驗</option>
+<option value="閱讀與圖書館">閱讀與圖書館</option>
+<option value="樂齡">樂齡</option>
+<option value="未分類">待分類</option>
+</select>
+</label>
+<label>拍攝時段
+<select id="photoHourFilter"><option value="全部時間">全部時間</option></select>
+</label>
+<label>搜尋相片
+<input id="photoSearch" type="text" placeholder="檔名、時間、主題…">
+</label>
+</div>
+<div class="photo-toolbar"><span id="photoIndexStatus" role="status" aria-live="polite">照片索引載入中…</span><a href="https://drive.google.com/drive/folders/1FfGQFrV7-88bRNsOLGF503MyG0hH5MWT" target="_blank" rel="noopener noreferrer">Drive 全部原圖 ↗</a></div>
+<div class="photo-grid" id="photoGrid"></div>
+<button type="button" id="photoMore" class="secondary" hidden>載入更多照片</button>
+<p class="muted" style="margin-top:15px">* 檔名時間加上臺灣時區 UTC+8 推估，僅供排序；並非逐張 EXIF 查證。已標示主題的照片經抽樣目視確認，其餘先保留「待分類」。可於每張照片下方自行調整主題，分類紀錄保存在目前瀏覽器。</p>
 </section>
 <section class="card full">
 <h2>🗓️ 基本資料</h2>
@@ -187,6 +236,72 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
     event.target.value = "";
   });
   document.getElementById("print").addEventListener("click", () => window.print());
+})();
+</script>
+
+<script>
+(() => {
+ const source="../data/2026-info-expo-photo-index.json";
+ const storageKey="tobyInfoExpoPhotoCategories2026V1";
+ const tagChoices=["未分類","AI與數位教學","程式與STEAM","永續教育","互動體驗","閱讀與圖書館","樂齡"];
+ const grid=document.getElementById("photoGrid");
+ const status=document.getElementById("photoIndexStatus");
+ const topic=document.getElementById("photoTopicFilter");
+ const hour=document.getElementById("photoHourFilter");
+ const search=document.getElementById("photoSearch");
+ const more=document.getElementById("photoMore");
+ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ let all=[],found=[],displayed=0,edits={};
+ try{edits=JSON.parse(localStorage.getItem(storageKey)||"{}")||{}}catch(e){}
+ const getTag=p=>edits[p.id]||p.topic||"未分類";
+ function apply(reset=true){
+  if(reset)displayed=0;
+  const q=search.value.trim().toLowerCase();
+  found=all.filter(p=>{
+   const t=getTag(p), chosen=topic.value;
+   if(chosen==="精選照片"&&!p.featured)return false;
+   if(chosen!=="精選照片"&&chosen!=="全部照片"&&t!==chosen)return false;
+   if(hour.value!=="全部時間"&&p.time.slice(0,2)!==hour.value)return false;
+   return !q||[p.name,p.time,t,p.caption].join(" ").toLowerCase().includes(q);
+  });
+  displayed=Math.min(displayed+24,found.length);
+  grid.innerHTML=found.slice(0,displayed).map(p=>{
+   const t=getTag(p), url=p.url;
+   const choices=tagChoices.map(v=>'<option value="'+esc(v)+'"'+(v===t?' selected':'')+'>'+esc(v)+'</option>').join("");
+   const thumb="https://drive.google.com/thumbnail?id="+encodeURIComponent(p.id)+"&sz=w400";
+   return '<article class="photo-card"><a class="photo-thumb" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" title="開啟 Google Drive 原圖"><span>📷<br>查看 Drive 原圖</span><img src="'+esc(thumb)+'" loading="lazy" referrerpolicy="no-referrer" alt="'+esc(p.caption||p.name)+'" onerror="this.remove()"></a><div class="photo-body"><strong>'+esc(p.time)+' · '+esc(t)+'</strong><span class="photo-filename">'+esc(p.name)+'</span>'+(p.caption?'<p>'+esc(p.caption)+'</p>':'')+'<select class="photo-category" aria-label="調整照片分類" data-id="'+esc(p.id)+'">'+choices+'</select><button type="button" class="secondary photo-insert" data-id="'+esc(p.id)+'">加入觀察筆記</button></div></article>';
+  }).join("")||'<p class="muted">目前沒有符合的照片，請調整篩選條件。</p>';
+  status.textContent="顯示 "+displayed+" / "+found.length+" 張（全部 "+all.length+" 張）";
+  more.hidden=displayed>=found.length;
+  grid.querySelectorAll(".photo-category").forEach(el=>el.onchange=()=>{
+   edits[el.dataset.id]=el.value;
+   try{localStorage.setItem(storageKey,JSON.stringify(edits))}catch(e){}
+   apply(true);
+  });
+  grid.querySelectorAll(".photo-insert").forEach(el=>el.onclick=()=>{
+   const p=all.find(x=>x.id===el.dataset.id);
+   if(!p)return;
+   const t=getTag(p);
+   const target=document.querySelector('textarea[name="'+(t==="樂齡"?"seniorObservations":"observations")+'"]');
+   if(!target)return;
+   if(target.value.includes(p.url)){status.textContent="這張照片已在觀察筆記中";return;}
+   const entry="【照片 "+p.date+" "+p.time+"｜"+t+"】"+(p.caption?" "+p.caption+"。":"")+"\n"+p.url;
+   target.value+=(target.value.trim()?"\n\n":"")+entry;
+   target.dispatchEvent(new Event("input",{bubbles:true}));
+   status.textContent="照片已加入"+(t==="樂齡"?"樂齡友善觀察":"展場與內容觀察")+"，並儲存於本機";
+  });
+ }
+ fetch(source,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(data=>{
+  if(!data||!Array.isArray(data.photos))throw new Error("資料格式異常");
+  all=data.photos;
+  const hrs=[...new Set(all.map(x=>x.time.slice(0,2)))].sort();
+  hour.innerHTML='<option value="全部時間">全部時間</option>'+hrs.map(h=>'<option value="'+esc(h)+'">'+esc(h)+':00–'+esc(h)+':59</option>').join("");
+  apply(true);
+ }).catch(e=>{status.textContent="索引暫時無法載入；請從上方連結開啟 Drive。"+e.message;});
+ topic.addEventListener("change",()=>apply(true));
+ hour.addEventListener("change",()=>apply(true));
+ search.addEventListener("input",()=>apply(true));
+ more.addEventListener("click",()=>apply(false));
 })();
 </script>
 </body>
