@@ -127,6 +127,24 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <textarea name="codeAiNotes" placeholder="操作日期／課程或關卡／遇到的問題／解決方式／作品連結／延伸實作……"></textarea></label>
 </section>
 
+<section class="card full" id="unverified-gkfather">
+<h2>🔎 GKfather.com｜待確認網站</h2>
+<p>這是另外保留的待查核網址，不等於已確認的展覽活動或參展廠商。網站目前未能正常讀取，尚無法核實內容、提供者、服務或是否與「GK爸爸原創故事繪本」有關。</p>
+<div class="resource">
+<div>
+<h3>使用者提供的網站連結</h3>
+<p><strong>https://gkfather.com/</strong></p>
+<p class="muted">狀態：2026-11-15 待確認。建議確認網站實際內容與發布者後再正式歸類；在確認前勿輸入帳號密碼、付款資料或個人資料。</p>
+</div>
+<a href="https://gkfather.com/" target="_blank" rel="noopener noreferrer nofollow">開啟原始網址 ↗</a>
+</div>
+<div class="chips"><span>待核對來源</span><span>網站收藏</span><span>可能的親子故事資源：未證實</span></div>
+<label style="margin-top:16px">網站核對與學習觀察
+<small>查核網站名稱、實際用途、是否出現在資訊展、官方來源、適合年齡與可能的自學應用。</small>
+<textarea name="gkfatherReviewNotes" placeholder="查看日期／首頁標題／來源證據／課程或資源內容／是否適合自學……"></textarea>
+</label>
+</section>
+
 <section class="card full" id="senior-learning">
 <h2>👵 樂齡分類｜數位共學與2026資訊月論壇</h2>
 <p>將官方活動、樂齡數位學習資源及自己的觀察分開保存。以下列出的是主辦單位公布的活動資訊，實際參與心得請填在下方欄位。</p>
@@ -166,7 +184,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <select id="photoTopicFilter">
 <option value="精選照片">主題精選（已目視核對）</option>
 <option value="全部照片">全部照片</option>
-<option value="AI與數位教學">AI與數位教學</option><option value="程式與STEAM">程式與STEAM</option>
+<option value="AI與數位教學">AI與數位教學</option><option value="程式與STEAM">程式與STEAM</option><option value="待確認資源">待確認資源</option>
 <option value="程式與STEAM">程式與STEAM</option>
 <option value="永續教育">永續教育</option>
 <option value="互動體驗">互動體驗</option>
@@ -237,7 +255,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <script>
 (() => {
   const storageKey = "tobySelfStudyInfoExpoNotes2026V1";
-  const fields = ["exhibition","date","venue","noteCategory","observations","interaction","childNotes","crossDiscipline","nextSteps","seniorObservations","seniorIdeas","aiTeachingNotes","codeAiNotes"];
+  const fields = ["exhibition","date","venue","noteCategory","observations","interaction","childNotes","crossDiscipline","nextSteps","seniorObservations","seniorIdeas","aiTeachingNotes","codeAiNotes","gkfatherReviewNotes"];
   const nodes = Object.fromEntries(fields.map(name => [name, document.querySelector('[name="' + name + '"]')]));
   const status = document.getElementById("status");
   const collect = () => Object.fromEntries(fields.map(name => [name, nodes[name].value]));
