@@ -31,10 +31,10 @@ p{margin:0 0 11px}
 .chips span{padding:4px 10px;border-radius:20px;background:#e8f2ef;color:#44736a;font-weight:700;font-size:12px}
 label{display:block;font-weight:800;font-size:14px;margin-bottom:14px}
 label small{display:block;font-weight:400;color:#758388;margin:0 0 5px;font-size:12px}
-input[type=text],input[type=date],textarea{width:100%;border-radius:11px;border:1px solid #cadbd6;background:#fbfefc;padding:10px 12px;color:#233f40;font:inherit;font-weight:400;outline:none}
-input:focus,textarea:focus{border-color:#3c8b7c;box-shadow:0 0 0 3px #d9eee9}
+input[type=text],input[type=date],textarea,select{width:100%;border-radius:11px;border:1px solid #cadbd6;background:#fbfefc;padding:10px 12px;color:#233f40;font:inherit;font-weight:400;outline:none}
+input:focus,textarea:focus,select:focus{border-color:#3c8b7c;box-shadow:0 0 0 3px #d9eee9}
 textarea{min-height:128px;resize:vertical}
-.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
 button{border:0;border-radius:12px;padding:11px 17px;background:#286d63;color:#fff;font:inherit;font-size:14px;font-weight:800;cursor:pointer}
 button.secondary{background:#e5f2ed;color:#23695c;border:1px solid #cce2d8}
@@ -50,7 +50,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <main>
 <a class="back" href="./self-study.html">← 返回自學啟動器</a>
 <header class="hero">
-<span class="tag">自學啟動器 · 展覽觀察與跨域學習</span>
+<span class="tag">自學啟動器 · 展覽觀察／樂齡學習／跨域學習</span>
 <h1>2026資訊展觀察筆記</h1>
 <p>將展覽中的觀察、孩子的提問與後續教學構想記在這裡。這是可自行填寫的學習紀錄頁，尚未填入實地觀察內容。</p>
 </header>
@@ -66,12 +66,44 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 </div>
 <div class="chips"><span>跨領域美感</span><span>展覽學習</span><span>兒童觀察</span><span>在地文化</span><span>教案參考</span></div>
 </section>
+
+<section class="card full" id="senior-learning">
+<h2>👵 樂齡分類｜數位共學與2026資訊月論壇</h2>
+<p>將官方活動、樂齡數位學習資源及自己的觀察分開保存。以下列出的是主辦單位公布的活動資訊，實際參與心得請填在下方欄位。</p>
+<div class="resource">
+<div>
+<h3>AI時代的新生活｜學習，讓未來更多可能</h3>
+<p><strong>2026年11月15日（日）13:00–16:00</strong>｜2026 資訊月 × 臺灣教育科技展，台北世貿一館 · 資訊月主舞台。</p>
+<p class="muted">議程：13:00–14:30 樂齡機器人競賽；15:00 熟齡美學、15:15 樂齡數位與智慧家庭、15:30 AI短影音與媒體識讀、15:45 親子數位教養。活動可能異動，以主辦單位公告為準。</p>
+</div>
+<a href="https://events.tca.org.tw/Events/EnrollPage?token=XpYzCLoAz4CKeugl31nWVg%3D%3D" target="_blank" rel="noopener noreferrer">官方活動資訊 ↗</a>
+</div>
+<hr style="border:0;border-top:1px solid #dbe9e3;margin:16px 0">
+<div class="resource">
+<div><h3>📱 教育部樂齡數位學習導航平臺</h3>
+<p class="muted">延伸探索樂齡數位體驗場域、手機生活、媒體素養及情境式教學，與論壇內容交叉參考。</p></div>
+<a href="https://www.seniordigital.tw/" target="_blank" rel="noopener noreferrer">開啟學習平臺 ↗</a>
+</div>
+<div class="chips"><span>樂齡</span><span>終身學習</span><span>機器人共學</span><span>熟齡美學</span><span>智慧家庭</span><span>媒體識讀</span><span>親子數位教養</span></div>
+</section>
+<section class="card">
+<h2>👀 樂齡友善觀察</h2>
+<label>長輩如何學習、操作與參與？<small>例如：操作介面、字體大小、教學語速、陪伴協助與現場反應。未參觀可先記「待觀察」。</small>
+<textarea name="seniorObservations" placeholder="實際看到的現象、長輩提問、值得借鏡的設計……"></textarea></label>
+</section>
+<section class="card">
+<h2>🧑‍🤝‍🧑 跨世代學習與社區活動構想</h2>
+<label>如何轉成樂齡／親子共學活動？<small>例如：長輩與孩子一起操作、手機防詐情境演練、簡單機器人挑戰，或社區手機應用工作坊。</small>
+<textarea name="seniorIdeas" placeholder="活動構想／需要材料／適合對象／觀察或成果證據……"></textarea></label>
+</section>
 <section class="card full">
 <h2>🗓️ 基本資料</h2>
 <div class="fields">
 <label>展覽或活動名稱<input name="exhibition" type="text" value="2026資訊展" placeholder="可依現場正式名稱修改"></label>
 <label>參觀日期<input name="date" type="date"></label>
 <label>地點<input name="venue" type="text" placeholder="請填寫實際場館"></label>
+<label>筆記分類<small>可選「樂齡」；不會刪除原有筆記內容。</small>
+<select name="noteCategory"><option value="展覽觀察">展覽觀察</option><option value="樂齡">樂齡</option><option value="親子數位教養">親子數位教養</option><option value="跨領域美感">跨領域美感</option></select></label>
 </div>
 </section>
 <section class="card">
@@ -114,7 +146,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <script>
 (() => {
   const storageKey = "tobySelfStudyInfoExpoNotes2026V1";
-  const fields = ["exhibition","date","venue","observations","interaction","childNotes","crossDiscipline","nextSteps"];
+  const fields = ["exhibition","date","venue","noteCategory","observations","interaction","childNotes","crossDiscipline","nextSteps","seniorObservations","seniorIdeas"];
   const nodes = Object.fromEntries(fields.map(name => [name, document.querySelector('[name="' + name + '"]')]));
   const status = document.getElementById("status");
   const collect = () => Object.fromEntries(fields.map(name => [name, nodes[name].value]));
@@ -132,7 +164,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
     const existing = JSON.parse(localStorage.getItem(storageKey) || "null");
     if (existing) { restore(existing); status.textContent = "已載入此瀏覽器中的筆記"; }
   } catch (error) { status.textContent = "無法讀取舊筆記，請使用備份匯入"; }
-  fields.forEach(name => nodes[name].addEventListener("input", save));
+  fields.forEach(name => { nodes[name].addEventListener("input", save); nodes[name].addEventListener("change", save); });
   document.getElementById("save").addEventListener("click", save);
   document.getElementById("export").addEventListener("click", () => {
     const payload = JSON.stringify({ format: "toby-self-study-info-expo-2026", exportedAt: new Date().toISOString(), ...collect() }, null, 2);
