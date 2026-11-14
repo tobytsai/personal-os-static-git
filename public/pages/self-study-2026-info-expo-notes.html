@@ -85,6 +85,21 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <div class="chips"><span>跨領域美感</span><span>展覽學習</span><span>兒童觀察</span><span>在地文化</span><span>教案參考</span></div>
 </section>
 
+<section class="card full" id="ai-teaching-tools">
+<h2>🤖 AI與數位教學｜KnowledgeHub AI</h2>
+<div class="resource">
+<div>
+<h3>KnowledgeHub AI｜教育 AI 備課助手</h3>
+<p>參考網址：AI 輔助備課與教學資源。可在 2026 資訊展觀察中研究：是否能幫助規劃自學活動、整理教材、設計提問，以及調整不同學習程度的活動。</p>
+<p class="muted">網站需要 JavaScript 才能完整顯示；目前尚未核實實際功能、登入條件及收費。以下用途是預計觀察的方向，非已測試的功能宣稱。</p>
+</div>
+<a href="https://knowledgehub-ai.edu.tw/" target="_blank" rel="noopener noreferrer">開啟 AI 備課助手 ↗</a>
+</div>
+<div class="chips"><span>AI與數位教學</span><span>備課工具</span><span>自學教案</span><span>教材研究</span><span>待操作驗證</span></div>
+<label style="margin-top:16px">AI 備課助手試用與教學觀察<small>記下適用年級、輸入題目、產出的教學活動、是否適用四年級自學，以及需要查證或修改的部分。</small>
+<textarea name="aiTeachingNotes" placeholder="試用日期／使用情境／實際操作／優缺點／下一步……"></textarea></label>
+</section>
+
 <section class="card full" id="senior-learning">
 <h2>👵 樂齡分類｜數位共學與2026資訊月論壇</h2>
 <p>將官方活動、樂齡數位學習資源及自己的觀察分開保存。以下列出的是主辦單位公布的活動資訊，實際參與心得請填在下方欄位。</p>
@@ -152,7 +167,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <label>參觀日期<input name="date" type="date"></label>
 <label>地點<input name="venue" type="text" placeholder="請填寫實際場館"></label>
 <label>筆記分類<small>可選「樂齡」；不會刪除原有筆記內容。</small>
-<select name="noteCategory"><option value="展覽觀察">展覽觀察</option><option value="樂齡">樂齡</option><option value="親子數位教養">親子數位教養</option><option value="跨領域美感">跨領域美感</option></select></label>
+<select name="noteCategory"><option value="展覽觀察">展覽觀察</option><option value="樂齡">樂齡</option><option value="親子數位教養">親子數位教養</option><option value="跨領域美感">跨領域美感</option><option value="AI與數位教學">AI與數位教學</option></select></label>
 </div>
 </section>
 <section class="card">
@@ -195,7 +210,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <script>
 (() => {
   const storageKey = "tobySelfStudyInfoExpoNotes2026V1";
-  const fields = ["exhibition","date","venue","noteCategory","observations","interaction","childNotes","crossDiscipline","nextSteps","seniorObservations","seniorIdeas"];
+  const fields = ["exhibition","date","venue","noteCategory","observations","interaction","childNotes","crossDiscipline","nextSteps","seniorObservations","seniorIdeas","aiTeachingNotes"];
   const nodes = Object.fromEntries(fields.map(name => [name, document.querySelector('[name="' + name + '"]')]));
   const status = document.getElementById("status");
   const collect = () => Object.fromEntries(fields.map(name => [name, nodes[name].value]));
