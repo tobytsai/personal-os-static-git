@@ -100,6 +100,33 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <textarea name="aiTeachingNotes" placeholder="試用日期／使用情境／實際操作／優缺點／下一步……"></textarea></label>
 </section>
 
+<section class="card full" id="codeai-coding">
+<h2>🧩 程式設計與 AI 素養｜Code.org／CodeAI</h2>
+<p>延伸學習資源：由 Code.org 發展而來的 CodeAI，提供免費的電腦科學與 AI 學習課程。這是觀展後可延伸操作的教材，不代表已確認它是現場參展單位。</p>
+<div class="resource">
+<div>
+<h3>💻 Code.org／CodeAI 程式與 AI 課程</h3>
+<p>適合從圖像積木程式與簡單的動畫、遊戲實作開始，再進一步探索 AI 如何辨識資料與協助創作。可記錄每次挑戰的關卡、解題過程與成果。</p>
+<p class="muted">原連結使用 <code>zh-Hans</code> 語系，已移除 Facebook 追蹤參數。官方教材的實際語言、年齡範圍及登入需求請以各活動頁為準。</p>
+</div>
+<a href="https://code.org/zh-Hans" target="_blank" rel="noopener noreferrer">開啟原網站 ↗</a>
+</div>
+<div class="resource" style="margin-top:14px">
+<div><h3>🎮 Minecraft 程式闖關</h3>
+<p>官方整理二至十二年級適用的 Minecraft 程式活動，可從海洋探險、Agent 任務與自己設計遊戲規則開始。</p></div>
+<a href="https://code.org/zh-Hant/minecraft" target="_blank" rel="noopener noreferrer">Minecraft 課程 ↗</a>
+</div>
+<div class="resource" style="margin-top:14px">
+<div><h3>🧒 國小自主學習課程</h3>
+<p>5–11 歲學習入口，包含短時間 AI 活動、積木程式與自主練習。</p></div>
+<a href="https://code.org/zh-Hant/students/elementary" target="_blank" rel="noopener noreferrer">國小學習入口 ↗</a>
+</div>
+<div class="chips"><span>程式與STEAM</span><span>AI素養</span><span>Minecraft</span><span>自主闖關</span><span>互動創作</span></div>
+<label style="margin-top:16px">程式設計實作與學習觀察
+<small>可記錄：選用課程、關卡與完成度、孩子的解題方法、是否需要提示、完成作品與成果連結。</small>
+<textarea name="codeAiNotes" placeholder="操作日期／課程或關卡／遇到的問題／解決方式／作品連結／延伸實作……"></textarea></label>
+</section>
+
 <section class="card full" id="senior-learning">
 <h2>👵 樂齡分類｜數位共學與2026資訊月論壇</h2>
 <p>將官方活動、樂齡數位學習資源及自己的觀察分開保存。以下列出的是主辦單位公布的活動資訊，實際參與心得請填在下方欄位。</p>
@@ -139,7 +166,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <select id="photoTopicFilter">
 <option value="精選照片">主題精選（已目視核對）</option>
 <option value="全部照片">全部照片</option>
-<option value="AI與數位教學">AI與數位教學</option>
+<option value="AI與數位教學">AI與數位教學</option><option value="程式與STEAM">程式與STEAM</option>
 <option value="程式與STEAM">程式與STEAM</option>
 <option value="永續教育">永續教育</option>
 <option value="互動體驗">互動體驗</option>
@@ -210,7 +237,7 @@ footer{text-align:center;color:#758c86;font-size:12px;margin-top:30px}
 <script>
 (() => {
   const storageKey = "tobySelfStudyInfoExpoNotes2026V1";
-  const fields = ["exhibition","date","venue","noteCategory","observations","interaction","childNotes","crossDiscipline","nextSteps","seniorObservations","seniorIdeas","aiTeachingNotes"];
+  const fields = ["exhibition","date","venue","noteCategory","observations","interaction","childNotes","crossDiscipline","nextSteps","seniorObservations","seniorIdeas","aiTeachingNotes","codeAiNotes"];
   const nodes = Object.fromEntries(fields.map(name => [name, document.querySelector('[name="' + name + '"]')]));
   const status = document.getElementById("status");
   const collect = () => Object.fromEntries(fields.map(name => [name, nodes[name].value]));
