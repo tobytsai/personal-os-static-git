@@ -21,7 +21,13 @@
     const launcher=(typeof tools==='undefined'?[]:tools).map(t=>({
       type:'彩色啟動器',name:t.name,search:t.name+' '+t.cat,tool:t,priority:30
     }));
-    return quickLinks.concat(launcher,independentSites);
+    const topics=[
+      {type:'課程筆記',name:'從新住民到新女力｜課程觀察筆記',href:'./pages/new-resident-women-observation-20261114.html',search:'新住民 新移民 新女力 忠貞新村 課程 李福英 鍾雪珍',priority:55},
+      {type:'互動地圖',name:'楊梅新住民土地故事地圖',href:'./pages/yangmei-new-immigrant-story-map.html',search:'新住民 新移民 楊梅 地圖 土地故事 據點 走讀',priority:55},
+      {type:'啟動器',name:'紅土計畫啟動器｜新住民與土地故事',href:'./pages/red-earth-project.html',search:'新住民 新移民 紅土 原土色 土地故事 泥染 工作坊',priority:45},
+      {type:'私人站',name:'築夢與工藝師申請準備與作品實驗管理站',href:'https://earth-craft-dream-lab.cantertsai.chatgpt.site',search:'新住民 新住民及子女築夢計畫 築夢 申請 補助 工藝',priority:45}
+    ];
+    return quickLinks.concat(launcher,independentSites,topics);
   }
   function command(text){
     const match=/^(g|yt|t)\s+(.+)$/i.exec(text);
