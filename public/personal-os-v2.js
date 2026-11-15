@@ -146,7 +146,7 @@
     if(!e.target.closest('.search'))clearResults();
   });
   // Read only the public static index of independently hosted sites.
-  fetch('./pages/independent-sites.html',{cache:'force-cache'})
+  fetch('./pages/independent-sites.html',{cache:'no-cache'})
     .then(r=>{if(!r.ok)throw Error('index unavailable');return r.text();})
     .then(html=>{
       const doc=new DOMParser().parseFromString(html,'text/html');
