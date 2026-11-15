@@ -94,6 +94,8 @@ jobs:
           assert sum(item.get("linkStatus") == "direct" for sec in chapter["sections"] for item in sec["items"]) >= 17
           print("Junyi course catalog and drawer detail verified in Pages artifact")
           PY
+      - name: Add missing launcher home navigation
+        run: python3 scripts/add_home_navigation.py
       - name: Build public launcher search index
         run: python3 scripts/build_launcher_search.py
       - name: Stamp the exact source commit in Pages artifact
