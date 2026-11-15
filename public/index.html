@@ -51,7 +51,7 @@
 </nav><header class="top"><div><h1>Toby 啟動器</h1><p>每天打開一次，把工作、創作、學習與生活放回同一個畫面。</p></div><div class="clock"><strong id="clock">--:--</strong><span id="date"></span></div></header>
 <a class="independent-launch" href="./pages/independent-sites.html"><span class="independent-launch-icon" aria-hidden="true">▧</span><span><strong>獨立站啟動器</strong><small>所有獨立站 · 分類搜尋</small></span><span class="independent-launch-arrow" aria-hidden="true">→</span></a>
 <div class="statusbar"><span class="status ok">● 靜態網站</span><span class="status">次頁建置中</span><span class="status">未授權不連接私人資料</span></div>
-<div class="search"><input id="q" type="search" aria-label="搜尋啟動器與獨立站" aria-controls="command-results" aria-expanded="false" autocomplete="off" placeholder="搜尋啟動器、獨立站；輸入 g / yt / t 指令">
+<div class="search"><input id="q" type="search" aria-label="搜尋啟動器、獨立站與記事" aria-controls="command-results" aria-expanded="false" autocomplete="off" placeholder="搜尋啟動器、獨立站與記事">
 <div class="search-hint" id="command-hint">按 / 或 Ctrl / ⌘ + K 快速搜尋</div><div class="command-results" id="command-results" role="listbox" aria-label="搜尋建議" hidden></div></div>
 <section class="hero">
 <article class="card weather"><div class="head"><h3>🌤 桃園即時天氣</h3><a class="link" href="https://www.cwa.gov.tw/" target="_blank" rel="noopener">中央氣象署 ↗</a></div><div class="weather-big"><div><div class="temp" id="weatherTemp" style="font-size:37px">載入中</div><div id="weatherCondition">正在取得最新資料…</div></div><div class="wxicon" id="weatherIcon">🌤</div></div><div class="weather-details"><div class="weather-detail"><b id="weatherFeels">—</b><span>體感溫度</span></div><div class="weather-detail"><b id="weatherRain">—</b><span>目前降雨</span></div><div class="weather-detail"><b id="weatherHighLow">—</b><span>今日高 / 低</span></div></div><div class="weather-actions"><span class="small" id="weatherUpdated">等待更新</span><button class="weather-refresh" id="weatherRefresh" type="button" onclick="loadWeather(true)">↻ 更新天氣</button></div><div class="small" style="margin-top:6px">資料來源：<a href="https://open-meteo.com/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">Open-Meteo</a></div></article>
@@ -167,5 +167,5 @@ function render(){
 }
 host.querySelectorAll('[data-mind-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.mindMode;host.querySelectorAll('[data-mind-mode]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));
 const fold=document.getElementById('mind-fold');fold.addEventListener('toggle',()=>{if(fold.open)render()});window.addEventListener('resize',()=>{if(fold.open)draw()});
-})();</script><script src="./personal-os-v2.js?v=20261116-newresident"></script><script src="./personal-os-mobile.js?v=20261114"></script></body></html>
+})();</script><script src="./personal-os-v2.js?v=20261116-fullsearch1"></script><script src="./personal-os-mobile.js?v=20261114"></script></body></html>
 

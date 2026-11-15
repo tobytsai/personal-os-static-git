@@ -94,6 +94,8 @@ jobs:
           assert sum(item.get("linkStatus") == "direct" for sec in chapter["sections"] for item in sec["items"]) >= 17
           print("Junyi course catalog and drawer detail verified in Pages artifact")
           PY
+      - name: Build public launcher search index
+        run: python3 scripts/build_launcher_search.py
       - name: Stamp the exact source commit in Pages artifact
         run: printf '%s\n' "$GITHUB_SHA" > public/data/deploy-commit.txt
       - name: Upload public directory

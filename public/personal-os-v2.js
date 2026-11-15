@@ -5,7 +5,7 @@
   const resultBox=document.getElementById('command-results');
   const hint=document.getElementById('command-hint');
   if(!field||!resultBox||!hint)return;
-  let independentSites=[],independentLoaded=false;
+  let independentSites=[],independentLoaded=false,publicPages=[],indexState='idle';
   let matches=[],selected=0;
   const lower=s=>String(s||'').toLocaleLowerCase('zh-TW');
   const isTyping=el=>!!(el&&(el.isContentEditable||['INPUT','TEXTAREA','SELECT'].includes(el.tagName)));
@@ -17,6 +17,30 @@
     type:'常用連結',name:el.getAttribute('aria-label')||el.textContent.trim(),href:el.href,
     search:el.textContent,element:el,priority:70-i
   }));
+  function localNotes(){
+    try {
+      const data=JSON.parse(localStorage.getItem('tobyPersonalOsNotesV1')||'[]');
+      if(!Array.isArray(data))return [];
+      return data.filter(n=>n&&typeof n.id==='string').map(n=>({
+        type:'本機記事',name:String(n.title||'未命名記事'),
+        search:[n.title,n.body,n.category,n.page,...(Array.isArray(n.tags)?n.tags:[])].join(' '),
+        href:'./pages/my-notes.html?note='+encodeURIComponent(n.id),priority:80
+      }));
+    } catch(e) {return [];}
+  }
+  function loadPageIndex(){
+    if(indexState!=='idle')return;
+    indexState='loading';
+    fetch('./data/launcher-search-index.json',{cache:'no-cache'})
+      .then(r=>{if(!r.ok)throw Error('index unavailable');return r.json();})
+      .then(data=>{
+        publicPages=(Array.isArray(data.pages)?data.pages:[])
+          .filter(p=>p&&typeof p.name==='string'&&typeof p.search==='string'&&typeof p.href==='string'&&p.href.startsWith('./pages/'))
+          .map(p=>({type:'啟動器內容',name:p.name,search:p.search,href:p.href,priority:10}));
+        indexState='ready';
+      }).catch(()=>{indexState='error';})
+      .finally(()=>{if(field.value.trim())render();});
+  }
   function entries(){
     const launcher=(typeof tools==='undefined'?[]:tools).map(t=>({
       type:'彩色啟動器',name:t.name,search:t.name+' '+t.cat,tool:t,priority:30
@@ -27,7 +51,7 @@
       {type:'啟動器',name:'紅土計畫啟動器｜新住民與土地故事',href:'./pages/red-earth-project.html',search:'新住民 新移民 紅土 原土色 土地故事 泥染 工作坊',priority:45},
       {type:'私人站',name:'築夢與工藝師申請準備與作品實驗管理站',href:'https://earth-craft-dream-lab.cantertsai.chatgpt.site',search:'新住民 新住民及子女築夢計畫 築夢 申請 補助 工藝',priority:45}
     ];
-    return quickLinks.concat(launcher,independentSites,topics);
+    return quickLinks.concat(launcher,independentSites,topics,localNotes(),publicPages);
   }
   function command(text){
     const match=/^(g|yt|t)\s+(.+)$/i.exec(text);
@@ -46,7 +70,7 @@
     if(!query)return [];
     return entries().map(item=>({item,score:score(item,query)}))
       .filter(r=>r.score>=0).sort((a,b)=>b.score-a.score)
-      .slice(0,8).map(r=>r.item);
+      .map(r=>r.item);
   }
   function runCommand(cmd){
     if(!cmd||!cmd.value)return;
@@ -82,6 +106,7 @@
   function render(){
     const raw=field.value.trim();
     const cmd=command(raw);
+    if(raw&&!cmd)loadPageIndex();
     selected=0;
     matches=cmd?[]:rank(raw);
     resultBox.replaceChildren();
@@ -95,13 +120,13 @@
       hint.textContent='Enter 執行：'+label;
       items=[{type:'指令',name:label+'：'+cmd.value,command:cmd}];
     }else{
-      hint.textContent=matches.length?'↑ ↓ 選擇，Enter 開啟第一筆，Esc 清除搜尋':(independentLoaded?'找不到結果':'正在查詢獨立站入口…');
+      hint.textContent=(indexState==='loading'||!independentLoaded?'正在載入搜尋資料…':indexState==='error'?'部分搜尋索引載入失敗，請重新整理':'搜尋本機記事、啟動器內容及獨立站入口')+(matches.length?' · 找到 '+matches.length+' 筆':'');
     }
     matches=items;
     resultBox.hidden=false;
     if(!items.length){
       const empty=document.createElement('p');empty.className='command-empty';
-      empty.textContent=independentLoaded?'沒有相符入口；也可以前往獨立站啟動器搜尋。':'正在載入獨立站清單…';
+      empty.textContent=(indexState==='loading'||!independentLoaded)?'正在載入搜尋資料…':indexState==='error'?'內容索引暫時無法載入，請重新整理再試。':'沒有找到相符的內容或入口。';
       resultBox.append(empty);field.setAttribute('aria-expanded','true');return;
     }
     items.forEach((item,i)=>{
