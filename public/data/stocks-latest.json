@@ -20,7 +20,9 @@
       "TradeVolume": 2336793,
       "TradeValue": 332656594,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 1.41,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2308": {
       "Code": "2308",
@@ -34,7 +36,9 @@
       "TradeVolume": 20741769,
       "TradeValue": 21762110780,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 0.47,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2317": {
       "Code": "2317",
@@ -48,7 +52,9 @@
       "TradeVolume": 44162552,
       "TradeValue": 9696958881,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 0.91,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2324": {
       "Code": "2324",
@@ -62,7 +68,9 @@
       "TradeVolume": 37144202,
       "TradeValue": 1054437173,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": -0.18,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2330": {
       "Code": "2330",
@@ -76,7 +84,9 @@
       "TradeVolume": 50794225,
       "TradeValue": 110637335600,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 0.23,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2344": {
       "Code": "2344",
@@ -90,7 +100,20 @@
       "TradeVolume": 61716797,
       "TradeValue": 6663833483,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": null,
+      "changePercentBasis": "not_comparable_official_X",
+      "corporateAction": {
+        "type": "cash_dividend_ex_date",
+        "date": "2026-11-18",
+        "dividendTWDPerShare": 2,
+        "priorClose": 110.5,
+        "officialExDividendReferencePrice": 108.5,
+        "comparisonToExDividendReferenceTWD": -0.5,
+        "comparisonToExDividendReferencePercent": -0.46,
+        "officialSource": "https://www.twse.com.tw/exchangeReport/TWT49U?endDate=&response=html&strDate=",
+        "note": "TWSE official daily report marks X/not comparable; this adjusted reference comparison is NOT the official daily Change or ChangePercent"
+      }
     },
     "2357": {
       "Code": "2357",
@@ -104,7 +127,9 @@
       "TradeVolume": 2955940,
       "TradeValue": 2454904590,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 1.82,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2369": {
       "Code": "2369",
@@ -118,7 +143,9 @@
       "TradeVolume": 2442216,
       "TradeValue": 57612049,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 0.85,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2376": {
       "Code": "2376",
@@ -132,7 +159,9 @@
       "TradeVolume": 7939343,
       "TradeValue": 2197466984,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 0.73,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2382": {
       "Code": "2382",
@@ -146,7 +175,9 @@
       "TradeVolume": 22423754,
       "TradeValue": 5853847909,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 0.95,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2408": {
       "Code": "2408",
@@ -160,7 +191,9 @@
       "TradeVolume": 48648507,
       "TradeValue": 15757430809,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": -1.22,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2454": {
       "Code": "2454",
@@ -174,7 +207,9 @@
       "TradeVolume": 16765172,
       "TradeValue": 65899743085,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 2.6,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "2609": {
       "Code": "2609",
@@ -188,7 +223,9 @@
       "TradeVolume": 17833260,
       "TradeValue": 1071424208,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 1,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "3231": {
       "Code": "3231",
@@ -202,7 +239,9 @@
       "TradeVolume": 33258387,
       "TradeValue": 5322161661,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 3.18,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "6526": {
       "Code": "6526",
@@ -216,7 +255,9 @@
       "TradeVolume": 1688251,
       "TradeValue": 1119601099,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": 1.97,
+      "changePercentBasis": "computed_from_official_close_and_change"
     },
     "8422": {
       "Code": "8422",
@@ -230,7 +271,9 @@
       "TradeVolume": 3936705,
       "TradeValue": 88353954,
       "market": "TWSE",
-      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+      "source": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json",
+      "ChangePercent": -0.88,
+      "changePercentBasis": "computed_from_official_close_and_change"
     }
   },
   "index": {
@@ -257,5 +300,95 @@
     "tpex": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes",
     "flows": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?dayDate=20261118&type=day&response=json",
     "daily": "https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?date=20261118&type=ALLBUT0999&response=json"
+  },
+  "closingSummary": {
+    "tradeDate": "2026-11-18",
+    "indexClose": 40194.91,
+    "indexChange": 102.8,
+    "indexChangePct": 0.26,
+    "watchlistUp": 12,
+    "watchlistDown": 3,
+    "watchlistFlat": 0,
+    "watchlistChangeNotComparable": 1,
+    "watchlistChangeNotComparableCodes": [
+      "2344"
+    ],
+    "topGainers": [
+      {
+        "code": "3231",
+        "name": "緯創",
+        "close": 162,
+        "change": 5,
+        "pct": 3.18
+      },
+      {
+        "code": "2454",
+        "name": "聯發科",
+        "close": 3940,
+        "change": 100,
+        "pct": 2.6
+      },
+      {
+        "code": "6526",
+        "name": "達發",
+        "close": 673,
+        "change": 13,
+        "pct": 1.97
+      },
+      {
+        "code": "2357",
+        "name": "華碩",
+        "close": 841,
+        "change": 15,
+        "pct": 1.82
+      },
+      {
+        "code": "1513",
+        "name": "中興電",
+        "close": 143.5,
+        "change": 2,
+        "pct": 1.41
+      }
+    ],
+    "topDecliners": [
+      {
+        "code": "2408",
+        "name": "南亞科",
+        "close": 325,
+        "change": -4,
+        "pct": -1.22
+      },
+      {
+        "code": "8422",
+        "name": "可寧衛*",
+        "close": 22.5,
+        "change": -0.2,
+        "pct": -0.88
+      },
+      {
+        "code": "2324",
+        "name": "仁寶",
+        "close": 28.35,
+        "change": -0.05,
+        "pct": -0.18
+      }
+    ],
+    "institutionalNetTWD": -63207355297,
+    "nextTradingDay": "2026-11-19",
+    "nextWatch": "留意外資連續賣超及4萬點附近震盪，台積電與聯發科的量價變化、記憶體族群，以及華邦電除息後的價格比較須採除息參考價，不可直接把前收110.50元計為同基準漲跌。",
+    "companyAnnouncements": {
+      "status": "reported_from_public_disclosure_via_secondary_republication",
+      "items": [
+        {
+          "code": "2308",
+          "name": "台達電",
+          "date": "2026-11-18",
+          "title": "代子公司 Delta Electronics Int'l (Singapore) Pte. Ltd. 公告發放現金股利美金 2.5 億元",
+          "note": "母公司持有該子公司100%股權；為子公司對母公司的股利，並非上市公司普通股股東配息",
+          "source": "https://tw.stock.yahoo.com/quote/2308.TW/announcement"
+        }
+      ]
+    },
+    "tradingNote": "2026-11-18 華邦電除息，官方日報X不比價；收盤108.00元、除息參考價108.50元，對參考價為-0.50元(-0.46%)，屬調整後比較而非官方漲跌額"
   }
 }
