@@ -281,6 +281,33 @@ async function main(){
       if(!snapshot.quotes[code])snapshot.quotes[code]=q;
     snapshot.quoteCount=Object.keys(snapshot.quotes).length;
     snapshot.missingCodes=watch.filter(s=>!snapshot.quotes[s.code]).map(s=>s.code);
+    // Keep previously verified same-day annotations (computed percentages,
+    // ex-dividend disclosures, and editorial closing summary) only if the
+    // official quotes themselves have not changed. A correction to a price,
+    // change or volume must NOT retain stale editorial results.
+    const stableQuotes=Object.entries(snapshot.quotes).every(([code,q])=>{
+      const p=old.quotes?.[code];
+      return p&&p.Date===q.Date&&p.ClosingPrice===q.ClosingPrice
+        &&p.Change===q.Change&&p.TradeVolume===q.TradeVolume;
+    });
+    if(stableQuotes){
+      for(const [code,q] of Object.entries(snapshot.quotes)){
+        const saved=old.quotes[code];
+        if(Object.prototype.hasOwnProperty.call(saved,'ChangePercent'))
+          q.ChangePercent=saved.ChangePercent;
+        if(saved.changePercentBasis)q.changePercentBasis=saved.changePercentBasis;
+        if(saved.corporateAction)q.corporateAction=saved.corporateAction;
+      }
+      if(old.closingSummary) {
+        snapshot.closingSummary={
+          ...old.closingSummary,
+          indexClose:snapshot.index?.['收盤指數']??null,
+          indexChange:snapshot.index?.['漲跌點數']??null,
+          indexChangePct:snapshot.index?.['漲跌百分比']??null,
+          institutionalNetTWD:snapshot.institutional?.total??null
+        };
+      }
+    }
     // Data can be revised later on the same trading day (notably the official
     // institutional 19:40 report). Do not skip merely because field count is equal.
     // Compare verified values while ignoring the run timestamp.
