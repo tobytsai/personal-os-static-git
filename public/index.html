@@ -33,6 +33,8 @@
 <link rel="stylesheet" href="./assets/independent-sites.css">
 <link rel="stylesheet" href="./assets/personal-os-v2.css?v=20261114">
 <link rel="stylesheet" href="./assets/personal-os-focus-mobile.css?v=20261114">
+<link rel="stylesheet" href="./assets/work-plan.css">
+<script src="./assets/work-plan.js" defer></script>
 
 </head>
 <body><div class="shell"><nav class="rail"><div class="logo">◈</div><button onclick="go('home')"><b>⌂</b>首頁</button><a href="./pages/independent-sites.html"><b>▧</b>獨立站</a><button onclick="go('tools')"><b>▦</b>工具</button><button onclick="go('favorites')"><b>★</b>收藏</button><a href="./pages/calendar.html"><b>📅</b>行事曆</a><a href="https://trello.com/" target="_blank"><b>T</b>Trello</a><a href="https://mail.google.com/" target="_blank"><b>✉</b>Gmail</a><a href="https://drive.google.com/" target="_blank"><b>▣</b>Drive</a></nav>
@@ -50,6 +52,7 @@
 <a class="quick-link" href="https://photos.google.com/" target="_blank" rel="noopener" aria-label="相簿"><span class="quick-icon photos-icon">▧</span><span>相簿</span></a>
 <a class="quick-link" href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="抖音"><span class="quick-icon tiktok-icon">♪</span><span>抖音</span></a>
 </nav><header class="top"><div><h1>Toby 啟動器</h1><p>每天打開一次，把工作、創作、學習與生活放回同一個畫面。</p></div><div class="clock"><strong id="clock">--:--</strong><span id="date"></span></div></header>
+<a class="plan-launch" href="./pages/work-plan.html"><span><strong>工作總控</strong><small id="work-plan-home-summary">三品牌 · 兩件申請案 · 今日工作與晚報</small></span><span aria-hidden="true">→</span></a>
 <a class="independent-launch" href="./pages/independent-sites.html"><span class="independent-launch-icon" aria-hidden="true">▧</span><span><strong>獨立站啟動器</strong><small>所有獨立站 · 分類搜尋</small></span><span class="independent-launch-arrow" aria-hidden="true">→</span></a>
 <div class="statusbar"><span class="status ok">● 靜態網站</span><span class="status">次頁建置中</span><span class="status">未授權不連接私人資料</span></div>
 <div class="search"><input id="q" type="search" aria-label="搜尋啟動器、獨立站與記事" aria-controls="command-results" aria-expanded="false" autocomplete="off" placeholder="搜尋啟動器、獨立站與記事">
@@ -78,6 +81,7 @@
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
 const tools=[
+['工作總控','工作','▣','#205849','./pages/work-plan.html'],
 ['裝飾畫啟動器','藝文','🖼','#557465','https://toby-decorative-art-cells.cantertsai.chatgpt.site'],
 
 ['聲量啟動器','資訊','🔥','#16a69d','./pages/trends.html'],

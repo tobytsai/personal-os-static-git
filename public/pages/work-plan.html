@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#edf3ed">
+  <title>工作總控｜Toby 啟動器</title>
+  <link rel="stylesheet" href="../assets/work-plan.css">
+  <script src="../assets/work-plan.js" defer></script>
+</head>
+<body class="work-plan-page">
+  <main class="plan-shell" id="work-plan">
+    <header class="plan-top">
+      <a href="../index.html">← 啟動器首頁</a>
+      <a id="plan-dart" href="https://app.dartai.com/" target="_blank" rel="noopener noreferrer">開啟 Dart ↗</a>
+    </header>
+    <div class="plan-hero">
+      <div>
+        <h1>工作總控</h1>
+        <p>三個品牌、兩件申請案，以及共用裱框工作的下一步。</p>
+      </div>
+      <a class="plan-action" href="#plan-import">匯入 Dart 工作台</a>
+    </div>
+    <nav class="plan-jumps" aria-label="工作總控導覽">
+      <a href="#plan-today">今日工作</a>
+      <a href="#plan-portfolio">計畫與期限</a>
+      <a href="#plan-review">回顧與明日</a>
+    </nav>
+    <div class="plan-status" id="plan-freshness" role="status">尚未匯入工作台。</div>
+
+    <section id="plan-today" class="plan-section">
+      <div class="plan-heading">
+        <h2 id="plan-today-heading">今日工作</h2>
+        <span id="plan-today-date"></span>
+      </div>
+      <div id="plan-today-items" class="plan-content"></div>
+      <details class="plan-disclosure" id="plan-ai">
+        <summary>ChatGPT 執行清單</summary>
+        <div id="plan-ai-items"></div>
+      </details>
+    </section>
+    <section id="plan-portfolio" class="plan-section">
+      <div class="plan-heading"><h2>計畫與期限</h2></div>
+      <div id="plan-deadlines"></div>
+      <div id="plan-projects" class="plan-projects"></div>
+    </section>
+    <section id="plan-review" class="plan-section">
+      <div class="plan-heading"><h2>回顧與明日</h2><span id="plan-review-date"></span></div>
+      <div class="plan-review-grid">
+        <article><h3>晚間完成率</h3><div id="plan-evening"></div></article>
+        <article><h3>明日預排</h3><div id="plan-tomorrow"></div></article>
+      </div>
+      <details class="plan-disclosure" id="plan-log" open>
+        <summary>AI 交付、待確認與下一步</summary>
+        <div id="plan-log-items"></div>
+      </details>
+    </section>
+    <details id="plan-import" class="plan-disclosure plan-import">
+      <summary>匯入 Dart 工作台</summary>
+      <form id="plan-import-form">
+        <p>選擇工作台 Markdown 檔，或從 Dart 複製並貼上最新內容。匯入後會讀取今日安排、計畫、AI 交付與晚間回顧。</p>
+        <label for="plan-file">選擇 Markdown 檔</label>
+        <input type="file" id="plan-file" accept=".md,.txt,text/markdown,text/plain">
+        <label for="plan-source">每日工作台連結 <span>選填</span></label>
+        <input type="url" id="plan-source" placeholder="https://app.dartai.com/o/…" autocomplete="off">
+        <label for="plan-markdown">工作台 Markdown</label>
+        <textarea id="plan-markdown" rows="6" placeholder="貼上從 Dart 複製的完整 Markdown" required></textarea>
+        <div class="plan-form-actions">
+          <button class="plan-action" type="submit">匯入並更新</button>
+          <button class="plan-secondary" type="button" id="plan-clear" hidden>清除這台裝置的副本</button>
+        </div>
+        <p class="plan-form-note">匯入的副本僅存在這台裝置的瀏覽器。任務狀態與資料請回 Dart 更新。</p>
+        <p class="plan-feedback" id="plan-feedback" role="status"></p>
+      </form>
+    </details>
+  </main>
+</body>
+</html>
