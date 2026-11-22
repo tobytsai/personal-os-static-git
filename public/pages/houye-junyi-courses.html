@@ -16,6 +16,7 @@
 .banner{border:1px solid #f0dec1;background:#fffaf0;padding:11px 14px;border-radius:13px;color:#866b44;font-size:12px;line-height:1.75;margin:11px 0}
 .sectionhead{display:flex;align-items:center;justify-content:space-between;gap:9px;margin:20px 0 12px}.sectionhead h2{font-size:21px;margin:0}.count{font-size:12px;color:var(--muted)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(253px,1fr));gap:13px}.card{min-width:0;background:#fff;border:1px solid var(--line);border-radius:19px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.lesson-illustration{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;background:#f4efe5}
 .card:hover{box-shadow:0 12px 30px #2a62581e}.accent{height:5px;background:var(--tone,#29897d)}.card-body{padding:15px;display:flex;flex-direction:column;flex:1}
 .card-top{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:11px}.badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:850;background:#f0f8f7;color:#4a7b73;border-radius:8px;padding:5px 8px}.star{width:34px;height:34px;border:1px solid #dce8e6;border-radius:11px;color:#b0bcb9;background:#f7faf9;font-size:21px}.star.on{background:#fff4d8;color:#dca628}
 .card h3{font-size:17px;line-height:1.43;margin:0 0 8px;overflow-wrap:anywhere}.meta{font-size:11px;color:#678493;font-weight:850;margin:0 0 10px}.card p{font-size:12px;color:#5f7783;line-height:1.7;margin:0 0 13px;flex:1}
@@ -88,6 +89,7 @@ body.detail-open{overflow:hidden}
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const requested=Number(new URLSearchParams(location.search).get("grade"));const GRADE=Number.isInteger(requested)&&requested>=5&&requested<=12?requested:5;const NAME=({5:"五",6:"六",7:"七",8:"八",9:"九",10:"十",11:"十一",12:"十二"})[GRADE]+"年級";const SCHEMA=`toby-houye-junyi-grade${GRADE}-progress`;const KEY=`tobyHouyeJunyiGrade${GRADE}ProgressV1`;document.title=`均一${NAME}中文課程庫｜侯燁自學`;document.querySelector("h1").textContent=`🦊 均一${NAME}中文課程庫`;document.getElementById("gradeOfficial").href=`https://www.junyiacademy.org/topics/es-${GRADE}th-grade`;document.getElementById("mapLink").href=`./houye-learning-path.html?grade=${GRADE}`;
 function stored(){try{const o=JSON.parse(localStorage.getItem(KEY)||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch{return{}}}
+let lessonIllustrations={};
 let progress=stored(),db=null,subject="全部",group="全部",q="",favoriteOnly=false,unfinished=false,visible=48;
 let detailData=null,detailGroup=null,detailSection=0,detailItem=0,detailOrigin=null;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(progress));return true}catch{return false}}
@@ -99,12 +101,17 @@ function selectedLessons(){
  return db.lessons.filter(x=>(subject==="全部"||x.subject===subject)&&(group==="全部"||x.group===group)&&(!favoriteOnly||keyFor(x.id).star)&&(!unfinished||keyFor(x.id).status!=="已完成")&&(!ql||[x.title,x.linkType,db.groups.find(g=>g.id===x.group)?.title,db.subjects.find(s=>s.id===x.subject)?.name,x.localAdaptation,x.description].join(" ").toLowerCase().includes(ql)));
 }
 function options(current){return["未開始","探索中","已完成"].map(x=>'<option'+(x===current?" selected":"")+'>'+x+'</option>').join("")}
+function lessonIllustration(id){
+ const item=lessonIllustrations[id];
+ if(!item)return "";
+ return '<img class="lesson-illustration" src="../assets/houye-junyi/'+esc(item.file)+'" alt="'+esc(item.alt)+'" loading="lazy" decoding="async" width="720" height="480">';
+}
 function card(x){
  const sub=db.subjects.find(s=>s.id===x.subject)||{name:"",color:"#298e84"},groupItem=db.groups.find(g=>g.id===x.group),state=keyFor(x.id);
  const isVideo=(/\/videos?\//.test(x.url))&&!x.linkIsParent;
  const linkLabel=isVideo?"播放本課官方影片":x.kind==="chapter"?"進入此章節教材":x.linkIsParent?"進入對應章節並選課":"開啟本單元教材";
  const info=x.description||(x.localAdaptation?"本課程可與桃園地方生活主題進行比較與延伸。":"可挑選自己有興趣的主題，先看影片再做練習或實際操作。");
- return '<article class="card" style="--tone:'+esc(sub.color)+'"><div class="accent"></div><div class="card-body"><div class="card-top"><span class="badge">'+esc(sub.icon+" "+sub.name)+'</span><button type="button" class="star'+(state.star?" on":"")+'" data-star="'+esc(x.id)+'" aria-label="'+(state.star?"取消收藏":"加入收藏")+'" aria-pressed="'+!!state.star+'">'+(state.star?"★":"☆")+'</button></div><h3><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">'+esc(x.title)+'</a></h3><div class="meta">'+esc(groupItem?.title||"")+'</div><p>'+esc(info)+'</p><div class="link-note">'+(isVideo?"▶ 官方影片原始入口":x.kind==="chapter"?"📖 官方章節內容頁":x.linkIsParent?"📂 官方所屬章節（請在章節內再點選教材）":"🔗 官方對應單元")+'</div><div class="links"><a class="primary" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(linkLabel)+' ↗</a><button type="button" class="detail-card-button" data-detail-group="'+esc(x.group)+'" data-detail-lesson="'+esc(x.id)+'">查看章節細節 ›</button></div><label class="progress-label" for="st-'+esc(x.id)+'">手動學習進度</label><select class="progress-select" id="st-'+esc(x.id)+'" data-status="'+esc(x.id)+'">'+options(state.status||"未開始")+'</select><details class="notes"><summary>📝 學習心得／作品紀錄</summary><textarea data-note="'+esc(x.id)+'" maxlength="3000" placeholder="今天發現什麼？有沒有相關作品或問題？">'+esc(state.note||"")+'</textarea></details></div></article>';
+ return '<article class="card" style="--tone:'+esc(sub.color)+'"><div class="accent"></div>'+lessonIllustration(x.id)+'<div class="card-body"><div class="card-top"><span class="badge">'+esc(sub.icon+" "+sub.name)+'</span><button type="button" class="star'+(state.star?" on":"")+'" data-star="'+esc(x.id)+'" aria-label="'+(state.star?"取消收藏":"加入收藏")+'" aria-pressed="'+!!state.star+'">'+(state.star?"★":"☆")+'</button></div><h3><a href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit">'+esc(x.title)+'</a></h3><div class="meta">'+esc(groupItem?.title||"")+'</div><p>'+esc(info)+'</p><div class="link-note">'+(isVideo?"▶ 官方影片原始入口":x.kind==="chapter"?"📖 官方章節內容頁":x.linkIsParent?"📂 官方所屬章節（請在章節內再點選教材）":"🔗 官方對應單元")+'</div><div class="links"><a class="primary" href="'+esc(x.url)+'" target="_blank" rel="noopener noreferrer">'+esc(linkLabel)+' ↗</a><button type="button" class="detail-card-button" data-detail-group="'+esc(x.group)+'" data-detail-lesson="'+esc(x.id)+'">查看章節細節 ›</button></div><label class="progress-label" for="st-'+esc(x.id)+'">手動學習進度</label><select class="progress-select" id="st-'+esc(x.id)+'" data-status="'+esc(x.id)+'">'+options(state.status||"未開始")+'</select><details class="notes"><summary>📝 學習心得／作品紀錄</summary><textarea data-note="'+esc(x.id)+'" maxlength="3000" placeholder="今天發現什麼？有沒有相關作品或問題？">'+esc(state.note||"")+'</textarea></details></div></article>';
 }
 
 function detailFallback(g){
@@ -203,7 +210,10 @@ $("export").addEventListener("click",()=>{
 });
 $("import").addEventListener("click",()=>$("file").click());
 $("file").addEventListener("change",async e=>{const file=e.target.files?.[0];if(!file)return;try{const payload=JSON.parse(await file.text());if(payload.schema!==SCHEMA||payload.version!==1||typeof payload.progress!=="object"||!payload.progress||Array.isArray(payload.progress))throw Error("檔案格式不正確");if(!confirm("這次匯入會覆蓋本機均一課程進度，確定繼續？"))return;progress=payload.progress;if(!save())throw Error("本機儲存失敗");render()}catch(err){alert("匯入失敗："+err.message)}finally{e.target.value=""}});
-fetch(`../data/houye-junyi-grade${GRADE}.json?v=`+Date.now()).then(r=>{if(!r.ok)throw Error("課程資料讀取失敗");return r.json()}).then(d=>{
+const catalogRequest=fetch(`../data/houye-junyi-grade${GRADE}.json?v=`+Date.now()).then(r=>{if(!r.ok)throw Error("課程資料讀取失敗");return r.json()});
+const illustrationRequest=fetch("../data/houye-junyi-illustrations.json").then(r=>r.ok?r.json():{}).then(data=>data[GRADE]||{}).catch(()=>({}));
+Promise.all([catalogRequest,illustrationRequest]).then(([d,illustrations])=>{
+ lessonIllustrations=illustrations;
  db=d;const p=new URLSearchParams(location.search),s=p.get("subject");if(db.subjects.some(x=>x.id===s))subject=s;const g=p.get("group");if(db.groups.some(x=>x.id===g))group=g;render();if(p.get("detail")==="1"&&group!=="全部")openDetail(group,p.get("lesson"));
 }).catch(e=>$("cards").innerHTML='<div class="empty">課程資料載入失敗，請重新整理：'+esc(e.message)+'</div>');
 window.addEventListener("storage",e=>{if(e.key===KEY){progress=stored();render()}});
