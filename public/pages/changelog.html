@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5f7">
+  <meta name="robots" content="noindex, follow">
+  <title>啟動器變動日誌｜Toby 啟動器</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f4f5f7;
+      --paper: #fff;
+      --text: #20242a;
+      --muted: #5e6671;
+      --border: #e1e4eb;
+      --accent: #5037b5;
+      --accent-background: #efebff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", sans-serif;
+      line-height: 1.6;
+    }
+
+    main {
+      width: min(48rem, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: clamp(1.5rem, 5vw, 3.5rem) 0 3rem;
+    }
+
+    a { color: var(--accent); text-underline-offset: .2em; }
+    a:hover { color: #352382; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+      padding: .4rem .9rem;
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      background: var(--paper);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    h1 {
+      margin: .9rem 0 .25rem;
+      font-size: clamp(1.85rem, 6vw, 2.65rem);
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+
+    header p { margin: .5rem 0 1.5rem; color: var(--muted); }
+
+    .history {
+      display: grid;
+      gap: .75rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .entry {
+      padding: 1.15rem clamp(1rem, 4vw, 1.45rem);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      background: var(--paper);
+    }
+
+    .entry-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+    time { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+
+    .change-type {
+      padding: .1rem .55rem;
+      border-radius: 1rem;
+      background: var(--accent-background);
+      color: var(--accent);
+      font-size: .875rem;
+      font-weight: 700;
+    }
+
+    h2 { margin: .35rem 0 .2rem; font-size: 1.18rem; line-height: 1.4; }
+    .entry p { margin: 0; }
+    .entry p + p { margin-top: .4rem; }
+    .source { font-size: .9rem; }
+    footer { margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <a class="back" href="../index.html">回 Toby 啟動器</a>
+      <h1>啟動器變動日誌</h1>
+      <p>近期主要更新，從最新到最早排列。日期採台灣時間。</p>
+    </header>
+
+    <ul class="history" role="list">
+      <li class="entry">
+        <article>
+          <div class="entry-meta"><time datetime="2026-11-25">2026/11/25</time><span class="change-type">新增</span></div>
+          <h2>首頁加入變動日誌</h2>
+          <p>從 Toby 啟動器底部即可查看近期更新，並開啟相關功能頁。</p>
+        </article>
+      </li>
+      <li class="entry">
+        <article>
+          <div class="entry-meta"><time datetime="2026-11-24">2026/11/24</time><span class="change-type">新增</span></div>
+          <h2>新店計畫加入地方創生資料庫</h2>
+          <p><a href="new-store.html">新店計畫啟動器</a>新增國發會 TESAS 地方創生資料庫入口，方便查閱區域資料。</p>
+          <p class="source"><a href="https://github.com/tobytsai/personal-os-static-git/commit/17b523ae5708430087420fcb465fe61c4597ea65">查看 TESAS 變更紀錄</a></p>
+        </article>
+      </li>
+      <li class="entry">
+        <article>
+          <div class="entry-meta"><time datetime="2026-11-19">2026/11/19</time><span class="change-type">新增</span></div>
+          <h2>首頁加入工作總控</h2>
+          <p>從首頁進入<a href="work-plan.html">工作總控</a>，查看今日工作、三品牌進度、申請案和晚間回顧。</p>
+          <p class="source"><a href="https://github.com/tobytsai/personal-os-static-git/commit/c96e7d3c4eccfa0f429524c3390c69573648ab6c">查看工作總控變更紀錄</a></p>
+        </article>
+      </li>
+      <li class="entry">
+        <article>
+          <div class="entry-meta"><time datetime="2026-11-17">2026/11/17</time><span class="change-type">新增</span></div>
+          <h2>首頁加入一方土入口</h2>
+          <p>可從首頁開啟<a href="one-earth-assets.html">一方土資產頁</a>。</p>
+          <p class="source"><a href="https://github.com/tobytsai/personal-os-static-git/commit/7f56411adb7ce5279868b378a2d32cc07368c6bd">查看一方土入口變更紀錄</a></p>
+        </article>
+      </li>
+      <li class="entry">
+        <article>
+          <div class="entry-meta"><time datetime="2026-11-16">2026/11/16</time><span class="change-type">調整</span></div>
+          <h2>擴大搜尋範圍</h2>
+          <p>首頁搜尋可查到本機記事和公開頁面的內容。</p>
+          <p class="source"><a href="https://github.com/tobytsai/personal-os-static-git/commit/18f2baf352b7b14fd83b3e280da551c64b3cbf99">查看搜尋變更紀錄</a></p>
+        </article>
+      </li>
+      <li class="entry">
+        <article>
+          <div class="entry-meta"><time datetime="2026-11-16">2026/11/16</time><span class="change-type">修正</span></div>
+          <h2>補齊子頁的返回首頁連結</h2>
+          <p>替缺少返回入口的啟動器子頁補上「回到啟動器首頁」。</p>
+          <p class="source"><a href="https://github.com/tobytsai/personal-os-static-git/commit/b623b5fd88cb61a7182cb8fe78f40545fd0cbe23">查看首頁導覽變更紀錄</a></p>
+        </article>
+      </li>
+      <li class="entry">
+        <article>
+          <div class="entry-meta"><time datetime="2026-11-11">2026/11/11</time><span class="change-type">新增</span></div>
+          <h2>自學啟動器加入四年級學習入口</h2>
+          <p>從<a href="self-study.html">自學啟動器</a>可開啟四年級學習頁。</p>
+          <p class="source"><a href="https://github.com/tobytsai/personal-os-static-git/commit/1bd1f6f51c0cffce2581907054efa8fb1af1cf61">查看四年級入口變更紀錄</a></p>
+        </article>
+      </li>
+      <li class="entry">
+        <article>
+          <div class="entry-meta"><time datetime="2026-11-08">2026/11/08</time><span class="change-type">調整</span></div>
+          <h2>首頁的啟動器與獨立站預設收合</h2>
+          <p>開啟首頁時，「彩色啟動器」與「獨立站」區塊預設收合，點選區塊標題即可展開。</p>
+          <p class="source"><a href="https://github.com/tobytsai/personal-os-static-git/commit/a933d2443e2732de8d2a0454207561a00fd82da2">查看首頁版面變更紀錄</a></p>
+        </article>
+      </li>
+    </ul>
+
+    <footer><a href="https://github.com/tobytsai/personal-os-static-git/commits/main/">在 GitHub 查看完整提交歷史</a></footer>
+  </main>
+</body>
+</html>
