@@ -73,6 +73,8 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 /* 桃園生活八大主分類：共用現有卡片索引，不另外複製資料來源。 */
 .topic-hub{scroll-margin-top:15px}
 .topic-hub .topic-guide{color:#58637d;font-size:14px;line-height:1.9;margin:0 2px 12px}
+.district-feature{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px}.district-feature h2{margin:0;font-size:1.25rem}.district-feature .map-link{margin:0}
+#yangmei-launcher,#taoyuanDistricts{scroll-margin-top:78px}
 .topic-shortcuts,.topic-related{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
 .topic-shortcuts a,.topic-related a{color:#5e4bb6;background:#ffffffd8;border:1px solid #dcd5fb;border-radius:999px;padding:8px 12px;text-decoration:none;font-size:12px;font-weight:800}
 .topic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
@@ -126,6 +128,15 @@ h1{margin:13px 0 8px;font-size:clamp(34px,7vw,52px);line-height:1.15}.hero p{max
 <body><main>
 <a class="back" href="../index.html">← 回到 Toby 首頁</a>
 <header class="hero"><span class="eyebrow">🏡 PERSONAL OS · TAOYUAN LIFE</span><h1>桃園生活啟動器</h1><p>以八大主題串起桃園 13 區的生活資源、電子出版、文化藝術、深度旅遊與社區研究。可由主題、次分類、行政區與關鍵字交叉尋找資料。</p><div class="stats"><span>📍 桃園 13 區</span><span>🧭 依行政區瀏覽</span><span>🗂️ 生活資訊整理中</span></div></header>
+<section id="yangmei-launcher" class="quick-section" aria-labelledby="yangmei-launcher-title">
+ <article class="store-card district-feature">
+  <div>
+   <h2 id="yangmei-launcher-title">楊梅啟動器</h2>
+   <p>從互動地圖探索楊梅的新住民據點、在地生活與親子走讀。</p>
+  </div>
+  <a class="map-link" href="yangmei-life.html">開啟楊梅啟動器 →</a>
+ </article>
+</section>
 <section id="independent-sites" class="independent-sites" aria-labelledby="independent-sites-title"><div class="independent-heading"><h2 id="independent-sites-title">獨立站 · 私人管理站</h2><span data-sites-count aria-live="polite">共 2 站</span></div><p class="independent-note">使用建立網站的 ChatGPT 帳號登入。同名站以建立日期與時間辨識。</p><div class="independent-controls"><label>搜尋獨立站<input type="search" data-sites-search placeholder="輸入網站名稱、主題或日期"></label></div><div class="independent-grid"><article class="independent-card" data-site-category="桃園生活" data-site-search="桃園旅遊素材匯入與路線比較管理站 桃園生活 旅遊素材 2026-11-07 桃園生活啟動器"><span class="independent-topic">桃園生活 · 旅遊素材</span><h3>桃園旅遊素材匯入與路線比較管理站</h3><p class="independent-date">建立：2026-11-07（台灣時間）</p><div class="independent-actions"><a href="https://taoyuan-material-route-workspace.cantertsai.chatgpt.site" target="_blank" rel="noopener noreferrer">開啟私人站 ↗</a></div></article><article class="independent-card" data-site-category="桃園生活" data-site-search="桃園旅遊深度規畫與走讀管理站 桃園生活 深度旅遊 2026-11-07 桃園生活啟動器"><span class="independent-topic">桃園生活 · 深度旅遊</span><h3>桃園旅遊深度規畫與走讀管理站</h3><p class="independent-date">建立：2026-11-07（台灣時間）</p><div class="independent-actions"><a href="https://taoyuan-walks-planner-2026.cantertsai.chatgpt.site" target="_blank" rel="noopener noreferrer">開啟私人站 ↗</a></div></article></div><p class="independent-empty" hidden>沒有符合條件的網站，請試試其他關鍵字或分類。</p></section>
 
 
@@ -480,7 +491,7 @@ function renderDistrictContent(name){
   selectedContent.innerHTML='<div class="empty-note">這個行政區的生活入口尚未加入。可逐步整理區公所、交通、醫療、採買、餐飲與休閒資訊。</div>';
   return;
  }
- selectedContent.innerHTML='<h4 class="subcategory-title">楊梅次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="hotpotCategory" type="button">🍲 火鍋</button><button class="subcategory-button" id="yangmeiLifeCategory" type="button">📍 楊梅生活</button><button class="subcategory-button" id="internationalCuisineCategory" type="button">🍜 異國料理</button><button class="subcategory-button" id="administrationCategory" type="button">🏛️ 行政機關</button><button class="subcategory-button" id="convenienceCategory" type="button">🏪 便利商店</button><button class="subcategory-button" id="historyCategory" type="button">🏛️ 歷史文化</button><button class="subcategory-button" id="hakkaCuisineCategory" type="button">🍚 客家菜</button><button class="subcategory-button" id="trailCategory" type="button">🥾 步道</button><button class="subcategory-button" id="teaCategory" type="button">🍵 茶業</button><button class="subcategory-button" id="farmCategory" type="button">🐄 農場</button><button class="subcategory-button" id="factoryCategory" type="button">🏭 觀光工廠</button><button class="subcategory-button" id="attractionCategory" type="button">📍 景點</button></div><div id="storeResults"></div>';
+ selectedContent.innerHTML='<a class="map-link" href="yangmei-life.html">開啟楊梅啟動器 →</a><h4 class="subcategory-title">楊梅次分類</h4><div class="subcategory-list"><button class="subcategory-button" id="hotpotCategory" type="button">🍲 火鍋</button><button class="subcategory-button" id="yangmeiLifeCategory" type="button">📍 楊梅生活</button><button class="subcategory-button" id="internationalCuisineCategory" type="button">🍜 異國料理</button><button class="subcategory-button" id="administrationCategory" type="button">🏛️ 行政機關</button><button class="subcategory-button" id="convenienceCategory" type="button">🏪 便利商店</button><button class="subcategory-button" id="historyCategory" type="button">🏛️ 歷史文化</button><button class="subcategory-button" id="hakkaCuisineCategory" type="button">🍚 客家菜</button><button class="subcategory-button" id="trailCategory" type="button">🥾 步道</button><button class="subcategory-button" id="teaCategory" type="button">🍵 茶業</button><button class="subcategory-button" id="farmCategory" type="button">🐄 農場</button><button class="subcategory-button" id="factoryCategory" type="button">🏭 觀光工廠</button><button class="subcategory-button" id="attractionCategory" type="button">📍 景點</button></div><div id="storeResults"></div>';
  document.getElementById("administrationCategory").addEventListener("click",()=>{
   const landOfficeMap="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("桃園市楊梅地政事務所 桃園市楊梅區校前路411號");
   document.getElementById("storeResults").innerHTML='<article class="store-card"><h4>金溪里</h4><p>楊梅區里辦公處位置。</p><a class="map-link" href="https://maps.app.goo.gl/vHaA4JWSJdreuuV78?g_st=ac" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article><article class="store-card"><h4>桃園市楊梅地政事務所</h4><p>📍 桃園市楊梅區校前路411號</p><p>☎️ 03-478-3115</p><a class="map-link" href="'+landOfficeMap+'" target="_blank" rel="noopener noreferrer">在 Google 地圖查看 ↗</a></article>';
@@ -814,8 +825,8 @@ document.getElementById("topicResultGrid").addEventListener("click",event=>{
 });
 
 collectLifeCards();drawLifeLists();
-/* 從人口地圖可直接返回指定行政區生活分類。 */
-const districtFromPopulationMap=new URLSearchParams(location.search).get("district");
-if(districtFromPopulationMap&&districts.includes(districtFromPopulationMap)){choose(districtFromPopulationMap);decorateLifeCards();}
+/* 從區域啟動器與人口地圖可直接前往指定行政區。 */
+const requestedDistrict=new URLSearchParams(location.search).get("district");
+if(districts.includes(requestedDistrict)){choose(requestedDistrict);decorateLifeCards();}
 </script><script src="../assets/independent-sites.js" defer></script>
 </body></html>

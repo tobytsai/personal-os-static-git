@@ -7,7 +7,22 @@
 <style>
 :root{--bg:#f5ebe1;--ink:#433426;--muted:#706255;--brown:#805530;--rust:#594332;--panel:#fffaf4;--line:#e4d5c5;--cream:#e8caa9;--teal:#326c70;--shadow:0 14px 35px #442a1516}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Noto Sans TC','Microsoft JhengHei',sans-serif;line-height:1.65}a{color:var(--brown)}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:1380px;margin:auto;padding:18px 18px 70px}.back{color:var(--rust);text-decoration:none;font-weight:750}.hero{margin:15px 0 17px;border-radius:26px;background:linear-gradient(115deg,#594332,#765335 64%,#865e35);color:white;padding:28px clamp(22px,4vw,50px);overflow:hidden;position:relative}.hero:after{content:'◌';font-size:270px;line-height:1;position:absolute;right:4%;top:-35px;opacity:.12;pointer-events:none}.kicker{font-size:.76rem;letter-spacing:.16em;color:#f9d5b5}.hero h1{font-size:clamp(1.75rem,4vw,3.2rem);line-height:1.2;margin:12px 0}.hero p{max-width:720px;color:#ffeedd;margin:0}.bar{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.btn{border-radius:11px;border:1px solid #d4ba9e;padding:10px 14px;background:#fff9f2;color:var(--rust);font-weight:750}.btn.dark{background:var(--rust);color:#fff;border-color:var(--rust)}.btn:focus-visible,.pill:focus-visible,input:focus-visible,.item:focus-visible,a:focus-visible{outline:3px solid #e6a251;outline-offset:2px}.note{border-left:4px solid var(--brown);background:#fff9ed;padding:12px 17px;border-radius:10px;margin-bottom:16px;color:#655143}.stats{display:flex;gap:14px;flex-wrap:wrap}.stat{border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 18px;min-width:130px}.stat b{display:block;font-size:1.45rem;color:var(--rust)}.stat span{font-size:.84rem;color:var(--muted)}.layout{display:grid;grid-template-columns:minmax(310px,405px) minmax(0,1fr);gap:16px;align-items:start;margin-top:17px}.panel{border:1px solid var(--line);border-radius:18px;background:var(--panel);overflow:hidden;box-shadow:var(--shadow)}.side-top{padding:17px 17px 12px;border-bottom:1px solid var(--line)}.side-top h2,.map-title h2{margin:0;font-size:1.14rem}.muted{color:var(--muted);font-size:.86rem}.search{width:100%;margin:12px 0 0;border:1px solid #d9c7b4;border-radius:11px;padding:12px 14px;background:white}.filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:11px}.pill{border:1px solid #e0ceba;color:#685546;border-radius:999px;background:#fff;padding:7px 11px;font-size:.8rem}.pill[aria-pressed=true]{background:#704230;color:white;border-color:#704230}.points{max-height:610px;overflow-y:auto;padding:9px}.item{width:100%;background:#fff;border:1px solid transparent;border-radius:13px;margin-bottom:7px;padding:12px 13px;text-align:left;display:block;color:var(--ink)}.item[aria-current=true]{border-color:#c89f7b;background:#fff2e2;box-shadow:0 0 0 1px #d6b292}.item h3{font-size:.96rem;margin:0 0 3px}.item small{font-size:.75rem;color:#88674f}.item p{margin:4px 0 0;color:var(--muted);font-size:.79rem}.map-title{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:17px;background:#fff}.map-container{height:440px;min-height:350px;position:relative;background:#ede3d7}.map-container iframe{display:block;width:100%;height:100%;border:0}.map-corner{position:absolute;bottom:10px;left:10px;font-size:.74rem;background:#fffdf1ee;border-radius:7px;padding:5px 9px;color:#685546}.detail{padding:20px}.detail-head{display:flex;align-items:center;gap:10px}.stamp{background:#fae9d6;color:#76482c;border-radius:999px;font-size:.72rem;padding:5px 10px;font-weight:800}.detail h2{font-size:1.5rem;line-height:1.3;margin:8px 0}.address{color:#615348;margin:8px 0}.summary{margin:12px 0}.question{background:#f2e7dc;padding:14px;border-radius:12px;border-left:3px solid var(--brown)}.meta{font-size:.87rem;color:#66594e}.detail-actions{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.external{display:inline-block;padding:9px 12px;border-radius:9px;text-decoration:none;background:#f3e8dc;font-weight:750;color:#854a2b;font-size:.86rem}.section{margin-top:25px}.section h2{font-size:1.35rem}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:13px}.card{border:1px solid var(--line);border-radius:15px;padding:18px;background:#fff}.card h3{margin:0 0 8px;font-size:1rem}.card p{margin:0 0 8px;font-size:.9rem;color:#615448}.small{font-size:.82rem;color:#7b6d61}.hidden{display:none!important}#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#37251e;color:white;padding:11px 17px;border-radius:12px;z-index:12;box-shadow:0 6px 35px #0005;display:none;max-width:90vw}.full-map{position:fixed!important;inset:10px!important;z-index:10!important;display:block!important;background:#fff!important;box-shadow:0 0 0 100vmax #0009}.full-map .map-container{height:calc(100vh - 90px)}.full-map .detail{display:none}.full-map .map-title{padding:13px}.full-map .panel{height:100%}@media(max-width:800px){.layout{grid-template-columns:1fr}.points{max-height:310px}.map-container{height:340px}.hero{border-radius:16px}.full-map .map-container{height:calc(100vh - 85px)}}
-</style></head>
+
+.embedded body{background:transparent}
+.embedded .wrap{padding:0}
+.embedded .layout{margin:0}
+.embedded .panel{box-shadow:none}
+.embedded [data-personal-os-home-nav],.embedded .wrap > :is(.back,.hero,.note,.stats,.bar,.section,.small),.embedded #full{display:none!important}
+@media(max-width:800px){
+  .embedded #mapPanel{grid-row:1}
+  .embedded .map-container{height:290px;min-height:0}
+}
+</style>
+<script>
+const embeddedFrame = new URLSearchParams(location.search).get("embed") === "1" ? window.frameElement : null;
+if (embeddedFrame) document.documentElement.classList.add("embedded");
+</script>
+</head>
 <body><main class="wrap">
 <a class="back" href="one-earth-assets.html#yangmei-story-map">← 返回一方土啟動器</a>
 <header class="hero"><div class="kicker">一方土 · ONE EARTH STUDIO</div><h1>楊梅新住民<br>土地故事地圖</h1><p>從公共支持據點、學習交流到土地與生活的提問。點選地點，查看地址、導覽、來源與語音故事。地點不是個人住家，也不代表目前仍有特定課程。</p></header>
@@ -49,4 +64,12 @@ $('full').addEventListener('click',()=>{const pan=$('mapPanel');pan.classList.to
 window.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('mapPanel').classList.contains('full-map'))$('full').click();});
 window.addEventListener('pagehide',stopTour);
 renderFilters();renderList();choose(selected);
+if (embeddedFrame) {
+  const content = document.querySelector("main.wrap");
+  const resizeFrame = () => {
+    embeddedFrame.style.height = Math.ceil(content.getBoundingClientRect().height) + "px";
+  };
+  resizeFrame();
+  if ("ResizeObserver" in window) new ResizeObserver(resizeFrame).observe(content);
+}
 </script></body></html>
