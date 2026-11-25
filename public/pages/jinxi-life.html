@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="桃園市楊梅區金溪里的里政與社區資料、楊光國中小社團及矮坪子走讀資源。">
+  <title>金溪里啟動器｜楊梅生活</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/taoyuan-life.svg">
+  <style>
+    :root {
+      --ink: #28324b;
+      --muted: #586478;
+      --accent: #5945ae;
+      --line: #e2ddef;
+      --paper: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(145deg, #f5f0ff, #fffdf6 62%, #eaf8f2);
+      font: 1rem/1.6 system-ui, -apple-system, "Noto Sans TC", sans-serif;
+    }
+    main { width: min(100%, 1160px); margin: auto; padding: 22px clamp(12px, 3vw, 28px) 72px; }
+    a { color: var(--accent); }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .breadcrumbs { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: .9rem; }
+    .breadcrumbs a { padding: 8px 0; }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; margin: .5rem 0 1rem; }
+    h2 { font-size: clamp(1.2rem, 2.5vw, 1.48rem); line-height: 1.35; margin: 0; }
+    .section {
+      margin-top: 18px;
+      padding: clamp(16px, 3vw, 28px);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+    section[id], .resource[id] { scroll-margin-top: 84px; }
+    .resources { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 265px), 1fr)); gap: 12px; margin-top: 12px; }
+    .resource { display: block; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); padding: 16px; text-decoration: none; }
+    .resource strong, .resource span { display: block; }
+    .resource:hover strong { text-decoration: underline; }
+    .resource span { color: var(--muted); font-size: .9rem; }
+  </style>
+  <script src="../shared-nav.js?v=20261025-2" defer></script>
+</head>
+<body>
+  <main>
+    <nav class="breadcrumbs" aria-label="頁面路徑">
+      <a href="../index.html">Toby 首頁</a>
+      <a href="yangmei-life.html#jinxi-launcher-link">← 返回楊梅啟動器</a>
+    </nav>
+    <h1>金溪里啟動器</h1>
+
+    <section id="jinxi-community" class="section" aria-labelledby="jinxi-community-title">
+      <h2 id="jinxi-community-title">里政與社區發展</h2>
+      <div class="resources">
+        <a class="resource" id="jinxi-village-chief-link" href="jinxi-village-chief.html">
+          <strong>金溪里里長與社區發展</strong>
+          <span>查看歷屆選舉公報、政見分析、社區報導與原圖。</span>
+        </a>
+        <a class="resource" href="https://maps.app.goo.gl/vHaA4JWSJdreuuV78?g_st=ac" target="_blank" rel="noopener noreferrer">
+          <strong>金溪里辦公處地圖 ↗</strong>
+          <span>在 Google 地圖查看里辦公處位置。</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="jinxi-learning" class="section" aria-labelledby="jinxi-learning-title">
+      <h2 id="jinxi-learning-title">學校與在地走讀</h2>
+      <div class="resources">
+        <a class="resource" id="yangguang-clubs-link" href="yangguang-school-clubs.html">
+          <strong>楊光國中小社團活動</strong>
+          <span>查看國小課後社團、國中七至八年級社團與學校報名資訊。</span>
+        </a>
+        <a class="resource" href="one-earth-assets.html#yangmei-little-street">
+          <strong>一方水土一方色｜我們的楊梅小街</strong>
+          <span>從金溪里、矮坪子親子走讀認識楊梅的土地與生活故事。</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

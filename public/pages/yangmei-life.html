@@ -54,7 +54,7 @@
     .local-resources { margin-top: 28px; }
     .resources { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 265px), 1fr)); gap: 12px; margin-top: 12px; }
     .resource { display: block; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); padding: 16px; text-decoration: none; }
-    #jinxi-village-chief-link, #yangguang-clubs-link { scroll-margin-top: 84px; }
+    #jinxi-launcher-link { scroll-margin-top: 84px; }
     .resource strong { display: block; }
     .resource:hover strong { text-decoration: underline; }
     .resource span { color: var(--muted); font-size: .9rem; }
@@ -62,7 +62,9 @@
   <script>
     function forwardJinxiReference() {
       const hash = location.hash;
-      if (['#jinxi-community-report', '#jinxi-election-bulletin', '#jinxi-policy-analysis'].includes(hash)) {
+      if (['#jinxi-village-chief-link', '#yangguang-clubs-link'].includes(hash)) {
+        location.replace('jinxi-life.html' + hash);
+      } else if (['#jinxi-community-report', '#jinxi-election-bulletin', '#jinxi-policy-analysis'].includes(hash)) {
         location.replace('jinxi-village-chief.html' + hash);
       }
     }
@@ -95,17 +97,9 @@
           <strong>楊梅生活分類</strong>
           <span>查閱行政機關、圖書館、餐飲、步道與景點。</span>
         </a>
-        <a class="resource" href="one-earth-assets.html#yangmei-little-street">
-          <strong>一方水土一方色｜我們的楊梅小街</strong>
-          <span>從金溪里、矮坪子親子走讀認識楊梅的土地與生活故事。</span>
-        </a>
-        <a class="resource" id="jinxi-village-chief-link" href="jinxi-village-chief.html">
-          <strong>金溪里里長與社區發展</strong>
-          <span>查看歷屆選舉公報、政見分析、社區報導與原圖。</span>
-        </a>
-        <a class="resource" id="yangguang-clubs-link" href="yangguang-school-clubs.html">
-          <strong>楊光國中小社團活動</strong>
-          <span>查看國小課後社團、國中七至八年級社團與學校報名資訊。</span>
+        <a class="resource" id="jinxi-launcher-link" href="jinxi-life.html">
+          <strong>金溪里啟動器</strong>
+          <span>查看里長與社區發展、楊光國中小社團、矮坪子走讀與里辦公處。</span>
         </a>
       </div>
     </section>
