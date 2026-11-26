@@ -1,0 +1,297 @@
+name: Personal OS isolated Pages build validation
+
+on:
+  push:
+    branches:
+      - test/pages-deployment-hardening
+    paths:
+      - .github/workflows/pages-build-test.yml
+      - .github/workflows/pages.yml
+      - public/**
+      - scripts/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: personal-os-isolated-validation
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.ref == 'refs/heads/test/pages-deployment-hardening'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GITHUB_PAGES: 'true'
+    steps:
+      - name: Checkout isolated test branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Record source inventory and production build parity
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, subprocess, os
+          from pathlib import Path
+          def digest(p):
+              with p.open("rb") as f:
+                  return hashlib.file_digest(f, "sha256").hexdigest()
+          root = Path("public")
+          paths = subprocess.check_output(["git", "ls-files", "-z", "public/"]).decode().split("\0")
+          inventory = {p: digest(Path(p)) for p in paths if p}
+          dest = Path(os.environ["RUNNER_TEMP"]) / "pages-source-inventory.json"
+          dest.write_text(json.dumps(inventory), encoding="utf-8")
+          print(f"Tracked source assets: {len(inventory):,}")
+          PY
+      - name: Exclude launcher pages from search indexes
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          pages = list(Path("public").rglob("*.html"))
+          if not pages:
+              raise SystemExit("No HTML pages found")
+          for page in pages:
+              html = page.read_text(encoding="utf-8")
+              # Remove prior robots directives to avoid conflicting instructions.
+              html = re.sub(r'<meta\b(?=[^>]*\bname\s*=\s*["\x27]robots["\x27])[^>]*>', '', html, flags=re.I)
+              html, count = re.subn(r'(<head\b[^>]*>)', r'\1\n<meta name="robots" content="noindex, follow">', html, count=1, flags=re.I)
+              if count != 1:
+                  raise SystemExit(f"Missing head element: {page}")
+              page.write_text(html, encoding="utf-8")
+          print(f"Added noindex to {len(pages)} HTML pages")
+          PY
+      - name: Install recognizable favicon for every launcher page
+        run: python3 scripts/apply_launcher_favicons.py
+      - name: Restore English island pronunciation MP3 cache
+        uses: actions/cache/restore@v4
+        with:
+          path: public/audio/english-island
+          key: english-island-espeak-v1-${{ hashFiles('public/data/english-learning-island.json') }}
+      - name: Build local English island pronunciation MP3 files
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v espeak >/dev/null || ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y --no-install-recommends espeak ffmpeg
+          fi
+          python3 scripts/build_english_island_audio.py
+      - name: Collect Song Feng Ge official frame photos
+        run: |
+          python3 -m pip install -q --disable-pip-version-check beautifulsoup4 || true
+          python3 scripts/build_songfeng_photos.py
+      - name: Collect Song Feng Ge matboard products and verified photos
+        run: |
+          python3 scripts/build_songfeng_matboards.py
+      - name: Collect Song Feng Ge silk fabric products and verified photos
+        run: |
+          python3 scripts/build_songfeng_silk_fabrics.py
+      - name: Collect Song Feng Ge juan fabric products and official photos
+        run: |
+          python3 scripts/build_songfeng_juan_fabrics.py
+      - name: Collect Song Feng Ge brocade products and official photos
+        run: |
+          python3 scripts/build_songfeng_brocade_fabrics.py
+      - name: Validate Junyi catalog and chapter-detail files
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          page = Path("public/pages/houye-junyi-grade4.html")
+          catalog = json.loads(Path("public/data/houye-junyi-grade4.json").read_text(encoding="utf-8"))
+          details = json.loads(Path("public/data/houye-junyi-details.json").read_text(encoding="utf-8"))
+          html = page.read_text(encoding="utf-8")
+          assert 'id="detailPanel"' in html and '查看章節細節' in html
+          assert len(catalog["lessons"]) >= 211 and len(catalog["groups"]) >= 63
+          chapter = next(x for x in details["groups"] if x["id"] == "math-ch02")
+          assert len(chapter["sections"]) >= 4
+          assert sum(item.get("linkStatus") == "direct" for sec in chapter["sections"] for item in sec["items"]) >= 17
+          print("Junyi course catalog and drawer detail verified in Pages artifact")
+          PY
+      - name: Add missing launcher home navigation
+        run: python3 scripts/add_home_navigation.py
+      - name: Build public launcher search index
+        run: python3 scripts/build_launcher_search.py
+      - name: Stamp the exact source commit in Pages artifact
+        run: printf '%s\n' "$GITHUB_SHA" > public/data/deploy-commit.txt
+      - name: Audit built Pages site before upload
+        run: |
+          python3 - <<'PY'
+          import stat
+          from pathlib import Path
+          root = Path("public")
+          assert (root / "index.html").is_file(), "Missing index.html"
+          assert (root / "data/deploy-commit.txt").is_file(), "Missing revision marker"
+          total = 0
+          counts = {}
+          for p in root.rglob("*"):
+              s = p.lstat()
+              if stat.S_ISDIR(s.st_mode):
+                  continue
+              if not stat.S_ISREG(s.st_mode) or s.st_nlink > 1:
+                  raise SystemExit(f"Unsupported archive entry: {p}")
+              total += s.st_size
+              rel = p.relative_to(root)
+              group = rel.parts[0] if len(rel.parts) > 1 else "(root)"
+              n, size = counts.get(group, (0, 0))
+              counts[group] = (n + 1, size + s.st_size)
+          for group, (n, size) in sorted(counts.items()):
+              print(f"{group}: {n} files, {size:,} bytes")
+          print(f"Built site: {total:,} bytes; {sum(n for n, _ in counts.values()):,} files")
+          if total >= 800_000_000:
+              print("::warning::Built site is approaching the Pages 1 GB limit")
+          if total > 1_000_000_000:
+              raise SystemExit("Built site exceeds conservative 1 GB limit")
+          PY
+      - name: Verify every tracked path and immutable asset
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          def digest(p):
+              with p.open("rb") as f:
+                  return hashlib.file_digest(f, "sha256").hexdigest()
+          tmp = Path(os.environ["RUNNER_TEMP"])
+          baseline = json.loads((tmp / "pages-source-inventory.json").read_text())
+          missing = []
+          changed = []
+          unexpected = []
+          for name, sha in baseline.items():
+              p = Path(name)
+              if not p.is_file():
+                  missing.append(name)
+                  continue
+              if digest(p) != sha:
+                  changed.append(name)
+                  if not (p.suffix == ".html" or name.startswith("public/data/songfeng-") or name in ("public/data/launcher-search-index.json", "public/data/deploy-commit.txt")):
+                      unexpected.append(name)
+          built = {str(p): digest(p) for p in Path("public").rglob("*") if p.is_file()}
+          new = sorted(set(built) - set(baseline))
+          summary = {"tracked": len(baseline), "built": len(built), "missing": missing, "changed": changed, "unexpected_changes": unexpected, "new_count": len(new), "new": new}
+          (tmp / "pages-validation-report.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2))
+          (tmp / "pages-built-inventory.json").write_text(json.dumps(built))
+          print(f"Tracked: {len(baseline)}; built: {len(built)}; missing: {len(missing)}; unexpected changes: {len(unexpected)}; expected build changes: {len(changed)-len(unexpected)}; added: {len(new)}")
+          print("Missing paths:", missing[:30], "Unexpected changes:", unexpected[:30])
+          assert not missing and not unexpected, "Source asset preservation failed"
+          PY
+      - name: Check all JSON and HTML and generated media
+        run: |
+          python3 - <<'PY'
+          import json, re, subprocess
+          from pathlib import Path
+          root = Path("public")
+          errors = []
+          pages = list(root.rglob("*.html"))
+          datasets = list(root.rglob("*.json"))
+          for p in pages:
+              html = p.read_text(encoding="utf-8")
+              if not re.search(r'<meta\s+name="robots"\s+content="noindex, follow"', html, re.I):
+                  errors.append(f"{p}: noindex missing")
+          for p in datasets:
+              try:
+                  json.loads(p.read_text(encoding="utf-8-sig"))
+              except Exception as exc:
+                  errors.append(f"{p}: {exc}")
+          search = json.loads((root / "data/launcher-search-index.json").read_text())
+          assert search["pages"], "Empty launcher search index"
+          audio = sorted((root / "audio/english-island").glob("*.mp3"))
+          assert len(audio) >= 202, "Missing English audio files"
+          for p in audio:
+              result = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a:0", "-show_entries", "stream=codec_name", "-of", "csv=p=0", str(p)], capture_output=True, text=True)
+              if result.returncode or "mp3" not in result.stdout:
+                  errors.append(f"{p}: invalid audio")
+          print(f"HTML: {len(pages)}; JSON: {len(datasets)}; MP3: {len(audio)}; search records: {len(search['pages'])}; errors: {len(errors)}")
+          print("\n".join(errors[:50]))
+          assert not errors, "Invalid built content"
+          PY
+      - name: Serve locally and verify all HTML and representative assets
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, functools, threading, tempfile
+          from pathlib import Path
+          from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
+          from urllib.request import urlopen
+          from urllib.parse import quote
+          root = Path("public").resolve()
+          class Quiet(SimpleHTTPRequestHandler):
+              def log_message(self, *args):
+                  pass
+          with tempfile.TemporaryDirectory() as tmp:
+              (Path(tmp) / "personal-os-static-git").symlink_to(root, target_is_directory=True)
+              server = ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=tmp))
+              thread = threading.Thread(target=server.serve_forever, daemon=True)
+              thread.start()
+              try:
+                  url = f"http://127.0.0.1:{server.server_port}/personal-os-static-git/"
+                  paths = set(p.relative_to(root).as_posix() for p in root.rglob("*.html"))
+                  paths.update(["data/deploy-commit.txt", "data/launcher-search-index.json", "data/houye-junyi-grade4.json", "data/houye-junyi-details.json", "data/stocks-latest.json", "data/taoyuan-rss-latest.json", "audio/english-island/light.mp3", "favicon.svg"])
+                  for folder in ("images", "assets", "icons"):
+                      samples = {}
+                      for p in sorted((root / folder).rglob("*")):
+                          if p.is_file() and p.stat().st_size > 0 and p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp", ".svg"):
+                              samples.setdefault((p.parent, p.suffix.lower()), p)
+                      paths.update(p.relative_to(root).as_posix() for p in samples.values())
+                  for path in sorted(paths):
+                      with urlopen(url + quote(path), timeout=10) as response:
+                          assert response.status == 200
+                          assert response.read() == (root / path).read_bytes(), path
+                  print(f"Local HTTP exact-byte checks: {len(paths)} paths")
+              finally:
+                  server.shutdown()
+                  server.server_close()
+          PY
+      - name: Upload isolated Pages-format artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: personal-os-pages-test
+          path: public
+          retention-days: 1
+      - name: Verify actual archive contains every built file
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, tarfile
+          from pathlib import Path
+          tmp = Path(os.environ["RUNNER_TEMP"])
+          manifest = json.loads((tmp / "pages-built-inventory.json").read_text())
+          expected = {name.removeprefix("public/"): sha for name, sha in manifest.items()}
+          seen = set()
+          with tarfile.open(tmp / "artifact.tar", "r:*") as archive:
+              for member in archive:
+                  if member.isdir():
+                      continue
+                  name = member.name.removeprefix("./")
+                  assert member.isfile() and name in expected and name not in seen, f"Invalid archive entry: {name}"
+                  with archive.extractfile(member) as f:
+                      actual = hashlib.file_digest(f, "sha256").hexdigest()
+                  assert actual == expected[name], f"Archive hash mismatch: {name}"
+                  seen.add(name)
+          assert seen == set(expected), f"Missing archive entries: {sorted(set(expected)-seen)[:30]}"
+          print(f"Archive: {len(seen)} files, all SHA256 matched")
+          print(f"Uncompressed archive bytes: {(tmp / 'artifact.tar').stat().st_size:,}")
+          PY
+      - name: Confirm test artifact is visible
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in {1..24}; do
+            count=$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts?per_page=100" --jq '[.artifacts[] | select(.name == "personal-os-pages-test" and .expired == false)] | length')
+            if [ "$count" = "1" ]; then
+              echo "Isolated test artifact is visible. No deployment requested."
+              exit 0
+            fi
+            sleep 10
+          done
+          exit 1
+      - name: Save validation inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: personal-os-validation-report
+          path: ${{ runner.temp }}/pages-validation-report.json
+          if-no-files-found: warn
+          retention-days: 7
