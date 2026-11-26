@@ -242,7 +242,7 @@ const intros={
 /* 主題分類與次分類：卡片只有一個 primary，但可帶多個 tags。
    儘量使用來源的按鈕 ID，而不是猜測名稱；原始 localStorage 收藏 key 不變。 */
 const lifeTopicTaxonomy=[
- {id:"civic",emoji:"🏛️",title:"市政與便民服務",hint:"市民卡、行政、地方新聞",subs:["市民服務","行政機關","政府公告","地方新聞","福利資源","待核對資料"]},
+ {id:"civic",emoji:"🏛️",title:"市政與便民服務",hint:"市民卡、行政、問政觀察",subs:["市民服務","行政機關","政府公告","地方新聞","問政觀察","福利資源","待核對資料"]},
  {id:"reading",emoji:"📖",title:"桃園閱讀與出版",hint:"電子書、桃園誌、地方文獻",subs:["市府電子書","桃園誌","文化刊物","地方文史","研究資料"]},
  {id:"travel",emoji:"🗺️",title:"深度旅遊與走讀",hint:"景點、聚落、路線與自然",subs:["特色景點","歷史聚落","自然生態","親子旅遊","主題路線"]},
  {id:"culture",emoji:"🎨",title:"文化藝術與歷史",hint:"美術館、古蹟、工藝文化",subs:["藝文場館","文化資產","客家文化","原住民族文化","地方工藝"]},
@@ -578,6 +578,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"報導者觀測站｜立法院",
 "桃園人口 × 行政區圖表",
 "樂桃園－公園無限探索指南",
 "桃園藝文",
@@ -619,6 +620,9 @@ function collectLifeCards(){
  lifeCatalog.set(cityKey,{key:cityKey,name:cityName,district:"全桃園",html:'<article class="store-card"><h4>桃園市民卡</h4><p>查看市民卡與數位碼、優惠、桃園活動及市府服務。</p><a class="map-link" href="https://typass.tycg.gov.tw/" target="_blank" rel="noopener noreferrer">開啟桃園市民卡官網 ↗</a></article>'});
  const newsName="桃園電子報",newsKey=lifeKey("全桃園",newsName);
  lifeCatalog.set(newsKey,{key:newsKey,name:newsName,district:"全桃園",html:'<article class="store-card"><h4>桃園電子報</h4><p>桃園地方新聞，瀏覽生活、活動、文教、交通與美食資訊。</p><a class="map-link" href="https://tyenews.com/" target="_blank" rel="noopener noreferrer">開啟桃園電子報 ↗</a></article>'});
+ const lawmakerName="報導者觀測站｜立法院",lawmakerKey=lifeKey("全桃園",lawmakerName);
+ lifeCatalog.set(lawmakerKey,{key:lawmakerKey,name:lawmakerName,district:"全桃園",facet:{primary:"civic",secondary:"問政觀察",tags:["桃園立委","國會","公民參與"]},
+  html:'<article class="store-card"><h4>報導者觀測站｜立法院</h4><p>依議題、會期或立委查看發言摘要與提案，追蹤桃園選區立委的問政紀錄。</p><a class="map-link" href="https://lawmaker.twreporter.org/congress" target="_blank" rel="noopener noreferrer">開啟報導者觀測站 ↗</a></article>'});
  const ebookName="桃園市政府電子書平台",ebookKey=lifeKey("全桃園",ebookName);
  lifeCatalog.set(ebookKey,{key:ebookKey,name:ebookName,district:"全桃園",html:'<article class="store-card"><h4>桃園市政府電子書平台</h4><p>瀏覽桃園市政府電子書及出版品。</p><a class="map-link" href="https://ebook.tycg.gov.tw/index/index.php" target="_blank" rel="noopener noreferrer">開啟電子書平台 ↗</a></article>'});
  const storyName="桃園誌",storyKey=lifeKey("全桃園",storyName);
