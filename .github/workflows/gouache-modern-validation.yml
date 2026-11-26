@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 3
+          fetch-depth: 10
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -37,6 +37,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p validation/lighthouse
+          git cat-file -e ef0d3398a90f7205e3458c8dd5c75293049b5fa1^{commit} || git fetch --no-tags origin ef0d3398a90f7205e3458c8dd5c75293049b5fa1
           git show ef0d3398a90f7205e3458c8dd5c75293049b5fa1:public/pages/gouache-product-catalog-20261103.html > public/pages/gouache-baseline-ci-only.html
           python3 -m http.server 8766 --bind 127.0.0.1 --directory public > validation/lighthouse/server.log 2>&1 &
           server=$!

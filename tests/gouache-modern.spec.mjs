@@ -45,3 +45,25 @@ test('back button closes product and restores filters',async({page})=>{
  await page.locator('#grid .card .open').click();await expect(page.locator('dialog')).toBeVisible();
  await page.goBack();await expect(page.locator('dialog')).not.toBeVisible();await expect(page.locator('#search')).toHaveValue('銀珠');
 });
+
+test('initial layout is stable during delayed catalogue fetch',async({page})=>{
+ await page.setViewportSize({width:1280,height:800});
+ let release;const gate=new Promise(resolve=>{release=resolve;});
+ await page.route('**/data/gouache/catalog-20261103.json*',async route=>{await gate;await route.continue();});
+ await page.goto(pageUrl,{waitUntil:'domcontentloaded'});
+ await expect(page.locator('#os-global-nav')).toBeVisible();
+ const before=await page.evaluate(()=>({header:document.querySelector('header').getBoundingClientRect().top,status:document.querySelector('#status').getBoundingClientRect().top,grid:document.querySelector('#grid').getBoundingClientRect().top}));
+ release();await expect(page.locator('#status')).toContainText('232 / 232');
+ const after=await page.evaluate(()=>({header:document.querySelector('header').getBoundingClientRect().top,status:document.querySelector('#status').getBoundingClientRect().top,grid:document.querySelector('#grid').getBoundingClientRect().top}));
+ for(const key of Object.keys(before))expect(Math.abs(before[key]-after[key])).toBeLessThanOrEqual(4);
+ await expect(page.locator('#groupButtons button').last()).toBeAttached();
+ await page.locator('#group').selectOption({index:1});await expect(page.locator('#grid .card').first()).toBeVisible();
+});
+test('visual checkpoints desktop and mobile',async({page},testInfo)=>{
+ await page.setViewportSize({width:1280,height:900});await page.goto(pageUrl);
+ await expect(page.locator('#status')).toContainText('232 / 232');
+ await page.screenshot({path:testInfo.outputPath('desktop-catalog.jpg'),type:'jpeg',quality:85,animations:'disabled'});
+ await page.setViewportSize({width:390,height:844});await page.goto(pageUrl+'?row=84');await expect(page.locator('dialog')).toBeVisible();
+ await expect.poll(()=>page.locator('.gallery img').first().evaluate(i=>i.complete&&i.naturalWidth>0)).toBeTruthy();
+ await page.screenshot({path:testInfo.outputPath('mobile-five-images.jpg'),type:'jpeg',quality:85,animations:'disabled'});
+});
