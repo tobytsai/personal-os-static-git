@@ -1,0 +1,38 @@
+name: Gouache modern web isolated validation
+on:
+  push:
+    branches: [test/gouache-modern-web-v2]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Official Modern Web Guidance legacy scan (advisory)
+        continue-on-error: true
+        run: |
+          mkdir -p validation
+          npx --yes modern-web-guidance@1.0.0 legacy-scan public/pages/gouache-product-catalog-20261103.html > validation/modern-web-scan.txt 2>&1
+          cat validation/modern-web-scan.txt
+      - name: Install browser test tooling
+        run: |
+          npm install --no-save --package-lock=false @playwright/test@1.56.1
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Test product catalog in three browser engines
+        run: npx playwright test --config=playwright.gouache.config.mjs --reporter=list
+      - name: Preserve diagnostic artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gouache-modern-validation
+          path: |
+            validation/
+            test-results/
+          if-no-files-found: ignore
