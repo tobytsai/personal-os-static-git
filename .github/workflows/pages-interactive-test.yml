@@ -23,7 +23,7 @@ concurrency:
 jobs:
   validate:
     if: github.ref == 'refs/heads/test/pages-interactive-validation'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 35
     env:
       GITHUB_PAGES: 'true'
