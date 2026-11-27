@@ -4,8 +4,8 @@ const data=JSON.parse(fs.readFileSync('public/data/gouache/catalog-20261103.json
 const pageUrl='/pages/gouache-product-catalog-20261103.html';
 test('source rows and images remain intact',async()=>{
  expect(data.length).toBe(232);expect(data.flatMap(p=>p.images).length).toBe(1160);
- expect(data.filter(p=>p.images.every(i=>i.thumb)).length).toBe(218);
- expect(data.flatMap(p=>p.images).filter(i=>i.thumb)).toHaveLength(1090);
+ expect(data.filter(p=>p.images.every(i=>i.thumb)).length).toBe(220);
+ expect(data.flatMap(p=>p.images).filter(i=>i.thumb)).toHaveLength(1100);
  expect(data.flatMap(p=>p.images).filter(i=>i.original)).toHaveLength(1125);
  for(const p of data)for(const i of p.images)if(i.thumb)expect(fs.existsSync('public/'+i.thumb.replace(/^\.\.\//,''))).toBeTruthy();
 });
