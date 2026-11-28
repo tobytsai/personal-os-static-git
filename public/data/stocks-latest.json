@@ -277,11 +277,12 @@
     "date": "2026-11-27",
     "unit": "TWD",
     "foreign": -29628066640,
-    "trust": 8519063239,
+    "trust": 8520616411,
     "dealerSelf": 2031596645,
     "dealerHedge": -2226674999,
-    "total": -21304081755,
-    "source": "https://www.twse.com.tw/fund/BFI82U?dayDate=&response=html"
+    "total": -21302528583,
+    "source": "https://www.twse.com.tw/fund/BFI82U?dayDate=&response=html",
+    "scope": "一般、零股、盤後定價、鉅額；不含拍賣、標購"
   },
   "sources": {
     "stocks": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=html&type=ALLBUT0999",
@@ -289,7 +290,9 @@
     "tpex": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes",
     "flows": "https://www.twse.com.tw/fund/BFI82U?dayDate=&response=html",
     "daily": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=html&type=ALLBUT0999",
-    "announcements": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L"
+    "announcements": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
+    "tpexIndex": "https://www.tpex.org.tw/www/zh-tw/afterTrading/indexSummary?response=html",
+    "flowsRegular": "https://www.twse.com.tw/fund/BFI82U?response=html&type=day"
   },
   "closingSummary": {
     "tradeDate": "2026-11-27",
@@ -375,21 +378,107 @@
         "pct": -1.07
       }
     ],
-    "institutionalNetTWD": -21304081755,
+    "institutionalNetTWD": -21302528583,
     "nextTradingDay": "2026-11-30",
     "nextWatch": "11/28、29週末休市，11/30（星期一）預定交易。留意美股11/27感恩節翌日提前收盤（台灣11/28 02:00）、外資持續賣超、台積電與中小型股強弱分歧、南亞科與華邦電量價。僅供市場研究。",
     "companyAnnouncements": {
-      "status": "current_trade_date_not_available_in_verified_source",
-      "items": [],
-      "note": "MOPS 查詢錯誤；TWSE OpenAPI t187ap04_L 出表日期1151127但發言日期仍為1151126，未找到1151127發言紀錄，不代表當日沒有新公告。"
+      "status": "verified_twse_openapi_trade_date",
+      "items": [
+        {
+          "code": "8422",
+          "name": "可寧衛*",
+          "date": "2026-11-27",
+          "source": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
+          "time": "15:42:01",
+          "title": "上評資源循環股東臨時會決議",
+          "summary": "通過部分公司章程修訂。",
+          "clause": "18"
+        },
+        {
+          "code": "8422",
+          "name": "可寧衛*",
+          "date": "2026-11-27",
+          "source": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
+          "time": "15:44:04",
+          "title": "可寧衛企業第三季子公司現金股利",
+          "summary": "現金股利總額14,811,904元，每股約0.22元；除息基準日2026-12-05。",
+          "clause": "14",
+          "subsidiaryDividendTWD": 14811904,
+          "subsidiaryDividendPerShare": 0.22,
+          "recordDate": "2026-12-05"
+        },
+        {
+          "code": "8422",
+          "name": "可寧衛*",
+          "date": "2026-11-27",
+          "source": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
+          "time": "15:45:57",
+          "title": "吉衛第三季子公司現金股利",
+          "summary": "現金股利總額211,604,071元，每股約5.16元；除息基準日2026-12-05。",
+          "clause": "14",
+          "subsidiaryDividendTWD": 211604071,
+          "subsidiaryDividendPerShare": 5.16,
+          "recordDate": "2026-12-05"
+        },
+        {
+          "code": "8422",
+          "name": "可寧衛*",
+          "date": "2026-11-27",
+          "source": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
+          "time": "15:47:32",
+          "title": "大寧第三季子公司現金股利",
+          "summary": "現金股利總額92,958,567元，每股約6.20元；除息基準日2026-12-05。",
+          "clause": "14",
+          "subsidiaryDividendTWD": 92958567,
+          "subsidiaryDividendPerShare": 6.2,
+          "recordDate": "2026-12-05"
+        },
+        {
+          "code": "8422",
+          "name": "可寧衛*",
+          "date": "2026-11-27",
+          "source": "https://openapi.twse.com.tw/v1/opendata/t187ap04_L",
+          "time": "15:48:59",
+          "title": "大倉實業第三季子公司現金股利",
+          "summary": "現金股利總額230,914,329元，每股約3.45元；除息基準日2026-12-05。",
+          "clause": "14",
+          "subsidiaryDividendTWD": 230914329,
+          "subsidiaryDividendPerShare": 3.45,
+          "recordDate": "2026-12-05"
+        }
+      ],
+      "note": "2026-11-28取得出表日期1151128、發言日期1151127的TWSE官方重訊資料；16檔中匹配8422共5筆。四筆股利皆為子公司股利，不是8422上市股票股東可直接領取的配息。MOPS獨立核對尚未完成。"
     },
-    "upcomingRegulatoryEvents": []
+    "upcomingRegulatoryEvents": [],
+    "tpexIndexClose": 285.77,
+    "tpexIndexChange": -4.07,
+    "tpexIndexChangePct": -1.4
   },
   "verification": {
-    "marketIndex": "TWSE HTML report header 115/11/27 verified; close and change match CNA same-day report",
+    "marketIndex": "TWSE HTML report header 115/11/27 verified; close and change match CNA same-day report; rechecked TWSE OpenAPI MI_INDEX on 2026-11-28.",
     "quotes": "All 16 TWSE daily rows under header 115/11/27 verified; change agrees with 11/26 stored closing price; OHLC and share volume/value validated; percentages computed",
-    "institutional": "TWSE BFI82U HTML header 115/11/27 verified; exact components sum checked",
-    "tpex": "TPEx official endpoints returned 403; secondary same-day reports cite 285.77 (-4.07, -1.40%), not independently verified and not stored as official numeric index",
-    "announcements": "TWSE OpenAPI response contains previous-day announcements, MOPS direct query unavailable"
-  }
+    "institutional": "TWSE official BFI82U reports dated 115/11/27: all-trades and type=day scope separately verified, exact totals validated. Primary now includes block trades; former numbers retained with correct day scope.",
+    "tpex": "TPEx official HTML report indexed with date 115/11/27 and index 285.77 (-4.07, -1.40%); direct fetch still 403; official indexed report used.",
+    "announcements": "TWSE OpenAPI t187ap04_L report date 1151128, announcement date 1151127; checked 16 codes, matched 8422 (5 records); MOPS independent check not completed."
+  },
+  "institutionalRegularSession": {
+    "date": "2026-11-27",
+    "unit": "TWD",
+    "foreign": -29628066640,
+    "trust": 8519063239,
+    "dealerSelf": 2031596645,
+    "dealerHedge": -2226674999,
+    "total": -21304081755,
+    "source": "https://www.twse.com.tw/fund/BFI82U?response=html&type=day",
+    "scope": "一般、零股、盤後定價；不含鉅額、拍賣、標購；投信不含綜合帳戶"
+  },
+  "tpexIndex": {
+    "日期": "2026-11-27",
+    "指數": "櫃買指數",
+    "收盤指數": 285.77,
+    "漲跌百分比": -1.4,
+    "漲跌點數": -4.07,
+    "source": "https://www.tpex.org.tw/www/zh-tw/afterTrading/indexSummary?response=html"
+  },
+  "supplementedAt": "2026-11-28T11:41:18Z"
 }
