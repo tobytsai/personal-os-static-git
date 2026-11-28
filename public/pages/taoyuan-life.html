@@ -578,6 +578,7 @@ lifeState.favorites=Array.isArray(lifeState.favorites)?lifeState.favorites:[];
 lifeState.recent=Array.isArray(lifeState.recent)?lifeState.recent:[];
 const lifeCatalog=new Map();
 const initialNewest=[
+"Frontier Lab｜前沿策略顧問",
 "報導者觀測站｜立法院",
 "桃園人口 × 行政區圖表",
 "樂桃園－公園無限探索指南",
@@ -623,6 +624,9 @@ function collectLifeCards(){
  const lawmakerName="報導者觀測站｜立法院",lawmakerKey=lifeKey("全桃園",lawmakerName);
  lifeCatalog.set(lawmakerKey,{key:lawmakerKey,name:lawmakerName,district:"全桃園",facet:{primary:"civic",secondary:"問政觀察",tags:["桃園立委","國會","公民參與"]},
   html:'<article class="store-card"><h4>報導者觀測站｜立法院</h4><p>依議題、會期或立委查看發言摘要與提案，追蹤桃園選區立委的問政紀錄。</p><a class="map-link" href="https://lawmaker.twreporter.org/congress" target="_blank" rel="noopener noreferrer">開啟報導者觀測站 ↗</a></article>'});
+ const frontierName="Frontier Lab｜前沿策略顧問",frontierKey=lifeKey("全桃園",frontierName);
+ lifeCatalog.set(frontierKey,{key:frontierKey,name:frontierName,district:"全桃園",facet:{primary:"civic",secondary:"問政觀察",tags:["地方選舉","開票結果","Frontier OS"]},
+  html:'<article class="store-card"><h4>Frontier Lab｜前沿策略顧問</h4><p>提供九合一選舉開票資訊，票數整理自中選會，並介紹 Frontier OS 政治 CRM。</p><a class="map-link" href="https://frontier-lab.io/" target="_blank" rel="noopener noreferrer">開啟 Frontier Lab ↗</a></article>'});
  const ebookName="桃園市政府電子書平台",ebookKey=lifeKey("全桃園",ebookName);
  lifeCatalog.set(ebookKey,{key:ebookKey,name:ebookName,district:"全桃園",html:'<article class="store-card"><h4>桃園市政府電子書平台</h4><p>瀏覽桃園市政府電子書及出版品。</p><a class="map-link" href="https://ebook.tycg.gov.tw/index/index.php" target="_blank" rel="noopener noreferrer">開啟電子書平台 ↗</a></article>'});
  const storyName="桃園誌",storyKey=lifeKey("全桃園",storyName);
